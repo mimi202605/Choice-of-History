@@ -1,0 +1,78 @@
+name: Auto Update Release
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+
+permissions:
+  contents: write
+
+jobs:
+  update-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Get latest release tag
+        id: get_tag
+        run: |
+          TAG=$(gh release list --limit 1 --json tagName -q '.[0].tagName' 2>/dev/null || echo "")
+          if [ -z "$TAG" ]; then
+            TAG="v1.0.0"
+          fi
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Ensure release exists
+        id: ensure_release
+        run: |
+          if ! gh release view ${{ steps.get_tag.outputs.tag }} >/dev/null 2>&1; then
+            gh release create ${{ steps.get_tag.outputs.tag }} \
+              --title "抉择千秋 ${{ steps.get_tag.outputs.tag }}" \
+              --notes "自动创建的发布" \
+              --latest
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update release asset
+        run: |
+          # 删除旧的 index.html 资产（如果存在）
+          gh release delete-asset ${{ steps.get_tag.outputs.tag }} index.html --yes 2>/dev/null || true
+          # 上传最新的 index.html
+          gh release upload ${{ steps.get_tag.outputs.tag }} index.html --clobber
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update release notes with timestamp
+        run: |
+          COMMIT_SHA=$(echo '${{ github.sha }}' | cut -c1-7)
+          COMMIT_MSG=$(git log -1 --pretty=format:'%s')
+          TIMESTAMP=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
+          NOTES="## 抉择千秋 - 皇帝模拟游戏
+
+          单文件 HTML5 游戏，无需后端，开箱即玩。
+
+          ### 本次更新
+          - 提交: \`$COMMIT_SHA\` $COMMIT_MSG
+          - 更新时间: $TIMESTAMP
+
+          ### 游戏特性
+          - 18 个朝代、27 位皇帝可选（甲类 18 位含详细事件库，乙类 9 位含里程碑事件）
+          - 六维数值系统：国库、民心、军事、朝政、健康、科技
+          - AI 实时生成事件与史官点评（兼容 OpenAI API，未配置时降级为预设事件）
+          - 三槽位手动存档 + 自动存档
+          - 终局结算与数值曲线图
+
+          ### 玩法
+          1. 下载下方 \`index.html\`
+          2. 用浏览器打开即可游玩
+          3. 可选：在游戏内「设置」配置 AI API 以获得更丰富体验"
+
+          gh release edit ${{ steps.get_tag.outputs.tag }} --notes "$NOTES" --latest
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
