@@ -1,0 +1,1730 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>抉择千秋</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#f4ecd8;
+    --ink:#2c2416;
+    --red:#8b3a3a;
+    --dim:#6b5d4f;
+    --bar-bg:#e8dcc0;
+    --bar-fill:#5a4a3a;
+    --gold:#9a7b3f;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Noto Serif SC',serif;
+    color:var(--ink);
+    background:var(--bg);
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(139,58,58,.04) 0, transparent 40%),
+      radial-gradient(circle at 80% 90%, rgba(90,74,58,.05) 0, transparent 45%),
+      repeating-linear-gradient(45deg, rgba(90,74,58,.012) 0 2px, transparent 2px 4px),
+      repeating-linear-gradient(-45deg, rgba(90,74,58,.012) 0 2px, transparent 2px 4px);
+    min-height:100vh;
+    line-height:1.7;
+  }
+  .calli{font-family:'Ma Shan Zheng',cursive;}
+  #app{max-width:920px;margin:0 auto;padding:18px 14px 60px;}
+  .screen{display:none;}
+  .screen.active{display:block;}
+
+  /* Top bar */
+  .topbar{
+    display:flex;align-items:center;justify-content:space-between;
+    border:2px double var(--ink);
+    background:rgba(255,250,235,.5);
+    padding:8px 14px;border-radius:4px;
+    box-shadow:0 1px 0 rgba(90,74,58,.15) inset;
+  }
+  .seal{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:42px;height:42px;border:2px solid var(--red);color:var(--red);
+    font-family:'Ma Shan Zheng',cursive;font-size:20px;border-radius:4px;
+    transform:rotate(-4deg);background:rgba(244,236,216,.4);
+    letter-spacing:-2px;line-height:1;
+  }
+  .era{font-family:'Ma Shan Zheng',cursive;font-size:22px;letter-spacing:2px;}
+  .topbar .right{display:flex;gap:8px;}
+
+  /* Buttons */
+  .btn{
+    font-family:'Noto Serif SC',serif;font-weight:600;font-size:14px;
+    background:rgba(255,250,235,.6);color:var(--ink);
+    border:1px solid var(--ink);padding:6px 14px;border-radius:3px;
+    cursor:pointer;transition:all .15s;
+  }
+  .btn:hover{background:var(--ink);color:var(--bg);}
+  .btn.red{border-color:var(--red);color:var(--red);}
+  .btn.red:hover{background:var(--red);color:var(--bg);}
+  .btn.big{font-size:18px;padding:12px 28px;font-family:'Ma Shan Zheng',cursive;letter-spacing:3px;}
+  .btn:disabled{opacity:.45;cursor:not-allowed;}
+
+  /* Stat bars */
+  .stats{
+    display:grid;grid-template-columns:1fr 1fr;gap:6px 22px;
+    border:2px double var(--ink);border-radius:4px;
+    background:rgba(255,250,235,.45);padding:12px 16px;margin-top:12px;
+  }
+  .stat{display:flex;align-items:center;gap:8px;font-size:14px;}
+  .stat .lbl{width:36px;font-weight:700;color:var(--dim);}
+  .stat .bar{flex:1;height:12px;background:var(--bar-bg);border:1px solid var(--dim);border-radius:2px;overflow:hidden;position:relative;}
+  .stat .fill{height:100%;background:var(--bar-fill);transition:width .6s ease, background .4s;}
+  .stat .val{width:30px;text-align:right;font-variant-numeric:tabular-nums;font-weight:700;}
+  .stat.low .fill{background:var(--red);}
+  .stat.high .fill{background:var(--gold);}
+
+  /* Scroll panel */
+  .scroll{
+    border:2px double var(--ink);border-radius:4px;
+    background:rgba(255,252,242,.6);padding:22px 26px;margin-top:14px;
+    position:relative;
+  }
+  .scroll::before,.scroll::after{
+    content:"";display:block;height:2px;margin:6px 0;
+    background:radial-gradient(circle, var(--ink) 0, transparent 70%);
+    opacity:.5;
+  }
+  .evt-title{
+    font-family:'Ma Shan Zheng',cursive;font-size:30px;text-align:center;
+    color:var(--red);letter-spacing:6px;margin:6px 0 10px;
+  }
+  .evt-desc{
+    text-indent:2em;font-size:16px;margin:10px 0;
+    text-align:justify;
+  }
+  .choices{margin:14px 0 6px;}
+  .choice{
+    display:block;width:100%;text-align:left;
+    background:rgba(255,250,235,.5);border:1px solid var(--dim);
+    border-radius:3px;padding:10px 14px;margin:8px 0;cursor:pointer;
+    font-family:'Noto Serif SC',serif;font-size:15px;color:var(--ink);
+    transition:all .15s;
+  }
+  .choice:hover{background:var(--ink);color:var(--bg);border-color:var(--ink);}
+  .choice .no{color:var(--red);font-weight:700;margin-right:8px;}
+  .choice .hint{display:block;font-size:12px;color:var(--dim);margin-top:2px;font-style:italic;}
+  .choice:hover .hint{color:rgba(244,236,216,.7);}
+  .outcome{text-indent:2em;font-size:15px;margin:10px 0;text-align:justify;}
+  .historian{
+    margin-top:14px;padding:12px 14px;border-left:3px solid var(--red);
+    background:rgba(139,58,58,.05);font-style:italic;color:var(--dim);
+  }
+  .historian .tag{color:var(--red);font-weight:700;font-family:'Ma Shan Zheng',cursive;font-size:18px;}
+  .changes{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;font-size:13px;}
+  .chg{padding:2px 8px;border-radius:10px;border:1px solid var(--dim);background:rgba(255,250,235,.6);}
+  .chg.up{color:#3a6b3a;border-color:#3a6b3a;}
+  .chg.down{color:var(--red);border-color:var(--red);}
+
+  /* Menus */
+  .menu-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:80vh;gap:18px;}
+  .title-big{font-family:'Ma Shan Zheng',cursive;font-size:88px;color:var(--red);letter-spacing:18px;text-shadow:2px 2px 0 rgba(90,74,58,.2);}
+  .subtitle{color:var(--dim);letter-spacing:8px;font-size:16px;margin-top:-6px;}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:14px;}
+  .card{
+    background:rgba(255,252,242,.6);border:1px solid var(--dim);border-radius:4px;
+    padding:12px 14px;cursor:pointer;transition:all .15s;
+  }
+  .card:hover{border-color:var(--red);background:rgba(255,250,235,.85);transform:translateY(-1px);}
+  .card .dyn{font-family:'Ma Shan Zheng',cursive;font-size:24px;color:var(--red);letter-spacing:3px;}
+  .card .cnt{color:var(--dim);font-size:12px;}
+  .card .nm{font-weight:700;font-size:15px;margin-top:4px;}
+  .card .meta{color:var(--dim);font-size:12px;margin-top:2px;}
+  .card .ev{color:var(--dim);font-size:12px;font-style:italic;margin-top:4px;}
+  .badge{display:inline-block;font-size:10px;padding:1px 6px;border:1px solid var(--gold);color:var(--gold);border-radius:8px;margin-left:4px;}
+  .badgeB{border-color:var(--dim);color:var(--dim);}
+
+  .panel{background:rgba(255,252,242,.6);border:2px double var(--ink);border-radius:4px;padding:18px 22px;margin-top:14px;}
+  .panel h2{font-family:'Ma Shan Zheng',cursive;color:var(--red);letter-spacing:4px;margin:0 0 8px;}
+  label.fld{display:block;margin:10px 0 4px;color:var(--dim);font-size:13px;}
+  input,select{width:100%;font-family:'Noto Serif SC',serif;font-size:14px;padding:7px 9px;border:1px solid var(--dim);border-radius:3px;background:rgba(255,250,235,.7);color:var(--ink);}
+  input[type=range]{padding:0;}
+  .row{display:flex;gap:10px;align-items:center;}
+  .row>*{flex:1;}
+
+  .center{text-align:center;}
+  .muted{color:var(--dim);font-size:13px;}
+  .hide{display:none!important;}
+
+  /* Intro */
+  .intro-box .emperor-name{font-family:'Ma Shan Zheng',cursive;font-size:42px;color:var(--red);letter-spacing:6px;text-align:center;}
+  .intro-box .reign-line{text-align:center;color:var(--dim);margin:4px 0 12px;}
+  .intro-box .bg-text{text-indent:2em;text-align:justify;font-size:15px;}
+
+  /* Ending */
+  .ending-title{font-family:'Ma Shan Zheng',cursive;font-size:48px;color:var(--red);text-align:center;letter-spacing:8px;}
+  .verdict{font-family:'Ma Shan Zheng',cursive;font-size:30px;text-align:center;letter-spacing:6px;margin:8px 0;}
+  .stat-curve{width:100%;height:160px;border:1px solid var(--dim);border-radius:3px;background:rgba(255,250,235,.6);margin-top:8px;}
+
+  /* Toast */
+  #toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:4px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .3s;z-index:99;}
+  #toast.show{opacity:.95;}
+
+  /* Save slots */
+  .slot{display:flex;justify-content:space-between;align-items:center;background:rgba(255,252,242,.6);border:1px solid var(--dim);border-radius:4px;padding:10px 14px;margin:8px 0;}
+  .slot .info{font-size:13px;color:var(--dim);}
+  .slot .info b{color:var(--ink);font-size:15px;}
+
+  /* loading overlay */
+  #loader{position:fixed;inset:0;background:rgba(244,236,216,.85);display:none;align-items:center;justify-content:center;z-index:50;}
+  #loader.show{display:flex;}
+  #loader .ink{font-family:'Ma Shan Zheng',cursive;font-size:26px;color:var(--red);letter-spacing:4px;}
+  #loader .sub{color:var(--dim);font-size:13px;margin-top:8px;text-align:center;}
+
+  @media(max-width:600px){
+    .title-big{font-size:58px;letter-spacing:10px;}
+    .stats{grid-template-columns:1fr;}
+    .evt-title{font-size:24px;}
+  }
+</style>
+</head>
+<body>
+<div id="app">
+
+  <!-- Main Menu -->
+  <section id="screen-menu" class="screen active">
+    <div class="menu-wrap">
+      <div class="title-big">抉择千秋</div>
+      <div class="subtitle">皇帝模拟 · 月度抉择 · 历史分支</div>
+      <div style="display:flex;flex-direction:column;gap:12px;margin-top:14px;">
+        <button class="btn big" onclick="goto('dynasty')">新 游 戏</button>
+        <button class="btn big" onclick="openLoad('menu')">读 档</button>
+        <button class="btn big" onclick="goto('settings')">设 置</button>
+        <button class="btn big" onclick="goto('about')">关 于</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dynasty Select -->
+  <section id="screen-dynasty" class="screen">
+    <div class="topbar">
+      <span class="era">择朝代</span>
+      <button class="btn" onclick="goto('menu')">返回</button>
+    </div>
+    <div class="grid" id="dynasty-grid"></div>
+  </section>
+
+  <!-- Emperor Select -->
+  <section id="screen-emperor" class="screen">
+    <div class="topbar">
+      <span class="era" id="emperor-list-title">择君主</span>
+      <button class="btn" onclick="goto('dynasty')">返回</button>
+    </div>
+    <div class="grid" id="emperor-grid"></div>
+  </section>
+
+  <!-- Intro -->
+  <section id="screen-intro" class="screen">
+    <div class="topbar">
+      <span class="era">本纪</span>
+      <button class="btn" onclick="goto('emperor')">返回</button>
+    </div>
+    <div class="scroll intro-box">
+      <div class="emperor-name" id="intro-name"></div>
+      <div class="reign-line" id="intro-reign"></div>
+      <div class="bg-text" id="intro-bg"></div>
+      <div class="center" style="margin-top:18px;">
+        <button class="btn big" onclick="startGame()">即 位 临 朝</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Game -->
+  <section id="screen-game" class="screen">
+    <div class="topbar">
+      <span class="seal" id="game-seal">汉</span>
+      <span class="era" id="game-era">建元元年 · 正月</span>
+      <span class="right">
+        <button class="btn" onclick="openSave()">存档</button>
+        <button class="btn" onclick="openLoad('game')">读档</button>
+        <button class="btn" onclick="goto('settings');prevScreen='game'">设置</button>
+        <button class="btn red" onclick="abandonGame()">弃位</button>
+      </span>
+    </div>
+    <div class="stats" id="stats-bar"></div>
+
+    <div class="scroll" id="event-panel">
+      <div class="evt-title" id="evt-title"></div>
+      <div class="evt-desc" id="evt-desc"></div>
+      <div class="choices" id="choices"></div>
+      <div id="outcome-wrap" class="hide">
+        <div class="outcome" id="outcome-desc"></div>
+        <div class="historian"><span class="tag">史官评曰：</span><span id="historian-txt"></span></div>
+        <div class="changes" id="changes"></div>
+        <div class="center" style="margin-top:14px;">
+          <button class="btn big" id="next-month-btn" onclick="nextMonth()">推 进 下 月</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Settings -->
+  <section id="screen-settings" class="screen">
+    <div class="topbar">
+      <span class="era">设置</span>
+      <button class="btn" onclick="backFromSettings()">返回</button>
+    </div>
+    <div class="panel">
+      <h2>AI 接口</h2>
+      <label class="fld">API 地址</label>
+      <input id="set-api" type="text" placeholder="https://api.openai.com/v1" />
+      <label class="fld">API Key</label>
+      <input id="set-key" type="password" placeholder="sk-..." />
+      <label class="fld">模型</label>
+      <input id="set-model" type="text" placeholder="gpt-4o-mini" />
+      <label class="fld">温度 <span id="set-temp-v" class="muted">0.8</span></label>
+      <input id="set-temp" type="range" min="0" max="1" step="0.1" value="0.8" oninput="document.getElementById('set-temp-v').textContent=this.value" />
+      <div class="row" style="margin-top:14px;">
+        <button class="btn" onclick="testConnection()">测试连接</button>
+        <button class="btn red" onclick="saveSettings()">保存</button>
+      </div>
+      <div id="set-msg" class="muted" style="margin-top:8px;"></div>
+    </div>
+    <div class="panel">
+      <h2>未配置时</h2>
+      <p class="muted">未配置 API 时，游戏将使用内置预设事件库与后备事件池推进，仍可正常游玩，但日常政务事件重复度较高。配置后即可由 AI 实时生成符合时代的事件与史官点评。</p>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="screen-about" class="screen">
+    <div class="topbar">
+      <span class="era">关于</span>
+      <button class="btn" onclick="goto('menu')">返回</button>
+    </div>
+    <div class="scroll">
+      <div class="evt-title">抉择千秋</div>
+      <p class="evt-desc">玩家择中国历史上任意一位皇帝而扮演之，以每月一次「五选一」抉择推进国运。抉择须合于时、异于彼、无显见之臧否。前序之择，影响于后。游戏以《二十四史》《资治通鉴》为骨，然玩家之决策可改易历史走向。</p>
+      <p class="evt-desc">六维数值——国库、民心、军事、朝政、健康、科技——通贯始终。健康归零，则龙驭宾天。科技可越时代，是为「穿越者」之能，然朝臣必以「奇技淫巧」非之。</p>
+      <p class="muted center" style="margin-top:18px;">单文件 · 水墨古籍风 · OpenAI 兼容 API</p>
+    </div>
+  </section>
+
+  <!-- Save / Load -->
+  <section id="screen-save" class="screen">
+    <div class="topbar">
+      <span class="era" id="save-title">存档</span>
+      <button class="btn" onclick="closeSave()">返回</button>
+    </div>
+    <div class="panel" id="slots-wrap"></div>
+  </section>
+
+  <!-- Ending -->
+  <section id="screen-ending" class="screen">
+    <div class="topbar">
+      <span class="era">大 行</span>
+      <button class="btn" onclick="goto('menu')">返回主菜单</button>
+    </div>
+    <div class="scroll">
+      <div class="ending-title" id="end-title">龙驭宾天</div>
+      <div class="center muted" id="end-meta"></div>
+      <div class="verdict" id="end-verdict"></div>
+      <div class="panel" style="background:rgba(255,250,235,.5);">
+        <h2 style="font-size:20px;">后世史官总评</h2>
+        <div id="end-review" style="text-indent:2em;text-align:justify;"></div>
+      </div>
+      <div class="panel" style="background:rgba(255,250,235,.5);">
+        <h2 style="font-size:20px;">六维终局</h2>
+        <div id="end-stats" class="stats" style="border:none;background:transparent;padding:0;"></div>
+        <h2 style="font-size:20px;margin-top:14px;">数值曲线</h2>
+        <canvas class="stat-curve" id="end-curve" width="800" height="160"></canvas>
+      </div>
+      <div class="panel" style="background:rgba(255,250,235,.5);">
+        <h2 style="font-size:20px;">关键抉择回顾</h2>
+        <div id="end-decisions"></div>
+      </div>
+      <div class="center" style="margin-top:18px;">
+        <button class="btn big" onclick="goto('menu')">归 于 史 册</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div id="toast"></div>
+<div id="loader"><div><div class="ink" id="loader-title">史官秉笔…</div><div class="sub" id="loader-sub">正在生成本月事件</div></div></div>
+
+<script>
+"use strict";
+/* ============================================================
+   抉择千秋 — 单文件实现
+   架构：状态(state) 与 渲染(render*) 分离；AI 调用含重试与降级；
+   存档为可序列化状态；DOM 承载全部 HUD 与菜单。
+   ============================================================ */
+
+/* ---------- 朝代与皇帝数据库 ----------
+   甲类(A)：明君/昏君/末代之主，带详细事件库（10余条）
+   乙类(B)：其余君主，带里程碑事件（5-8条）
+   事件库基于《二十四史》《资治通鉴》整理；日常月由AI衔接。
+*/
+const DYNASTIES = [
+  {id:"xia",name:"夏",seal:"夏",emperors:[]},
+  {id:"shang",name:"商",seal:"商",emperors:[]},
+  {id:"zhou",name:"周",seal:"周",emperors:[]},
+  {id:"qin",name:"秦",seal:"秦",emperors:[]},
+  {id:"han",name:"汉",seal:"汉",emperors:[]},
+  {id:"xin",name:"新",seal:"新",emperors:[]},
+  {id:"three",name:"三国",seal:"国",emperors:[]},
+  {id:"jin",name:"晋",seal:"晋",emperors:[]},
+  {id:"nanbei",name:"南北朝",seal:"朝",emperors:[]},
+  {id:"sui",name:"隋",seal:"隋",emperors:[]},
+  {id:"tang",name:"唐",seal:"唐",emperors:[]},
+  {id:"wudai",name:"五代十国",seal:"代",emperors:[]},
+  {id:"song",name:"宋",seal:"宋",emperors:[]},
+  {id:"liao",name:"辽",seal:"辽",emperors:[]},
+  {id:"jin2",name:"金",seal:"金",emperors:[]},
+  {id:"yuan",name:"元",seal:"元",emperors:[]},
+  {id:"ming",name:"明",seal:"明",emperors:[]},
+  {id:"qing",name:"清",seal:"清",emperors:[]},
+];
+
+/* 工具：构造事件对象 */
+function E(year,month,title,description,choices,historicalChoice,historicalOutcome,id){
+  return {id:id||null,year,month,title,description,choices,historicalChoice:historicalChoice==null?-1:historicalChoice,historicalOutcome:historicalOutcome||""};
+}
+
+/* ============ 甲类皇帝：详细事件库 ============ */
+
+// 秦始皇
+const E_QIN_SHIHUANG = {
+  id:"qin_shihuang",dynasty:"秦",name:"嬴政",templeName:"秦始皇",
+  reignStart:-246,reignEnd:-210,evaluation:"并吞八荒，千古一帝",
+  era:"始皇",
+  background:"秦庄襄王之子，十三岁即秦王位。初由相邦吕不韦摄政，后亲政，除嫪毐之乱，黜吕不韦。用李斯、尉缭之策，远交近攻，自前230年至前221年陆续灭韩、赵、魏、楚、燕、齐六国，一统天下，自立为「皇帝」。废分封，行郡县，书同文，车同轨，统一度量衡。北击匈奴，南征百越，筑长城，修驰道。然焚书坑儒、严刑峻法、大兴土木，民力凋敝。",
+  eraContext:"战国末年，列国纷争数百年。秦自商鞅变法后国力最盛，已具备一统之势。然六国未平，匈奴窥北，百越未服。一统之后，制度初创，旧贵族暗流涌动，法家治国，儒生议政。",
+  initStats:{treasury:65,people:55,military:80,court:70,health:75,tech:25},
+  tier:"A",
+  events:[
+    E(-227,null,"荆轲刺秦","燕太子丹患秦逼燕，遣荆轲携督亢地图献秦，图穷匕见，荆轲持匕首劫王。左右惊惶，群臣无兵刃。",["亲身搏杀荆轲，以示勇武","环柱走避，令左右以药囊掷之","急召殿下武士入救","许荆轲以燕地求全，缓其凶焰","先杀秦舞阳以儆荆轲"],2,"荆轲被杀，秦遂伐燕，燕王斩太子丹求和","荆轲"),
+    E(-221,null,"兼并六国","秦军势如破竹，六国次第覆灭。天下一统，群臣议尊号，或复「泰皇」，或上「皇帝」。",["采「皇帝」之名，自号始皇帝","复「泰皇」古号，示以谦抑","分封子弟为王，镇守四方","自称「帝」而不加「皇」","禅让于贤，效尧舜之德"],0,"定号皇帝，自为始皇帝，废谥法","尊号"),
+    E(-220,null,"巡行郡县","天下初定，帝欲巡行郡县，登泰山，颂秦德，立石刻。",["大举封禅泰山，刻石颂德","轻车简从，暗访民情","先巡北边，震慑匈奴","巡东南，镇抚百越","止巡，留咸阳理政"],0,"数度东巡，刻石颂德，宣示一统","巡行"),
+    E(-214,null,"北击匈奴","匈奴屡寇河南地，帝命蒙恬将三十万众北击胡，收河南，筑长城。",["命蒙恬北击匈奴，筑长城守之","徙民实边，持久备胡","遣使和亲匈奴，暂息边衅","联结月氏，共击匈奴","纳粟拜爵，充实军资再图北伐"],0,"蒙恬却匈奴七百里，长城绵延万里","匈奴"),
+    E(-214,null,"南征百越","南方百越之地未服，帝命尉屠睢将五十万军南征，开灵渠运粮。",["凿灵渠，大军南下置郡","以安抚为主，册封越君","遣使通好，互通市舶","召诸侯戍边，分而治之","暂罢南征，专注北方"],0,"置南海、桂林、象郡，岭南入版图","百越"),
+    E(-213,null,"焚书","丞相李斯以儒生「以古非今」，议焚《诗》《书》百家语，禁私学。",["从李斯之议，焚书禁私学","只焚《诗》《书》，存百家语","宽其禁，唯禁「以古非今」","拒焚书，兴学宫以导儒生","焚书并坑儒，以儆效尤"],0,"焚书令下，典籍多毁，私学遂绝","焚书"),
+    E(-212,null,"坑儒","侯生、卢生诽谤帝而亡，帝怒，案问咸阳诸生，坑杀四百六十余人。扶苏谏，被贬北边监军。",["坑杀诽谤者，以正法度","只诛首恶，余者赦之","召扶苏回朝，重议儒生之罪","赦儒生，令其修典赎罪","尽逐方士，存儒生"],0,"坑儒，扶苏贬北边监军","坑儒"),
+    E(-212,null,"修阿房","帝以为咸阳宫小，乃作前殿阿房，东西五百步，南北五十丈。又营骊山陵。",["大兴土木，修阿房、骊山陵","减役缓工，先营陵寝","征发罪徒，免扰平民","罢阿房，专注驰道长城","募民应役，给以工值"],0,"阿房、骊山并作，役夫七十万","阿房"),
+    E(-211,null,"陨石谶语","东郡陨石坠地，有人在石上刻「始皇帝死而地分」。帝遣御史逐问，莫服，尽杀石旁居民，燔其石。",["尽杀石旁居民，燔石以灭谶","遣使循行，安抚山东","亲赴东郡，祭天禳灾","大赦天下，以消天怒","严查刻石者，不株连"],0,"尽杀石旁居民，焚石，人不宁","陨石"),
+    E(-210,null,"沙丘之变","帝东巡至平原津而病，崩于沙丘。赵高、李斯密谋立胡亥，赐扶苏死。",["生前早定扶苏，传位于太子","秘不发丧，听任赵高李斯","召扶苏至行宫托孤","立胡亥，赐死扶苏","分封诸子，以分权势"],0,"帝崩沙丘，赵高李斯矫诏立胡亥","沙丘")
+  ]
+};
+
+// 汉高祖
+const E_HAN_GAOZU = {
+  id:"han_gaozu",dynasty:"汉",name:"刘邦",templeName:"汉高祖",
+  reignStart:-202,reignEnd:-195,era:"汉",
+  evaluation:"豁达大度，知人善任",
+  background:"沛县泗水亭长出身，起于草莽。秦末陈胜吴广起义，邦聚众响应，号沛公。后依项梁，与项羽并争天下。前206年先入关中，约法三章，秦亡。项羽封其为汉王。前202年垓下之战灭项羽，称帝建汉，定都长安。既平天下，又陆续翦除异姓诸侯王。",
+  eraContext:"秦末大乱，群雄并起。楚汉相争数载，天下疲弊，户口减半，米斛万钱，人相食。匈奴冒顿单于统一草原，势方盛。六国旧贵族残余犹存，功臣骄悍。",
+  initStats:{treasury:45,people:50,military:65,court:60,health:70,tech:22},
+  tier:"A",
+  events:[
+    E(-202,null,"定鼎长安","天下初定，帝欲择都。娄敬劝都关中，张良亦然；群臣多欲都洛阳。",["从娄敬、张良，都关中长安","都洛阳，以抚关东功臣","巡行不定，行在即都","都彭城，近故乡","都南阳，控扼南北"],0,"都长安，汉室基业稳固","定都"),
+    E(-202,null,"论得天下","帝置酒洛阳南宫，问何以得天下。高起、王陵言帝慢而侮人，项羽仁而敬人，然帝使人攻城略地，所降下者因以予之。",["自陈善用三杰，项有一范增不能用","厚赏功臣，剖符封爵","谦让不言，归功于群臣","诛戮功臣以立威","大封同姓，抑异姓"],0,"帝善用萧何、张良、韩信，遂得天下","论功"),
+    E(-201,null,"禽韩信","有人告楚王韩信反，帝用陈平伪游云梦之计，执韩信，降为淮阴侯。",["用陈平计，伪游云梦执信","亲率大军伐楚，明讨之","召信入朝，明升暗降","削其封地，分封子弟","赦信，与之剖符盟誓"],0,"执韩信，降为淮阴侯，后信终见杀","韩信"),
+    E(-200,null,"白登之围","韩王信叛入匈奴，帝亲征，至平城白登山，被匈奴三十万骑围七日。",["用陈平奇计，厚赂阏氏解围","力战突围，以振军威","遣使和亲，许以岁币","联合冒顿仇敌，约共击之","固守待援，伺机反扑"],0,"用陈平计解围，后行和亲之策","白登"),
+    E(-198,null,"和亲匈奴","冒顿数寇边，帝患之，刘敬建议以长公主妻冒顿，结和亲。",["从刘敬，行和亲之策","绝和亲，专力整军备胡","以宗室女代公主妻之","厚赂金帛，不妻以女","连月氏、乌孙以制匈奴"],0,"以宗室女为公主，妻冒顿，岁致金帛","和亲"),
+    E(-196,null,"诛韩信彭越","陈豨反，帝自将击之。吕后与萧何诛韩信于长乐钟室。旋又废彭越，后诛之，醢其肉赐诸侯。",["听吕后诛信，以绝后患","赦信，复其爵","徙信于蜀，远置之","召信对质，明正其罪","尽诛异姓王，立同姓"],0,"韩信、彭越皆死，异姓王次第翦除","诛功臣"),
+    E(-195,null,"英布反","淮南王英布见韩信、彭越诛，大恐，遂反。帝抱病亲征，破之。布走江南，被杀。",["抱病亲征，破布于蕲西","命太子将兵击布","遣使招降，赦其罪","联合吴芮长沙王共讨之","固守要害，待其自溃"],0,"帝亲征破英布，中流矢，归而病重","英布"),
+    E(-195,null,"大风歌","帝归过沛，悉召故人父老子弟纵酒，自歌：「大风起兮云飞扬，威加海内兮归故乡，安得猛士兮守四方！」",["与沛父老欢饮，赋大风歌","厚赐沛民，复其徭役","思安得猛士，下求贤诏","慨然泣下，托孤于大臣","罢酒，戒慎以终"],0,"过沛，赋大风歌，复沛徭役","大风歌"),
+    E(-195,null,"托孤萧曹","帝病甚，吕后问萧何之后谁可为相。帝曰曹参可；问曹参之后，曰王陵可，然少戆，陈平可以助之。",["定萧何—曹参—王陵陈平之相序","以吕产、吕禄掌南北军","召群臣共议，集思广益","立白马之盟，非刘不王","秘不议嗣，以安人心"],0,"定相序，立白马之盟：非刘氏不王","托孤")
+  ]
+};
+
+// 汉武帝
+const E_HAN_WUDI = {
+  id:"han_wudi",dynasty:"汉",name:"刘彻",templeName:"汉武帝",
+  reignStart:-141,reignEnd:-87,era:"建元",
+  evaluation:"雄才大略，开疆拓土",
+  background:"景帝之子，七岁立为太子，十六岁即位。初窦太后崇黄老，建元新政受阻。太后崩，乃大用儒生，罢黜百家，独尊儒术。用卫青、霍去病北击匈奴，凿空西域，开丝绸之路。改革币制，盐铁官营，均输平准。然连年征战，海内虚耗，晚年巫蛊之祸，下轮台罪己诏。",
+  eraContext:"汉初休养生息七十年，文景之治后国力充实，太仓之粟陈陈相因，京师之钱累巨万。然匈奴为患北边，诸侯势弱而豪强兼并，儒道之争未息。丝路未通，西域未知。",
+  initStats:{treasury:70,people:65,military:60,court:75,health:80,tech:28},
+  tier:"A",
+  events:[
+    E(-140,null,"建元新政","帝初即位，用丞相卫绾议，罢治申商韩非苏秦张仪之言者。举贤良方正直言极谏之士。窦太后不满，新政受阻。",["罢黜百家，独尊儒术","尊崇黄老，遵窦太后之意","儒道并重，并行不悖","广开言路，不立一尊","兴太学，置五经博士"],0,"建元新政遭窦太后阻挠，旋罢","建元"),
+    E(-134,null,"举茂才","董仲舒对策，言「天人三策」，请立太学，罢黜百家。帝善其言。",["从董仲舒，罢黜百家独尊儒术","兴太学，置五经博士","察举孝廉，广纳贤才","兼采百家，唯才是用","兴太学而不禁百家"],0,"罢黜百家，独尊儒术，立太学","董子"),
+    E(-133,null,"马邑之谋","王恢献策，欲于马邑伏击匈奴，聂翁壹为间诱军臣单于。单于入塞，察觉伏兵，遁去。",["采纳王恢之策，设伏马邑","遣使和亲，暂缓边衅","联合西域，断匈奴右臂","主动出击，直捣龙城","纳粟拜爵，充实军备再图后举"],0,"汉军无功而返，汉匈决裂，开启长期战争","马邑"),
+    E(-127,null,"卫青收河南","卫青将三万骑出云中，击匈奴楼烦、白羊王，收河南地，置朔方郡。",["用卫青收河南，置朔方郡","筑朔方城，徙民实之","和亲求全，退还河南","乘胜北伐，直捣单于庭","休兵息民，固守河南"],0,"卫青收河南，汉始置朔方郡","河南"),
+    E(-121,null,"霍去病河西","霍去病将万骑出陇西，过焉支山，击匈奴浑邪王，收河西。浑邪王率四万众降汉。",["受浑邪王降，置河西四郡","遣浑邪王归本部，以为藩屏","徙降众于关东，分散其势","厚赏降王，令其东征匈奴","诛降王以绝后患"],0,"收河西，置武威、张掖、酒泉、敦煌郡","河西"),
+    E(-119,null,"漠北决战","卫青、霍去病各将五万骑分道北伐。卫青击单于，去病封狼居胥，禅于姑衍。匈奴远遁，漠南无王庭。",["大举北伐，封狼居胥","固守河南，徐图北进","联结乌孙，共击匈奴","和亲缓兵，蓄力再战","筑长城外长城，持久备胡"],0,"漠北大捷，匈奴远遁，漠南无王庭","漠北"),
+    E(-119,null,"盐铁官营","用桑弘羊议，盐铁酒榷均输平准，以充军费。御史大夫卜式等非之。",["盐铁官营，均输平准","宽其禁，唯榷盐铁","放任民间，仅征商税","募民煮盐铸铁，税其什一","罢盐铁，专事农赋"],0,"盐铁官营，国用大充，豪强不满","盐铁"),
+    E(-115,null,"张骞凿空","张骞再使西域，通乌孙、大宛、康居、月氏、安息，丝绸之路始通。",["通西域，联乌孙断匈奴右臂","厚赐西域诸国，开市通商","遣使求汗血马，以利军备","结月氏共击匈奴","闭关息使，专务内政"],0,"张骞凿空，西域始通，丝路兴","凿空"),
+    E(-106,null,"刺史六条","帝分天下为十三州部，置刺史，以六条问事，察郡国守相。",["置刺史，以六条察郡国","遣绣衣直指使，专使按察","强御史台，纠劾百官","废郡国，尽行州县","放任诸侯，以宗室自肃"],0,"置十三州部刺史，以六条问事","刺史"),
+    E(-99,null,"李陵之祸","李陵将五千步卒出居延，击匈奴，矢尽道穷，降匈奴。司马迁为之辩，下迁腐刑。",["下司马迁腐刑，以儆效尤","赦司马迁，纳其直谏","遣使迎李陵归汉","厚抚李陵家属，招其归","罪李陵族，绝其归路"],0,"司马迁受腐刑，发愤著《史记》","李陵"),
+    E(-91,null,"巫蛊之祸","江充以巫蛊事构陷太子据。太子斩充，发兵与丞相刘屈氂战长安，兵败亡。卫皇后自杀。",["信江充，穷治巫蛊","明察江充，保全太子","召太子入对，辨明曲直","赦太子，诛江充","引咎罪己，安抚宗室"],0,"巫蛊之祸，太子据亡，卫后自杀","巫蛊"),
+    E(-89,null,"轮台罪己","桑弘羊等请田轮台，帝下诏深陈既往之悔，罢轮台戍，止武息民，复与民休息。",["下轮台罪己诏，息兵富民","拒桑弘羊之请，然不罪己","继续田轮台，固守西域","大赦天下，与民更始","禅位于少子，自居太上"],0,"下轮台罪己诏，由是海内稍安","轮台")
+  ]
+};
+
+// 汉光武帝
+const E_HAN_GUANGWU = {
+  id:"han_guangwu",dynasty:"汉",name:"刘秀",templeName:"汉光武帝",
+  reignStart:25,reignEnd:57,era:"建武",
+  evaluation:"柔道治天下，中兴汉室",
+  background:"汉景帝子长沙定王发之后，南阳宗室。王莽末年，与兄刘縯起兵舂陵，号「铜马帝」。更始帝立，秀奉命徇河北，自立为帝，建元建武，都洛阳。先后灭赤眉、铜马、隗嚣、公孙述，统一天下。退功臣，进文吏，简政减刑，与民休息。",
+  eraContext:"新莽末年，天下大乱，群雄并起，赤眉铜马横行，户口凋敝，城邑丘墟。匈奴支持的卢芳割据北边，隗嚣据陇右，公孙述称帝蜀中。汉室旧制崩坏待复。",
+  initStats:{treasury:35,people:40,military:60,court:65,health:78,tech:28},
+  tier:"A",
+  events:[
+    E(25,null,"鄗城称帝","更始帝政乱，秀部将拥立于鄗南，建元建武，仍国号汉。",["即帝位，建元建武","尊更始为帝，自居藩辅","求立更始太子，以续汉统","与众将共治，行合议之制","暂称大王，待天下一定"],0,"称帝鄗城，定都洛阳，中兴汉室","称帝"),
+    E(27,null,"降赤眉","赤眉入关，更始帝降。赤眉焚长安，西掠陇右。帝遣冯异击之，大破于崤底，赤眉十余万众降。",["遣冯异大破赤眉于崤底","招降赤眉，安置河南","纵赤眉西入陇右，待其自敝","联合隗嚣共灭赤眉","固守关东，徐图关中"],0,"冯异破赤眉，十余万众降汉","赤眉"),
+    E(30,null,"平定陇蜀","隗嚣据陇右，公孙述称帝蜀中。帝用寇恂、来歙之策，先陇后蜀。",["先平隗嚣，后伐公孙述","联隗嚣共灭公孙述","遣使招降，许以封爵","固守关中，待其内变","亲征陇蜀，速战速决"],0,"先平陇，后灭蜀，天下一统","陇蜀"),
+    E(30,null,"退功臣进文吏","天下既定，帝退功臣，以高秩厚禄养之，不任以吏事；进用文吏，理政事。",["退功臣进文吏，柔道治国","任功臣为郡守，酬其勋劳","分封功臣，世袭其地","设丞相大将军，分掌文武","尽罢功臣，专任文吏"],0,"退功臣进文吏，功臣安享高秩","退功臣"),
+    E(31,null,"简政减刑","帝省并郡国，裁减官吏，简放刑法，悉免奴婢为庶人。",["省官减刑，免奴婢为庶人","大赦天下，与民休息","省并四百余县，十置其一","复文景之治，轻徭薄赋","严刑峻法，以肃纲纪"],0,"省并郡县，免奴婢，复文景之政","简政"),
+    E(40,null,"度田","帝下诏度田，核实垦田与户口。河南、南阳豪强抗拒，刺史太守多不实。",["严行度田，按核豪强","宽其法，唯核垦田","遣使循行，明赏罚郡守","罢度田，姑息豪强","籍没豪强田，分给贫民"],0,"度田遭豪强阻，事虽未竟，户籍稍实","度田"),
+    E(46,null,"匈奴分裂","匈奴连年旱蝗，赤地千里，分裂南北。南匈奴呼韩邪单于请内属。",["受南匈奴内属，置使匈奴中郎将","遣兵助南匈奴击北匈奴","远徙南匈奴于塞下，以为藩屏","闭关拒纳，恐生后患","联南匈奴共制北匈奴"],0,"受南匈奴内属，北匈奴孤立","匈奴"),
+    E(50,null,"营洛阳","帝修洛阳，起太学，复五经博士，兴文教。",["起太学，兴文教","营宫室，壮京师","修水利，劝农桑","设五经博士，复兴儒学","罢土木，专务农战"],0,"起太学，复兴儒学，洛阳为中都","洛阳"),
+    E(57,null,"封禅泰山","帝谶纬盛行，群臣请封禅。帝初谦让，后从之。",["谦让不受，止封禅","从群臣请，封禅泰山","封禅而薄其礼","告天而已，不事铺张","封禅并谶纬，以正大位"],0,"封禅泰山，谶纬之学益盛","封禅")
+  ]
+};
+
+// 隋文帝
+const E_SUI_WENDI = {
+  id:"sui_wendi",dynasty:"隋",name:"杨坚",templeName:"隋文帝",
+  reignStart:581,reignEnd:604,era:"开皇",
+  evaluation:"受禅代周，开皇之治",
+  background:"北周外戚，普六茹氏，女为周宣帝皇后。宣帝崩，静帝八岁，坚辅政。大杀宇文氏，代周建隋，改元开皇。南下灭陈，统一天下。废九品中正，行科举之滥觞，创三省六部，修《开皇律》。然晚年废太子勇，立晋王广，为隋乱埋根。",
+  eraContext:"南北朝近三百年分裂，南北风俗制度殊异。北方胡汉融合，南方衣冠南渡。突厥沙钵略可汗控弦数十万为患北边。南方陈朝偏安，国小民弱。南北一统之势已成，然统一后整合不易。",
+  initStats:{treasury:60,people:60,military:65,court:70,health:72,tech:35},
+  tier:"A",
+  events:[
+    E(581,null,"受禅建隋","北周静帝禅位，杨坚即皇帝位，国号隋，改元开皇。大杀宇文氏。",["受禅代周，建隋改元","辞禅让，辅政周室","诛宇文氏，以绝后患","宽宥宇文氏，示以仁厚","禅位于宗室，自居摄政"],0,"受禅建隋，尽诛宇文氏","受禅"),
+    E(583,null,"改革官制","帝废北周官制，复汉魏之旧，置三师三公尚书门下内史五省，行三省六部之制。",["行三省六部，复汉魏官制","因北周之旧，稍加损益","罢州郡，尽行州县","设宰相，集权于上","行封建，分封宗室"],0,"立三省六部，开后世官制之先","官制"),
+    E(583,null,"修开皇律","帝命高颎等修律，废前世枭轘车裂等酷刑，定《开皇律》五百条。",["颁《开皇律》，宽刑省罚","严刑峻法，以肃纲纪","宽刑而重赎，富者免罪","行肉刑，以惩奸顽","省并律条，简而易行"],0,"颁《开皇律》，废酷刑，宽省有度","开皇律"),
+    E(583,null,"离间突厥","突厥沙钵略可汗寇边，帝用长孙晟「远交近攻，离强合弱」之策，分其为东西。",["用长孙晟策，离间突厥","大举北伐，击沙钵略","和亲突厥，岁致金帛","联东突厥制西突厥","筑长城，固守北边"],0,"离间突厥，分为东西，北患稍息","突厥"),
+    E(585,null,"输籍定样","帝依高颎议，行输籍之法，定户等，由是户籍大增，国用充实。",["行输籍之法，定户等","大索貌阅，核实户口","宽其法，听民自占","籍没隐户，罪及豪强","罢输籍，复九品中正"],0,"输籍定样，户籍大增，国用充实","输籍"),
+    E(587,null,"创科举","帝废九品中正制，诏诸州岁贡三人，开科举之端。",["废九品中正，开科举之端","复九品中正，唯重门第","行察举，举孝廉茂才","设九品，重家世又重才","兼行科举与九品"],0,"废九品中正，开科举之滥觞","科举"),
+    E(589,null,"灭陈一统","帝命晋王广为元帅，将五十一万大军伐陈。攻破建康，俘陈后主，南北一统。",["大举伐陈，一统天下","缓图南方，徐徐用兵","遣使招降陈后主","联陈共讨突厥，再图南方","水陆并进，速取建康"],0,"灭陈，俘陈后主，天下一统","灭陈"),
+    E(592,null,"均田租调","帝推行均田，定租调之制，丁男一床租粟三石。",["均田定租调，与民休息","宽其赋，仅征其半","籍没豪强田，分给贫民","复井田之制","听民买卖，任其兼并"],0,"均田租调，开皇之治成","均田"),
+    E(600,null,"废太子勇","太子勇失爱于帝及独孤后，晋王广阴结杨素谋夺嫡。帝废勇为庶人，立广为太子。",["废勇立广，听独孤后之言","保太子勇，罪晋王广","召二子对质，明其曲直","立秦王俊，折中而立","分封诸子，以分其势"],0,"废太子勇，立晋王广，隋乱之根","废太子"),
+    E(604,null,"仁寿宫变","帝病仁寿宫，太子广侍疾。陈夫人言太子无礼，帝怒欲废。旋暴崩，或谓广所害。",["召废太子勇，欲复立之","禅位于太子广，安养后宫","召群臣托孤，明正大位","诛杨素，绝太子党羽","秘不发丧，徐图后计"],0,"帝暴崩仁寿宫，太子广即位","仁寿")
+  ]
+};
+
+// 隋炀帝
+const E_SUI_YANGDI = {
+  id:"sui_yangdi",dynasty:"隋",name:"杨广",templeName:"隋炀帝",
+  reignStart:604,reignEnd:618,era:"大业",
+  evaluation:"骄奢暴虐，二世而亡",
+  background:"文帝次子，初封晋王，灭陈有功。阴谋夺嫡，废兄勇而立为太子。即位后营洛阳，开运河，修长城，三征高句丽，巡幸江都。滥用民力，征役不息，天下大乱，群雄并起。最终在江都被宇文化及所弑，隋亡。",
+  eraContext:"文帝留下开皇之治，府库充实，户口滋盛。然广即位后，大兴土木，连年征战，民力不堪。山东、河南首起兵乱，李密、翟让据瓦岗，李渊起太原，窦建德、杜伏威遍布江淮。",
+  initStats:{treasury:75,people:55,military:70,court:60,health:70,tech:38},
+  tier:"A",
+  events:[
+    E(605,null,"营建洛阳","帝以关中悬远，诏营东京洛阳，每月役丁二百万人，徙天下富商大贾数万户实之。",["大兴土木，营建东京洛阳","减役缓工，先修宫室","募民应役，给以工值","罢东京，专注长安","徒治江都，南向临朝"],0,"营建洛阳，役民数百万，民力始困","洛阳"),
+    E(605,null,"开凿运河","帝发河南淮北诸郡百万余民，开通济渠；又发淮南民十余万开邗沟。造龙舟数千艘，欲巡江都。",["开运河，造龙舟，幸江都","开运河以通漕，罢巡幸","募民开河，给以工值","先通漕运，缓开御河","罢运河，免扰江南"],0,"开通济渠、邗沟，运河始成","运河"),
+    E(607,null,"修筑长城","帝发丁男百万筑长城，西距榆林，东至紫河，死者什五六。",["发丁百万筑长城","减役缓筑，固守要害","募民筑城，厚给其值","罢长城，专事内政","联突厥为援，罢长城"],0,"筑长城，死者什五六，民怨始沸","长城"),
+    E(607,null,"巡幸北边","帝车驾北巡，至榆林，欲耀兵于突厥。启民可汗亲为芟草。",["大陈兵威，耀兵于突厥","厚赐启民，结为姻亲","轻车简从，示以信义","联突厥共讨契丹","罢巡幸，专理国政"],0,"巡幸北边，启民可汗执礼甚恭","巡北"),
+    E(612,null,"一征高句丽","帝发兵一百十三万三千八百人伐高句丽，号二百万。陆军趋辽东，水军趋平壤。大败，全军退还。",["大举伐高句丽，水陆并进","缓图高句丽，先固辽东","遣使招降高句丽王","联新罗百济共讨之","罢兵息民，专务内政"],0,"一征高句丽大败，死者数十万","一征"),
+    E(613,null,"二征高句丽","帝再伐高句丽，围辽东。杨玄感反于黎阳，帝被迫退兵。",["再征高句丽，急攻辽东","闻杨玄感反，急退兵","遣将平玄感，自留攻辽","罢兵还朝，先平内乱","分兵平叛与征辽并进"],0,"二征高句丽因杨玄感反退兵","二征"),
+    E(614,null,"三征高句丽","帝三征高句丽，高句丽遣使请降，帝受降而还。然高句丽终不入朝。",["三征高句丽，受降而还","穷追到底，必获其王","受降即罢，徐图后举","罢兵，许高句丽自新","联合百济灭高句丽"],0,"三征高句丽，受降而还，国力尽耗","三征"),
+    E(616,null,"避走江都","天下大乱，帝不归长安，避走江都，居江都宫，荒淫益甚。",["避走江都，苟安江南","还长安，亲理平叛","迁都江都，经营南方","留太子守长安，自督江淮","禅位于太子，自居太上"],0,"帝走江都，关中大乱，群雄并起","江都"),
+    E(617,null,"李渊起兵","李渊起兵太原，攻入长安，立代王侑为帝，自为丞相。",["遣将击李渊，急攻太原","还长安亲征李渊","联合诸藩共讨李渊","禅位于代王，以谢天下","坚守江都，任北方自乱"],0,"李渊入长安，立代王，隋室名存实亡","李渊"),
+    E(618,null,"江都之变","骁果军将士思归，宇文化及、司马德戡等发动兵变，缢杀帝于江都。",["宿卫忠臣，预诛化及","禅位于群臣，保全性命","突围北归，重整旗鼓","纵情酒色，听天由命","西奔关中，依附李渊"],0,"帝被缢杀于江都，隋亡","江都之变")
+  ]
+};
+
+// 唐太宗
+const E_TANG_TAIZONG = {
+  id:"tang_taizong",dynasty:"唐",name:"李世民",templeName:"唐太宗",
+  reignStart:626,reignEnd:649,era:"贞观",
+  evaluation:"贞观之治，天可汗",
+  background:"高祖李渊次子。隋末劝父起兵太原，破窦建德、王世充，平定天下，功第一。武德九年发动玄武门之变，杀兄建成、弟元吉，逼父禅位，改元贞观。在位虚心纳谏，用房玄龄、杜如晦、魏征，轻徭薄赋，平定突厥、吐谷浑，被尊为「天可汗」。开创贞观之治。",
+  eraContext:"隋末大乱方平，户口减半，百姓凋敝。北方突厥颉利可汗控弦百万，曾逼渭桥。西北吐谷浑、高昌，东北高句丽未服。朝中山东豪族、关陇贵族、江南士族并立。三省六部初创，科举初兴。",
+  initStats:{treasury:50,people:50,military:75,court:75,health:80,tech:38},
+  tier:"A",
+  events:[
+    E(626,null,"玄武门之变","秦王世民与太子建成、齐王元吉嫌隙日深。世民率长孙无忌、尉迟敬德等设伏玄武门，射杀建成、元吉。高祖立世民为太子，旋禅位。",["先发制人，发动玄武门之变","密奏高祖，请裁断兄弟","称疾不出，避其锋芒","外任就藩，远离朝堂","联合元吉反制建成"],0,"玄武门之变，杀建成元吉，高祖禅位","玄武门"),
+    E(627,null,"贞观之始","帝改元贞观，欲致太平。与群臣论治道，用房玄龄、杜如晦为相。",["改元贞观，用房杜为相","广开言路，虚心纳谏","复封建，分封宗室功臣","行严刑，以肃纲纪","任用山东豪族，抑关陇"],0,"改元贞观，用房杜，开太平之基","贞观"),
+    E(627,null,"魏征直谏","魏征屡屡犯颜直谏，帝或怒不可遏，然终纳之。征尝言「兼听则明，偏信则暗」。",["纳魏征谏，以铜镜人镜史镜自勉","外迁魏征，远置郡县","优容魏征，赏其直谏","纳谏而存戒心","拒谏，罪魏征"],0,"帝纳魏征之谏，君臣相得，传为佳话","魏征"),
+    E(630,null,"灭东突厥","李靖、李绩大破突厥，擒颉利可汗。四夷君长请上「天可汗」之号。",["大破突厥，受天可汗之号","受降颉利，优容处之","分突厥为两部，分而治之","徙突厥于河南，使之农耕","诛颉利以儆四夷"],0,"灭东突厥，被尊为天可汗","灭突厥"),
+    E(633,null,"纵囚归狱","帝录系囚，纵三百九十人归家，期秋分来就刑。皆如期至，帝赦之。",["纵囚归狱，赦之以彰仁德","纵囚而严其期，违者重罚","录囚减刑，宽省刑罚","释轻囚，重囚如故","大赦天下，与民更始"],0,"纵囚如期归，帝赦之，仁义之名远播","纵囚"),
+    E(636,null,"修《梁陈齐周隋五代史》","帝命房玄龄、魏征等修五代史，以鉴前世得失。",["修五代史，以鉴前世得失","禁私修国史，专属史馆","修本朝实录，不议前世","广征天下遗书","罢修史，专务实政"],0,"修成五代史，为后世鉴","修史"),
+    E(640,null,"灭高昌","高昌王麴文泰阻绝西域朝贡，帝命侯君集伐之。文泰忧死，子智盛降。置西州。",["命侯君集灭高昌，置西州","遣使责让，缓图高昌","联西突厥制高昌","受高昌降，存其国","罢兵，专固河西"],0,"灭高昌，置西州、庭州，西域通","高昌"),
+    E(641,null,"文成公主和亲","吐蕃赞普松赞干布请婚，帝以文成公主妻之，结唐蕃和亲。",["以文成公主和亲吐蕃","厚赐金帛，不妻以女","遣高僧入蕃，文化交融","联吐蕃制吐谷浑","拒婚，专力备蕃"],0,"文成公主入蕃，唐蕃通好数十年","文成"),
+    E(643,null,"废太子承乾","太子承乾谋反，废为庶人。魏王泰亦觊觎东宫。帝立晋王治为太子。",["废承乾，立晋王治","立魏王泰，依长幼之序","立吴王恪，择贤而立","召诸王共议，集议定储","禅位于太子，自居太上"],0,"废承乾立晋王治，储位稍安","废太子"),
+    E(645,null,"亲征高句丽","帝亲征高句丽，围安市城。久攻不下，辽东早寒，被迫退兵。",["亲征高句丽，围安市","水陆并进，速取平壤","遣将征辽，不亲往","联新罗共讨高句丽","罢兵息民，徐图后举"],0,"亲征高句丽未克，辽东早寒退兵","征辽"),
+    E(648,null,"置安西四镇","帝灭龟兹，置龟兹、于阗、疏勒、碎叶（后焉耆）四镇，安西都护府移治龟兹。",["置安西四镇，都护府治龟兹","宽其羁縻，存其国号","徙四镇之民于内地","联西突厥共治西域","罢四镇，专固河西"],0,"置安西四镇，唐控西域","四镇"),
+    E(649,null,"托孤长孙无忌","帝病笃，托孤于长孙无忌、褚遂良。谓太子治曰：「无忌、遂良在，汝无忧天下。」",["托孤长孙无忌、褚遂良","以李绩为顾命，托以兵权","召诸王共议，分权制衡","禅位于太子，自居太上","托武才人侍太子，恐乱后宫"],0,"托孤长孙无忌褚遂良，帝崩","托孤")
+  ]
+};
+
+// 唐玄宗
+const E_TANG_XUANZONG = {
+  id:"tang_xuanzong",dynasty:"唐",name:"李隆基",templeName:"唐玄宗",
+  reignStart:712,reignEnd:756,era:"开元",
+  evaluation:"开元全盛，天宝致乱",
+  background:"睿宗李旦第三子。与太平公主合谋诛韦后，复唐室。后又诛太平公主，独揽大权。即位初用姚崇、宋璟，开创开元盛世。晚年宠杨贵妃，任李林甫、杨国忠，朝政日坏。安史之乱起，逃蜀，禅位太子亨，为太上皇。",
+  eraContext:"武周革命之后，韦后、太平公主之乱方平，朝局待稳。开元初政治清明，户口滋盛，米斗四五钱。然边镇势力渐大，府兵制崩坏，募兵制成。吐蕃、突厥、契丹环伺。胡将掌兵渐成隐患。",
+  initStats:{treasury:70,people:70,military:65,court:65,health:78,tech:42},
+  tier:"A",
+  events:[
+    E(713,null,"诛太平公主","太平公主权倾朝野，七位宰相五出其门，密谋废帝。帝先发制人，诛公主党羽，赐死公主。",["先发制人，诛太平公主","禅位于父，自避其锋","召公主对质，明正其罪","外放公主，远置藩郡","联合宗室共制公主"],0,"诛太平公主，独揽大权","诛太平"),
+    E(713,null,"用姚崇","帝欲相姚崇，崇以「十事要说」为条件，帝皆许之。",["从姚崇十事，相之","用姚崇而不受其约","用宋璟，不用姚崇","自揽权纲，不任宰相","广置宰相，分权制衡"],0,"用姚崇，开元之治始","姚崇"),
+    E(716,null,"灭蝗","山东大蝗，姚崇力主焚瘗。汴州刺史倪若水拒捕蝗，崇责之。",["从姚崇力主捕蝗","下诏罪己，禳灾弭蝗","免税赈济，宽恤灾民","罢姚崇，黜捕蝗之议","遣使循行，督责捕蝗"],0,"姚崇力主捕蝗，蝗灾稍息","灭蝗"),
+    E(723,null,"募兵制","府兵制崩坏，帝用张说议，行募兵制，置长从宿卫十二万。",["用张说议，行募兵制","复府兵，整顿军府","行府募并行之制","罢边镇，专宿卫","分封藩镇，世袭其地"],0,"行募兵制，府兵之制遂废","募兵"),
+    E(736,null,"相李林甫","帝欲相李林甫。林甫迎合帝意，杜绝言路，构陷张九龄等。",["相李林甫，逐张九龄","相张九龄，斥李林甫","兼相二人，分权制衡","自揽权纲，不专任相","广择贤相，不任一人"],0,"相李林甫，开元治平渐衰","李林甫"),
+    E(740,null,"纳杨玉环","帝纳寿王妃杨玉环入宫，度为女道士，后纳入宫，册贵妃。",["纳杨玉环，册为贵妃","纳之而不专宠","拒纳，保全寿王","纳为女道士，不入后宫","赐死玉环，绝其念"],0,"纳杨贵妃，专宠益甚","杨妃"),
+    E(742,null,"改元天宝","帝改元天宝，天下承平日久，户口滋盛。然边将拥兵自重，朝政渐怠。",["改元天宝，承平怠政","改元而勤政如初","不改元，守开元之政","改元并改革吏治","禅位于太子，自居太上"],0,"改元天宝，承平渐怠","天宝"),
+    E(747,null,"李林甫杜言路","李林甫谏立仗马，以喻谏官噤声。言路大塞。",["任林甫杜言路","诛李林甫，复言路","外迁林甫，远置之","广开言路，纳谏如流","置谏官，纠林甫之失"],0,"李林甫杜言路，朝政益坏","杜言路"),
+    E(752,null,"相杨国忠","李林甫死，杨国忠为相。国忠与安禄山交恶，屡言禄山必反。",["相杨国忠，疏安禄山","相安禄山，疏杨国忠","兼相二人，调和其间","召安禄山入朝，明其心迹","罢杨国忠，自掌权纲"],0,"相杨国忠，与安禄山交恶","杨国忠"),
+    E(755,null,"安史之乱","安禄山以讨杨国忠为名，起兵范阳，南下陷洛阳。",["遣将讨禄山，固守洛阳","亲征禄山，速战速决","召禄山入朝，明其曲直","禅位太子，自避其锋","联回纥共讨禄山"],0,"安禄山反，陷洛阳，唐室大乱","安史"),
+    E(756,null,"马嵬之变","帝西奔蜀，至马嵬驿，六军不发，缢杀杨贵妃，逼杀杨国忠。",["赐死杨妃，以安六军","护杨妃突围，南奔蜀中","禅位于太子，自居太上","遣杨妃入道，保全其命","固守马嵬，待援平叛"],0,"马嵬之变，杨妃缢死，杨国忠见杀","马嵬"),
+    E(756,null,"灵武即位","太子亨北上灵武即位，是为肃宗，尊帝为太上皇。帝闻之，遣使奉册。",["认可太子即位，尊己为太上","拒奉册，自立如故","召太子还，共理国政","禅位于诸王，分封天下","西奔蜀中，任太子自为"],0,"太子灵武即位，帝为太上皇","灵武")
+  ]
+};
+
+// 宋太祖
+const E_SONG_TAIZU = {
+  id:"song_taizu",dynasty:"宋",name:"赵匡胤",templeName:"宋太祖",
+  reignStart:960,reignEnd:976,era:"建隆",
+  evaluation:"陈桥兵变，杯酒释兵权",
+  background:"后周殿前都点检。恭帝显德七年，契丹联合北汉入寇，奉命御之。至陈桥驿，部下黄袍加身，回师汴梁，代周建宋。在位陆续平定荆南、湖南、后蜀、南汉、南唐，未竟而崩（烛影斧声）。鉴于唐末五代藩镇之祸，杯酒释兵权，崇文抑武，加强中央集权。",
+  eraContext:"五代十国数十年军阀混战，天子兵强马壮者当之。中央权威扫地，藩镇拥兵自重。南方诸国割据，北有契丹（辽）强势，北汉依辽为援。社会渴望统一安定。然崇文抑武之策亦埋下宋代积弱之根。",
+  initStats:{treasury:55,people:55,military:70,court:65,health:75,tech:42},
+  tier:"A",
+  events:[
+    E(960,null,"陈桥兵变","契丹入寇，匡胤率军北上，至陈桥驿，诸将以黄袍加身，拥立为帝。回师汴梁，恭帝禅位。",["受黄袍之拥，建宋代周","辞黄袍，还军御契丹","尊恭帝为太上，自居摄政","与众将共议，行合议制","禅位于宗室，自避嫌隙"],0,"陈桥兵变，建宋代周","陈桥"),
+    E(961,null,"杯酒释兵权","帝宴石守信、王审琦等宿将，言天子之难，劝其释兵就藩，厚禄享乐。",["杯酒释兵权，以禄代兵","诛石守信等，以绝后患","任宿将如故，结以姻亲","分宿将于诸道，分散其势","设枢密院，分掌兵权"],0,"杯酒释兵权，藩镇之祸遂息","杯酒"),
+    E(963,null,"平荆湖","慕容延钊、李处耘将兵平荆南、湖南，宋疆南扩。",["遣将平荆湖，一统南方","遣使招降荆南湖南","缓图南方，先固北方","联南唐共平荆湖","罢兵，与诸国通好"],0,"平荆湖，南方诸国次第削平","平荆湖"),
+    E(965,null,"灭后蜀","王全斌、刘光义将兵伐后蜀，六十六日克之，后蜀主孟昶降。",["大举伐蜀，速取成都","遣使招降孟昶","联后蜀共讨北汉","缓图后蜀，先固东南","水陆并进，灭蜀"],0,"灭后蜀，孟昶降","灭后蜀"),
+    E(971,null,"灭南汉","潘美将兵伐南汉，克广州，南汉主刘鋹降。",["遣潘美灭南汉","遣使招降刘鋹","联南唐共讨南汉","缓图南汉，先固荆湖","水陆并进，速取广州"],0,"灭南汉，刘鋹降","灭南汉"),
+    E(974,null,"灭南唐","帝召南唐主李煜入朝，不至。遣曹彬、潘美伐之。彬克金陵，煜降。",["遣曹彬灭南唐，克金陵","遣使招降李煜","联吴越共讨南唐","缓图南唐，先固江淮","围金陵而不攻，待其自降"],0,"灭南唐，李煜降，南方粗定","灭南唐"),
+    E(968,null,"三征北汉","帝三征北汉，围太原。契丹援至，皆未克。",["三征北汉，围太原","联契丹共讨北汉","缓图北汉，先固南方","遣使招降北汉","绝北汉外援，孤立太原"],0,"三征北汉未克，辽援之故","征北汉"),
+    E(973,null,"开科取士","帝广开科举，一榜取士数十人，崇文抑武之制渐成。",["广开科举，崇文抑武","复九品中正，重门第","行察举，举孝廉","设武举，文武并重","罢科举，专任吏员"],0,"广开科举，宋制崇文之基","科举"),
+    E(976,null,"烛影斧声","帝夜召弟晋王光义，烛影下见帝避席，斧声然。旋崩。光义即位。",["召弟光义，托以大位","立子德昭为太子","召诸子共议，集议定储","禅位于弟，自避纷争","召大臣托孤，明正大位"],0,"帝崩，弟光义即位，烛影斧声成谜","烛影")
+  ]
+};
+
+// 宋徽宗
+const E_SONG_HUIZONG = {
+  id:"song_huizong",dynasty:"宋",name:"赵佶",templeName:"宋徽宗",
+  reignStart:1100,reignEnd:1126,era:"建中靖国",
+  evaluation:"艺事绝伦，政事昏聩",
+  background:"神宗第十一子，哲宗之弟。哲宗无子，佶以弟入继。在位初欲调和新旧党争，后任蔡京，复新法，立元祐党籍碑。崇道抑佛，自号「教主道君皇帝」。大兴花石纲，修艮岳。联金灭辽，金反南侵。靖康之变，与子钦宗同被掳北去，死于五国城。",
+  eraContext:"神宗熙宁变法、哲宗元祐党争之后，新旧两党水火。北方辽国势衰，女真金国崛起。西夏扰边。朝中蔡京擅权，民间花石纲扰民。宋代文化经济鼎盛，但武备积弱。",
+  initStats:{treasury:65,people:60,military:35,court:50,health:75,tech:50},
+  tier:"A",
+  events:[
+    E(1100,null,"即位调党","哲宗崩无嗣，佶即位，欲调和新旧党争，改元建中靖国。",["调和两党，建中靖国","尽黜旧党，复行新法","尽黜新党，复元祐之政","自揽权纲，不偏一党","广开言路，集议国是"],0,"改元建中靖国，欲调两党","调党"),
+    E(1102,null,"立党籍碑","蔡京为相，立元祐党籍碑，籍司马光、苏轼等三百余人为奸党，禁其子弟仕宦。",["从蔡京，立党籍碑","罢蔡京，宽宥旧党","宽党禁，唯禁首恶","籍没旧党，罪其族","广求贤才，不问党派"],0,"立元祐党籍碑，党祸益烈","党籍"),
+    E(1105,null,"花石纲","蔡京倡花石纲，朱勔主其事，搜奇花异石运京修艮岳，东南骚然。",["从蔡京，兴花石纲","减花石，宽恤东南","罢花石，专修宫殿","募民办花石，给以值","籍没富民，充花石之费"],0,"花石纲兴，东南骚然","花石"),
+    E(1119,null,"宋江起义","宋江等三十六人起于梁山泊，转战山东、河北、淮南。",["遣将讨宋江，剿抚并用","招降宋江，令讨方腊","缓图宋江，先平方腊","遣使招降，赦其罪","联合方腊，共讨朝廷"],0,"宋江降，旋被遣平方腊","宋江"),
+    E(1120,null,"方腊起义","方腊以摩尼教聚众，起于睦州青溪，东南大震。",["遣童贯讨方腊，大举镇压","招降方腊，宽其罪","缓图方腊，先固江淮","联合宋江讨方腊","迁都以避方腊"],0,"童贯平方腊，杀降无数","方腊"),
+    E(1120,null,"联金灭辽","金国崛起，遣使约宋共灭辽，许以燕云十六州。海上之盟成。",["联金灭辽，订海上之盟","拒金，与辽修好","联辽制金，保辽为藩","两不相助，坐观成败","联西夏共制金辽"],0,"订海上之盟，联金灭辽","海上之盟"),
+    E(1125,null,"金军南侵","辽灭，金转而攻宋，分两路南下。帝下诏罪己，禅位于太子桓，是为钦宗。",["禅位于太子桓，自号教主道君","亲征金军，固守汴京","遣使求和，许以岁币","迁都南奔，避其锋芒","联合诸路勤王共讨金"],0,"禅位钦宗，金围汴京","禅位"),
+    E(1126,null,"靖康之变","金军破汴京，掳徽宗、钦宗及宗室后妃北去。北宋亡。",["坚守汴京，待勤王之师","遣使求和，许以金帛土地","突围南奔，重建于江南","禅位于太子，自请北行","联合勤王，决战汴京"],0,"汴京破，徽钦北狩，北宋亡","靖康")
+  ]
+};
+
+// 宋高宗
+const E_SONG_GAOZONG = {
+  id:"song_gaozong",dynasty:"宋",name:"赵构",templeName:"宋高宗",
+  reignStart:1127,reignEnd:1162,era:"建炎",
+  evaluation:"偏安江南，冤杀岳飞",
+  background:"徽宗第九子，初封康王。靖康之变时，金营为质后逃脱。徽钦被掳，构在南京应天府（商丘）即位，重建宋室，是为南宋。金军追击，构南奔扬州、杭州、明州，甚至入海避之。后定都临安。用秦桧为相，与金议和，杀岳飞。晚年禅位于孝宗。",
+  eraContext:"靖康之变后，宋室南渡，北方沦陷。金军屡次南侵，追击高宗入海。朝中主战主和两派对立。武将势力坐大：岳飞、韩世忠、张俊、刘光世。北方义军蜂起。民间渴望北伐中原。金国势盛，西夏附金。",
+  initStats:{treasury:40,people:45,military:50,court:55,health:72,tech:48},
+  tier:"A",
+  events:[
+    E(1127,null,"建炎南渡","构在应天府即位，改元建炎。金军追击，构南奔扬州、杭州，入海避之。",["南渡避金，重建宋室","还都汴京，固守中原","联合义军，共抗金军","西奔关中，依险而守","禅位于宗室，自避其难"],0,"建炎南渡，宋室偏安江南","南渡"),
+    E(1129,null,"苗刘之变","苗傅、刘正彦兵变，逼帝禅位于太子，请隆祐太后垂帘。",["复辟平叛，诛苗刘","禅位太子，自避其难","召勤王之师，共讨苗刘","许苗刘以高位，息其乱","联合武将，分化苗刘"],0,"平苗刘之变，帝复辟","苗刘"),
+    E(1130,null,"黄天荡之战","韩世忠以八千兵阻金兀术十万于黄天荡四十八日，金军北退。",["用韩世忠阻金于黄天荡","遣岳飞截金军后路","遣使求和，缓金攻势","联合张俊共击金军","固守临安，待金自退"],0,"黄天荡之战，金军北退","黄天荡"),
+    E(1134,null,"岳飞北伐","岳飞收复襄阳六郡，北伐中原，连战皆捷。",["用岳飞北伐，恢复中原","令岳飞固守江淮，不再北进","遣使求和，缓岳飞攻势","联合韩世忠共进北伐","召岳飞还朝，防其坐大"],0,"岳飞北伐有功，旋被召回","岳北伐"),
+    E(1138,null,"相秦桧","秦桧自金归，主张和议。帝相桧，专主和议，贬逐主战派。",["相秦桧，专主和议","罢秦桧，专任主战派","兼用和战两派","自揽权纲，不任宰相","遣使赴金，明其和意"],0,"相秦桧，主和议成","相秦桧"),
+    E(1141,null,"绍兴和议","宋金议和，宋称臣，岁贡银二十五万两、绢二十五万匹，划定淮水为界。",["订绍兴和议，宋称臣","拒和议，专力北伐","厚增岁币，不失臣礼","划江而治，不称臣","联西夏共制金"],0,"绍兴和议，宋称臣于金","绍兴和议"),
+    E(1142,null,"杀岳飞","岳飞下大理寺，以「莫须有」之罪赐死风波亭。子岳云、部将张宪同被害。",["赐死岳飞，以成和议","赦岳飞，复其爵","贬岳飞于岭南，存其命","召岳飞对质，明其罪","释岳飞，令其北伐"],0,"杀岳飞，和议成，主战派尽黜","杀岳飞"),
+    E(1161,null,"采石之战","金主完颜亮南侵，虞允文于采石矶督师，大破金军。亮为部下所杀。",["用虞允文破金于采石","遣将固守长江，不轻进","遣使求和，缓金攻势","联合北方义军共击金","迁都以避金军"],0,"采石之战大捷，金主亮被杀","采石"),
+    E(1162,null,"禅位孝宗","帝禅位于太子昚，是为孝宗。高宗为太上皇，居德寿宫。",["禅位于孝宗，自居太上","亲政如故，不禅位","禅位而仍预大政","禅位于宗室贤者","召群臣共议，定嗣位"],0,"禅位孝宗，南宋治平之始","禅位")
+  ]
+};
+
+// 元世祖
+const E_YUAN_SHIZU = {
+  id:"yuan_shizu",dynasty:"元",name:"忽必烈",templeName:"元世祖",
+  reignStart:1260,reignEnd:1294,era:"中统",
+  evaluation:"混一海内，创行省制",
+  background:"成吉思汗之孙，拖雷之子，蒙哥汗之弟。受命总领漠南汉地，任用汉儒，行汉法。蒙哥死，与弟阿里不哥争位，胜之。1271年改国号为大元，取《易经》「大哉乾元」之意。1279年灭南宋，统一天下。创行省制，开通运河，护驿站，然四征失败，民族政策偏激。",
+  eraContext:"蒙古帝国分裂，四大汗国各自为政。南宋偏安江南，但经济文化发达。北方汉地历经金朝统治，胡汉杂处。西藏、大理已附蒙古。日本、安南、占城、爪哇环伺。汉法与蒙古旧俗之争激烈。",
+  initStats:{treasury:60,people:50,military:80,court:65,health:75,tech:50},
+  tier:"A",
+  events:[
+    E(1260,null,"开平即位","蒙哥死，忽必烈在开平即大汗位，建元中统。弟阿里不哥在和林亦称汗，兄弟争位。",["即位开平，建元中统","与阿里不哥议和，分治东西","召开忽里勒台，公推大汗","让位于阿里不哥，自居藩王","联合诸王共讨阿里不哥"],0,"即位开平，败阿里不哥，统一漠北","即位"),
+    E(1260,null,"用汉法","帝用刘秉忠、姚枢等汉儒，行汉法，立中书省，建都城。",["用汉儒，行汉法，立中书省","守蒙古旧俗，不行汉法","兼行汉蒙之制","分汉地蒙古为二治","行封建，分封宗室"],0,"用汉法，立中书省，建大都","用汉法"),
+    E(1271,null,"改国号大元","帝改蒙古国号为大元，取《易经》「大哉乾元」之意。",["改国号大元，取乾元之意","仍称蒙古，不改国号","称大元并保留蒙古旧号","禅位于太子，自居太上","改国号并迁都"],0,"改国号大元，建大都","改国号"),
+    E(1274,null,"征日本","帝命忻都、范文虎将兵征日本，遇台风，全军覆没，是为「文永之役」。",["大举征日本，遇台风覆没","缓图日本，先固高丽","遣使招降日本","联高丽共征日本","罢征日本，专力伐宋"],0,"征日本遇神风覆没，是为文永之役","征日本"),
+    E(1276,null,"灭南宋","伯颜将大军伐宋，下临安，俘宋帝㬎。1279年崖山之战，宋亡。",["大举伐宋，下临安俘帝","遣使招降宋室","联高丽共伐南宋","缓图南宋，先固北方","水陆并进，速取临安"],0,"灭南宋，崖山之战，宋亡","灭宋"),
+    E(1279,null,"行省制","帝创行省制，置十大行省，加强中央对地方控制。",["创行省制，置十大行省","复封建，分封宗室诸王","行郡县，废行省","设刺史，按察地方","行封建与行省并行"],0,"创行省制，为后世地方制度之基","行省"),
+    E(1281,null,"再征日本","帝再征日本，范文虎率十万大军，又遇台风，全军覆没，是为「弘安之役」。",["再征日本，又遇神风覆没","罢征日本，专力内政","遣使招降日本","联高丽共征日本","缓图日本，先固安南"],0,"再征日本覆没，元气大伤","再征日本"),
+    E(1284,null,"征安南","帝命脱欢征安南，安南王陈日烜遁入海，元军不利退兵。",["大举征安南，深入其地","遣使招降安南王","缓图安南，先固南方","联占城共讨安南","罢征安南，专务内政"],0,"征安南不利，安南仍附元","征安南"),
+    E(1287,null,"征缅甸","元军征缅甸蒲甘王朝，置缅中行省。",["征缅甸，置缅中行省","遣使招降缅甸王","缓图缅甸，先固云南","联暹罗共讨缅甸","罢征缅甸，专务内政"],0,"征缅甸，置缅中行省","征缅甸"),
+    E(1287,null,"征爪哇","史弼、高兴将兵征爪哇，不利退兵。",["大举征爪哇，远渡重洋","遣使招降爪哇王","缓图爪哇，先固南海","联占城共讨爪哇","罢征爪哇，专务内政"],0,"征爪哇不利，远征失利","征爪哇"),
+    E(1291,null,"马可波罗","威尼斯人马可波罗在大都任职十七年，后西归，著《马可波罗游记》。",["厚遇马可波罗，护送西归","留马可波罗，授以官职","遣马可波罗通使教皇","逐马可波罗，禁西人","遣使随马可波罗西行"],0,"马可波罗西归，东方传于欧洲","马可波罗"),
+    E(1294,null,"托孤伯颜","帝病笃，托孤于伯颜、不忽木。伯颜，开国第一功臣。",["托孤伯颜、不忽木","以真金太子为嗣，早定大位","召诸王共议，定嗣位","禅位于皇孙，自居太上","分封诸王，以分其势"],0,"帝崩，皇孙铁穆耳即位","托孤")
+  ]
+};
+
+// 明太祖
+const E_MING_TAIZU = {
+  id:"ming_taizu",dynasty:"明",name:"朱元璋",templeName:"明太祖",
+  reignStart:1368,reignEnd:1398,era:"洪武",
+  evaluation:"驱逐胡虏，恢复中华",
+  background:"濠州钟离人，出身赤贫。早年为僧乞食，后投郭子兴红巾军。娶马氏。徐达、常遇春、李善长、刘基辅之。先后灭陈友谅、张士诚、方国珍，北伐推翻元朝，建明定都南京。废丞相，集权于上；兴大狱，诛功臣；分封诸子为王，镇守边塞。",
+  eraContext:"元末大乱，红巾军起义遍及全国。陈友谅据荆楚，张士诚据江东，方国珍据浙东，明玉珍据蜀。北方元朝内乱。百姓渴望安定。北方蒙古残元势力犹存，北元伺机南侵。日本南北朝战乱，倭寇渐起。",
+  initStats:{treasury:45,people:50,military:75,court:65,health:75,tech:42},
+  tier:"A",
+  events:[
+    E(1368,null,"应天称帝","徐达北伐克大都，元顺帝北遁。元璋在应天即皇帝位，国号大明，建元洪武。",["即帝位，建明改元洪武","北追元帝，速取大都","禅位于太子，自居太上","还都汴梁，复古都","与众将共治，行合议制"],0,"建明代元，定都应天","称帝"),
+    E(1368,null,"平定群雄","先后灭陈友谅、张士诚、方国珍，统一江南，再北伐中原。",["先灭陈友谅，后取张士诚","先取张士诚，后灭陈友谅","联张士诚共灭陈友谅","遣使招降群雄","缓图南方，先北伐中原"],0,"平定群雄，统一江南","平群雄"),
+    E(1380,null,"胡惟庸案","丞相胡惟庸以谋反诛，废丞相，集权于六部，直接对皇帝负责。",["诛胡惟庸，废丞相","诛胡惟庸，存丞相之职","宽其狱，唯诛首恶","复丞相，重用功臣","分相权于数人，互相制衡"],0,"胡惟庸案，废丞相，集权于上","胡案"),
+    E(1382,null,"设锦衣卫","帝设锦衣卫，掌侍卫、缉捕、刑狱，直接听命于皇帝。",["设锦衣卫，掌缉捕刑狱","罢锦衣卫，专任三法司","设锦衣卫而严其法","分锦衣卫之权于数司","以宦官掌缉捕"],0,"设锦衣卫，特务政治始","锦衣卫"),
+    E(1382,null,"南北榜案","会试取士皆南人，北人不服。帝重审，杀考官，南北分榜取士。",["南北分榜取士，安北方士子","重审公正取士，不偏南北","宽北士，许其再试","诛考官，独尊南士","罢科举，专任吏员"],0,"南北榜案，南北分榜取士","南北榜"),
+    E(1385,null,"空印案","帝察地方官以空印文书赴部核算，大怒，株连数百官，多死。",["严治空印，株连数百官","宽其狱，唯诛首恶","明其制度，不禁空印","遣使循行，明赏罚","罢空印，改用实物"],0,"空印案，株连数百官","空印"),
+    E(1393,null,"蓝玉案","凉国公蓝玉以谋反诛，株连一万五千余人，开国功臣几尽。",["诛蓝玉，株连功臣","诛蓝玉，宽其党羽","贬蓝玉于边，存其命","召蓝玉对质，明其罪","释蓝玉，复其爵"],0,"蓝玉案，功臣几尽","蓝玉案"),
+    E(1392,null,"立建文帝","太子标薨，帝立标子允炆为皇太孙。诸王不服。",["立皇太孙允炆，定嗣位","立晋王㭎，依长幼之序","立燕王棣，择贤而立","召诸王共议，集议定储","分封诸王，以分其势"],0,"立允炆为皇太孙，埋靖难之根","立太孙"),
+    E(1395,null,"皇明祖训","帝颁《皇明祖训》，定诸王分封之制，禁后世改易。",["颁《皇明祖训》，定分封之制","废分封，行郡县","宽祖训，听后世损益","分封而削其兵权","设宗人府，管宗室"],0,"颁皇明祖训，分封之制定","祖训"),
+    E(1398,null,"大行托孤","帝病笃，遗诏皇太孙即位，诸王不得入京奔丧。",["遗诏皇太孙即位，禁诸王入京","召诸王入京，托以幼主","禅位于燕王，自避祸乱","召大臣托孤，明正大位","分封诸王，共辅幼主"],0,"帝崩，建文帝即位，靖难将起","托孤")
+  ]
+};
+
+// 明成祖
+const E_MING_CHENGZU = {
+  id:"ming_chengzu",dynasty:"明",name:"朱棣",templeName:"明成祖",
+  reignStart:1402,reignEnd:1424,era:"永乐",
+  evaluation:"靖难夺位，迁都修典",
+  background:"太祖第四子，初封燕王，镇守北平。建文帝削藩，棣起兵靖难，四年克南京，夺帝位。迁都北京，五征漠北，遣郑和下西洋，修《永乐大典》，设东厂。文治武功皆盛，然用兵过勤，民力凋敝。",
+  eraContext:"明初定鼎，建文帝削藩引靖难之役。北方蒙古残元势力分为鞑靼、瓦剌。西域未通，海外未知。南京偏南，不利控制北方。明代漕运、军屯、卫所制度初创。文化上典籍浩繁，亟待整理。",
+  initStats:{treasury:55,people:50,military:75,court:60,health:72,tech:45},
+  tier:"A",
+  events:[
+    E(1399,null,"靖难之役","建文帝削藩，棣起兵靖难，四年克南京，夺帝位。建文帝下落不明。",["起兵靖难，南下夺位","就藩削权，听任建文","联合诸王共讨建文","举兵北守，自立为王","遣使申辩，缓建文之削"],0,"靖难之役，棣夺帝位","靖难"),
+    E(1402,null,"诛方孝孺","棣命方孝孺草即位诏，孝孺不从，被诛十族。",["诛方孝孺十族，以儆效尤","赦方孝孺，优容处之","贬方孝孺于岭南，存其命","召方孝孺对质，明其罪","释方孝孺，复其爵"],0,"诛方孝孺十族，士林寒心","诛方孝孺"),
+    E(1403,null,"修永乐大典","帝命解缙、姚广孝等修《永乐大典》，凡二万二千余卷。",["修《永乐大典》，集天下之书","禁私修典籍，专属史馆","修本朝实录，不集天下书","广征天下遗书","罢修书，专务实政"],0,"修成《永乐大典》，文化巨著","永乐大典"),
+    E(1405,null,"郑和下西洋","帝遣郑和率船队下西洋，历东南亚、南亚、西亚、东非，宣示国威。",["遣郑和下西洋，宣示国威","罢下西洋，专务内政","遣使通好诸国，不率船队","联诸国共讨帖木儿","厚赐诸国，开市通商"],0,"郑和七下西洋，远播国威","郑和"),
+    E(1409,null,"设奴儿干都司","帝设奴儿干都司，辖黑龙江流域，封女真首领。",["设奴儿干都司，辖黑龙江","分封女真首领，世袭其地","联女真共讨鞑靼","缓图东北，先固北方","罢奴儿干，专务内政"],0,"设奴儿干都司，明辖东北","奴儿干"),
+    E(1410,null,"一征漠北","帝亲征鞑靼，大败本雅失里、阿鲁台。",["亲征漠北，大败鞑靼","遣将征漠北，不亲往","联瓦剌共讨鞑靼","遣使招降鞑靼","固守长城，不轻出塞"],0,"一征漠北大捷，鞑靼远遁","一征漠北"),
+    E(1414,null,"二征漠北","帝再征瓦剌，大败马哈木。",["亲征瓦剌，大败马哈木","联鞑靼共讨瓦剌","遣将征瓦剌，不亲往","遣使招降马哈木","固守长城，不轻出塞"],0,"二征漠北，瓦剌受挫","二征漠北"),
+    E(1417,null,"迁都北京","帝决定迁都北京，营建紫禁城，开通运河漕运。",["迁都北京，营建紫禁城","留都南京，不迁北京","两京并重，巡幸往来","迁都凤阳，复古都","缓迁都，先营北京"],0,"迁都北京，紫禁城成","迁都"),
+    E(1420,null,"设东厂","帝设东厂，以宦官掌之，缉访谋逆妖言。",["设东厂，以宦官掌缉访","罢东厂，专任锦衣卫","设东厂而严其法","分东厂之权于数司","以文臣掌东厂"],0,"设东厂，宦官专权之始","东厂"),
+    E(1422,null,"三征漠北","帝三征鞑靼，阿鲁台遁去。棣病笃，班师途中崩于榆木川。",["亲征漠北，疾笃班师","遣将征漠北，不亲往","联瓦剌共讨阿鲁台","遣使招降阿鲁台","固守长城，不轻出塞"],0,"三征漠北，帝崩榆木川","三征漠北")
+  ]
+};
+
+// 明思宗（崇祯）
+const E_MING_SIZONG = {
+  id:"ming_sizong",dynasty:"明",name:"朱由检",templeName:"明思宗",
+  reignStart:1627,reignEnd:1644,era:"崇祯",
+  evaluation:"勤政恤民，刚愎自用",
+  background:"光宗第五子，熹宗之弟。信王即位，诛魏忠贤，复东林党。勤政节俭，宵衣旰食。然刚愎多疑，频换首辅，诛袁崇焕。内忧李自成、张献忠起义，外患后金（清）入塞。1644年李自成破北京，帝煤山自缢，明亡。",
+  eraContext:"明末天启朝魏忠贤乱政之后，朝局待肃。辽东后金（清）势大，屡破明军。陕西连年旱蝗，民变四起，李自成、张献忠等起义军遍布中原。财政破产，加征三饷。小冰河期，灾异频仍。朝中党争未息。",
+  initStats:{treasury:30,people:35,military:40,court:45,health:70,tech:48},
+  tier:"A",
+  events:[
+    E(1627,null,"诛魏忠贤","帝即位，诛魏忠贤，罢阉党，起用东林党人。",["诛魏忠贤，肃清阉党","宽宥魏忠贤，置之不理","外迁魏忠贤，远置南京","召魏忠贤对质，明其罪","赦阉党，宽省刑罚"],0,"诛魏忠贤，起东林党","诛魏"),
+    E(1629,null,"己巳之变","后金皇太极入塞，围北京。袁崇焕入援，帝中反间，下崇焕于狱，旋磔之。",["中反间，磔袁崇焕","释袁崇焕，复其权","召袁崇焕对质，明其冤","贬袁崇焕于岭南","重用袁崇焕，专任辽事"],0,"磔袁崇焕，自毁长城","己巳"),
+    E(1630,null,"加征三饷","辽事紧急，加征辽饷、剿饷、练饷，民不堪命。",["加征三饷，以充军费","减三饷，宽恤百姓","籍没富民，充军饷","罢三饷，减军费","募民助饷，给以爵赏"],0,"加征三饷，民变益烈","三饷"),
+    E(1633,null,"起义蔓延","李自成、张献忠等起义军蔓延中原，屡剿屡起。",["遣将剿起义，剿抚并用","招降起义军，赦其罪","联起义军共讨后金","缓图起义，先固辽东","遣使招降，分而治之"],0,"起义军屡剿屡起，蔓延中原","起义"),
+    E(1638,null,"清军入塞","清军四次入塞，下济南，俘德王。明军不能御。",["遣将御清军，固守京畿","联蒙古共制后金","遣使议和，缓清攻势","迁都南迁，避其锋芒","联合勤王共击清军"],0,"清军入塞，明军不能御","清入塞"),
+    E(1641,null,"松锦之战","洪承畴率十三万大军援锦州，败于松山，承畴被俘。辽东精锐尽丧。",["遣洪承畴援锦州，败","固守宁远，不救锦州","遣使议和，缓清攻势","联朝鲜共制清","撤锦州之军，固守宁远"],0,"松锦之战，明军精锐尽丧","松锦"),
+    E(1643,null,"孙传庭战死","孙传庭出潼关讨李自成，败死。中原明军主力尽丧。",["遣孙传庭出关讨贼，败死","令孙传庭固守潼关，不轻出","遣使招降李自成","联张献忠制李自成","迁都南迁，避其锋芒"],0,"孙传庭战死，明大势已去","传庭"),
+    E(1644,null,"李自成陷京","李自成破北京，帝煤山自缢。明亡。",["煤山自缢，以身殉国","突围南奔，重建于江南","禅位于太子，自请为质","遣使求和，许李自成王","联合诸将，巷战到底"],0,"帝煤山自缢，明亡","煤山")
+  ]
+};
+
+// 清圣祖（康熙）
+const E_QING_KANGXI = {
+  id:"qing_kangxi",dynasty:"清",name:"玄烨",templeName:"清圣祖",
+  reignStart:1661,reignEnd:1722,era:"康熙",
+  evaluation:"平定三藩，亲征噶尔丹",
+  background:"顺治帝第三子，八岁即位，由索尼、苏克萨哈、遏必隆、鳌拜四辅政。十四岁亲政，十六岁擒鳌拜。平三藩之乱，收台湾，亲征噶尔丹，驱逐沙俄，订《尼布楚条约》。在位六十一年，开康乾盛世。然晚年九子夺嫡，吏治渐弛。",
+  eraContext:"清初定鼎，南明残余、三藩势大，台湾郑氏未平。西北噶尔丹崛起，沙俄侵黑龙江。朝中满汉之分犹存，鳌拜专权。清代制度初创，圈地、剃发、易服激起汉人反抗。西学东渐，传教士在朝。",
+  initStats:{treasury:55,people:55,military:65,court:60,health:80,tech:50},
+  tier:"A",
+  events:[
+    E(1669,null,"擒鳌拜","鳌拜专权跋扈，帝以少年布库戏擒之，夺其权。",["设布库戏擒鳌拜，亲政","召鳌拜对质，明其罪","外迁鳌拜，远置之","联索尼共制鳌拜","宽宥鳌拜，置之不理"],0,"擒鳌拜，始亲政","擒鳌拜"),
+    E(1673,null,"平三藩","平西王吴三桂、平南王尚可喜、靖南王耿精忠三藩势大，帝议撤藩，三桂反。",["坚决撤藩，平定三藩","缓撤藩，安抚三桂","联尚可喜制吴三桂","遣使招降三桂","分封三桂，世守云南"],0,"撤藩引发三藩之乱，八年平之","三藩"),
+    E(1683,null,"收台湾","郑氏台湾内乱，施琅率水师攻之，郑克塽降。置台湾府。",["用施琅收台湾，置府","遣使招降郑克塽","联荷兰共取台湾","缓图台湾，先固东南","留郑氏为藩，岁致贡赋"],0,"收台湾，置台湾府","收台湾"),
+    E(1689,null,"尼布楚条约","帝遣索额图与沙俄议和，订《尼布楚条约》，划定东段边界。",["订《尼布楚条约》，划界","大举征沙俄，逐之出黑龙江","联朝鲜共制沙俄","遣使招降沙俄","缓图沙俄，先固噶尔丹"],0,"订尼布楚条约，划定东界","尼布楚"),
+    E(1690,null,"亲征噶尔丹","噶尔丹南侵，帝亲征，败之于乌兰布通。1696年再征，败之于昭莫多。",["亲征噶尔丹，败之乌兰布通","遣将征噶尔丹，不亲往","联喀尔喀共讨噶尔丹","遣使招降噶尔丹","固守长城，不轻出塞"],0,"亲征噶尔丹，噶尔丹败死","噶尔丹"),
+    E(1684,null,"治河","帝六次南巡，视察黄河水利，用靳辅治河。",["用靳辅治河，六巡江南","罢靳辅，用他人治河","宽治河，听其自然","籍没富民，充治河之费","罢南巡，专务北政"],0,"用靳辅治河，河患稍息","治河"),
+    E(1705,null,"谕九子","帝立太子胤礽，两度废立。诸皇子各立党羽，九子夺嫡。",["立胤礽为太子，两度废立","立皇八子胤禩，宽群议","立皇四子胤禛，定嗣位","召诸子共议，集议定储","禅位于太子，自居太上"],0,"废太子胤礽，九子夺嫡起","九子"),
+    E(1712,null,"滋生人丁","帝颁「盛世滋生人丁，永不加赋」之诏，以丁银固定。",["永不加赋，丁银固定","宽赋役，仅征其半","籍没富民，充国用","行摊丁入亩，丁税入地","复人头税，重征丁银"],0,"永不加赋，户口滋盛","不加赋"),
+    E(1716,null,"修康熙字典","帝命张玉书、陈廷敬等修《康熙字典》，收四万七千余字。",["修《康熙字典》，集字书之大成","禁私修字书，专属史馆","修本朝实录，不集字书","广征天下遗书","罢修书，专务实政"],0,"修成《康熙字典》，文化巨著","康熙字典"),
+    E(1722,null,"大行托孤","帝病笃，传位于皇四子胤禛，是为雍正。或谓遗诏被改。",["传位皇四子胤禛","传位皇十四子胤禵","召诸子共议，集议定储","禅位于太子，自居太上","分封诸子，以分其势"],0,"帝崩，胤禛即位，是为雍正","托孤")
+  ]
+};
+
+// 清世宗（雍正）
+const E_QING_YONGZHENG = {
+  id:"qing_yongzong",dynasty:"清",name:"胤禛",templeName:"清世宗",
+  reignStart:1722,reignEnd:1735,era:"雍正",
+  evaluation:"勤政革弊，整顿吏治",
+  background:"康熙第四子，得位有争议。在位十三年，勤政如一日，朱批数万言。设军机处，集权于上；行摊丁入亩、火耗归公、改土归流；肃清朋党，诛年羹尧、隆科多。整顿吏治，国库充盈，为乾隆盛世奠基。然文字狱酷，宗室倾轧。",
+  eraContext:"康熙晚年吏治松弛，国库空虚，朋党纷争。西北准噶尔未平，青海罗卜藏丹津叛。朝中诸皇子党羽犹存。土地兼并严重，丁税不均。西方传教士活动受限制。",
+  initStats:{treasury:50,people:55,military:60,court:55,health:70,tech:52},
+  tier:"A",
+  events:[
+    E(1723,null,"立储密建","帝鉴九子夺嫡之祸，创密建储君之法，藏诏于乾清宫正大光明匾后。",["立密建储君之法","公然立太子，明示诸王","召诸王共议，集议定储","禅位于太子，自居太上","分封诸子，以分其势"],0,"创密建储法，绝夺嫡之祸","密建储"),
+    E(1723,null,"摊丁入亩","帝行摊丁入亩，将丁银摊入地亩，废除人头税。",["行摊丁入亩，丁税入地","复人头税，重征丁银","宽赋役，仅征其半","籍没富民，充国用","行一条鞭法，整理赋役"],0,"摊丁入亩，丁税入地，户口实","摊丁"),
+    E(1723,null,"青海平叛","罗卜藏丹津叛于青海，年羹尧将兵平之。",["用年羹尧平青海叛","遣将平叛，不用羹尧","遣使招降罗卜藏丹津","联西藏共讨罗卜藏丹津","缓图青海，先固西北"],0,"年羹尧平青海，旋被诛","青海"),
+    E(1724,null,"火耗归公","帝行火耗归公，将地方火耗收入归公，给官员养廉银。",["行火耗归公，给养廉银","宽火耗，听其自然","籍没贪官，充国用","复火耗，重征杂派","罢火耗归公，专务清赋"],0,"火耗归公，吏治稍清","火耗"),
+    E(1726,null,"诛年羹尧","年羹尧恃功骄横，帝列九十二大罪，令自尽。",["诛年羹尧，列九十二罪","贬年羹尧于边，存其命","召年羹尧对质，明其罪","赦年羹尧，复其爵","外迁年羹尧，远置之"],0,"诛年羹尧，震慑功臣","诛年羹尧"),
+    E(1726,null,"改土归流","帝用鄂尔泰议，在西南行改土归流，废土司，设流官。",["用鄂尔泰行改土归流","存土司，宽其羁縻","联土司共讨叛蛮","缓改土归流，先固内地","籍没土司，分其地"],0,"改土归流，西南归中央","改土归流"),
+    E(1729,null,"设军机处","帝设军机处，掌军国大政，集权于上。",["设军机处，集权于上","罢军机处，专任内阁","设军机处而严其法","分军机之权于数司","复丞相，重用大臣"],0,"设军机处，集权于上","军机处"),
+    E(1730,null,"诛隆科多","隆科多恃拥立之功，擅权跋扈，帝列四十一大罪，禁锢终身。",["禁锢隆科多，列四十一罪","贬隆科多于边，存其命","召隆科多对质，明其罪","赦隆科多，复其爵","外迁隆科多，远置之"],0,"禁锢隆科多，朋党稍息","隆科多"),
+    E(1732,null,"西北用兵","准噶尔噶尔丹策零寇边，傅尔丹、岳钟琪征之，不利。",["遣将征准噶尔，不利","遣使议和，缓准噶尔","联喀尔喀共讨准噶尔","固守西北，不轻出塞","迁都以避准噶尔"],0,"西北用兵不利，议和","西北"),
+    E(1735,null,"大行托孤","帝暴崩，传位于皇四子弘历，是为乾隆。",["传位皇四子弘历","召诸子共议，集议定储","禅位于太子，自居太上","分封诸子，以分其势","托孤于大臣，明正大位"],0,"帝崩，弘历即位，是为乾隆","托孤")
+  ]
+};
+
+// 清高宗（乾隆）
+const E_QING_QIANLONG = {
+  id:"qing_qianlong",dynasty:"清",name:"弘历",templeName:"清高宗",
+  reignStart:1735,reignEnd:1796,era:"乾隆",
+  evaluation:"十全武功，盛世承平",
+  background:"雍正第四子，密建储君即位。在位六十年，禅位后又三年太上皇。自号「十全老人」，平准噶尔、回部、大小和卓、金川、台湾林爽文、安南、缅甸、廓尔喀，号「十全武功」。修《四库全书》，六下江南。然晚年宠和珅，吏治败坏，文字狱酷，国势由盛转衰。",
+  eraContext:"雍正留下充盈国库，制度完备。西北准噶尔犹存，回部未服。西南大小金川土司桀骜。西方工业革命兴起，英国马戛尔尼来华。国内人口爆炸，土地不足，白莲教暗流。闭关锁国之策渐固。",
+  initStats:{treasury:75,people:65,military:65,court:65,health:78,tech:55},
+  tier:"A",
+  events:[
+    E(1735,null,"即位宽政","帝即位，宽省雍正严政，释雍正常所贬斥宗室，宽赦党人。",["宽省严政，宽猛相济","守雍正严政，不稍宽","尽翻雍正之政，复宽政","自揽权纲，不偏宽猛","宽政而严吏治"],0,"宽猛相济，宽省严政","宽政"),
+    E(1747,null,"一征金川","大小金川土司莎罗奔叛，帝遣张广泗、讷亲征之，不利。后用傅恒、岳钟琪平之。",["遣将征金川，旋用傅恒平之","遣使招降莎罗奔","联土司共讨莎罗奔","缓图金川，先固内地","固守要隘，不轻进"],0,"一征金川，莎罗奔降","一征金川"),
+    E(1755,null,"平准噶尔","准噶尔内乱，帝遣兆惠、班第征之，灭准噶尔，平定北疆。",["遣兆惠平准噶尔，定北疆","遣使招降准噶尔","联喀尔喀共讨准噶尔","缓图准噶尔，先固西北","固守要隘，不轻进"],0,"平准噶尔，定北疆","平准噶尔"),
+    E(1758,null,"平回部","大小和卓叛于回部，兆惠征之，平定南疆。",["遣兆惠平回部，定南疆","遣使招降大小和卓","联回部诸伯克共讨之","缓图回部，先固北疆","固守要隘，不轻进"],0,"平回部，定南疆，新疆入版图","平回部"),
+    E(1771,null,"土尔扈特归来","土尔扈特部汗渥巴锡自俄国东归，帝受之，安置于新疆。",["受土尔扈特东归，安置新疆","拒纳土尔扈特，恐俄国","遣使与俄国交涉","联土尔扈特共讨准噶尔","厚赐渥巴锡，存其部"],0,"受土尔扈特东归，安置新疆","土尔扈特"),
+    E(1772,null,"二征金川","大小金川复叛，帝遣阿桂、温福征之，力战数年平之。",["遣阿桂二征金川，平之","遣使招降金川土司","联土司共讨叛蛮","缓图金川，先固内地","固守要隘，不轻进"],0,"二征金川，设镇入流","二征金川"),
+    E(1773,null,"修四库全书","帝命纪昀等修《四库全书》，集古今图书，凡三万六千余卷。",["修《四库全书》，集古今图书","禁私修典籍，专属史馆","修本朝实录，不集古今","广征天下遗书","罢修书，专务实政"],0,"修成《四库全书》，文化巨著","四库"),
+    E(1773,null,"文字狱","帝大兴文字狱，凡有反清言辞者族诛，禁毁书籍无数。",["大兴文字狱，以肃思想","宽文字狱，听其自然","宽狱而严首恶","籍没犯者，罪其族","罢文字狱，宽省刑罚"],0,"文字狱酷，士林寒心","文字狱"),
+    E(1780,null,"宠和珅","和珅以善迎帝意，权倾朝野，贪赃无数。",["宠和珅，权倾朝野","外迁和珅，远置之","召和珅对质，明其罪","诛和珅，以儆效尤","分和珅之权于数臣"],0,"宠和珅，吏治败坏","宠和珅"),
+    E(1793,null,"马戛尔尼来华","英国使节马戛尔尼来华，请通商，帝拒之，称「天朝物产丰盈，无所不有」。",["拒马戛尔尼，闭关如故","许马戛尔尼通商，开埠","遣使随马戛尔尼西行","许通商而严其法","联英国共讨廓尔喀"],0,"拒马戛尔尼，闭关锁国","马戛尔尼"),
+    E(1796,null,"禅位嘉庆","帝禅位于太子颙琰，是为嘉庆，自居太上皇，仍预大政。",["禅位嘉庆，自居太上仍预政","亲政如故，不禅位","禅位而完全归政","禅位于宗室贤者","召群臣共议，定嗣位"],0,"禅位嘉庆，太上皇仍预政","禅位"),
+    E(1796,null,"白莲教起","白莲教起义于川楚陕，蔓延数省，清军疲于奔命。",["遣将剿白莲教，剿抚并用","招降白莲教，赦其罪","联地方团练共讨之","缓图白莲教，先固京畿","迁都以避白莲教"],0,"白莲教起，清军疲于奔命","白莲教")
+  ]
+};
+
+/* ============ 乙类皇帝：精简事件库 ============
+   每位5-8个里程碑事件，覆盖登基/重大战事/改革/灾异/外交/驾崩。 */
+
+// 商纣王（乙类）
+const E_SHANG_ZHOU = {
+  id:"shang_zhou",dynasty:"商",name:"帝辛",templeName:"商纣王",
+  reignStart:-1075,reignEnd:-1046,era:"商",
+  evaluation:"才力过人，淫暴亡国",
+  background:"帝乙少子，资辨捷疾，闻见甚敏，材力过人，手格猛兽。然好酒淫乐，嬖妲己。造酒池肉林，为长夜之饮。设炮烙之刑，杀比干，囚箕子。牧野之战，为周武王所败，登鹿台自焚而死，商亡。",
+  eraContext:"商朝晚期，国势渐衰，然文化礼制发达，青铜器铸造臻于极盛。东夷屡叛，商军长期征讨，国力消耗。西方周族崛起于岐周，仁德施于诸侯。诸侯离心，殷商孤立。",
+  initStats:{treasury:55,people:45,military:65,court:40,health:70,tech:18},
+  tier:"B",
+  events:[
+    E(-1075,null,"征东夷","帝辛亲征东夷，大获全胜，俘获甚众，然国力大耗。",["亲征东夷，开疆拓土","遣将征东夷，不亲往","遣使招降东夷诸部","联东夷共讨周族","缓图东夷，先固西方"],0,"征东夷大胜，国力大耗","征东夷"),
+    E(-1065,null,"宠妲己","帝嬖妲己，惟其言是从，造酒池肉林，为长夜之饮。",["宠妲己，造酒池肉林","远妲己，专务国政","纳妲己而不专宠","赐妲己于宗室","罢酒池肉林，戒奢靡"],0,"宠妲己，朝政日荒","宠妲己"),
+    E(-1055,null,"设炮烙","帝设炮烙之刑，以惩谏者。诸侯离心。",["设炮烙之刑，以儆效尤","罢炮烙，宽省刑罚","宽其刑，唯罪首恶","设肉刑，以代炮烙","行仁政，宽恤百姓"],0,"设炮烙，诸侯离心","炮烙"),
+    E(-1050,null,"杀比干","比干强谏，帝怒曰「吾闻圣人心有七窍」，剖比干观其心。箕子佯狂为奴。",["杀比干，剖其心","赦比干，复其爵","贬比干于外，存其命","召比干对质，明其罪","罢比干，不罪其身"],0,"杀比干，箕子佯狂，微子去之","杀比干"),
+    E(-1047,null,"囚西伯","西伯昌（周文王）有盛德，帝囚之于羑里。闳夭献美女宝物，始释之。",["囚西伯于羑里，旋释之","杀西伯，以绝后患","宽宥西伯，赐之弓矢","召西伯入朝，留之京师","联西伯共讨东夷"],0,"囚西伯，旋释之，周势益盛","囚西伯"),
+    E(-1046,null,"牧野之战","周武王率诸侯伐商，战于牧野。商军倒戈，帝登鹿台自焚。商亡。",["登鹿台自焚，以身殉国","力战周军，决死牧野","遣使求和，许周为藩","禅位于武王，保全宗庙","突围东奔，依东夷"],0,"牧野之战，帝自焚，商亡","牧野")
+  ]
+};
+
+// 周武王（乙类）
+const E_ZHOU_WUWANG = {
+  id:"zhou_wuwang",dynasty:"周",name:"姬发",templeName:"周武王",
+  reignStart:-1046,reignEnd:-1043,era:"周",
+  evaluation:"吊民伐罪，开创周朝",
+  background:"周文王之子，承父业，联合诸侯伐商。牧野之战大破商军，商纣自焚，周朝建立。定都镐京。分封功臣宗室，封姜太公于齐，周公于鲁。在位三年崩，子成王幼，周公摄政。",
+  eraContext:"周族兴起于岐周，仁德施于诸侯，三分天下有其二。商朝淫暴，诸侯离心。牧野之战后，天下初定，殷商遗民犹存，东方未服。周制初创，分封以镇四方。",
+  initStats:{treasury:50,people:60,military:70,court:65,health:65,tech:20},
+  tier:"B",
+  events:[
+    E(-1046,null,"孟津之誓","武王载文王木主东伐，至孟津，诸侯不期而会者八百。",["会诸侯于孟津，誓师伐商","缓伐商，待其自乱","联诸侯共讨东夷","遣使责让商纣","还师，待时而动"],0,"孟津之誓，诸侯归心","孟津"),
+    E(-1046,null,"牧野之战","武王率戎车三百乘、虎贲三千人伐纣，战于牧野。商军倒戈，纣自焚。",["牧野决战，吊民伐罪","缓战，待纣自敝","联诸侯共讨东夷","遣使招降殷商","固守西土，徐图东进"],0,"牧野之战，商亡周立","牧野"),
+    E(-1045,null,"分封诸侯","武王封功臣宗室，封姜太公于齐，周公于鲁，以镇东方。",["分封功臣宗室，以藩屏周","废分封，行郡县","宽分封，唯封宗室","分封而削其兵权","设州牧，直接治民"],0,"分封诸侯，藩屏周室","分封"),
+    E(-1045,null,"武庚监殷","武王封纣子武庚于殷，以管叔、蔡叔、霍叔监之，是为三监。",["封武庚于殷，设三监监之","诛殷遗民，绝其后","迁殷遗民于洛邑","宽殷遗，不设监","分殷地为数国，分而治之"],0,"封武庚，设三监","三监"),
+    E(-1043,null,"武王崩","武王崩，子成王幼，周公摄政。三监畔，周公东征。",["周公摄政，辅成王","召大臣共议，辅成王","禅位于周公，自安宗庙","分封诸弟，共辅成王","立年长宗室为摄政"],0,"武王崩，周公摄政","武王崩")
+  ]
+};
+
+// 新 王莽（乙类）
+const E_XIN_WANGMANG = {
+  id:"xin_wangmang",dynasty:"新",name:"王莽",templeName:"新帝",
+  reignStart:9,reignEnd:23,era:"始建国",
+  evaluation:"托古改制，身死国灭",
+  background:"西汉外戚，王太后之侄。谦恭下士，得名士之誉。渐揽大权，毒平帝，立孺子婴，居摄。后废婴自立，改国号新。托古改制，复井田，行六筦，改币制，致天下大乱。绿林赤眉起，更始军入长安，莽被杀，新亡。",
+  eraContext:"西汉末外戚专权，土地兼并严重，奴婢问题突出。社会矛盾激化，人心思汉。王莽以儒学名世，得人心而代汉。然改制泥古不化，脱离实际，货币频繁改易，经济崩溃。黄河决口，灾异频仍。",
+  initStats:{treasury:45,people:50,military:40,court:50,health:65,tech:30},
+  tier:"B",
+  events:[
+    E(9,null,"代汉建新","王莽废孺子婴，自立为帝，改国号新，改元始建国。",["代汉建新，托古改制","辞禅让，辅政汉室","诛汉宗室，以绝后患","宽宥汉宗室，示以仁厚","禅位于宗室，自居摄政"],0,"代汉建新，新室始","代汉"),
+    E(9,null,"王田私属","莽下诏：天下田为王田，奴婢为私属，不得买卖。",["复井田，禁卖田奴","宽其法，听民自占","行限田，限占田数","籍没豪强田，分给贫民","罢王田，复私有"],0,"王田私属令，豪强不满","王田"),
+    E(10,null,"改币制","莽屡改币制，行宝货，民不从，经济大乱。",["屡改币制，行宝货","复五铢钱，不更币制","行单一新币，简而易行","宽币制，听民自铸","罢新币，复旧钱"],0,"币制屡改，经济崩溃","改币"),
+    E(17,null,"绿林赤眉","王匡、王凤起绿林，樊崇起赤眉，天下大乱。",["遣将剿绿林赤眉，剿抚并用","招降义军，赦其罪","联义军共讨匈奴","缓图义军，先固关中","迁都以避义军"],0,"绿林赤眉起，新室危","绿林赤眉"),
+    E(22,null,"昆阳之战","更始军北伐，王莽遣王邑、王寻率四十二万大军围昆阳。刘秀以三千敢死破之，莽军大败。",["遣四十二万军围昆阳，大败","固守洛阳，不轻出","遣使招降更始军","联匈奴共讨更始","迁都以避更始军"],0,"昆阳之战，莽军主力尽丧","昆阳"),
+    E(23,null,"新室覆灭","更始军入长安，商人杜吴杀莽于渐台，校尉斩其首。新亡。",["力战更始军，以身殉国","突围东奔，依赤眉","禅位于更始帝，保全宗庙","遣使求和，许更始王","联合群臣，巷战到底"],0,"莽被杀，新室亡","新亡")
+  ]
+};
+
+// 三国·蜀汉昭烈帝（乙类）
+const E_THREE_SHU = {
+  id:"three_shu",dynasty:"三国",name:"刘备",templeName:"汉昭烈帝",
+  reignStart:221,reignEnd:223,era:"章武",
+  evaluation:"仁德播于海内，托孤白帝",
+  background:"汉中山靖王之后，起于微末。桃园结义，三顾茅庐得诸葛亮。赤壁之战后据荆益，221年称帝，国号汉（蜀汉）。222年伐吴，猇亭之战大败，退守白帝。223年病危，托孤诸葛亮。",
+  eraContext:"汉末三国鼎立，曹魏据中原，孙吴据江东，蜀汉据益州。荆州已失，蜀汉偏安一隅。南中未服，孙吴为仇。蜀汉国小民少，然地势险要，丞相诸葛亮治国。",
+  initStats:{treasury:45,people:55,military:60,court:65,health:65,tech:30},
+  tier:"B",
+  events:[
+    E(221,null,"称帝续汉","曹丕篡汉，刘备遂称帝于成都，国号汉，改元章武。",["称帝成都，续汉正统","尊汉帝为太上，自居藩辅","联孙吴共讨曹魏","禅位于宗室，自避嫌隙","与众将共治，行合议制"],0,"称帝成都，蜀汉立","称帝"),
+    E(221,null,"伐吴复仇","关羽为吴所害，刘备怒伐吴，群臣谏不听。",["大举伐吴，为关羽复仇","纳谏止伐，联吴抗魏","遣使责让孙权","缓伐吴，先固南中","分兵伐吴讨魏"],0,"伐吴，败于猇亭","伐吴"),
+    E(222,null,"猇亭之败","陆逊以火攻大破蜀军于猇亭，备退守白帝。",["退守白帝，徐图后举","收残兵再战陆逊","遣使求和于吴","联魏制吴","迁都成都，专守益州"],0,"猇亭大败，蜀汉元气大伤","猇亭"),
+    E(223,null,"托孤诸葛","刘备病危，召诸葛亮白帝托孤，曰「君才十倍曹丕，必能安国，终定大事。若嗣子可辅，辅之；如其不才，君可自取。」",["托孤诸葛亮，命辅后主","召大臣共议，辅后主","禅位于诸葛亮，自安宗庙","分封诸弟，共辅后主","立年长宗室为摄政"],0,"白帝托孤，诸葛亮辅政","托孤")
+  ]
+};
+
+// 晋武帝 司马炎（乙类）
+const E_JIN_WUDI = {
+  id:"jin_wudi",dynasty:"晋",name:"司马炎",templeName:"晋武帝",
+  reignStart:265,reignEnd:290,era:"泰始",
+  evaluation:"代魏平吴，太康之治",
+  background:"司马懿之孙，司马昭之子。265年代魏建晋，280年灭吴统一天下。太康年间小康，然大封宗室，立愚鲁太子衷，埋八王之乱与五胡乱华之根。平吴后怠政荒淫，后宫万人。",
+  eraContext:"三国末期，魏蜀吴皆衰。司马氏已代魏，蜀已亡。吴主孙皓暴虐，江东离心。晋室大封宗室，拥兵自重。北方匈奴、鲜卑、羯、氐、羌内迁，胡汉杂处，隐患已伏。",
+  initStats:{treasury:55,people:55,military:65,court:60,health:65,tech:32},
+  tier:"B",
+  events:[
+    E(265,null,"代魏建晋","司马炎逼魏元帝禅让，建晋改元泰始。",["受禅建晋，代魏","辞禅让，辅政魏室","诛魏宗室，绝其后","宽宥魏宗室，示以仁厚","禅位于宗室，自居摄政"],0,"代魏建晋，西晋始","代魏"),
+    E(280,null,"灭吴一统","王濬率水师顺江而下，杜预等六路并进，灭吴，俘孙皓，天下一统。",["六路伐吴，一统天下","缓图吴，先固内政","遣使招降孙皓","联北方胡族共讨吴","水陆并进，速取建业"],0,"灭吴，天下一统","灭吴"),
+    E(280,null,"太康之治","平吴后颁户调式，行占田制，户口滋盛，太康年间小康。",["行占田户调，与民休息","宽赋役，仅征其半","籍没豪强田，分给贫民","复井田之制","听民买卖，任其兼并"],0,"太康之治，户口滋盛","太康"),
+    E(282,null,"大封宗室","帝大封宗室为王，拥兵自重，为八王之乱埋根。",["大封宗室，以藩屏晋","废分封，行郡县","分封而削其兵权","设刺史，直接治州","行封建与郡县并行"],0,"大封宗室，八王之乱之根","大封"),
+    E(282,null,"立愚太子","太子司马衷愚鲁，帝欲废之，杨后固谏，乃止。",["保愚太子衷，听杨后之言","废衷立齐王攸","召诸子共议，择贤而立","立秦王，折中而立","禅位于太子，自居太上"],0,"保愚太子衷，八王之乱起","立太子"),
+    E(290,null,"托孤外戚","帝崩，托孤于杨骏、汝南王亮。惠帝愚，杨骏专权，八王之乱起。",["托孤杨骏与汝南王亮","托孤于宗室诸王","召大臣共议，辅惠帝","禅位于太子，自居太上","分封诸王，共辅惠帝"],0,"帝崩，八王之乱起","托孤")
+  ]
+};
+
+// 北魏孝文帝（乙类）
+const E_NANBEI_XIAOWEN = {
+  id:"nanbei_xiaowen",dynasty:"南北朝",name:"拓跋宏",templeName:"魏孝文帝",
+  reignStart:471,reignEnd:499,era:"太和",
+  evaluation:"汉化改革，迁都洛阳",
+  background:"鲜卑族，北魏皇帝。在位推行汉化改革：迁都洛阳，改汉姓元，禁胡服胡语，通汉婚，行均田三长。改革促进民族融合，然触怒鲜卑旧贵族，太子恂叛。南伐齐，劳而无功。",
+  eraContext:"南北朝对峙，南齐萧氏据江左，北魏鲜卑据中原。鲜卑旧俗与汉文化冲突。北方均田制初创，三长制行。佛教大兴，石窟凿造。民族融合大势，然鲜卑贵族守旧。",
+  initStats:{treasury:50,people:55,military:65,court:55,health:65,tech:35},
+  tier:"B",
+  events:[
+    E(484,null,"班禄制","帝行班禄制，给官员俸禄，严惩贪赃。",["行班禄制，严惩贪赃","宽班禄，听其自然","籍没贪官，充国用","复俸禄，宽省刑罚","罢班禄，复旧俗"],0,"班禄制行，吏治稍清","班禄"),
+    E(485,null,"均田三长","帝行均田制、三长制，授民以田，立邻、里、党长。",["行均田三长，与民休息","宽均田，听民自占","籍没豪强田，分给贫民","复井田之制","听民买卖，任其兼并"],0,"均田三长，户口实","均田"),
+    E(493,null,"迁都洛阳","帝以南伐为名，自平城南迁都洛阳，推行汉化。",["迁都洛阳，推行汉化","留都平城，守鲜卑旧俗","两都并重，巡幸往来","迁都邺城，复古都","缓迁都，先营洛阳"],0,"迁都洛阳，汉化始","迁都"),
+    E(494,null,"汉化改革","帝禁胡服胡语，改汉姓元，通汉婚，鲜卑旧贵族不满。",["断然汉化，改姓禁胡服","宽汉化，听其自然","行汉化而存鲜卑旧俗","分汉鲜卑为两治","罢汉化，复旧俗"],0,"汉化改革，民族融合","汉化"),
+    E(496,null,"废太子恂","太子恂不乐汉化，逃归平城，帝废为庶人，旋赐死。",["废太子恂，赐死以正汉化","赦太子恂，复其位","贬太子恂于外，存其命","召太子恂对质，明其罪","立他子为太子，宽宥恂"],0,"废太子恂，汉化推进","废太子"),
+    E(499,null,"南伐崩","帝亲征南齐，病崩于谷塘原。改革未竟。",["亲征南齐，病崩","遣将南伐，不亲往","遣使议和，缓南齐","联北方胡族共讨南齐","固守淮河，不轻南进"],0,"帝崩谷塘原，改革未竟","南伐崩")
+  ]
+};
+
+// 后周世宗柴荣（乙类）
+const E_WUDAI_SHIZONG = {
+  id:"wudai_shizong",dynasty:"五代十国",name:"柴荣",templeName:"周世宗",
+  reignStart:954,reignEnd:959,era:"显德",
+  evaluation:"英主早逝，北宋之基",
+  background:"后周郭威养子。954年即位，高平之战大败北汉。改革政治，整顿军事，禁佛铸钱，均定田租。三征南唐，取江北十四州。北伐辽，收复瀛、莫、易三州，病崩于瓦桥关，年仅三十九。",
+  eraContext:"五代十国军阀混战数十年，中原王朝更迭频繁。北汉依辽为援，南唐据江淮，后蜀据蜀，吴越据两浙。辽国势盛。社会渴望统一。佛教寺院占有大量土地人口。",
+  initStats:{treasury:45,people:45,military:65,court:60,health:70,tech:35},
+  tier:"B",
+  events:[
+    E(954,null,"高平之战","北汉联辽寇边，世宗亲征，大败之高平。",["亲征北汉，大败于高平","遣将御北汉，不亲征","遣使求和于辽","联南唐共讨北汉","固守要隘，不轻出"],0,"高平之战大捷，军威振","高平"),
+    E(955,null,"灭后蜀","世宗遣王景、向训伐后蜀，取秦、凤、成、阶四州。",["遣将伐后蜀，取四州","遣使招降后蜀","联后蜀共讨北汉","缓图后蜀，先固东南","水陆并进，速取成都"],0,"取后蜀四州，西线安","灭后蜀"),
+    E(956,null,"三征南唐","世宗三征南唐，取江北十四州，南唐去帝号称臣。",["三征南唐，取江北十四州","遣使招降南唐","缓图南唐，先固北边","联吴越共讨南唐","水陆并进，速取金陵"],0,"取南唐江北，南唐称臣","征南唐"),
+    E(955,null,"限佛铸钱","世宗废天下未敕额寺院，熔铜佛铸钱，是为「显德毁佛」。",["限佛铸钱，毁未敕额寺","宽限佛，存其寺院","籍没寺院，充国用","复佛教，宽省禁令","罢毁佛，专务铸钱"],0,"限佛铸钱，寺院稍减","限佛"),
+    E(958,null,"均定田租","世宗均定田租，颁《显德刑统》，整顿吏治。",["均定田租，整顿吏治","宽田租，仅征其半","籍没豪强田，分给贫民","复井田之制","听民买卖，任其兼并"],0,"均定田租，吏治清","均田租"),
+    E(959,null,"北伐崩","世宗北伐辽，收复瀛、莫、易三州，病崩于瓦桥关。",["北伐辽，收三州，病崩","遣将北伐，不亲往","遣使议和于辽","联北汉共讨辽","固守瓦桥，不轻北进"],0,"北伐收三州，帝崩","北伐崩")
+  ]
+};
+
+// 辽圣宗（乙类）
+const E_LIAO_SHENGZONG = {
+  id:"liao_shengzong",dynasty:"辽",name:"耶律隆绪",templeName:"辽圣宗",
+  reignStart:982,reignEnd:1031,era:"统和",
+  evaluation:"澶渊之盟，契丹鼎盛",
+  background:"辽景宗之子，母萧太后。十二岁即位，萧太后摄政。任用汉人韩德让，改革政治，推行汉法。1004年南下攻宋，1005年订澶渊之盟，宋岁输银绢。在位四十九年，辽国鼎盛。",
+  eraContext:"辽国据燕云十六州，契丹汉制并行。北宋统一南方，欲复燕云。西夏李继迁扰边。辽朝萧太后摄政，韩德让用事。南北面官制初创。契汉融合进行中。",
+  initStats:{treasury:55,people:55,military:70,court:65,health:72,tech:35},
+  tier:"B",
+  events:[
+    E(982,null,"萧太后摄政","圣宗幼即位，萧太后摄政，任韩德让。",["萧太后摄政，任韩德让","亲政，不委太后","召诸王共议，辅圣宗","禅位于叔父，自避嫌隙","分权于诸王，互相制衡"],0,"萧太后摄政，辽政稳","摄政"),
+    E(986,null,"击退北伐","宋太宗三路北伐伐辽，辽军大破之，杨业被俘死。",["遣将击宋北伐，大破之","遣使求和于宋","联西夏共讨宋","固守燕云，不轻出","缓图宋，先固北边"],0,"击退宋北伐，辽势盛","击北伐"),
+    E(1004,null,"南伐宋","萧太后与圣宗亲率大军南伐，至澶州。宋真宗亲征。",["亲率大军南伐，至澶州","遣将南伐，不亲往","遣使招降宋真宗","联西夏共讨宋","固守燕云，不轻南进"],0,"南伐至澶州，订澶渊之盟","南伐"),
+    E(1005,null,"澶渊之盟","宋辽订澶渊之盟，约为兄弟之国，宋岁输银十万两、绢二十万匹。",["订澶渊之盟，宋岁输银绢","灭宋，一统天下","厚增岁币，不失兄弟","划江而治，不盟","联西夏共制宋"],0,"澶渊之盟，宋辽百年和平","澶渊"),
+    E(1010,null,"征高丽","圣宗亲征高丽，不利退兵。",["亲征高丽，不利退兵","遣将征高丽，不亲往","遣使招降高丽王","联女真共讨高丽","缓图高丽，先固东南"],0,"征高丽不利，退兵","征高丽"),
+    E(1031,null,"大行","圣宗崩，子兴宗即位。辽国由盛转衰。",["传位于兴宗","召诸子共议，定嗣位","禅位于太子，自居太上","分封诸子，以分其势","托孤于大臣，明正大位"],0,"帝崩，辽由盛转衰","大行")
+  ]
+};
+
+// 金世宗（乙类）
+const E_JIN_SHIZONG = {
+  id:"jin_shizong",dynasty:"金",name:"完颜雍",templeName:"金世宗",
+  reignStart:1161,reignEnd:1189,era:"大定",
+  evaluation:"小尧舜，大定之治",
+  background:"金太祖之孙。海陵王南伐，雍在辽阳起兵，自立为帝。在位二十九年，与宋议和（隆兴和议），整顿吏治，劝农桑，通汉婚，行汉法。被誉「小尧舜」，金国鼎盛。",
+  eraContext:"金海陵王暴虐，南伐宋国，国内大乱。北方契丹叛，南方宋孝宗图恢复。金国女真汉化进行中，猛安谋克制度崩坏。蒙古草原诸部渐起。社会渴望安定。",
+  initStats:{treasury:55,people:55,military:65,court:65,health:72,tech:38},
+  tier:"B",
+  events:[
+    E(1161,null,"辽阳即位","海陵王南伐，完颜雍在辽阳起兵自立，是为世宗。",["辽阳即位，讨海陵王","联宋共讨海陵王","禅位于宗室，自避嫌隙","与众将共治，行合议制","遣使招降海陵王"],0,"辽阳即位，海陵王被杀","即位"),
+    E(1163,null,"隆兴和议","宋孝宗北伐失败，金宋议和，宋称侄，岁减银绢。",["订隆兴和议，宋称侄","灭宋，一统天下","厚增岁币，不失叔侄","划江而治，不盟","联西夏共制宋"],0,"隆兴和议，金宋和平","隆兴"),
+    E(1164,null,"劝农桑","世宗劝农桑，通汉婚，行汉法，女真汉化。",["劝农桑，行汉法，女真汉化","守女真旧俗，不行汉法","兼行汉女真之制","分汉女真为两治","行封建，分封宗室"],0,"大定之治，女真汉化","大定之治"),
+    E(1170,null,"整顿吏治","世宗整顿吏治，宽省刑罚，被誉「小尧舜」。",["整顿吏治，宽省刑罚","严刑峻法，以肃纲纪","宽刑而重赎，富者免罪","行肉刑，以惩奸顽","省并律条，简而易行"],0,"小尧舜之治，吏治清","吏治"),
+    E(1189,null,"托孙章宗","世宗崩，孙章宗璟即位。金国由盛转衰。",["传位于孙章宗","召诸子共议，定嗣位","禅位于太子，自居太上","分封诸子，以分其势","托孤于大臣，明正大位"],0,"帝崩，金由盛转衰","托孙")
+  ]
+};
+
+// 夏桀（乙类）
+const E_XIA_JIE = {
+  id:"xia_jie",dynasty:"夏",name:"履癸",templeName:"夏桀",
+  reignStart:-1818,reignEnd:-1766,era:"夏",
+  evaluation:"淫暴亡国，夏祚终绝",
+  background:"夏朝末代君主。力大能伸铁，然淫暴不仁。宠妺喜，造倾宫瑶台，为酒池糟丘。杀直臣关龙逄。商汤伐之，战于鸣条，桀奔南巢，夏亡。",
+  eraContext:"夏朝末期，王权衰落，诸侯离心。东方商族崛起于商丘，仁德施于诸侯。夏桀淫暴，百姓怨望。夏朝禅让传统与世袭制度冲突犹存。",
+  initStats:{treasury:45,people:35,military:55,court:35,health:65,tech:10},
+  tier:"B",
+  events:[
+    E(-1818,null,"宠妺喜","桀伐有施，得妺喜，宠之。造倾宫瑶台。",["宠妺喜，造倾宫瑶台","远妺喜，专务国政","纳妺喜而不专宠","赐妺喜于宗室","罢倾宫，戒奢靡"],0,"宠妺喜，朝政日荒","宠妺喜"),
+    E(-1800,null,"酒池糟丘","桀为酒池糟丘，一鼓而牛饮者三千人。",["造酒池糟丘，长夜之饮","罢酒池，戒奢靡","宽其用，仅宴近臣","籍没富民，充宴费","罢宴，专务国政"],0,"酒池糟丘，百姓怨望","酒池"),
+    E(-1790,null,"杀关龙逄","关龙逄强谏，桀杀之。诸侯离心。",["杀关龙逄，以儆效尤","赦关龙逄，复其爵","贬关龙逄于外，存其命","召关龙逄对质，明其罪","罢关龙逄，不罪其身"],0,"杀关龙逄，诸侯离心","杀龙逄"),
+    E(-1780,null,"囚商汤","商汤有盛德，桀囚之于夏台，旋释之。",["囚商汤于夏台，旋释之","杀商汤，以绝后患","宽宥商汤，赐之弓矢","召商汤入朝，留之京师","联商汤共讨东夷"],0,"囚商汤，旋释之，商势益盛","囚商汤"),
+    E(-1766,null,"鸣条之战","商汤率诸侯伐桀，战于鸣条，桀奔南巢。夏亡。",["力战商汤，决死鸣条","奔南巢，保全性命","遣使求和，许商为藩","禅位于商汤，保全宗庙","突围东奔，依东夷"],0,"鸣条之战，桀奔南巢，夏亡","鸣条")
+  ]
+};
+
+/* ============ 皇帝登记入朝代 ============ */
+const EMPEROR_REGISTRY = [
+  E_XIA_JIE,
+  E_SHANG_ZHOU,
+  E_ZHOU_WUWANG,
+  E_QIN_SHIHUANG,
+  E_HAN_GAOZU,E_HAN_WUDI,E_HAN_GUANGWU,
+  E_XIN_WANGMANG,
+  E_THREE_SHU,
+  E_JIN_WUDI,
+  E_NANBEI_XIAOWEN,
+  E_SUI_WENDI,E_SUI_YANGDI,
+  E_TANG_TAIZONG,E_TANG_XUANZONG,
+  E_WUDAI_SHIZONG,
+  E_SONG_TAIZU,E_SONG_HUIZONG,E_SONG_GAOZONG,
+  E_LIAO_SHENGZONG,
+  E_JIN_SHIZONG,
+  E_YUAN_SHIZU,
+  E_MING_TAIZU,E_MING_CHENGZU,E_MING_SIZONG,
+  E_QING_KANGXI,E_QING_YONGZHENG,E_QING_QIANLONG
+];
+EMPEROR_REGISTRY.forEach(e=>{
+  const d = DYNASTIES.find(x=>x.id===dynIdByEmperor(e));
+  if(d) d.emperors.push(e);
+});
+function dynIdByEmperor(e){
+  const map={夏:"xia",商:"shang",周:"zhou",秦:"qin",汉:"han",新:"xin",三国:"three",晋:"jin",南北朝:"nanbei",隋:"sui",唐:"tang",五代十国:"wudai",宋:"song",辽:"liao",金:"jin2",元:"yuan",明:"ming",清:"qing"};
+  return map[e.dynasty]||e.dynasty;
+}
+
+/* ============ 后备事件池（AI失败时降级） ============ */
+const FALLBACK_EVENTS = [
+  {title:"岁入丰歉",description:"今岁郡国上计，仓廪实耗不一。或言丰收，或言歉收，户部请裁。",choices:["蠲免灾区田赋，宽恤百姓","严查郡国上计，惩治贪墨","开仓平粜，稳物价","加征丰区赋税，以充国用","募民垦荒，充仓廪"],hint:"内政"},
+  {title:"边烽急报",description:"北边烽火屡警，斥候报胡骑游弋近塞。",choices:["遣将巡边，示以军威","增戍长城，固守要隘","遣使和亲，缓边衅","联合属国共御之","纳粟拜爵，充实军资"],hint:"军事"},
+  {title:"黄河水患",description:"黄河决口，淹没州县，百姓流离。",choices:["发卒塞决，赈济灾民","徙民避水，缓图筑堤","罪己求言，禳灾弭患","籍没豪强，充修堤之费","求治水之才，专任之"],hint:"灾异"},
+  {title:"朝堂党争",description:"朝臣分立两派，互相攻讦，政事壅滞。",choices:["申明朋党之禁，严惩首恶","调和新旧，宽省其狱","外迁党首，远置郡县","广开言路，集议国是","自揽权纲，不偏一党"],hint:"朝政"},
+  {title:"蝗灾蔽天",description:"飞蝗蔽天，禾稼尽毁，民大饥。",choices:["下诏罪己，令郡国捕蝗","赦天下租赋，赈济灾民","祈禳弭灾，止捕蝗","募民捕蝗，易以粟","开仓赈济，宽恤百姓"],hint:"灾异"},
+  {title:"仓廪空虚",description:"户部奏：国库支绌，军国之费不给。",choices:["节用省费，减宫廷之支","加征商税，充国用","卖官鬻爵，纳粟补官","籍没贪豪，充国库","劝富民助饷，给以爵赏"],hint:"财政"},
+  {title:"疫疠流行",description:"数州疫疠流行，死者相望。",choices:["遣使巡疫，施药赈济","设隔离之所，禁民流徙","罪己求言，禳灾弭患","大赦天下，以消天怒","求名医，专任救治"],hint:"灾异"},
+  {title:"外使入朝",description:"远方国遣使入贡，请通商互市。",choices:["厚赐其使，许通商互市","却其贡，闭关不与通","许通商而严其法","联其国共讨敌国","遣使报聘，通好如故"],hint:"外交"},
+  {title:"盗贼蜂起",description:"数郡盗贼蜂起，劫掠乡里。",choices:["遣将剿抚并用，速平之","招降盗首，赦其罪","严保甲，互相纠察","缓图之，先固京畿","罪己求言，宽省刑罚"],hint:"治安"},
+  {title:"星变示警",description:"太史奏：星象变异，恐有天谴。",choices:["修德弭灾，下诏求言","大赦天下，以消天怒","改元以应天","罢土木，戒奢靡","遣使祭天，禳灾弭患"],hint:"灾异"}
+];
+
+/* ============ 提示词模板 ============ */
+const PROMPTS = {
+  system(emperor){
+    return `你是一位精通中国历史的史官，依据《二十四史》《资治通鉴》的体例与史观，为皇帝模拟游戏生成事件与抉择。
+
+【当前皇帝】
+姓名：${emperor.name}（${emperor.templeName}）
+朝代：${emperor.dynasty}
+在位：${fmtYear(emperor.reignStart)}至${fmtYear(emperor.reignEnd)}
+历史评价：${emperor.evaluation}
+
+【时代背景】
+${emperor.eraContext}
+
+【时代约束】
+1. 人物、事件、制度、器物不可穿越：只能使用该时代及之前已有的人事物
+2. 称谓、官职、地名须符合该朝代规制
+3. 科技水平不可自动超越时代，仅皇帝主动决策方可突破
+4. 史实人物性格与立场应尊重史载
+
+【六项数值系统】
+国库（财政）、民心（百姓）、军事（军力）、朝政（政局）、健康（皇帝身体）、科技（时代科技+穿越创新）。各项0-100。
+- 健康=0 皇帝驾崩，游戏结束
+- 任一数值≤10 触发危机
+- 科技远超时代基线时，朝臣上疏反对「奇技淫巧」
+
+【五选项差异化要求】
+1. 5个选项倾向显著不同（进取/保守/革新/怀柔/铁腕等）
+2. 不能一眼分辨好坏，每个选项有得有失
+3. 短期收益与长期风险需权衡
+4. 符合时代特点，不可穿越
+5. 相互排斥，后果非线性
+
+【输出格式】严格输出JSON，结构如下：
+{
+  "eventTitle": "事件标题（4-8字）",
+  "eventDescription": "事件描述（100-200字，文言或半文言）",
+  "choices": [
+    { "text": "选项内容（20-40字）", "hint": "选项倾向暗示（10字内，如'进取·冒险'）" }
+  ]
+}
+choices 数组必须正好5个。不要输出任何JSON以外的内容。`;
+  },
+  user(state,eventType,presetEvent){
+    const e=state.emperor;
+    let s=`【当前时位】\n${e.dynasty}·${state.era} ${fmtYear(state.year)}年 ${cnMonth(state.month)}月\n\n【当前数值】\n国库 ${state.stats.treasury} | 民心 ${state.stats.people} | 军事 ${state.stats.military} | 朝政 ${state.stats.court} | 健康 ${state.stats.health} | 科技 ${state.stats.tech}\n\n【近五月抉择摘要】\n${recentSummary(state)}\n\n【本月事件类型】\n${eventType}\n\n`;
+    if(eventType==="历史事件"&&presetEvent){
+      s+=`附预设历史事件「${presetEvent.title}」：${presetEvent.description}\n请在此基础上生成5选项（可参考历史实际走向，但须5选项差异化）。\n`;
+    }else if(eventType==="日常政务"){
+      s+=`请生成一个符合时代与当前局势的日常政务事件+5选项。\n`;
+    }else if(eventType==="数值危机"){
+      const crisis=detectCrisis(state.stats);
+      s+=`围绕「${crisis}」的崩盘危机生成事件+5选项。危机事件后果可较重（单项最多±25）。\n`;
+    }
+    s+=`\n请输出JSON。`;
+    return s;
+  },
+  outcome(state,eventTitle,choiceText,hint){
+    const e=state.emperor;
+    return `【皇帝】${e.name}（${e.templeName}） ${fmtYear(state.year)}年${cnMonth(state.month)}月\n【事件】${eventTitle}\n【玩家选择】${choiceText}（${hint||""}）\n【当前数值】国库${state.stats.treasury} 民心${state.stats.people} 军事${state.stats.military} 朝政${state.stats.court} 健康${state.stats.health} 科技${state.stats.tech}\n【近五月摘要】${recentSummary(state)}\n\n请依据史实逻辑与当前局势，生成此选择的后果：\n1. 后果叙述（史书体，80-150字）\n2. 史官评曰（仿论赞，30-60字）\n3. 六项数值变化（各-15到+15，多数应小幅变化；危机事件单项最多±25）\n\n输出JSON：\n{ "outcomeDescription":"", "historianComment":"", "statChanges":{"treasury":0,"people":0,"military":0,"court":0,"health":0,"tech":0} }\n不要输出JSON以外的内容。`;
+  }
+};
+
+/* ============ 游戏状态 ============ */
+let state=null;
+let prevScreen="menu";
+let currentEvent=null;      // 当前事件 {title,description,choices,historicalChoice,source}
+let currentChoiceIndex=-1;
+let settings=loadSettings();
+let pendingEmperor=null;
+
+function newState(emperor){
+  return {
+    emperor,
+    era:emperor.era,
+    year:emperor.reignStart,
+    month:1,
+    stats:Object.assign({},emperor.initStats),
+    history:[],
+    triggeredEvents:[],
+    lowStreak:0,
+    highStreak:0
+  };
+}
+
+/* ============ 工具函数 ============ */
+function fmtYear(y){ return y<0 ? ("前"+(-y)) : (""+y); }
+function cnMonth(m){ return ["","正月","二月","三月","四月","五月","六月","七月","八月","九月","十月","冬月","腊月"][m]||m+"月"; }
+function clamp(v,a,b){ return Math.max(a,Math.min(b,v)); }
+function recentSummary(st){
+  const h=st.history.slice(-5);
+  if(!h.length) return "（即位之初，未有大政）";
+  return h.map((x,i)=>`${i+1}. ${cnMonth(x.month)}：${x.eventTitle} → 选「${x.choiceText}」 → ${x.outcomeSummary}`).join("\n");
+}
+function detectCrisis(stats){
+  const items=[["国库",stats.treasury],["民心",stats.people],["军事",stats.military],["朝政",stats.court]];
+  const crisis=items.filter(([_,v])=>v<=10);
+  if(stats.health<=10) return "皇帝健康危急";
+  if(crisis.length) return crisis.map(x=>x[0]+"崩危").join("、");
+  return null;
+}
+function avgStat(stats){
+  return (stats.treasury+stats.people+stats.military+stats.court+stats.health+stats.tech)/6;
+}
+
+/* ============ 屏幕导航 ============ */
+const SCREENS=["menu","dynasty","emperor","intro","game","settings","about","save","ending"];
+function goto(id){
+  SCREENS.forEach(s=>document.getElementById("screen-"+s).classList.remove("active"));
+  document.getElementById("screen-"+id).classList.add("active");
+  if(id==="dynasty") renderDynasties();
+  if(id==="settings") loadSettingsToForm();
+  window.scrollTo(0,0);
+}
+
+/* ============ 朝代/皇帝列表渲染 ============ */
+function renderDynasties(){
+  const g=document.getElementById("dynasty-grid");
+  g.innerHTML=DYNASTIES.filter(d=>d.emperors.length).map(d=>
+    `<div class="card" onclick="selectDynasty('${d.id}')">
+      <div class="dyn">${d.name}</div>
+      <div class="cnt">${d.emperors.length} 位君主</div>
+    </div>`
+  ).join("");
+}
+function selectDynasty(id){
+  const d=DYNASTIES.find(x=>x.id===id);
+  document.getElementById("emperor-list-title").textContent=d.name+" · 择君主";
+  const g=document.getElementById("emperor-grid");
+  g.innerHTML=d.emperors.map(e=>
+    `<div class="card" onclick="selectEmperor('${e.id}')">
+      <div class="nm">${e.name} · ${e.templeName} <span class="badge ${e.tier==='A'?'':'badgeB'}">${e.tier}类</span></div>
+      <div class="meta">${fmtYear(e.reignStart)}—${fmtYear(e.reignEnd)} · ${e.evaluation}</div>
+      <div class="ev">事件库 ${e.events.length} 则</div>
+    </div>`
+  ).join("");
+  goto("emperor");
+}
+function selectEmperor(id){
+  const emp=EMPEROR_REGISTRY.find(e=>e.id===id);
+  pendingEmperor=emp;
+  document.getElementById("intro-name").textContent=emp.name+" · "+emp.templeName;
+  document.getElementById("intro-reign").textContent=`${emp.dynasty} · ${fmtYear(emp.reignStart)}—${fmtYear(emp.reignEnd)} · ${emp.evaluation}`;
+  document.getElementById("intro-bg").textContent=emp.background;
+  goto("intro");
+}
+function startGame(){
+  if(!pendingEmperor) return;
+  state=newState(pendingEmperor);
+  currentEvent=null; currentChoiceIndex=-1;
+  goto("game");
+  renderGame();
+  enterMonth();
+}
+
+/* ============ 游戏渲染 ============ */
+function renderGame(){
+  const e=state.emperor;
+  document.getElementById("game-seal").textContent=DYNASTIES.find(d=>d.id===dynIdByEmperor(e)).seal;
+  document.getElementById("game-era").textContent=`${state.era} · ${fmtYear(state.year)}年 ${cnMonth(state.month)}`;
+  renderStats();
+}
+function renderStats(){
+  const bar=document.getElementById("stats-bar");
+  const items=[["国库","treasury"],["民心","people"],["军事","military"],["朝政","court"],["健康","health"],["科技","tech"]];
+  bar.innerHTML=items.map(([lbl,k])=>{
+    const v=state.stats[k];
+    const cls=v<=10?"low":(v>=70?"high":"");
+    return `<div class="stat ${cls}"><span class="lbl">${lbl}</span><div class="bar"><div class="fill" style="width:${v}%"></div></div><span class="val">${v}</span></div>`;
+  }).join("");
+}
+
+/* ============ 月循环 ============ */
+function enterMonth(){
+  // 1. 判定事件来源
+  let eventType, preset=null;
+  const crisis=detectCrisis(state.stats);
+  if(crisis){
+    eventType="数值危机";
+  }else{
+    // 查找命中预设历史事件（按年份，且未触发）
+    const hit=state.emperor.events.find(ev=>ev.year===state.year && !state.triggeredEvents.includes(ev.id||ev.title));
+    if(hit){
+      eventType="历史事件";
+      preset=hit;
+      if(hit.id) state.triggeredEvents.push(hit.id);
+      else state.triggeredEvents.push(hit.title);
+    }else{
+      eventType="日常政务";
+    }
+  }
+  loadEvent(eventType,preset);
+}
+
+function loadEvent(eventType,preset){
+  showLoader("史官秉笔…","正在生成本月事件");
+  // 优先尝试AI生成
+  if(settings.api && settings.key){
+    callAI(settings, PROMPTS.system(state.emperor), PROMPTS.user(state,eventType,preset))
+      .then(json=>{
+        hideLoader();
+        if(json && json.eventTitle && Array.isArray(json.choices) && json.choices.length===5){
+          currentEvent={
+            title:json.eventTitle,
+            description:json.eventDescription,
+            choices:json.choices.map(c=>({text:c.text||"",hint:c.hint||""})),
+            historicalChoice:preset?preset.historicalChoice:-1,
+            source:eventType
+          };
+          if(preset) currentEvent.preset=preset;
+          renderEvent();
+        }else{
+          // 解析失败 → 用预设或后备
+          fallbackEvent(eventType,preset);
+        }
+      })
+      .catch(err=>{
+        hideLoader();
+        toast("AI生成失败，使用预设事件："+err.message);
+        fallbackEvent(eventType,preset);
+      });
+  }else{
+    hideLoader();
+    fallbackEvent(eventType,preset);
+  }
+}
+
+function fallbackEvent(eventType,preset){
+  if(preset){
+    // 用预设历史事件
+    currentEvent={
+      title:preset.title,
+      description:preset.description,
+      choices:preset.choices.map((c,i)=>({text:c,hint:hintFor(i,preset.historicalChoice)})),
+      historicalChoice:preset.historicalChoice,
+      source:eventType,
+      preset
+    };
+    renderEvent();
+  }else if(eventType==="数值危机"){
+    // 危机事件：基于危机数值生成
+    const crisis=detectCrisis(state.stats);
+    const fb=FALLBACK_EVENTS[Math.floor(Math.random()*FALLBACK_EVENTS.length)];
+    currentEvent={
+      title:crisis.split("、")[0]+"危局",
+      description:"近岁国政失当，"+crisis+"。朝野震动，群臣议急救之策，陛下需定夺。",
+      choices:fb.choices.map((c,i)=>({text:c,hint:["铁腕·冒险","保守·稳重","革新·远图","怀柔·安抚","进取·冒险"][i]})),
+      historicalChoice:-1,
+      source:eventType
+    };
+    renderEvent();
+  }else{
+    // 日常 → 后备事件池随机
+    const fb=FALLBACK_EVENTS[Math.floor(Math.random()*FALLBACK_EVENTS.length)];
+    currentEvent={
+      title:fb.title,
+      description:fb.description,
+      choices:fb.choices.map((c,i)=>({text:c,hint:["进取·冒险","保守·稳重","革新·远图","怀柔·安抚","铁腕·果决"][i]})),
+      historicalChoice:-1,
+      source:eventType
+    };
+    renderEvent();
+  }
+}
+
+function hintFor(i,historical){
+  const tags=["进取·冒险","保守·稳重","革新·远图","怀柔·安抚","铁腕·果决"];
+  let h=tags[i]||"";
+  if(i===historical) h="史实之择";
+  return h;
+}
+
+function renderEvent(){
+  document.getElementById("evt-title").textContent=currentEvent.title;
+  document.getElementById("evt-desc").textContent=currentEvent.description;
+  const cs=document.getElementById("choices");
+  const nos=["一","二","三","四","五"];
+  cs.innerHTML=currentEvent.choices.map((c,i)=>
+    `<button class="choice" onclick="makeChoice(${i})"><span class="no">${cnNum(i)}、</span>${escapeHtml(c.text)}<span class="hint">${escapeHtml(c.hint||"")}</span></button>`
+  ).join("");
+  document.getElementById("outcome-wrap").classList.add("hide");
+  document.getElementById("event-panel").classList.remove("hide");
+}
+function cnNum(i){ return ["一","二","三","四","五"][i]||(""+(i+1)); }
+function escapeHtml(s){ return (s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+
+function makeChoice(i){
+  if(!currentEvent) return;
+  currentChoiceIndex=i;
+  const choice=currentEvent.choices[i];
+  // 调用AI生成后果
+  showLoader("史官秉笔…","正在判择定果");
+  if(settings.api && settings.key){
+    callAI(settings, PROMPTS.system(state.emperor), PROMPTS.outcome(state,currentEvent.title,choice.text,choice.hint), true)
+      .then(json=>{
+        hideLoader();
+        if(json && json.outcomeDescription){
+          applyOutcome(json,choice);
+        }else{
+          fallbackOutcome(choice);
+        }
+      })
+      .catch(err=>{
+        hideLoader();
+        toast("AI后果生成失败，使用规则推演");
+        fallbackOutcome(choice);
+      });
+  }else{
+    hideLoader();
+    fallbackOutcome(choice);
+  }
+}
+
+function applyOutcome(json,choice){
+  // 数值校验与硬截断
+  const sc=json.statChanges||{};
+  const limit = currentEvent.source==="数值危机"?25:15;
+  ["treasury","people","military","court","health","tech"].forEach(k=>{
+    let v=Math.round(Number(sc[k])||0);
+    v=clamp(v,-limit,limit);
+    state.stats[k]=clamp(state.stats[k]+v,0,100);
+  });
+  recordHistory(choice,json.outcomeDescription,json.historianComment,sc);
+  renderOutcome(json.outcomeDescription,json.historianComment,sc);
+}
+
+function fallbackOutcome(choice){
+  // 基于选择索引与当前数值，简单规则推演
+  const idx=currentChoiceIndex;
+  const sc={treasury:0,people:0,military:0,court:0,health:0,tech:0};
+  // 不同倾向不同影响
+  const profile=[
+    {military:5,treasury:-3,people:-2,health:-1},   // 进取
+    {treasury:2,court:2,military:-2,people:1,health:1}, // 保守
+    {tech:5,treasury:-2,court:-2,people:1},          // 革新
+    {people:4,court:2,treasury:-2,health:1},         // 怀柔
+    {military:3,court:3,people:-3,health:-2,treasury:1} // 铁腕
+  ][idx]||{};
+  Object.assign(sc,profile);
+  // 危机事件额外影响
+  if(currentEvent.source==="数值危机"){
+    // 试图挽救最低项
+    const lowest=Object.entries(state.stats).filter(([k])=>k!=="health").sort((a,b)=>a[1]-b[1])[0];
+    if(lowest) sc[lowest[0]]+=6;
+  }
+  // clamp
+  const limit=currentEvent.source==="数值危机"?25:15;
+  ["treasury","people","military","court","health","tech"].forEach(k=>{
+    sc[k]=clamp(Math.round(sc[k]),-limit,limit);
+    state.stats[k]=clamp(state.stats[k]+sc[k],0,100);
+  });
+  const outcome=`帝纳「${choice.text}」之策。${outcomeFlavor(idx)} 群臣奉行，朝野翕然。`;
+  const comment=commentFlavor(idx);
+  recordHistory(choice,outcome,comment,sc);
+  renderOutcome(outcome,comment,sc);
+}
+function outcomeFlavor(i){
+  return ["军威稍振，国用略耗。","邦本稍固，然边备略弛。","新制初行，物议纷纭。","民心渐安，朝议稍平。","令行禁止，然物情侧目。"][i]||"事遂粗定。";
+}
+function commentFlavor(i){
+  return ["进取之主，得失相当。","持重老成，亦一策也。","鼎革之际，未可轻论。","怀柔远人，仁术也。","铁腕之下，怨气潜生。"][i]||"史官谨书。";
+}
+
+function recordHistory(choice,outcomeDesc,comment,sc){
+  const summary=outcomeDesc.length>40?outcomeDesc.slice(0,40)+"…":outcomeDesc;
+  state.history.push({
+    year:state.year, month:state.month,
+    eventTitle:currentEvent.title,
+    choiceIndex:currentChoiceIndex, choiceText:choice.text,
+    hint:choice.hint,
+    outcomeSummary:summary,
+    statChanges:Object.assign({},sc)
+  });
+}
+
+function renderOutcome(desc,comment,sc){
+  document.getElementById("outcome-desc").textContent=desc;
+  document.getElementById("historian-txt").textContent=comment;
+  const chg=document.getElementById("changes");
+  const labels={treasury:"国库",people:"民心",military:"军事",court:"朝政",health:"健康",tech:"科技"};
+  chg.innerHTML=Object.keys(labels).map(k=>{
+    const v=sc[k]||0;
+    if(v===0) return "";
+    const cls=v>0?"up":"down";
+    const sign=v>0?"+":"";
+    return `<span class="chg ${cls}">${labels[k]} ${sign}${v}</span>`;
+  }).filter(Boolean).join("");
+  document.getElementById("outcome-wrap").classList.remove("hide");
+  renderStats();
+  // 科技阻力
+  if(state.stats.tech > state.emperor.initStats.tech+20){
+    toast("科技远超时代，朝臣上疏反对「奇技淫巧」");
+  }
+  // 自动存档
+  autoSave();
+  // 检查驾崩
+  if(state.stats.health<=0){
+    setTimeout(()=>endGame("驾崩"),1200);
+  }
+}
+
+function nextMonth(){
+  // 寿命机制：长期高低位影响健康
+  const avg=avgStat(state.stats);
+  if(avg>60){ state.highStreak++; state.lowStreak=0; state.stats.health=clamp(state.stats.health+1,0,100); }
+  else if(avg<30){ state.lowStreak++; state.highStreak=0; state.stats.health=clamp(state.stats.health-2,0,100); }
+  else { state.highStreak=0; state.lowStreak=0; }
+  // 推进月份
+  state.month++;
+  if(state.month>12){ state.month=1; state.year++; }
+  // 超出在位结束年过多，健康自然衰退
+  if(state.year>state.emperor.reignEnd+5){ state.stats.health=clamp(state.stats.health-3,0,100); }
+  renderGame();
+  enterMonth();
+}
+
+/* ============ 弃位 ============ */
+function abandonGame(){
+  if(confirm("确定弃位？将进入结算。")){
+    endGame("弃位");
+  }
+}
+
+/* ============ 结算 ============ */
+function endGame(reason){
+  // 自动存档清理（保留历史）
+  const reignYears = state.year - state.emperor.reignStart + 1;
+  const avg=avgStat(state.stats);
+  let verdict,review;
+  if(avg>=70){ verdict="明君"; review=`帝在位${reignYears}载，六维均平，海内殷富，后世仰之。`; }
+  else if(avg>=50){ verdict="庸君"; review=`帝在位${reignYears}载，守成无功，亦无大过，史称中主。`; }
+  else if(avg>=30){ verdict="昏君"; review=`帝在位${reignYears}载，政荒民散，国势日蹙，识者忧之。`; }
+  else { verdict="亡国之主"; review=`帝在位${reignYears}载，六维俱敝，社稷倾颓，可胜叹哉。`; }
+  document.getElementById("end-title").textContent=reason==="弃位"?"逊位归藩":"龙驭宾天";
+  document.getElementById("end-meta").textContent=`${state.emperor.name}（${state.emperor.templeName}）· 在位 ${reignYears} 载`;
+  document.getElementById("end-verdict").textContent=verdict;
+  document.getElementById("end-review").textContent=review;
+  // 终局数值
+  const items=[["国库","treasury"],["民心","people"],["军事","military"],["朝政","court"],["健康","health"],["科技","tech"]];
+  document.getElementById("end-stats").innerHTML=items.map(([lbl,k])=>{
+    const v=state.stats[k];
+    const cls=v<=10?"low":(v>=70?"high":"");
+    return `<div class="stat ${cls}"><span class="lbl">${lbl}</span><div class="bar"><div class="fill" style="width:${v}%"></div></div><span class="val">${v}</span></div>`;
+  }).join("");
+  // 关键抉择回顾（最多10个）
+  const key=state.history.slice(0,10);
+  document.getElementById("end-decisions").innerHTML=key.length?key.map((h,i)=>
+    `<div style="margin:6px 0;padding:6px 10px;border-left:3px solid var(--dim);">
+      <b>${fmtYear(h.year)}年${cnMonth(h.month)}</b> · ${h.eventTitle}<br>
+      <span class="muted">选「${escapeHtml(h.choiceText)}」（${escapeHtml(h.hint||"")}）</span><br>
+      <span style="font-size:13px;">${escapeHtml(h.outcomeSummary)}</span>
+    </div>`
+  ).join("") : '<p class="muted">无重大抉择记录。</p>';
+  // 数值曲线
+  drawCurve();
+  goto("ending");
+}
+
+function drawCurve(){
+  const cv=document.getElementById("end-curve");
+  const ctx=cv.getContext("2d");
+  const W=cv.width,H=cv.height;
+  ctx.clearRect(0,0,W,H);
+  // 背景
+  ctx.fillStyle="rgba(255,250,235,0.6)"; ctx.fillRect(0,0,W,H);
+  // 数据点：每个历史记录的累计stat（近似用health+avg）
+  const hist=state.history;
+  if(hist.length<2){ ctx.fillStyle="#6b5d4f"; ctx.font="14px 'Noto Serif SC'"; ctx.fillText("抉择记录不足，无法绘制曲线。",20,80); return; }
+  const keys=["treasury","people","military","court","health","tech"];
+  const colors=["#8b3a3a","#3a6b3a","#2c2416","#9a7b3f","#5a4a3a","#3a5a8b"];
+  // 重建各时点的stat
+  const series=keys.map(()=>[]);
+  let sim=Object.assign({},state.emperor.initStats);
+  // 推演
+  const startStats=Object.assign({},state.emperor.initStats);
+  hist.forEach(h=>{
+    keys.forEach((k,ki)=>{
+      sim[k]=clamp(sim[k]+(h.statChanges[k]||0),0,100);
+      series[ki].push(sim[k]);
+    });
+  });
+  const N=hist.length;
+  const pad=30;
+  ctx.lineWidth=1.5;
+  keys.forEach((k,ki)=>{
+    ctx.strokeStyle=colors[ki];
+    ctx.beginPath();
+    series[ki].forEach((v,i)=>{
+      const x=pad + (W-2*pad)*i/(N-1);
+      const y=H-pad - (H-2*pad)*v/100;
+      if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    });
+    ctx.stroke();
+  });
+  // 图例
+  ctx.font="12px 'Noto Serif SC'";
+  keys.forEach((k,ki)=>{
+    ctx.fillStyle=colors[ki];
+    ctx.fillText(["国库","民心","军事","朝政","健康","科技"][ki], pad+ki*70, 14);
+  });
+}
+
+/* ============ AI 调用 ============ */
+function loadSettings(){
+  try{
+    const s=JSON.parse(localStorage.getItem("coh_settings")||"{}");
+    return {api:s.api||"",key:s.key||"",model:s.model||"gpt-4o-mini",temp:s.temp!=null?s.temp:0.8};
+  }catch(e){ return {api:"",key:"",model:"gpt-4o-mini",temp:0.8}; }
+}
+function loadSettingsToForm(){
+  document.getElementById("set-api").value=settings.api;
+  document.getElementById("set-key").value=settings.key;
+  document.getElementById("set-model").value=settings.model;
+  document.getElementById("set-temp").value=settings.temp;
+  document.getElementById("set-temp-v").textContent=settings.temp;
+}
+function saveSettings(){
+  settings.api=document.getElementById("set-api").value.trim().replace(/\/+$/,"");
+  settings.key=document.getElementById("set-key").value.trim();
+  settings.model=document.getElementById("set-model").value.trim()||"gpt-4o-mini";
+  settings.temp=parseFloat(document.getElementById("set-temp").value)||0.8;
+  localStorage.setItem("coh_settings",JSON.stringify(settings));
+  document.getElementById("set-msg").textContent="已保存。";
+  setTimeout(()=>{document.getElementById("set-msg").textContent="";},2000);
+}
+async function testConnection(){
+  saveSettings();
+  if(!settings.api||!settings.key){ document.getElementById("set-msg").textContent="请填写API地址与Key。"; return; }
+  document.getElementById("set-msg").textContent="测试中…";
+  try{
+    await callAI(settings,"你是一个测试助手。请回复：{\"ok\":true}","测试",false,true);
+    document.getElementById("set-msg").textContent="连接成功。";
+  }catch(e){
+    document.getElementById("set-msg").textContent="连接失败："+e.message;
+  }
+}
+async function callAI(cfg,sysMsg,userMsg,isOutcome,isTest){
+  const url=(cfg.api||"https://api.openai.com/v1").replace(/\/+$/,"")+"/chat/completions";
+  const body={
+    model:cfg.model||"gpt-4o-mini",
+    messages:[
+      {role:"system",content:sysMsg},
+      {role:"user",content:userMsg}
+    ],
+    temperature:cfg.temp!=null?cfg.temp:0.8,
+    response_format:{type:"json_object"}
+  };
+  let lastErr;
+  for(let attempt=0;attempt<2;attempt++){
+    try{
+      const ctrl=new AbortController();
+      const t=setTimeout(()=>ctrl.abort(),30000);
+      const resp=await fetch(url,{
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json",
+          "Authorization":"Bearer "+cfg.key
+        },
+        body:JSON.stringify(body),
+        signal:ctrl.signal
+      });
+      clearTimeout(t);
+      if(!resp.ok){
+        const txt=await resp.text().catch(()=>"");
+        throw new Error("HTTP "+resp.status+(txt?(" "+txt.slice(0,120)):""));
+      }
+      const data=await resp.json();
+      const content=data.choices&&data.choices[0]&&data.choices[0].message&&data.choices[0].message.content;
+      if(!content) throw new Error("空响应");
+      return JSON.parse(content);
+    }catch(e){
+      lastErr=e;
+      if(isTest) throw e;
+    }
+  }
+  throw lastErr||new Error("未知错误");
+}
+
+/* ============ 存档 ============ */
+const SAVE_SLOTS=["coh_save_1","coh_save_2","coh_save_3","coh_save_auto"];
+const SAVE_LABELS=["存档一","存档二","存档三","自动存档"];
+function saveSlotMeta(slot){
+  try{
+    const s=JSON.parse(localStorage.getItem(slot)||"null");
+    if(!s) return null;
+    return s;
+  }catch(e){ return null; }
+}
+function openSave(){
+  document.getElementById("save-title").textContent="存档";
+  renderSlots(true);
+  goto("save");
+}
+function openLoad(from){
+  document.getElementById("save-title").textContent="读档";
+  renderSlots(false);
+  goto("save");
+}
+function closeSave(){
+  goto(prevScreen==="game"?"game":"menu");
+}
+function renderSlots(isSave){
+  const wrap=document.getElementById("slots-wrap");
+  wrap.innerHTML=SAVE_SLOTS.map((slot,i)=>{
+    const meta=saveSlotMeta(slot);
+    const isAuto=(i===3);
+    let info="<span class='muted'>（空）</span>";
+    if(meta){
+      info=`<b>${meta.emperorName}</b> · ${fmtYear(meta.year)}年${cnMonth(meta.month)} · 健康${meta.stats.health} · ${new Date(meta.timestamp*1000).toLocaleString("zh-CN")}`;
+    }
+    const actions=[];
+    if(isSave){
+      if(!isAuto) actions.push(`<button class="btn" onclick="doSave('${slot}')">存入</button>`);
+      if(meta) actions.push(`<button class="btn" onclick="doLoad('${slot}')">读取</button>`);
+    }else{
+      if(meta) actions.push(`<button class="btn" onclick="doLoad('${slot}')">读取</button>`);
+    }
+    return `<div class="slot"><div><b>${SAVE_LABELS[i]}</b><div class="info">${info}</div></div><div>${actions.join("")}</div></div>`;
+  }).join("");
+}
+function doSave(slot){
+  if(!state){ toast("无游戏进行中"); return; }
+  const data={
+    emperorId:state.emperor.id,
+    emperorName:state.emperor.name+"·"+state.emperor.templeName,
+    era:state.era, year:state.year, month:state.month,
+    stats:state.stats, history:state.history,
+    triggeredEvents:state.triggeredEvents,
+    lowStreak:state.lowStreak, highStreak:state.highStreak,
+    timestamp:Math.floor(Date.now()/1000)
+  };
+  localStorage.setItem(slot,JSON.stringify(data));
+  toast("已存入"+(slot==="coh_save_auto"?"自动存档":SAVE_LABELS[SAVE_SLOTS.indexOf(slot)]));
+  renderSlots(true);
+}
+function autoSave(){
+  if(!state) return;
+  const data={
+    emperorId:state.emperor.id,
+    emperorName:state.emperor.name+"·"+state.emperor.templeName,
+    era:state.era, year:state.year, month:state.month,
+    stats:state.stats, history:state.history,
+    triggeredEvents:state.triggeredEvents,
+    lowStreak:state.lowStreak, highStreak:state.highStreak,
+    timestamp:Math.floor(Date.now()/1000)
+  };
+  localStorage.setItem("coh_save_auto",JSON.stringify(data));
+}
+function doLoad(slot){
+  const data=saveSlotMeta(slot);
+  if(!data){ toast("存档为空"); return; }
+  const emp=EMPEROR_REGISTRY.find(e=>e.id===data.emperorId);
+  if(!emp){ toast("找不到皇帝数据"); return; }
+  state={
+    emperor:emp, era:data.era, year:data.year, month:data.month,
+    stats:data.stats, history:data.history||[],
+    triggeredEvents:data.triggeredEvents||[],
+    lowStreak:data.lowStreak||0, highStreak:data.highStreak||0
+  };
+  currentEvent=null; currentChoiceIndex=-1;
+  toast("已读档");
+  goto("game");
+  renderGame();
+  enterMonth();
+}
+
+/* ============ 设置返回 ============ */
+function backFromSettings(){
+  goto(prevScreen==="game"?"game":"menu");
+}
+
+/* ============ Loader / Toast ============ */
+function showLoader(t,sub){ document.getElementById("loader-title").textContent=t||"史官秉笔…"; document.getElementById("loader-sub").textContent=sub||""; document.getElementById("loader").classList.add("show"); }
+function hideLoader(){ document.getElementById("loader").classList.remove("show"); }
+let toastTimer=null;
+function toast(msg){
+  const el=document.getElementById("toast");
+  el.textContent=msg; el.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>el.classList.remove("show"),2600);
+}
+
+/* ============ 初始化 ============ */
+loadSettingsToForm();
+</script>
+</body>
+</html>
