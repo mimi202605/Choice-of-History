@@ -447,6 +447,20 @@
           "historicalOutcome": "宋辽订澶渊之盟，约为兄弟，岁输银绢"
         },
         {
+          "year": 1005,
+          "month": null,
+          "title": "澶渊誓书",
+          "description": "景德元年十二月澶渊盟成誓书云：宋北境自静塞军西偏驴务口东至运瀛河坳悉属契丹；契丹南界自霸州东南至白沟河悉属大宋。约为兄弟之国岁输银十万两绢二十万匹。",
+          "historicalChoice": 0,
+          "choices": [
+            "签澶渊誓书约为兄弟",
+            "拒签誓书继续战争",
+            "增岁币以换燕云",
+            "联党项制辽"
+          ],
+          "historicalOutcome": "澶渊誓书签成宋辽百年和平。"
+        },
+        {
           "year": 1008,
           "month": null,
           "title": "封禅泰山",
@@ -694,6 +708,20 @@
           "historicalOutcome": "庆历新政期年而罢，仲淹出外"
         },
         {
+          "year": 1043,
+          "month": null,
+          "title": "庆历四杰",
+          "description": "庆历三年范仲淹富弼韩琦欧阳修同时入相或为谏官世称庆历四杰天下望治。",
+          "historicalChoice": 0,
+          "choices": [
+            "用庆历四杰刷新吏治",
+            "只用范仲淹罢其他三人",
+            "召回寇准共辅朝政",
+            "罢四杰用保守派"
+          ],
+          "historicalOutcome": "四杰用事庆历新政起。"
+        },
+        {
           "year": 1044,
           "month": null,
           "title": "庆历和议",
@@ -722,6 +750,20 @@
             "置谏院，广开言路"
           ],
           "historicalOutcome": "仲淹等出外，士论纷然"
+        },
+        {
+          "year": 1051,
+          "month": null,
+          "title": "沈括出生",
+          "description": "庆历间沈括生于杭州后官至翰林学士著《梦溪笔谈》博物洽闻一代奇才。",
+          "historicalChoice": 0,
+          "choices": [
+            "重用沈括以兴科技",
+            "早用沈括掌机要",
+            "勿用沈括以防新进",
+            "听其自然成长"
+          ],
+          "historicalOutcome": "沈括后为大科学家名著《梦溪笔谈》。"
         },
         {
           "year": 1057,
@@ -4047,6 +4089,19 @@
             "遣使责宋，索岁币"
           ],
           "historicalOutcome": "汴京陷，二帝北狩"
+        },
+        {
+          "year": 1126,
+          "month": null,
+          "title": "靖康之变",
+          "description": "天会四年正月、闰十一月，金兵两围汴京。闰月城陷，靖康之变，俘徽钦二帝北行。",
+          "historicalChoice": 0,
+          "choices": [
+            "发兵围汴京靖康之变",
+            "议和宋人岁币息兵",
+            "立张邦昌为楚帝治中原"
+          ],
+          "historicalOutcome": "汴京陷二帝北狩。"
         },
         {
           "year": 1127,
