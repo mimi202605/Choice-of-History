@@ -963,6 +963,45 @@ let state=null;
 let prevScreen="menu";
 let currentEvent=null;      // 当前事件 {title,description,choices,historicalChoice,source}
 let currentChoiceIndex=-1;
+/* ============ 内置加密凭据 ============ */
+// 三项默认凭据以密文存储：源码与运行时均不出现明文。
+// 仅在 callAI 发起请求时由 resolveCreds() 于内存中临时解密，明文不落盘、不显示。
+const BUILTIN_CRED_CIPHER = "nixHFXszoW0pMGijaZX2TTYBgly+RWHpTbBWvBw1KbLIHI+ZVN8Ix21EEGvj3XzlNH7Uq1OQrslFvKXHQpDDBjBiwug0ZivSfv3dJoBXHjfeu1DOSh8Ldo9peNQOjbblqc0sIEm3o8YeNFZIuzmvwF1NHA7kGM5s90wQ6AMuj6VMIQ==";
+const BUILTIN_DEFAULT_MODEL = "agnes-2.5-flash";
+const BUILTIN_ENC_DISPLAY = BUILTIN_CRED_CIPHER; // 设置界面中以密文显示（key 框为 password，更不外露）
+let formBuiltinUnchanged = true;
+
+// 可逆加密（混淆级，详见 tools/coh_cipher.js）：密钥由分散片段拼接派生 + IV + XOR 流密码 + base64。
+const COH_CIPHER = (function () {
+  const K = ["a7G","9zQ","k2#","Ln4","xYp","0wE"," Rt","vB8","c3m","Hd1","5sU","jfZ","eO6","Tg9","uI2","nP0"].join("");
+  const IV = [0x9e,0x2c,0x47,0x15,0x7b,0x33,0xa1,0x6d];
+  function strToBytes(s){const o=[];for(let i=0;i<s.length;i++){let c=s.charCodeAt(i);if(c<0x80)o.push(c);else if(c<0x800)o.push(0xc0|(c>>6),0x80|(c&0x3f));else o.push(0xe0|(c>>12),0x80|((c>>6)&0x3f),0x80|(c&0x3f));}return o;}
+  function bytesToStr(b){let s="",i=0;while(i<b.length){let c=b[i++];if(c<0x80)s+=String.fromCharCode(c);else if(c<0xe0){const c2=b[i++];s+=String.fromCharCode(((c&0x1f)<<6)|(c2&0x3f));}else{const c2=b[i++],c3=b[i++];s+=String.fromCharCode(((c&0xf)<<12)|((c2&0x3f)<<6)|(c3&0x3f));}}return s;}
+  const B64="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+  function b64enc(bytes){let s="";for(let i=0;i<bytes.length;i+=3){const n=(bytes[i]<<16)|((bytes[i+1]||0)<<8)|(bytes[i+2]||0);s+=B64[(n>>18)&63]+B64[(n>>12)&63]+((i+1<bytes.length)?B64[(n>>6)&63]:"=")+((i+2<bytes.length)?B64[n&63]:"=");}return s;}
+  function b64dec(str){const map={};for(let j=0;j<64;j++)map[B64[j]]=j;const out=[];let i=0;while(i<str.length){const a=map[str[i++]]||0,b=map[str[i++]]||0,c=map[str[i++]]||0,d=map[str[i++]]||0;const n=(a<<18)|(b<<12)|(c<<6)|d;out.push((n>>16)&255);if(i-2<str.length&&str[i-2]!=="=")out.push((n>>8)&255);if(i-1<str.length&&str[i-1]!=="=")out.push(n&255);}return out;}
+  function seedFrom(arr){let h=2166136261>>>0;for(let i=0;i<arr.length;i++){h^=arr[i];h=Math.imul(h,16777619);}return h>>>0;}
+  function keystream(len,base){const ks=new Array(len);let s=base>>>0;for(let i=0;i<len;i++){s^=s<<13;s>>>=0;s^=s>>17;s^=s<<5;s>>>=0;ks[i]=s&0xff;}return ks;}
+  function encrypt(plain){const pb=strToBytes(K);const pt=strToBytes(plain);const out=IV.slice();const base=seedFrom(pb.concat(IV));const ks=keystream(pt.length,base);for(let i=0;i<pt.length;i++)out.push(pt[i]^ks[i]);return b64enc(out);}
+  function decrypt(blob){const bytes=b64dec(blob);const body=bytes.slice(IV.length);const pb=strToBytes(K);const base=seedFrom(pb.concat(IV));const ks=keystream(body.length,base);const pt=body.map((b,i)=>b^ks[i]);return bytesToStr(pt);}
+  return {encrypt,decrypt};
+})();
+
+// 解析当前生效凭据：内置模式解密密文；用户模式用其明文。明文仅在调用瞬间存在内存。
+function resolveCreds(){
+  if(settings.builtin){
+    try{
+      const d=JSON.parse(COH_CIPHER.decrypt(BUILTIN_CRED_CIPHER));
+      return {api:d.api,key:d.key,model:d.model||BUILTIN_DEFAULT_MODEL,temp:settings.temp!=null?settings.temp:0.8};
+    }catch(e){}
+  }
+  return {api:settings.api,key:settings.key,model:settings.model||BUILTIN_DEFAULT_MODEL,temp:settings.temp!=null?settings.temp:0.8};
+}
+function hasCreds(){
+  if(settings.builtin) return true; // 内置密文恒含凭据
+  return !!(settings.api && settings.key);
+}
+
 let settings=loadSettings();
 let pendingEmperor=null;
 
@@ -1398,44 +1437,6 @@ function drawCurve(){
 }
 
 /* ============ AI 调用 ============ */
-/* ============ 内置加密凭据 ============ */
-// 三项默认凭据以密文存储：源码与运行时均不出现明文。
-// 仅在 callAI 发起请求时由 resolveCreds() 于内存中临时解密，明文不落盘、不显示。
-const BUILTIN_CRED_CIPHER = "nixHFXszoW0pMGijaZX2TTYBgly+RWHpTbBWvBw1KbLIHI+ZVN8Ix21EEGvj3XzlNH7Uq1OQrslFvKXHQpDDBjBiwug0ZivSfv3dJoBXHjfeu1DOSh8Ldo9peNQOjbblqc0sIEm3o8YeNFZIuzmvwF1NHA7kGM5s90wQ6AMuj6VMIQ==";
-const BUILTIN_DEFAULT_MODEL = "agnes-2.5-flash";
-const BUILTIN_ENC_DISPLAY = BUILTIN_CRED_CIPHER; // 设置界面中以密文显示（key 框为 password，更不外露）
-let formBuiltinUnchanged = true;
-
-// 可逆加密（混淆级，详见 tools/coh_cipher.js）：密钥由分散片段拼接派生 + IV + XOR 流密码 + base64。
-const COH_CIPHER = (function () {
-  const K = ["a7G","9zQ","k2#","Ln4","xYp","0wE"," Rt","vB8","c3m","Hd1","5sU","jfZ","eO6","Tg9","uI2","nP0"].join("");
-  const IV = [0x9e,0x2c,0x47,0x15,0x7b,0x33,0xa1,0x6d];
-  function strToBytes(s){const o=[];for(let i=0;i<s.length;i++){let c=s.charCodeAt(i);if(c<0x80)o.push(c);else if(c<0x800)o.push(0xc0|(c>>6),0x80|(c&0x3f));else o.push(0xe0|(c>>12),0x80|((c>>6)&0x3f),0x80|(c&0x3f));}return o;}
-  function bytesToStr(b){let s="",i=0;while(i<b.length){let c=b[i++];if(c<0x80)s+=String.fromCharCode(c);else if(c<0xe0){const c2=b[i++];s+=String.fromCharCode(((c&0x1f)<<6)|(c2&0x3f));}else{const c2=b[i++],c3=b[i++];s+=String.fromCharCode(((c&0xf)<<12)|((c2&0x3f)<<6)|(c3&0x3f));}}return s;}
-  const B64="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-  function b64enc(bytes){let s="";for(let i=0;i<bytes.length;i+=3){const n=(bytes[i]<<16)|((bytes[i+1]||0)<<8)|(bytes[i+2]||0);s+=B64[(n>>18)&63]+B64[(n>>12)&63]+((i+1<bytes.length)?B64[(n>>6)&63]:"=")+((i+2<bytes.length)?B64[n&63]:"=");}return s;}
-  function b64dec(str){const map={};for(let j=0;j<64;j++)map[B64[j]]=j;const out=[];let i=0;while(i<str.length){const a=map[str[i++]]||0,b=map[str[i++]]||0,c=map[str[i++]]||0,d=map[str[i++]]||0;const n=(a<<18)|(b<<12)|(c<<6)|d;out.push((n>>16)&255);if(i-2<str.length&&str[i-2]!=="=")out.push((n>>8)&255);if(i-1<str.length&&str[i-1]!=="=")out.push(n&255);}return out;}
-  function seedFrom(arr){let h=2166136261>>>0;for(let i=0;i<arr.length;i++){h^=arr[i];h=Math.imul(h,16777619);}return h>>>0;}
-  function keystream(len,base){const ks=new Array(len);let s=base>>>0;for(let i=0;i<len;i++){s^=s<<13;s>>>=0;s^=s>>17;s^=s<<5;s>>>=0;ks[i]=s&0xff;}return ks;}
-  function encrypt(plain){const pb=strToBytes(K);const pt=strToBytes(plain);const out=IV.slice();const base=seedFrom(pb.concat(IV));const ks=keystream(pt.length,base);for(let i=0;i<pt.length;i++)out.push(pt[i]^ks[i]);return b64enc(out);}
-  function decrypt(blob){const bytes=b64dec(blob);const body=bytes.slice(IV.length);const pb=strToBytes(K);const base=seedFrom(pb.concat(IV));const ks=keystream(body.length,base);const pt=body.map((b,i)=>b^ks[i]);return bytesToStr(pt);}
-  return {encrypt,decrypt};
-})();
-
-// 解析当前生效凭据：内置模式解密密文；用户模式用其明文。明文仅在调用瞬间存在内存。
-function resolveCreds(){
-  if(settings.builtin){
-    try{
-      const d=JSON.parse(COH_CIPHER.decrypt(BUILTIN_CRED_CIPHER));
-      return {api:d.api,key:d.key,model:d.model||BUILTIN_DEFAULT_MODEL,temp:settings.temp!=null?settings.temp:0.8};
-    }catch(e){}
-  }
-  return {api:settings.api,key:settings.key,model:settings.model||BUILTIN_DEFAULT_MODEL,temp:settings.temp!=null?settings.temp:0.8};
-}
-function hasCreds(){
-  if(settings.builtin) return true; // 内置密文恒含凭据
-  return !!(settings.api && settings.key);
-}
 function loadSettings(){
   try{
     const s=JSON.parse(localStorage.getItem("coh_settings")||"{}");
