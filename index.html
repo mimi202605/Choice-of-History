@@ -112,6 +112,9 @@
   .choice .no{color:var(--red);font-weight:700;margin-right:8px;}
   .choice .hint{display:block;font-size:12px;color:var(--dim);margin-top:2px;font-style:italic;}
   .choice:hover .hint{color:rgba(244,236,216,.7);}
+  .choice:focus{outline:none;background:var(--ink);color:var(--bg);border-color:var(--ink);}
+  .choice:focus .no{color:#ffd9b0;}
+  .choice:focus .hint{color:rgba(244,236,216,.7);}
   .outcome{text-indent:2em;font-size:15px;margin:10px 0;text-align:justify;}
   .historian{
     margin-top:14px;padding:12px 14px;border-left:3px solid var(--red);
@@ -287,12 +290,20 @@
         <button class="btn red" onclick="saveSettings()">保存</button>
         <button class="btn" onclick="restoreBuiltin()">恢复内置</button>
       </div>
+      <label style="margin-top:12px;display:flex;gap:6px;align-items:center;font-size:14px;">
+        <input type="checkbox" id="set-fast" style="width:auto;" />
+        速通模式（跳过 AI 后果生成，立即按规则结算，节奏更快）
+      </label>
+      <label style="margin-top:8px;display:flex;gap:6px;align-items:center;font-size:14px;">
+        <input type="checkbox" id="set-offline" style="width:auto;" />
+        离线模式（纯本地规则推演，完全不调用 API；内容有限但稳定）
+      </label>
       <div id="set-msg" class="muted" style="margin-top:8px;"></div>
-      <p class="muted" style="margin-top:8px;font-size:12px;">默认使用内置<b>加密凭据</b>：三项数据以密文显示与存储，明文不暴露。清空并填写即切换为自有接口。</p>
+      <p class="muted" style="margin-top:8px;font-size:12px;">默认使用内置<b>加密凭据</b>：三项数据以密文显示与存储，明文不暴露。清空并填写即切换为自有接口。勾选「离线模式」后将完全不发起网络请求，最适合本地（file://）单机游玩。</p>
     </div>
     <div class="panel">
       <h2>关于凭据</h2>
-      <p class="muted">游戏默认内置一套<b>加密存储</b>的 API 凭据（agnes-2.5-flash）：三项数据在源码与运行时均以密文保存与显示，明文仅在发起请求时于内存中临时解密，不落盘、不显示。如需改用自有接口，请在上方清空并填写、保存；点击「恢复内置」可随时还原。</p>
+      <p class="muted">游戏默认内置一套<b>加密存储</b>的 API 凭据（模型 <b>agnes-2.5-flash</b>，端点 api.agnes-ai.cn）：三项数据在源码与运行时均以密文保存与显示，明文仅在发起请求时于内存中临时解密，不落盘、不显示。这是一套<b>共享的演示用凭据</b>，为多人体验便捷而默认开启，稳定性与并发上限不保证；如需更稳定的体验，建议清空上方字段、填写你自己的 OpenAI 兼容接口并保存，点击「恢复内置」可随时还原。若你不想联网，可勾选「离线模式」。</p>
     </div>
   </section>
 
@@ -353,6 +364,10 @@
 
 <div id="toast"></div>
 <div id="loader" class="show"><div><div class="ink" id="loader-title">载入史册…</div><div class="sub" id="loader-sub">正在加载皇帝数据库</div></div></div>
+
+<!-- 内置皇帝数据库（由 tools/build_data.js 从 data/emperors/*.json 生成）。
+     以经典 <script> 注入全局变量，可在 file:// 双击打开时正常加载，规避 fetch 的 CORS 限制。 -->
+<script src="data/emperors/coh_data.js"></script>
 
 <script>
 "use strict";
@@ -845,33 +860,58 @@ async function loadEmperorData(){
   hardcoded.forEach(e => EMPEROR_REGISTRY.push(e));
   const registeredIds = new Set(EMPEROR_REGISTRY.map(e => e.id));
 
-  // 从JSON文件加载皇帝数据
-  const files = [
-    "data/emperors/01-xia-shang-zhou-qin.json",
-    "data/emperors/02-han-xin-sanguo.json",
-    "data/emperors/03-jin-nanbeichao-sui.json",
-    "data/emperors/04-tang-wudai.json",
-    "data/emperors/05-song-liao-jin-xixia.json",
-    "data/emperors/06-yuan.json",
-    "data/emperors/07-ming.json",
-    "data/emperors/08-qing.json"
-  ];
+  // 优先使用内置全局数据（classic <script> 注入，file:// 双击打开亦可加载，无 CORS 问题）
+  let loadedFromBuiltin = 0;
+  try{
+    const builtin = (typeof window !== "undefined" && window.COH_BUILTIN_EMPERORS) || null;
+    if(Array.isArray(builtin)){
+      builtin.forEach(emp => {
+        if(registeredIds.has(emp.id)) return; // 跳过硬编码已注册的甲类皇帝
+        emp.events = (emp.events || []).map(normalizeEvent);
+        if(!emp.era) emp.era = emp.templeName || emp.name;
+        EMPEROR_REGISTRY.push(emp);
+        registeredIds.add(emp.id);
+        loadedFromBuiltin++;
+      });
+    }
+  }catch(e){
+    console.warn("读取内置皇帝数据失败:", e);
+  }
 
-  for(const file of files){
-    try{
-      const resp = await fetch(file);
-      const data = await resp.json();
-      if(data.emperors && Array.isArray(data.emperors)){
-        data.emperors.forEach(emp => {
-          // 跳过已通过硬编码注册的皇帝（避免重复）
-          if(registeredIds.has(emp.id)) return;
-          emp.events = (emp.events || []).map(normalizeEvent);
-          if(!emp.era) emp.era = emp.templeName || emp.name;
-          EMPEROR_REGISTRY.push(emp);
-        });
+  // 降级：若内置全局缺失（例如被移除脚本标签），仍尝试 fetch 在线/同源 JSON
+  if(loadedFromBuiltin === 0){
+    const files = [
+      "data/emperors/01-xia-shang-zhou-qin.json",
+      "data/emperors/02-han-xin-sanguo.json",
+      "data/emperors/03-jin-nanbeichao-sui.json",
+      "data/emperors/04-tang-wudai.json",
+      "data/emperors/05-song-liao-jin-xixia.json",
+      "data/emperors/06-yuan.json",
+      "data/emperors/07-ming.json",
+      "data/emperors/08-qing.json"
+    ];
+    const failed = [];
+    for(const file of files){
+      try{
+        const resp = await fetch(file);
+        const data = await resp.json();
+        if(data.emperors && Array.isArray(data.emperors)){
+          data.emperors.forEach(emp => {
+            if(registeredIds.has(emp.id)) return;
+            emp.events = (emp.events || []).map(normalizeEvent);
+            if(!emp.era) emp.era = emp.templeName || emp.name;
+            EMPEROR_REGISTRY.push(emp);
+            registeredIds.add(emp.id);
+          });
+        }
+      }catch(e){
+        failed.push(file);
       }
-    }catch(e){
-      console.warn("加载皇帝数据失败:", file, e);
+    }
+    if(failed.length){
+      const msg = "部分朝代数据未能加载（" + failed.length + " 个文件），可能是以 file:// 直接打开导致。建议通过本地服务器或已部署页面访问。";
+      console.warn(msg, failed);
+      window.__cohDataWarn = msg; // 供 UI 可见提示
     }
   }
 
@@ -891,18 +931,61 @@ function dynIdByEmperor(e){
 }
 
 /* ============ 后备事件池（AI失败时降级） ============ */
-const FALLBACK_EVENTS = [
-  {title:"岁入丰歉",description:"今岁郡国上计，仓廪实耗不一。或言丰收，或言歉收，户部请裁。",choices:["蠲免灾区田赋，宽恤百姓","严查郡国上计，惩治贪墨","开仓平粜，稳物价","加征丰区赋税，以充国用","募民垦荒，充仓廪"],hint:"内政"},
-  {title:"边烽急报",description:"北边烽火屡警，斥候报胡骑游弋近塞。",choices:["遣将巡边，示以军威","增戍长城，固守要隘","遣使和亲，缓边衅","联合属国共御之","纳粟拜爵，充实军资"],hint:"军事"},
-  {title:"黄河水患",description:"黄河决口，淹没州县，百姓流离。",choices:["发卒塞决，赈济灾民","徙民避水，缓图筑堤","罪己求言，禳灾弭患","籍没豪强，充修堤之费","求治水之才，专任之"],hint:"灾异"},
-  {title:"朝堂党争",description:"朝臣分立两派，互相攻讦，政事壅滞。",choices:["申明朋党之禁，严惩首恶","调和新旧，宽省其狱","外迁党首，远置郡县","广开言路，集议国是","自揽权纲，不偏一党"],hint:"朝政"},
-  {title:"蝗灾蔽天",description:"飞蝗蔽天，禾稼尽毁，民大饥。",choices:["下诏罪己，令郡国捕蝗","赦天下租赋，赈济灾民","祈禳弭灾，止捕蝗","募民捕蝗，易以粟","开仓赈济，宽恤百姓"],hint:"灾异"},
-  {title:"仓廪空虚",description:"户部奏：国库支绌，军国之费不给。",choices:["节用省费，减宫廷之支","加征商税，充国用","卖官鬻爵，纳粟补官","籍没贪豪，充国库","劝富民助饷，给以爵赏"],hint:"财政"},
-  {title:"疫疠流行",description:"数州疫疠流行，死者相望。",choices:["遣使巡疫，施药赈济","设隔离之所，禁民流徙","罪己求言，禳灾弭患","大赦天下，以消天怒","求名医，专任救治"],hint:"灾异"},
-  {title:"外使入朝",description:"远方国遣使入贡，请通商互市。",choices:["厚赐其使，许通商互市","却其贡，闭关不与通","许通商而严其法","联其国共讨敌国","遣使报聘，通好如故"],hint:"外交"},
-  {title:"盗贼蜂起",description:"数郡盗贼蜂起，劫掠乡里。",choices:["遣将剿抚并用，速平之","招降盗首，赦其罪","严保甲，互相纠察","缓图之，先固京畿","罪己求言，宽省刑罚"],hint:"治安"},
-  {title:"星变示警",description:"太史奏：星象变异，恐有天谴。",choices:["修德弭灾，下诏求言","大赦天下，以消天怒","改元以应天","罢土木，戒奢靡","遣使祭天，禳灾弭患"],hint:"灾异"}
+// 后备事件池（AI 不可用 / 离线模式 / 日常政务降级时启用）。
+// 选项倾向不再按序号套用，而由 hintFromText 依据选项文本实时推断，避免误导性标签。
+const DAILY_FALLBACK = [
+  {title:"岁入丰歉",description:"今岁郡国上计，仓廪实耗不一。或言丰收，或言歉收，户部请裁。",choices:["蠲免灾区田赋，宽恤百姓","严查郡国上计，惩治贪墨","开仓平粜，稳物价","加征丰区赋税，以充国用","募民垦荒，充仓廪"]},
+  {title:"边烽急报",description:"北边烽火屡警，斥候报胡骑游弋近塞，边将请命。",choices:["遣将巡边，示以军威","增戍长城，固守要隘","遣使和亲，缓边衅","联合属国共御之","纳粟拜爵，充实军资"]},
+  {title:"黄河水患",description:"黄河决口，淹没州县，百姓流离，有司告急。",choices:["发卒塞决，赈济灾民","徙民避水，缓图筑堤","罪己求言，禳灾弭患","籍没豪强，充修堤之费","求治水之才，专任之"]},
+  {title:"朝堂党争",description:"朝臣分立两派，互相攻讦，政事壅滞，诏令不下。",choices:["申明朋党之禁，严惩首恶","调和新旧，宽省其狱","外迁党首，远置郡县","广开言路，集议国是","自揽权纲，不偏一党"]},
+  {title:"蝗灾蔽天",description:"飞蝗蔽天，禾稼尽毁，民大饥，道殣相望。",choices:["下诏罪己，令郡国捕蝗","赦天下租赋，赈济灾民","祈禳弭灾，止捕蝗","募民捕蝗，易以粟","开仓赈济，宽恤百姓"]},
+  {title:"仓廪空虚",description:"户部奏：国库支绌，军国之费不给，百官俸廪难继。",choices:["节用省费，减宫廷之支","加征商税，充国用","卖官鬻爵，纳粟补官","籍没贪豪，充国库","劝富民助饷，给以爵赏"]},
+  {title:"疫疠流行",description:"数州疫疠流行，死者相望，乡里萧然。",choices:["遣使巡疫，施药赈济","设隔离之所，禁民流徙","罪己求言，禳灾弭患","大赦天下，以消天怒","求名医，专任救治"]},
+  {title:"外使入朝",description:"远方国遣使入贡，请通商互市，礼官以闻。",choices:["厚赐其使，许通商互市","却其贡，闭关不与通","许通商而严其法","联其国共讨敌国","遣使报聘，通好如故"]},
+  {title:"盗贼蜂起",description:"数郡盗贼蜂起，劫掠乡里，守令不能制。",choices:["遣将剿抚并用，速平之","招降盗首，赦其罪","严保甲，互相纠察","缓图之，先固京畿","罪己求言，宽省刑罚"]},
+  {title:"星变示警",description:"太史奏：星象变异，恐有天谴，百官请修省。",choices:["修德弭灾，下诏求言","大赦天下，以消天怒","改元以应天","罢土木，戒奢靡","遣使祭天，禳灾弭患"]},
+  {title:"科举取士",description:"科举利弊相争，或言宜广纳寒俊，或言当重门第。",choices:["广开科举，擢寒俊","复门第之制，重世家","行察举，举孝廉","设武举，文武并重","罢科举，专任吏员"]},
+  {title:"水利营田",description:"陂塘败坏，农田失溉，劝农之议起。",choices:["兴修陂塘，劝课农桑","募民屯田，实边备","减免田租，与民休息","遣使循行，核垦田","听民自便，不夺其时"]},
+  {title:"宗室封赏",description:"宗室蕃衍，或请裂土分封，或言宜削其权。",choices:["分封子弟，藩屏王室","削藩集权，抑宗室","厚禄养之，不任以政","联姻强国，结外援","徙封就藩，分其势"]},
+  {title:"工役兴作",description:"有司请营宫室、治驰道，言利病者不一。",choices:["罢土木，与民休息","营宫室，壮京师","募民应役，给以工值","征发罪徒，免扰平民","减役缓工，先务农"]},
+  {title:"驿传通信",description:"驿政废弛，边情迟滞，有司请整饬。",choices:["整饬驿政，速达边情","省并驿传，节国用","增置急递，军情毕达","严驿使，禁私遣","宽其禁，便民往来"]},
+  {title:"钱法币制",description:"钱法紊乱，私铸蜂起，物价腾踊。",choices:["更铸钱币，统一圜法","禁私铸，严其法","听民交易，不妄改作","铸大钱，济国用","平准物价，稳市廛"]},
+  {title:"边贸互市",description:"沿边互市之议：开则利市，禁则防戎。",choices:["开马市，通互市","闭关绝市，防戎心","设榷场，征其税","以茶帛易马，实军备","严互市之禁，防奸宄"]},
+  {title:"太子监国",description:"储贰未定，或请早建，或言宜历练政事。",choices:["立储君，早定大本","命太子监国，历练政事","托孤大臣，共辅幼主","自揽乾纲，不早建储","分封诸王，共夹辅"]},
+  {title:"祥瑞符命",description:"郡县屡报祥瑞，或言宜受，或言当戒盈。",choices:["受祥瑞，颁赦天下","却祥瑞，戒盈满","宣付史馆，彰治平","借符命制天下，收民心","遣使祭告，谢天贶"]},
+  {title:"流民就食",description:"连岁不登，流民载道，就食京师。",choices:["给流民田宅，使著籍","遣返原籍，各安其业","设粥厂，赈其饥","募为军屯，实边","严驱遣，禁流徙"]}
 ];
+
+// 危机后备池：在数值崩危时启用，选项偏重"救急/缓解"
+const CRISIS_FALLBACK = [
+  {title:"国库告罄",description:"府库一空，百官俸廪、军国之费皆无所出，有司惶惧。",choices:["开源节流，裁冗费","加征商税，充国用","卖官鬻爵，纳粟补官","籍没豪右，充府库","发义仓，赈穷乏"]},
+  {title:"民心离散",description:"苛政疲民，怨讟载道，流亡者众，社稷动摇。",choices:["大赦天下，与民更始","轻徭薄赋，宽恤百姓","严捕倡乱者，以靖地方","遣循吏抚循，察冤狱","罢弊政，罪己求言"]},
+  {title:"边军踰制",description:"边将拥兵，骄悍难制，兵变之虞隐隐。",choices:["罢不急之师，息民力","厚赏将士，固军心","易帅整军，申明军纪","简练精锐，汰老弱","增戍要害，示以兵威"]},
+  {title:"朝纲解纽",description:"政事壅滞，诏令不行，纪纲颓弛，朝野忧之。",choices:["亲揽万机，肃清怠政","引贤臣，共理朝政","宽假臣下，缓其狱","守成法，不轻更易","大阅天下，振威权"]},
+  {title:"灾异叠见",description:"水旱疾疫相继，星变又作，上下惴惴。",choices:["罪己修省，罢土木","发仓赈灾，活饥民","遣使巡省，平冤滞","严捕妖言，安众心","祷于山川，禳天变"]},
+  {title:"权臣擅命",description:"权臣窃柄，威福自恣，主势渐移。",choices:["骤夺其权，付廷尉","阳尊阴制，徐图之","引近臣制衡，分其势","厚赏以安之，不究其专","出巡亲政，收威柄"]},
+  {title:"盗寇成势",description:"啸聚日众，攻掠城邑，官兵屡北。",choices:["大发诸郡兵，合剿之","招抚渠帅，使自效","坚壁清野，困其众","行保甲，联村落","募死士，间其党"]},
+  {title:"粮价腾踊",description:"谷价数倍，穷民辍食，市井汹汹。",choices:["平粜仓粟，抑豪右","弛山川之禁，通转输","蠲逋赋，苏民困","禁遏籴，通有无","发内帑，赈贫窭"]}
+];
+
+// 科技阻力事件（核心创新的真实落地）：科技远超时代时触发，含分支选项与真实数值后果
+const TECH_RESIST_EVENT = {
+  title:"奇技淫巧之议",
+  description:"陛下锐意新法，科技远超世代。朝中老臣联衔上疏，言『奇技淫巧，乱祖制、失民心、启纷更』，请罢新器、逐异术。言路汹汹，陛下需定夺。",
+  historicalChoice:-1,
+  choices:[
+    "严斥上书，益推新法，以威权压众议",
+    "稍敛锋芒，留中不下，徐图而进",
+    "召儒臣廷辩，折中以行新制",
+    "尽罢新器以安人心，复祖制",
+    "借新法之名行聚敛，充国库以固本"
+  ]
+};
+
+function pickFallback(kind){
+  const pool = (kind==="crisis") ? CRISIS_FALLBACK : DAILY_FALLBACK;
+  return pool[Math.floor(Math.random()*pool.length)];
+}
 
 /* ============ 提示词模板 ============ */
 const PROMPTS = {
@@ -1130,6 +1213,10 @@ function enterMonth(){
       preset=hit;
       if(hit.id) state.triggeredEvents.push(hit.id);
       else state.triggeredEvents.push(hit.title);
+    }else if(shouldTriggerTechResist()){
+      // 科技远超时代 → 触发保守派阻力事件（核心创新的真实落地）
+      eventType="科技阻力";
+      preset=TECH_RESIST_EVENT;
     }else{
       eventType="日常政务";
     }
@@ -1137,10 +1224,30 @@ function enterMonth(){
   loadEvent(eventType,preset);
 }
 
+// 是否触发"科技阻力"事件：科技超出时代基线 20 且距上次触发已满一年，避免刷屏
+function shouldTriggerTechResist(){
+  const thr=state.emperor.initStats.tech+20;
+  if(state.stats.tech<=thr){ state._techResistArmed=false; return false; }
+  const now=state.year*12+state.month;
+  if(state._techResistLast && (now-state._techResistLast)<12) return false;
+  return true;
+}
+
+// AI 是否可用：非离线模式且已配置凭据
+function aiAvailable(){
+  return !settings.offlineMode && hasCreds();
+}
+
 function loadEvent(eventType,preset){
   showLoader("史官秉笔…","正在生成本月事件");
+  // 预设事件（史实 / 科技阻力）直接渲染，不走 AI 改写，保留编排本意
+  if(preset && eventType!=="历史事件"){
+    renderPreset(preset,eventType);
+    hideLoader();
+    return;
+  }
   // 优先尝试AI生成
-  if(hasCreds()){
+  if(aiAvailable()){
     callAI(PROMPTS.system(state.emperor), PROMPTS.user(state,eventType,preset))
       .then(json=>{
         hideLoader();
@@ -1172,35 +1279,27 @@ function loadEvent(eventType,preset){
 
 function fallbackEvent(eventType,preset){
   if(preset){
-    // 用预设历史事件
-    currentEvent={
-      title:preset.title,
-      description:preset.description,
-      choices:preset.choices.map((c,i)=>({text:c,hint:hintFor(i,preset.historicalChoice)})),
-      historicalChoice:preset.historicalChoice,
-      source:eventType,
-      preset
-    };
-    renderEvent();
+    // 用预设事件（史实 / 科技阻力），倾向标签按文本语义推断，避免误导
+    renderPreset(preset,eventType);
   }else if(eventType==="数值危机"){
     // 危机事件：基于危机数值生成
     const crisis=detectCrisis(state.stats);
-    const fb=FALLBACK_EVENTS[Math.floor(Math.random()*FALLBACK_EVENTS.length)];
+    const fb=pickFallback("crisis");
     currentEvent={
       title:crisis.split("、")[0]+"危局",
       description:"近岁国政失当，"+crisis+"。朝野震动，群臣议急救之策，陛下需定夺。",
-      choices:fb.choices.map((c,i)=>({text:c,hint:["铁腕·冒险","保守·稳重","革新·远图","怀柔·安抚","进取·冒险"][i]})),
+      choices:fb.choices.map(c=>({text:c,hint:hintFromText(c)})),
       historicalChoice:-1,
       source:eventType
     };
     renderEvent();
   }else{
     // 日常 → 后备事件池随机
-    const fb=FALLBACK_EVENTS[Math.floor(Math.random()*FALLBACK_EVENTS.length)];
+    const fb=pickFallback("daily");
     currentEvent={
       title:fb.title,
       description:fb.description,
-      choices:fb.choices.map((c,i)=>({text:c,hint:["进取·冒险","保守·稳重","革新·远图","怀柔·安抚","铁腕·果决"][i]})),
+      choices:fb.choices.map(c=>({text:c,hint:hintFromText(c)})),
       historicalChoice:-1,
       source:eventType
     };
@@ -1208,11 +1307,46 @@ function fallbackEvent(eventType,preset){
   }
 }
 
-function hintFor(i,historical){
-  const tags=["进取·冒险","保守·稳重","革新·远图","怀柔·安抚","铁腕·果决"];
-  let h=tags[i]||"";
-  if(i===historical) h="史实之择";
-  return h;
+// 预设事件（史实/科技阻力）渲染：倾向标签依据选项真实语义，历史选项标注「史实之择」
+function renderPreset(preset,eventType){
+  currentEvent={
+    title:preset.title,
+    description:preset.description,
+    choices:preset.choices.map((c,i)=>({
+      text:c,
+      hint:(i===preset.historicalChoice) ? "史实之择" : hintFromText(c)
+    })),
+    historicalChoice:preset.historicalChoice,
+    source:eventType,
+    preset
+  };
+  if(eventType==="科技阻力"){ state._techResistLast = state.year*12 + state.month; }
+  renderEvent();
+}
+
+// 依据选项文本关键词推断倾向标签（替代原先按序号套用进取/怀柔等的可疑标签）
+function hintFromText(t){
+  t=t||"";
+  const rules=[
+    [/北伐|亲征|讨|伐|征|战|出击|出兵|进攻|主动|攘|拓土|平[定寇]|剿|大举|示威/, "进取·冒险"],
+    [/守|稳|缓|待|按兵|不战|固守|持重|徐图|姑息|养|罢|减役|息民|不轻/, "保守·稳重"],
+    [/改|废|创|兴[学宫]|科举|新法|变革|革新|行.*制|劝农|办学|均输|变法|更铸|整饬|设/, "革新·远图"],
+    [/和|抚|赦|赈|蠲|免|招降|和亲|安抚|宽|赈济|平粜|怀柔|厚赐|通商|薄赋|罢弊政|罪己/, "怀柔·安抚"],
+    [/诛|杀|废黜|黜|严|镇压|铁腕|惩治|禁|族|严厉打击|籍没|易帅|严捕|骤夺/, "铁腕·果决"]
+  ];
+  for(let k=0;k<rules.length;k++){ if(rules[k][0].test(t)) return rules[k][1]; }
+  return "权衡·审势";
+}
+
+// 由倾向标签取stance键，用于后备后果映射
+function stanceKey(hint){
+  const h=hint||"";
+  if(h.indexOf("进取")>=0) return "进取";
+  if(h.indexOf("保守")>=0) return "保守";
+  if(h.indexOf("革新")>=0) return "革新";
+  if(h.indexOf("怀柔")>=0) return "怀柔";
+  if(h.indexOf("铁腕")>=0) return "铁腕";
+  return null;
 }
 
 function renderEvent(){
@@ -1233,6 +1367,12 @@ function makeChoice(i){
   if(!currentEvent) return;
   currentChoiceIndex=i;
   const choice=currentEvent.choices[i];
+  // 速通模式：跳过 AI 后果生成，直接规则推演，大幅加快节奏
+  if(!aiAvailable() || settings.fastMode){
+    hideLoader();
+    fallbackOutcome(choice);
+    return;
+  }
   // 调用AI生成后果
   showLoader("史官秉笔…","正在判择定果");
   if(hasCreds()){
@@ -1265,45 +1405,69 @@ function applyOutcome(json,choice){
     v=clamp(v,-limit,limit);
     state.stats[k]=clamp(state.stats[k]+v,0,100);
   });
+  applyCoupling();
   recordHistory(choice,json.outcomeDescription,json.historianComment,sc);
   renderOutcome(json.outcomeDescription,json.historianComment,sc);
 }
 
+// 各倾向的后果模板（按语义而非序号映射，避免"按编号刷分"）
+const STANCE_PROFILES={
+  "进取":{military:5,treasury:-3,people:-2,health:-1},
+  "保守":{treasury:2,court:2,military:-2,people:1,health:1},
+  "革新":{tech:5,treasury:-2,court:-2,people:1},
+  "怀柔":{people:4,court:2,treasury:-2,health:1},
+  "铁腕":{military:3,court:3,people:-3,health:-2,treasury:1}
+};
+function stanceFlavorText(s){
+  return ({
+    "进取":"军威稍振，然国用略耗。",
+    "保守":"邦本稍固，然边备略弛。",
+    "革新":"新制初行，物议纷纭。",
+    "怀柔":"民心渐安，朝议稍平。",
+    "铁腕":"令行禁止，然物情侧目。",
+    "权衡":"事遂粗定，利害相参。"
+  })[s]||"事遂粗定。";
+}
+function stanceCommentText(s){
+  return ({
+    "进取":"进取之主，得失相当。",
+    "保守":"持重老成，亦一策也。",
+    "革新":"鼎革之际，未可轻论。",
+    "怀柔":"怀柔远人，仁术也。",
+    "铁腕":"铁腕之下，怨气潜生。",
+    "权衡":"史官谨书，俟后观之。"
+  })[s]||"史官谨书。";
+}
+
+// 轻量数值耦合：让六维产生"牵一发而动全身"的体感（不改主平衡）
+function applyCoupling(){
+  const s=state.stats;
+  if(s.military>75) s.treasury=clamp(s.treasury-1,0,100);   // 强军耗财
+  if(s.court<25)    s.people =clamp(s.people-1,0,100);     // 朝局不稳→民心动摇
+  if(s.treasury<20) s.military=clamp(s.military-1,0,100);   // 国库空虚→军力不赡
+}
+
 function fallbackOutcome(choice){
-  // 基于选择索引与当前数值，简单规则推演
-  const idx=currentChoiceIndex;
+  // 基于选项的"倾向语义"推演后果，而非选项序号
   const sc={treasury:0,people:0,military:0,court:0,health:0,tech:0};
-  // 不同倾向不同影响
-  const profile=[
-    {military:5,treasury:-3,people:-2,health:-1},   // 进取
-    {treasury:2,court:2,military:-2,people:1,health:1}, // 保守
-    {tech:5,treasury:-2,court:-2,people:1},          // 革新
-    {people:4,court:2,treasury:-2,health:1},         // 怀柔
-    {military:3,court:3,people:-3,health:-2,treasury:1} // 铁腕
-  ][idx]||{};
+  const sk = stanceKey(choice.hint) || stanceKey(hintFromText(choice.text)) || "权衡";
+  const profile = STANCE_PROFILES[sk] || {};
   Object.assign(sc,profile);
-  // 危机事件额外影响
+  // 危机事件额外影响：试图挽救最低项
   if(currentEvent.source==="数值危机"){
-    // 试图挽救最低项
     const lowest=Object.entries(state.stats).filter(([k])=>k!=="health").sort((a,b)=>a[1]-b[1])[0];
     if(lowest) sc[lowest[0]]+=6;
   }
-  // clamp
   const limit=currentEvent.source==="数值危机"?25:15;
   ["treasury","people","military","court","health","tech"].forEach(k=>{
     sc[k]=clamp(Math.round(sc[k]),-limit,limit);
     state.stats[k]=clamp(state.stats[k]+sc[k],0,100);
   });
-  const outcome=`帝纳「${choice.text}」之策。${outcomeFlavor(idx)} 群臣奉行，朝野翕然。`;
-  const comment=commentFlavor(idx);
+  applyCoupling();
+  const outcome=`帝纳「${choice.text}」之策。${stanceFlavorText(sk)} 群臣奉行，朝野翕然。`;
+  const comment=stanceCommentText(sk);
   recordHistory(choice,outcome,comment,sc);
   renderOutcome(outcome,comment,sc);
-}
-function outcomeFlavor(i){
-  return ["军威稍振，国用略耗。","邦本稍固，然边备略弛。","新制初行，物议纷纭。","民心渐安，朝议稍平。","令行禁止，然物情侧目。"][i]||"事遂粗定。";
-}
-function commentFlavor(i){
-  return ["进取之主，得失相当。","持重老成，亦一策也。","鼎革之际，未可轻论。","怀柔远人，仁术也。","铁腕之下，怨气潜生。"][i]||"史官谨书。";
 }
 
 function recordHistory(choice,outcomeDesc,comment,sc){
@@ -1332,8 +1496,9 @@ function renderOutcome(desc,comment,sc){
   }).filter(Boolean).join("");
   document.getElementById("outcome-wrap").classList.remove("hide");
   renderStats();
-  // 科技阻力
-  if(state.stats.tech > state.emperor.initStats.tech+20){
+  // 科技阻力提示：仅在首次越线时提示一次，避免每月刷屏（阻力事件本身承担机制）
+  if(state.stats.tech > state.emperor.initStats.tech+20 && !state._techToastShown){
+    state._techToastShown=true;
     toast("科技远超时代，朝臣上疏反对「奇技淫巧」");
   }
   // 自动存档
@@ -1350,6 +1515,15 @@ function nextMonth(){
   if(avg>60){ state.highStreak++; state.lowStreak=0; state.stats.health=clamp(state.stats.health+1,0,100); }
   else if(avg<30){ state.lowStreak++; state.highStreak=0; state.stats.health=clamp(state.stats.health-2,0,100); }
   else { state.highStreak=0; state.lowStreak=0; }
+  // 长期低位加速崩盘（连续6月极低，最低项再受重创）
+  if(state.lowStreak>=6){
+    const lowest=Object.entries(state.stats).filter(([k])=>k!=="health").sort((a,b)=>a[1]-b[1])[0];
+    if(lowest) state.stats[lowest[0]]=clamp(state.stats[lowest[0]]-2,0,100);
+  }
+  // 自然寿命衰减：年迈体衰，给长线游玩收束压力
+  const ageYears=state.year-state.emperor.reignStart;
+  if(ageYears>45) state.stats.health=clamp(state.stats.health-1,0,100);
+  if(ageYears>60) state.stats.health=clamp(state.stats.health-1,0,100);
   // 推进月份
   state.month++;
   if(state.month>12){ state.month=1; state.year++; }
@@ -1370,14 +1544,16 @@ function abandonGame(){
 function endGame(reason){
   // 自动存档清理（保留历史）
   const reignYears = state.year - state.emperor.reignStart + 1;
-  const avg=avgStat(state.stats);
+  // 终局评级：以"治国五维均值"定档（剔除健康，避免长寿拉高评分），健康/在位单独展示
+  const govKeys=["treasury","people","military","court","tech"];
+  const govAvg = govKeys.reduce((a,k)=>a+state.stats[k],0)/govKeys.length;
   let verdict,review;
-  if(avg>=70){ verdict="明君"; review=`帝在位${reignYears}载，六维均平，海内殷富，后世仰之。`; }
-  else if(avg>=50){ verdict="庸君"; review=`帝在位${reignYears}载，守成无功，亦无大过，史称中主。`; }
-  else if(avg>=30){ verdict="昏君"; review=`帝在位${reignYears}载，政荒民散，国势日蹙，识者忧之。`; }
-  else { verdict="亡国之主"; review=`帝在位${reignYears}载，六维俱敝，社稷倾颓，可胜叹哉。`; }
+  if(govAvg>=68){ verdict="明君"; review=`帝在位${reignYears}载，五维均平，海内殷富，后世仰之。`; }
+  else if(govAvg>=52){ verdict="庸君"; review=`帝在位${reignYears}载，守成无功，亦无大过，史称中主。`; }
+  else if(govAvg>=36){ verdict="昏君"; review=`帝在位${reignYears}载，政荒民散，国势日蹙，识者忧之。`; }
+  else { verdict="亡国之主"; review=`帝在位${reignYears}载，五维俱敝，社稷倾颓，可胜叹哉。`; }
   document.getElementById("end-title").textContent=reason==="弃位"?"逊位归藩":"龙驭宾天";
-  document.getElementById("end-meta").textContent=`${state.emperor.name}（${state.emperor.templeName}）· 在位 ${reignYears} 载`;
+  document.getElementById("end-meta").textContent=`${state.emperor.name}（${state.emperor.templeName}）· 在位 ${reignYears} 载 · 龙体 ${state.stats.health}`;
   document.getElementById("end-verdict").textContent=verdict;
   document.getElementById("end-review").textContent=review;
   // 终局数值
@@ -1451,11 +1627,11 @@ function loadSettings(){
     const s=JSON.parse(localStorage.getItem("coh_settings")||"{}");
     if(s.builtin===false){
       // 用户自填模式：明文仅存于本地，由用户自行负责
-      return {builtin:false,api:s.api||"",key:s.key||"",model:s.model||BUILTIN_DEFAULT_MODEL,temp:s.temp!=null?s.temp:0.8};
+      return {builtin:false,api:s.api||"",key:s.key||"",model:s.model||BUILTIN_DEFAULT_MODEL,temp:s.temp!=null?s.temp:0.8,fastMode:!!s.fastMode,offlineMode:!!s.offlineMode};
     }
     // 默认：内置加密凭据模式（api/key 不存明文，真实值仅存于密文）
-    return {builtin:true,api:"",key:"",model:BUILTIN_DEFAULT_MODEL,temp:0.8};
-  }catch(e){ return {builtin:true,api:"",key:"",model:BUILTIN_DEFAULT_MODEL,temp:0.8}; }
+    return {builtin:true,api:"",key:"",model:BUILTIN_DEFAULT_MODEL,temp:0.8,fastMode:!!s.fastMode,offlineMode:!!s.offlineMode};
+  }catch(e){ return {builtin:true,api:"",key:"",model:BUILTIN_DEFAULT_MODEL,temp:0.8,fastMode:false,offlineMode:false}; }
 }
 function loadSettingsToForm(){
   if(settings.builtin){
@@ -1472,16 +1648,20 @@ function loadSettingsToForm(){
   }
   document.getElementById("set-temp").value=settings.temp;
   document.getElementById("set-temp-v").textContent=settings.temp;
+  document.getElementById("set-fast").checked=!!settings.fastMode;
+  document.getElementById("set-offline").checked=!!settings.offlineMode;
 }
 function saveSettings(){
   const api=document.getElementById("set-api").value.trim().replace(/\/+$/,"");
   const key=document.getElementById("set-key").value.trim();
   const model=document.getElementById("set-model").value.trim();
   const temp=parseFloat(document.getElementById("set-temp").value)||0.8;
+  const fastMode=document.getElementById("set-fast").checked;
+  const offlineMode=document.getElementById("set-offline").checked;
   if(settings.builtin && formBuiltinUnchanged && api===BUILTIN_ENC_DISPLAY && key===BUILTIN_ENC_DISPLAY && model===BUILTIN_ENC_DISPLAY){
     // 用户未改动凭据框（仍是密文显示）→ 继续沿用内置加密凭据
-    settings={builtin:true,api:"",key:"",model:BUILTIN_DEFAULT_MODEL,temp};
-    localStorage.setItem("coh_settings",JSON.stringify({builtin:true,temp}));
+    settings={builtin:true,api:"",key:"",model:BUILTIN_DEFAULT_MODEL,temp,fastMode,offlineMode};
+    localStorage.setItem("coh_settings",JSON.stringify({builtin:true,temp,fastMode,offlineMode}));
   }else{
     // 用户自行填写；仍等于密文显示的字段从内置解密补齐，保证存储一致
     let bApi=api,bKey=key,bModel=model;
@@ -1493,7 +1673,7 @@ function saveSettings(){
         if(model===BUILTIN_ENC_DISPLAY) bModel=d.model;
       }catch(e){}
     }
-    settings={builtin:false,api:bApi,key:bKey,model:bModel||BUILTIN_DEFAULT_MODEL,temp};
+    settings={builtin:false,api:bApi,key:bKey,model:bModel||BUILTIN_DEFAULT_MODEL,temp,fastMode,offlineMode};
     localStorage.setItem("coh_settings",JSON.stringify(settings));
   }
   loadSettingsToForm();
@@ -1502,8 +1682,9 @@ function saveSettings(){
 }
 function restoreBuiltin(){
   const temp=settings.temp!=null?settings.temp:0.8;
-  settings={builtin:true,api:"",key:"",model:BUILTIN_DEFAULT_MODEL,temp};
-  localStorage.setItem("coh_settings",JSON.stringify({builtin:true,temp}));
+  const fastMode=!!settings.fastMode, offlineMode=!!settings.offlineMode;
+  settings={builtin:true,api:"",key:"",model:BUILTIN_DEFAULT_MODEL,temp,fastMode,offlineMode};
+  localStorage.setItem("coh_settings",JSON.stringify({builtin:true,temp,fastMode,offlineMode}));
   loadSettingsToForm();
   document.getElementById("set-msg").textContent="已恢复为内置加密凭证。";
   setTimeout(()=>{document.getElementById("set-msg").textContent="";},2000);
@@ -1667,8 +1848,43 @@ function toast(msg){
   toastTimer=setTimeout(()=>el.classList.remove("show"),2600);
 }
 
+/* ============ 键盘操作 ============ */
+function bindKeyboard(){
+  document.addEventListener('keydown', function(e){
+    const game=document.getElementById("screen-game");
+    if(!game || !game.classList.contains("active")) return;
+    const ae=document.activeElement;
+    if(ae && (ae.tagName==="INPUT"||ae.tagName==="TEXTAREA"||ae.tagName==="SELECT")) return;
+    const outcomeShown=!document.getElementById("outcome-wrap").classList.contains("hide");
+    if(!outcomeShown){
+      // 选择阶段：数字键 1-5 直接抉择；方向键/Tab 移动焦点
+      if(e.key>="1" && e.key<="5"){
+        const idx=parseInt(e.key,10)-1;
+        const btns=document.querySelectorAll("#choices .choice");
+        if(btns[idx]){ btns[idx].click(); e.preventDefault(); }
+      } else if(e.key==="ArrowDown"||e.key==="ArrowUp"||e.key==="Tab"){
+        const btns=Array.from(document.querySelectorAll("#choices .choice"));
+        if(btns.length){
+          const cur=btns.indexOf(document.activeElement);
+          let nxt;
+          if(e.key==="ArrowDown"||(!e.shiftKey && e.key==="Tab")) nxt=(cur+1)%btns.length;
+          else nxt=(cur-1+btns.length)%btns.length;
+          btns[nxt].focus(); e.preventDefault();
+        }
+      }
+    } else {
+      // 结果阶段：Enter / 空格 推进下月
+      if(e.key==="Enter"||e.key===" "){
+        const nb=document.getElementById("next-month-btn");
+        if(nb){ nb.click(); e.preventDefault(); }
+      }
+    }
+  });
+}
+
 /* ============ 初始化 ============ */
 loadSettingsToForm();
+bindKeyboard();
 
 // 异步加载皇帝数据库，完成后隐藏载入画面并显示主菜单
 (async function(){
