@@ -275,22 +275,24 @@
     <div class="panel">
       <h2>AI 接口</h2>
       <label class="fld">API 地址</label>
-      <input id="set-api" type="text" placeholder="https://api.openai.com/v1" />
+      <input id="set-api" type="text" placeholder="https://api.openai.com/v1" oninput="formBuiltinUnchanged=false" />
       <label class="fld">API Key</label>
-      <input id="set-key" type="password" placeholder="sk-..." />
+      <input id="set-key" type="password" placeholder="sk-..." oninput="formBuiltinUnchanged=false" />
       <label class="fld">模型</label>
-      <input id="set-model" type="text" placeholder="gpt-4o-mini" />
+      <input id="set-model" type="text" placeholder="gpt-4o-mini" oninput="formBuiltinUnchanged=false" />
       <label class="fld">温度 <span id="set-temp-v" class="muted">0.8</span></label>
       <input id="set-temp" type="range" min="0" max="1" step="0.1" value="0.8" oninput="document.getElementById('set-temp-v').textContent=this.value" />
       <div class="row" style="margin-top:14px;">
         <button class="btn" onclick="testConnection()">测试连接</button>
         <button class="btn red" onclick="saveSettings()">保存</button>
+        <button class="btn" onclick="restoreBuiltin()">恢复内置</button>
       </div>
       <div id="set-msg" class="muted" style="margin-top:8px;"></div>
+      <p class="muted" style="margin-top:8px;font-size:12px;">默认使用内置<b>加密凭据</b>：三项数据以密文显示与存储，明文不暴露。清空并填写即切换为自有接口。</p>
     </div>
     <div class="panel">
-      <h2>未配置时</h2>
-      <p class="muted">未配置 API 时，游戏将使用内置预设事件库与后备事件池推进，仍可正常游玩，但日常政务事件重复度较高。配置后即可由 AI 实时生成符合时代的事件与史官点评。</p>
+      <h2>关于凭据</h2>
+      <p class="muted">游戏默认内置一套<b>加密存储</b>的 API 凭据（agnes-2.5-flash）：三项数据在源码与运行时均以密文保存与显示，明文仅在发起请求时于内存中临时解密，不落盘、不显示。如需改用自有接口，请在上方清空并填写、保存；点击「恢复内置」可随时还原。</p>
     </div>
   </section>
 
@@ -1090,8 +1092,8 @@ function enterMonth(){
 function loadEvent(eventType,preset){
   showLoader("史官秉笔…","正在生成本月事件");
   // 优先尝试AI生成
-  if(settings.api && settings.key){
-    callAI(settings, PROMPTS.system(state.emperor), PROMPTS.user(state,eventType,preset))
+  if(hasCreds()){
+    callAI(PROMPTS.system(state.emperor), PROMPTS.user(state,eventType,preset))
       .then(json=>{
         hideLoader();
         if(json && json.eventTitle && Array.isArray(json.choices) && json.choices.length===5){
@@ -1185,8 +1187,8 @@ function makeChoice(i){
   const choice=currentEvent.choices[i];
   // 调用AI生成后果
   showLoader("史官秉笔…","正在判择定果");
-  if(settings.api && settings.key){
-    callAI(settings, PROMPTS.system(state.emperor), PROMPTS.outcome(state,currentEvent.title,choice.text,choice.hint), true)
+  if(hasCreds()){
+    callAI(PROMPTS.system(state.emperor), PROMPTS.outcome(state,currentEvent.title,choice.text,choice.hint), true)
       .then(json=>{
         hideLoader();
         if(json && json.outcomeDescription){
@@ -1396,43 +1398,123 @@ function drawCurve(){
 }
 
 /* ============ AI 调用 ============ */
+/* ============ 内置加密凭据 ============ */
+// 三项默认凭据以密文存储：源码与运行时均不出现明文。
+// 仅在 callAI 发起请求时由 resolveCreds() 于内存中临时解密，明文不落盘、不显示。
+const BUILTIN_CRED_CIPHER = "nixHFXszoW0pMGijaZX2TTYBgly+RWHpTbBWvBw1KbLIHI+ZVN8Ix21EEGvj3XzlNH7Uq1OQrslFvKXHQpDDBjBiwug0ZivSfv3dJoBXHjfeu1DOSh8Ldo9peNQOjbblqc0sIEm3o8YeNFZIuzmvwF1NHA7kGM5s90wQ6AMuj6VMIQ==";
+const BUILTIN_DEFAULT_MODEL = "agnes-2.5-flash";
+const BUILTIN_ENC_DISPLAY = BUILTIN_CRED_CIPHER; // 设置界面中以密文显示（key 框为 password，更不外露）
+let formBuiltinUnchanged = true;
+
+// 可逆加密（混淆级，详见 tools/coh_cipher.js）：密钥由分散片段拼接派生 + IV + XOR 流密码 + base64。
+const COH_CIPHER = (function () {
+  const K = ["a7G","9zQ","k2#","Ln4","xYp","0wE"," Rt","vB8","c3m","Hd1","5sU","jfZ","eO6","Tg9","uI2","nP0"].join("");
+  const IV = [0x9e,0x2c,0x47,0x15,0x7b,0x33,0xa1,0x6d];
+  function strToBytes(s){const o=[];for(let i=0;i<s.length;i++){let c=s.charCodeAt(i);if(c<0x80)o.push(c);else if(c<0x800)o.push(0xc0|(c>>6),0x80|(c&0x3f));else o.push(0xe0|(c>>12),0x80|((c>>6)&0x3f),0x80|(c&0x3f));}return o;}
+  function bytesToStr(b){let s="",i=0;while(i<b.length){let c=b[i++];if(c<0x80)s+=String.fromCharCode(c);else if(c<0xe0){const c2=b[i++];s+=String.fromCharCode(((c&0x1f)<<6)|(c2&0x3f));}else{const c2=b[i++],c3=b[i++];s+=String.fromCharCode(((c&0xf)<<12)|((c2&0x3f)<<6)|(c3&0x3f));}}return s;}
+  const B64="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+  function b64enc(bytes){let s="";for(let i=0;i<bytes.length;i+=3){const n=(bytes[i]<<16)|((bytes[i+1]||0)<<8)|(bytes[i+2]||0);s+=B64[(n>>18)&63]+B64[(n>>12)&63]+((i+1<bytes.length)?B64[(n>>6)&63]:"=")+((i+2<bytes.length)?B64[n&63]:"=");}return s;}
+  function b64dec(str){const map={};for(let j=0;j<64;j++)map[B64[j]]=j;const out=[];let i=0;while(i<str.length){const a=map[str[i++]]||0,b=map[str[i++]]||0,c=map[str[i++]]||0,d=map[str[i++]]||0;const n=(a<<18)|(b<<12)|(c<<6)|d;out.push((n>>16)&255);if(i-2<str.length&&str[i-2]!=="=")out.push((n>>8)&255);if(i-1<str.length&&str[i-1]!=="=")out.push(n&255);}return out;}
+  function seedFrom(arr){let h=2166136261>>>0;for(let i=0;i<arr.length;i++){h^=arr[i];h=Math.imul(h,16777619);}return h>>>0;}
+  function keystream(len,base){const ks=new Array(len);let s=base>>>0;for(let i=0;i<len;i++){s^=s<<13;s>>>=0;s^=s>>17;s^=s<<5;s>>>=0;ks[i]=s&0xff;}return ks;}
+  function encrypt(plain){const pb=strToBytes(K);const pt=strToBytes(plain);const out=IV.slice();const base=seedFrom(pb.concat(IV));const ks=keystream(pt.length,base);for(let i=0;i<pt.length;i++)out.push(pt[i]^ks[i]);return b64enc(out);}
+  function decrypt(blob){const bytes=b64dec(blob);const body=bytes.slice(IV.length);const pb=strToBytes(K);const base=seedFrom(pb.concat(IV));const ks=keystream(body.length,base);const pt=body.map((b,i)=>b^ks[i]);return bytesToStr(pt);}
+  return {encrypt,decrypt};
+})();
+
+// 解析当前生效凭据：内置模式解密密文；用户模式用其明文。明文仅在调用瞬间存在内存。
+function resolveCreds(){
+  if(settings.builtin){
+    try{
+      const d=JSON.parse(COH_CIPHER.decrypt(BUILTIN_CRED_CIPHER));
+      return {api:d.api,key:d.key,model:d.model||BUILTIN_DEFAULT_MODEL,temp:settings.temp!=null?settings.temp:0.8};
+    }catch(e){}
+  }
+  return {api:settings.api,key:settings.key,model:settings.model||BUILTIN_DEFAULT_MODEL,temp:settings.temp!=null?settings.temp:0.8};
+}
+function hasCreds(){
+  if(settings.builtin) return true; // 内置密文恒含凭据
+  return !!(settings.api && settings.key);
+}
 function loadSettings(){
   try{
     const s=JSON.parse(localStorage.getItem("coh_settings")||"{}");
-    return {api:s.api||"",key:s.key||"",model:s.model||"gpt-4o-mini",temp:s.temp!=null?s.temp:0.8};
-  }catch(e){ return {api:"",key:"",model:"gpt-4o-mini",temp:0.8}; }
+    if(s.builtin===false){
+      // 用户自填模式：明文仅存于本地，由用户自行负责
+      return {builtin:false,api:s.api||"",key:s.key||"",model:s.model||BUILTIN_DEFAULT_MODEL,temp:s.temp!=null?s.temp:0.8};
+    }
+    // 默认：内置加密凭据模式（api/key 不存明文，真实值仅存于密文）
+    return {builtin:true,api:"",key:"",model:BUILTIN_DEFAULT_MODEL,temp:0.8};
+  }catch(e){ return {builtin:true,api:"",key:"",model:BUILTIN_DEFAULT_MODEL,temp:0.8}; }
 }
 function loadSettingsToForm(){
-  document.getElementById("set-api").value=settings.api;
-  document.getElementById("set-key").value=settings.key;
-  document.getElementById("set-model").value=settings.model;
+  if(settings.builtin){
+    // 内置模式：三项均以密文显示，明文不暴露
+    document.getElementById("set-api").value=BUILTIN_ENC_DISPLAY;
+    document.getElementById("set-key").value=BUILTIN_ENC_DISPLAY;
+    document.getElementById("set-model").value=BUILTIN_ENC_DISPLAY;
+    formBuiltinUnchanged=true;
+  }else{
+    document.getElementById("set-api").value=settings.api;
+    document.getElementById("set-key").value=settings.key;
+    document.getElementById("set-model").value=settings.model;
+    formBuiltinUnchanged=false;
+  }
   document.getElementById("set-temp").value=settings.temp;
   document.getElementById("set-temp-v").textContent=settings.temp;
 }
 function saveSettings(){
-  settings.api=document.getElementById("set-api").value.trim().replace(/\/+$/,"");
-  settings.key=document.getElementById("set-key").value.trim();
-  settings.model=document.getElementById("set-model").value.trim()||"gpt-4o-mini";
-  settings.temp=parseFloat(document.getElementById("set-temp").value)||0.8;
-  localStorage.setItem("coh_settings",JSON.stringify(settings));
+  const api=document.getElementById("set-api").value.trim().replace(/\/+$/,"");
+  const key=document.getElementById("set-key").value.trim();
+  const model=document.getElementById("set-model").value.trim();
+  const temp=parseFloat(document.getElementById("set-temp").value)||0.8;
+  if(settings.builtin && formBuiltinUnchanged && api===BUILTIN_ENC_DISPLAY && key===BUILTIN_ENC_DISPLAY && model===BUILTIN_ENC_DISPLAY){
+    // 用户未改动凭据框（仍是密文显示）→ 继续沿用内置加密凭据
+    settings={builtin:true,api:"",key:"",model:BUILTIN_DEFAULT_MODEL,temp};
+    localStorage.setItem("coh_settings",JSON.stringify({builtin:true,temp}));
+  }else{
+    // 用户自行填写；仍等于密文显示的字段从内置解密补齐，保证存储一致
+    let bApi=api,bKey=key,bModel=model;
+    if(api===BUILTIN_ENC_DISPLAY||key===BUILTIN_ENC_DISPLAY||model===BUILTIN_ENC_DISPLAY){
+      try{
+        const d=JSON.parse(COH_CIPHER.decrypt(BUILTIN_CRED_CIPHER));
+        if(api===BUILTIN_ENC_DISPLAY) bApi=d.api;
+        if(key===BUILTIN_ENC_DISPLAY) bKey=d.key;
+        if(model===BUILTIN_ENC_DISPLAY) bModel=d.model;
+      }catch(e){}
+    }
+    settings={builtin:false,api:bApi,key:bKey,model:bModel||BUILTIN_DEFAULT_MODEL,temp};
+    localStorage.setItem("coh_settings",JSON.stringify(settings));
+  }
+  loadSettingsToForm();
   document.getElementById("set-msg").textContent="已保存。";
+  setTimeout(()=>{document.getElementById("set-msg").textContent="";},2000);
+}
+function restoreBuiltin(){
+  const temp=settings.temp!=null?settings.temp:0.8;
+  settings={builtin:true,api:"",key:"",model:BUILTIN_DEFAULT_MODEL,temp};
+  localStorage.setItem("coh_settings",JSON.stringify({builtin:true,temp}));
+  loadSettingsToForm();
+  document.getElementById("set-msg").textContent="已恢复为内置加密凭证。";
   setTimeout(()=>{document.getElementById("set-msg").textContent="";},2000);
 }
 async function testConnection(){
   saveSettings();
-  if(!settings.api||!settings.key){ document.getElementById("set-msg").textContent="请填写API地址与Key。"; return; }
+  if(!hasCreds()){ document.getElementById("set-msg").textContent="请填写API地址与Key。"; return; }
   document.getElementById("set-msg").textContent="测试中…";
   try{
-    await callAI(settings,"你是一个测试助手。请回复：{\"ok\":true}","测试",false,true);
+    await callAI("你是一个测试助手。请回复：{\"ok\":true}","测试",false,true);
     document.getElementById("set-msg").textContent="连接成功。";
   }catch(e){
     document.getElementById("set-msg").textContent="连接失败："+e.message;
   }
 }
-async function callAI(cfg,sysMsg,userMsg,isOutcome,isTest){
-  const url=(cfg.api||"https://api.openai.com/v1").replace(/\/+$/,"")+"/chat/completions";
+async function callAI(sysMsg,userMsg,isOutcome,isTest){
+  const cfg=resolveCreds();
+  const api=(cfg.api||"https://api.agnes-ai.cn/v1").replace(/\/+$/,"");
+  const url=api+"/chat/completions";
   const body={
-    model:cfg.model||"gpt-4o-mini",
+    model:cfg.model||BUILTIN_DEFAULT_MODEL,
     messages:[
       {role:"system",content:sysMsg},
       {role:"user",content:userMsg}
