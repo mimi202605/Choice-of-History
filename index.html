@@ -194,6 +194,7 @@
 
   <!-- Main Menu -->
   <section id="screen-menu" class="screen">
+    <div id="data-warn" style="display:none;margin:0 auto 10px;max-width:520px;border:1px solid var(--red);color:var(--red);background:rgba(139,58,58,.08);padding:8px 12px;border-radius:4px;font-size:13px;"></div>
     <div class="menu-wrap">
       <div class="title-big">抉择千秋</div>
       <div class="subtitle">皇帝模拟 · 月度抉择 · 历史分支</div>
@@ -969,18 +970,54 @@ const CRISIS_FALLBACK = [
 ];
 
 // 科技阻力事件（核心创新的真实落地）：科技远超时代时触发，含分支选项与真实数值后果
-const TECH_RESIST_EVENT = {
-  title:"奇技淫巧之议",
-  description:"陛下锐意新法，科技远超世代。朝中老臣联衔上疏，言『奇技淫巧，乱祖制、失民心、启纷更』，请罢新器、逐异术。言路汹汹，陛下需定夺。",
-  historicalChoice:-1,
-  choices:[
-    "严斥上书，益推新法，以威权压众议",
-    "稍敛锋芒，留中不下，徐图而进",
-    "召儒臣廷辩，折中以行新制",
-    "尽罢新器以安人心，复祖制",
-    "借新法之名行聚敛，充国库以固本"
-  ]
-};
+// 轻量情境化：按朝代提供不同措辞变体（P2-3.1），避免单一通用模板
+const TECH_RESIST_EVENTS = [
+  { // 通用/早期
+    title:"奇技淫巧之议",
+    description:"陛下锐意新法，科技远超世代。朝中老臣联衔上疏，言『奇技淫巧，乱祖制、失民心、启纷更』，请罢新器、逐异术。言路汹汹，陛下需定夺。",
+    historicalChoice:-1,
+    choices:[
+      "严斥上书，益推新法，以威权压众议",
+      "稍敛锋芒，留中不下，徐图而进",
+      "召儒臣廷辩，折中以行新制",
+      "尽罢新器以安人心，复祖制",
+      "借新法之名行聚敛，充国库以固本"
+    ]
+  },
+  { // 宋明理学语境
+    title:"新学乱经之辩",
+    description:"陛下崇信格物新术，器用之巧远逾古制。台谏儒臣交章论劾，谓『舍经术而趋功利，坏人心、轻名教』，乞诛异端、正学术。清议大哗，陛下需定夺。",
+    historicalChoice:-1,
+    choices:[
+      "下诏申明新学，以君权压台谏",
+      "存新学而抑其锋，不废经术",
+      "开经筵集议，折衷新旧",
+      "尽黜新学以靖清议，崇程朱",
+      "假新学理财，充内帑而固权"
+    ]
+  },
+  { // 清中叶务实语境
+    title:"用夷变夏之嫌",
+    description:"陛下采西国奇器、新法，船炮机巧渐入中土。廷臣哗然，奏称『以夷变夏，伤国体、启觊觎』，请禁其器、绝其术。满汉议论相激，陛下需定夺。",
+    historicalChoice:-1,
+    choices:[
+      "力排众议，坚持采办新器",
+      "暗中推行，不张其声",
+      "设总理衙门，统筹中西",
+      "尽焚新器以塞清议，守祖训",
+      "借新法筹饷，厚兵力以自固"
+    ]
+  }
+];
+// 按朝代稳定选取一套阻力文案（同一皇帝每次触发文案一致）
+function pickTechResistEvent(emperor){
+  const dyn = (emperor.dynasty||"");
+  let idx=0;
+  if(dyn==="宋"||dyn==="明"||dyn==="元") idx=1;
+  else if(dyn==="清") idx=2;
+  else idx=0;
+  return TECH_RESIST_EVENTS[idx];
+}
 
 function pickFallback(kind){
   const pool = (kind==="crisis") ? CRISIS_FALLBACK : DAILY_FALLBACK;
@@ -1028,18 +1065,28 @@ ${emperor.eraContext}
     { "text": "选项内容（20-40字）", "hint": "选项倾向暗示（10字内，如'进取·冒险'）" }
   ]
 }
-choices 数组必须正好5个。不要输出任何JSON以外的内容。`;
+若要求"为既定选项生成后果"，则顶层仅含 { "outcomes":[ {"outcomeDescription":"后果叙述(史书体,80-150字)","historianComment":"史官评(30-60字)","statChanges":{"treasury":0,"people":0,"military":0,"court":0,"health":0,"tech":0}} ] }（共5项，与既定选项顺序对应）。
+若要求"生成完整事件"，则顶层额外含 eventTitle/eventDescription/choices，并加 "outcomes"（共5项，与 choices 顺序一一对应）。
+各项数值变化范围：常规事件单项 -15~+15，危机事件单项最多 -25~+25。choices 与 outcomes 均必须正好5个。不要输出任何JSON以外的内容。`;
   },
   user(state,eventType,presetEvent){
     const e=state.emperor;
     let s=`【当前时位】\n${e.dynasty}·${state.era} ${fmtYear(state.year)}年 ${cnMonth(state.month)}月\n\n【当前数值】\n国库 ${state.stats.treasury} | 民心 ${state.stats.people} | 军事 ${state.stats.military} | 朝政 ${state.stats.court} | 健康 ${state.stats.health} | 科技 ${state.stats.tech}\n\n【近五月抉择摘要】\n${recentSummary(state)}\n\n【本月事件类型】\n${eventType}\n\n`;
     if(eventType==="历史事件"&&presetEvent){
-      s+=`附预设历史事件「${presetEvent.title}」：${presetEvent.description}\n请在此基础上生成5选项（可参考历史实际走向，但须5选项差异化）。\n`;
-    }else if(eventType==="日常政务"){
-      s+=`请生成一个符合时代与当前局势的日常政务事件+5选项。\n`;
-    }else if(eventType==="数值危机"){
-      const crisis=detectCrisis(state.stats);
-      s+=`围绕「${crisis}」的崩盘危机生成事件+5选项。危机事件后果可较重（单项最多±25）。\n`;
+      // 保留作者考据的 5 个历史选项，仅请 AI 为既定选项生成后果（修复 1.6：AI 模式不再整体重生成选项）
+      s+=`附预设历史事件「${presetEvent.title}」：${presetEvent.description}\n既定五选项（顺序固定，勿改动）：\n`;
+      presetEvent.choices.forEach((c,i)=>{ s+=`${i+1}. ${c}\n`; });
+      s+=`请仅为上述5个既定选项分别生成后果，输出JSON：\n{ "outcomes":[ {"outcomeDescription":"","historianComment":"","statChanges":{"treasury":0,"people":0,"military":0,"court":0,"health":0,"tech":0}}, ...共5项 ] }\n`;
+    }else{
+      // 日常/危机：一次性返回 事件 + 5选项 + 5后果（合并调用，消除第二次网络等待）
+      let crisisHint="";
+      if(eventType==="数值危机"){
+        const crisis=detectCrisis(state.stats);
+        crisisHint=`围绕「${crisis}」的崩盘危机生成事件+5选项，后果可较重（单项最多±25）。`;
+      }else{
+        crisisHint=`请生成一个符合时代与当前局势的日常政务事件+5选项。`;
+      }
+      s+=`${crisisHint}\n并为每个选项预生成后果（含后果叙述、史官评、六项数值变化）。\n输出JSON：\n{ "eventTitle":"", "eventDescription":"", "choices":[ {"text":"","hint":""} ], "outcomes":[ {"outcomeDescription":"","historianComment":"","statChanges":{"treasury":0,"people":0,"military":0,"court":0,"health":0,"tech":0}} ] }\nchoices 与 outcomes 均必须正好5个且顺序一一对应。不要输出JSON以外的内容。`;
     }
     s+=`\n请输出JSON。`;
     return s;
@@ -1214,9 +1261,9 @@ function enterMonth(){
       if(hit.id) state.triggeredEvents.push(hit.id);
       else state.triggeredEvents.push(hit.title);
     }else if(shouldTriggerTechResist()){
-      // 科技远超时代 → 触发保守派阻力事件（核心创新的真实落地）
+      // 科技远超时代 → 触发保守派阻力事件（核心创新的真实落地，按朝代情境化）
       eventType="科技阻力";
-      preset=TECH_RESIST_EVENT;
+      preset=pickTechResistEvent(state.emperor);
     }else{
       eventType="日常政务";
     }
@@ -1246,35 +1293,56 @@ function loadEvent(eventType,preset){
     hideLoader();
     return;
   }
-  // 优先尝试AI生成
-  if(aiAvailable()){
-    callAI(PROMPTS.system(state.emperor), PROMPTS.user(state,eventType,preset))
-      .then(json=>{
-        hideLoader();
-        if(json && json.eventTitle && Array.isArray(json.choices) && json.choices.length===5){
-          currentEvent={
-            title:json.eventTitle,
-            description:json.eventDescription,
-            choices:json.choices.map(c=>({text:c.text||"",hint:c.hint||""})),
-            historicalChoice:preset?preset.historicalChoice:-1,
-            source:eventType
-          };
-          if(preset) currentEvent.preset=preset;
-          renderEvent();
-        }else{
-          // 解析失败 → 用预设或后备
-          fallbackEvent(eventType,preset);
-        }
-      })
-      .catch(err=>{
-        hideLoader();
-        toast("AI生成失败，使用预设事件："+err.message);
-        fallbackEvent(eventType,preset);
-      });
-  }else{
+  // 速通模式 / 无 AI：完全跳过事件生成 AI，走本地预设或后备池（真正"秒开"）
+  if(!aiAvailable() || settings.fastMode){
     hideLoader();
     fallbackEvent(eventType,preset);
+    return;
   }
+  // 合并调用：事件 + 5选项 + 5后果 一次返回，消除每月第二次网络等待
+  callAI(PROMPTS.system(state.emperor), PROMPTS.user(state,eventType,preset))
+    .then(json=>{
+      hideLoader();
+      if(!json){ fallbackEvent(eventType,preset); return; }
+      if(preset && eventType==="历史事件"){
+        // 历史预设：保留作者 5 选项，仅用 AI 生成的 outcomes
+        if(Array.isArray(json.outcomes) && json.outcomes.length===5){
+          buildHistoricalEvent(preset, json.outcomes);
+          renderEvent();
+        }else{
+          fallbackEvent(eventType,preset);
+        }
+      }else if(json.eventTitle && Array.isArray(json.choices) && json.choices.length===5){
+        currentEvent={
+          title:json.eventTitle,
+          description:json.eventDescription,
+          choices:json.choices.map(c=>({text:c.text||"",hint:c.hint||""})),
+          outcomes:(json.outcomes||[]).map(o=>o||{}),
+          historicalChoice:-1,
+          source:eventType
+        };
+        renderEvent();
+      }else{
+        fallbackEvent(eventType,preset);
+      }
+    })
+    .catch(err=>{
+      hideLoader();
+      toast("AI生成失败，使用预设事件："+err.message);
+      fallbackEvent(eventType,preset);
+    });
+}
+// 历史预设事件：保留作者编写的 5 个历史选项，仅搭载 AI 生成的各选项后果
+function buildHistoricalEvent(preset, outcomes){
+  currentEvent={
+    title:preset.title,
+    description:preset.description,
+    choices:preset.choices.map(c=>({ text:c, hint:hintFromText(c) })),
+    outcomes:outcomes.map(o=>o||{}),
+    historicalChoice:preset.historicalChoice,
+    source:"历史事件",
+    preset
+  };
 }
 
 function fallbackEvent(eventType,preset){
@@ -1307,14 +1375,14 @@ function fallbackEvent(eventType,preset){
   }
 }
 
-// 预设事件（史实/科技阻力）渲染：倾向标签依据选项真实语义，历史选项标注「史实之择」
+// 预设事件（史实/科技阻力）渲染：决策当场不剧透"史实之择"，仅内部保留 historicalChoice 供终局对照
 function renderPreset(preset,eventType){
   currentEvent={
     title:preset.title,
     description:preset.description,
-    choices:preset.choices.map((c,i)=>({
+    choices:preset.choices.map((c)=>({
       text:c,
-      hint:(i===preset.historicalChoice) ? "史实之择" : hintFromText(c)
+      hint:hintFromText(c)
     })),
     historicalChoice:preset.historicalChoice,
     source:eventType,
@@ -1367,13 +1435,18 @@ function makeChoice(i){
   if(!currentEvent) return;
   currentChoiceIndex=i;
   const choice=currentEvent.choices[i];
-  // 速通模式：跳过 AI 后果生成，直接规则推演，大幅加快节奏
+  // 合并调用已预生成后果 → 直接结算，无需第二次网络等待（节奏优化核心）
+  if(currentEvent.outcomes && currentEvent.outcomes[i] && currentEvent.outcomes[i].outcomeDescription){
+    applyOutcome(currentEvent.outcomes[i], choice);
+    return;
+  }
+  // 速通模式 / 无 AI：跳过后果生成，直接规则推演
   if(!aiAvailable() || settings.fastMode){
     hideLoader();
     fallbackOutcome(choice);
     return;
   }
-  // 调用AI生成后果
+  // 兜底：合并调用未返回后果时，仍可用独立的后果 AI（兼容旧路径）
   showLoader("史官秉笔…","正在判择定果");
   if(hasCreds()){
     callAI(PROMPTS.system(state.emperor), PROMPTS.outcome(state,currentEvent.title,choice.text,choice.hint), true)
@@ -1477,6 +1550,7 @@ function recordHistory(choice,outcomeDesc,comment,sc){
     eventTitle:currentEvent.title,
     choiceIndex:currentChoiceIndex, choiceText:choice.text,
     hint:choice.hint,
+    historicalChoice:(currentEvent && currentEvent.historicalChoice!=null)?currentEvent.historicalChoice:-1,
     outcomeSummary:summary,
     statChanges:Object.assign({},sc)
   });
@@ -1565,13 +1639,19 @@ function endGame(reason){
   }).join("");
   // 关键抉择回顾（最多10个）
   const key=state.history.slice(0,10);
-  document.getElementById("end-decisions").innerHTML=key.length?key.map((h,i)=>
-    `<div style="margin:6px 0;padding:6px 10px;border-left:3px solid var(--dim);">
+  document.getElementById("end-decisions").innerHTML=key.length?key.map((h,i)=>{
+    let histNote="";
+    if(h.historicalChoice!=null && h.historicalChoice>=0){
+      histNote = (h.choiceIndex===h.historicalChoice)
+        ? ` <span style="color:var(--red);font-weight:700;">（契合史实原择）</span>`
+        : ` <span class="muted">（史实原择：第${cnNum(h.historicalChoice)}项）</span>`;
+    }
+    return `<div style="margin:6px 0;padding:6px 10px;border-left:3px solid var(--dim);">
       <b>${fmtYear(h.year)}年${cnMonth(h.month)}</b> · ${h.eventTitle}<br>
-      <span class="muted">选「${escapeHtml(h.choiceText)}」（${escapeHtml(h.hint||"")}）</span><br>
+      <span class="muted">选「${escapeHtml(h.choiceText)}」${histNote}</span><br>
       <span style="font-size:13px;">${escapeHtml(h.outcomeSummary)}</span>
-    </div>`
-  ).join("") : '<p class="muted">无重大抉择记录。</p>';
+    </div>`;
+  }).join("") : '<p class="muted">无重大抉择记录。</p>';
   // 数值曲线
   drawCurve();
   goto("ending");
@@ -1889,6 +1969,11 @@ bindKeyboard();
 // 异步加载皇帝数据库，完成后隐藏载入画面并显示主菜单
 (async function(){
   await loadEmperorData();
+  // 展示数据加载失败提示（修复 7.3：此前 __cohDataWarn 仅被设置、从未展示）
+  if(window.__cohDataWarn){
+    const w=document.getElementById("data-warn");
+    if(w){ w.textContent="⚠ "+window.__cohDataWarn; w.style.display="block"; }
+  }
   document.getElementById("loader-sub").textContent = "载入完成！";
   setTimeout(() => {
     hideLoader();
