@@ -383,6 +383,7 @@ const DYNASTIES = [
   {id:"song",name:"宋",seal:"宋",emperors:[]},
   {id:"liao",name:"辽",seal:"辽",emperors:[]},
   {id:"jin2",name:"金",seal:"金",emperors:[]},
+  {id:"xixia",name:"西夏",seal:"夏",emperors:[]},
   {id:"yuan",name:"元",seal:"元",emperors:[]},
   {id:"ming",name:"明",seal:"明",emperors:[]},
   {id:"qing",name:"清",seal:"清",emperors:[]},
@@ -847,9 +848,13 @@ async function loadEmperorData(){
   // 从JSON文件加载皇帝数据
   const files = [
     "data/emperors/01-xia-shang-zhou-qin.json",
+    "data/emperors/02-han-xin-sanguo.json",
     "data/emperors/03-jin-nanbeichao-sui.json",
     "data/emperors/04-tang-wudai.json",
-    "data/emperors/05-song-liao-jin-xixia.json"
+    "data/emperors/05-song-liao-jin-xixia.json",
+    "data/emperors/06-yuan.json",
+    "data/emperors/07-ming.json",
+    "data/emperors/08-qing.json"
   ];
 
   for(const file of files){
@@ -877,7 +882,11 @@ async function loadEmperorData(){
   });
 }
 function dynIdByEmperor(e){
-  const map={夏:"xia",商:"shang",周:"zhou",秦:"qin",汉:"han",新:"xin",三国:"three",晋:"jin",南北朝:"nanbei",隋:"sui",唐:"tang",五代十国:"wudai",宋:"song",辽:"liao",金:"jin2",元:"yuan",明:"ming",清:"qing"};
+  const map={夏:"xia",商:"shang",周:"zhou",秦:"qin",汉:"han",新:"xin",三国:"three",晋:"jin",
+    齐:"nanbei",梁:"nanbei",陈:"nanbei",北魏:"nanbei",东魏:"nanbei",西魏:"nanbei",北齐:"nanbei",北周:"nanbei",南北朝:"nanbei",
+    隋:"sui",唐:"tang",
+    后梁:"wudai",后唐:"wudai",后晋:"wudai",后汉:"wudai",后周:"wudai",五代十国:"wudai",
+    宋:"song",辽:"liao",金:"jin2",西夏:"xixia",元:"yuan",明:"ming",清:"qing"};
   return map[e.dynasty]||e.dynasty;
 }
 
