@@ -351,6 +351,7 @@
         <h2 style="font-size:20px;margin-top:14px;">数值曲线</h2>
         <canvas class="stat-curve" id="end-curve" width="800" height="160"></canvas>
       </div>
+      <div id="end-metrics" class="muted" style="margin-top:10px;font-size:13px;"></div>
       <div class="panel" style="background:rgba(255,250,235,.5);">
         <h2 style="font-size:20px;">关键抉择回顾</h2>
         <div id="end-decisions"></div>
@@ -369,6 +370,8 @@
 <!-- 内置皇帝数据库（由 tools/build_data.js 从 data/emperors/*.json 生成）。
      以经典 <script> 注入全局变量，可在 file:// 双击打开时正常加载，规避 fetch 的 CORS 限制。 -->
 <script src="data/emperors/coh_data.js"></script>
+<!-- 凭据配置（7.2 去共享化）：部署期由 tools/gen_config.js 生成，含内置凭据密文与可选 provisionUrl，git 忽略，源码不内嵌任何共享密钥。 -->
+<script src="coh_config.js"></script>
 
 <script>
 "use strict";
@@ -843,7 +846,12 @@ function normalizeEvent(ev){
     description: ev.description,
     choices: ev.choices,
     historicalChoice: ev.historicalChoice == null ? -1 : ev.historicalChoice,
-    historicalOutcome: ev.historicalOutcome || ""
+    historicalOutcome: ev.historicalOutcome || "",
+    tier: ev.tier || "daily",
+    gating: ev.gating || null,
+    branches: ev.branches || null,
+    relationDeltas: ev.relationDeltas || null,
+    isFollowup: !!ev.isFollowup
   };
 }
 
@@ -1088,6 +1096,21 @@ ${emperor.eraContext}
       }
       s+=`${crisisHint}\n并为每个选项预生成后果（含后果叙述、史官评、六项数值变化）。\n输出JSON：\n{ "eventTitle":"", "eventDescription":"", "choices":[ {"text":"","hint":""} ], "outcomes":[ {"outcomeDescription":"","historianComment":"","statChanges":{"treasury":0,"people":0,"military":0,"court":0,"health":0,"tech":0}} ] }\nchoices 与 outcomes 均必须正好5个且顺序一一对应。不要输出JSON以外的内容。`;
     }
+    // 史材锚点约束（1.1）：让 AI 月也锚定真实史实
+    if(state._activeAnchor){
+      s+=`\n【本月史材约束】须围绕以下史实展开：${state._activeAnchor.premise}\n`;
+      const _figs=state._activeAnchor.figures||[];
+      if(_figs.length) s+=`须出现的真实人物：${_figs.join("、")}。\n`;
+      const _kws=state._activeAnchor.keywords||[];
+      if(_kws.length) s+=`可涉及的制度/器物：${_kws.join("、")}。\n`;
+      s+=`不可引入该时代之后的人事物。\n`;
+    }
+    // 朝局关系摘要（2.1）：让事件反映阵营张力
+    const _rel=state.relations||{};
+    const _relKeys=Object.keys(_rel);
+    if(_relKeys.length){
+      s+=`\n【当前朝局关系】`+_relKeys.map(f=>`${f}:${(_rel[f]>0?"+":"")+_rel[f]}`).join("，")+`。事件须反映上述关系的张力。\n`;
+    }
     s+=`\n请输出JSON。`;
     return s;
   },
@@ -1102,12 +1125,14 @@ let state=null;
 let prevScreen="menu";
 let currentEvent=null;      // 当前事件 {title,description,choices,historicalChoice,source}
 let currentChoiceIndex=-1;
-/* ============ 内置加密凭据 ============ */
-// 三项默认凭据以密文存储：源码与运行时均不出现明文。
-// 仅在 callAI 发起请求时由 resolveCreds() 于内存中临时解密，明文不落盘、不显示。
-const BUILTIN_CRED_CIPHER = "nixHFXszoW0pMGijaZX2TTYBgly+RWHpTbBWvBw1KbLIHI+ZVN8Ix21EEGvj3XzlNH7Uq1OQrslFvKXHQpDDBjBiwug0ZivSfv3dJoBXHjfeu1DOSh8Ldo9peNQOjbblqc0sIEm3o8YeNFZIuzmvwF1NHA7kGM5s90wQ6AMuj6VMIQ==";
-const BUILTIN_DEFAULT_MODEL = "agnes-2.5-flash";
-const BUILTIN_ENC_DISPLAY = BUILTIN_CRED_CIPHER; // 设置界面中以密文显示（key 框为 password，更不外露）
+/* ============ 凭据配置（7.2：去共享化） ============ */
+// 凭据不再内嵌于源码，改由外部 coh_config.js 注入（部署期由 tools/gen_config.js 生成，git 忽略）。
+// 两种形态：
+//  A) 自托管/官方内置：coh_config.js 提供 builtinCred（密文，解密算法见 tools/coh_cipher.js）
+//  B) 每用户额度：coh_config.js 提供 provisionUrl，运行时向配置服务换取按设备短期 token
+// 仓库不含任何共享明文密钥；无配置时游戏仍可离线游玩或玩家自填 Key。
+const BUILTIN_DEFAULT_MODEL = (typeof window!=="undefined" && window.COH_CONFIG && window.COH_CONFIG.model) || "agnes-2.5-flash";
+const COH_ENC_MASK = "（已配置内置加密凭据）"; // 设置界面以掩码显示，不暴露密文
 let formBuiltinUnchanged = true;
 
 // 可逆加密（混淆级，详见 tools/coh_cipher.js）：密钥由分散片段拼接派生 + IV + XOR 流密码 + base64。
@@ -1126,25 +1151,71 @@ const COH_CIPHER = (function () {
   return {encrypt,decrypt};
 })();
 
-// 解析当前生效凭据：内置模式解密密文；用户模式用其明文。明文仅在调用瞬间存在内存。
-function resolveCreds(){
+// 配置下发（B 轨）：按设备指纹换取短期 token，单点故障与隐私风险转移至服务端
+async function ensureProvisionToken(){
+  const CFG = (typeof window!=="undefined" && window.COH_CONFIG) || null;
+  if(!CFG || !CFG.provisionUrl) throw new Error("未配置配置下发服务");
+  let prov = null;
+  try{ prov = JSON.parse(localStorage.getItem("coh_provision")||"null"); }catch(e){}
+  if(prov && prov.token && prov.expiresAt && prov.expiresAt > Date.now()) return prov;
+  const fp = await deviceFingerprint();
+  const ctrl = new AbortController();
+  const t = setTimeout(()=>ctrl.abort(), 15000);
+  let resp;
+  try{
+    resp = await fetch(CFG.provisionUrl, { method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify({ fp }) });
+  }finally{ clearTimeout(t); }
+  if(resp.status===429) throw new Error("免费额度已用尽，请明日再试，或在设置中填入自有 Key");
+  if(!resp.ok) throw new Error("配置下发失败：" + resp.status);
+  const d = await resp.json();
+  prov = { token:d.token, expiresAt: d.expiresAt || (Date.now()+3600e3), quota: d.quota || 0 };
+  try{ localStorage.setItem("coh_provision", JSON.stringify(prov)); }catch(e){}
+  return prov;
+}
+function deviceFingerprint(){
+  try{
+    let fp = localStorage.getItem("coh_fp");
+    if(!fp){ fp = Math.random().toString(36).slice(2) + Date.now().toString(36); localStorage.setItem("coh_fp", fp); }
+    return fp;
+  }catch(e){ return "anon"; }
+}
+// 解析当前生效凭据：优先每用户 token（provisionUrl），否则内置配置凭据（密文在 coh_config.js，不在源码）
+async function resolveCreds(){
+  const CFG = (typeof window!=="undefined" && window.COH_CONFIG) || null;
   if(settings.builtin){
-    try{
-      const d=JSON.parse(COH_CIPHER.decrypt(BUILTIN_CRED_CIPHER));
-      return {api:d.api,key:d.key,model:d.model||BUILTIN_DEFAULT_MODEL,temp:settings.temp!=null?settings.temp:0.8};
-    }catch(e){}
+    if(CFG && CFG.provisionUrl){
+      try{
+        const p = await ensureProvisionToken();
+        return { api:(CFG.apiBase||"https://api.agnes-ai.cn/v1"), key:p.token, model:BUILTIN_DEFAULT_MODEL, temp:settings.temp!=null?settings.temp:0.8 };
+      }catch(e){ /* 回退到内置配置凭据 */ }
+    }
+    if(CFG && CFG.builtinCred){
+      try{
+        const d = JSON.parse(COH_CIPHER.decrypt(CFG.builtinCred));
+        return { api:d.api, key:d.key, model:d.model||BUILTIN_DEFAULT_MODEL, temp:settings.temp!=null?settings.temp:0.8 };
+      }catch(e){}
+    }
+    return null;
   }
-  return {api:settings.api,key:settings.key,model:settings.model||BUILTIN_DEFAULT_MODEL,temp:settings.temp!=null?settings.temp:0.8};
+  return { api:settings.api, key:settings.key, model:settings.model||BUILTIN_DEFAULT_MODEL, temp:settings.temp!=null?settings.temp:0.8 };
 }
 function hasCreds(){
-  if(settings.builtin) return true; // 内置密文恒含凭据
-  return !!(settings.api && settings.key);
+  if(!settings.builtin) return !!(settings.api && settings.key);
+  const CFG = (typeof window!=="undefined" && window.COH_CONFIG) || null;
+  if(!CFG) return false;
+  return !!(CFG.provisionUrl || CFG.builtinCred);
+}
+// 设置界面掩码（无配置时提示玩家自填）
+function cohMask(){
+  const CFG = (typeof window!=="undefined" && window.COH_CONFIG) || null;
+  return (CFG && (CFG.builtinCred || CFG.provisionUrl)) ? COH_ENC_MASK : "（未配置内置凭据，请填入自有 Key）";
 }
 
 let settings=loadSettings();
 let pendingEmperor=null;
 
 function newState(emperor){
+  const rel = Object.assign({}, emperor.initRelations || {宗室:50,士大夫:40,边将:30,商贾:10});
   return {
     emperor,
     era:emperor.era,
@@ -1154,7 +1225,17 @@ function newState(emperor){
     history:[],
     triggeredEvents:[],
     lowStreak:0,
-    highStreak:0
+    highStreak:0,
+    flags:{},                       // 旗标系统（2.1/2.4）：离散叙事状态
+    relations:rel,                 // 阵营好感度（2.1/2.4）：-100~100
+    pressure:0,                    // 中段压强（5.2）：0~1
+    _branchQueue:null,             // 旗标分支串联的待载事件（2.2）
+    usedAnchors:new Set(),         // 已消耗史材锚点 id（1.1，避免重复）
+    monthsPlayed:0,                // 游玩月数统计（指标）
+    historyEventMonths:0,          // 触史月数统计（指标）
+    anchorMonths:0,                // 锚点渗透月数统计（指标）
+    _activeAnchor:null,            // 本月注入的史材锚点（1.1）
+    _midFired:[]                   // 已触发的中段定时炸弹下标（5.2）
   };
 }
 
@@ -1247,28 +1328,107 @@ function renderStats(){
 
 /* ============ 月循环 ============ */
 function enterMonth(){
-  // 1. 判定事件来源
+  state.pressure = computePressure(state);
+  state.monthsPlayed = (state.monthsPlayed||0) + 1;
   let eventType, preset=null;
   const crisis=detectCrisis(state.stats);
   if(crisis){
     eventType="数值危机";
   }else{
-    // 查找命中预设历史事件（按年份，且未触发）
-    const hit=state.emperor.events.find(ev=>ev.year===state.year && !state.triggeredEvents.includes(ev.id||ev.title));
-    if(hit){
-      eventType="历史事件";
-      preset=hit;
-      if(hit.id) state.triggeredEvents.push(hit.id);
-      else state.triggeredEvents.push(hit.title);
-    }else if(shouldTriggerTechResist()){
-      // 科技远超时代 → 触发保守派阻力事件（核心创新的真实落地，按朝代情境化）
-      eventType="科技阻力";
-      preset=pickTechResistEvent(state.emperor);
+    // 1) 门控大事件（旗标/数值/关系满足才出现；major 仅走此路径，年份命中跳过 major）
+    const major=pickGatedMajor();
+    if(major){
+      eventType="历史事件"; preset=major; markTriggered(major);
+      state.historyEventMonths=(state.historyEventMonths||0)+1;
     }else{
-      eventType="日常政务";
+      // 2) 中段定时炸弹（midCrisisAnchors，按进度强制登场，5.2）
+      const bomb=loadMidCrisis();
+      if(bomb){
+        eventType="数值危机"; preset=bomb;
+        state.historyEventMonths=(state.historyEventMonths||0)+1;
+      }else{
+        // 3) 年份命中的普通历史事件（跳过 tier==="major"，major 仅走门控）
+        const hit=state.emperor.events.find(ev=>ev.year===state.year && ev.tier!=="major" && !state.triggeredEvents.includes(ev.id||ev.title));
+        if(hit){
+          eventType="历史事件"; preset=hit; markTriggered(hit);
+          state.historyEventMonths=(state.historyEventMonths||0)+1;
+        }else if(shouldTriggerTechResist()){
+          // 科技远超时代 → 触发保守派阻力事件（核心创新的真实落地，按朝代情境化）
+          eventType="科技阻力"; preset=pickTechResistEvent(state.emperor);
+        }else{
+          eventType="日常政务";
+        }
+      }
     }
   }
+  // 日常/危机 AI 月：注入就近史材锚点，提升真实感（1.1）
+  state._activeAnchor = (eventType==="日常政务") ? pickAnchor() : null;
+  if(state._activeAnchor) state.anchorMonths=(state.anchorMonths||0)+1;
   loadEvent(eventType,preset);
+}
+function markTriggered(ev){
+  if(ev.id) state.triggeredEvents.push(ev.id);
+  else if(ev.title) state.triggeredEvents.push(ev.title);
+}
+// 压强（5.2）：中段隆起的高斯峰 + 数值健康度
+function computePressure(st){
+  const span=Math.max(1,(st.emperor.reignEnd||st.year)-(st.emperor.reignStart||st.year));
+  const prog=(st.year-(st.emperor.reignStart||st.year))/span;
+  const bell=Math.exp(-Math.pow((prog-0.5)/0.18,2));
+  const healthFactor=1-avgStat(st.stats)/100;
+  return Math.max(0,Math.min(1, 0.35*bell + 0.4*healthFactor));
+}
+// 史材锚点（1.1）：选当前年窗内未消耗的就近锚点
+function pickAnchor(){
+  const yr=state.year;
+  const anchors=state.emperor.historicalAnchors||[];
+  const used=state.usedAnchors||(state.usedAnchors=new Set());
+  const cand=anchors.filter(a=>!used.has(a.id) && Math.abs((a.year||yr)-yr)<=2);
+  if(!cand.length) return null;
+  cand.sort((x,y)=>(y.weight||1)-(x.weight||1) || (Math.abs((x.year||yr)-yr)-Math.abs((y.year||yr)-yr)));
+  const a=cand[0];
+  used.add(a.id);
+  return a;
+}
+// 门控（1.2/2.2）：旗标/数值/关系阈值
+function gateOK(g){
+  if(!g) return true;
+  if(g.requiresFlags && !g.requiresFlags.every(f=>state.flags[f])) return false;
+  if(g.forbidFlags && g.forbidFlags.some(f=>state.flags[f])) return false;
+  if(g.minStats) for(const k in g.minStats) if((state.stats[k]||0) < g.minStats[k]) return false;
+  if(g.minRelation) for(const f in g.minRelation) if((state.relations[f]||0) < g.minRelation[f]) return false;
+  if(g.maxRelation) for(const f in g.maxRelation) if((state.relations[f]||0) > g.maxRelation[f]) return false;
+  return true;
+}
+// 门控大事件（1.2/2.2）：仅 tier==="major" 且门控满足且未触发
+function pickGatedMajor(){
+  return state.emperor.events.find(ev=>
+    ev.tier==="major" &&
+    !state.triggeredEvents.includes(ev.id||ev.title) &&
+    gateOK(ev.gating)
+  ) || null;
+}
+// 中段定时炸弹（5.2）：atProgress 达标的未触发锚点
+function loadMidCrisis(){
+  const anchors=state.emperor.midCrisisAnchors||[];
+  if(!anchors.length) return null;
+  const span=Math.max(1,(state.emperor.reignEnd||state.year)-(state.emperor.reignStart||state.year));
+  const prog=(state.year-(state.emperor.reignStart||state.year))/span;
+  const fired=state._midFired||(state._midFired=[]);
+  for(let i=0;i<anchors.length;i++){
+    if(fired.includes(i)) continue;
+    if(prog>=anchors[i].atProgress){
+      fired.push(i);
+      return anchors[i].event;
+    }
+  }
+  return null;
+}
+// 按 id 查找事件（用于旗标分支串联）
+function findEventById(id){
+  if(!id) return null;
+  const list=state.emperor.events||[];
+  return list.find(e=>(e.id||"")===id) || null;
 }
 
 // 是否触发"科技阻力"事件：科技超出时代基线 20 且距上次触发已满一年，避免刷屏
@@ -1341,7 +1501,9 @@ function buildHistoricalEvent(preset, outcomes){
     outcomes:outcomes.map(o=>o||{}),
     historicalChoice:preset.historicalChoice,
     source:"历史事件",
-    preset
+    preset,
+    branches:preset.branches||null,
+    relationDeltas:preset.relationDeltas||null
   };
 }
 
@@ -1386,7 +1548,9 @@ function renderPreset(preset,eventType){
     })),
     historicalChoice:preset.historicalChoice,
     source:eventType,
-    preset
+    preset,
+    branches:preset.branches||null,
+    relationDeltas:preset.relationDeltas||null
   };
   if(eventType==="科技阻力"){ state._techResistLast = state.year*12 + state.month; }
   renderEvent();
@@ -1438,12 +1602,14 @@ function makeChoice(i){
   // 合并调用已预生成后果 → 直接结算，无需第二次网络等待（节奏优化核心）
   if(currentEvent.outcomes && currentEvent.outcomes[i] && currentEvent.outcomes[i].outcomeDescription){
     applyOutcome(currentEvent.outcomes[i], choice);
+    applyEffectsFor(i);
     return;
   }
   // 速通模式 / 无 AI：跳过后果生成，直接规则推演
   if(!aiAvailable() || settings.fastMode){
     hideLoader();
     fallbackOutcome(choice);
+    applyEffectsFor(i);
     return;
   }
   // 兜底：合并调用未返回后果时，仍可用独立的后果 AI（兼容旧路径）
@@ -1454,25 +1620,51 @@ function makeChoice(i){
         hideLoader();
         if(json && json.outcomeDescription){
           applyOutcome(json,choice);
+          applyEffectsFor(i);
         }else{
           fallbackOutcome(choice);
+          applyEffectsFor(i);
         }
       })
       .catch(err=>{
         hideLoader();
         toast("AI后果生成失败，使用规则推演");
         fallbackOutcome(choice);
+        applyEffectsFor(i);
       });
   }else{
     hideLoader();
     fallbackOutcome(choice);
+    applyEffectsFor(i);
+  }
+}
+// 应用当前选项索引对应的旗标分支与关系增量（2.1/2.2/2.4）
+function applyEffectsFor(i){
+  const br = currentEvent.branches ? (currentEvent.branches[i]||null) : null;
+  const rd = currentEvent.relationDeltas ? (currentEvent.relationDeltas[i]||null) : null;
+  applyChoiceEffects(br, rd);
+}
+function applyChoiceEffects(br, rd){
+  if(br){
+    (br.setFlags||[]).forEach(f=>{ state.flags[f]=true; });
+    (br.clearFlags||[]).forEach(f=>{ delete state.flags[f]; });
+    if(br.nextEventId){
+      const ev=findEventById(br.nextEventId);
+      if(ev){ markTriggered(ev); state._branchQueue=ev; }
+    }
+  }
+  if(rd){
+    for(const f in rd){
+      state.relations[f]=clamp((state.relations[f]||0)+(rd[f]||0), -100, 100);
+    }
   }
 }
 
 function applyOutcome(json,choice){
   // 数值校验与硬截断
   const sc=json.statChanges||{};
-  const limit = currentEvent.source==="数值危机"?25:15;
+  const p = state.pressure||0;   // 中段压强上浮危机幅度（5.2）
+  const limit = currentEvent.source==="数值危机" ? Math.round(25 + 8*p) : 15;
   ["treasury","people","military","court","health","tech"].forEach(k=>{
     let v=Math.round(Number(sc[k])||0);
     v=clamp(v,-limit,limit);
@@ -1584,6 +1776,13 @@ function renderOutcome(desc,comment,sc){
 }
 
 function nextMonth(){
+  // 旗标分支串联（2.2）：若上一步决策链出后续事件，直接载入且不推进月份
+  if(state._branchQueue){
+    const ev=state._branchQueue; state._branchQueue=null;
+    state.historyEventMonths=(state.historyEventMonths||0)+1;
+    loadEvent("历史事件", ev);
+    return;
+  }
   // 寿命机制：长期高低位影响健康
   const avg=avgStat(state.stats);
   if(avg>60){ state.highStreak++; state.lowStreak=0; state.stats.health=clamp(state.stats.health+1,0,100); }
@@ -1615,21 +1814,64 @@ function abandonGame(){
 }
 
 /* ============ 结算 ============ */
+/* ============ 多结局（2.1/2.4） ============ */
+const ENDING_RULES = [
+  {id:"unify", title:"一统寰宇", need:{flags:["unify"], minStats:{military:55}}, review:"帝奋武扬威，混一宇内，武功赫赫，开创之君也。"},
+  {id:"reform", title:"鼎革之主", need:{flags:["reform"], maxRelation:{士大夫:-10}}, review:"帝锐志更化，新制屡兴，然物议纷纭，功过难评。"},
+  {id:"long_peace", title:"治世仁主", need:{flags:["long_peace"], minStats:{people:60,court:60}}, review:"帝躬行仁恕，海内乂安，号为治世，百姓安之。"},
+  {id:"usurped", title:"权臣篡立", need:{flags:["usurped"]}, review:"威不逮下，爪牙生心，社稷终移他姓，可胜叹哉。"},
+  {id:"scholar_oppose", title:"清议倾国", need:{flags:["scholar_oppose"], minStats:{court:30}}, review:"帝政失士大夫之望，清议沸腾，朝局离析，国势渐颓。"},
+  {id:"weak", title:"季世之主", need:{flags:["weak"]}, review:"府库空竭，民困政荒，社稷飘摇，岌岌乎危矣。"}
+];
+function matchRule(need, flags, s, r){
+  if(need.flags && !need.flags.every(f=>flags[f])) return false;
+  if(need.minStats) for(const k in need.minStats) if((s[k]||0)<need.minStats[k]) return false;
+  if(need.maxRelation) for(const f in need.maxRelation) if((r[f]||0)>need.maxRelation[f]) return false;
+  if(need.minRelation) for(const f in need.minRelation) if((r[f]||0)<need.minRelation[f]) return false;
+  return true;
+}
+function defaultVerdictByGovAvg(govAvg, reignYears){
+  if(govAvg>=68) return {title:"明君", review:`帝在位${reignYears}载，五维均平，海内殷富，后世仰之。`};
+  if(govAvg>=52) return {title:"庸君", review:`帝在位${reignYears}载，守成无功，亦无大过，史称中主。`};
+  if(govAvg>=36) return {title:"昏君", review:`帝在位${reignYears}载，政荒民散，国势日蹙，识者忧之。`};
+  return {title:"亡国之主", review:`帝在位${reignYears}载，五维俱敝，社稷倾颓，可胜叹哉。`};
+}
+function evalEnding(st){
+  const s=st.stats, r=st.relations||{};
+  // 由终局数值/关系推导"成就旗标"，与玩家累积旗标合并，扩大可达结局
+  const derived={
+    unify: (s.military>=70 && s.treasury>=55),
+    reform: (s.tech>=65),
+    long_peace: (s.people>=65 && s.court>=65),
+    scholar_oppose: ((r["士大夫"]||0) <= -30),
+    usurped: (s.military<=25 && (r["边将"]||0) <= -20),
+    weak: (s.treasury<=20 || s.people<=20)
+  };
+  const flags=Object.assign({}, derived, st.flags||{});
+  for(const rule of ENDING_RULES){
+    if(matchRule(rule.need, flags, s, r)) return {title:rule.title, review:rule.review};
+  }
+  return null;
+}
+
 function endGame(reason){
   // 自动存档清理（保留历史）
   const reignYears = state.year - state.emperor.reignStart + 1;
-  // 终局评级：以"治国五维均值"定档（剔除健康，避免长寿拉高评分），健康/在位单独展示
+  // 终局评级：先按旗标/关系/数值综合判定多结局（2.1/2.4），无匹配则退回五维均值定档
   const govKeys=["treasury","people","military","court","tech"];
   const govAvg = govKeys.reduce((a,k)=>a+state.stats[k],0)/govKeys.length;
-  let verdict,review;
-  if(govAvg>=68){ verdict="明君"; review=`帝在位${reignYears}载，五维均平，海内殷富，后世仰之。`; }
-  else if(govAvg>=52){ verdict="庸君"; review=`帝在位${reignYears}载，守成无功，亦无大过，史称中主。`; }
-  else if(govAvg>=36){ verdict="昏君"; review=`帝在位${reignYears}载，政荒民散，国势日蹙，识者忧之。`; }
-  else { verdict="亡国之主"; review=`帝在位${reignYears}载，五维俱敝，社稷倾颓，可胜叹哉。`; }
+  const ending = evalEnding(state) || defaultVerdictByGovAvg(govAvg, reignYears);
+  const verdict=ending.title, review=ending.review;
   document.getElementById("end-title").textContent=reason==="弃位"?"逊位归藩":"龙驭宾天";
   document.getElementById("end-meta").textContent=`${state.emperor.name}（${state.emperor.templeName}）· 在位 ${reignYears} 载 · 龙体 ${state.stats.health}`;
   document.getElementById("end-verdict").textContent=verdict;
   document.getElementById("end-review").textContent=review;
+  // 体验指标（1.1/2.1）：触史率、史材渗透、旗标与关系规模
+  const mp=Math.max(1, state.monthsPlayed||1);
+  const hr=((state.historyEventMonths||0)/mp*100).toFixed(1);
+  const ac=((state.anchorMonths||0)/mp*100).toFixed(1);
+  const mEl=document.getElementById("end-metrics");
+  if(mEl) mEl.textContent=`触史率 ${hr}% · 史材渗透 ${ac}% · 旗标 ${Object.keys(state.flags||{}).length} 项 · 关系 ${Object.keys(state.relations||{}).length} 项`;
   // 终局数值
   const items=[["国库","treasury"],["民心","people"],["军事","military"],["朝政","court"],["健康","health"],["科技","tech"]];
   document.getElementById("end-stats").innerHTML=items.map(([lbl,k])=>{
@@ -1714,11 +1956,12 @@ function loadSettings(){
   }catch(e){ return {builtin:true,api:"",key:"",model:BUILTIN_DEFAULT_MODEL,temp:0.8,fastMode:false,offlineMode:false}; }
 }
 function loadSettingsToForm(){
+  const m=cohMask();
   if(settings.builtin){
-    // 内置模式：三项均以密文显示，明文不暴露
-    document.getElementById("set-api").value=BUILTIN_ENC_DISPLAY;
-    document.getElementById("set-key").value=BUILTIN_ENC_DISPLAY;
-    document.getElementById("set-model").value=BUILTIN_ENC_DISPLAY;
+    // 内置模式：以掩码显示，明文不暴露
+    document.getElementById("set-api").value=m;
+    document.getElementById("set-key").value=m;
+    document.getElementById("set-model").value=m;
     formBuiltinUnchanged=true;
   }else{
     document.getElementById("set-api").value=settings.api;
@@ -1732,28 +1975,20 @@ function loadSettingsToForm(){
   document.getElementById("set-offline").checked=!!settings.offlineMode;
 }
 function saveSettings(){
+  const m=cohMask();
   const api=document.getElementById("set-api").value.trim().replace(/\/+$/,"");
   const key=document.getElementById("set-key").value.trim();
   const model=document.getElementById("set-model").value.trim();
   const temp=parseFloat(document.getElementById("set-temp").value)||0.8;
   const fastMode=document.getElementById("set-fast").checked;
   const offlineMode=document.getElementById("set-offline").checked;
-  if(settings.builtin && formBuiltinUnchanged && api===BUILTIN_ENC_DISPLAY && key===BUILTIN_ENC_DISPLAY && model===BUILTIN_ENC_DISPLAY){
-    // 用户未改动凭据框（仍是密文显示）→ 继续沿用内置加密凭据
+  if(settings.builtin && formBuiltinUnchanged && api===m && key===m && model===m){
+    // 用户未改动凭据框（仍是掩码）→ 继续沿用内置配置凭据
     settings={builtin:true,api:"",key:"",model:BUILTIN_DEFAULT_MODEL,temp,fastMode,offlineMode};
     localStorage.setItem("coh_settings",JSON.stringify({builtin:true,temp,fastMode,offlineMode}));
   }else{
-    // 用户自行填写；仍等于密文显示的字段从内置解密补齐，保证存储一致
-    let bApi=api,bKey=key,bModel=model;
-    if(api===BUILTIN_ENC_DISPLAY||key===BUILTIN_ENC_DISPLAY||model===BUILTIN_ENC_DISPLAY){
-      try{
-        const d=JSON.parse(COH_CIPHER.decrypt(BUILTIN_CRED_CIPHER));
-        if(api===BUILTIN_ENC_DISPLAY) bApi=d.api;
-        if(key===BUILTIN_ENC_DISPLAY) bKey=d.key;
-        if(model===BUILTIN_ENC_DISPLAY) bModel=d.model;
-      }catch(e){}
-    }
-    settings={builtin:false,api:bApi,key:bKey,model:bModel||BUILTIN_DEFAULT_MODEL,temp,fastMode,offlineMode};
+    // 用户自行填写 → 自托管模式
+    settings={builtin:false,api:api,key:key,model:model||BUILTIN_DEFAULT_MODEL,temp,fastMode,offlineMode};
     localStorage.setItem("coh_settings",JSON.stringify(settings));
   }
   loadSettingsToForm();
@@ -1781,7 +2016,11 @@ async function testConnection(){
   }
 }
 async function callAI(sysMsg,userMsg,isOutcome,isTest){
-  const cfg=resolveCreds();
+  const cfg=await resolveCreds();
+  if(!cfg || !cfg.key){
+    if(isTest) throw new Error("无可用凭据");
+    throw new Error("无可用凭据，请填入自有 Key 或检查配置");
+  }
   const api=(cfg.api||"https://api.agnes-ai.cn/v1").replace(/\/+$/,"");
   const url=api+"/chat/completions";
   const body={
@@ -1808,6 +2047,9 @@ async function callAI(sysMsg,userMsg,isOutcome,isTest){
         signal:ctrl.signal
       });
       clearTimeout(t);
+      if(resp.status===429){
+        throw new Error("请求受限（额度/频率），请稍后或填写自有 Key");
+      }
       if(!resp.ok){
         const txt=await resp.text().catch(()=>"");
         throw new Error("HTTP "+resp.status+(txt?(" "+txt.slice(0,120)):""));
@@ -1875,6 +2117,9 @@ function doSave(slot){
     stats:state.stats, history:state.history,
     triggeredEvents:state.triggeredEvents,
     lowStreak:state.lowStreak, highStreak:state.highStreak,
+    flags:state.flags, relations:state.relations, pressure:state.pressure,
+    usedAnchors:[...(state.usedAnchors||[])], monthsPlayed:state.monthsPlayed||0,
+    historyEventMonths:state.historyEventMonths||0, anchorMonths:state.anchorMonths||0,
     timestamp:Math.floor(Date.now()/1000)
   };
   localStorage.setItem(slot,JSON.stringify(data));
@@ -1890,6 +2135,9 @@ function autoSave(){
     stats:state.stats, history:state.history,
     triggeredEvents:state.triggeredEvents,
     lowStreak:state.lowStreak, highStreak:state.highStreak,
+    flags:state.flags, relations:state.relations, pressure:state.pressure,
+    usedAnchors:[...(state.usedAnchors||[])], monthsPlayed:state.monthsPlayed||0,
+    historyEventMonths:state.historyEventMonths||0, anchorMonths:state.anchorMonths||0,
     timestamp:Math.floor(Date.now()/1000)
   };
   localStorage.setItem("coh_save_auto",JSON.stringify(data));
@@ -1903,7 +2151,16 @@ function doLoad(slot){
     emperor:emp, era:data.era, year:data.year, month:data.month,
     stats:data.stats, history:data.history||[],
     triggeredEvents:data.triggeredEvents||[],
-    lowStreak:data.lowStreak||0, highStreak:data.highStreak||0
+    lowStreak:data.lowStreak||0, highStreak:data.highStreak||0,
+    flags:data.flags||{},
+    relations:data.relations||Object.assign({},emp.initRelations||{宗室:50,士大夫:40,边将:30,商贾:10}),
+    pressure:data.pressure||0,
+    _branchQueue:null,
+    usedAnchors:new Set(data.usedAnchors||[]),
+    monthsPlayed:data.monthsPlayed||0,
+    historyEventMonths:data.historyEventMonths||0,
+    anchorMonths:data.anchorMonths||0,
+    _activeAnchor:null, _midFired:data._midFired||[]
   };
   currentEvent=null; currentChoiceIndex=-1;
   toast("已读档");

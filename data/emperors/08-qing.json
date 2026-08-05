@@ -37,7 +37,21 @@
             "会盟蒙古，联喀尔喀以抗明师",
             "迁都界藩，据险养锐徐图辽东"
           ],
-          "historicalOutcome": "努尔哈赤建后金称天命汗，八旗体制自此确立"
+          "historicalOutcome": "努尔哈赤建后金称天命汗，八旗体制自此确立",
+          "id": "qing_taizu_e0",
+          "relationDeltas": [
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            }
+          ]
         },
         {
           "year": 1618,
@@ -52,7 +66,27 @@
             "联蒙古科尔沁，夹攻辽东边镇",
             "稳据建州，待明内乱而后动"
           ],
-          "historicalOutcome": "后金以七大恨兴师，连陷抚顺清河，明辽东告急"
+          "historicalOutcome": "后金以七大恨兴师，连陷抚顺清河，明辽东告急",
+          "id": "qing_taizu_e1",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            }
+          ]
         },
         {
           "year": 1619,
@@ -67,7 +101,63 @@
             "诱敌深入，设伏于山谷隘口",
             "遣使议和，缓兵以整饬八旗"
           ],
-          "historicalOutcome": "后金萨尔浒大捷，明丧师失策，辽东自此被动"
+          "historicalOutcome": "后金萨尔浒大捷，明丧师失策，辽东自此被动",
+          "id": "qing_taizu_e2",
+          "relationDeltas": [
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {
+              "士大夫": -3,
+              "商贾": 1
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            }
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_qing_taizu_e2_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_taizu_e2_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_taizu_e2_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_taizu_e2_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_taizu_e2_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 1621,
@@ -82,7 +172,60 @@
             "留兵守城，主力直趋广宁要冲",
             "暂息兵戈，迁民实内以储粮秣"
           ],
-          "historicalOutcome": "后金连下沈辽，尽有辽河以东，明退保宁远据守"
+          "historicalOutcome": "后金连下沈辽，尽有辽河以东，明退保宁远据守",
+          "id": "qing_taizu_e3",
+          "relationDeltas": [
+            {},
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_qing_taizu_e3_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "qing_taizu_e3_fb"
+            },
+            {
+              "setFlags": [
+                "did_qing_taizu_e3_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_taizu_e3_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_taizu_e3_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_taizu_e3_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 1625,
@@ -97,7 +240,21 @@
             "徙民实边，广储粮械以备大举",
             "分旗驻防，固盛京而控全辽"
           ],
-          "historicalOutcome": "后金定都盛京，据辽河形胜，奠定入关之基业"
+          "historicalOutcome": "后金定都盛京，据辽河形胜，奠定入关之基业",
+          "id": "qing_taizu_e4",
+          "relationDeltas": [
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {}
+          ]
         },
         {
           "year": 1626,
@@ -112,7 +269,157 @@
             "留兵缀城，分兵略取宁远旁邑",
             "暂退兵养锐，来春再图辽西"
           ],
-          "historicalOutcome": "宁远受挫，努尔哈赤愤疾而崩，皇太极继汗位"
+          "historicalOutcome": "宁远受挫，努尔哈赤愤疾而崩，皇太极继汗位",
+          "id": "qing_taizu_e5",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            }
+          ]
+        },
+        {
+          "id": "qing_taizu_e3_fb",
+          "year": null,
+          "month": null,
+          "title": "取沈阳辽阳·余波",
+          "description": "「取沈阳辽阳」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 60,
+        "士大夫": 35,
+        "边将": 30,
+        "商贾": 10
+      },
+      "materialTarget": 6,
+      "historicalAnchors": [
+        {
+          "id": "qing_taizu_anc0",
+          "year": 1616,
+          "month": null,
+          "topic": "赫图阿拉称汗",
+          "figures": [],
+          "keywords": [],
+          "premise": "万历四十四年正月，努尔哈赤于赫图阿拉祭天登汗位，国号大金，建元天命，设理政听讼五大臣与十扎尔固齐，八旗劲旅初成。诸贝勒叩",
+          "weight": 2
+        },
+        {
+          "id": "qing_taizu_anc1",
+          "year": 1618,
+          "month": null,
+          "topic": "七大恨誓师",
+          "figures": [],
+          "keywords": [],
+          "premise": "天命三年，努尔哈赤以「七大恨」告天，历数明朝杀祖、拘父、偏袒叶赫之罪，焚香誓师伐明。先破抚顺，明将李永芳降，继陷清河，辽",
+          "weight": 2
+        },
+        {
+          "id": "qing_taizu_anc2",
+          "year": 1619,
+          "month": null,
+          "topic": "萨尔浒之战",
+          "figures": [],
+          "keywords": [],
+          "premise": "明经略杨镐誓师四路出关，分进合击赫图阿拉。努尔哈赤集中兵力，凭「凭尔几路来，我只一路去」之策，逐一击破杜松、马林、刘綎诸",
+          "weight": 2
+        },
+        {
+          "id": "qing_taizu_anc3",
+          "year": 1621,
+          "month": null,
+          "topic": "取沈阳辽阳",
+          "figures": [],
+          "keywords": [],
+          "premise": "天命六年，努尔哈赤乘萨尔浒余威，水陆并进围沈阳，明总兵贺世贤战死，城陷。旋挥师南下取辽阳，辽东经略袁应泰自焚，辽河以东大",
+          "weight": 2
+        },
+        {
+          "id": "qing_taizu_anc4",
+          "year": 1625,
+          "month": null,
+          "topic": "迁都沈阳",
+          "figures": [],
+          "keywords": [],
+          "premise": "天命十年，努尔哈赤以辽阳「形胜不惬」为由，力排众议迁都沈阳，称盛京。筑城浚池，营宫殿，据形胜以临明边，八旗部署更趋严密，",
+          "weight": 2
+        },
+        {
+          "id": "qing_taizu_anc5",
+          "year": 1626,
+          "month": null,
+          "topic": "宁远兵败",
+          "figures": [],
+          "keywords": [],
+          "premise": "天命十一年，努尔哈赤率十三万大军围宁远，袁崇焕凭坚城、红夷大炮拒守，后金伤亡惨重，努尔哈赤愤懑染病，旋师。八月病逝于叆鸡",
+          "weight": 2
+        },
+        {
+          "id": "qing_taizu_bg0",
+          "year": 1619,
+          "month": null,
+          "topic": "背景·建州左卫指挥使塔克世",
+          "figures": [],
+          "keywords": [],
+          "premise": "建州左卫指挥使塔克世之子，少年流落辽东，曾充明朝边将守备",
+          "weight": 1
+        },
+        {
+          "id": "qing_taizu_bg1",
+          "year": 1623,
+          "month": null,
+          "topic": "背景·万历十一年以十三副遗",
+          "figures": [],
+          "keywords": [],
+          "premise": "万历十一年以十三副遗甲起兵，先并建州五部，继服海西、野人诸部，统一女真",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "努尔哈赤中年之厄",
+            "description": "中叶，努尔哈赤御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -149,7 +456,18 @@
             "掠地而还，不攻坚城以全师旅",
             "联朝鲜，东线牵制明之辽东"
           ],
-          "historicalOutcome": "清军兵临北京，崇祯中计杀袁崇焕，明边备崩坏"
+          "historicalOutcome": "清军兵临北京，崇祯中计杀袁崇焕，明边备崩坏",
+          "id": "qing_taizong_e0",
+          "relationDeltas": [
+            {},
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {},
+            {},
+            {}
+          ]
         },
         {
           "year": 1636,
@@ -164,7 +482,60 @@
             "定都盛京，营太庙以隆礼制",
             "遣使告明，陈师称雄于关外"
           ],
-          "historicalOutcome": "皇太极称帝改国号为清，建元崇德，与明鼎峙"
+          "historicalOutcome": "皇太极称帝改国号为清，建元崇德，与明鼎峙",
+          "id": "qing_taizong_e1",
+          "relationDeltas": [
+            {
+              "士大夫": -3,
+              "商贾": 1
+            },
+            {},
+            {
+              "士大夫": -3,
+              "商贾": 1
+            },
+            {},
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_qing_taizong_e1_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "qing_taizong_e1_fb"
+            },
+            {
+              "setFlags": [
+                "did_qing_taizong_e1_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_taizong_e1_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_taizong_e1_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_taizong_e1_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 1638,
@@ -179,7 +550,60 @@
             "浅尝辄止，掠毕即出以全兵力",
             "先取关外，稳辽西再图中原"
           ],
-          "historicalOutcome": "清军再入塞，下数十城，明督师卢象昇战死焉"
+          "historicalOutcome": "清军再入塞，下数十城，明督师卢象昇战死焉",
+          "id": "qing_taizong_e2",
+          "relationDeltas": [
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            }
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_qing_taizong_e2_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_taizong_e2_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_taizong_e2_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_taizong_e2_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_taizong_e2_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 1640,
@@ -194,7 +618,21 @@
             "分兵抄后，绝明军归路于宁远",
             "围城打援，歼明关外主力于野"
           ],
-          "historicalOutcome": "松锦大败，洪承畴降清，明辽西防线土崩瓦解"
+          "historicalOutcome": "松锦大败，洪承畴降清，明辽西防线土崩瓦解",
+          "id": "qing_taizong_e3",
+          "relationDeltas": [
+            {},
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {},
+            {}
+          ]
         },
         {
           "year": 1642,
@@ -209,7 +647,15 @@
             "令说降辽将，离散明之边镇",
             "咨以明政，定入主中原之策"
           ],
-          "historicalOutcome": "皇太极招降洪承畴，清得明廷虚实，入关策定"
+          "historicalOutcome": "皇太极招降洪承畴，清得明廷虚实，入关策定",
+          "id": "qing_taizong_e4",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {},
+            {}
+          ]
         },
         {
           "year": 1643,
@@ -224,7 +670,154 @@
             "诸王共议，暂立年长贤王监国",
             "秘不发丧，先定大计而后举哀"
           ],
-          "historicalOutcome": "皇太极猝崩，福临继位多尔衮摄政，清廷待变"
+          "historicalOutcome": "皇太极猝崩，福临继位多尔衮摄政，清廷待变",
+          "id": "qing_taizong_e5",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {},
+            {}
+          ]
+        },
+        {
+          "id": "qing_taizong_e1_fb",
+          "year": null,
+          "month": null,
+          "title": "改国号清称帝·余波",
+          "description": "「改国号清称帝」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 60,
+        "士大夫": 35,
+        "边将": 30,
+        "商贾": 10
+      },
+      "materialTarget": 6,
+      "historicalAnchors": [
+        {
+          "id": "qing_taizong_anc0",
+          "year": 1629,
+          "month": null,
+          "topic": "己巳之变入塞",
+          "figures": [],
+          "keywords": [],
+          "premise": "天聪三年，皇太极避开袁崇焕宁锦防线，借道蒙古，破喜峰口入塞，直薄北京。袁崇焕千里驰援，崇祯中反间计疑其通敌，逮下诏狱。清",
+          "weight": 2
+        },
+        {
+          "id": "qing_taizong_anc1",
+          "year": 1636,
+          "month": null,
+          "topic": "改国号清称帝",
+          "figures": [],
+          "keywords": [],
+          "premise": "天聪十年四月，漠南蒙古十六部尊皇太极为「博格达彻辰汗」，上「宽温仁圣皇帝」尊号。遂祭告天地，改国号后金为清，改元崇德，定",
+          "weight": 2
+        },
+        {
+          "id": "qing_taizong_anc2",
+          "year": 1638,
+          "month": null,
+          "topic": "戊寅之变再入关",
+          "figures": [],
+          "keywords": [],
+          "premise": "崇德三年，皇太极命多尔衮、岳讬分道入塞，破墙子岭、青山口，连陷济南等数十城，俘人口牲畜无算，明督师卢象昇战死巨鹿。清军纵",
+          "weight": 2
+        },
+        {
+          "id": "qing_taizong_anc3",
+          "year": 1640,
+          "month": null,
+          "topic": "松锦之战",
+          "figures": [],
+          "keywords": [],
+          "premise": "崇德五年，皇太极围锦州，明蓟辽总督洪承畴率十三万援师集结宁远。清军掘壕久困，断明粮道。次年明师溃败，承畴被俘降清，祖大寿",
+          "weight": 2
+        },
+        {
+          "id": "qing_taizong_anc4",
+          "year": 1642,
+          "month": null,
+          "topic": "洪承畴之用",
+          "figures": [],
+          "keywords": [],
+          "premise": "洪承畴被俘，初誓死不降，皇太极亲解貂裘赐之，范汉臣礼遇，承畴遂降。清得熟知明廷虚实之宿将，遂定「取燕京必先得中原人心」之",
+          "weight": 2
+        },
+        {
+          "id": "qing_taizong_anc5",
+          "year": 1643,
+          "month": null,
+          "topic": "盛京猝崩",
+          "figures": [],
+          "keywords": [],
+          "premise": "崇德八年八月初九，皇太极无疾端坐而崩，年仅五十二，未及入关而殁。诸王贝勒仓猝议立，豪格与多尔衮相持不下，年仅六岁之福临被",
+          "weight": 2
+        },
+        {
+          "id": "qing_taizong_bg0",
+          "year": 1632,
+          "month": null,
+          "topic": "背景·天命十一年父崩，代善",
+          "figures": [],
+          "keywords": [],
+          "premise": "天命十一年父崩，代善、阿敏、莽古尔泰与皇太极四大贝勒议立，继汗位",
+          "weight": 1
+        },
+        {
+          "id": "qing_taizong_bg1",
+          "year": 1638,
+          "month": null,
+          "topic": "背景·即位削三大贝勒共理之",
+          "figures": [],
+          "keywords": [],
+          "premise": "即位削三大贝勒共理之权，设六部、改文馆为三院，重用汉臣范文程",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "皇太极中年之厄",
+            "description": "中叶，皇太极御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -261,7 +854,18 @@
             "诸王共立，暂设议政会议国事",
             "请孝庄临朝，以太后定储位"
           ],
-          "historicalOutcome": "福临幼冲即位，多尔衮摄政，清廷权归摄政王"
+          "historicalOutcome": "福临幼冲即位，多尔衮摄政，清廷权归摄政王",
+          "id": "qing_shizu_e0",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {
+              "士大夫": -3,
+              "商贾": 1
+            },
+            {}
+          ]
         },
         {
           "year": 1644,
@@ -276,7 +880,60 @@
             "缓称帝号，以明太子为号召",
             "驻兵关外，观中原成败而后动"
           ],
-          "historicalOutcome": "清军入关定鼎北京，福临迁都，南明偏安江南"
+          "historicalOutcome": "清军入关定鼎北京，福临迁都，南明偏安江南",
+          "id": "qing_shizu_e1",
+          "relationDeltas": [
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_qing_shizu_e1_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_shizu_e1_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_shizu_e1_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_shizu_e1_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_shizu_e1_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 1645,
@@ -291,7 +948,27 @@
             "分而治之，先畿辅后及远省",
             "以文教怀柔，渐改汉地旧俗"
           ],
-          "historicalOutcome": "剃发令行，江南剧烈反抗，扬州嘉定遭屠戮亡"
+          "historicalOutcome": "剃发令行，江南剧烈反抗，扬州嘉定遭屠戮亡",
+          "id": "qing_shizu_e2",
+          "relationDeltas": [
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {
+              "士大夫": -3,
+              "商贾": 1
+            }
+          ]
         },
         {
           "year": 1646,
@@ -306,7 +983,27 @@
             "行迁海令，绝郑成功接济之路",
             "缓师西南，先靖东南再图云贵"
           ],
-          "historicalOutcome": "清军底定江南，南明诸政权相继覆灭，唯郑氏据海"
+          "historicalOutcome": "清军底定江南，南明诸政权相继覆灭，唯郑氏据海",
+          "id": "qing_shizu_e3",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            }
+          ]
         },
         {
           "year": 1650,
@@ -321,7 +1018,60 @@
             "复豪格爵，以两黄旗制正白旗",
             "保留旧制，徐图更易其政于后"
           ],
-          "historicalOutcome": "多尔衮死，顺治亲政追其罪，皇权始归少年天子"
+          "historicalOutcome": "多尔衮死，顺治亲政追其罪，皇权始归少年天子",
+          "id": "qing_shizu_e4",
+          "relationDeltas": [
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            }
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_qing_shizu_e4_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "qing_shizu_e4_fb"
+            },
+            {
+              "setFlags": [
+                "did_qing_shizu_e4_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_shizu_e4_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_shizu_e4_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_shizu_e4_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 1661,
@@ -336,7 +1086,157 @@
             "托孤济尔哈朗，以外戚摄政",
             "遗诏罪己，以安汉官与天下心"
           ],
-          "historicalOutcome": "顺治染天花崩，玄烨嗣位，四大臣辅政开康熙朝"
+          "historicalOutcome": "顺治染天花崩，玄烨嗣位，四大臣辅政开康熙朝",
+          "id": "qing_shizu_e5",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
+        },
+        {
+          "id": "qing_shizu_e4_fb",
+          "year": null,
+          "month": null,
+          "title": "多尔衮死后亲政·余波",
+          "description": "「多尔衮死后亲政」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 60,
+        "士大夫": 35,
+        "边将": 30,
+        "商贾": 10
+      },
+      "materialTarget": 7,
+      "historicalAnchors": [
+        {
+          "id": "qing_shizu_anc0",
+          "year": 1643,
+          "month": null,
+          "topic": "争位继统",
+          "figures": [],
+          "keywords": [],
+          "premise": "皇太极无诏而崩，两黄旗拥豪格，正白旗拥多尔衮，几至兵戎相见。孝庄周旋其间，诸王会盟折中立福临，多尔衮与济尔哈朗同辅政。六",
+          "weight": 2
+        },
+        {
+          "id": "qing_shizu_anc1",
+          "year": 1644,
+          "month": null,
+          "topic": "清军入关迁都",
+          "figures": [],
+          "keywords": [],
+          "premise": "李自成破北京、崇祯自缢，吴三桂引清军入关，一片石大败大顺军。多尔衮迎福临入京，十月初一颁诏定鼎燕京，祭告天地，宣称「代明",
+          "weight": 2
+        },
+        {
+          "id": "qing_shizu_anc2",
+          "year": 1645,
+          "month": null,
+          "topic": "剃发易服令",
+          "figures": [],
+          "keywords": [],
+          "premise": "多尔衮下「留头不留发，留发不留头」之令，强令汉民剃发易服，江南惨遭屠戮，嘉定三屠、扬州十日，血流成河。清廷以衣冠之别立威",
+          "weight": 2
+        },
+        {
+          "id": "qing_shizu_anc3",
+          "year": 1646,
+          "month": null,
+          "topic": "底定江南",
+          "figures": [],
+          "keywords": [],
+          "premise": "清军南下，破扬州、取南京，弘光被俘；旋灭隆武、绍武，鲁监国走海。多尔衮倚洪承畴经略江南，厉行迁海，郑成功据厦门抗清。明宗",
+          "weight": 2
+        },
+        {
+          "id": "qing_shizu_anc4",
+          "year": 1650,
+          "month": null,
+          "topic": "多尔衮死后亲政",
+          "figures": [],
+          "keywords": [],
+          "premise": "顺治七年多尔衮出猎坠马而死，顺治帝亲收其权，追夺尊号、籍没家产、列罪示天下。尽罢睿王府旧臣，倚正黄旗亲信，始真正亲政，然",
+          "weight": 2
+        },
+        {
+          "id": "qing_shizu_anc5",
+          "year": 1661,
+          "month": null,
+          "topic": "天花骤崩",
+          "figures": [],
+          "keywords": [],
+          "premise": "顺治后期佞佛怠政，宠董鄂妃，其殁后益消沉。顺治十八年春染天花，立遗诏以第三子玄烨嗣位，命索尼等四大臣辅政，遂崩，年仅二十",
+          "weight": 2
+        },
+        {
+          "id": "qing_shizu_bg0",
+          "year": 1649,
+          "month": null,
+          "topic": "背景·崇德八年皇太极暴崩，",
+          "figures": [],
+          "keywords": [],
+          "premise": "崇德八年皇太极暴崩，宗室争立，睿亲王多尔衮与肃亲王豪格相持，遂妥协立六岁福临，多尔衮与郑亲王济尔哈朗辅政，旋多尔衮独揽大",
+          "weight": 1
+        },
+        {
+          "id": "qing_shizu_bg1",
+          "year": 1655,
+          "month": null,
+          "topic": "背景·亲政后诛多尔衮余党，",
+          "figures": [],
+          "keywords": [],
+          "premise": "亲政后诛多尔衮余党，重用汉官，然沉湎佛事，二十四岁染天花骤逝",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "福临中年之厄",
+            "description": "中叶，福临御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -373,7 +1273,63 @@
             "尊太上皇意，政事仍请训而行",
             "密结近臣，阴图翦除和珅党羽"
           ],
-          "historicalOutcome": "颙琰即位而乾隆训政，白莲教起，新君隐忍待变"
+          "historicalOutcome": "颙琰即位而乾隆训政，白莲教起，新君隐忍待变",
+          "id": "qing_renzong_e0",
+          "relationDeltas": [
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_qing_renzong_e0_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "qing_renzong_e0_fb"
+            },
+            {
+              "setFlags": [
+                "did_qing_renzong_e0_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_renzong_e0_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_renzong_e0_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_renzong_e0_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 1799,
@@ -388,7 +1344,24 @@
             "抄没家产充公，以实国库之用",
             "借其罪诏天下，整饬官常肃纪"
           ],
-          "historicalOutcome": "嘉庆诛和珅籍没巨产，然吏治如故，颓势难挽"
+          "historicalOutcome": "嘉庆诛和珅籍没巨产，然吏治如故，颓势难挽",
+          "id": "qing_renzong_e1",
+          "relationDeltas": [
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -3,
+              "商贾": 1
+            }
+          ]
         },
         {
           "year": 1796,
@@ -403,7 +1376,27 @@
             "任能臣专征，罢怯懦之将帅",
             "蠲免赋税，以安被扰之民心"
           ],
-          "historicalOutcome": "白莲教乱历九年乃平，耗帑巨万，绿营之弊毕露"
+          "historicalOutcome": "白莲教乱历九年乃平，耗帑巨万，绿营之弊毕露",
+          "id": "qing_renzong_e2",
+          "relationDeltas": [
+            {},
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
         },
         {
           "year": 1813,
@@ -418,7 +1411,27 @@
             "下罪己诏，以应天变收人心",
             "行保甲连坐，绝民间秘密教门"
           ],
-          "historicalOutcome": "天理教攻入紫禁城，旻宁御敌，乱平而朝野震骇"
+          "historicalOutcome": "天理教攻入紫禁城，旻宁御敌，乱平而朝野震骇",
+          "id": "qing_renzong_e3",
+          "relationDeltas": [
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
         },
         {
           "year": 1816,
@@ -433,7 +1446,27 @@
             "闭关谢使，免生体制之争端",
             "转饬粤海关，严限英人贸易"
           ],
-          "historicalOutcome": "嘉庆以礼拒英使，闭关如故，中西隔阂愈加深"
+          "historicalOutcome": "嘉庆以礼拒英使，闭关如故，中西隔阂愈加深",
+          "id": "qing_renzong_e4",
+          "relationDeltas": [
+            {},
+            {
+              "士大夫": -3,
+              "商贾": 1
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ]
         },
         {
           "year": 1820,
@@ -448,7 +1481,163 @@
             "请孝和太后懿旨，以正继统",
             "召王大臣会盟，共奉新君即位"
           ],
-          "historicalOutcome": "嘉庆猝崩于山庄，旻宁依密诏嗣位，道光朝开局"
+          "historicalOutcome": "嘉庆猝崩于山庄，旻宁依密诏嗣位，道光朝开局",
+          "id": "qing_renzong_e5",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
+        },
+        {
+          "id": "qing_renzong_e0_fb",
+          "year": null,
+          "month": null,
+          "title": "受禅即位训政·余波",
+          "description": "「受禅即位训政」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "tier": "major",
+          "gating": {
+            "requiresFlags": [
+              "did_qing_renzong_e0_0"
+            ]
+          },
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 60,
+        "士大夫": 35,
+        "边将": 30,
+        "商贾": 10
+      },
+      "materialTarget": 9,
+      "historicalAnchors": [
+        {
+          "id": "qing_renzong_anc0",
+          "year": 1796,
+          "month": null,
+          "topic": "受禅即位训政",
+          "figures": [],
+          "keywords": [],
+          "premise": "嘉庆元年正月初一，乾隆御太和殿传位颙琰，自称太上皇仍掌大权，训政不止。和珅挟太上皇之势，权倾朝野，新君隐忍待时。白莲教已",
+          "weight": 2
+        },
+        {
+          "id": "qing_renzong_anc1",
+          "year": 1799,
+          "month": null,
+          "topic": "诛和珅",
+          "figures": [],
+          "keywords": [],
+          "premise": "嘉庆四年正月乾隆崩，嘉庆即宣布和珅二十大罪，赐自尽，籍没家产号称「和珅跌倒，嘉庆吃饱」。其党苏凌阿等罢黜，军机处换血。然",
+          "weight": 2
+        },
+        {
+          "id": "qing_renzong_anc2",
+          "year": 1796,
+          "month": null,
+          "topic": "平定白莲教",
+          "figures": [],
+          "keywords": [],
+          "premise": "白莲教乱蔓延川楚陕豫甘五省，教众据山寨流动作战，清军因循坐大。嘉庆行「坚壁清野、寨堡团练」之策，至嘉庆九年始平，耗帑逾二",
+          "weight": 2
+        },
+        {
+          "id": "qing_renzong_anc3",
+          "year": 1813,
+          "month": null,
+          "topic": "天理教闯宫",
+          "figures": [],
+          "keywords": [],
+          "premise": "嘉庆十八年，天理教林清遣教徒二百潜入京师，由信教太监引入，攻入紫禁城西华门，竟至隆宗门，禁中惊惶。皇次子旻宁（道光）发枪",
+          "weight": 2
+        },
+        {
+          "id": "qing_renzong_anc4",
+          "year": 1816,
+          "month": null,
+          "topic": "拒英使阿美士德",
+          "figures": [],
+          "keywords": [],
+          "premise": "嘉庆二十一年，英使阿美士德来华贺寿，因拒行三跪九叩之礼，嘉庆怒而逐之，敕「嗣后毋庸遣使远来」。英国欲拓贸易通商的企图再受",
+          "weight": 2
+        },
+        {
+          "id": "qing_renzong_anc5",
+          "year": 1820,
+          "month": null,
+          "topic": "避暑山庄崩",
+          "figures": [],
+          "keywords": [],
+          "premise": "嘉庆二十五年秋，嘉庆赴承德避暑山庄秋狝，突发急病而崩，生前未及立储明诏。枢臣托津等开鐍匣，宣示乾隆密立旻宁之诏，旻宁继位",
+          "weight": 2
+        },
+        {
+          "id": "qing_renzong_bg0",
+          "year": 1804,
+          "month": null,
+          "topic": "背景·乾隆晚年密立为皇太子",
+          "figures": [],
+          "keywords": [],
+          "premise": "乾隆晚年密立为皇太子，嘉庆元年受禅即位，然乾隆训政至嘉庆四年崩，方真亲政",
+          "weight": 1
+        },
+        {
+          "id": "qing_renzong_bg1",
+          "year": 1812,
+          "month": null,
+          "topic": "背景·在位时白莲教、天理教",
+          "figures": [],
+          "keywords": [],
+          "premise": "在位时白莲教、天理教相继起事，东南蔡牵海盗猖獗，河工漕运积弊深重",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "颙琰中年之厄",
+            "description": "中叶，颙琰御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -485,7 +1674,27 @@
             "尊孝和为母后，以安宗室之心",
             "大赦天下，与民更始收人心"
           ],
-          "historicalOutcome": "旻宁奉懿旨继位，黜枢臣，道光朝俭勤而守旧"
+          "historicalOutcome": "旻宁奉懿旨继位，黜枢臣，道光朝俭勤而守旧",
+          "id": "qing_xuanzong_e0",
+          "relationDeltas": [
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
         },
         {
           "year": 1839,
@@ -500,7 +1709,24 @@
             "封舱断贸，迫英商就范而后已",
             "调水师守口，备英舰之来袭"
           ],
-          "historicalOutcome": "林则徐虎门销烟，中英决裂，鸦片战争之衅遂启"
+          "historicalOutcome": "林则徐虎门销烟，中英决裂，鸦片战争之衅遂启",
+          "id": "qing_xuanzong_e1",
+          "relationDeltas": [
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            }
+          ]
         },
         {
           "year": 1840,
@@ -515,7 +1741,27 @@
             "羁縻英舰，许通商以缓其兵",
             "筹海防，造战船购炮以备战"
           ],
-          "historicalOutcome": "英舰北上陷定海，清廷战抚失据，沿海连失要地"
+          "historicalOutcome": "英舰北上陷定海，清廷战抚失据，沿海连失要地",
+          "id": "qing_xuanzong_e2",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "边将": 3,
+              "士大夫": -2
+            }
+          ]
         },
         {
           "year": 1842,
@@ -530,7 +1776,27 @@
             "调兵死守南京，拒英舰之要挟",
             "许关税协定，保天朝之体面"
           ],
-          "historicalOutcome": "清廷签南京条约，割香港开五口，千古国耻始开"
+          "historicalOutcome": "清廷签南京条约，割香港开五口，千古国耻始开",
+          "id": "qing_xuanzong_e3",
+          "relationDeltas": [
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {}
+          ]
         },
         {
           "year": 1843,
@@ -545,7 +1811,24 @@
             "兴水师造炮船，图后日之自强",
             "译西书备案，遣人访其国情"
           ],
-          "historicalOutcome": "五口通商成，领事裁判权立，天朝闭关之局终破"
+          "historicalOutcome": "五口通商成，领事裁判权立，天朝闭关之局终破",
+          "id": "qing_xuanzong_e4",
+          "relationDeltas": [
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "士大夫": -3,
+              "商贾": 1
+            },
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {},
+            {}
+          ]
         },
         {
           "year": 1850,
@@ -560,7 +1843,127 @@
             "命旧臣辅政，稳朝局于新旧",
             "下罪己恤民，以应广西之乱"
           ],
-          "historicalOutcome": "道光崩，奕詝嗣位为咸丰，广西乱萌已不可遏"
+          "historicalOutcome": "道光崩，奕詝嗣位为咸丰，广西乱萌已不可遏",
+          "id": "qing_xuanzong_e5",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
+        }
+      ],
+      "initRelations": {
+        "宗室": 60,
+        "士大夫": 35,
+        "边将": 30,
+        "商贾": 10
+      },
+      "materialTarget": 11,
+      "historicalAnchors": [
+        {
+          "id": "qing_xuanzong_anc0",
+          "year": 1820,
+          "month": null,
+          "topic": "继位定储",
+          "figures": [],
+          "keywords": [],
+          "premise": "嘉庆崩于热河而无遗诏，孝和睿皇后以懿旨命旻宁嗣位，旻宁感泣，尊为太后。即位后追封生母喜塔腊氏为孝淑睿皇后，罢黜迟疑之托津",
+          "weight": 2
+        },
+        {
+          "id": "qing_xuanzong_anc1",
+          "year": 1839,
+          "month": null,
+          "topic": "虎门销烟",
+          "figures": [],
+          "keywords": [],
+          "premise": "道光命林则徐为钦差赴粤禁烟，则徐缴英商鸦片二万余箱，于虎门海滩以盐卤石灰销化，历时廿三日。并谕外商具「永不夹带鸦片」甘结",
+          "weight": 2
+        },
+        {
+          "id": "qing_xuanzong_anc2",
+          "year": 1840,
+          "month": null,
+          "topic": "鸦片战争爆发",
+          "figures": [],
+          "keywords": [],
+          "premise": "道光二十年，英舰集于珠江口，陷定海、北上天津，投递巴麦尊照会。道光震怒主战，命琦善赴粤谈判，旋以「措置失当」撤林则徐。英",
+          "weight": 2
+        },
+        {
+          "id": "qing_xuanzong_anc3",
+          "year": 1842,
+          "month": null,
+          "topic": "签南京条约",
+          "figures": [],
+          "keywords": [],
+          "premise": "道光二十二年，英军破吴淞、陷镇江，兵临南京江面。耆英、伊里布赴英舰签约，割香港、开五口通商、赔银二千一百万两。道光朱批「",
+          "weight": 2
+        },
+        {
+          "id": "qing_xuanzong_anc4",
+          "year": 1843,
+          "month": null,
+          "topic": "五口通商之局",
+          "figures": [],
+          "keywords": [],
+          "premise": "《南京条约》附约议定，广州、厦门、福州、宁波、上海五口通商，设领事、协定关税、领事裁判权随之而来。道光以「羁縻」视之，未",
+          "weight": 2
+        },
+        {
+          "id": "qing_xuanzong_anc5",
+          "year": 1850,
+          "month": null,
+          "topic": "崩传咸丰",
+          "figures": [],
+          "keywords": [],
+          "premise": "道光末年，洪秀全已于广西传教聚众，乱萌将发。道光三十年正月旻宁病重，召王大臣宣立皇四子奕詝，次日崩，享年六十九。遗诏仍以",
+          "weight": 2
+        },
+        {
+          "id": "qing_xuanzong_bg0",
+          "year": 1830,
+          "month": null,
+          "topic": "背景·嘉庆二十五年嘉庆猝崩",
+          "figures": [],
+          "keywords": [],
+          "premise": "嘉庆二十五年嘉庆猝崩热河无诏，枢臣托津等迟疑，孝和睿皇后下懿旨命其继位",
+          "weight": 1
+        },
+        {
+          "id": "qing_xuanzong_bg1",
+          "year": 1840,
+          "month": null,
+          "topic": "背景·即位力崇节俭，尝谕「",
+          "figures": [],
+          "keywords": [],
+          "premise": "即位力崇节俭，尝谕「衣非三浣不易」，整顿吏治、查禁鸦片",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "旻宁中年之厄",
+            "description": "中叶，旻宁御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -597,7 +2000,27 @@
             "招抚饥民，绝太平军之兵源",
             "调向荣追剿，建江南大营围"
           ],
-          "historicalOutcome": "太平军兴，绿营屡败，咸丰诏办团练以救危局"
+          "historicalOutcome": "太平军兴，绿营屡败，咸丰诏办团练以救危局",
+          "id": "qing_wenzong_e0",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "边将": 3,
+              "士大夫": -2
+            }
+          ]
         },
         {
           "year": 1853,
@@ -612,7 +2035,24 @@
             "行坚壁清野，断天京之粮道",
             "抚辑皖豫，防太平军北扩势"
           ],
-          "historicalOutcome": "太平军定都天京，清立两大营围困，战局陷僵持"
+          "historicalOutcome": "太平军定都天京，清立两大营围困，战局陷僵持",
+          "id": "qing_wenzong_e1",
+          "relationDeltas": [
+            {},
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
         },
         {
           "year": 1856,
@@ -627,7 +2067,63 @@
             "遣使议和，先弭兵端再图强",
             "调曾国藩北援，保京畿重地"
           ],
-          "historicalOutcome": "英法借端开战陷广州，清廷战和无定，衅端日大"
+          "historicalOutcome": "英法借端开战陷广州，清廷战和无定，衅端日大",
+          "id": "qing_wenzong_e2",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_qing_wenzong_e2_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "qing_wenzong_e2_fb"
+            },
+            {
+              "setFlags": [
+                "did_qing_wenzong_e2_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_wenzong_e2_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_wenzong_e2_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_wenzong_e2_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 1860,
@@ -642,7 +2138,24 @@
             "签北京条约，割九龙以弭兵",
             "调剿太平之师回援畿辅以安"
           ],
-          "historicalOutcome": "联军焚圆明园，咸丰逃热河，奕訢签北京条约"
+          "historicalOutcome": "联军焚圆明园，咸丰逃热河，奕訢签北京条约",
+          "id": "qing_wenzong_e3",
+          "relationDeltas": [
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {},
+            {},
+            {
+              "边将": 3,
+              "士大夫": -2
+            }
+          ]
         },
         {
           "year": 1861,
@@ -657,7 +2170,150 @@
             "留遗诏，戒宦寺与外戚干政",
             "命东西宫同省章奏，防权臣"
           ],
-          "historicalOutcome": "咸丰崩，八大臣辅幼主，慈禧与奕訢已谋易局"
+          "historicalOutcome": "咸丰崩，八大臣辅幼主，慈禧与奕訢已谋易局",
+          "id": "qing_wenzong_e4",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {},
+            {}
+          ]
+        },
+        {
+          "id": "qing_wenzong_e2_fb",
+          "year": null,
+          "month": null,
+          "title": "第二次鸦片战争·余波",
+          "description": "「第二次鸦片战争」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "tier": "major",
+          "gating": {
+            "requiresFlags": [
+              "did_qing_wenzong_e2_0"
+            ]
+          },
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 60,
+        "士大夫": 35,
+        "边将": 30,
+        "商贾": 10
+      },
+      "materialTarget": 6,
+      "historicalAnchors": [
+        {
+          "id": "qing_wenzong_anc0",
+          "year": 1851,
+          "month": null,
+          "topic": "太平天国起事",
+          "figures": [],
+          "keywords": [],
+          "premise": "道光末洪秀全于金田举事，咸丰元年建国号太平天国。乱众自广西入湖南、下长江，沿途裹胁日众。咸丰初命赛尚阿督师，然八旗绿营不",
+          "weight": 2
+        },
+        {
+          "id": "qing_wenzong_anc1",
+          "year": 1853,
+          "month": null,
+          "topic": "定都天京",
+          "figures": [],
+          "keywords": [],
+          "premise": "咸丰三年，太平军克南京，改名天京定都，分军北伐、西征。清于扬州、镇江设江北大营，孝陵卫设江南大营围困。北伐军直逼天津，震",
+          "weight": 2
+        },
+        {
+          "id": "qing_wenzong_anc2",
+          "year": 1856,
+          "month": null,
+          "topic": "第二次鸦片战争",
+          "figures": [],
+          "keywords": [],
+          "premise": "咸丰六年，英借「亚罗号」、法借「西林教案」出兵，第二次鸦片战争起。广州陷，两广总督叶名琛被俘。咸丰主战而缺方略，命僧格林",
+          "weight": 2
+        },
+        {
+          "id": "qing_wenzong_anc3",
+          "year": 1860,
+          "month": null,
+          "topic": "英法焚圆明园",
+          "figures": [],
+          "keywords": [],
+          "premise": "咸丰十年，英法联军破大沽、占天津，僧格林沁败绩。联军焚圆明园，火光三日不熄。咸丰仓皇「北狩」热河，留恭王奕訢议和。奕訢签",
+          "weight": 2
+        },
+        {
+          "id": "qing_wenzong_anc4",
+          "year": 1861,
+          "month": null,
+          "topic": "顾命八大臣",
+          "figures": [],
+          "keywords": [],
+          "premise": "咸丰十一年七月，咸丰病危于热河，立载淳为太子，命载垣、端华、肃顺等八大臣赞襄政务，欲以宗室重臣制衡慈禧。旋崩，年三十一。",
+          "weight": 2
+        },
+        {
+          "id": "qing_wenzong_bg0",
+          "year": 1854,
+          "month": null,
+          "topic": "背景·幼时坠马伤足，道光立",
+          "figures": [],
+          "keywords": [],
+          "premise": "幼时坠马伤足，道光立储取其仁厚，与弟奕訢（恭亲王）相竞得位",
+          "weight": 1
+        },
+        {
+          "id": "qing_wenzong_bg1",
+          "year": 1858,
+          "month": null,
+          "topic": "背景·咸丰六年第二次鸦片战",
+          "figures": [],
+          "keywords": [],
+          "premise": "咸丰六年第二次鸦片战争起，英法联军北上，十年焚圆明园，咸丰逃热河",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "奕詝中年之厄",
+            "description": "中叶，奕詝御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -694,7 +2350,18 @@
             "宽处八臣，以安宗室之人心",
             "请慈安同听政，分慈禧之权"
           ],
-          "historicalOutcome": "辛酉政变诛八臣，两宫垂帘，慈禧始握中枢大权"
+          "historicalOutcome": "辛酉政变诛八臣，两宫垂帘，慈禧始握中枢大权",
+          "id": "qing_muzong_e0",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
         },
         {
           "year": 1864,
@@ -709,7 +2376,24 @@
             "厚抚曾国荃，以酬破城之功",
             "防湘军坐大，渐抽其营兵归"
           ],
-          "historicalOutcome": "湘军破天京，太平天国亡，曾国藩封侯而功高震主"
+          "historicalOutcome": "湘军破天京，太平天国亡，曾国藩封侯而功高震主",
+          "id": "qing_muzong_e1",
+          "relationDeltas": [
+            {},
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
         },
         {
           "year": 1866,
@@ -724,7 +2408,63 @@
             "抚降众垦荒，绝其裹胁之源",
             "固直隶防，保京畿免捻锋芒"
           ],
-          "historicalOutcome": "淮军依河防剿平捻军，中原十年之乱终告平定"
+          "historicalOutcome": "淮军依河防剿平捻军，中原十年之乱终告平定",
+          "id": "qing_muzong_e2",
+          "relationDeltas": [
+            {},
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_qing_muzong_e2_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "qing_muzong_e2_fb"
+            },
+            {
+              "setFlags": [
+                "did_qing_muzong_e2_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_muzong_e2_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_muzong_e2_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_muzong_e2_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 1862,
@@ -739,7 +2479,21 @@
             "购铁甲船，练北洋水师为干城",
             "守中体西用，不以西制变礼法"
           ],
-          "historicalOutcome": "同光洋务兴，设局造械遣留学，中体西用难撼根本"
+          "historicalOutcome": "同光洋务兴，设局造械遣留学，中体西用难撼根本",
+          "id": "qing_muzong_e3",
+          "relationDeltas": [
+            {
+              "士大夫": -3,
+              "商贾": 1
+            },
+            {},
+            {},
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            }
+          ]
         },
         {
           "year": 1873,
@@ -754,7 +2508,18 @@
             "留慈禧训政，以备顾问大政",
             "减供张崇俭，以应民生之困"
           ],
-          "historicalOutcome": "两宫归政同治亲政，未几议修园，骤染痘疾而崩"
+          "historicalOutcome": "两宫归政同治亲政，未几议修园，骤染痘疾而崩",
+          "id": "qing_muzong_e4",
+          "relationDeltas": [
+            {},
+            {},
+            {
+              "士大夫": -3,
+              "商贾": 1
+            },
+            {},
+            {}
+          ]
         },
         {
           "year": 1875,
@@ -769,7 +2534,160 @@
             "秘不发丧，先定大计而后闻",
             "以溥字辈嗣，承道光之正统"
           ],
-          "historicalOutcome": "同治无嗣而崩，慈禧立载湉再垂帘，大权愈固"
+          "historicalOutcome": "同治无嗣而崩，慈禧立载湉再垂帘，大权愈固",
+          "id": "qing_muzong_e5",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {},
+            {}
+          ]
+        },
+        {
+          "id": "qing_muzong_e2_fb",
+          "year": null,
+          "month": null,
+          "title": "剿平捻军·余波",
+          "description": "「剿平捻军」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "tier": "major",
+          "gating": {
+            "requiresFlags": [
+              "did_qing_muzong_e2_0"
+            ]
+          },
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 60,
+        "士大夫": 35,
+        "边将": 30,
+        "商贾": 10
+      },
+      "materialTarget": 6,
+      "historicalAnchors": [
+        {
+          "id": "qing_muzong_anc0",
+          "year": 1861,
+          "month": null,
+          "topic": "辛酉政变",
+          "figures": [],
+          "keywords": [],
+          "premise": "咸丰崩，八大臣赞襄政务，慈禧与慈安定计召奕訢热河，回銮次日突宣诏逮载垣、端华、肃顺，以「不能尽心和议」等罪赐死。两宫垂帘",
+          "weight": 2
+        },
+        {
+          "id": "qing_muzong_anc1",
+          "year": 1864,
+          "month": null,
+          "topic": "攻破天京",
+          "figures": [],
+          "keywords": [],
+          "premise": "同治三年，曾国藩弟曾国荃率吉字营掘地道轰塌天京城墙，入城。洪秀全已死，幼主洪天贵福出走，忠王李秀成被俘。太平天国亡，清廷",
+          "weight": 2
+        },
+        {
+          "id": "qing_muzong_anc2",
+          "year": 1866,
+          "month": null,
+          "topic": "剿平捻军",
+          "figures": [],
+          "keywords": [],
+          "premise": "太平既平，捻军张宗禹、赖文光部驰骋豫鲁，清命曾国藩督剿，曾以河防之策困之；继任李鸿章依运河、黄河设防，同治七年歼西捻于茌",
+          "weight": 2
+        },
+        {
+          "id": "qing_muzong_anc3",
+          "year": 1862,
+          "month": null,
+          "topic": "洋务运动",
+          "figures": [],
+          "keywords": [],
+          "premise": "同治初，恭王、曾国藩、李鸿章倡「自强」，设同文馆、安庆军械所、江南制造局，购机器造枪炮轮船。派幼童留美，译西书。然「中体",
+          "weight": 2
+        },
+        {
+          "id": "qing_muzong_anc4",
+          "year": 1873,
+          "month": null,
+          "topic": "同治亲政",
+          "figures": [],
+          "keywords": [],
+          "premise": "同治十二年，帝已十八，两宫归政，同治御养心殿亲裁大政，谕「敬天法祖，勤政爱民」。然亲政未几，即有修圆明园之议，耗帑巨而谤",
+          "weight": 2
+        },
+        {
+          "id": "qing_muzong_anc5",
+          "year": 1875,
+          "month": null,
+          "topic": "痘崩无嗣",
+          "figures": [],
+          "keywords": [],
+          "premise": "同治十三年十二月，载淳染天花（一说梅毒）而崩，年仅十九，无子。慈禧立妹子醇亲王奕譞之子载湉入继，年仅四岁，再垂帘。咸丰一",
+          "weight": 2
+        },
+        {
+          "id": "qing_muzong_bg0",
+          "year": 1866,
+          "month": null,
+          "topic": "背景·咸丰十一年崩，慈禧联",
+          "figures": [],
+          "keywords": [],
+          "premise": "咸丰十一年崩，慈禧联合恭亲王奕訢发动辛酉政变，诛除顾命八大臣，两宫太后（慈安、慈禧）垂帘听政，奕訢总枢务",
+          "weight": 1
+        },
+        {
+          "id": "qing_muzong_bg1",
+          "year": 1871,
+          "month": null,
+          "topic": "背景·在位赖曾国藩、李鸿章",
+          "figures": [],
+          "keywords": [],
+          "premise": "在位赖曾国藩、李鸿章、左宗棠等平太平、捻军、回乱，办洋务，史称同治中兴",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "载淳中年之厄",
+            "description": "中叶，载淳御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -806,7 +2724,18 @@
             "命奕譞勿预政，避外戚之嫌",
             "大赦蠲赋，与民更始收人心"
           ],
-          "historicalOutcome": "慈禧立载湉再垂帘，四龄帝即位，权归叶赫那拉氏"
+          "historicalOutcome": "慈禧立载湉再垂帘，四龄帝即位，权归叶赫那拉氏",
+          "id": "qing_dezong_e0",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
         },
         {
           "year": 1884,
@@ -821,7 +2750,18 @@
             "责枢臣失机，以肃朝纲为名",
             "命世铎署枢，庸懦易制之辈"
           ],
-          "historicalOutcome": "甲申易枢罢恭王，慈禧尽收枢权，洋务顿失领袖"
+          "historicalOutcome": "甲申易枢罢恭王，慈禧尽收枢权，洋务顿失领袖",
+          "id": "qing_dezong_e1",
+          "relationDeltas": [
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {},
+            {}
+          ]
         },
         {
           "year": 1894,
@@ -836,7 +2776,63 @@
             "联俄制日，借列强以压东邻",
             "整练新军，图战后之自强策"
           ],
-          "historicalOutcome": "甲午惨败北洋覆灭，主战之光绪竟无力回天也"
+          "historicalOutcome": "甲午惨败北洋覆灭，主战之光绪竟无力回天也",
+          "id": "qing_dezong_e2",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {},
+            {},
+            {
+              "边将": 3,
+              "士大夫": -2
+            }
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_qing_dezong_e2_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "qing_dezong_e2_fb"
+            },
+            {
+              "setFlags": [
+                "did_qing_dezong_e2_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_dezong_e2_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_dezong_e2_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_dezong_e2_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 1895,
@@ -851,7 +2847,21 @@
             "许公车上书，开言路以图变",
             "练新军购械，雪甲午之耻辱"
           ],
-          "historicalOutcome": "马关割台赔巨款，公车上书兴，变法之声日起"
+          "historicalOutcome": "马关割台赔巨款，公车上书兴，变法之声日起",
+          "id": "qing_dezong_e3",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {},
+            {
+              "士大夫": -3,
+              "商贾": 1
+            },
+            {},
+            {}
+          ]
         },
         {
           "year": 1898,
@@ -866,7 +2876,60 @@
             "重用袁世凯，借新军护新政",
             "密谋围园，夺慈禧之权而败露"
           ],
-          "historicalOutcome": "戊戌变法百日而废，帝囚瀛台，六君子血溅菜市口"
+          "historicalOutcome": "戊戌变法百日而废，帝囚瀛台，六君子血溅菜市口",
+          "id": "qing_dezong_e4",
+          "relationDeltas": [
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_qing_dezong_e4_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_dezong_e4_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_dezong_e4_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_dezong_e4_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_dezong_e4_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 1900,
@@ -881,7 +2944,157 @@
             "罪首祸诸臣，以弭列强之怒",
             "行新政立宪，图挽救于危局"
           ],
-          "historicalOutcome": "庚子联军陷京，帝西狩，辛丑巨赔，归后形同幽禁"
+          "historicalOutcome": "庚子联军陷京，帝西狩，辛丑巨赔，归后形同幽禁",
+          "id": "qing_dezong_e5",
+          "relationDeltas": [
+            {},
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {},
+            {},
+            {}
+          ]
+        },
+        {
+          "id": "qing_dezong_e2_fb",
+          "year": null,
+          "month": null,
+          "title": "甲午战争·余波",
+          "description": "「甲午战争」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 60,
+        "士大夫": 35,
+        "边将": 30,
+        "商贾": 10
+      },
+      "materialTarget": 12,
+      "historicalAnchors": [
+        {
+          "id": "qing_dezong_anc0",
+          "year": 1875,
+          "month": null,
+          "topic": "入继大统",
+          "figures": [],
+          "keywords": [],
+          "premise": "同治无嗣崩，慈禧不立溥字辈而取载湉，以其既为妹子、又系侄辈，可久揽权。四龄稚子入宫即位，生父奕譞惊惧称病。慈安、慈禧再垂",
+          "weight": 2
+        },
+        {
+          "id": "qing_dezong_anc1",
+          "year": 1884,
+          "month": null,
+          "topic": "甲申易枢",
+          "figures": [],
+          "keywords": [],
+          "premise": "光绪十年，慈禧借中法战争谅山失利的借口，突降懿旨，尽罢恭亲王奕訢等军机大臣，易以礼亲王世铎等庸懦之辈，史称「甲申易枢」。",
+          "weight": 2
+        },
+        {
+          "id": "qing_dezong_anc2",
+          "year": 1894,
+          "month": null,
+          "topic": "甲午战争",
+          "figures": [],
+          "keywords": [],
+          "premise": "光绪二十年，朝鲜东学党起，中日出兵，丰岛海战开衅。李鸿章避战保船，平壤陆败、黄海海战受挫，旅顺、威海相继陷，北洋水师覆灭",
+          "weight": 2
+        },
+        {
+          "id": "qing_dezong_anc3",
+          "year": 1895,
+          "month": null,
+          "topic": "马关条约",
+          "figures": [],
+          "keywords": [],
+          "premise": "光绪二十一年，李鸿章赴日签《马关条约》，割辽东、台湾及澎湖，赔银二万万两，许设厂内地。康有为联合举人「公车上书」，倡变法",
+          "weight": 2
+        },
+        {
+          "id": "qing_dezong_anc4",
+          "year": 1898,
+          "month": null,
+          "topic": "戊戌变法",
+          "figures": [],
+          "keywords": [],
+          "premise": "光绪二十四年，帝颁明定国是诏，行百日维新，废八股、练新军、开议院之议、裁冗员。慈禧阴结荣禄，发动政变，帝被囚瀛台，谭嗣同",
+          "weight": 2
+        },
+        {
+          "id": "qing_dezong_anc5",
+          "year": 1900,
+          "month": null,
+          "topic": "庚子西狩",
+          "figures": [],
+          "keywords": [],
+          "premise": "光绪二十六年，义和团起，慈禧挟帝宣战十一国，八国联军陷北京，帝随慈禧仓皇西逃西安。次年签《辛丑条约》赔银四万五千万两，准",
+          "weight": 2
+        },
+        {
+          "id": "qing_dezong_bg0",
+          "year": 1886,
+          "month": null,
+          "topic": "背景·光绪元年同治无嗣崩，",
+          "figures": [],
+          "keywords": [],
+          "premise": "光绪元年同治无嗣崩，慈禧择其侄兼外甥载湉入继，年仅四岁，仍由慈禧听政",
+          "weight": 1
+        },
+        {
+          "id": "qing_dezong_bg1",
+          "year": 1897,
+          "month": null,
+          "topic": "背景·在位遇甲午惨败，二十",
+          "figures": [],
+          "keywords": [],
+          "premise": "在位遇甲午惨败，二十四年行戊戌变法，旋被慈禧囚瀛台，六君子遇害",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "载湉中年之厄",
+            "description": "中叶，载湉御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -918,7 +3131,21 @@
             "留袁世凯督直，备缓急之用",
             "大赦开言路，以弭革命之萌"
           ],
-          "historicalOutcome": "三岁溥仪即位，载沣摄政，清廷孤儿寡母临危局"
+          "historicalOutcome": "三岁溥仪即位，载沣摄政，清廷孤儿寡母临危局",
+          "id": "qing_xuantong_e0",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
         },
         {
           "year": 1911,
@@ -933,7 +3160,60 @@
             "许商办铁路，收回国有成命",
             "派大员查办，以安川省人心"
           ],
-          "historicalOutcome": "铁路国有激保路风潮，鄂军西调，武昌遂成空虚"
+          "historicalOutcome": "铁路国有激保路风潮，鄂军西调，武昌遂成空虚",
+          "id": "qing_xuantong_e1",
+          "relationDeltas": [
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {},
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_qing_xuantong_e1_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "qing_xuantong_e1_fb"
+            },
+            {
+              "setFlags": [
+                "did_qing_xuantong_e1_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_xuantong_e1_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_xuantong_e1_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_xuantong_e1_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 1911,
@@ -948,7 +3228,63 @@
             "释党人开国会，图消解革命",
             "命禁卫军守京，防北地生变"
           ],
-          "historicalOutcome": "武昌首义各省响应，清廷起袁世凯，北洋权重中枢"
+          "historicalOutcome": "武昌首义各省响应，清廷起袁世凯，北洋权重中枢",
+          "id": "qing_xuantong_e2",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            }
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_qing_xuantong_e2_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_xuantong_e2_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_xuantong_e2_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_xuantong_e2_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_qing_xuantong_e2_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 1911,
@@ -963,7 +3299,30 @@
             "拥立宪抗共和，续保皇室位",
             "调北洋兵压南，争谈判之主动"
           ],
-          "historicalOutcome": "袁世凯逼宫议和，清廷优待条件定，帝制将终"
+          "historicalOutcome": "袁世凯逼宫议和，清廷优待条件定，帝制将终",
+          "id": "qing_xuantong_e3",
+          "relationDeltas": [
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "边将": 3,
+              "士大夫": -2
+            }
+          ]
         },
         {
           "year": 1912,
@@ -978,7 +3337,156 @@
             "谕禁卫军勿抗，免生内乱焉",
             "迁颐和园，全母子以终余年"
           ],
-          "historicalOutcome": "宣统退位清祚终结，帝制终结，民国肇始，优待犹存"
+          "historicalOutcome": "宣统退位清祚终结，帝制终结，民国肇始，优待犹存",
+          "id": "qing_xuantong_e4",
+          "relationDeltas": [
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
+        },
+        {
+          "id": "qing_xuantong_e1_fb",
+          "year": null,
+          "month": null,
+          "title": "铁路国有·余波",
+          "description": "「铁路国有」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 60,
+        "士大夫": 35,
+        "边将": 30,
+        "商贾": 10
+      },
+      "materialTarget": 6,
+      "historicalAnchors": [
+        {
+          "id": "qing_xuantong_anc0",
+          "year": 1908,
+          "month": null,
+          "topic": "立为幼帝",
+          "figures": [],
+          "keywords": [],
+          "premise": "光绪三十四年十月，慈禧、光绪同日崩，遗命立载沣子溥仪为帝，年仅三岁，载沣监国摄政。仪从醇邸抱入宫即位，哭闹不止。摄政王总",
+          "weight": 2
+        },
+        {
+          "id": "qing_xuantong_anc1",
+          "year": 1911,
+          "month": null,
+          "topic": "铁路国有",
+          "figures": [],
+          "keywords": [],
+          "premise": "宣统三年，邮传部奏收川汉、粤汉铁路为官办，强夺商民股权，激起四川保路风潮。咨议局集会罢市，同志军起事，清调鄂军入川镇压，",
+          "weight": 2
+        },
+        {
+          "id": "qing_xuantong_anc2",
+          "year": 1911,
+          "month": null,
+          "topic": "武昌首义",
+          "figures": [],
+          "keywords": [],
+          "premise": "宣统三年八月十九，武昌新军工程营发难，克湖广总督署，黎元洪被推为都督，各省响应独立。摄政王惊惶，被迫起用袁世凯为内阁总理",
+          "weight": 2
+        },
+        {
+          "id": "qing_xuantong_anc3",
+          "year": 1911,
+          "month": null,
+          "topic": "南北议和",
+          "figures": [],
+          "keywords": [],
+          "premise": "袁世凯既掌兵，一面逼宫、一面与革命军议和于上海。唐绍仪、伍廷芳谈判，定「君主立宪」与「共和」之争。袁迫清廷逊位、迫南京让",
+          "weight": 2
+        },
+        {
+          "id": "qing_xuantong_anc4",
+          "year": 1912,
+          "month": null,
+          "topic": "颁布退位",
+          "figures": [],
+          "keywords": [],
+          "premise": "宣统三年十二月二十五，隆裕太后奉溥仪颁《退位诏书》，宣布「将统治权公诸全国，定为共和立宪国体」。清亡，袁世凯保皇室优待条",
+          "weight": 2
+        },
+        {
+          "id": "qing_xuantong_bg0",
+          "year": 1909,
+          "month": null,
+          "topic": "背景·光绪三十四年慈禧、光",
+          "figures": [],
+          "keywords": [],
+          "premise": "光绪三十四年慈禧、光绪同日而崩，慈禧遗命立三岁溥仪为帝，生父载沣摄政",
+          "weight": 1
+        },
+        {
+          "id": "qing_xuantong_bg1",
+          "year": 1911,
+          "month": null,
+          "topic": "背景·摄政王欲集权排汉，罢",
+          "figures": [],
+          "keywords": [],
+          "premise": "摄政王欲集权排汉，罢袁世凯，铁路国有激起保路风潮",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "溥仪中年之厄",
+            "description": "中叶，溥仪御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     }

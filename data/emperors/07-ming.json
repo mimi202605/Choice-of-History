@@ -37,7 +37,60 @@
             "当赐诸王玺书厚加抚慰以安其心",
             "当称疾不朝以避削藩之争端"
           ],
-          "historicalOutcome": "建文即位即大削周齐湘代诸王终酿成靖难之祸"
+          "historicalOutcome": "建文即位即大削周齐湘代诸王终酿成靖难之祸",
+          "id": "ming_huidi_e0",
+          "relationDeltas": [
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_ming_huidi_e0_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_huidi_e0_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_huidi_e0_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_huidi_e0_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_huidi_e0_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 1399,
@@ -52,7 +105,18 @@
             "当密诏擒燕王入京正法以绝患",
             "当调北兵南戍以弱燕势而固本"
           ],
-          "historicalOutcome": "建文先弱后强部署失当遂启兵端而势危，识者惜之。"
+          "historicalOutcome": "建文先弱后强部署失当遂启兵端而势危，识者惜之。",
+          "id": "ming_huidi_e1",
+          "relationDeltas": [
+            {},
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {}
+          ]
         },
         {
           "year": 1400,
@@ -67,7 +131,66 @@
             "当据城固守待其自敝而图之",
             "当联络宁王夹击燕师以分其势"
           ],
-          "historicalOutcome": "李景隆大败丧师数十万北疆震动而势危，识者惜之。"
+          "historicalOutcome": "李景隆大败丧师数十万北疆震动而势危，识者惜之。",
+          "id": "ming_huidi_e2",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_ming_huidi_e2_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "ming_huidi_e2_fb"
+            },
+            {
+              "setFlags": [
+                "did_ming_huidi_e2_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_huidi_e2_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_huidi_e2_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_huidi_e2_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 1402,
@@ -82,7 +205,24 @@
             "当南迁应天以避兵锋而图存",
             "当开城迎降以免屠戮之惨祸"
           ],
-          "historicalOutcome": "金川门开宫火起建文自此失踪而国易主，识者惜之。"
+          "historicalOutcome": "金川门开宫火起建文自此失踪而国易主，识者惜之。",
+          "id": "ming_huidi_e3",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
         },
         {
           "year": 1402,
@@ -97,7 +237,147 @@
             "当佯狂以全性命而待天时而社稷安",
             "当率生徒伏阙死谏以争大义"
           ],
-          "historicalOutcome": "方孝孺殉节拒诏祸及十族而忠义长存，识者惜之。"
+          "historicalOutcome": "方孝孺殉节拒诏祸及十族而忠义长存，识者惜之。",
+          "id": "ming_huidi_e4",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {}
+          ]
+        },
+        {
+          "id": "ming_huidi_e2_fb",
+          "year": null,
+          "month": null,
+          "title": "李景隆督师·余波",
+          "description": "「李景隆督师」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 55,
+        "士大夫": 45,
+        "边将": 35,
+        "商贾": 10
+      },
+      "materialTarget": 6,
+      "historicalAnchors": [
+        {
+          "id": "ming_huidi_anc0",
+          "year": 1399,
+          "month": null,
+          "topic": "即位与削藩",
+          "figures": [],
+          "keywords": [],
+          "premise": "洪武三十一年太祖崩，皇太孙允炆即位，改元建文，年方廿一。齐泰、黄子澄力主削藩，帝从之，先废周、齐、湘、代诸王，朝议汹汹，",
+          "weight": 2
+        },
+        {
+          "id": "ming_huidi_anc1",
+          "year": 1399,
+          "month": null,
+          "topic": "齐黄定策",
+          "figures": [],
+          "keywords": [],
+          "premise": "兵部尚书齐泰请先图燕，黄子澄谓燕强宜先弱，主张先削周王以剪羽翼，二人廷争，帝采子澄策，调北边兵防燕，部署既失当，遂启兵端",
+          "weight": 2
+        },
+        {
+          "id": "ming_huidi_anc2",
+          "year": 1400,
+          "month": null,
+          "topic": "李景隆督师",
+          "figures": [],
+          "keywords": [],
+          "premise": "曹国公李景隆率五十万军讨燕，围北平，然不知兵，号令不一。燕王返救，景隆大败于白沟河，丧师弃辎重而还，元气大伤，北疆为之震",
+          "weight": 2
+        },
+        {
+          "id": "ming_huidi_anc3",
+          "year": 1402,
+          "month": null,
+          "topic": "金川门之变",
+          "figures": [],
+          "keywords": [],
+          "premise": "燕师南下，谷王橞与李景隆开金川门迎降，宫中火起。建文不知所终，或云自焚，或云出亡为僧，燕王遂入南京即位，靖难功成，社稷易",
+          "weight": 2
+        },
+        {
+          "id": "ming_huidi_anc4",
+          "year": 1402,
+          "month": null,
+          "topic": "方孝孺拒草诏",
+          "figures": [],
+          "keywords": [],
+          "premise": "燕王入京，欲借重儒臣，令方孝孺草登基诏。孝孺掷笔恸哭，宁诛十族不从，遂见杀，株连甚众，士林扼腕，气节凛然，千秋景仰，忠义",
+          "weight": 2
+        },
+        {
+          "id": "ming_huidi_bg0",
+          "year": 1399,
+          "month": null,
+          "topic": "背景·朱标早逝，洪武二十五",
+          "figures": [],
+          "keywords": [],
+          "premise": "朱标早逝，洪武二十五年太孙允炆被立为皇太孙，赖翰林儒臣辅导",
+          "weight": 1
+        },
+        {
+          "id": "ming_huidi_bg1",
+          "year": 1401,
+          "month": null,
+          "topic": "背景·祖母马皇后与诸老臣或",
+          "figures": [],
+          "keywords": [],
+          "premise": "祖母马皇后与诸老臣或谏不从，宫中乏强援，终启靖难之祸",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "朱允炆中年之厄",
+            "description": "中叶，朱允炆御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -134,7 +414,27 @@
             "当追复建文之年号以正名分",
             "当大赦天下除苛法以安黎庶"
           ],
-          "historicalOutcome": "仁宗赦冤录后天下称颂归心而治道兴，识者惜之。"
+          "historicalOutcome": "仁宗赦冤录后天下称颂归心而治道兴，识者惜之。",
+          "id": "ming_renzong_e0",
+          "relationDeltas": [
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
         },
         {
           "year": 1424,
@@ -149,7 +449,18 @@
             "当分权六部以防权臣之专而社稷安",
             "当亲决章奏不假手于人而明断"
           ],
-          "historicalOutcome": "三杨入阁朝局清平海内乂安而成治世，识者惜之。"
+          "historicalOutcome": "三杨入阁朝局清平海内乂安而成治世，识者惜之。",
+          "id": "ming_renzong_e1",
+          "relationDeltas": [
+            {},
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {}
+          ]
         },
         {
           "year": 1424,
@@ -164,7 +475,21 @@
             "当专意北边防务以固封疆而社稷安",
             "当开海市通蕃货以利商贾而社稷安"
           ],
-          "historicalOutcome": "仁宗罢远征与民休息国用稍纾而民安，识者惜之。"
+          "historicalOutcome": "仁宗罢远征与民休息国用稍纾而民安，识者惜之。",
+          "id": "ming_renzong_e2",
+          "relationDeltas": [
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {},
+            {}
+          ]
         },
         {
           "year": 1425,
@@ -179,7 +504,54 @@
             "当命太子巡边练武以熟戎机",
             "当托孤三杨辅幼主以托社稷"
           ],
-          "historicalOutcome": "宣宗早定储位嗣统得安而国本无摇，识者惜之，史论咎焉。"
+          "historicalOutcome": "宣宗早定储位嗣统得安而国本无摇，识者惜之，史论咎焉。",
+          "id": "ming_renzong_e3",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {},
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_ming_renzong_e3_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "ming_renzong_e3_fb"
+            },
+            {
+              "setFlags": [
+                "did_ming_renzong_e3_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_renzong_e3_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_renzong_e3_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_renzong_e3_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 1425,
@@ -194,7 +566,189 @@
             "当缓议待民力复而后行之而社稷安",
             "当迁陵寝归南以全孝思而社稷安"
           ],
-          "historicalOutcome": "议迁未行仁宗遽崩都议定而北京仍都，识者惜之。"
+          "historicalOutcome": "议迁未行仁宗遽崩都议定而北京仍都，识者惜之。",
+          "id": "ming_renzong_e4",
+          "relationDeltas": [
+            {},
+            {},
+            {
+              "士大夫": -3,
+              "商贾": 1
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_ming_renzong_e4_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_renzong_e4_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_renzong_e4_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_renzong_e4_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_renzong_e4_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
+        },
+        {
+          "id": "ming_renzong_e3_fb",
+          "year": null,
+          "month": null,
+          "title": "立太子瞻基·余波",
+          "description": "「立太子瞻基」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 55,
+        "士大夫": 45,
+        "边将": 35,
+        "商贾": 10
+      },
+      "materialTarget": 6,
+      "historicalAnchors": [
+        {
+          "id": "ming_renzong_anc0",
+          "year": 1424,
+          "month": null,
+          "topic": "即位赦冤",
+          "figures": [],
+          "keywords": [],
+          "premise": "仁宗即位，即平反永乐朝冤狱，赦建文诸臣家属，录用方孝孺等后，复其族籍，朝野称仁，旧怨稍解，士大夫多归心焉，治道初兴，识者",
+          "weight": 2
+        },
+        {
+          "id": "ming_renzong_anc1",
+          "year": 1424,
+          "month": null,
+          "topic": "三杨辅政",
+          "figures": [],
+          "keywords": [],
+          "premise": "擢杨士奇、杨荣、杨溥入阁，与蹇义、夏原吉共理机务，朝政归实，三杨遂开数十年清平之治，号为贤相，海内得乂安，盛世渐成，识者",
+          "weight": 2
+        },
+        {
+          "id": "ming_renzong_anc2",
+          "year": 1424,
+          "month": null,
+          "topic": "罢宝船省费",
+          "figures": [],
+          "keywords": [],
+          "premise": "即位即罢西洋取宝船及云南交趾采办，诏停止采木运石，省民间供亿，国库稍纾，商旅得息肩，与民休息之意昭然，国用乃宽，识者忧其",
+          "weight": 2
+        },
+        {
+          "id": "ming_renzong_anc3",
+          "year": 1425,
+          "month": null,
+          "topic": "立太子瞻基",
+          "figures": [],
+          "keywords": [],
+          "premise": "以皇太子瞻基仁孝且娴武略，蚤定储位，命儒臣辅导，付以监国之任，为宣宗继统张本，宗社乃安，国本无摇，万世之基立，识者忧其不",
+          "weight": 2
+        },
+        {
+          "id": "ming_renzong_anc4",
+          "year": 1425,
+          "month": null,
+          "topic": "议还南京",
+          "figures": [],
+          "keywords": [],
+          "premise": "以北京供给艰难，尝有意还都南京，命修葺南京宫殿，未及行而崩，迁复之议遂寝，北京仍为都，百官惑焉，终成定制，识者忧其不终。",
+          "weight": 2
+        },
+        {
+          "id": "ming_renzong_bg0",
+          "year": 1424,
+          "month": null,
+          "topic": "背景·靖难初起，以世子守北",
+          "figures": [],
+          "keywords": [],
+          "premise": "靖难初起，以世子守北平，曾以万人拒李景隆五十万围城，城赖以全",
+          "weight": 1
+        },
+        {
+          "id": "ming_renzong_bg1",
+          "year": 1425,
+          "month": null,
+          "topic": "背景·永乐二年立为太子，体",
+          "figures": [],
+          "keywords": [],
+          "premise": "永乐二年立为太子，体胖多疾，弟高煦、高燧屡谮之，赖母后与文臣保得安",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "朱高炽中年之厄",
+            "description": "中叶，朱高炽御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -231,7 +785,27 @@
             "当先抚后剿并用而全恩威而社稷安",
             "当迁乐安民以绝其根本而社稷安"
           ],
-          "historicalOutcome": "宣宗亲征高煦就擒宗藩震服而乱遂平，识者惜之。"
+          "historicalOutcome": "宣宗亲征高煦就擒宗藩震服而乱遂平，识者惜之。",
+          "id": "ming_xuanzong_e0",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {}
+          ]
         },
         {
           "year": 1427,
@@ -246,7 +820,21 @@
             "当册安南王羁縻以存体面而社稷安",
             "当迁其民实边以绝后患而社稷安"
           ],
-          "historicalOutcome": "明弃交趾安南复国南顾纾而边患息，识者惜之，史论咎焉。"
+          "historicalOutcome": "明弃交趾安南复国南顾纾而边患息，识者惜之，史论咎焉。",
+          "id": "ming_xuanzong_e1",
+          "relationDeltas": [
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {}
+          ]
         },
         {
           "year": 1428,
@@ -261,7 +849,57 @@
             "当重农桑劝课以厚民生而社稷安",
             "当省工役恤工匠以宽力役而社稷安"
           ],
-          "historicalOutcome": "三杨辅政海内乂安几致刑措而成盛世，识者惜之。"
+          "historicalOutcome": "三杨辅政海内乂安几致刑措而成盛世，识者惜之。",
+          "id": "ming_xuanzong_e2",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_ming_xuanzong_e2_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_xuanzong_e2_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_xuanzong_e2_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_xuanzong_e2_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_xuanzong_e2_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 1429,
@@ -276,7 +914,60 @@
             "当裁抑内臣之权以重朝纲而社稷安",
             "当分内书堂于外廷以远之而社稷安"
           ],
-          "historicalOutcome": "内书堂开阉权渐盛遗患后而启祸端，识者惜之，史论咎焉。"
+          "historicalOutcome": "内书堂开阉权渐盛遗患后而启祸端，识者惜之，史论咎焉。",
+          "id": "ming_xuanzong_e3",
+          "relationDeltas": [
+            {
+              "士大夫": -3,
+              "商贾": 1
+            },
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {},
+            {},
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_ming_xuanzong_e3_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "ming_xuanzong_e3_fb"
+            },
+            {
+              "setFlags": [
+                "did_ming_xuanzong_e3_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_xuanzong_e3_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_xuanzong_e3_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_xuanzong_e3_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 1433,
@@ -291,7 +982,134 @@
             "当减营造省民力以厚生而社稷安",
             "当开马市通瓦剌以绥边而社稷安"
           ],
-          "historicalOutcome": "宣宗饬边铸炉称盛武备振而内外安，识者惜之，史论咎焉。"
+          "historicalOutcome": "宣宗饬边铸炉称盛武备振而内外安，识者惜之，史论咎焉。",
+          "id": "ming_xuanzong_e4",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {},
+            {}
+          ]
+        },
+        {
+          "id": "ming_xuanzong_e3_fb",
+          "year": null,
+          "month": null,
+          "title": "设内书堂·余波",
+          "description": "「设内书堂」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 55,
+        "士大夫": 45,
+        "边将": 35,
+        "商贾": 10
+      },
+      "materialTarget": 6,
+      "historicalAnchors": [
+        {
+          "id": "ming_xuanzong_anc0",
+          "year": 1426,
+          "month": null,
+          "topic": "亲征平汉庶人",
+          "figures": [],
+          "keywords": [],
+          "premise": "宣德元年，汉王高煦据乐安反，宣宗亲率大军征之，围城谕降，高煦出降，废为庶人，幽禁西安门，宗藩震服，乱遂平，威德并行，识者",
+          "weight": 2
+        },
+        {
+          "id": "ming_xuanzong_anc1",
+          "year": 1427,
+          "month": null,
+          "topic": "弃交趾",
+          "figures": [],
+          "keywords": [],
+          "premise": "安南屡叛，屡讨无功，军民疲于转饷。宣宗从阁臣议，弃交趾，撤布政司，许其复为国，岁贡而已，省南顾之忧，边患乃息，国用稍宽，",
+          "weight": 2
+        },
+        {
+          "id": "ming_xuanzong_anc2",
+          "year": 1428,
+          "month": null,
+          "topic": "三杨治世",
+          "figures": [],
+          "keywords": [],
+          "premise": "杨士奇、杨荣、杨溥同心辅政，兴学校、恤灾荒、清刑狱，仁宣之治达于极盛，史谓民安物阜，几致刑措，号为盛世，四海承平，识者忧",
+          "weight": 2
+        },
+        {
+          "id": "ming_xuanzong_anc3",
+          "year": 1429,
+          "month": null,
+          "topic": "设内书堂",
+          "figures": [],
+          "keywords": [],
+          "premise": "命儒臣教宦官读书于内书堂，欲使通文墨供使令，自此宦官得预文书，渐通政机，权阉之阶由此而启，遗患后世，未可逆料，识者忧其不",
+          "weight": 2
+        },
+        {
+          "id": "ming_xuanzong_anc4",
+          "year": 1433,
+          "month": null,
+          "topic": "宣德炉与边备",
+          "figures": [],
+          "keywords": [],
+          "premise": "帝好工艺，铸宣德炉，御用监精巧一时。又留意边备，亲阅军实于近畿，整顿卫所，北边防务赖以稍饬，武备稍振，内外相安，识者忧其",
+          "weight": 2
+        },
+        {
+          "id": "ming_xuanzong_bg0",
+          "year": 1430,
+          "month": null,
+          "topic": "背景·又平交趾之乱而弃守，",
+          "figures": [],
+          "keywords": [],
+          "premise": "又平交趾之乱而弃守，设内书堂教宦官读书，惜宠太监渐启权阉之端，然治绩灿然",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "朱瞻基中年之厄",
+            "description": "中叶，朱瞻基御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -328,7 +1146,18 @@
             "当倚阁臣制衡振以分其权而社稷安",
             "当纵振而羁縻之以观其变而社稷安"
           ],
-          "historicalOutcome": "王振擅权朝政日非祸机伏而乱将作，识者惜之，史论咎焉。"
+          "historicalOutcome": "王振擅权朝政日非祸机伏而乱将作，识者惜之，史论咎焉。",
+          "id": "ming_yingzong_e0",
+          "relationDeltas": [
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {},
+            {},
+            {}
+          ]
         },
         {
           "year": 1435,
@@ -343,7 +1172,21 @@
             "当徇太后意而已而安宫闱而社稷安",
             "当贬胡后别居以全其生而社稷安"
           ],
-          "historicalOutcome": "英宗废胡后立孙后史讥之而礼法紊，识者惜之，史论咎焉。"
+          "historicalOutcome": "英宗废胡后立孙后史讥之而礼法紊，识者惜之，史论咎焉。",
+          "id": "ming_yingzong_e1",
+          "relationDeltas": [
+            {
+              "士大夫": -3,
+              "商贾": 1
+            },
+            {
+              "士大夫": -3,
+              "商贾": 1
+            },
+            {},
+            {},
+            {}
+          ]
         },
         {
           "year": 1449,
@@ -358,7 +1201,63 @@
             "当诛振以谢天下而振军心而社稷安",
             "当巡边而不深入以保万全而社稷安"
           ],
-          "historicalOutcome": "土木堡溃帝被瓦剌俘社稷危而势倾，识者惜之，史论咎焉。"
+          "historicalOutcome": "土木堡溃帝被瓦剌俘社稷危而势倾，识者惜之，史论咎焉。",
+          "id": "ming_yingzong_e2",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_ming_yingzong_e2_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_yingzong_e2_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_yingzong_e2_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_yingzong_e2_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_yingzong_e2_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 1450,
@@ -373,7 +1272,60 @@
             "当厚待南宫示亲以释猜嫌而社稷安",
             "当迁居外藩避嫌以远祸而社稷安"
           ],
-          "historicalOutcome": "英宗归国幽禁南宫七年整而怨深，识者惜之，史论咎焉。"
+          "historicalOutcome": "英宗归国幽禁南宫七年整而怨深，识者惜之，史论咎焉。",
+          "id": "ming_yingzong_e3",
+          "relationDeltas": [
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_ming_yingzong_e3_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "ming_yingzong_e3_fb"
+            },
+            {
+              "setFlags": [
+                "did_ming_yingzong_e3_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_yingzong_e3_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_yingzong_e3_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_yingzong_e3_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 1457,
@@ -388,7 +1340,153 @@
             "当赦谦以顺舆情而收人心而社稷安",
             "当与弟共理朝政以全友爱而社稷安"
           ],
-          "historicalOutcome": "英宗复辟谦竟冤死天下惜而冤狱生，识者惜之，史论咎焉。"
+          "historicalOutcome": "英宗复辟谦竟冤死天下惜而冤狱生，识者惜之，史论咎焉。",
+          "id": "ming_yingzong_e4",
+          "relationDeltas": [
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {},
+            {
+              "士大夫": -3,
+              "商贾": 1
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
+        },
+        {
+          "id": "ming_yingzong_e3_fb",
+          "year": null,
+          "month": null,
+          "title": "南宫幽居·余波",
+          "description": "「南宫幽居」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 55,
+        "士大夫": 45,
+        "边将": 35,
+        "商贾": 10
+      },
+      "materialTarget": 10,
+      "historicalAnchors": [
+        {
+          "id": "ming_yingzong_anc0",
+          "year": 1442,
+          "month": null,
+          "topic": "三杨去位王振用事",
+          "figures": [],
+          "keywords": [],
+          "premise": "张太皇太后崩，杨士奇忧卒，杨荣、杨溥老退，王振遂揽司礼监，广植私党，百官争趋其门，朝纲渐紊，祸机已伏，乱象将生，识者忧其",
+          "weight": 2
+        },
+        {
+          "id": "ming_yingzong_anc1",
+          "year": 1435,
+          "month": null,
+          "topic": "废胡立孙",
+          "figures": [],
+          "keywords": [],
+          "premise": "即位初，迫于生母孙氏，废胡皇后，立孙氏为后，事出宫闱，台谏谏止不听，身后史讥其失夫妇之伦，宫禁成例，礼法稍紊，识者忧其不",
+          "weight": 2
+        },
+        {
+          "id": "ming_yingzong_anc2",
+          "year": 1449,
+          "month": null,
+          "topic": "土木堡之变",
+          "figures": [],
+          "keywords": [],
+          "premise": "瓦剌犯边，王振挟帝亲征，军无纪律，至土木堡被围，兵溃帝俘，振死乱军，随征大臣死者数十，京师震骇，社稷危如累卵，识者忧其不",
+          "weight": 2
+        },
+        {
+          "id": "ming_yingzong_anc3",
+          "year": 1450,
+          "month": null,
+          "topic": "南宫幽居",
+          "figures": [],
+          "keywords": [],
+          "premise": "瓦剌送还英宗，景泰帝迎于东安门而幽之南宫，节缩供给，严防出入，兄弟猜忌，七年不通朝政，形同禁锢，萧墙之祸隐伏，识者忧其不",
+          "weight": 2
+        },
+        {
+          "id": "ming_yingzong_anc4",
+          "year": 1457,
+          "month": null,
+          "topic": "夺门复辟",
+          "figures": [],
+          "keywords": [],
+          "premise": "景泰帝病，武清侯石亨、徐有贞、太监曹吉祥夜启南宫，拥英宗复位，改元天顺，逮于谦、王文，以意欲二字杀之，冤狱横生，识者忧其",
+          "weight": 2
+        },
+        {
+          "id": "ming_yingzong_bg0",
+          "year": 1445,
+          "month": null,
+          "topic": "背景·宣德十年即位，甫九岁",
+          "figures": [],
+          "keywords": [],
+          "premise": "宣德十年即位，甫九岁，太皇太后张氏垂听政，三杨辅之，海内小康",
+          "weight": 1
+        },
+        {
+          "id": "ming_yingzong_bg1",
+          "year": 1455,
+          "month": null,
+          "topic": "背景·及张太后崩、三杨相继",
+          "figures": [],
+          "keywords": [],
+          "premise": "及张太后崩、三杨相继去，宠信司礼监太监王振，振遂擅权",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "朱祁镇中年之厄",
+            "description": "中叶，朱祁镇御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -425,7 +1523,57 @@
             "当迎上皇归复位以明君臣而社稷安",
             "当暂摄以待班师而徐图之而社稷安"
           ],
-          "historicalOutcome": "祁钰即位稳定人心国势安而社稷存，识者惜之，史论咎焉。"
+          "historicalOutcome": "祁钰即位稳定人心国势安而社稷存，识者惜之，史论咎焉。",
+          "id": "ming_daizong_e0",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            }
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_ming_daizong_e0_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_daizong_e0_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_daizong_e0_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_daizong_e0_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_daizong_e0_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 1449,
@@ -440,7 +1588,27 @@
             "当亲征拒敌于野以挫其锋而社稷安",
             "当坚壁清野以待虏之敝而社稷安"
           ],
-          "historicalOutcome": "北京保卫战虏退师全社稷宁而功伟，识者惜之，史论咎焉。"
+          "historicalOutcome": "北京保卫战虏退师全社稷宁而功伟，识者惜之，史论咎焉。",
+          "id": "ming_daizong_e1",
+          "relationDeltas": [
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            }
+          ]
         },
         {
           "year": 1450,
@@ -455,7 +1623,15 @@
             "当与瓦剌盟好以绥边患而社稷安",
             "当迁上皇于外藩以远嫌疑而社稷安"
           ],
-          "historicalOutcome": "上皇归幽南宫七年嫌隙深而祸萌，识者惜之，史论咎焉。"
+          "historicalOutcome": "上皇归幽南宫七年嫌隙深而祸萌，识者惜之，史论咎焉。",
+          "id": "ming_daizong_e2",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {},
+            {}
+          ]
         },
         {
           "year": 1452,
@@ -470,7 +1646,57 @@
             "当迟疑不立己子以观时变而社稷安",
             "当与英宗约兄弟及以明誓而社稷安"
           ],
-          "historicalOutcome": "景泰易储伏夺门之祸根而衅遂成，识者惜之，史论咎焉。"
+          "historicalOutcome": "景泰易储伏夺门之祸根而衅遂成，识者惜之，史论咎焉。",
+          "id": "ming_daizong_e3",
+          "relationDeltas": [
+            {
+              "士大夫": -3,
+              "商贾": 1
+            },
+            {},
+            {},
+            {},
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_ming_daizong_e3_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "ming_daizong_e3_fb"
+            },
+            {
+              "setFlags": [
+                "did_ming_daizong_e3_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_daizong_e3_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_daizong_e3_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_daizong_e3_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 1457,
@@ -485,7 +1711,147 @@
             "当召勤王兵以抗夺门而社稷安",
             "当避位南宫以全其身而社稷安"
           ],
-          "historicalOutcome": "景泰废薨夺门成社稷移而悲剧终，识者惜之，史论咎焉。"
+          "historicalOutcome": "景泰废薨夺门成社稷移而悲剧终，识者惜之，史论咎焉。",
+          "id": "ming_daizong_e4",
+          "relationDeltas": [
+            {
+              "士大夫": -3,
+              "商贾": 1
+            },
+            {},
+            {},
+            {},
+            {}
+          ]
+        },
+        {
+          "id": "ming_daizong_e3_fb",
+          "year": null,
+          "month": null,
+          "title": "易储立见济·余波",
+          "description": "「易储立见济」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 55,
+        "士大夫": 45,
+        "边将": 35,
+        "商贾": 10
+      },
+      "materialTarget": 6,
+      "historicalAnchors": [
+        {
+          "id": "ming_daizong_anc0",
+          "year": 1449,
+          "month": null,
+          "topic": "监国即位",
+          "figures": [],
+          "keywords": [],
+          "premise": "土木败讯至，孙太后命郕王监国，于谦等请即真以安人心，遂即位景泰，遥尊英宗为太上皇，人心始定，国势复安，社稷赖存，识者忧其",
+          "weight": 2
+        },
+        {
+          "id": "ming_daizong_anc1",
+          "year": 1449,
+          "month": null,
+          "topic": "北京保卫战",
+          "figures": [],
+          "keywords": [],
+          "premise": "瓦剌挟英宗逼都城，于谦力排南迁，拥景泰督战，列九门死守，败敌于德胜门，京师得全，虏退，社稷以宁，功在社稷，识者忧其不终。",
+          "weight": 2
+        },
+        {
+          "id": "ming_daizong_anc2",
+          "year": 1450,
+          "month": null,
+          "topic": "迎归幽禁",
+          "figures": [],
+          "keywords": [],
+          "premise": "瓦剌请和送英宗还，景泰虑复辟，迎于东安门而幽南宫，节其供亿，兄弟相制，中外窃议其薄，嫌隙遂深，萧墙之祸萌，识者忧其不终。",
+          "weight": 2
+        },
+        {
+          "id": "ming_daizong_anc3",
+          "year": 1452,
+          "month": null,
+          "topic": "易储立见济",
+          "figures": [],
+          "keywords": [],
+          "premise": "景泰废英宗子见深为沂王，立己子见济为太子，欲固国本，朝臣汪后等谏被废，易储之议终成夺门之衅，祸根伏而不可解，识者忧其不终",
+          "weight": 2
+        },
+        {
+          "id": "ming_daizong_anc4",
+          "year": 1457,
+          "month": null,
+          "topic": "夺门被废",
+          "figures": [],
+          "keywords": [],
+          "premise": "景泰疾笃，石亨、徐有贞夜启南宫拥英宗复辟，废景泰为郕王，群臣仓皇失措，未几郕王薨，礼葬从薄，谥曰戾，悲剧终，识者忧其不终",
+          "weight": 2
+        },
+        {
+          "id": "ming_daizong_bg0",
+          "year": 1452,
+          "month": null,
+          "topic": "背景·土木堡变起，英宗北狩",
+          "figures": [],
+          "keywords": [],
+          "premise": "土木堡变起，英宗北狩，孙太后命监国，于谦等拥之即位，尊英宗为太上皇，改元景泰",
+          "weight": 1
+        },
+        {
+          "id": "ming_daizong_bg1",
+          "year": 1455,
+          "month": null,
+          "topic": "背景·八年病笃，石亨等夺门",
+          "figures": [],
+          "keywords": [],
+          "premise": "八年病笃，石亨等夺门，英宗复辟，废其为郕王，旋薨，谥戾",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "朱祁钰中年之厄",
+            "description": "中叶，朱祁钰御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -522,7 +1888,18 @@
             "当两帝并祀以存旧典而社稷安",
             "当不复以绝嫌而安现状而社稷安"
           ],
-          "historicalOutcome": "宪宗复景泰帝号旧臣心安而恩怨解，识者惜之，史论咎焉。"
+          "historicalOutcome": "宪宗复景泰帝号旧臣心安而恩怨解，识者惜之，史论咎焉。",
+          "id": "ming_xianzong_e0",
+          "relationDeltas": [
+            {},
+            {
+              "士大夫": -3,
+              "商贾": 1
+            },
+            {},
+            {},
+            {}
+          ]
         },
         {
           "year": 1466,
@@ -537,7 +1914,21 @@
             "当另立贤后以主中宫而社稷安",
             "当密养皇子于外以存宗嗣而社稷安"
           ],
-          "historicalOutcome": "万妃专宠国本久虚六宫稀而宗祧忧，识者惜之，史论咎焉。"
+          "historicalOutcome": "万妃专宠国本久虚六宫稀而宗祧忧，识者惜之，史论咎焉。",
+          "id": "ming_xianzong_e1",
+          "relationDeltas": [
+            {},
+            {},
+            {
+              "士大夫": -3,
+              "商贾": 1
+            },
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            }
+          ]
         },
         {
           "year": 1477,
@@ -552,7 +1943,60 @@
             "当以文臣监厂务以清狱而社稷安",
             "当并西厂于东厂以一其权而社稷安"
           ],
-          "historicalOutcome": "西厂横行缇骑遍地朝臣惧而冤狱生，识者惜之，史论咎焉。"
+          "historicalOutcome": "西厂横行缇骑遍地朝臣惧而冤狱生，识者惜之，史论咎焉。",
+          "id": "ming_xianzong_e2",
+          "relationDeltas": [
+            {
+              "士大夫": -3,
+              "商贾": 1
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_ming_xianzong_e2_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "ming_xianzong_e2_fb"
+            },
+            {
+              "setFlags": [
+                "did_ming_xianzong_e2_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_xianzong_e2_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_xianzong_e2_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_xianzong_e2_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 1467,
@@ -567,7 +2011,24 @@
             "当许其朝贡以绥远人而社稷安",
             "当徙其众实内地以绝后患而社稷安"
           ],
-          "historicalOutcome": "成化犁庭辽东暂靖边患息而威振，识者惜之，史论咎焉。"
+          "historicalOutcome": "成化犁庭辽东暂靖边患息而威振，识者惜之，史论咎焉。",
+          "id": "ming_xianzong_e3",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {}
+          ]
         },
         {
           "year": 1477,
@@ -582,7 +2043,189 @@
             "当限僧道度牒以抑其滥而社稷安",
             "当听言官劾罢以儆效尤而社稷安"
           ],
-          "historicalOutcome": "传奉官滥授吏治大坏难除而纲纪紊，识者惜之，史论咎焉。"
+          "historicalOutcome": "传奉官滥授吏治大坏难除而纲纪紊，识者惜之，史论咎焉。",
+          "id": "ming_xianzong_e4",
+          "relationDeltas": [
+            {},
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            }
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_ming_xianzong_e4_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_xianzong_e4_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_xianzong_e4_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_xianzong_e4_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_xianzong_e4_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
+        },
+        {
+          "id": "ming_xianzong_e2_fb",
+          "year": null,
+          "month": null,
+          "title": "设西厂·余波",
+          "description": "「设西厂」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 55,
+        "士大夫": 45,
+        "边将": 35,
+        "商贾": 10
+      },
+      "materialTarget": 8,
+      "historicalAnchors": [
+        {
+          "id": "ming_xianzong_anc0",
+          "year": 1464,
+          "month": null,
+          "topic": "复景泰帝号",
+          "figures": [],
+          "keywords": [],
+          "premise": "即位追复景泰帝位号，修其陵寝，示不以夺门为然，稍平代宗旧臣之心，亦隐讽英宗当年之薄，朝论稍安，恩怨稍解，识者忧其不终。",
+          "weight": 2
+        },
+        {
+          "id": "ming_xianzong_anc1",
+          "year": 1466,
+          "month": null,
+          "topic": "万贵妃专宠",
+          "figures": [],
+          "keywords": [],
+          "premise": "万贵妃宠冠后宫，妒忌成性，宫人孕者多遭堕，帝无子者久。群臣疏请广嗣，帝曲护之，六宫萧条，国本久虚，宗祧可忧，识者忧其不终",
+          "weight": 2
+        },
+        {
+          "id": "ming_xianzong_anc2",
+          "year": 1477,
+          "month": null,
+          "topic": "设西厂",
+          "figures": [],
+          "keywords": [],
+          "premise": "妖人李子龙事觉，帝命汪直刺事，设西厂，权逾东厂，缇骑四出，捕系大臣，朝臣惴惴，商旅裹足，中外震慑，冤狱滋生，识者忧其不终",
+          "weight": 2
+        },
+        {
+          "id": "ming_xianzong_anc3",
+          "year": 1467,
+          "month": null,
+          "topic": "成化犁庭",
+          "figures": [],
+          "keywords": [],
+          "premise": "建州女真董山屡寇边，宪宗命赵辅、汪直率师讨之，捣其巢穴，斩获甚众，史称成化犁庭，辽东稍靖，边患暂息，威震荒服，识者忧其不",
+          "weight": 2
+        },
+        {
+          "id": "ming_xianzong_anc4",
+          "year": 1477,
+          "month": null,
+          "topic": "传奉官之滥",
+          "figures": [],
+          "keywords": [],
+          "premise": "帝信方士僧道，不经铨选，传旨授官，号传奉官，受贿鬻爵，冗员充斥，吏治大坏，言官论劾不止，弊难除而纲纪紊，识者忧其不终，朝",
+          "weight": 2
+        },
+        {
+          "id": "ming_xianzong_bg0",
+          "year": 1472,
+          "month": null,
+          "topic": "背景·土木后两岁立为太子，",
+          "figures": [],
+          "keywords": [],
+          "premise": "土木后两岁立为太子，景泰易储见废，英宗复辟复其位",
+          "weight": 1
+        },
+        {
+          "id": "ming_xianzong_bg1",
+          "year": 1480,
+          "month": null,
+          "topic": "背景·初即位用李贤、彭时，",
+          "figures": [],
+          "keywords": [],
+          "premise": "初即位用李贤、彭时，旋信用奸佞梁芳、僧继晓，传奉官滥授",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "朱见深中年之厄",
+            "description": "中叶，朱见深御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -619,7 +2262,60 @@
             "当付阁臣考课以清吏而社稷安",
             "当大赦恤刑以安人心而社稷安"
           ],
-          "historicalOutcome": "孝宗斥佞朝政一新士论然而治道兴，识者惜之，史论咎焉。"
+          "historicalOutcome": "孝宗斥佞朝政一新士论然而治道兴，识者惜之，史论咎焉。",
+          "id": "ming_xiaozong_e0",
+          "relationDeltas": [
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_ming_xiaozong_e0_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_xiaozong_e0_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_xiaozong_e0_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_xiaozong_e0_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_xiaozong_e0_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 1489,
@@ -634,7 +2330,21 @@
             "当省工役恤匠以宽力役而社稷安",
             "当崇儒术兴学校以育材而社稷安"
           ],
-          "historicalOutcome": "弘治之治海内乂安号中兴而治平盛，识者惜之，史论咎焉。"
+          "historicalOutcome": "弘治之治海内乂安号中兴而治平盛，识者惜之，史论咎焉。",
+          "id": "ming_xiaozong_e1",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "士大夫": -3,
+              "商贾": 1
+            }
+          ]
         },
         {
           "year": 1492,
@@ -649,7 +2359,18 @@
             "当修大明会典以正制度而社稷安",
             "当汰冗员省费以宽国用而社稷安"
           ],
-          "historicalOutcome": "孝宗好学朝多谠言崇文风而治具张，识者惜之，史论咎焉。"
+          "historicalOutcome": "孝宗好学朝多谠言崇文风而治具张，识者惜之，史论咎焉。",
+          "id": "ming_xiaozong_e2",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
         },
         {
           "year": 1495,
@@ -664,7 +2385,60 @@
             "当开源节流以厚民生而社稷安",
             "当设河官岁修以永利而社稷安"
           ],
-          "historicalOutcome": "治河成功漕运复通河患弭而民赖，识者惜之，史论咎焉。"
+          "historicalOutcome": "治河成功漕运复通河患弭而民赖，识者惜之，史论咎焉。",
+          "id": "ming_xiaozong_e3",
+          "relationDeltas": [
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {},
+            {
+              "士大夫": -3,
+              "商贾": 1
+            }
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_ming_xiaozong_e3_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "ming_xiaozong_e3_fb"
+            },
+            {
+              "setFlags": [
+                "did_ming_xiaozong_e3_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_xiaozong_e3_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_xiaozong_e3_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_xiaozong_e3_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 1502,
@@ -679,7 +2453,153 @@
             "当蠲租课安集以厚其生而社稷安",
             "当置卫所弹压以永靖而社稷安"
           ],
-          "historicalOutcome": "抚定流民乱源乃息边氓安而教化行，识者惜之，史论咎焉。"
+          "historicalOutcome": "抚定流民乱源乃息边氓安而教化行，识者惜之，史论咎焉。",
+          "id": "ming_xiaozong_e4",
+          "relationDeltas": [
+            {
+              "士大夫": -3,
+              "商贾": 1
+            },
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
+        },
+        {
+          "id": "ming_xiaozong_e3_fb",
+          "year": null,
+          "month": null,
+          "title": "治河安流·余波",
+          "description": "「治河安流」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 55,
+        "士大夫": 45,
+        "边将": 35,
+        "商贾": 10
+      },
+      "materialTarget": 7,
+      "historicalAnchors": [
+        {
+          "id": "ming_xiaozong_anc0",
+          "year": 1487,
+          "month": null,
+          "topic": "即位斥佞",
+          "figures": [],
+          "keywords": [],
+          "premise": "孝宗践祚，即逮治梁芳、李孜省，罢传奉官，斥僧道方士，复言官之职，朝署一清，士论翕然，弊政为之一扫，治道乃兴，识者忧其不终",
+          "weight": 2
+        },
+        {
+          "id": "ming_xiaozong_anc1",
+          "year": 1489,
+          "month": null,
+          "topic": "弘治中兴",
+          "figures": [],
+          "keywords": [],
+          "premise": "用刘健、李东阳、谢迁为相，刘大夏理戎政，省赋税、恤灾荒、修水利，府库充而民乐业，史称弘治中兴，治平称盛，海内乂安，识者忧",
+          "weight": 2
+        },
+        {
+          "id": "ming_xiaozong_anc2",
+          "year": 1492,
+          "month": null,
+          "topic": "开经筵讲学",
+          "figures": [],
+          "keywords": [],
+          "premise": "帝勤学，每日经筵不辍，召儒臣讲论古今治乱，尝曰喜闻过，史官记注以为美谈，崇文之风蔚然，朝多谠言，治具毕张，识者忧其不终。",
+          "weight": 2
+        },
+        {
+          "id": "ming_xiaozong_anc3",
+          "year": 1495,
+          "month": null,
+          "topic": "治河安流",
+          "figures": [],
+          "keywords": [],
+          "premise": "黄河屡决，刘大夏治张秋决口，筑堤捍之，漕运复通，淮徐之民免昏垫，岁省赈费无算，功在社稷，河患稍弭，生民赖之，识者忧其不终",
+          "weight": 2
+        },
+        {
+          "id": "ming_xiaozong_anc4",
+          "year": 1502,
+          "month": null,
+          "topic": "平荆襄流民",
+          "figures": [],
+          "keywords": [],
+          "premise": "荆襄流民聚众数十万，时或生变，原杰抚定设郧阳府，给田编籍，乱源乃息，边氓得所依，朝廷赖以安，教化渐行，识者忧其不终，朝野",
+          "weight": 2
+        },
+        {
+          "id": "ming_xiaozong_bg0",
+          "year": 1493,
+          "month": null,
+          "topic": "背景·万贵妃妒，纪氏孕匿养",
+          "figures": [],
+          "keywords": [],
+          "premise": "万贵妃妒，纪氏孕匿养内庭，祐樘六岁乃得见帝，立为太子",
+          "weight": 1
+        },
+        {
+          "id": "ming_xiaozong_bg1",
+          "year": 1499,
+          "month": null,
+          "topic": "背景·尽斥梁芳、李孜省、僧",
+          "figures": [],
+          "keywords": [],
+          "premise": "尽斥梁芳、李孜省、僧继晓等佞幸，罢传奉官，用刘健、谢迁、李东阳、刘大夏，勤讲经筵，恭俭爱民，史称弘治中兴",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "朱祐樘中年之厄",
+            "description": "中叶，朱祐樘御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -716,7 +2636,18 @@
             "当分权内阁以抑其横而社稷安",
             "当阳抑阴用以观其变而社稷安"
           ],
-          "historicalOutcome": "刘瑾擅权逐谏臣朝政浊而国事非，识者惜之，史论咎焉。"
+          "historicalOutcome": "刘瑾擅权逐谏臣朝政浊而国事非，识者惜之，史论咎焉。",
+          "id": "ming_wuzong_e0",
+          "relationDeltas": [
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {},
+            {},
+            {}
+          ]
         },
         {
           "year": 1517,
@@ -731,7 +2662,21 @@
             "当议和市马以绥边而社稷安",
             "当修边堡备御以固疆而社稷安"
           ],
-          "historicalOutcome": "应州御虏帝自称捷实伤重而边未固，识者惜之，史论咎焉。"
+          "historicalOutcome": "应州御虏帝自称捷实伤重而边未固，识者惜之，史论咎焉。",
+          "id": "ming_wuzong_e1",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
         },
         {
           "year": 1510,
@@ -746,7 +2691,24 @@
             "当徙寘鐇支属以绝后患而社稷安",
             "当赦其党安反侧以宽政而社稷安"
           ],
-          "historicalOutcome": "安化乱平刘瑾伏诛阉党敛而纲少清，识者惜之，史论咎焉。"
+          "historicalOutcome": "安化乱平刘瑾伏诛阉党敛而纲少清，识者惜之，史论咎焉。",
+          "id": "ming_wuzong_e2",
+          "relationDeltas": [
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
         },
         {
           "year": 1519,
@@ -761,7 +2723,63 @@
             "当移镇南昌以控要害而社稷安",
             "当徙宁府眷属以绝其根而社稷安"
           ],
-          "historicalOutcome": "守仁旬月平宁王乱帝南征而徒往返，识者惜之，史论咎焉。"
+          "historicalOutcome": "守仁旬月平宁王乱帝南征而徒往返，识者惜之，史论咎焉。",
+          "id": "ming_wuzong_e3",
+          "relationDeltas": [
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_ming_wuzong_e3_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "ming_wuzong_e3_fb"
+            },
+            {
+              "setFlags": [
+                "did_ming_wuzong_e3_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_wuzong_e3_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_wuzong_e3_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_wuzong_e3_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 1520,
@@ -776,7 +2794,156 @@
             "当托孤阁臣以安社稷而社稷安",
             "当罢巡幸安民以息劳而社稷安"
           ],
-          "historicalOutcome": "武宗落水崩无嗣国本空而朝野惊，识者惜之，史论咎焉。"
+          "historicalOutcome": "武宗落水崩无嗣国本空而朝野惊，识者惜之，史论咎焉。",
+          "id": "ming_wuzong_e4",
+          "relationDeltas": [
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            }
+          ]
+        },
+        {
+          "id": "ming_wuzong_e3_fb",
+          "year": null,
+          "month": null,
+          "title": "宁王宸濠之乱·余波",
+          "description": "「宁王宸濠之乱」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "tier": "major",
+          "gating": {
+            "requiresFlags": [
+              "did_ming_wuzong_e3_0"
+            ]
+          },
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 55,
+        "士大夫": 45,
+        "边将": 35,
+        "商贾": 10
+      },
+      "materialTarget": 6,
+      "historicalAnchors": [
+        {
+          "id": "ming_wuzong_anc0",
+          "year": 1505,
+          "month": null,
+          "topic": "宠八虎刘瑾",
+          "figures": [],
+          "keywords": [],
+          "premise": "即位初，嬖八虎太监，刘瑾尤用事，导帝游猎，逐谏臣，阁老刘健、谢迁去位，瑾掌司礼监，权倾中外，朝政浊乱，国事日非，识者忧其",
+          "weight": 2
+        },
+        {
+          "id": "ming_wuzong_anc1",
+          "year": 1517,
+          "month": null,
+          "topic": "应州大捷",
+          "figures": [],
+          "keywords": [],
+          "premise": "帝自封威武大将军亲征蒙古，战于应州，斩获颇众，虏引退，帝颇自得，然边将讳败饰功，实伤亦重，边备未固，胜而实危，识者忧其不",
+          "weight": 2
+        },
+        {
+          "id": "ming_wuzong_anc2",
+          "year": 1510,
+          "month": null,
+          "topic": "安化王叛诛瑾",
+          "figures": [],
+          "keywords": [],
+          "premise": "安化王寘鐇据宁夏反，以诛刘瑾为名，都御史杨一清、监军张永平之，因发瑾罪，帝悟，逮瑾磔于市，阉党稍敛，朝纲少清，识者忧其不",
+          "weight": 2
+        },
+        {
+          "id": "ming_wuzong_anc3",
+          "year": 1519,
+          "month": null,
+          "topic": "宁王宸濠之乱",
+          "figures": [],
+          "keywords": [],
+          "premise": "宁王宸濠久谋逆，正德十四年起兵陷九江，王守仁起兵讨之，四十余日擒宸濠，捷未至而帝南征，欲亲俘之，徒劳往返，识者忧其不终。",
+          "weight": 2
+        },
+        {
+          "id": "ming_wuzong_anc4",
+          "year": 1520,
+          "month": null,
+          "topic": "南巡落水",
+          "figures": [],
+          "keywords": [],
+          "premise": "帝南巡返至清江浦，渔于积水池，舟覆落水，寒浸入骨，疾遂重，次年崩于豹房，无子，国本骤空，朝野惊惶，社稷无主，识者忧其不终",
+          "weight": 2
+        },
+        {
+          "id": "ming_wuzong_bg0",
+          "year": 1510,
+          "month": null,
+          "topic": "背景·好武嗜嬉，建豹房自封",
+          "figures": [],
+          "keywords": [],
+          "premise": "好武嗜嬉，建豹房自封威武大将军，宠八虎太监，刘瑾擅权",
+          "weight": 1
+        },
+        {
+          "id": "ming_wuzong_bg1",
+          "year": 1516,
+          "month": null,
+          "topic": "背景·江西宁王宸濠久蓄异志",
+          "figures": [],
+          "keywords": [],
+          "premise": "江西宁王宸濠久蓄异志，正德十四年反，王守仁仓卒平之",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "朱厚照中年之厄",
+            "description": "中叶，朱厚照御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -813,7 +2980,15 @@
             "当迟议以观变而徐定而社稷安",
             "当付廷议公断以服众而社稷安"
           ],
-          "historicalOutcome": "大礼议定帝意得逞礼官去而国体伤，识者惜之，史论咎焉。"
+          "historicalOutcome": "大礼议定帝意得逞礼官去而国体伤，识者惜之，史论咎焉。",
+          "id": "ming_shizong_e0",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {},
+            {}
+          ]
         },
         {
           "year": 1542,
@@ -828,7 +3003,66 @@
             "当赦宫婢以仁而全恩而社稷安",
             "当严宫禁防盗以杜衅而社稷安"
           ],
-          "historicalOutcome": "宫变败露帝得全宫婢诛而天威损，识者惜之，史论咎焉。"
+          "historicalOutcome": "宫变败露帝得全宫婢诛而天威损，识者惜之，史论咎焉。",
+          "id": "ming_shizong_e1",
+          "relationDeltas": [
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_ming_shizong_e1_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "ming_shizong_e1_fb"
+            },
+            {
+              "setFlags": [
+                "did_ming_shizong_e1_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_shizong_e1_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_shizong_e1_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_shizong_e1_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 1550,
@@ -843,7 +3077,66 @@
             "当诛嵩以谢天下而肃纲而社稷安",
             "当徙民入保以全民命而社稷安"
           ],
-          "historicalOutcome": "庚戌虏退京师受辱国体伤而边威堕，识者惜之，史论咎焉。"
+          "historicalOutcome": "庚戌虏退京师受辱国体伤而边威堕，识者惜之，史论咎焉。",
+          "id": "ming_shizong_e2",
+          "relationDeltas": [
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_ming_shizong_e2_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_shizong_e2_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_shizong_e2_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_shizong_e2_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_shizong_e2_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 1555,
@@ -858,7 +3151,24 @@
             "当开海禁绝倭源以清本而社稷安",
             "当诛督师赵文华以正法而社稷安"
           ],
-          "historicalOutcome": "戚俞戮力东南平倭海疆靖而东南安，识者惜之，史论咎焉。"
+          "historicalOutcome": "戚俞戮力东南平倭海疆靖而东南安，识者惜之，史论咎焉。",
+          "id": "ming_shizong_e3",
+          "relationDeltas": [
+            {},
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ]
         },
         {
           "year": 1542,
@@ -873,7 +3183,60 @@
             "当用徐阶制衡以参其政而社稷安",
             "当限嵩子弟以杜其门而社稷安"
           ],
-          "historicalOutcome": "严嵩窃柄朝纲浊乱十余年而国事非，识者惜之，史论咎焉。"
+          "historicalOutcome": "严嵩窃柄朝纲浊乱十余年而国事非，识者惜之，史论咎焉。",
+          "id": "ming_shizong_e4",
+          "relationDeltas": [
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {},
+            {},
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_ming_shizong_e4_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_shizong_e4_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_shizong_e4_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_shizong_e4_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_shizong_e4_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 1562,
@@ -888,7 +3251,163 @@
             "当斥陶仲文以正风化而社稷安",
             "当省醮费赈民以厚生而社稷安"
           ],
-          "historicalOutcome": "世宗玄修怠政日甚朝局坏而弊益深，识者惜之，史论咎焉。"
+          "historicalOutcome": "世宗玄修怠政日甚朝局坏而弊益深，识者惜之，史论咎焉。",
+          "id": "ming_shizong_e5",
+          "relationDeltas": [
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
+        },
+        {
+          "id": "ming_shizong_e1_fb",
+          "year": null,
+          "month": null,
+          "title": "壬寅宫变·余波",
+          "description": "「壬寅宫变」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 55,
+        "士大夫": 45,
+        "边将": 35,
+        "商贾": 10
+      },
+      "materialTarget": 16,
+      "historicalAnchors": [
+        {
+          "id": "ming_shizong_anc0",
+          "year": 1521,
+          "month": null,
+          "topic": "大礼议",
+          "figures": [],
+          "keywords": [],
+          "premise": "帝即位，欲尊生父兴献王为皇考，杨廷和等执濮议力争，廷臣二百余伏阙哭谏，帝杖戍之，终定本生父号，礼官多去，国体伤，识者忧其",
+          "weight": 2
+        },
+        {
+          "id": "ming_shizong_anc1",
+          "year": 1542,
+          "month": null,
+          "topic": "壬寅宫变",
+          "figures": [],
+          "keywords": [],
+          "premise": "帝专宠方后，斋居西苑，虐待宫人，杨金英等谋缢帝，绳结不死，事觉，帝幽西苑，宫婢及后皆连坐，几酿大变，天威损，识者忧其不终",
+          "weight": 2
+        },
+        {
+          "id": "ming_shizong_anc2",
+          "year": 1550,
+          "month": null,
+          "topic": "庚戌之变",
+          "figures": [],
+          "keywords": [],
+          "premise": "俺答犯边，破古北口，兵临北京城下，焚掠近畿，严嵩令诸将勿战，虏饱扬去，议和开马市，辱国甚，京师受创，边威堕，识者忧其不终",
+          "weight": 2
+        },
+        {
+          "id": "ming_shizong_anc3",
+          "year": 1555,
+          "month": null,
+          "topic": "倭寇之乱",
+          "figures": [],
+          "keywords": [],
+          "premise": "东南倭患大起，掠苏松浙闽，严嵩党赵文华督师无功，帝改用胡宗宪、戚继光、俞大猷，练义乌兵，数年平之，海疆靖，东南安，识者忧",
+          "weight": 2
+        },
+        {
+          "id": "ming_shizong_anc4",
+          "year": 1542,
+          "month": null,
+          "topic": "严嵩专权",
+          "figures": [],
+          "keywords": [],
+          "premise": "嵩以青词得幸，久居首辅，子世蕃助恶，纳贿卖官，构杀杨继盛、沈炼，边备废弛，言路壅塞，浊乱朝纲十余年，国事日非，识者忧其不",
+          "weight": 2
+        },
+        {
+          "id": "ming_shizong_anc5",
+          "year": 1562,
+          "month": null,
+          "topic": "崇道修醮",
+          "figures": [],
+          "keywords": [],
+          "premise": "帝好玄修，建雷坛设醮，日事斋蘸，不视朝，陶仲文等以方术显，耗帑无算，谏者多获谴，国事日非，朝局坏而弊深，识者忧其不终，朝",
+          "weight": 2
+        },
+        {
+          "id": "ming_shizong_bg0",
+          "year": 1536,
+          "month": null,
+          "topic": "背景·兴献王朱祐杬之子，宪",
+          "figures": [],
+          "keywords": [],
+          "premise": "兴献王朱祐杬之子，宪宗之孙，以武宗无嗣，由太后与杨廷和定策迎立，年十五",
+          "weight": 1
+        },
+        {
+          "id": "ming_shizong_bg1",
+          "year": 1552,
+          "month": null,
+          "topic": "背景·即位即起大礼议，追尊",
+          "figures": [],
+          "keywords": [],
+          "premise": "即位即起大礼议，追尊生父为皇考，与杨廷和等廷臣力争，杖杀伏阙者",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "朱厚熜中年之厄",
+            "description": "中叶，朱厚熜御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -925,7 +3444,21 @@
             "当复言路纳谏以通下情而社稷安",
             "当省工役赈灾以厚民生而社稷安"
           ],
-          "historicalOutcome": "穆宗更始朝局一新国势振而治道复，识者惜之，史论咎焉。"
+          "historicalOutcome": "穆宗更始朝局一新国势振而治道复，识者惜之，史论咎焉。",
+          "id": "ming_muzong_e0",
+          "relationDeltas": [
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
         },
         {
           "year": 1567,
@@ -940,7 +3473,27 @@
             "当设市舶司以董其政而社稷安",
             "当徙民实岛以实海疆而社稷安"
           ],
-          "historicalOutcome": "隆庆开关海贸复苏财源开而国用宽，识者惜之，史论咎焉。"
+          "historicalOutcome": "隆庆开关海贸复苏财源开而国用宽，识者惜之，史论咎焉。",
+          "id": "ming_muzong_e1",
+          "relationDeltas": [
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "士大夫": -3,
+              "商贾": 1
+            },
+            {}
+          ]
         },
         {
           "year": 1571,
@@ -955,7 +3508,57 @@
             "当徙那吉归以全其亲而社稷安",
             "当筑堡防秋以固封疆而社稷安"
           ],
-          "historicalOutcome": "俺答受封北边息兵边民安而烽烟息，识者惜之，史论咎焉。"
+          "historicalOutcome": "俺答受封北边息兵边民安而烽烟息，识者惜之，史论咎焉。",
+          "id": "ming_muzong_e2",
+          "relationDeltas": [
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {},
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_ming_muzong_e2_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_muzong_e2_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_muzong_e2_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_muzong_e2_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_muzong_e2_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 1569,
@@ -970,7 +3573,15 @@
             "当亲揽万机以明庶务而社稷安",
             "当限言官以肃班列而社稷安"
           ],
-          "historicalOutcome": "高拱居正奠定新政国势强而改革兴，识者惜之，史论咎焉。"
+          "historicalOutcome": "高拱居正奠定新政国势强而改革兴，识者惜之，史论咎焉。",
+          "id": "ming_muzong_e3",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {},
+            {}
+          ]
         },
         {
           "year": 1570,
@@ -985,7 +3596,192 @@
             "当厚待以示信以怀远人而社稷安",
             "当遣归修好以全其亲而社稷安"
           ],
-          "historicalOutcome": "纳降成封贡之局北边宁而边患纾，识者惜之，史论咎焉。"
+          "historicalOutcome": "纳降成封贡之局北边宁而边患纾，识者惜之，史论咎焉。",
+          "id": "ming_muzong_e4",
+          "relationDeltas": [
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_ming_muzong_e4_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "ming_muzong_e4_fb"
+            },
+            {
+              "setFlags": [
+                "did_ming_muzong_e4_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_muzong_e4_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_muzong_e4_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_muzong_e4_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
+        },
+        {
+          "id": "ming_muzong_e4_fb",
+          "year": null,
+          "month": null,
+          "title": "那吉来降·余波",
+          "description": "「那吉来降」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 55,
+        "士大夫": 45,
+        "边将": 35,
+        "商贾": 10
+      },
+      "materialTarget": 6,
+      "historicalAnchors": [
+        {
+          "id": "ming_muzong_anc0",
+          "year": 1567,
+          "month": null,
+          "topic": "革嘉靖弊政",
+          "figures": [],
+          "keywords": [],
+          "premise": "穆宗即位，即停斋醮、逐方士、复言官，蠲逋赋，宽海禁之禁，与民更始，朝野称快，旧政一清，国势稍振，治道初复，识者忧其不终，",
+          "weight": 2
+        },
+        {
+          "id": "ming_muzong_anc1",
+          "year": 1567,
+          "month": null,
+          "topic": "隆庆开关",
+          "figures": [],
+          "keywords": [],
+          "premise": "许福建月港通商，准贩东西二洋，征舶税，私贩合法化，白银流入，闽广赖之，海疆稍安，商舶络绎，财源渐开，国用稍宽，识者忧其不",
+          "weight": 2
+        },
+        {
+          "id": "ming_muzong_anc2",
+          "year": 1571,
+          "month": null,
+          "topic": "俺答封贡",
+          "figures": [],
+          "keywords": [],
+          "premise": "俺答孙把汉那吉来降，高拱、王崇古请用之招俺答，封顺义王，开互市，北边息兵，史称俺答封贡，边民得息肩，烽烟暂息，识者忧其不",
+          "weight": 2
+        },
+        {
+          "id": "ming_muzong_anc3",
+          "year": 1569,
+          "month": null,
+          "topic": "高拱张居正辅政",
+          "figures": [],
+          "keywords": [],
+          "premise": "用高拱掌吏部，张居正入阁，讲求实政，核名实、修边备、理河漕，二人相济，奠定后来改革之基，国势渐强，新政将兴，识者忧其不终",
+          "weight": 2
+        },
+        {
+          "id": "ming_muzong_anc4",
+          "year": 1570,
+          "month": null,
+          "topic": "那吉来降",
+          "figures": [],
+          "keywords": [],
+          "premise": "俺答嫡孙把汉那吉因家庭失欢降明，督臣王崇古弛备纳之，以为招抚俺答之资，边臣议纷，帝从阁议，事乃成，边患以纾，识者忧其不终",
+          "weight": 2
+        },
+        {
+          "id": "ming_muzong_bg0",
+          "year": 1569,
+          "month": null,
+          "topic": "背景·世宗久不立太子，载坖",
+          "figures": [],
+          "keywords": [],
+          "premise": "世宗久不立太子，载坖以裕王居藩，危疑者久，嘉靖四十五年即位，年三十",
+          "weight": 1
+        },
+        {
+          "id": "ming_muzong_bg1",
+          "year": 1571,
+          "month": null,
+          "topic": "背景·尽革其父秕政，停斋醮",
+          "figures": [],
+          "keywords": [],
+          "premise": "尽革其父秕政，停斋醮、斥方士，用徐阶、高拱、张居正、陈以勤",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "朱载坖中年之厄",
+            "description": "中叶，朱载坖御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -1022,7 +3818,18 @@
             "当限考成法以宽吏责而社稷安",
             "当用言官监之以防其蔽而社稷安"
           ],
-          "historicalOutcome": "居正辅政中兴成百度修举而治具张，识者惜之，史论咎焉。"
+          "historicalOutcome": "居正辅政中兴成百度修举而治具张，识者惜之，史论咎焉。",
+          "id": "ming_shenzong_e0",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
         },
         {
           "year": 1581,
@@ -1037,7 +3844,21 @@
             "当限加派以宽民力而社稷安",
             "当清隐田实赋以均税而社稷安"
           ],
-          "historicalOutcome": "一条鞭行帑藏稍充民犹困而怨未息，识者惜之，史论咎焉。"
+          "historicalOutcome": "一条鞭行帑藏稍充民犹困而怨未息，识者惜之，史论咎焉。",
+          "id": "ming_shenzong_e1",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
         },
         {
           "year": 1586,
@@ -1052,7 +3873,15 @@
             "当迟议以观时而徐定而社稷安",
             "当付太后决以全大义而社稷安"
           ],
-          "historicalOutcome": "国本久争常洛乃立党议兴而国本摇，识者惜之，史论咎焉。"
+          "historicalOutcome": "国本久争常洛乃立党议兴而国本摇，识者惜之，史论咎焉。",
+          "id": "ming_shenzong_e2",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {},
+            {}
+          ]
         },
         {
           "year": 1592,
@@ -1067,7 +3896,66 @@
             "当限师期省费以宽国用而社稷安",
             "当徙降众实边以绝后患而社稷安"
           ],
-          "historicalOutcome": "三大征捷国帑大耗府库虚而民力竭，识者惜之，史论咎焉。"
+          "historicalOutcome": "三大征捷国帑大耗府库虚而民力竭，识者惜之，史论咎焉。",
+          "id": "ming_shenzong_e3",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_ming_shenzong_e3_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "ming_shenzong_e3_fb"
+            },
+            {
+              "setFlags": [
+                "did_ming_shenzong_e3_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_shenzong_e3_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_shenzong_e3_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_shenzong_e3_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 1601,
@@ -1082,7 +3970,66 @@
             "当改归有司以清其政而社稷安",
             "当减织造以纾民力而社稷安"
           ],
-          "historicalOutcome": "矿税横征天下骚然乱端萌而祸将作，识者惜之，史论咎焉。"
+          "historicalOutcome": "矿税横征天下骚然乱端萌而祸将作，识者惜之，史论咎焉。",
+          "id": "ming_shenzong_e4",
+          "relationDeltas": [
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {
+              "士大夫": -3,
+              "商贾": 1
+            },
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_ming_shenzong_e4_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_shenzong_e4_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_shenzong_e4_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_shenzong_e4_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_shenzong_e4_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 1602,
@@ -1097,7 +4044,160 @@
             "当留新政以继其功而社稷安",
             "当付史馆论以定褒贬而社稷安"
           ],
-          "historicalOutcome": "抄居正家新政隳怠政开而中兴遂坠，识者惜之，史论咎焉。"
+          "historicalOutcome": "抄居正家新政隳怠政开而中兴遂坠，识者惜之，史论咎焉。",
+          "id": "ming_shenzong_e5",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {},
+            {}
+          ]
+        },
+        {
+          "id": "ming_shenzong_e3_fb",
+          "year": null,
+          "month": null,
+          "title": "万历三大征·余波",
+          "description": "「万历三大征」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "tier": "major",
+          "gating": {
+            "requiresFlags": [
+              "did_ming_shenzong_e3_0"
+            ]
+          },
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 55,
+        "士大夫": 45,
+        "边将": 35,
+        "商贾": 10
+      },
+      "materialTarget": 17,
+      "historicalAnchors": [
+        {
+          "id": "ming_shenzong_anc0",
+          "year": 1573,
+          "month": null,
+          "topic": "张居正辅政",
+          "figures": [],
+          "keywords": [],
+          "premise": "帝幼，李太后委居正，居正行考成法，综核名实，裁冗官、清逋赋，海内殷阜，史称万历中兴，威权赫然，百度修举，治具毕张，识者忧",
+          "weight": 2
+        },
+        {
+          "id": "ming_shenzong_anc1",
+          "year": 1581,
+          "month": null,
+          "topic": "一条鞭法",
+          "figures": [],
+          "keywords": [],
+          "premise": "全国清丈田亩，总括赋役征银，号一条鞭法，简便稽征，国库骤充，然豪强转嫁，小民犹困，利弊相参，法行天下而怨未息，识者忧其不",
+          "weight": 2
+        },
+        {
+          "id": "ming_shenzong_anc2",
+          "year": 1586,
+          "month": null,
+          "topic": "国本之争",
+          "figures": [],
+          "keywords": [],
+          "premise": "帝宠郑贵妃，欲易储立幼子常洵，廷臣争请立长子常洛，章奏累千，帝拖延数十年，君臣相持，党议由是兴，国本摇而衅深，识者忧其不",
+          "weight": 2
+        },
+        {
+          "id": "ming_shenzong_anc3",
+          "year": 1592,
+          "month": null,
+          "topic": "万历三大征",
+          "figures": [],
+          "keywords": [],
+          "premise": "宁夏哱拜、朝鲜壬辰倭乱、播州杨应龙相继叛，帝命将出师，李如松、刘綎等平之，威震四裔，而兵饷耗尽，府库虚而民力竭，识者忧其",
+          "weight": 2
+        },
+        {
+          "id": "ming_shenzong_anc4",
+          "year": 1601,
+          "month": null,
+          "topic": "矿税之祸",
+          "figures": [],
+          "keywords": [],
+          "premise": "帝遣矿监税使四出，横征暴敛，激变屡屡，民不聊生，言官交章论劾，帝庇之不顾，天下怨咨，国本动摇，乱端萌而祸将作，识者忧其不",
+          "weight": 2
+        },
+        {
+          "id": "ming_shenzong_anc5",
+          "year": 1602,
+          "month": null,
+          "topic": "清算张居正",
+          "figures": [],
+          "keywords": [],
+          "premise": "居正殁，帝追其罪，抄家夺谥，长子自尽，新政渐隳，言路反噬，阁权下移，怠政之端自此大开，朝局渐非，中兴遂坠，识者忧其不终，",
+          "weight": 2
+        },
+        {
+          "id": "ming_shenzong_bg0",
+          "year": 1588,
+          "month": null,
+          "topic": "背景·及居正殁，帝亲政，抄",
+          "figures": [],
+          "keywords": [],
+          "premise": "及居正殁，帝亲政，抄没其家，旋厌倦朝政，不郊不庙不视朝数十年",
+          "weight": 1
+        },
+        {
+          "id": "ming_shenzong_bg1",
+          "year": 1604,
+          "month": null,
+          "topic": "背景·国本之争，与廷臣争立",
+          "figures": [],
+          "keywords": [],
+          "premise": "国本之争，与廷臣争立长子常洛，遣派矿监税使，天下骚然",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "朱翊钧中年之厄",
+            "description": "中叶，朱翊钧御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -1134,7 +4234,66 @@
             "当复建言官以通言路而社稷安",
             "当省织造以宽民力而社稷安"
           ],
-          "historicalOutcome": "光宗初政中外望治弊政清而治道萌，识者惜之，史论咎焉。"
+          "historicalOutcome": "光宗初政中外望治弊政清而治道萌，识者惜之，史论咎焉。",
+          "id": "ming_guangzong_e0",
+          "relationDeltas": [
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_ming_guangzong_e0_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "ming_guangzong_e0_fb"
+            },
+            {
+              "setFlags": [
+                "did_ming_guangzong_e0_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_guangzong_e0_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_guangzong_e0_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_guangzong_e0_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 1620,
@@ -1149,7 +4308,54 @@
             "当斥可灼以肃药政而社稷安",
             "当避郑妃荐以远其祸而社稷安"
           ],
-          "historicalOutcome": "红丸一进光宗遽崩疑狱兴而冤狱成，识者惜之，史论咎焉。"
+          "historicalOutcome": "红丸一进光宗遽崩疑狱兴而冤狱成，识者惜之，史论咎焉。",
+          "id": "ming_guangzong_e1",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {},
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_ming_guangzong_e1_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_guangzong_e1_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_guangzong_e1_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_guangzong_e1_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_guangzong_e1_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 1620,
@@ -1164,7 +4370,24 @@
             "当禁选侍干政以肃禁而社稷安",
             "当密护太子以全社稷而社稷安"
           ],
-          "historicalOutcome": "移宫既定太子即位乱乃定而国本安，识者惜之，史论咎焉。"
+          "historicalOutcome": "移宫既定太子即位乱乃定而国本安，识者惜之，史论咎焉。",
+          "id": "ming_guangzong_e2",
+          "relationDeltas": [
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {}
+          ]
         },
         {
           "year": 1620,
@@ -1179,7 +4402,21 @@
             "当付内侍约束以肃宫而社稷安",
             "当斥荐者以正宫禁而社稷安"
           ],
-          "historicalOutcome": "郑妃进姬帝体益羸祸根始而疾不起，识者惜之，史论咎焉。"
+          "historicalOutcome": "郑妃进姬帝体益羸祸根始而疾不起，识者惜之，史论咎焉。",
+          "id": "ming_guangzong_e3",
+          "relationDeltas": [
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ]
         },
         {
           "year": 1620,
@@ -1194,7 +4431,150 @@
             "当复卫所以固疆而社稷安而国本固",
             "当省驿传以纾民力而社稷安"
           ],
-          "historicalOutcome": "光宗恤边未竟而崩朝野惜而志业空，识者惜之，史论咎焉。"
+          "historicalOutcome": "光宗恤边未竟而崩朝野惜而志业空，识者惜之，史论咎焉。",
+          "id": "ming_guangzong_e4",
+          "relationDeltas": [
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {},
+            {}
+          ]
+        },
+        {
+          "id": "ming_guangzong_e0_fb",
+          "year": null,
+          "month": null,
+          "title": "践祚初政·余波",
+          "description": "「践祚初政」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 55,
+        "士大夫": 45,
+        "边将": 35,
+        "商贾": 10
+      },
+      "materialTarget": 6,
+      "historicalAnchors": [
+        {
+          "id": "ming_guangzong_anc0",
+          "year": 1620,
+          "month": null,
+          "topic": "践祚初政",
+          "figures": [],
+          "keywords": [],
+          "premise": "光宗即位，即发内帑百万犒边，罢矿税监，召用邹元标、王德完等建言诸臣，汰冗吏，中外欣然望治，弊政一清，治道初萌而遽殇，识者",
+          "weight": 2
+        },
+        {
+          "id": "ming_guangzong_anc1",
+          "year": 1620,
+          "month": null,
+          "topic": "红丸案",
+          "figures": [],
+          "keywords": [],
+          "premise": "帝偶疾，郑贵妃荐医，鸿胪李可灼进红丸，初服称愈，再服而崩，廷臣哗然，劾可灼与方从哲，其事至今疑云未消，冤狱成而君崩，识者",
+          "weight": 2
+        },
+        {
+          "id": "ming_guangzong_anc2",
+          "year": 1620,
+          "month": null,
+          "topic": "移宫案",
+          "figures": [],
+          "keywords": [],
+          "premise": "光宗崩，李选侍挟皇长子居乾清宫不出，欲专权，杨涟、左光斗迫其移哕鸾宫，请太子即位数日，乃得正大位，乱乃定，国本以安，识者",
+          "weight": 2
+        },
+        {
+          "id": "ming_guangzong_anc3",
+          "year": 1620,
+          "month": null,
+          "topic": "郑妃进侍",
+          "figures": [],
+          "keywords": [],
+          "premise": "郑贵妃惧前事见罪，进美姬数人，帝寝疾中溺之，由是羸困，论者谓祸根实始于此，宫闱之险可见一斑，体益羸而疾不起，识者忧其不终",
+          "weight": 2
+        },
+        {
+          "id": "ming_guangzong_anc4",
+          "year": 1620,
+          "month": null,
+          "topic": "起废恤边",
+          "figures": [],
+          "keywords": [],
+          "premise": "即位首罢天下矿税，复诸边年例，恤辽东阵殁，罢税使张烨等，边军稍苏，惜未竟其用而殂，朝野惜之，志业未竟，识者忧其不终，朝野",
+          "weight": 2
+        },
+        {
+          "id": "ming_guangzong_bg0",
+          "year": 1620,
+          "month": null,
+          "topic": "背景·神宗长子，母王恭妃，",
+          "figures": [],
+          "keywords": [],
+          "premise": "神宗长子，母王恭妃，国本之争中久不得立，年十九始为太子，忧谗畏讥者十九年",
+          "weight": 1
+        },
+        {
+          "id": "ming_guangzong_bg1",
+          "year": 1620,
+          "month": null,
+          "topic": "背景·甫登极即发内帑犒边、",
+          "figures": [],
+          "keywords": [],
+          "premise": "甫登极即发内帑犒边、罢矿税、起用建言诸臣，朝野望治",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "朱常洛中年之厄",
+            "description": "中叶，朱常洛御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -1231,7 +4611,18 @@
             "当亲政不用阉以明乾纲而社稷安",
             "当付廷议劾以正其罪而社稷安"
           ],
-          "historicalOutcome": "客魏窃柄阉党横朝政浊而纲纪沦，识者惜之，史论咎焉。"
+          "historicalOutcome": "客魏窃柄阉党横朝政浊而纲纪沦，识者惜之，史论咎焉。",
+          "id": "ming_xizong_e0",
+          "relationDeltas": [
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {},
+            {},
+            {},
+            {}
+          ]
         },
         {
           "year": 1624,
@@ -1246,7 +4637,60 @@
             "当调停东林以全善类而社稷安",
             "当禁结社以清士习而社稷安"
           ],
-          "historicalOutcome": "东林惨戮党祸炽士林悲而正气殄，识者惜之，史论咎焉。"
+          "historicalOutcome": "东林惨戮党祸炽士林悲而正气殄，识者惜之，史论咎焉。",
+          "id": "ming_xizong_e1",
+          "relationDeltas": [
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_ming_xizong_e1_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "ming_xizong_e1_fb"
+            },
+            {
+              "setFlags": [
+                "did_ming_xizong_e1_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_xizong_e1_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_xizong_e1_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_xizong_e1_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 1626,
@@ -1261,7 +4705,21 @@
             "当徙民实内以安其生而社稷安",
             "当增兵关外以固封疆而社稷安"
           ],
-          "historicalOutcome": "宁远一捷虏锋稍挫边势危而渐不支，识者惜之，史论咎焉。"
+          "historicalOutcome": "宁远一捷虏锋稍挫边势危而渐不支，识者惜之，史论咎焉。",
+          "id": "ming_xizong_e2",
+          "relationDeltas": [
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {}
+          ]
         },
         {
           "year": 1626,
@@ -1276,7 +4734,24 @@
             "当徙局他所以远民居而社稷安",
             "当禁讹言以安人心而社稷安"
           ],
-          "historicalOutcome": "王恭厂爆帝下罪己祸本存而朝野骇，识者惜之，史论咎焉。"
+          "historicalOutcome": "王恭厂爆帝下罪己祸本存而朝野骇，识者惜之，史论咎焉。",
+          "id": "ming_xizong_e3",
+          "relationDeltas": [
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ]
         },
         {
           "year": 1625,
@@ -1291,7 +4766,186 @@
             "当付史馆以定褒贬而社稷安",
             "当两存其说以广公论而社稷安"
           ],
-          "historicalOutcome": "三案翻诬东林尽逐士论痛而公道沦，识者惜之，史论咎焉。"
+          "historicalOutcome": "三案翻诬东林尽逐士论痛而公道沦，识者惜之，史论咎焉。",
+          "id": "ming_xizong_e4",
+          "relationDeltas": [
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {},
+            {},
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_ming_xizong_e4_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_xizong_e4_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_xizong_e4_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_xizong_e4_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_ming_xizong_e4_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
+        },
+        {
+          "id": "ming_xizong_e1_fb",
+          "year": null,
+          "month": null,
+          "title": "东林党争·余波",
+          "description": "「东林党争」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 55,
+        "士大夫": 45,
+        "边将": 35,
+        "商贾": 10
+      },
+      "materialTarget": 6,
+      "historicalAnchors": [
+        {
+          "id": "ming_xizong_anc0",
+          "year": 1621,
+          "month": null,
+          "topic": "客魏乱政",
+          "figures": [],
+          "keywords": [],
+          "premise": "帝幼好木工，事无大小委魏忠贤与客氏，忠贤自称九千岁，结阉党，逐王安，擅票拟，中外章奏先白忠贤，权倾人主，朝浊而纲沦，识者",
+          "weight": 2
+        },
+        {
+          "id": "ming_xizong_anc1",
+          "year": 1624,
+          "month": null,
+          "topic": "东林党争",
+          "figures": [],
+          "keywords": [],
+          "premise": "副都御史杨涟劾魏忠贤二十四大罪，七十余人继之，帝不问，忠贤反借三案倾东林，逮杀杨涟、左光斗，党祸酷烈，士林悲而正气殄。",
+          "weight": 2
+        },
+        {
+          "id": "ming_xizong_anc2",
+          "year": 1626,
+          "month": null,
+          "topic": "宁远拒虏",
+          "figures": [],
+          "keywords": [],
+          "premise": "努尔哈赤连陷辽沈，袁崇焕守宁远，用火器却之，虏受伤退，旋死，明于辽左得一捷，然广宁以外尽失，边势愈危，渐不支而虏炽，识者",
+          "weight": 2
+        },
+        {
+          "id": "ming_xizong_anc3",
+          "year": 1626,
+          "month": null,
+          "topic": "王恭厂灾",
+          "figures": [],
+          "keywords": [],
+          "premise": "京师王恭厂军火局突爆，震声撼城，死伤万余，房屋尽毁，或谓天变示警，帝下罪己诏，修省而祸本未除，朝野骇而天威损，识者忧其不",
+          "weight": 2
+        },
+        {
+          "id": "ming_xizong_anc4",
+          "year": 1625,
+          "month": null,
+          "topic": "三案翻案",
+          "figures": [],
+          "keywords": [],
+          "premise": "忠贤修《三朝要典》，翻红丸、移宫、梃击三案，颠倒是非，诬东林为邪党，尽逐善类，榜其名于天下学宫示辱，士论痛而公道沦，识者",
+          "weight": 2
+        },
+        {
+          "id": "ming_xizong_bg0",
+          "year": 1622,
+          "month": null,
+          "topic": "背景·性好工巧，尝亲操斧锯",
+          "figures": [],
+          "keywords": [],
+          "premise": "性好工巧，尝亲操斧锯制器，号木匠天子，政事委于乳母客氏与司礼监魏忠贤",
+          "weight": 1
+        },
+        {
+          "id": "ming_xizong_bg1",
+          "year": 1625,
+          "month": null,
+          "topic": "背景·天启初，杨涟劾忠贤二",
+          "figures": [],
+          "keywords": [],
+          "premise": "天启初，杨涟劾忠贤二十四大罪，党争大起，东林诸贤多遭倾陷",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "朱由校中年之厄",
+            "description": "中叶，朱由校御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     }

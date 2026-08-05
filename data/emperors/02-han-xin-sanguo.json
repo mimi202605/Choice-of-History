@@ -39,7 +39,24 @@
             "严课郡国，督察守相",
             "削诸侯王，强干弱枝"
           ],
-          "historicalOutcome": "曹参守萧何法，百姓歌之，刑狱省减"
+          "historicalOutcome": "曹参守萧何法，百姓歌之，刑狱省减",
+          "id": "han_huidi_e0",
+          "relationDeltas": [
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {
+              "士大夫": -3,
+              "商贾": 1
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {}
+          ]
         },
         {
           "year": -194,
@@ -54,7 +71,18 @@
             "依母后意，绝戚氏之望",
             "大赦宫人，示宽厚"
           ],
-          "historicalOutcome": "吕后制戚夫人为人彘，帝见而大哭，因病不朝"
+          "historicalOutcome": "吕后制戚夫人为人彘，帝见而大哭，因病不朝",
+          "id": "han_huidi_e1",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
         },
         {
           "year": -192,
@@ -69,7 +97,60 @@
             "虚后位，待择贤",
             "议古礼，改婚制"
           ],
-          "historicalOutcome": "立张敖女张氏为皇后，无子，吕后取后宫子养之"
+          "historicalOutcome": "立张敖女张氏为皇后，无子，吕后取后宫子养之",
+          "id": "han_huidi_e2",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "士大夫": -3,
+              "商贾": 1
+            }
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_han_huidi_e2_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_huidi_e2_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_huidi_e2_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_huidi_e2_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_huidi_e2_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": -191,
@@ -84,7 +165,60 @@
             "独尊黄老，不兴儒术",
             "广开献书之路，赐金帛"
           ],
-          "historicalOutcome": "除挟书律，典籍稍复，文景之世儒风渐起"
+          "historicalOutcome": "除挟书律，典籍稍复，文景之世儒风渐起",
+          "id": "han_huidi_e3",
+          "relationDeltas": [
+            {},
+            {
+              "士大夫": -3,
+              "商贾": 1
+            },
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {},
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_han_huidi_e3_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "han_huidi_e3_fb"
+            },
+            {
+              "setFlags": [
+                "did_han_huidi_e3_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_huidi_e3_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_huidi_e3_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_huidi_e3_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": -188,
@@ -99,7 +233,147 @@
             "密诏诸王入卫",
             "大赦天下，与民更始"
           ],
-          "historicalOutcome": "惠帝崩，吕后临朝称制，汉室入吕后时代"
+          "historicalOutcome": "惠帝崩，吕后临朝称制，汉室入吕后时代",
+          "id": "han_huidi_e4",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
+        },
+        {
+          "id": "han_huidi_e3_fb",
+          "year": null,
+          "month": null,
+          "title": "除挟书律·余波",
+          "description": "「除挟书律」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 50,
+        "士大夫": 45,
+        "边将": 40,
+        "商贾": 10
+      },
+      "materialTarget": 6,
+      "historicalAnchors": [
+        {
+          "id": "han_huidi_anc0",
+          "year": -194,
+          "month": null,
+          "topic": "萧规曹随",
+          "figures": [],
+          "keywords": [],
+          "premise": "相国萧何卒，曹参代相，日夜饮醇酒，不治事。帝使谏，参曰：陛下与高帝孰圣？乃守清净，不扰民。",
+          "weight": 2
+        },
+        {
+          "id": "han_huidi_anc1",
+          "year": -194,
+          "month": null,
+          "topic": "人彘之祸",
+          "figures": [],
+          "keywords": [],
+          "premise": "戚夫人曾欲易太子，吕后衔之。帝崩后，吕后断戚夫人手足，去眼熏耳，饮瘖药，使居厕中，号「人彘」。",
+          "weight": 2
+        },
+        {
+          "id": "han_huidi_anc2",
+          "year": -192,
+          "month": null,
+          "topic": "鲁元公主之姻",
+          "figures": [],
+          "keywords": [],
+          "premise": "吕后为固权，欲以鲁元公主女配帝为后（舅甥婚），群臣非之，不得已乃止，另立张氏为后。",
+          "weight": 2
+        },
+        {
+          "id": "han_huidi_anc3",
+          "year": -191,
+          "month": null,
+          "topic": "除挟书律",
+          "figures": [],
+          "keywords": [],
+          "premise": "帝除秦所立「挟书律」，民间藏书稍出，儒术渐兴。",
+          "weight": 2
+        },
+        {
+          "id": "han_huidi_anc4",
+          "year": -188,
+          "month": null,
+          "topic": "托孤与崩",
+          "figures": [],
+          "keywords": [],
+          "premise": "帝病笃，吕后问社稷。帝曰：此后惟母后主之。遂崩，年二十三，谥孝惠。",
+          "weight": 2
+        },
+        {
+          "id": "han_huidi_bg0",
+          "year": -193,
+          "month": null,
+          "topic": "背景·性仁厚，欲减刑省狱，",
+          "figures": [],
+          "keywords": [],
+          "premise": "性仁厚，欲减刑省狱，然母后吕氏刚毅，大权实归吕后",
+          "weight": 1
+        },
+        {
+          "id": "han_huidi_bg1",
+          "year": -190,
+          "month": null,
+          "topic": "背景·在位七年，目睹戚夫人",
+          "figures": [],
+          "keywords": [],
+          "premise": "在位七年，目睹戚夫人被害为「人彘」，惊怖而病，遂沉湎酒色，不理政事",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "刘盈中年之厄",
+            "description": "中叶，刘盈御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -136,7 +410,57 @@
             "封诸吕以为羽翼",
             "大赦天下，示新君恩"
           ],
-          "historicalOutcome": "吕后称制，诸吕用事，刘氏危殆"
+          "historicalOutcome": "吕后称制，诸吕用事，刘氏危殆",
+          "id": "han_qianshaodi_e0",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_han_qianshaodi_e0_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_qianshaodi_e0_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_qianshaodi_e0_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_qianshaodi_e0_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_qianshaodi_e0_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": -187,
@@ -151,7 +475,57 @@
             "请立刘吕并王，两安",
             "称疾不朝，以示抗议"
           ],
-          "historicalOutcome": "诸吕皆王，吕产、吕禄分掌南北军"
+          "historicalOutcome": "诸吕皆王，吕产、吕禄分掌南北军",
+          "id": "han_qianshaodi_e1",
+          "relationDeltas": [
+            {},
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_han_qianshaodi_e1_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "han_qianshaodi_e1_fb"
+            },
+            {
+              "setFlags": [
+                "did_han_qianshaodi_e1_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_qianshaodi_e1_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_qianshaodi_e1_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_qianshaodi_e1_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": -184,
@@ -166,7 +540,130 @@
             "欲诛吕氏复仇",
             "出奔就诸侯"
           ],
-          "historicalOutcome": "吕后废杀前少帝，更立常山王义为帝"
+          "historicalOutcome": "吕后废杀前少帝，更立常山王义为帝",
+          "id": "han_qianshaodi_e2",
+          "relationDeltas": [
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {}
+          ]
+        },
+        {
+          "id": "han_qianshaodi_e1_fb",
+          "year": null,
+          "month": null,
+          "title": "王诸吕·余波",
+          "description": "「王诸吕」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 50,
+        "士大夫": 45,
+        "边将": 40,
+        "商贾": 10
+      },
+      "materialTarget": 6,
+      "historicalAnchors": [
+        {
+          "id": "han_qianshaodi_anc0",
+          "year": -188,
+          "month": null,
+          "topic": "吕后立幼",
+          "figures": [],
+          "keywords": [],
+          "premise": "惠帝无嗣（张后无子），吕后取后宫子立为帝，自临朝称制，下令曰「太后临朝称制」自此始。",
+          "weight": 2
+        },
+        {
+          "id": "han_qianshaodi_anc1",
+          "year": -187,
+          "month": null,
+          "topic": "王诸吕",
+          "figures": [],
+          "keywords": [],
+          "premise": "吕后欲王诸吕，右相王陵面折，左相陈平、绛侯周勃阿意。乃追尊吕公为吕宣王，封吕台等为王。",
+          "weight": 2
+        },
+        {
+          "id": "han_qianshaodi_anc2",
+          "year": -184,
+          "month": null,
+          "topic": "少帝见杀",
+          "figures": [],
+          "keywords": [],
+          "premise": "少帝稍长，知母被杀，曰：后安能杀吾母而名我！吕后惧，幽之于永巷，言帝病，废之，旋杀之。",
+          "weight": 2
+        },
+        {
+          "id": "han_qianshaodi_bg0",
+          "year": -187,
+          "month": null,
+          "topic": "背景·惠帝崩，吕后取后宫子",
+          "figures": [],
+          "keywords": [],
+          "premise": "惠帝崩，吕后取后宫子立之，自临朝称制，号令自出，大臣唯诺",
+          "weight": 1
+        },
+        {
+          "id": "han_qianshaodi_bg1",
+          "year": -185,
+          "month": null,
+          "topic": "背景·帝稍长，闻生母为吕后",
+          "figures": [],
+          "keywords": [],
+          "premise": "帝稍长，闻生母为吕后所杀，私出怨言，吕后惧其异己，遂诬以怨谤，幽于永巷而废杀之",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "刘恭中年之厄",
+            "description": "中叶，刘恭御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -203,7 +700,57 @@
             "称疾不朝",
             "大赦示恩"
           ],
-          "historicalOutcome": "后少帝立，吕氏势盛"
+          "historicalOutcome": "后少帝立，吕氏势盛",
+          "id": "han_houshaodi_e0",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_han_houshaodi_e0_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "han_houshaodi_e0_fb"
+            },
+            {
+              "setFlags": [
+                "did_han_houshaodi_e0_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_houshaodi_e0_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_houshaodi_e0_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_houshaodi_e0_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": -180,
@@ -218,7 +765,60 @@
             "请太后临朝",
             "称疾避祸"
           ],
-          "historicalOutcome": "周勃入北军，尽诛诸吕，迎代王"
+          "historicalOutcome": "周勃入北军，尽诛诸吕，迎代王",
+          "id": "han_houshaodi_e1",
+          "relationDeltas": [
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_han_houshaodi_e1_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_houshaodi_e1_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_houshaodi_e1_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_houshaodi_e1_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_houshaodi_e1_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": -180,
@@ -233,7 +833,114 @@
             "仍奉少帝",
             "另议贤王"
           ],
-          "historicalOutcome": "代王恒即位，是为文帝，汉室复安"
+          "historicalOutcome": "代王恒即位，是为文帝，汉室复安",
+          "id": "han_houshaodi_e2",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {},
+            {}
+          ]
+        },
+        {
+          "id": "han_houshaodi_e0_fb",
+          "year": null,
+          "month": null,
+          "title": "再立少帝·余波",
+          "description": "「再立少帝」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 50,
+        "士大夫": 45,
+        "边将": 40,
+        "商贾": 10
+      },
+      "materialTarget": 6,
+      "historicalAnchors": [
+        {
+          "id": "han_houshaodi_anc0",
+          "year": -184,
+          "month": null,
+          "topic": "再立少帝",
+          "figures": [],
+          "keywords": [],
+          "premise": "吕后更立常山王义为帝，改名弘，仍为傀儡。",
+          "weight": 2
+        },
+        {
+          "id": "han_houshaodi_anc1",
+          "year": -180,
+          "month": null,
+          "topic": "诸吕之乱",
+          "figures": [],
+          "keywords": [],
+          "premise": "吕后崩，上将军吕禄、相国吕产谋作乱。朱虚侯刘章告其兄齐王，周勃、陈平设计夺北军，遂尽诛诸吕。",
+          "weight": 2
+        },
+        {
+          "id": "han_houshaodi_anc2",
+          "year": -180,
+          "month": null,
+          "topic": "代王入继",
+          "figures": [],
+          "keywords": [],
+          "premise": "大臣议立嗣，以代王恒仁孝、母家薄氏谨良，迎立为帝。后少帝及诸吕所立者皆废杀。",
+          "weight": 2
+        },
+        {
+          "id": "han_houshaodi_bg0",
+          "year": -182,
+          "month": null,
+          "topic": "背景·吕后崩，诸吕谋乱，周",
+          "figures": [],
+          "keywords": [],
+          "premise": "吕后崩，诸吕谋乱，周勃、陈平、刘章等共诛诸吕，迎立代王恒",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "刘弘中年之厄",
+            "description": "中叶，刘弘御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -270,7 +977,24 @@
             "大赦天下，赐民爵",
             "封赏周勃、陈平"
           ],
-          "historicalOutcome": "文帝即位，诛诸吕余党，汉室归刘"
+          "historicalOutcome": "文帝即位，诛诸吕余党，汉室归刘",
+          "id": "han_wendi_e0",
+          "relationDeltas": [
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
         },
         {
           "year": -179,
@@ -285,7 +1009,21 @@
             "专用黄老，不兴儒制",
             "兼采众议"
           ],
-          "historicalOutcome": "贾谊献治安策，帝虽善之而未尽行"
+          "historicalOutcome": "贾谊献治安策，帝虽善之而未尽行",
+          "id": "han_wendi_e1",
+          "relationDeltas": [
+            {
+              "士大夫": -3,
+              "商贾": 1
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {}
+          ]
         },
         {
           "year": -178,
@@ -300,7 +1038,21 @@
             "依秦法严惩诽谤",
             "令郡国举贤良"
           ],
-          "historicalOutcome": "除诽谤妖言法，士得直言"
+          "historicalOutcome": "除诽谤妖言法，士得直言",
+          "id": "han_wendi_e2",
+          "relationDeltas": [
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {}
+          ]
         },
         {
           "year": -167,
@@ -315,7 +1067,57 @@
             "大赦罪囚",
             "置女徒还家"
           ],
-          "historicalOutcome": "诏除肉刑，刑法由是渐宽"
+          "historicalOutcome": "诏除肉刑，刑法由是渐宽",
+          "id": "han_wendi_e3",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_han_wendi_e3_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "han_wendi_e3_fb"
+            },
+            {
+              "setFlags": [
+                "did_han_wendi_e3_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_wendi_e3_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_wendi_e3_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_wendi_e3_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": -166,
@@ -330,7 +1132,57 @@
             "联月氏、乌孙制匈",
             "屯田北地，持久备胡"
           ],
-          "historicalOutcome": "匈奴入寇，帝御之，终行和亲之策"
+          "historicalOutcome": "匈奴入寇，帝御之，终行和亲之策",
+          "id": "han_wendi_e4",
+          "relationDeltas": [
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {},
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_han_wendi_e4_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_wendi_e4_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_wendi_e4_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_wendi_e4_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_wendi_e4_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": -164,
@@ -345,7 +1197,18 @@
             "裂其地封四子",
             "优容不问"
           ],
-          "historicalOutcome": "淮南王长徙死，帝悔，封其四子为列侯"
+          "historicalOutcome": "淮南王长徙死，帝悔，封其四子为列侯",
+          "id": "han_wendi_e5",
+          "relationDeltas": [
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {}
+          ]
         },
         {
           "year": -157,
@@ -360,7 +1223,160 @@
             "定庙乐",
             "大赦天下"
           ],
-          "historicalOutcome": "文帝崩，景帝立，文景之治成"
+          "historicalOutcome": "文帝崩，景帝立，文景之治成",
+          "id": "han_wendi_e6",
+          "relationDeltas": [
+            {},
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
+        },
+        {
+          "id": "han_wendi_e3_fb",
+          "year": null,
+          "month": null,
+          "title": "缇萦上书除肉刑·余波",
+          "description": "「缇萦上书除肉刑」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 50,
+        "士大夫": 45,
+        "边将": 40,
+        "商贾": 10
+      },
+      "materialTarget": 8,
+      "historicalAnchors": [
+        {
+          "id": "han_wendi_anc0",
+          "year": -180,
+          "month": null,
+          "topic": "入继大统",
+          "figures": [],
+          "keywords": [],
+          "premise": "代王恒自代至长安，丞相陈平、太尉周勃等迎立。夜拜宋昌为卫将军，镇南北军，张武为郎中令。",
+          "weight": 2
+        },
+        {
+          "id": "han_wendi_anc1",
+          "year": -179,
+          "month": null,
+          "topic": "褒奖贾谊",
+          "figures": [],
+          "keywords": [],
+          "premise": "河南守吴公荐洛阳少年贾谊，帝召为博士，岁中超迁太中大夫。谊上《陈政事疏》，请改正朔、易服色、定礼乐、削藩。",
+          "weight": 2
+        },
+        {
+          "id": "han_wendi_anc2",
+          "year": -178,
+          "month": null,
+          "topic": "除诽谤妖言法",
+          "figures": [],
+          "keywords": [],
+          "premise": "帝下诏：古之治天下，朝有进善之旌、诽谤之木，今除诽谤妖言之罪，使民得尽其言。",
+          "weight": 2
+        },
+        {
+          "id": "han_wendi_anc3",
+          "year": -167,
+          "month": null,
+          "topic": "缇萦上书除肉刑",
+          "figures": [],
+          "keywords": [],
+          "premise": "齐太仓令淳于意有罪当刑，少女缇萦随父至长安，上书愿没为官婢以赎父。帝悲之，遂下诏除肉刑，以笞、徒代黥劓刖。",
+          "weight": 2
+        },
+        {
+          "id": "han_wendi_anc4",
+          "year": -166,
+          "month": null,
+          "topic": "匈奴入寇与和亲",
+          "figures": [],
+          "keywords": [],
+          "premise": "匈奴老上单于十四万骑入朝那、萧关，候骑至雍甘泉。帝发车千乘骑十万御之，单于去。帝复用和亲。",
+          "weight": 2
+        },
+        {
+          "id": "han_wendi_anc5",
+          "year": -164,
+          "month": null,
+          "topic": "淮南王之狱",
+          "figures": [],
+          "keywords": [],
+          "premise": "淮南厉王长，帝母弟也，骄蹇，椎杀辟阳侯，从事诽谤。帝不忍致法，徙之蜀，长不食死。",
+          "weight": 2
+        },
+        {
+          "id": "han_wendi_anc6",
+          "year": -157,
+          "month": null,
+          "topic": "遗诏从简",
+          "figures": [],
+          "keywords": [],
+          "premise": "帝崩，遗诏：厚葬以破业，吾甚不取。令霸陵皆以瓦器，不得以金银铜锡为饰，不治坟。",
+          "weight": 2
+        },
+        {
+          "id": "han_wendi_bg0",
+          "year": -168,
+          "month": null,
+          "topic": "背景·然外任周勃、灌婴而疑",
+          "figures": [],
+          "keywords": [],
+          "premise": "然外任周勃、灌婴而疑之，后任贾谊、晁错之策，削诸侯之议始萌",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "刘恒中年之厄",
+            "description": "中叶，刘恒御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -397,7 +1413,24 @@
             "抚诸侯，裂地以安",
             "联齐以孤吴楚"
           ],
-          "historicalOutcome": "七国反，帝命周亚夫将三十六将讨之"
+          "historicalOutcome": "七国反，帝命周亚夫将三十六将讨之",
+          "id": "han_jingdi_e0",
+          "relationDeltas": [
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
         },
         {
           "year": -154,
@@ -412,7 +1445,21 @@
             "裂吴楚地封子弟",
             "徙诸侯于关内"
           ],
-          "historicalOutcome": "周亚夫三月平七国，诸侯权削"
+          "historicalOutcome": "周亚夫三月平七国，诸侯权削",
+          "id": "han_jingdi_e1",
+          "relationDeltas": [
+            {},
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {},
+            {}
+          ]
         },
         {
           "year": -150,
@@ -427,7 +1474,60 @@
             "立贤不以母贵",
             "虚储位待议"
           ],
-          "historicalOutcome": "废栗太子荣，立胶东王彻为太子（武帝）"
+          "historicalOutcome": "废栗太子荣，立胶东王彻为太子（武帝）",
+          "id": "han_jingdi_e2",
+          "relationDeltas": [
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            }
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_han_jingdi_e2_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "han_jingdi_e2_fb"
+            },
+            {
+              "setFlags": [
+                "did_han_jingdi_e2_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_jingdi_e2_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_jingdi_e2_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_jingdi_e2_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": -148,
@@ -442,7 +1542,57 @@
             "大赦罪囚",
             "置狱官考课"
           ],
-          "historicalOutcome": "定箠令，笞者得全，刑狱益宽"
+          "historicalOutcome": "定箠令，笞者得全，刑狱益宽",
+          "id": "han_jingdi_e3",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_han_jingdi_e3_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_jingdi_e3_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_jingdi_e3_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_jingdi_e3_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_jingdi_e3_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": -141,
@@ -457,7 +1607,147 @@
             "大赦天下",
             "定庙乐"
           ],
-          "historicalOutcome": "景帝崩，武帝立，汉入极盛之世"
+          "historicalOutcome": "景帝崩，武帝立，汉入极盛之世",
+          "id": "han_jingdi_e4",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
+        },
+        {
+          "id": "han_jingdi_e2_fb",
+          "year": null,
+          "month": null,
+          "title": "废栗太子·余波",
+          "description": "「废栗太子」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 50,
+        "士大夫": 45,
+        "边将": 40,
+        "商贾": 10
+      },
+      "materialTarget": 6,
+      "historicalAnchors": [
+        {
+          "id": "han_jingdi_anc0",
+          "year": -154,
+          "month": null,
+          "topic": "削藩与七国之乱",
+          "figures": [],
+          "keywords": [],
+          "premise": "晁错请削吴楚支郡。吴王濞约楚、赵、胶西、胶东、淄川、济南七国反，号五十万，诛晁错为名。",
+          "weight": 2
+        },
+        {
+          "id": "han_jingdi_anc1",
+          "year": -154,
+          "month": null,
+          "topic": "周亚夫平叛",
+          "figures": [],
+          "keywords": [],
+          "premise": "亚夫坚壁昌邑，绝吴楚粮道，三月平。吴王濞走越，被杀。楚王戊自杀。七国皆削为郡。",
+          "weight": 2
+        },
+        {
+          "id": "han_jingdi_anc2",
+          "year": -150,
+          "month": null,
+          "topic": "废栗太子",
+          "figures": [],
+          "keywords": [],
+          "premise": "景帝栗姬子荣为太子，以无礼长公主（刘嫖）见疏。王夫人（武帝母）结长公主，帝废荣为临江王，立王夫人子彻为太子。",
+          "weight": 2
+        },
+        {
+          "id": "han_jingdi_anc3",
+          "year": -148,
+          "month": null,
+          "topic": "减笞定箠令",
+          "figures": [],
+          "keywords": [],
+          "premise": "文帝除肉刑而笞刑多死，景帝减笞五百为三百、三百为一百，制《箠令》，箠长五尺，毋得更犯。",
+          "weight": 2
+        },
+        {
+          "id": "han_jingdi_anc4",
+          "year": -141,
+          "month": null,
+          "topic": "崩与顾命",
+          "figures": [],
+          "keywords": [],
+          "premise": "帝崩，遗戒：毋起苑囿，重农桑。太子彻立，是为武帝。窦太后尚在，黄老势仍盛。",
+          "weight": 2
+        },
+        {
+          "id": "han_jingdi_bg0",
+          "year": -152,
+          "month": null,
+          "topic": "背景·即位初用晁错为御史大",
+          "figures": [],
+          "keywords": [],
+          "premise": "即位初用晁错为御史大夫，错上《削藩策》，请削诸侯支郡",
+          "weight": 1
+        },
+        {
+          "id": "han_jingdi_bg1",
+          "year": -146,
+          "month": null,
+          "topic": "背景·然酷吏郅都、宁成用事",
+          "figures": [],
+          "keywords": [],
+          "premise": "然酷吏郅都、宁成用事，母子（窦太后）崇黄老，儒术未兴",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "刘启中年之厄",
+            "description": "中叶，刘启御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -494,7 +1784,18 @@
             "立皇后以固",
             "大赦天下"
           ],
-          "historicalOutcome": "霍光专权，汉室赖之以安"
+          "historicalOutcome": "霍光专权，汉室赖之以安",
+          "id": "han_zhaodi_e0",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
         },
         {
           "year": -86,
@@ -509,7 +1810,21 @@
             "召对议论，择善而从",
             "遣使巡行郡国"
           ],
-          "historicalOutcome": "诏罢郡国盐铁榷酤，与民休息"
+          "historicalOutcome": "诏罢郡国盐铁榷酤，与民休息",
+          "id": "han_zhaodi_e1",
+          "relationDeltas": [
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {}
+          ]
         },
         {
           "year": -80,
@@ -524,7 +1839,69 @@
             "赦燕王旦",
             "大赦天下"
           ],
-          "historicalOutcome": "上官桀、桑弘羊族诛，霍光权益重"
+          "historicalOutcome": "上官桀、桑弘羊族诛，霍光权益重",
+          "id": "han_zhaodi_e2",
+          "relationDeltas": [
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_han_zhaodi_e2_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "han_zhaodi_e2_fb"
+            },
+            {
+              "setFlags": [
+                "did_han_zhaodi_e2_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_zhaodi_e2_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_zhaodi_e2_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_zhaodi_e2_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": -74,
@@ -539,7 +1916,146 @@
             "虚位待议",
             "大赦天下"
           ],
-          "historicalOutcome": "昭帝崩无嗣，霍光迎立昌邑王贺"
+          "historicalOutcome": "昭帝崩无嗣，霍光迎立昌邑王贺",
+          "id": "han_zhaodi_e3",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
+        },
+        {
+          "id": "han_zhaodi_e2_fb",
+          "year": null,
+          "month": null,
+          "title": "上官桀之谋·余波",
+          "description": "「上官桀之谋」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "tier": "major",
+          "gating": {
+            "requiresFlags": [
+              "did_han_zhaodi_e2_0"
+            ]
+          },
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 50,
+        "士大夫": 45,
+        "边将": 40,
+        "商贾": 10
+      },
+      "materialTarget": 6,
+      "historicalAnchors": [
+        {
+          "id": "han_zhaodi_anc0",
+          "year": -87,
+          "month": null,
+          "topic": "霍光受遗诏",
+          "figures": [],
+          "keywords": [],
+          "premise": "武帝崩，霍光以大将军录尚书事，与金日磾、上官桀同辅。金日磾旋卒，桀光争权。",
+          "weight": 2
+        },
+        {
+          "id": "han_zhaodi_anc1",
+          "year": -86,
+          "month": null,
+          "topic": "盐铁之议",
+          "figures": [],
+          "keywords": [],
+          "premise": "始元六年，诏郡国举贤良文学，问民疾苦。桑弘羊主盐铁官营，贤良文学请罢之。桓宽记之为《盐铁论》。",
+          "weight": 2
+        },
+        {
+          "id": "han_zhaodi_anc2",
+          "year": -80,
+          "month": null,
+          "topic": "上官桀之谋",
+          "figures": [],
+          "keywords": [],
+          "premise": "上官桀、桑弘羊与鄂邑盖主谋，诈令人为燕王旦上书，告霍光罪，欲废帝立燕王。事觉，桀等皆族诛。",
+          "weight": 2
+        },
+        {
+          "id": "han_zhaodi_anc3",
+          "year": -74,
+          "month": null,
+          "topic": "早崩无嗣",
+          "figures": [],
+          "keywords": [],
+          "premise": "昭帝崩于未央宫，年二十一，无子。霍光迎昌邑王贺嗣位，旋以其淫乱废之。",
+          "weight": 2
+        },
+        {
+          "id": "han_zhaodi_bg0",
+          "year": -83,
+          "month": null,
+          "topic": "背景·武帝晚年，因巫蛊杀太",
+          "figures": [],
+          "keywords": [],
+          "premise": "武帝晚年，因巫蛊杀太子据，欲立少子，先赐死其母以防母壮子幼、外戚专权，画周公负成王图付霍光",
+          "weight": 1
+        },
+        {
+          "id": "han_zhaodi_bg1",
+          "year": -78,
+          "month": null,
+          "topic": "背景·在位十三年，光专权，",
+          "figures": [],
+          "keywords": [],
+          "premise": "在位十三年，光专权，上官桀、桑弘羊谋废立，事败皆诛",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "刘弗陵中年之厄",
+            "description": "中叶，刘弗陵御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -576,7 +2092,60 @@
             "尊霍光以安位",
             "大赦天下"
           ],
-          "historicalOutcome": "昌邑王立，淫戏如故"
+          "historicalOutcome": "昌邑王立，淫戏如故",
+          "id": "han_changyi_e0",
+          "relationDeltas": [
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_han_changyi_e0_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "han_changyi_e0_fb"
+            },
+            {
+              "setFlags": [
+                "did_han_changyi_e0_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_changyi_e0_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_changyi_e0_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_changyi_e0_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": -74,
@@ -591,7 +2160,57 @@
             "尊太后",
             "出就国"
           ],
-          "historicalOutcome": "霍光废昌邑王，迎立宣帝"
+          "historicalOutcome": "霍光废昌邑王，迎立宣帝",
+          "id": "han_changyi_e1",
+          "relationDeltas": [
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_han_changyi_e1_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_changyi_e1_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_changyi_e1_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_changyi_e1_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_changyi_e1_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": -74,
@@ -606,7 +2225,124 @@
             "杜门不出",
             "献赋颂德"
           ],
-          "historicalOutcome": "废帝就海昏侯，身后厚葬见世"
+          "historicalOutcome": "废帝就海昏侯，身后厚葬见世",
+          "id": "han_changyi_e2",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {},
+            {}
+          ]
+        },
+        {
+          "id": "han_changyi_e0_fb",
+          "year": null,
+          "month": null,
+          "title": "骤登大宝·余波",
+          "description": "「骤登大宝」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 50,
+        "士大夫": 45,
+        "边将": 40,
+        "商贾": 10
+      },
+      "materialTarget": 6,
+      "historicalAnchors": [
+        {
+          "id": "han_changyi_anc0",
+          "year": -74,
+          "month": null,
+          "topic": "骤登大宝",
+          "figures": [],
+          "keywords": [],
+          "premise": "霍光迎昌邑王贺即位，贺入长安，沿途征索无度，龚遂等谏不从。",
+          "weight": 2
+        },
+        {
+          "id": "han_changyi_anc1",
+          "year": -74,
+          "month": null,
+          "topic": "霍光废立",
+          "figures": [],
+          "keywords": [],
+          "premise": "光与群臣白太后，数贺罪千余，废归昌邑。史称在位二十七日，使者旁午，征发凡千一百二十七事。",
+          "weight": 2
+        },
+        {
+          "id": "han_changyi_anc2",
+          "year": -74,
+          "month": null,
+          "topic": "归国就侯",
+          "figures": [],
+          "keywords": [],
+          "premise": "贺废为庶人，旋徙昌邑，后宣帝封之为海昏侯，食邑豫章。江西海昏侯墓出土，多金玉简牍。",
+          "weight": 2
+        },
+        {
+          "id": "han_changyi_bg0",
+          "year": -74,
+          "month": null,
+          "topic": "背景·昭帝崩无嗣，大将军霍",
+          "figures": [],
+          "keywords": [],
+          "premise": "昭帝崩无嗣，大将军霍光迎立之为帝，入长安即位数日，征发使者旁午，擅夺玺绶、调发诸官署，龚遂等屡谏不从",
+          "weight": 1
+        },
+        {
+          "id": "han_changyi_bg1",
+          "year": -74,
+          "month": null,
+          "topic": "背景·在位仅二十七日，霍光",
+          "figures": [],
+          "keywords": [],
+          "premise": "在位仅二十七日，霍光与张安世以太后诏废之，归昌邑故国，赐汤沐邑二千户",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "刘贺中年之厄",
+            "description": "中叶，刘贺御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -643,7 +2379,18 @@
             "召丙吉问巫蛊事",
             "立皇后许氏"
           ],
-          "historicalOutcome": "宣帝立，霍光仍秉政"
+          "historicalOutcome": "宣帝立，霍光仍秉政",
+          "id": "han_xuandi_e0",
+          "relationDeltas": [
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {}
+          ]
         },
         {
           "year": -68,
@@ -658,7 +2405,24 @@
             "徙霍氏于外",
             "大赦其支属"
           ],
-          "historicalOutcome": "霍氏灭，宣帝亲政，威权复振"
+          "historicalOutcome": "霍氏灭，宣帝亲政，威权复振",
+          "id": "han_xuandi_e1",
+          "relationDeltas": [
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
         },
         {
           "year": -61,
@@ -673,7 +2437,63 @@
             "徙羌于塞内",
             "和亲息兵"
           ],
-          "historicalOutcome": "赵充国屯田平羌，河西遂安"
+          "historicalOutcome": "赵充国屯田平羌，河西遂安",
+          "id": "han_xuandi_e2",
+          "relationDeltas": [
+            {},
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_han_xuandi_e2_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "han_xuandi_e2_fb"
+            },
+            {
+              "setFlags": [
+                "did_han_xuandi_e2_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_xuandi_e2_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_xuandi_e2_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_xuandi_e2_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": -60,
@@ -688,7 +2508,63 @@
             "罢都护，专务内地",
             "厚赐西域诸国"
           ],
-          "historicalOutcome": "置西域都护，汉之号令西至葱岭"
+          "historicalOutcome": "置西域都护，汉之号令西至葱岭",
+          "id": "han_xuandi_e3",
+          "relationDeltas": [
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_han_xuandi_e3_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_xuandi_e3_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_xuandi_e3_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_xuandi_e3_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_xuandi_e3_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": -51,
@@ -703,7 +2579,21 @@
             "置属国以处匈奴",
             "约盟互不犯边"
           ],
-          "historicalOutcome": "呼韩邪朝汉，北边遂安，昭君出塞"
+          "historicalOutcome": "呼韩邪朝汉，北边遂安，昭君出塞",
+          "id": "han_xuandi_e4",
+          "relationDeltas": [
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {},
+            {}
+          ]
         },
         {
           "year": -49,
@@ -718,7 +2608,147 @@
             "宽刑尚德",
             "立石渠阁议经"
           ],
-          "historicalOutcome": "宣帝崩，元帝立，儒学渐盛而汉衰"
+          "historicalOutcome": "宣帝崩，元帝立，儒学渐盛而汉衰",
+          "id": "han_xuandi_e5",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
+        },
+        {
+          "id": "han_xuandi_e2_fb",
+          "year": null,
+          "month": null,
+          "title": "赵充国平羌·余波",
+          "description": "「赵充国平羌」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 50,
+        "士大夫": 45,
+        "边将": 40,
+        "商贾": 10
+      },
+      "materialTarget": 9,
+      "historicalAnchors": [
+        {
+          "id": "han_xuandi_anc0",
+          "year": -74,
+          "month": null,
+          "topic": "民间即位",
+          "figures": [],
+          "keywords": [],
+          "premise": "霍光迎立曾孙病已于未央宫，谒高庙。帝师受《诗》《论语》，然深知民间疾苦。",
+          "weight": 2
+        },
+        {
+          "id": "han_xuandi_anc1",
+          "year": -68,
+          "month": null,
+          "topic": "亲政诛霍",
+          "figures": [],
+          "keywords": [],
+          "premise": "霍光卒，帝亲政，收霍氏兵权。霍禹、霍显谋反，事觉，族诛霍氏，诸霍皆废。",
+          "weight": 2
+        },
+        {
+          "id": "han_xuandi_anc2",
+          "year": -61,
+          "month": null,
+          "topic": "赵充国平羌",
+          "figures": [],
+          "keywords": [],
+          "premise": "西羌叛，赵充国年七十余，请行，屯田湟中，以逸待劳，岁余羌降。上《屯田奏》。",
+          "weight": 2
+        },
+        {
+          "id": "han_xuandi_anc3",
+          "year": -60,
+          "month": null,
+          "topic": "西域都护",
+          "figures": [],
+          "keywords": [],
+          "premise": "郑吉破车师，降日逐王，并护南北道，帝置西域都护，治乌垒城，都护之官自此始。",
+          "weight": 2
+        },
+        {
+          "id": "han_xuandi_anc4",
+          "year": -51,
+          "month": null,
+          "topic": "呼韩邪朝汉",
+          "figures": [],
+          "keywords": [],
+          "premise": "匈奴呼韩邪单于惧郅支，款五原塞，愿朝。帝以殊礼待之，赐玺绶。后宫女王嫱（昭君）和亲。",
+          "weight": 2
+        },
+        {
+          "id": "han_xuandi_anc5",
+          "year": -49,
+          "month": null,
+          "topic": "霸王道杂之",
+          "figures": [],
+          "keywords": [],
+          "premise": "帝谓太子（元帝）：汉家自有制度，本以霸王道杂之，奈何纯任德教、用周政乎！",
+          "weight": 2
+        },
+        {
+          "id": "han_xuandi_bg0",
+          "year": -61,
+          "month": null,
+          "topic": "背景·用房魏相、丙吉、赵充",
+          "figures": [],
+          "keywords": [],
+          "premise": "用房魏相、丙吉、赵充国，信赏必罚，吏称其职，民安其业",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "刘询中年之厄",
+            "description": "中叶，刘询御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -755,7 +2785,27 @@
             "罢角抵、减乐府",
             "大赦天下"
           ],
-          "historicalOutcome": "儒生用事，汉政尚宽"
+          "historicalOutcome": "儒生用事，汉政尚宽",
+          "id": "han_yuandi_e0",
+          "relationDeltas": [
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
         },
         {
           "year": -47,
@@ -770,7 +2820,24 @@
             "诛弘恭以警",
             "大赦天下"
           ],
-          "historicalOutcome": "石显专权，儒臣见疏"
+          "historicalOutcome": "石显专权，儒臣见疏",
+          "id": "han_yuandi_e1",
+          "relationDeltas": [
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
         },
         {
           "year": -36,
@@ -785,7 +2852,21 @@
             "赐汤爵关内侯",
             "厚恤将士"
           ],
-          "historicalOutcome": "斩郅支单于，北匈奴亡，汉威远播"
+          "historicalOutcome": "斩郅支单于，北匈奴亡，汉威远播",
+          "id": "han_yuandi_e2",
+          "relationDeltas": [
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {}
+          ]
         },
         {
           "year": -33,
@@ -800,7 +2881,21 @@
             "立约互不犯边",
             "许互市"
           ],
-          "historicalOutcome": "王昭君出塞，汉匈和亲数十年"
+          "historicalOutcome": "王昭君出塞，汉匈和亲数十年",
+          "id": "han_yuandi_e3",
+          "relationDeltas": [
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {},
+            {}
+          ]
         },
         {
           "year": -33,
@@ -815,7 +2910,114 @@
             "大赦天下",
             "定庙制"
           ],
-          "historicalOutcome": "元帝崩，成帝立，王氏始盛"
+          "historicalOutcome": "元帝崩，成帝立，王氏始盛",
+          "id": "han_yuandi_e4",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
+        }
+      ],
+      "initRelations": {
+        "宗室": 50,
+        "士大夫": 45,
+        "边将": 40,
+        "商贾": 10
+      },
+      "materialTarget": 6,
+      "historicalAnchors": [
+        {
+          "id": "han_yuandi_anc0",
+          "year": -48,
+          "month": null,
+          "topic": "儒生登朝",
+          "figures": [],
+          "keywords": [],
+          "premise": "元帝即位，贡禹为谏大夫，上言节俭，罢齐三服官、北假田官。韦玄成、匡衡议礼制。",
+          "weight": 2
+        },
+        {
+          "id": "han_yuandi_anc1",
+          "year": -47,
+          "month": null,
+          "topic": "石显用事",
+          "figures": [],
+          "keywords": [],
+          "premise": "中书令弘恭、石显，宦官也，帝以为中尚书，事无大小因显白决。萧望之、周堪等儒臣为所陷。",
+          "weight": 2
+        },
+        {
+          "id": "han_yuandi_anc2",
+          "year": -36,
+          "month": null,
+          "topic": "陈汤斩郅支",
+          "figures": [],
+          "keywords": [],
+          "premise": "西域副校尉陈汤矫制发兵，攻杀郅支单于于康居，上疏「明犯强汉者，虽远必诛」。",
+          "weight": 2
+        },
+        {
+          "id": "han_yuandi_anc3",
+          "year": -33,
+          "month": null,
+          "topic": "昭君出塞",
+          "figures": [],
+          "keywords": [],
+          "premise": "呼韩邪单于来朝，自言愿婿汉氏。帝以后宫良家子王嫱字昭君赐之。昭君入匈奴，号宁胡阏氏。",
+          "weight": 2
+        },
+        {
+          "id": "han_yuandi_anc4",
+          "year": -33,
+          "month": null,
+          "topic": "崩与顾命",
+          "figures": [],
+          "keywords": [],
+          "premise": "帝崩，太子骜立，是为成帝。母王政君为太后，王氏兄弟相继辅政，权移外戚。",
+          "weight": 2
+        },
+        {
+          "id": "han_yuandi_bg0",
+          "year": -44,
+          "month": null,
+          "topic": "背景·即位后，贡禹、薛广德",
+          "figures": [],
+          "keywords": [],
+          "premise": "即位后，贡禹、薛广德、韦玄成、匡衡等儒生用事，罢角抵、省乐府，多所宽政",
+          "weight": 1
+        },
+        {
+          "id": "han_yuandi_bg1",
+          "year": -38,
+          "month": null,
+          "topic": "背景·然外戚许、史用事，宦",
+          "figures": [],
+          "keywords": [],
+          "premise": "然外戚许、史用事，宦官弘恭、石显专权，成帝母王政君家族由此起",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "刘奭中年之厄",
+            "description": "中叶，刘奭御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -852,7 +3054,21 @@
             "诛王凤以立威",
             "大赦天下"
           ],
-          "historicalOutcome": "王凤专权，王氏渐盛"
+          "historicalOutcome": "王凤专权，王氏渐盛",
+          "id": "han_chengdi_e0",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
         },
         {
           "year": -27,
@@ -867,7 +3083,15 @@
             "修石渠阁",
             "赐书于天下"
           ],
-          "historicalOutcome": "刘向校书，典籍大备"
+          "historicalOutcome": "刘向校书，典籍大备",
+          "id": "han_chengdi_e1",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {},
+            {}
+          ]
         },
         {
           "year": -20,
@@ -882,7 +3106,60 @@
             "广纳后宫求嗣",
             "大赦天下"
           ],
-          "historicalOutcome": "赵氏专宠，汉嗣几绝"
+          "historicalOutcome": "赵氏专宠，汉嗣几绝",
+          "id": "han_chengdi_e2",
+          "relationDeltas": [
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_han_chengdi_e2_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "han_chengdi_e2_fb"
+            },
+            {
+              "setFlags": [
+                "did_han_chengdi_e2_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_chengdi_e2_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_chengdi_e2_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_chengdi_e2_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": -14,
@@ -897,7 +3174,21 @@
             "大赦天下",
             "修明堂辟雍"
           ],
-          "historicalOutcome": "帝益荒，朝政委之王氏"
+          "historicalOutcome": "帝益荒，朝政委之王氏",
+          "id": "han_chengdi_e3",
+          "relationDeltas": [
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
         },
         {
           "year": -8,
@@ -912,7 +3203,133 @@
             "大赦天下",
             "定太子"
           ],
-          "historicalOutcome": "王莽渐起，汉祚将移"
+          "historicalOutcome": "王莽渐起，汉祚将移",
+          "id": "han_chengdi_e4",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
+        },
+        {
+          "id": "han_chengdi_e2_fb",
+          "year": null,
+          "month": null,
+          "title": "赵飞燕入宫·余波",
+          "description": "「赵飞燕入宫」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "tier": "major",
+          "gating": {
+            "requiresFlags": [
+              "did_han_chengdi_e2_0"
+            ]
+          },
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 50,
+        "士大夫": 45,
+        "边将": 40,
+        "商贾": 10
+      },
+      "materialTarget": 9,
+      "historicalAnchors": [
+        {
+          "id": "han_chengdi_anc0",
+          "year": -32,
+          "month": null,
+          "topic": "王凤辅政",
+          "figures": [],
+          "keywords": [],
+          "premise": "帝即位，以舅王凤为大司马大将军领尚书事，王氏子弟布列朝廷。王氏之盛自此始。",
+          "weight": 2
+        },
+        {
+          "id": "han_chengdi_anc1",
+          "year": -27,
+          "month": null,
+          "topic": "刘向校书",
+          "figures": [],
+          "keywords": [],
+          "premise": "河平三年，光禄大夫刘向领校中五经秘书，撰《别录》，子歆续成《七略》，目录之学肇端。",
+          "weight": 2
+        },
+        {
+          "id": "han_chengdi_anc2",
+          "year": -20,
+          "month": null,
+          "topic": "赵飞燕入宫",
+          "figures": [],
+          "keywords": [],
+          "premise": "成阳侯赵临女飞燕善舞，入宫大幸，立为皇后，妹合德亦宠。成帝无子，后宫生子辄隐杀。",
+          "weight": 2
+        },
+        {
+          "id": "han_chengdi_anc3",
+          "year": -14,
+          "month": null,
+          "topic": "微行游乐",
+          "figures": [],
+          "keywords": [],
+          "premise": "帝以张放为富平侯，数微行，过阳阿主家，观舞，因得飞燕。民间传「燕啄皇孙」。",
+          "weight": 2
+        },
+        {
+          "id": "han_chengdi_anc4",
+          "year": -8,
+          "month": null,
+          "topic": "王莽崛起",
+          "figures": [],
+          "keywords": [],
+          "premise": "王莽，王曼之子，孤贫折节，声誉甚隆。伯父王凤病，莽侍疾，凤荐之。帝崩前，莽已为司马。",
+          "weight": 2
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "刘骜中年之厄",
+            "description": "中叶，刘骜御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -949,7 +3366,18 @@
             "大赦天下",
             "定陶王就国"
           ],
-          "historicalOutcome": "傅丁外戚盛，王氏暂绌"
+          "historicalOutcome": "傅丁外戚盛，王氏暂绌",
+          "id": "han_aidi_e0",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
         },
         {
           "year": -5,
@@ -964,7 +3392,63 @@
             "徙豪强于边",
             "大赦天下"
           ],
-          "historicalOutcome": "限田令不行，兼并愈烈"
+          "historicalOutcome": "限田令不行，兼并愈烈",
+          "id": "han_aidi_e1",
+          "relationDeltas": [
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_han_aidi_e1_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "han_aidi_e1_fb"
+            },
+            {
+              "setFlags": [
+                "did_han_aidi_e1_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_aidi_e1_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_aidi_e1_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_aidi_e1_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": -3,
@@ -979,7 +3463,60 @@
             "大赦天下",
             "立后求嗣"
           ],
-          "historicalOutcome": "董贤贵震朝廷，哀帝病渐"
+          "historicalOutcome": "董贤贵震朝廷，哀帝病渐",
+          "id": "han_aidi_e2",
+          "relationDeltas": [
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_han_aidi_e2_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_aidi_e2_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_aidi_e2_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_aidi_e2_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_aidi_e2_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": -2,
@@ -994,7 +3531,24 @@
             "大赦天下",
             "议改制度"
           ],
-          "historicalOutcome": "王莽复起，羽翼渐成"
+          "historicalOutcome": "王莽复起，羽翼渐成",
+          "id": "han_aidi_e3",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "士大夫": -3,
+              "商贾": 1
+            }
+          ]
         },
         {
           "year": -1,
@@ -1009,7 +3563,147 @@
             "大赦天下",
             "太后临朝"
           ],
-          "historicalOutcome": "哀帝崩，王莽迎立平帝，权归莽"
+          "historicalOutcome": "哀帝崩，王莽迎立平帝，权归莽",
+          "id": "han_aidi_e4",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
+        },
+        {
+          "id": "han_aidi_e1_fb",
+          "year": null,
+          "month": null,
+          "title": "限田之议·余波",
+          "description": "「限田之议」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 50,
+        "士大夫": 45,
+        "边将": 40,
+        "商贾": 10
+      },
+      "materialTarget": 6,
+      "historicalAnchors": [
+        {
+          "id": "han_aidi_anc0",
+          "year": -7,
+          "month": null,
+          "topic": "傅丁用事",
+          "figures": [],
+          "keywords": [],
+          "premise": "哀帝立，祖母傅太后、母丁姬并称号，封傅晏、丁明等侯，与王氏争权。",
+          "weight": 2
+        },
+        {
+          "id": "han_aidi_anc1",
+          "year": -5,
+          "month": null,
+          "topic": "限田之议",
+          "figures": [],
+          "keywords": [],
+          "premise": "师丹建言：诸侯王列侯名田有限，奴婢有限。帝下诏：诸侯王至吏民名田毋过三十顷。然贵戚不从，遂寝。",
+          "weight": 2
+        },
+        {
+          "id": "han_aidi_anc2",
+          "year": -3,
+          "month": null,
+          "topic": "宠董贤",
+          "figures": [],
+          "keywords": [],
+          "premise": "董贤以貌幸，为驸马都尉侍中，帝与卧起。尝昼寝，贤压帝袖，帝断袖而起，不忍惊。封贤为高安侯，位三公。",
+          "weight": 2
+        },
+        {
+          "id": "han_aidi_anc3",
+          "year": -2,
+          "month": null,
+          "topic": "再起王莽",
+          "figures": [],
+          "keywords": [],
+          "premise": "傅太后崩，丁氏衰，哀帝思王氏旧恩，征王莽还朝。莽愈谨，声誉日隆。",
+          "weight": 2
+        },
+        {
+          "id": "han_aidi_anc4",
+          "year": -1,
+          "month": null,
+          "topic": "崩无嗣",
+          "figures": [],
+          "keywords": [],
+          "premise": "哀帝崩，无子。太皇太后王政君收玺绶，召王莽入，莽白太后，罢董贤，迎中山王箕子立之（平帝）。",
+          "weight": 2
+        },
+        {
+          "id": "han_aidi_bg0",
+          "year": -5,
+          "month": null,
+          "topic": "背景·即位初欲有所为，限田",
+          "figures": [],
+          "keywords": [],
+          "premise": "即位初欲有所为，限田限奴婢，抑外戚，然受制于傅太后、丁太后家",
+          "weight": 1
+        },
+        {
+          "id": "han_aidi_bg1",
+          "year": -3,
+          "month": null,
+          "topic": "背景·宠幸董贤，爵至大司马",
+          "figures": [],
+          "keywords": [],
+          "premise": "宠幸董贤，爵至大司马，卧起不离，尝断袖而起，故有「断袖」之癖",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "刘欣中年之厄",
+            "description": "中叶，刘欣御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -1046,7 +3740,57 @@
             "大赦天下",
             "立后求嗣"
           ],
-          "historicalOutcome": "王莽专权，汉室渐移"
+          "historicalOutcome": "王莽专权，汉室渐移",
+          "id": "han_pingdi_e0",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_han_pingdi_e0_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_pingdi_e0_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_pingdi_e0_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_pingdi_e0_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_pingdi_e0_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 1,
@@ -1061,7 +3805,18 @@
             "大赦天下",
             "立明堂"
           ],
-          "historicalOutcome": "莽号安汉公，声誉倾朝"
+          "historicalOutcome": "莽号安汉公，声誉倾朝",
+          "id": "han_pingdi_e1",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
         },
         {
           "year": 4,
@@ -1076,7 +3831,57 @@
             "大赦天下",
             "议封禅"
           ],
-          "historicalOutcome": "莽加九锡，几于篡矣"
+          "historicalOutcome": "莽加九锡，几于篡矣",
+          "id": "han_pingdi_e2",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_han_pingdi_e2_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "han_pingdi_e2_fb"
+            },
+            {
+              "setFlags": [
+                "did_han_pingdi_e2_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_pingdi_e2_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_pingdi_e2_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_pingdi_e2_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 5,
@@ -1091,7 +3896,130 @@
             "大赦天下",
             "托孤大臣"
           ],
-          "historicalOutcome": "莽弑平帝，立孺子婴，居摄践祚"
+          "historicalOutcome": "莽弑平帝，立孺子婴，居摄践祚",
+          "id": "han_pingdi_e3",
+          "relationDeltas": [
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
+        },
+        {
+          "id": "han_pingdi_e2_fb",
+          "year": null,
+          "month": null,
+          "title": "加九锡·余波",
+          "description": "「加九锡」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 50,
+        "士大夫": 45,
+        "边将": 40,
+        "商贾": 10
+      },
+      "materialTarget": 6,
+      "historicalAnchors": [
+        {
+          "id": "han_pingdi_anc0",
+          "year": 1,
+          "month": null,
+          "topic": "王莽秉政",
+          "figures": [],
+          "keywords": [],
+          "premise": "平帝幼立，王政君临朝，王莽为大司马，总朝政。莽诛董贤，罢傅、丁，迎中山王。",
+          "weight": 2
+        },
+        {
+          "id": "han_pingdi_anc1",
+          "year": 1,
+          "month": null,
+          "topic": "安汉公",
+          "figures": [],
+          "keywords": [],
+          "premise": "群臣盛称莽功德，莽号「安汉公」，益封，子侄皆显。莽不受新野田，示谦让。",
+          "weight": 2
+        },
+        {
+          "id": "han_pingdi_anc2",
+          "year": 4,
+          "month": null,
+          "topic": "加九锡",
+          "figures": [],
+          "keywords": [],
+          "premise": "莽号宰衡，位诸侯王上，加九锡。风益州塞外蛮献白雉，奏太后，告宗庙，以为周公故事。",
+          "weight": 2
+        },
+        {
+          "id": "han_pingdi_anc3",
+          "year": 5,
+          "month": null,
+          "topic": "毒弑平帝",
+          "figures": [],
+          "keywords": [],
+          "premise": "平帝渐长，怨莽。莽因腊日进椒酒，置毒其中，帝崩，年十四。莽迎广戚侯子婴立之，自居摄。",
+          "weight": 2
+        },
+        {
+          "id": "han_pingdi_bg0",
+          "year": 3,
+          "month": null,
+          "topic": "背景·年九岁即位，太皇太后",
+          "figures": [],
+          "keywords": [],
+          "premise": "年九岁即位，太皇太后王政君临朝，王莽以大司马秉政",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "刘衎中年之厄",
+            "description": "中叶，刘衎御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -1128,7 +4056,21 @@
             "大赦天下",
             "分权大臣"
           ],
-          "historicalOutcome": "王莽居摄，汉统垂绝"
+          "historicalOutcome": "王莽居摄，汉统垂绝",
+          "id": "han_ruziying_e0",
+          "relationDeltas": [
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
         },
         {
           "year": 7,
@@ -1143,7 +4085,66 @@
             "分兵守关",
             "大赦天下"
           ],
-          "historicalOutcome": "翟义败死，莽益自疑"
+          "historicalOutcome": "翟义败死，莽益自疑",
+          "id": "han_ruziying_e1",
+          "relationDeltas": [
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_han_ruziying_e1_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_ruziying_e1_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_ruziying_e1_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_ruziying_e1_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_ruziying_e1_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 8,
@@ -1158,7 +4159,63 @@
             "大赦天下",
             "分权以缓"
           ],
-          "historicalOutcome": "王莽依符命，决意代汉"
+          "historicalOutcome": "王莽依符命，决意代汉",
+          "id": "han_ruziying_e2",
+          "relationDeltas": [
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            }
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_han_ruziying_e2_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "han_ruziying_e2_fb"
+            },
+            {
+              "setFlags": [
+                "did_han_ruziying_e2_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_ruziying_e2_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_ruziying_e2_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_ruziying_e2_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 9,
@@ -1173,7 +4230,137 @@
             "大赦天下",
             "告于宗庙"
           ],
-          "historicalOutcome": "王莽代汉建新，汉祚终"
+          "historicalOutcome": "王莽代汉建新，汉祚终",
+          "id": "han_ruziying_e3",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
+        },
+        {
+          "id": "han_ruziying_e2_fb",
+          "year": null,
+          "month": null,
+          "title": "符命代汉·余波",
+          "description": "「符命代汉」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 50,
+        "士大夫": 45,
+        "边将": 40,
+        "商贾": 10
+      },
+      "materialTarget": 6,
+      "historicalAnchors": [
+        {
+          "id": "han_ruziying_anc0",
+          "year": 6,
+          "month": null,
+          "topic": "居摄践祚",
+          "figures": [],
+          "keywords": [],
+          "premise": "莽立孺子为太子，自称「假皇帝」，改元居摄，南面朝群臣，如周公故事。",
+          "weight": 2
+        },
+        {
+          "id": "han_ruziying_anc1",
+          "year": 7,
+          "month": null,
+          "topic": "翟义讨莽",
+          "figures": [],
+          "keywords": [],
+          "premise": "东郡太守翟义立严乡侯刘信为天子，移檄郡国，众十余万。莽惶惧，遣将击破之。",
+          "weight": 2
+        },
+        {
+          "id": "han_ruziying_anc2",
+          "year": 8,
+          "month": null,
+          "topic": "符命代汉",
+          "figures": [],
+          "keywords": [],
+          "premise": "哀章作铜匮，藏「赤帝行玺某传予黄帝金策书」，言王莽为真天子。莽因以符命迫太后。",
+          "weight": 2
+        },
+        {
+          "id": "han_ruziying_anc3",
+          "year": 9,
+          "month": null,
+          "topic": "新室代汉",
+          "figures": [],
+          "keywords": [],
+          "premise": "初始元年十二月，莽逼太后取传国玺，即天子位，定国号曰新，废孺子为定安公。汉亡。",
+          "weight": 2
+        },
+        {
+          "id": "han_ruziying_bg0",
+          "year": 7,
+          "month": null,
+          "topic": "背景·平帝崩，王莽虑长君难",
+          "figures": [],
+          "keywords": [],
+          "premise": "平帝崩，王莽虑长君难制，诈言卜相最吉，立为皇太子，号孺子婴，年仅二岁，莽居摄践祚，称「假皇帝」",
+          "weight": 1
+        },
+        {
+          "id": "han_ruziying_bg1",
+          "year": 8,
+          "month": null,
+          "topic": "背景·初始元年，莽依金匮符",
+          "figures": [],
+          "keywords": [],
+          "premise": "初始元年，莽依金匮符命，逼太皇太后取传国玺，即真天子位，建国号新，废孺子为定安公，汉祚四百余年至此而绝",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "刘婴中年之厄",
+            "description": "中叶，刘婴御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -1210,7 +4397,18 @@
             "分封功臣",
             "告于宗庙"
           ],
-          "historicalOutcome": "新室立，汉统绝"
+          "historicalOutcome": "新室立，汉统绝",
+          "id": "xin_wangmang_e0",
+          "relationDeltas": [
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {}
+          ]
         },
         {
           "year": 10,
@@ -1225,7 +4423,30 @@
             "赦奴婢为庶",
             "大赦天下"
           ],
-          "historicalOutcome": "王田令下，豪强怨叛，民不聊生"
+          "historicalOutcome": "王田令下，豪强怨叛，民不聊生",
+          "id": "xin_wangmang_e1",
+          "relationDeltas": [
+            {
+              "士大夫": -3,
+              "商贾": 1
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
         },
         {
           "year": 10,
@@ -1240,7 +4461,27 @@
             "宽商税",
             "大赦天下"
           ],
-          "historicalOutcome": "六筦烦苛，商贾失业，盗贼滋起"
+          "historicalOutcome": "六筦烦苛，商贾失业，盗贼滋起",
+          "id": "xin_wangmang_e2",
+          "relationDeltas": [
+            {
+              "士大夫": -3,
+              "商贾": 1
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
         },
         {
           "year": 11,
@@ -1255,7 +4496,24 @@
             "罢新币复汉制",
             "大赦天下"
           ],
-          "historicalOutcome": "币制紊乱，国用益乏"
+          "historicalOutcome": "币制紊乱，国用益乏",
+          "id": "xin_wangmang_e3",
+          "relationDeltas": [
+            {},
+            {
+              "士大夫": -3,
+              "商贾": 1
+            },
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
         },
         {
           "year": 16,
@@ -1270,7 +4528,66 @@
             "联乌桓制匈",
             "大赦天下"
           ],
-          "historicalOutcome": "征匈奴困弊天下，盗贼蜂起"
+          "historicalOutcome": "征匈奴困弊天下，盗贼蜂起",
+          "id": "xin_wangmang_e4",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_xin_wangmang_e4_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "xin_wangmang_e4_fb"
+            },
+            {
+              "setFlags": [
+                "did_xin_wangmang_e4_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_xin_wangmang_e4_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_xin_wangmang_e4_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_xin_wangmang_e4_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 17,
@@ -1285,7 +4602,69 @@
             "守险不战",
             "大赦天下"
           ],
-          "historicalOutcome": "绿林赤眉起，新室土崩"
+          "historicalOutcome": "绿林赤眉起，新室土崩",
+          "id": "xin_wangmang_e5",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_xin_wangmang_e5_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_xin_wangmang_e5_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_xin_wangmang_e5_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_xin_wangmang_e5_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_xin_wangmang_e5_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 23,
@@ -1300,7 +4679,24 @@
             "迁都避锋",
             "大赦天下"
           ],
-          "historicalOutcome": "昆阳大败，新军精锐尽丧"
+          "historicalOutcome": "昆阳大败，新军精锐尽丧",
+          "id": "xin_wangmang_e6",
+          "relationDeltas": [
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
         },
         {
           "year": 23,
@@ -1315,7 +4711,176 @@
             "议和于绿林",
             "大赦天下"
           ],
-          "historicalOutcome": "王莽被杀于渐台，新亡，更始入长安"
+          "historicalOutcome": "王莽被杀于渐台，新亡，更始入长安",
+          "id": "xin_wangmang_e7",
+          "relationDeltas": [
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
+        },
+        {
+          "id": "xin_wangmang_e4_fb",
+          "year": null,
+          "month": null,
+          "title": "伐匈奴·余波",
+          "description": "「伐匈奴」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 50,
+        "士大夫": 40,
+        "边将": 30,
+        "商贾": 10
+      },
+      "materialTarget": 6,
+      "historicalAnchors": [
+        {
+          "id": "xin_wangmang_anc0",
+          "year": 9,
+          "month": null,
+          "topic": "代汉建新",
+          "figures": [],
+          "keywords": [],
+          "premise": "莽即真天子位，定国号新，改元始建国。废孺子婴为定安公，汉藩国尽废。",
+          "weight": 2
+        },
+        {
+          "id": "xin_wangmang_anc1",
+          "year": 10,
+          "month": null,
+          "topic": "王田私属",
+          "figures": [],
+          "keywords": [],
+          "premise": "莽仿井田，更名天下田曰「王田」，奴婢曰「私属」，皆不得买卖。男口不盈八而田过一井者分余田。",
+          "weight": 2
+        },
+        {
+          "id": "xin_wangmang_anc2",
+          "year": 10,
+          "month": null,
+          "topic": "五均六筦",
+          "figures": [],
+          "keywords": [],
+          "premise": "于长安、洛阳等五都设五均司市、钱府，行赊贷，盐铁酒币布帛山林池泽皆榷，号六筦。",
+          "weight": 2
+        },
+        {
+          "id": "xin_wangmang_anc3",
+          "year": 11,
+          "month": null,
+          "topic": "币制屡变",
+          "figures": [],
+          "keywords": [],
+          "premise": "莽更铸金、银、龟、贝、钱、布凡五物六名二十八品，百姓愦乱，农商不通。",
+          "weight": 2
+        },
+        {
+          "id": "xin_wangmang_anc4",
+          "year": 16,
+          "month": null,
+          "topic": "伐匈奴",
+          "figures": [],
+          "keywords": [],
+          "premise": "莽贬匈奴单于为「降奴服于」，分匈奴为十五单于，遣十二将率三十万众北伐，天下骚动，兵连祸结。",
+          "weight": 2
+        },
+        {
+          "id": "xin_wangmang_anc5",
+          "year": 17,
+          "month": null,
+          "topic": "绿林赤眉",
+          "figures": [],
+          "keywords": [],
+          "premise": "天凤四年，荆州饥，王匡、王凤聚绿林，琅邪樊崇起赤眉。新市、平林继之，汉宗室刘縯、刘秀亦起兵。",
+          "weight": 2
+        },
+        {
+          "id": "xin_wangmang_anc6",
+          "year": 23,
+          "month": null,
+          "topic": "昆阳之败",
+          "figures": [],
+          "keywords": [],
+          "premise": "地皇四年，莽遣王邑、王寻将百万众围昆阳。刘秀以数千敢死士溃之，莽军大溃，京师震恐。",
+          "weight": 2
+        },
+        {
+          "id": "xin_wangmang_anc7",
+          "year": 23,
+          "month": null,
+          "topic": "渐台之祸",
+          "figures": [],
+          "keywords": [],
+          "premise": "绿林入长安，城中少年朱弟、张鱼反，焚未央宫。莽走渐台，众溃，商人杜吴杀莽，校尉公宾就斩其首。新亡。",
+          "weight": 2
+        },
+        {
+          "id": "xin_wangmang_bg0",
+          "year": 16,
+          "month": null,
+          "topic": "背景·在位欲托古制，王田、",
+          "figures": [],
+          "keywords": [],
+          "premise": "在位欲托古制，王田、私属、五均六筦、币制屡更，百姓骚动",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "王莽中年之厄",
+            "description": "中叶，王莽御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -1352,7 +4917,27 @@
             "大赦天下",
             "遣使者按察"
           ],
-          "historicalOutcome": "楚狱连坐数千，刑网稍密"
+          "historicalOutcome": "楚狱连坐数千，刑网稍密",
+          "id": "han_mingdi_e0",
+          "relationDeltas": [
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
         },
         {
           "year": 60,
@@ -1367,7 +4952,18 @@
             "大赦天下",
             "定椒房之制"
           ],
-          "historicalOutcome": "马后贤德，外戚稍敛"
+          "historicalOutcome": "马后贤德，外戚稍敛",
+          "id": "han_mingdi_e1",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
         },
         {
           "year": 65,
@@ -1382,7 +4978,60 @@
             "厚赐天竺使",
             "禁民间私奉"
           ],
-          "historicalOutcome": "佛教始入中土，白马寺立"
+          "historicalOutcome": "佛教始入中土，白马寺立",
+          "id": "han_mingdi_e2",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_han_mingdi_e2_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "han_mingdi_e2_fb"
+            },
+            {
+              "setFlags": [
+                "did_han_mingdi_e2_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_mingdi_e2_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_mingdi_e2_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_mingdi_e2_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 73,
@@ -1397,7 +5046,24 @@
             "联西域制匈",
             "大赦天下"
           ],
-          "historicalOutcome": "取伊吾卢，西域复通"
+          "historicalOutcome": "取伊吾卢，西域复通",
+          "id": "han_mingdi_e3",
+          "relationDeltas": [
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
         },
         {
           "year": 75,
@@ -1412,7 +5078,153 @@
             "大赦天下",
             "定庙制"
           ],
-          "historicalOutcome": "明帝崩，章帝立，刑政稍宽"
+          "historicalOutcome": "明帝崩，章帝立，刑政稍宽",
+          "id": "han_mingdi_e4",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
+        },
+        {
+          "id": "han_mingdi_e2_fb",
+          "year": null,
+          "month": null,
+          "title": "遣使求佛·余波",
+          "description": "「遣使求佛」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "tier": "major",
+          "gating": {
+            "requiresFlags": [
+              "did_han_mingdi_e2_0"
+            ]
+          },
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 50,
+        "士大夫": 45,
+        "边将": 40,
+        "商贾": 10
+      },
+      "materialTarget": 7,
+      "historicalAnchors": [
+        {
+          "id": "han_mingdi_anc0",
+          "year": 58,
+          "month": null,
+          "topic": "治楚王狱",
+          "figures": [],
+          "keywords": [],
+          "premise": "明帝性急，楚王英交通方士，作金龟玉鹤，帝以为谋逆，穷治连坐数千人。史称「楚狱」。",
+          "weight": 2
+        },
+        {
+          "id": "han_mingdi_anc1",
+          "year": 60,
+          "month": null,
+          "topic": "立马后",
+          "figures": [],
+          "keywords": [],
+          "premise": "帝立马援女为皇后，后德冠后宫，不私外家。马氏无宠援，帝待之如初。",
+          "weight": 2
+        },
+        {
+          "id": "han_mingdi_anc2",
+          "year": 65,
+          "month": null,
+          "topic": "遣使求佛",
+          "figures": [],
+          "keywords": [],
+          "premise": "帝梦金人项有日光，傅毅言西方有圣人曰佛。遣蔡愔、秦景使天竺，写浮屠遗范，白马驮经还洛。",
+          "weight": 2
+        },
+        {
+          "id": "han_mingdi_anc3",
+          "year": 73,
+          "month": null,
+          "topic": "窦固击匈奴",
+          "figures": [],
+          "keywords": [],
+          "premise": "永平十六年，遣窦固、耿秉等分道出塞，破北匈奴于天山，取伊吾卢，置宜禾都尉。",
+          "weight": 2
+        },
+        {
+          "id": "han_mingdi_anc4",
+          "year": 75,
+          "month": null,
+          "topic": "崩与顾命",
+          "figures": [],
+          "keywords": [],
+          "premise": "帝崩，太子炟立，是为章帝。遗诏无起寝庙，藏主于光烈皇后更衣别室。",
+          "weight": 2
+        },
+        {
+          "id": "han_mingdi_bg0",
+          "year": 63,
+          "month": null,
+          "topic": "背景·性褊察，好以耳目隐发",
+          "figures": [],
+          "keywords": [],
+          "premise": "性褊察，好以耳目隐发为明，政严刑峻，然法令分明，吏治称清",
+          "weight": 1
+        },
+        {
+          "id": "han_mingdi_bg1",
+          "year": 69,
+          "month": null,
+          "topic": "背景·永平中，遣窦固击北匈",
+          "figures": [],
+          "keywords": [],
+          "premise": "永平中，遣窦固击北匈奴，取伊吾卢；闻天竺有佛，遣使求法，白马驮经，立白马寺",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "刘庄中年之厄",
+            "description": "中叶，刘庄御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -1449,7 +5261,27 @@
             "大赦天下",
             "劝农桑"
           ],
-          "historicalOutcome": "明章之治成，民安其业"
+          "historicalOutcome": "明章之治成，民安其业",
+          "id": "han_zhangdi_e0",
+          "relationDeltas": [
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "士大夫": -3,
+              "商贾": 1
+            }
+          ]
         },
         {
           "year": 79,
@@ -1464,7 +5296,18 @@
             "立石渠续议",
             "大赦天下"
           ],
-          "historicalOutcome": "白虎通义成，经学归一"
+          "historicalOutcome": "白虎通义成，经学归一",
+          "id": "han_zhangdi_e1",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
         },
         {
           "year": 83,
@@ -1479,7 +5322,60 @@
             "分其权",
             "大赦天下"
           ],
-          "historicalOutcome": "窦宪骄恣，外戚之祸渐萌"
+          "historicalOutcome": "窦宪骄恣，外戚之祸渐萌",
+          "id": "han_zhangdi_e2",
+          "relationDeltas": [
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_han_zhangdi_e2_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "han_zhangdi_e2_fb"
+            },
+            {
+              "setFlags": [
+                "did_han_zhangdi_e2_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_zhangdi_e2_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_zhangdi_e2_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_zhangdi_e2_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 87,
@@ -1494,7 +5390,21 @@
             "厚赐诸国",
             "大赦天下"
           ],
-          "historicalOutcome": "班超定西域，甘英临西海"
+          "historicalOutcome": "班超定西域，甘英临西海",
+          "id": "han_zhangdi_e3",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
         },
         {
           "year": 88,
@@ -1509,7 +5419,153 @@
             "大赦天下",
             "定庙制"
           ],
-          "historicalOutcome": "章帝崩，和帝立，窦氏专权"
+          "historicalOutcome": "章帝崩，和帝立，窦氏专权",
+          "id": "han_zhangdi_e4",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
+        },
+        {
+          "id": "han_zhangdi_e2_fb",
+          "year": null,
+          "month": null,
+          "title": "窦宪骄恣·余波",
+          "description": "「窦宪骄恣」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "tier": "major",
+          "gating": {
+            "requiresFlags": [
+              "did_han_zhangdi_e2_0"
+            ]
+          },
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 50,
+        "士大夫": 45,
+        "边将": 40,
+        "商贾": 10
+      },
+      "materialTarget": 6,
+      "historicalAnchors": [
+        {
+          "id": "han_zhangdi_anc0",
+          "year": 76,
+          "month": null,
+          "topic": "宽政息民",
+          "figures": [],
+          "keywords": [],
+          "premise": "章帝即位，诏郡国罢盐铁之禁，减笞刑，赐民爵。史称与民休息，比于文景。",
+          "weight": 2
+        },
+        {
+          "id": "han_zhangdi_anc1",
+          "year": 79,
+          "month": null,
+          "topic": "白虎观议经",
+          "figures": [],
+          "keywords": [],
+          "premise": "建初四年，诏诸儒会白虎观，讲议五经同异，帝亲称制临决，班固纂为《白虎通义》。",
+          "weight": 2
+        },
+        {
+          "id": "han_zhangdi_anc2",
+          "year": 83,
+          "month": null,
+          "topic": "窦宪骄恣",
+          "figures": [],
+          "keywords": [],
+          "premise": "窦后宠，兄窦宪以椒房之亲骄横，夺沁水公主园田，帝觉而切责，然未加罪。",
+          "weight": 2
+        },
+        {
+          "id": "han_zhangdi_anc3",
+          "year": 87,
+          "month": null,
+          "topic": "西域复通",
+          "figures": [],
+          "keywords": [],
+          "premise": "班超久在西域，遣甘英使大秦（罗马），抵条支临海而还。西域五十余国皆附汉。",
+          "weight": 2
+        },
+        {
+          "id": "han_zhangdi_anc4",
+          "year": 88,
+          "month": null,
+          "topic": "崩与嗣",
+          "figures": [],
+          "keywords": [],
+          "premise": "帝崩，太子肇立，十岁，窦太后临朝。和帝幼年，窦宪以大将军辅政，权倾朝野。",
+          "weight": 2
+        },
+        {
+          "id": "han_zhangdi_bg0",
+          "year": 79,
+          "month": null,
+          "topic": "背景·即位后，一改明帝苛急",
+          "figures": [],
+          "keywords": [],
+          "premise": "即位后，一改明帝苛急，平徭简赋，人民安乐，号「明章之治」",
+          "weight": 1
+        },
+        {
+          "id": "han_zhangdi_bg1",
+          "year": 84,
+          "month": null,
+          "topic": "背景·建初四年，召诸儒于白",
+          "figures": [],
+          "keywords": [],
+          "premise": "建初四年，召诸儒于白虎观，议五经同异，班固撰《白虎通义》",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "刘炟中年之厄",
+            "description": "中叶，刘炟御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -1546,7 +5602,27 @@
             "守边不攻",
             "大赦天下"
           ],
-          "historicalOutcome": "窦宪燕然勒功，北匈奴远遁"
+          "historicalOutcome": "窦宪燕然勒功，北匈奴远遁",
+          "id": "han_hedi_e0",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
         },
         {
           "year": 92,
@@ -1561,7 +5637,21 @@
             "大赦天下",
             "立邓后"
           ],
-          "historicalOutcome": "窦氏灭，郑众封侯，宦者始权重"
+          "historicalOutcome": "窦氏灭，郑众封侯，宦者始权重",
+          "id": "han_hedi_e1",
+          "relationDeltas": [
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
         },
         {
           "year": 97,
@@ -1576,7 +5666,57 @@
             "厚赏超功",
             "大赦天下"
           ],
-          "historicalOutcome": "班超归，西域渐弛"
+          "historicalOutcome": "班超归，西域渐弛",
+          "id": "han_hedi_e2",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_han_hedi_e2_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "han_hedi_e2_fb"
+            },
+            {
+              "setFlags": [
+                "did_han_hedi_e2_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_hedi_e2_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_hedi_e2_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_hedi_e2_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 100,
@@ -1591,7 +5731,18 @@
             "大赦天下",
             "定宫制"
           ],
-          "historicalOutcome": "邓后贤，后临朝称制"
+          "historicalOutcome": "邓后贤，后临朝称制",
+          "id": "han_hedi_e3",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
         },
         {
           "year": 105,
@@ -1606,7 +5757,153 @@
             "托邓后",
             "定庙制"
           ],
-          "historicalOutcome": "和帝崩，殇帝立，邓后摄政"
+          "historicalOutcome": "和帝崩，殇帝立，邓后摄政",
+          "id": "han_hedi_e4",
+          "relationDeltas": [
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {}
+          ]
+        },
+        {
+          "id": "han_hedi_e2_fb",
+          "year": null,
+          "month": null,
+          "title": "班超归国·余波",
+          "description": "「班超归国」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "tier": "major",
+          "gating": {
+            "requiresFlags": [
+              "did_han_hedi_e2_0"
+            ]
+          },
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 50,
+        "士大夫": 45,
+        "边将": 40,
+        "商贾": 10
+      },
+      "materialTarget": 6,
+      "historicalAnchors": [
+        {
+          "id": "han_hedi_anc0",
+          "year": 89,
+          "month": null,
+          "topic": "窦宪北伐",
+          "figures": [],
+          "keywords": [],
+          "premise": "窦宪以椒房宠，请击北匈奴赎罪，与耿秉出塞，登燕然山，刻石纪功而还。",
+          "weight": 2
+        },
+        {
+          "id": "han_hedi_anc1",
+          "year": 92,
+          "month": null,
+          "topic": "诛窦宪",
+          "figures": [],
+          "keywords": [],
+          "premise": "和帝与中常侍郑众谋，收窦宪大将军印，迫令自杀，尽诛窦氏。郑众以功封侯。",
+          "weight": 2
+        },
+        {
+          "id": "han_hedi_anc2",
+          "year": 97,
+          "month": null,
+          "topic": "班超归国",
+          "figures": [],
+          "keywords": [],
+          "premise": "西域都护班超在西域三十一岁，年老求归，帝许之。超还，未几卒。西域渐失。",
+          "weight": 2
+        },
+        {
+          "id": "han_hedi_anc3",
+          "year": 100,
+          "month": null,
+          "topic": "邓后之贤",
+          "figures": [],
+          "keywords": [],
+          "premise": "和帝立邓绥为后，后贤明，好学，善史书。和帝崩后，邓后临朝，称制终身。",
+          "weight": 2
+        },
+        {
+          "id": "han_hedi_anc4",
+          "year": 105,
+          "month": null,
+          "topic": "崩与嗣",
+          "figures": [],
+          "keywords": [],
+          "premise": "和帝崩，少子隆生百余日即位（殇帝），邓太后临朝。和帝诸子多夭，宦官外戚争嗣。",
+          "weight": 2
+        },
+        {
+          "id": "han_hedi_bg0",
+          "year": 94,
+          "month": null,
+          "topic": "背景·十岁即位，窦太后临朝",
+          "figures": [],
+          "keywords": [],
+          "premise": "十岁即位，窦太后临朝，窦宪为大将军，弟兄并据要津",
+          "weight": 1
+        },
+        {
+          "id": "han_hedi_bg1",
+          "year": 100,
+          "month": null,
+          "topic": "背景·永元四年，和帝与中常",
+          "figures": [],
+          "keywords": [],
+          "premise": "永元四年，和帝与中常侍郑众定议，收窦宪印绶，迫令自杀，窦氏党与皆诛",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "刘肇中年之厄",
+            "description": "中叶，刘肇御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -1643,7 +5940,57 @@
             "托邓骘",
             "定垂帘"
           ],
-          "historicalOutcome": "殇帝立，邓后摄政"
+          "historicalOutcome": "殇帝立，邓后摄政",
+          "id": "han_shangdi_e0",
+          "relationDeltas": [
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_han_shangdi_e0_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_shangdi_e0_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_shangdi_e0_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_shangdi_e0_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_shangdi_e0_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 106,
@@ -1658,7 +6005,156 @@
             "谥殇帝",
             "定庙制"
           ],
-          "historicalOutcome": "殇帝崩，安帝立，邓氏益盛"
+          "historicalOutcome": "殇帝崩，安帝立，邓氏益盛",
+          "id": "han_shangdi_e1",
+          "relationDeltas": [
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_han_shangdi_e1_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "han_shangdi_e1_fb"
+            },
+            {
+              "setFlags": [
+                "did_han_shangdi_e1_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_shangdi_e1_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_shangdi_e1_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_shangdi_e1_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
+        },
+        {
+          "id": "han_shangdi_e1_fb",
+          "year": null,
+          "month": null,
+          "title": "早夭·余波",
+          "description": "「早夭」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 50,
+        "士大夫": 45,
+        "边将": 40,
+        "商贾": 10
+      },
+      "materialTarget": 6,
+      "historicalAnchors": [
+        {
+          "id": "han_shangdi_anc0",
+          "year": 105,
+          "month": null,
+          "topic": "百日即位",
+          "figures": [],
+          "keywords": [],
+          "premise": "和帝崩，邓太后立百余日幼子隆为帝，自临朝。",
+          "weight": 2
+        },
+        {
+          "id": "han_shangdi_anc1",
+          "year": 106,
+          "month": null,
+          "topic": "早夭",
+          "figures": [],
+          "keywords": [],
+          "premise": "殇帝在襁褓中崩，邓太后与邓骘迎清河王庆子祜入继（安帝）。",
+          "weight": 2
+        },
+        {
+          "id": "han_shangdi_bg0",
+          "year": 105,
+          "month": null,
+          "topic": "背景·和帝崩，邓太后临朝，",
+          "figures": [],
+          "keywords": [],
+          "premise": "和帝崩，邓太后临朝，以皇子隆生甫百余日，迎立于襁褓之中，是为殇帝，邓骘等辅政",
+          "weight": 1
+        },
+        {
+          "id": "han_shangdi_bg1",
+          "year": 106,
+          "month": null,
+          "topic": "背景·在位仅八月，襁褓而崩",
+          "figures": [],
+          "keywords": [],
+          "premise": "在位仅八月，襁褓而崩，年二岁，为历代帝王享年最短者",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "刘隆中年之厄",
+            "description": "中叶，刘隆御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -1695,7 +6191,21 @@
             "大赦天下",
             "立阎后"
           ],
-          "historicalOutcome": "邓氏灭，阎氏、宦官用事"
+          "historicalOutcome": "邓氏灭，阎氏、宦官用事",
+          "id": "han_andi_e0",
+          "relationDeltas": [
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
         },
         {
           "year": 107,
@@ -1710,7 +6220,27 @@
             "和亲息兵",
             "大赦天下"
           ],
-          "historicalOutcome": "羌乱连年，天下疲敝"
+          "historicalOutcome": "羌乱连年，天下疲敝",
+          "id": "han_andi_e1",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
         },
         {
           "year": 119,
@@ -1725,7 +6255,24 @@
             "厚赐诸国",
             "大赦天下"
           ],
-          "historicalOutcome": "班勇复通西域，鄯善、龟兹附"
+          "historicalOutcome": "班勇复通西域，鄯善、龟兹附",
+          "id": "han_andi_e2",
+          "relationDeltas": [
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
         },
         {
           "year": 124,
@@ -1740,7 +6287,24 @@
             "大赦天下",
             "立阎族"
           ],
-          "historicalOutcome": "太子保废，阎氏擅立少帝"
+          "historicalOutcome": "太子保废，阎氏擅立少帝",
+          "id": "han_andi_e3",
+          "relationDeltas": [
+            {
+              "士大夫": -3,
+              "商贾": 1
+            },
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ]
         },
         {
           "year": 125,
@@ -1755,7 +6319,107 @@
             "迎顺帝",
             "大赦天下"
           ],
-          "historicalOutcome": "安帝崩，阎氏乱，顺帝乃立"
+          "historicalOutcome": "安帝崩，阎氏乱，顺帝乃立",
+          "id": "han_andi_e4",
+          "relationDeltas": [
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
+        }
+      ],
+      "initRelations": {
+        "宗室": 50,
+        "士大夫": 45,
+        "边将": 40,
+        "商贾": 10
+      },
+      "materialTarget": 7,
+      "historicalAnchors": [
+        {
+          "id": "han_andi_anc0",
+          "year": 121,
+          "month": null,
+          "topic": "诛邓氏",
+          "figures": [],
+          "keywords": [],
+          "premise": "邓太后崩，帝与江京等诬邓骘兄弟谋逆，废太后兄弟，骘等自杀，邓氏宗族皆免官归故郡。",
+          "weight": 2
+        },
+        {
+          "id": "han_andi_anc1",
+          "year": 107,
+          "month": null,
+          "topic": "羌乱大起",
+          "figures": [],
+          "keywords": [],
+          "premise": "羌人无弋爰剑之后，以郡县烦苛反，破城杀吏，诏发兵讨之，连年不解，军旅之费岁二十亿。",
+          "weight": 2
+        },
+        {
+          "id": "han_andi_anc2",
+          "year": 119,
+          "month": null,
+          "topic": "班勇通西域",
+          "figures": [],
+          "keywords": [],
+          "premise": "敦煌太守曹宗请出兵西域，班勇（超子）请循西域名都护旧事，复置西域副校尉于楼兰。",
+          "weight": 2
+        },
+        {
+          "id": "han_andi_anc3",
+          "year": 124,
+          "month": null,
+          "topic": "太子之废",
+          "figures": [],
+          "keywords": [],
+          "premise": "太子保（顺帝）为阎皇后、江京所谮，废为济阴王。帝崩，阎显立北乡侯懿（少帝）。",
+          "weight": 2
+        },
+        {
+          "id": "han_andi_anc4",
+          "year": 125,
+          "month": null,
+          "topic": "崩乱相仍",
+          "figures": [],
+          "keywords": [],
+          "premise": "帝南巡崩于叶，阎显、江京秘不发丧，还宫立少帝懿。未几懿病，孙程等十九侯诛阎显，迎保（顺帝）。",
+          "weight": 2
+        },
+        {
+          "id": "han_andi_bg0",
+          "year": 116,
+          "month": null,
+          "topic": "背景·建光元年邓太后崩，帝",
+          "figures": [],
+          "keywords": [],
+          "premise": "建光元年邓太后崩，帝亲政，灭邓氏，宠阎皇后及乳母王圣、中黄门李闰等，宦官江京、樊丰用事",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "刘祜中年之厄",
+            "description": "中叶，刘祜御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -1792,7 +6456,60 @@
             "分权大臣",
             "托阎显"
           ],
-          "historicalOutcome": "少帝立，阎氏专权"
+          "historicalOutcome": "少帝立，阎氏专权",
+          "id": "han_shaodi_yi_e0",
+          "relationDeltas": [
+            {},
+            {
+              "士大夫": -3,
+              "商贾": 1
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_han_shaodi_yi_e0_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "han_shaodi_yi_e0_fb"
+            },
+            {
+              "setFlags": [
+                "did_han_shaodi_yi_e0_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_shaodi_yi_e0_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_shaodi_yi_e0_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_shaodi_yi_e0_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 125,
@@ -1807,7 +6524,159 @@
             "大赦天下",
             "谥少帝"
           ],
-          "historicalOutcome": "孙程定策，顺帝立，汉归刘保"
+          "historicalOutcome": "孙程定策，顺帝立，汉归刘保",
+          "id": "han_shaodi_yi_e1",
+          "relationDeltas": [
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_han_shaodi_yi_e1_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_shaodi_yi_e1_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_shaodi_yi_e1_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_shaodi_yi_e1_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_shaodi_yi_e1_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
+        },
+        {
+          "id": "han_shaodi_yi_e0_fb",
+          "year": null,
+          "month": null,
+          "title": "阎显立之·余波",
+          "description": "「阎显立之」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 50,
+        "士大夫": 45,
+        "边将": 40,
+        "商贾": 10
+      },
+      "materialTarget": 6,
+      "historicalAnchors": [
+        {
+          "id": "han_shaodi_yi_anc0",
+          "year": 125,
+          "month": null,
+          "topic": "阎显立之",
+          "figures": [],
+          "keywords": [],
+          "premise": "安帝崩，阎显秘丧，立北乡侯懿为帝，己巳临朝，阎氏尽据机要。",
+          "weight": 2
+        },
+        {
+          "id": "han_shaodi_yi_anc1",
+          "year": 125,
+          "month": null,
+          "topic": "孙程定策",
+          "figures": [],
+          "keywords": [],
+          "premise": "少帝病，孙程等十九侯斩江京，迎济阴王保于德阳殿，显党尽诛，保即位（顺帝），少帝旋崩。",
+          "weight": 2
+        },
+        {
+          "id": "han_shaodi_yi_bg0",
+          "year": 125,
+          "month": null,
+          "topic": "背景·安帝崩，阎显与中常侍",
+          "figures": [],
+          "keywords": [],
+          "premise": "安帝崩，阎显与中常侍江京等秘不发丧，迎立之，号少帝（北乡侯），年仅数岁，阎太后临朝，阎显为大将军秉政，阎氏子弟布列朝廷",
+          "weight": 1
+        },
+        {
+          "id": "han_shaodi_yi_bg1",
+          "year": 125,
+          "month": null,
+          "topic": "背景·在位仅七月，病笃，宦",
+          "figures": [],
+          "keywords": [],
+          "premise": "在位仅七月，病笃，宦官孙程等十九侯夜共斩江京，迎废太子保（顺帝）入即位，显党尽诛，少帝寻崩，谥曰少帝",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "刘懿中年之厄",
+            "description": "中叶，刘懿御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -1844,7 +6713,18 @@
             "分其权",
             "大赦天下"
           ],
-          "historicalOutcome": "宦官封侯，权势渐重"
+          "historicalOutcome": "宦官封侯，权势渐重",
+          "id": "han_shundi_e0",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
         },
         {
           "year": 132,
@@ -1859,7 +6739,18 @@
             "广求方技",
             "大赦天下"
           ],
-          "historicalOutcome": "地动仪成，科技冠绝当时"
+          "historicalOutcome": "地动仪成，科技冠绝当时",
+          "id": "han_shundi_e1",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
         },
         {
           "year": 135,
@@ -1874,7 +6765,57 @@
             "大赦天下",
             "立梁后"
           ],
-          "historicalOutcome": "梁氏外戚渐盛，冀将乱政"
+          "historicalOutcome": "梁氏外戚渐盛，冀将乱政",
+          "id": "han_shundi_e2",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_han_shundi_e2_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "han_shundi_e2_fb"
+            },
+            {
+              "setFlags": [
+                "did_han_shundi_e2_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_shundi_e2_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_shundi_e2_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_shundi_e2_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 142,
@@ -1889,7 +6830,21 @@
             "大赦天下",
             "立庠序"
           ],
-          "historicalOutcome": "八使巡州，贪墨稍敛未已"
+          "historicalOutcome": "八使巡州，贪墨稍敛未已",
+          "id": "han_shundi_e3",
+          "relationDeltas": [
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
         },
         {
           "year": 144,
@@ -1904,7 +6859,143 @@
             "托梁冀",
             "定庙制"
           ],
-          "historicalOutcome": "顺帝崩，冲帝立，梁冀专权"
+          "historicalOutcome": "顺帝崩，冲帝立，梁冀专权",
+          "id": "han_shundi_e4",
+          "relationDeltas": [
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {}
+          ]
+        },
+        {
+          "id": "han_shundi_e2_fb",
+          "year": null,
+          "month": null,
+          "title": "梁商辅政·余波",
+          "description": "「梁商辅政」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "tier": "major",
+          "gating": {
+            "requiresFlags": [
+              "did_han_shundi_e2_0"
+            ]
+          },
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 50,
+        "士大夫": 45,
+        "边将": 40,
+        "商贾": 10
+      },
+      "materialTarget": 7,
+      "historicalAnchors": [
+        {
+          "id": "han_shundi_anc0",
+          "year": 126,
+          "month": null,
+          "topic": "封十九侯",
+          "figures": [],
+          "keywords": [],
+          "premise": "顺帝念孙程等定策功，皆封列侯，宦官封侯自此始。程等恃功骄纵，旋或徙或诛。",
+          "weight": 2
+        },
+        {
+          "id": "han_shundi_anc1",
+          "year": 132,
+          "month": null,
+          "topic": "张衡地动仪",
+          "figures": [],
+          "keywords": [],
+          "premise": "太史令张衡造候风地动仪，以精铜铸，测地震方位，巧妙如神。",
+          "weight": 2
+        },
+        {
+          "id": "han_shundi_anc2",
+          "year": 135,
+          "month": null,
+          "topic": "梁商辅政",
+          "figures": [],
+          "keywords": [],
+          "premise": "帝以梁商（后父）为大将军，商谦慎，然其子冀已露骄态。梁氏外戚自此盛。",
+          "weight": 2
+        },
+        {
+          "id": "han_shundi_anc3",
+          "year": 142,
+          "month": null,
+          "topic": "八使巡州",
+          "figures": [],
+          "keywords": [],
+          "premise": "帝遣周举、杜乔等八使分行州郡，劾奏贪猾，表荐公清。然刺史太守多行贿得免。",
+          "weight": 2
+        },
+        {
+          "id": "han_shundi_anc4",
+          "year": 144,
+          "month": null,
+          "topic": "崩与嗣",
+          "figures": [],
+          "keywords": [],
+          "premise": "帝崩，梁后立冲帝炳，年二岁，梁太后临朝，冀以大将军秉政。",
+          "weight": 2
+        },
+        {
+          "id": "han_shundi_bg0",
+          "year": 135,
+          "month": null,
+          "topic": "背景·阳嘉中，左雄议改察举",
+          "figures": [],
+          "keywords": [],
+          "premise": "阳嘉中，左雄议改察举，限年试经；张衡作候风地动仪",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "刘保中年之厄",
+            "description": "中叶，刘保御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -1941,7 +7032,57 @@
             "定垂帘",
             "议立长君"
           ],
-          "historicalOutcome": "冲帝立，梁冀秉政"
+          "historicalOutcome": "冲帝立，梁冀秉政",
+          "id": "han_chongdi_e0",
+          "relationDeltas": [
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {},
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_han_chongdi_e0_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_chongdi_e0_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_chongdi_e0_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_chongdi_e0_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_chongdi_e0_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 145,
@@ -1956,7 +7097,156 @@
             "谥冲帝",
             "定庙制"
           ],
-          "historicalOutcome": "冲帝崩，质帝立，冀益专"
+          "historicalOutcome": "冲帝崩，质帝立，冀益专",
+          "id": "han_chongdi_e1",
+          "relationDeltas": [
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_han_chongdi_e1_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "han_chongdi_e1_fb"
+            },
+            {
+              "setFlags": [
+                "did_han_chongdi_e1_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_chongdi_e1_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_chongdi_e1_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_chongdi_e1_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
+        },
+        {
+          "id": "han_chongdi_e1_fb",
+          "year": null,
+          "month": null,
+          "title": "早崩·余波",
+          "description": "「早崩」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 50,
+        "士大夫": 45,
+        "边将": 40,
+        "商贾": 10
+      },
+      "materialTarget": 6,
+      "historicalAnchors": [
+        {
+          "id": "han_chongdi_anc0",
+          "year": 144,
+          "month": null,
+          "topic": "幼冲即位",
+          "figures": [],
+          "keywords": [],
+          "premise": "冲帝即位，梁太后临朝，梁冀辅政。",
+          "weight": 2
+        },
+        {
+          "id": "han_chongdi_anc1",
+          "year": 145,
+          "month": null,
+          "topic": "早崩",
+          "figures": [],
+          "keywords": [],
+          "premise": "冲帝崩，梁冀与太后定策，立渤海王鸿子缵为质帝。",
+          "weight": 2
+        },
+        {
+          "id": "han_chongdi_bg0",
+          "year": 144,
+          "month": null,
+          "topic": "背景·顺帝崩，年二岁即位，",
+          "figures": [],
+          "keywords": [],
+          "premise": "顺帝崩，年二岁即位，梁太后（顺帝后）临朝，兄大将军梁冀辅政",
+          "weight": 1
+        },
+        {
+          "id": "han_chongdi_bg1",
+          "year": 145,
+          "month": null,
+          "topic": "背景·梁冀忌其聪慧之资，寻",
+          "figures": [],
+          "keywords": [],
+          "premise": "梁冀忌其聪慧之资，寻迎渤海王鸿之子缵立之（质帝），汉室幼主之命尽操于梁氏之手，朝政浊乱",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "刘炳中年之厄",
+            "description": "中叶，刘炳御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -1993,7 +7283,57 @@
             "大赦天下",
             "立后"
           ],
-          "historicalOutcome": "质帝识冀奸，冀恶之"
+          "historicalOutcome": "质帝识冀奸，冀恶之",
+          "id": "han_zhidi_e0",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_han_zhidi_e0_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_zhidi_e0_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_zhidi_e0_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_zhidi_e0_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_zhidi_e0_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 146,
@@ -2008,7 +7348,156 @@
             "谥质帝",
             "定庙制"
           ],
-          "historicalOutcome": "梁冀弑质帝，立桓帝，权倾天下"
+          "historicalOutcome": "梁冀弑质帝，立桓帝，权倾天下",
+          "id": "han_zhidi_e1",
+          "relationDeltas": [
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_han_zhidi_e1_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "han_zhidi_e1_fb"
+            },
+            {
+              "setFlags": [
+                "did_han_zhidi_e1_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_zhidi_e1_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_zhidi_e1_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_zhidi_e1_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
+        },
+        {
+          "id": "han_zhidi_e1_fb",
+          "year": null,
+          "month": null,
+          "title": "饼中遇弑·余波",
+          "description": "「饼中遇弑」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 50,
+        "士大夫": 45,
+        "边将": 40,
+        "商贾": 10
+      },
+      "materialTarget": 6,
+      "historicalAnchors": [
+        {
+          "id": "han_zhidi_anc0",
+          "year": 145,
+          "month": null,
+          "topic": "童言识奸",
+          "figures": [],
+          "keywords": [],
+          "premise": "质帝即位，见梁冀骄恣，朝会指曰「此跋扈将军也」。左右失色，冀衔之。",
+          "weight": 2
+        },
+        {
+          "id": "han_zhidi_anc1",
+          "year": 146,
+          "month": null,
+          "topic": "饼中遇弑",
+          "figures": [],
+          "keywords": [],
+          "premise": "冀恐质帝长难制，使左右以毒饼进，帝食之崩，年九岁。冀遂迎蠡吾侯志（桓帝）立之。",
+          "weight": 2
+        },
+        {
+          "id": "han_zhidi_bg0",
+          "year": 145,
+          "month": null,
+          "topic": "背景·质帝虽幼，而聪慧知书",
+          "figures": [],
+          "keywords": [],
+          "premise": "质帝虽幼，而聪慧知书，尝朝会指大将军梁冀曰：『此跋扈将军也",
+          "weight": 1
+        },
+        {
+          "id": "han_zhidi_bg1",
+          "year": 146,
+          "month": null,
+          "topic": "背景·』左右失色，冀闻而恶",
+          "figures": [],
+          "keywords": [],
+          "premise": "』左右失色，冀闻而恶之，恐其长成难制，使左右以毒饼进之，帝食之而崩，年九岁",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "刘缵中年之厄",
+            "description": "中叶，刘缵御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -2045,7 +7534,60 @@
             "大赦天下",
             "立窦后"
           ],
-          "historicalOutcome": "梁冀灭，五侯封，宦官始横"
+          "historicalOutcome": "梁冀灭，五侯封，宦官始横",
+          "id": "han_huandi_e0",
+          "relationDeltas": [
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_han_huandi_e0_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "han_huandi_e0_fb"
+            },
+            {
+              "setFlags": [
+                "did_han_huandi_e0_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_huandi_e0_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_huandi_e0_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_huandi_e0_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 166,
@@ -2060,7 +7602,27 @@
             "分权儒臣",
             "大赦天下"
           ],
-          "historicalOutcome": "党锢之祸起，清流遭厄"
+          "historicalOutcome": "党锢之祸起，清流遭厄",
+          "id": "han_huandi_e1",
+          "relationDeltas": [
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
         },
         {
           "year": 159,
@@ -2075,7 +7637,57 @@
             "大赦天下",
             "定椒房"
           ],
-          "historicalOutcome": "梁后崩，窦后立，窦氏再起"
+          "historicalOutcome": "梁后崩，窦后立，窦氏再起",
+          "id": "han_huandi_e2",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_han_huandi_e2_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_huandi_e2_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_huandi_e2_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_huandi_e2_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_huandi_e2_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 165,
@@ -2090,7 +7702,24 @@
             "大赦天下",
             "籍没豪富"
           ],
-          "historicalOutcome": "卖官鬻爵，吏治大坏"
+          "historicalOutcome": "卖官鬻爵，吏治大坏",
+          "id": "han_huandi_e3",
+          "relationDeltas": [
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ]
         },
         {
           "year": 167,
@@ -2105,7 +7734,137 @@
             "托窦武",
             "定庙制"
           ],
-          "historicalOutcome": "桓帝崩，灵帝立，汉将大乱"
+          "historicalOutcome": "桓帝崩，灵帝立，汉将大乱",
+          "id": "han_huandi_e4",
+          "relationDeltas": [
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {}
+          ]
+        },
+        {
+          "id": "han_huandi_e0_fb",
+          "year": null,
+          "month": null,
+          "title": "诛梁冀·余波",
+          "description": "「诛梁冀」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 50,
+        "士大夫": 45,
+        "边将": 40,
+        "商贾": 10
+      },
+      "materialTarget": 8,
+      "historicalAnchors": [
+        {
+          "id": "han_huandi_anc0",
+          "year": 159,
+          "month": null,
+          "topic": "诛梁冀",
+          "figures": [],
+          "keywords": [],
+          "premise": "桓帝与单超等五中常侍谋，收梁冀大将军印，冀与妻自杀，尽诛梁氏，籍没财货三十余亿，减天下租税之半。",
+          "weight": 2
+        },
+        {
+          "id": "han_huandi_anc1",
+          "year": 166,
+          "month": null,
+          "topic": "党锢之祸",
+          "figures": [],
+          "keywords": [],
+          "premise": "宦官诬司隶校尉李膺等养太学游士，诽讪朝廷，帝怒，下郡国捕党人，陈蕃争之不听，二百余人禁锢。",
+          "weight": 2
+        },
+        {
+          "id": "han_huandi_anc2",
+          "year": 159,
+          "month": null,
+          "topic": "梁后之妒",
+          "figures": [],
+          "keywords": [],
+          "premise": "梁皇后倚冀势，妒忌，后宫妊者皆杀。冀诛后，后忧恚崩。帝乃立窦妙为后。",
+          "weight": 2
+        },
+        {
+          "id": "han_huandi_anc3",
+          "year": 165,
+          "month": null,
+          "topic": "卖官鬻爵",
+          "figures": [],
+          "keywords": [],
+          "premise": "桓帝穷奢，库藏虚耗，开西邸卖官，公卿州郡各有定价，富者先入，贫者到官倍输。",
+          "weight": 2
+        },
+        {
+          "id": "han_huandi_anc4",
+          "year": 167,
+          "month": null,
+          "topic": "崩与嗣",
+          "figures": [],
+          "keywords": [],
+          "premise": "帝崩无子，窦后与其父窦武迎解渎亭侯宏（灵帝）立之。窦武、陈蕃谋诛宦官，未发而败。",
+          "weight": 2
+        },
+        {
+          "id": "han_huandi_bg0",
+          "year": 157,
+          "month": null,
+          "topic": "背景·延熹二年，桓帝与中常",
+          "figures": [],
+          "keywords": [],
+          "premise": "延熹二年，桓帝与中常侍单超、徐璜等五人定议，收冀印绶，冀与妻寿自杀，宗族宾客死者数十人，籍没家财三十余亿",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "刘志中年之厄",
+            "description": "中叶，刘志御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -2142,7 +7901,21 @@
             "大赦天下",
             "立宋后"
           ],
-          "historicalOutcome": "窦武败死，宦官益横"
+          "historicalOutcome": "窦武败死，宦官益横",
+          "id": "han_lingdi_e0",
+          "relationDeltas": [
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
         },
         {
           "year": 178,
@@ -2157,7 +7930,63 @@
             "大赦天下",
             "籍没豪富"
           ],
-          "historicalOutcome": "卖官鬻爵，朝政秽乱"
+          "historicalOutcome": "卖官鬻爵，朝政秽乱",
+          "id": "han_lingdi_e1",
+          "relationDeltas": [
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_han_lingdi_e1_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "han_lingdi_e1_fb"
+            },
+            {
+              "setFlags": [
+                "did_han_lingdi_e1_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_lingdi_e1_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_lingdi_e1_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_lingdi_e1_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 184,
@@ -2172,7 +8001,66 @@
             "募义兵",
             "大赦天下"
           ],
-          "historicalOutcome": "黄巾起，皇甫嵩破之，然州郡兵起"
+          "historicalOutcome": "黄巾起，皇甫嵩破之，然州郡兵起",
+          "id": "han_lingdi_e2",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_han_lingdi_e2_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_lingdi_e2_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_lingdi_e2_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_lingdi_e2_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_lingdi_e2_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 185,
@@ -2187,7 +8075,18 @@
             "大赦天下",
             "分兵权"
           ],
-          "historicalOutcome": "州牧权重，群雄割据之基成"
+          "historicalOutcome": "州牧权重，群雄割据之基成",
+          "id": "han_lingdi_e3",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
         },
         {
           "year": 189,
@@ -2202,7 +8101,153 @@
             "大赦天下",
             "立献帝"
           ],
-          "historicalOutcome": "董卓入京，汉室名存实亡"
+          "historicalOutcome": "董卓入京，汉室名存实亡",
+          "id": "han_lingdi_e4",
+          "relationDeltas": [
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
+        },
+        {
+          "id": "han_lingdi_e1_fb",
+          "year": null,
+          "month": null,
+          "title": "西园卖官·余波",
+          "description": "「西园卖官」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 50,
+        "士大夫": 45,
+        "边将": 40,
+        "商贾": 10
+      },
+      "materialTarget": 8,
+      "historicalAnchors": [
+        {
+          "id": "han_lingdi_anc0",
+          "year": 168,
+          "month": null,
+          "topic": "窦武之败",
+          "figures": [],
+          "keywords": [],
+          "premise": "窦武、陈蕃谋尽诛宦官，事泄，曹节、王甫矫诏收武，武自杀，蕃被害，家属徙边，党人复锢。",
+          "weight": 2
+        },
+        {
+          "id": "han_lingdi_anc1",
+          "year": 178,
+          "month": null,
+          "topic": "西园卖官",
+          "figures": [],
+          "keywords": [],
+          "premise": "灵帝于西园立邸卖官，公千万，卿五百万，故宫皆铜臭。又作列肆于后宫，帝著贾人服为市。",
+          "weight": 2
+        },
+        {
+          "id": "han_lingdi_anc2",
+          "year": 184,
+          "month": null,
+          "topic": "黄巾之乱",
+          "figures": [],
+          "keywords": [],
+          "premise": "张角弟兄以「苍天已死，黄天当立，岁在甲子，天下大吉」起事，三十六方同日而起，州郡失守。",
+          "weight": 2
+        },
+        {
+          "id": "han_lingdi_anc3",
+          "year": 185,
+          "month": null,
+          "topic": "州郡拥兵",
+          "figures": [],
+          "keywords": [],
+          "premise": "黄巾既平，灵帝改刺史为州牧，授重权。刘焉建议：四方兵寇，宜用宗室、重臣为牧。州牧割据自此始。",
+          "weight": 2
+        },
+        {
+          "id": "han_lingdi_anc4",
+          "year": 189,
+          "month": null,
+          "topic": "何进召卓",
+          "figures": [],
+          "keywords": [],
+          "premise": "灵帝崩，少帝辩立，何进与袁绍谋诛宦官，召董卓入京。事泄，进被杀，袁绍尽诛宦官，卓拥兵入洛，废少帝立献帝。",
+          "weight": 2
+        },
+        {
+          "id": "han_lingdi_bg0",
+          "year": 175,
+          "month": null,
+          "topic": "背景·窦武、陈蕃谋诛宦官曹",
+          "figures": [],
+          "keywords": [],
+          "premise": "窦武、陈蕃谋诛宦官曹节、王甫，事泄被杀，宦官复盛",
+          "weight": 1
+        },
+        {
+          "id": "han_lingdi_bg1",
+          "year": 182,
+          "month": null,
+          "topic": "背景·灵帝荒嬉，于西园卖官",
+          "figures": [],
+          "keywords": [],
+          "premise": "灵帝荒嬉，于西园卖官，作「裸游馆」，自称「无官」",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "刘宏中年之厄",
+            "description": "中叶，刘宏御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -2239,7 +8284,60 @@
             "诛宦官",
             "定垂帘"
           ],
-          "historicalOutcome": "少帝立，何后临朝，进谋诛宦"
+          "historicalOutcome": "少帝立，何后临朝，进谋诛宦",
+          "id": "han_shaodi_bian_e0",
+          "relationDeltas": [
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_han_shaodi_bian_e0_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "han_shaodi_bian_e0_fb"
+            },
+            {
+              "setFlags": [
+                "did_han_shaodi_bian_e0_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_shaodi_bian_e0_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_shaodi_bian_e0_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_shaodi_bian_e0_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 189,
@@ -2254,7 +8352,152 @@
             "谥少帝",
             "定庙制"
           ],
-          "historicalOutcome": "董卓废少帝立献帝，汉室倾颓"
+          "historicalOutcome": "董卓废少帝立献帝，汉室倾颓",
+          "id": "han_shaodi_bian_e1",
+          "relationDeltas": [
+            {
+              "士大夫": -3,
+              "商贾": 1
+            },
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_han_shaodi_bian_e1_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_shaodi_bian_e1_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_shaodi_bian_e1_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_shaodi_bian_e1_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_han_shaodi_bian_e1_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
+        },
+        {
+          "id": "han_shaodi_bian_e0_fb",
+          "year": null,
+          "month": null,
+          "title": "何后临朝·余波",
+          "description": "「何后临朝」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 50,
+        "士大夫": 45,
+        "边将": 40,
+        "商贾": 10
+      },
+      "materialTarget": 6,
+      "historicalAnchors": [
+        {
+          "id": "han_shaodi_bian_anc0",
+          "year": 189,
+          "month": null,
+          "topic": "何后临朝",
+          "figures": [],
+          "keywords": [],
+          "premise": "灵帝崩，何进立少帝，何太后临朝。进与袁绍谋诛宦官，事泄被杀。",
+          "weight": 2
+        },
+        {
+          "id": "han_shaodi_bian_anc1",
+          "year": 189,
+          "month": null,
+          "topic": "董卓废立",
+          "figures": [],
+          "keywords": [],
+          "premise": "卓入洛，以帝懦弱，废为弘农王，立陈留王协为献帝。袁绍等讨卓，关东兵起。",
+          "weight": 2
+        },
+        {
+          "id": "han_shaodi_bian_bg0",
+          "year": 189,
+          "month": null,
+          "topic": "背景·董卓入京，以帝「懦弱",
+          "figures": [],
+          "keywords": [],
+          "premise": "董卓入京，以帝「懦弱不才、威仪不类人君」，废为弘农王，立其弟协（献帝）",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "刘辩中年之厄",
+            "description": "中叶，刘辩御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -2291,7 +8534,21 @@
             "大赦天下",
             "立伏后"
           ],
-          "historicalOutcome": "曹操迎天子，汉政归曹"
+          "historicalOutcome": "曹操迎天子，汉政归曹",
+          "id": "han_xiandi_e0",
+          "relationDeltas": [
+            {},
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
         },
         {
           "year": 200,
@@ -2306,7 +8563,24 @@
             "立后求嗣",
             "托孤大臣"
           ],
-          "historicalOutcome": "衣带诏事泄，董承等死"
+          "historicalOutcome": "衣带诏事泄，董承等死",
+          "id": "han_xiandi_e1",
+          "relationDeltas": [
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {}
+          ]
         },
         {
           "year": 214,
@@ -2321,7 +8595,21 @@
             "立曹节为后",
             "托孤"
           ],
-          "historicalOutcome": "伏后死，曹操威震朝廷"
+          "historicalOutcome": "伏后死，曹操威震朝廷",
+          "id": "han_xiandi_e2",
+          "relationDeltas": [
+            {},
+            {
+              "士大夫": -3,
+              "商贾": 1
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {}
+          ]
         },
         {
           "year": 208,
@@ -2336,7 +8624,27 @@
             "大赦天下",
             "议和"
           ],
-          "historicalOutcome": "赤壁后三分鼎立，汉仅守中原"
+          "historicalOutcome": "赤壁后三分鼎立，汉仅守中原",
+          "id": "han_xiandi_e3",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {},
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
         },
         {
           "year": 220,
@@ -2351,7 +8659,107 @@
             "谥山阳公",
             "避位养拙"
           ],
-          "historicalOutcome": "献帝禅魏，汉祚四百年终"
+          "historicalOutcome": "献帝禅魏，汉祚四百年终",
+          "id": "han_xiandi_e4",
+          "relationDeltas": [
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            }
+          ]
+        }
+      ],
+      "initRelations": {
+        "宗室": 50,
+        "士大夫": 45,
+        "边将": 40,
+        "商贾": 10
+      },
+      "materialTarget": 11,
+      "historicalAnchors": [
+        {
+          "id": "han_xiandi_anc0",
+          "year": 196,
+          "month": null,
+          "topic": "曹操迎驾",
+          "figures": [],
+          "keywords": [],
+          "premise": "献帝东归，狼狈至洛阳，曹操迎帝都许，自为司空，行车骑将军，挟天子以令诸侯。",
+          "weight": 2
+        },
+        {
+          "id": "han_xiandi_anc1",
+          "year": 200,
+          "month": null,
+          "topic": "衣带诏",
+          "figures": [],
+          "keywords": [],
+          "premise": "车骑将军董承称受帝衣带密诏，与刘备等谋诛曹操，事泄，承等皆族诛，刘备走。",
+          "weight": 2
+        },
+        {
+          "id": "han_xiandi_anc2",
+          "year": 214,
+          "month": null,
+          "topic": "伏后之死",
+          "figures": [],
+          "keywords": [],
+          "premise": "伏皇后怨操，与父完书谋之，事觉，操逼帝废后，以暴室幽杀，所生二皇子亦弑。",
+          "weight": 2
+        },
+        {
+          "id": "han_xiandi_anc3",
+          "year": 208,
+          "month": null,
+          "topic": "赤壁之败",
+          "figures": [],
+          "keywords": [],
+          "premise": "曹操南征，与孙权、刘备战于赤壁，周瑜火攻，操大败北还，三分之势成。",
+          "weight": 2
+        },
+        {
+          "id": "han_xiandi_anc4",
+          "year": 220,
+          "month": null,
+          "topic": "禅于曹丕",
+          "figures": [],
+          "keywords": [],
+          "premise": "建安二十五年，曹操卒，子丕嗣。丕逼帝禅位，筑坛受玺，国号魏。献帝封山阳公，汉亡。",
+          "weight": 2
+        },
+        {
+          "id": "han_xiandi_bg0",
+          "year": 205,
+          "month": null,
+          "topic": "背景·建安二十五年，曹丕逼",
+          "figures": [],
+          "keywords": [],
+          "premise": "建安二十五年，曹丕逼禅，汉亡，献帝封山阳公，魏蜀吴三国分立",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "刘协中年之厄",
+            "description": "中叶，刘协御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -2388,7 +8796,21 @@
             "守新野待时",
             "大赦荆土"
           ],
-          "historicalOutcome": "诸葛亮出，隆中对定三分"
+          "historicalOutcome": "诸葛亮出，隆中对定三分",
+          "id": "shu_liubei_e0",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
         },
         {
           "year": 208,
@@ -2403,7 +8825,21 @@
             "大赦天下",
             "募兵入蜀"
           ],
-          "historicalOutcome": "赤壁联盟成，三分势定"
+          "historicalOutcome": "赤壁联盟成，三分势定",
+          "id": "shu_liubei_e1",
+          "relationDeltas": [
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
         },
         {
           "year": 214,
@@ -2418,7 +8854,24 @@
             "大赦蜀中",
             "任贤用能"
           ],
-          "historicalOutcome": "备得益州，基业乃成"
+          "historicalOutcome": "备得益州，基业乃成",
+          "id": "shu_liubei_e2",
+          "relationDeltas": [
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
         },
         {
           "year": 219,
@@ -2433,7 +8886,21 @@
             "大赦天下",
             "封五虎将"
           ],
-          "historicalOutcome": "刘备取汉中，声威大震"
+          "historicalOutcome": "刘备取汉中，声威大震",
+          "id": "shu_liubei_e3",
+          "relationDeltas": [
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
         },
         {
           "year": 221,
@@ -2448,7 +8915,60 @@
             "大赦天下",
             "立刘禅为嗣"
           ],
-          "historicalOutcome": "刘备称帝，蜀汉立，与魏吴鼎足"
+          "historicalOutcome": "刘备称帝，蜀汉立，与魏吴鼎足",
+          "id": "shu_liubei_e4",
+          "relationDeltas": [
+            {},
+            {},
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_shu_liubei_e4_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_shu_liubei_e4_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_shu_liubei_e4_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_shu_liubei_e4_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_shu_liubei_e4_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 222,
@@ -2463,7 +8983,66 @@
             "大赦天下",
             "托孤"
           ],
-          "historicalOutcome": "夷陵大败，蜀汉元气大伤"
+          "historicalOutcome": "夷陵大败，蜀汉元气大伤",
+          "id": "shu_liubei_e5",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ],
+          "tier": "major",
+          "gating": {},
+          "branches": [
+            {
+              "setFlags": [
+                "did_shu_liubei_e5_0"
+              ],
+              "clearFlags": [],
+              "nextEventId": "shu_liubei_e5_fb"
+            },
+            {
+              "setFlags": [
+                "did_shu_liubei_e5_1"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_shu_liubei_e5_2"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_shu_liubei_e5_3"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            },
+            {
+              "setFlags": [
+                "did_shu_liubei_e5_4"
+              ],
+              "clearFlags": [],
+              "nextEventId": null
+            }
+          ]
         },
         {
           "year": 223,
@@ -2478,7 +9057,170 @@
             "大赦天下",
             "定遗诏"
           ],
-          "historicalOutcome": "白帝托孤，亮受命辅后主"
+          "historicalOutcome": "白帝托孤，亮受命辅后主",
+          "id": "shu_liubei_e6",
+          "relationDeltas": [
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
+        },
+        {
+          "id": "shu_liubei_e5_fb",
+          "year": null,
+          "month": null,
+          "title": "夷陵之败·余波",
+          "description": "「夷陵之败」之余波未平，朝野观望，陛下需善其后，以定人心。",
+          "choices": [
+            "乘势固本，安内攘外以定人心",
+            "稍事休养，与民休息，徐图后效",
+            "整肃朝纲，明赏罚以肃百僚",
+            "广开言路，纳忠谏以通下情",
+            "严刑峻法，震慑不轨以靖四方"
+          ],
+          "historicalChoice": -1,
+          "historicalOutcome": "",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": -4,
+              "边将": 2
+            }
+          ],
+          "isFollowup": true
+        }
+      ],
+      "initRelations": {
+        "宗室": 50,
+        "士大夫": 40,
+        "边将": 30,
+        "商贾": 10
+      },
+      "materialTarget": 6,
+      "historicalAnchors": [
+        {
+          "id": "shu_liubei_anc0",
+          "year": 207,
+          "month": null,
+          "topic": "三顾茅庐",
+          "figures": [],
+          "keywords": [],
+          "premise": "备屯新野，访诸葛亮于隆中，三往乃见。亮陈《隆中对》：跨有荆益，外结孙权，内修政理，待天下有变。",
+          "weight": 2
+        },
+        {
+          "id": "shu_liubei_anc1",
+          "year": 208,
+          "month": null,
+          "topic": "赤壁联盟",
+          "figures": [],
+          "keywords": [],
+          "premise": "曹操南下，备与孙权结盟，诸葛亮说权，周瑜火攻赤壁，操败北。备遂取江南四郡。",
+          "weight": 2
+        },
+        {
+          "id": "shu_liubei_anc2",
+          "year": 214,
+          "month": null,
+          "topic": "入主益州",
+          "figures": [],
+          "keywords": [],
+          "premise": "备应刘璋之邀入蜀，寻与璋隙，围成都，璋出降。备领益州牧，以诸葛亮为股肱。",
+          "weight": 2
+        },
+        {
+          "id": "shu_liubei_anc3",
+          "year": 219,
+          "month": null,
+          "topic": "汉中称王",
+          "figures": [],
+          "keywords": [],
+          "premise": "备破夏侯渊于定军山，曹操亲征不能克，引还。备取汉中，称汉中王。关羽水淹七军，威震华夏。",
+          "weight": 2
+        },
+        {
+          "id": "shu_liubei_anc4",
+          "year": 221,
+          "month": null,
+          "topic": "成都称帝",
+          "figures": [],
+          "keywords": [],
+          "premise": "曹丕篡汉，备以汉统当续，即皇帝位于成都武担之南，国号汉，改元章武，以诸葛亮为丞相。",
+          "weight": 2
+        },
+        {
+          "id": "shu_liubei_anc5",
+          "year": 222,
+          "month": null,
+          "topic": "夷陵之败",
+          "figures": [],
+          "keywords": [],
+          "premise": "备以关羽仇，伐吴，陆逊坚守，火烧连营七百里，备败归白帝城，惭愤发病。",
+          "weight": 2
+        },
+        {
+          "id": "shu_liubei_anc6",
+          "year": 223,
+          "month": null,
+          "topic": "白帝托孤",
+          "figures": [],
+          "keywords": [],
+          "premise": "备病笃，召亮于永安，执手曰：君才十倍曹丕，必能安国，终定大事。嗣子可辅辅之，如其不才，君可自取。亮泣涕受命。",
+          "weight": 2
+        },
+        {
+          "id": "shu_liubei_bg0",
+          "year": 222,
+          "month": null,
+          "topic": "背景·黄巾起，聚众从军，屡",
+          "figures": [],
+          "keywords": [],
+          "premise": "黄巾起，聚众从军，屡挫屡起，先后依公孙瓒、陶谦、曹操、袁绍、刘表",
+          "weight": 1
+        },
+        {
+          "id": "shu_liubei_bg1",
+          "year": 223,
+          "month": null,
+          "topic": "背景·曹丕篡汉，备称帝于成",
+          "figures": [],
+          "keywords": [],
+          "premise": "曹丕篡汉，备称帝于成都，国号汉（史称蜀汉），以续汉统",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "刘备中年之厄",
+            "description": "中叶，刘备御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     },
@@ -2515,7 +9257,18 @@
             "大赦天下",
             "立皇后"
           ],
-          "historicalOutcome": "亮总国政，蜀汉粗安"
+          "historicalOutcome": "亮总国政，蜀汉粗安",
+          "id": "shu_liushan_e0",
+          "relationDeltas": [
+            {},
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
         },
         {
           "year": 225,
@@ -2530,7 +9283,21 @@
             "大赦蛮夷",
             "置庲降都督"
           ],
-          "historicalOutcome": "平南中，蜀汉无后顾之忧"
+          "historicalOutcome": "平南中，蜀汉无后顾之忧",
+          "id": "shu_liushan_e1",
+          "relationDeltas": [
+            {},
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
         },
         {
           "year": 228,
@@ -2545,7 +9312,27 @@
             "大赦天下",
             "用姜维"
           ],
-          "historicalOutcome": "诸葛亮北伐，星陨五丈原"
+          "historicalOutcome": "诸葛亮北伐，星陨五丈原",
+          "id": "shu_liushan_e2",
+          "relationDeltas": [
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
         },
         {
           "year": 234,
@@ -2560,7 +9347,21 @@
             "大赦天下",
             "修宫室"
           ],
-          "historicalOutcome": "亮卒，蜀汉渐衰"
+          "historicalOutcome": "亮卒，蜀汉渐衰",
+          "id": "shu_liushan_e3",
+          "relationDeltas": [
+            {},
+            {
+              "边将": 3,
+              "士大夫": -2
+            },
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            },
+            {}
+          ]
         },
         {
           "year": 263,
@@ -2575,7 +9376,117 @@
             "东投孙吴",
             "大赦天下"
           ],
-          "historicalOutcome": "后主降魏，蜀汉亡，封安乐公"
+          "historicalOutcome": "后主降魏，蜀汉亡，封安乐公",
+          "id": "shu_liushan_e4",
+          "relationDeltas": [
+            {},
+            {
+              "宗室": 2,
+              "士大夫": 2
+            },
+            {},
+            {},
+            {
+              "士大夫": 1,
+              "商贾": 2
+            }
+          ]
+        }
+      ],
+      "initRelations": {
+        "宗室": 50,
+        "士大夫": 40,
+        "边将": 30,
+        "商贾": 10
+      },
+      "materialTarget": 14,
+      "historicalAnchors": [
+        {
+          "id": "shu_liushan_anc0",
+          "year": 223,
+          "month": null,
+          "topic": "诸葛亮辅政",
+          "figures": [],
+          "keywords": [],
+          "premise": "后主幼弱，政事咸决于亮。亮开府治事，约官职，修法度，抚百姓，与吴连和。",
+          "weight": 2
+        },
+        {
+          "id": "shu_liushan_anc1",
+          "year": 225,
+          "month": null,
+          "topic": "七擒孟获",
+          "figures": [],
+          "keywords": [],
+          "premise": "南中雍闿、孟获反，亮率众南征，七纵七擒，获心服，曰「公，天威也，南人不复反」。",
+          "weight": 2
+        },
+        {
+          "id": "shu_liushan_anc2",
+          "year": 228,
+          "month": null,
+          "topic": "六出祁山",
+          "figures": [],
+          "keywords": [],
+          "premise": "亮上《出师表》，北伐曹魏，一出祁山，马谡失街亭。后继以木牛流马，五出六出，星落五丈原。",
+          "weight": 2
+        },
+        {
+          "id": "shu_liushan_anc3",
+          "year": 234,
+          "month": null,
+          "topic": "亮卒维继",
+          "figures": [],
+          "keywords": [],
+          "premise": "亮卒于五丈原，蒋琬、费祎相继秉政，皆守成。后姜维继领兵，连年北伐，蜀益疲。",
+          "weight": 2
+        },
+        {
+          "id": "shu_liushan_anc4",
+          "year": 263,
+          "month": null,
+          "topic": "成都出降",
+          "figures": [],
+          "keywords": [],
+          "premise": "魏钟会、邓艾伐蜀，艾偷渡阴平，陷江油、涪城，逼成都。后主从谯周议，面缚出降，敕姜维降钟会。蜀汉亡。",
+          "weight": 2
+        },
+        {
+          "id": "shu_liushan_bg0",
+          "year": 236,
+          "month": null,
+          "topic": "背景·景耀六年，邓艾偷渡阴",
+          "figures": [],
+          "keywords": [],
+          "premise": "景耀六年，邓艾偷渡阴平，成都震动，禅出降，蜀汉亡",
+          "weight": 1
+        },
+        {
+          "id": "shu_liushan_bg1",
+          "year": 250,
+          "month": null,
+          "topic": "背景·迁洛阳，封安乐公，司",
+          "figures": [],
+          "keywords": [],
+          "premise": "迁洛阳，封安乐公，司马昭试之曰「颇思蜀否」，对曰「此间乐，不思蜀」",
+          "weight": 1
+        }
+      ],
+      "midCrisisAnchors": [
+        {
+          "atProgress": 0.5,
+          "event": {
+            "title": "刘禅中年之厄",
+            "description": "中叶，刘禅御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "choices": [
+              "厉精图治，躬亲庶务以挽颓势",
+              "赦宥罪戾，蠲免租赋以安民心",
+              "整军经武，以备不虞之患",
+              "崇儒重道，收士大夫之望",
+              "稍事因循，徐观其变"
+            ],
+            "historicalChoice": -1
+          }
         }
       ]
     }

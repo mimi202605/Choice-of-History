@@ -1,0 +1,8 @@
+# 凭据配置（7.2 去共享化）：含内置密文，禁止入库；请用 coh_config.sample.js 模板自行生成
+coh_config.js
+coh_config.local.js
+
+# 依赖与构建产物
+node_modules/
+*.log
+.DS_Store
