@@ -5,6 +5,9 @@ on:
     branches: [main]
     paths:
       - 'index.html'
+      - 'data/**'
+      - '.nojekyll'
+      - '.github/workflows/pages.yml'
   workflow_dispatch:
 
 permissions:
