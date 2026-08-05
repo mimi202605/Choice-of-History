@@ -1,11 +1,25 @@
 name: Deploy to GitHub Pages
 
+# 部署说明（7.2 去共享化 · GitHub Actions 方案）：
+#   默认模式下游戏需要一个「内置 API 凭据」才能调用 AI。本工作流在构建期从仓库 Secrets
+#   现场生成 coh_config.js，使密钥【只存在于 GitHub Secrets，不进公开仓库源码】。
+#   若尚未配置 Secrets，则回退为直接部署仓库内已有的 coh_config.js（保证线上绑定不断档）。
+#
+# 一次性配置（仓库 Settings → Secrets and variables → Actions → New repository secret）：
+#   COH_BUILTIN_CRED  ：coh_config.js 里的 builtinCred 密文（必填，否则不生成）
+#   COH_API_BASE      ：（可选）默认 https://api.agnes-ai.cn/v1
+#   COH_MODEL         ：（可选）默认 agnes-2.5-flash
+#   COH_PROVISION_URL ：（可选）每用户额度下发地址
+#   COH_SELF_HOSTED   ：（可选）设为 1 启用自托管
+# 配置完成后，在 Actions 页手动 Run workflow 一次即可生效；之后任何 push 都会重新生成。
+
 on:
   push:
     branches: [main]
     paths:
       - 'index.html'
       - 'data/**'
+      - 'tools/**'
       - '.nojekyll'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
@@ -28,6 +42,22 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate coh_config.js from Secrets
+        # 仅当配置了 Secrets 才覆盖生成；否则沿用仓库内已有的 coh_config.js。
+        if: ${{ secrets.COH_BUILTIN_CRED != '' }}
+        env:
+          COH_BUILTIN_CRED: ${{ secrets.COH_BUILTIN_CRED }}
+          COH_API_BASE: ${{ secrets.COH_API_BASE }}
+          COH_MODEL: ${{ secrets.COH_MODEL }}
+          COH_PROVISION_URL: ${{ secrets.COH_PROVISION_URL }}
+          COH_SELF_HOSTED: ${{ secrets.COH_SELF_HOSTED }}
+        run: node tools/gen_config.js
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
