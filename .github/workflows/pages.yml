@@ -18,6 +18,8 @@ on:
     branches: [main]
     paths:
       - 'index.html'
+      - 'coh_config.js'
+      - 'coh_config.sample.js'
       - 'data/**'
       - 'tools/**'
       - '.nojekyll'
@@ -50,14 +52,19 @@ jobs:
 
       - name: Generate coh_config.js from Secrets
         # 仅当配置了 Secrets 才覆盖生成；否则沿用仓库内已有的 coh_config.js。
-        if: ${{ secrets.COH_BUILTIN_CRED != '' }}
+        # 注意：secrets 上下文不可用于 if 条件，改为在 shell 中判断。
         env:
           COH_BUILTIN_CRED: ${{ secrets.COH_BUILTIN_CRED }}
           COH_API_BASE: ${{ secrets.COH_API_BASE }}
           COH_MODEL: ${{ secrets.COH_MODEL }}
           COH_PROVISION_URL: ${{ secrets.COH_PROVISION_URL }}
           COH_SELF_HOSTED: ${{ secrets.COH_SELF_HOSTED }}
-        run: node tools/gen_config.js
+        run: |
+          if [ -n "$COH_BUILTIN_CRED" ]; then
+            node tools/gen_config.js
+          else
+            echo "COH_BUILTIN_CRED 未设置，跳过生成（保留仓库内 coh_config.js）"
+          fi
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
