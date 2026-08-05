@@ -1958,10 +1958,12 @@ function loadSettings(){
 function loadSettingsToForm(){
   const m=cohMask();
   if(settings.builtin){
-    // 内置模式：以掩码显示，明文不暴露
-    document.getElementById("set-api").value=m;
+    // 内置模式：api/model 显示真实默认端点（非敏感），key 仍以掩码保护解密后的真实密钥
+    const CFG = (typeof window!=="undefined" && window.COH_CONFIG) || null;
+    const defApi = (CFG && CFG.apiBase) || "https://api.agnes-ai.cn/v1";
+    document.getElementById("set-api").value=defApi;
     document.getElementById("set-key").value=m;
-    document.getElementById("set-model").value=m;
+    document.getElementById("set-model").value=BUILTIN_DEFAULT_MODEL;
     formBuiltinUnchanged=true;
   }else{
     document.getElementById("set-api").value=settings.api;
@@ -1982,7 +1984,12 @@ function saveSettings(){
   const temp=parseFloat(document.getElementById("set-temp").value)||0.8;
   const fastMode=document.getElementById("set-fast").checked;
   const offlineMode=document.getElementById("set-offline").checked;
-  if(settings.builtin && formBuiltinUnchanged && api===m && key===m && model===m){
+  // 内置模式下 api/model 以真实默认值显示，需分别判断是否被玩家自定义，避免误判为自托管
+  const defApi=(typeof window!=="undefined" && window.COH_CONFIG && window.COH_CONFIG.apiBase) || "https://api.agnes-ai.cn/v1";
+  const apiUnchanged=(api===m || api===defApi || api==="");
+  const modelUnchanged=(model===m || model===BUILTIN_DEFAULT_MODEL || model==="");
+  const keyUnchanged=(key===m);
+  if(settings.builtin && formBuiltinUnchanged && apiUnchanged && modelUnchanged && keyUnchanged){
     // 用户未改动凭据框（仍是掩码）→ 继续沿用内置配置凭据
     settings={builtin:true,api:"",key:"",model:BUILTIN_DEFAULT_MODEL,temp,fastMode,offlineMode};
     localStorage.setItem("coh_settings",JSON.stringify({builtin:true,temp,fastMode,offlineMode}));
