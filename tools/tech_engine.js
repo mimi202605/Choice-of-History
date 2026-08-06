@@ -89,9 +89,9 @@
         for (const a in node.bonusPerLevel) {
           attrBonus[a] += node.bonusPerLevel[a] * lvl * factor;
         }
-        // 特殊增益 → 对应属性
+        // 特殊增益 → 对应属性（specialBonus 随时代缩放，缺省为 1）
         const sattr = node.specialAttr || this.specialToAttr[node.special];
-        if (sattr) attrBonus[sattr] += lvl * factor;
+        if (sattr) attrBonus[sattr] += (node.specialBonus || 1) * lvl * factor;
         specials[node.special] = (specials[node.special] || 0) + lvl;
 
         // 分支聚合
@@ -139,7 +139,7 @@
         branchAttr[b] = branchAttr[b] || { treasury: 0, people: 0, military: 0, court: 0, health: 0, tech: 0 };
         for (const a in node.bonusPerLevel) branchAttr[b][a] += node.bonusPerLevel[a] * lvl * factor;
         const sattr = node.specialAttr || this.specialToAttr[node.special];
-        if (sattr) branchAttr[b][sattr] += lvl * factor;
+        if (sattr) branchAttr[b][sattr] += (node.specialBonus || 1) * lvl * factor;
       }
       for (const b in perBranch) {
         perBranch[b].attrBonus = {};
@@ -170,7 +170,7 @@
       const b = {};
       for (const a in node.bonusPerLevel) b[a] = node.bonusPerLevel[a] * lvl * factor;
       const sattr = node.specialAttr || this.specialToAttr[node.special];
-      if (sattr) b[sattr] = (b[sattr] || 0) + lvl * factor;
+      if (sattr) b[sattr] = (b[sattr] || 0) + (node.specialBonus || 1) * lvl * factor;
       const out = {};
       for (const a in b) out[a] = Math.round(b[a]);
       return out;

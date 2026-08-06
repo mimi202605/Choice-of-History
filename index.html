@@ -120,7 +120,7 @@
       0 1px 0 rgba(90,74,58,.1) inset,
       var(--shadow-soft);
     backdrop-filter:blur(4px);
-    position:relative;
+    position:sticky;top:0;z-index:50;
     overflow:hidden;
   }
   .topbar::after{
@@ -669,6 +669,89 @@
   .tech-node.ahead{
     background:rgba(176,74,46,.14);border-color:rgba(176,74,46,.5);color:var(--red);font-weight:700;
   }
+  /* ===== 科技树交互（加点） ===== */
+  .tech-points{
+    margin:12px 0 0;padding:8px 14px;border:1px solid var(--gold);border-radius:var(--radius-sm);
+    background:rgba(196,160,86,.12);font-size:14px;color:var(--ink);
+  }
+  .tech-points .tech-pts-num{font-size:21px;font-weight:800;color:var(--red);font-family:'Ma Shan Zheng',cursive;margin-right:2px;}
+  .tech-tabs{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0;}
+  .tech-tab{
+    font-family:'Noto Serif SC',serif;font-size:13px;padding:6px 14px;border-radius:999px;cursor:pointer;
+    background:rgba(255,250,235,.5);color:var(--ink);border:1px solid var(--ink);transition:all var(--transition-fast);
+  }
+  .tech-tab:hover{background:rgba(196,160,86,.18);}
+  .tech-tab.active{background:var(--ink);color:#f7f0e2;border-color:var(--ink);}
+  .tech-branch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px;margin-bottom:8px;}
+  .tech-card{
+    border:1px solid rgba(120,98,74,.3);border-radius:var(--radius-sm);background:rgba(255,252,242,.5);
+    padding:10px;display:flex;flex-direction:column;gap:6px;transition:all var(--transition-fast);
+  }
+  .tech-card.owned{border-color:rgba(74,106,154,.5);background:rgba(74,106,154,.08);}
+  .tech-card.locked{opacity:.55;}
+  .tech-card.ahead{border-color:rgba(176,74,46,.5);background:rgba(176,74,46,.07);}
+  .tech-card-h{display:flex;align-items:center;gap:6px;}
+  .tech-age,.tech-aheadtag{font-size:10px;padding:1px 6px;border-radius:4px;white-space:nowrap;}
+  .tech-age{background:rgba(120,98,74,.15);color:var(--dim);}
+  .tech-aheadtag{background:rgba(176,74,46,.18);color:var(--red);font-weight:700;}
+  .tech-name{font-family:'Noto Serif SC',serif;font-weight:700;font-size:15px;color:var(--ink);}
+  .tech-meta{font-size:11px;line-height:1.5;color:var(--dim);}
+  .tech-dots{display:flex;gap:4px;}
+  .tech-dot{width:9px;height:9px;border-radius:50%;border:1px solid rgba(120,98,74,.4);background:transparent;}
+  .tech-dot.on{background:var(--gold);border-color:var(--gold);}
+  .tech-cost{font-size:12px;color:var(--ink);}
+  .tech-cost.no{color:var(--dim);}
+  .tech-buy{
+    font-family:'Noto Serif SC',serif;font-weight:700;font-size:13px;margin-top:2px;padding:5px 10px;border-radius:var(--radius-sm);
+    cursor:pointer;color:#f7f0e2;background:var(--red);border:1px solid var(--red);transition:all var(--transition-fast);
+  }
+  .tech-buy:hover{filter:brightness(1.08);}
+  /* ===== 科技树图（依赖连线 + 三态 + 递进/网络感） ===== */
+  .tech-scroll{ max-height:calc(100vh - 214px); overflow:auto; padding:8px 4px 16px; }
+  .tech-legend{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin:6px 0 2px;font-size:12px;color:var(--dim);}
+  .tech-legend .lg{display:inline-flex;align-items:center;gap:5px;}
+  .tech-legend .lg::before{content:"";width:11px;height:11px;border-radius:3px;display:inline-block;border:1.5px solid;}
+  .tech-legend .lg.owned::before{background:rgba(184,137,58,.22);border-color:var(--gold);}
+  .tech-legend .lg.unlockable::before{background:rgba(63,125,110,.18);border-color:#3f7d6e;}
+  .tech-legend .lg.locked::before{background:transparent;border-color:#b9ad97;border-style:dashed;}
+  .tech-legend .note{color:var(--dim);font-style:italic;}
+  .tech-graph-inner{position:relative;margin:0 auto;}
+  svg.tech-edges{position:absolute;top:0;left:0;z-index:1;pointer-events:none;overflow:visible;}
+  .tech-edge{fill:none;stroke-width:2;}
+  .tech-edge.done{stroke:#b8893a;}
+  .tech-edge.open{stroke:#3f7d6e;}
+  .tech-edge.locked{stroke:#c3b7a1;stroke-dasharray:4 4;}
+  #techArrow-done path{fill:#b8893a;}
+  #techArrow-open path{fill:#3f7d6e;}
+  #techArrow-locked path{fill:#c3b7a1;}
+  .tech-node-card{
+    position:absolute;z-index:2;box-sizing:border-box;
+    border:1.5px solid rgba(120,98,74,.35);border-radius:var(--radius-sm);
+    background:rgba(255,250,235,.96);padding:7px 9px;display:flex;flex-direction:column;gap:4px;
+    transition:all var(--transition-fast);overflow:visible;
+  }
+  .tech-node-card.owned{border-color:var(--gold);background:rgba(184,137,58,.16);box-shadow:0 0 0 2px rgba(184,137,58,.12),0 2px 8px rgba(120,90,40,.12);}
+  .tech-node-card.unlockable{border-color:#3f7d6e;background:rgba(63,125,110,.10);}
+  .tech-node-card.locked{opacity:.5;border-style:dashed;border-color:#b9ad97;background:transparent;}
+  .tech-node-card.ahead{border-color:rgba(176,74,46,.5);}
+  .tech-node-card.ahead.owned{background:rgba(176,74,46,.12);border-color:var(--red);}
+  .tn-head{display:flex;align-items:center;gap:5px;}
+  .tn-age,.tn-age.ahead{font-size:9px;padding:1px 5px;border-radius:3px;white-space:nowrap;}
+  .tn-age{background:rgba(120,98,74,.14);color:var(--dim);}
+  .tn-age.ahead{background:rgba(176,74,46,.18);color:var(--red);font-weight:700;}
+  .tn-name{font-family:'Noto Serif SC',serif;font-weight:700;font-size:13px;line-height:1.15;color:var(--ink);}
+  .tn-meta{font-size:10px;line-height:1.35;color:var(--dim);}
+  .tn-dots{display:flex;gap:3px;}
+  .tn-dot{width:7px;height:7px;border-radius:50%;border:1px solid rgba(120,98,74,.4);background:transparent;}
+  .tn-dot.on{background:var(--gold);border-color:var(--gold);}
+  .tech-node-card.unlockable .tn-dot.on{background:#3f7d6e;border-color:#3f7d6e;}
+  .tn-cost{font-size:10.5px;color:var(--ink);}
+  .tn-cost.no{color:var(--dim);}
+  .tn-buy{
+    font-family:'Noto Serif SC',serif;font-weight:700;font-size:12px;margin-top:1px;padding:3px 8px;border-radius:var(--radius-sm);
+    cursor:pointer;color:#f7f0e2;background:#3f7d6e;border:1px solid #3f7d6e;transition:all var(--transition-fast);align-self:flex-start;
+  }
+  .tn-buy:hover{filter:brightness(1.08);}
 </style>
 </head>
 <body>
@@ -757,13 +840,16 @@
     </div>
   </section>
 
-  <!-- 科技树查看器（接入 tech_engine，只读） -->
+  <!-- 科技树（可交互：消耗「科技」国力加点） -->
   <section id="screen-tech" class="screen">
     <div class="topbar">
       <span class="era">科技树 · <span id="tech-era-name"></span></span>
       <button class="btn" onclick="closeTechTree()">返回朝堂</button>
     </div>
+    <div class="tech-points" id="tech-points"></div>
     <div class="tech-summary" id="tech-summary"></div>
+    <div class="tech-tabs" id="tech-tabs"></div>
+    <div class="tech-legend" id="tech-legend"></div>
     <div class="tech-scroll" id="tech-tree"></div>
   </section>
 
@@ -1965,7 +2051,9 @@ function newState(emperor){
     pregenQueue:[],               // 批量预生成的事件队列（降低 API 延迟）
     pregenPending:false,          // 批量预生成是否正在飞行中
     // ---- 科技树（接入 tech_engine，详见 docs/科技树系统设计.md）----
-    ownedTechs:{},                // 玩家已加点科技树：节点id -> 等级
+    ownedTechs:{},                // 玩家已加点科技树：节点id -> 等级（含朝代预设）
+    playerTechs:{},               // 玩家自行加点/升级的节点 id -> 等级（用于增量注入加成与读档还原）
+    techBonus:{treasury:0,people:0,military:0,court:0,health:0,tech:0}, // 已注入科技的固定加成增量（增量重算用）
     techProfile:null,             // 最近一次 compute 出的 techProfile（含 aiSummary / 超前科技）
     techBaseStats:null            // 注入科技树加成前的属性快照，供将来科研重算使用
   };
@@ -1976,23 +2064,47 @@ const TECH_ENGINE = (typeof window!=="undefined" && window.TECH_TREE && window.T
   ? new window.TechEngine(window.TECH_TREE, window.TECH_PRESETS)
   : null;
 
-// 将科技树档案应用到游戏状态：
-//  - 仅把「超前科技（穿越者）」的衰减加成注入六维——既有 initStats 已含时代基线，避免晚朝皇帝被预设加成瞬间满属性、破坏平衡；
-//  - 时代内科技视为已计入 initStats，不再重复叠加；
-//  - 计算并缓存 techProfile，供 AI 叙事与「科技阻力」阈值使用。
-function applyTechProfile(){
+// 科技树：新游戏初始化（仅在新游戏时调用，按朝代预设填充 ownedTechs）
+function initTechAtStart(){
   if(!TECH_ENGINE || !state) return;
-  const owned = TECH_ENGINE.presetFor(state.emperor.dynasty) || {};
-  state.ownedTechs = Object.assign({}, owned);
-  const profile = TECH_ENGINE.compute(state.emperor, state.ownedTechs);
-  state.techProfile = profile;
-  // 注入前的基线快照（须在 ahead 加成注入前记录，供将来科研重算使用）
-  state.techBaseStats = Object.assign({}, state.stats);
-  // 仅叠加超前科技（gap>0）的真实增益；attrBonus 已四舍五入，clamp 0–100
-  const ahead = profile.ahead.attrBonus || {};
-  ["treasury","people","military","court","health","tech"].forEach(k=>{
-    if(ahead[k]) state.stats[k] = clamp(state.stats[k] + ahead[k], 0, 100);
-  });
+  state.ownedTechs = Object.assign({}, TECH_ENGINE.presetFor(state.emperor.dynasty) || {});
+  state.playerTechs = {};
+  state.techBonus = {treasury:0,people:0,military:0,court:0,health:0,tech:0};
+  recomputeTechProfile();
+}
+// 科技树：增量重算并注入加成（研究后 / 读档后调用，绝不覆盖 ownedTechs）
+//  - 越代（超前）科技：注入衰减后的真实增益（穿越者之能）
+//  - 玩家追加的当世科技：注入全额增益（朝代预设的当世科技已计入 initStats 基线，不重复叠加）
+//  - 采用「增量 diff」方式，避免覆盖事件带来的数值变化
+function recomputeTechProfile(apply){
+  if(!TECH_ENGINE || !state) return;
+  if(apply===undefined) apply=true;
+  const prof = TECH_ENGINE.compute(state.emperor, state.ownedTechs);
+  state.techProfile = prof;
+  const eraLevel = prof.eraLevel;
+  const target = {treasury:0,people:0,military:0,court:0,health:0,tech:0};
+  // 1) 所有已拥越代节点的衰减增益
+  const aheadAttr = (prof.ahead && prof.ahead.attrBonus) || {};
+  for(const k in target) if(aheadAttr[k]) target[k] += aheadAttr[k];
+  // 2) 玩家追加的当世(in-era)节点：factor=1
+  const pt = state.playerTechs || {};
+  for(const id in pt){
+    const lvl = pt[id]; if(!lvl) continue;
+    const node = TECH_ENGINE.nodeById[id]; if(!node) continue;
+    if((node.age||0) > eraLevel) continue; // 越代已由 ahead 覆盖，避免重复
+    for(const a in (node.bonusPerLevel||{})) target[a] += node.bonusPerLevel[a]*lvl;
+    if(node.specialAttr) target[node.specialAttr] += (node.specialBonus||1)*lvl;
+  }
+  // 增量应用（仅新增部分，避免覆盖事件数值）
+  if(apply){
+    const prev = state.techBonus || target;
+    for(const k in target){
+      const d = (target[k]||0) - (prev[k]||0);
+      // 增量写入同样钳制为 [0,100]：科技项据此注入时若为 0/负，仅归零无效，绝不触发死亡或惩罚
+      if(d) state.stats[k] = clamp(state.stats[k] + d, 0, 100);
+    }
+  }
+  state.techBonus = target;
 }
 
 /* ============ 工具函数 ============ */
@@ -2005,6 +2117,7 @@ function recentSummary(st){
   return h.map((x,i)=>`${i+1}. ${cnMonth(x.month)}：${x.eventTitle} → 选「${x.choiceText}」 → ${x.outcomeSummary}`).join("\n");
 }
 function detectCrisis(stats){
+  // 危机判定仅覆盖五维（不含科技）：科技归零/负值是有意排除的，切勿将 tech 加入危机判定（否则会违背"科技降至0仅无效"的要求）
   const items=[["国库",stats.treasury],["民心",stats.people],["军事",stats.military],["朝政",stats.court]];
   const crisis=items.filter(([_,v])=>v<=10);
   if(stats.health<=10) return "皇帝健康危急";
@@ -2042,7 +2155,7 @@ function goto(id){
   }
 }
 
-/* ============ 科技树查看器（接入 tech_engine，只读） ============ */
+/* ============ 科技树（接入 tech_engine，可交互加点） ============ */
 function openTechTree(){
   if(!state){ return; }
   renderTechTree();
@@ -2051,14 +2164,42 @@ function openTechTree(){
 function closeTechTree(){
   goto("game");
 }
-// 渲染科技树：按「分支 → 时代」矩阵展示已拥科技，标记超前（越代）科技与落地效率
+// 研究/升级某科技节点：消耗「科技」值（state.stats.tech），校验前置/花费/满级，增量注入加成并刷新
+function researchTech(id){
+  if(!TECH_ENGINE || !state) return;
+  const node = TECH_ENGINE.nodeById[id];
+  if(!node){ toast("未知科技："+id); return; }
+  const lvl = (state.ownedTechs[id]||0);
+  if(lvl >= node.maxLevel){ toast("「"+node.name+"」已满级"); return; }
+  // 前置校验
+  const prereq = node.prereq||[];
+  if(prereq.length && !prereq.every(p=>(state.ownedTechs[p]||0)>=1)){
+    toast("需先解锁前置科技"); return;
+  }
+  const cost = TECH_ENGINE.costToUpgrade(node, lvl);
+  if(cost==null){ toast("「"+node.name+"」已满级"); return; }
+  if((state.stats.tech||0) < cost){ toast("科技点不足（需 "+cost+"，现有 "+(state.stats.tech|0)+"）"); return; }
+  // 执行加点：消耗科技值（clamp 保证科技恒∈[0,100]；科技点耗空仅归零，绝不为负，亦不触发任何死亡/惩罚）
+  state.stats.tech = clamp((state.stats.tech||0) - cost, 0, 100);
+  state.ownedTechs[id] = lvl + 1;
+  state.playerTechs[id] = (state.playerTechs[id]||0) + 1;
+  recomputeTechProfile();
+  renderTechTree();
+  renderStats();            // 刷新 HUD 的「科技」值
+  toast("已研究：「"+node.name+"」 至 "+(lvl+1)+" 级");
+}
+// 渲染科技树：分支标签页 + 全节点网格，节点可点击「+ 升级」加点
 function renderTechTree(){
   const eraNameEl=document.getElementById("tech-era-name");
   const summaryEl=document.getElementById("tech-summary");
+  const ptsEl=document.getElementById("tech-points");
+  const tabsEl=document.getElementById("tech-tabs");
   const treeEl=document.getElementById("tech-tree");
   if(!TECH_ENGINE || !state || !state.techProfile){
     if(eraNameEl) eraNameEl.textContent="（科技树数据未加载）";
     if(summaryEl) summaryEl.textContent="未能加载科技树引擎或数据，请确认 data/tech_data.js 与 tools/tech_engine.js 已随页面加载。";
+    if(ptsEl) ptsEl.textContent="";
+    if(tabsEl) tabsEl.innerHTML="";
     if(treeEl) treeEl.innerHTML="";
     return;
   }
@@ -2067,49 +2208,83 @@ function renderTechTree(){
   const meta=tree.meta||{};
   const branches=(meta.branches||[]).map(b=>b.id);
   const branchNames={}; (meta.branches||[]).forEach(b=>branchNames[b.id]=b.name);
-  const ages=(meta.ages||[]).map(a=>a.id);
-  const ageNames={}; (meta.ages||[]).forEach(a=>ageNames[a.id]=a.name);
-  // 收集已拥节点（来自预设），按 分支×时代 归类；ENGINE 未直接给节点级列表，这里由 ownedTechs + nodeById 重建
-  const nodeById=TECH_ENGINE.nodeById||{};
-  const byBranchAge={};
-  let ownedCount=0, aheadCount=0;
-  for(const id in state.ownedTechs){
-    const lvl=state.ownedTechs[id]; if(!lvl||lvl<=0) continue;
-    const node=nodeById[id]; if(!node) continue;
-    ownedCount++;
-    const gap=(node.age||0)-prof.eraLevel;
-    if(gap>0) aheadCount++;
-    const key=node.branch+"|"+node.age;
-    (byBranchAge[key]=byBranchAge[key]||[]).push({node,lvl,gap});
-  }
-  if(eraNameEl) eraNameEl.textContent=`${state.emperor.dynasty} · ${prof.eraName}（时代等级 ${prof.eraLevel}）`;
-  // 摘要：总览 + 六维增益 + 超前科技
+  const eraLevel=prof.eraLevel;
+  const avail=(state.stats.tech|0);
+  if(eraNameEl) eraNameEl.textContent=`${state.emperor.dynasty} · ${prof.eraName}（时代等级 ${eraLevel}）`;
+  // 摘要 + 可分配科技点
   const attr=prof.attrBonus||{};
   const attrCn={treasury:"国库",people:"民心",military:"军事",court:"朝政",health:"健康",tech:"科技"};
   const attrStr=Object.keys(attrCn).filter(k=>attr[k]).map(k=>`${attrCn[k]}${attr[k]>0?"+":""}${attr[k]}`).join("、")||"无";
-  let sum=`<b>已拥科技 ${ownedCount} 项</b>　累计 ${prof.totalLevels} 级　|　六维增益：${attrStr}`;
+  let sum=`<b>可分配科技点：${avail}</b>　已拥 ${prof.totalTechsOwned||0} 项　累计 ${prof.totalLevels||0} 级　|　六维增益：${attrStr}`;
   sum+=`<br><b>超前（越代）科技 ${prof.ahead.count} 项</b>`+(prof.ahead.count?`（最高领先 ${prof.ahead.maxGap} 代）`:"")+`　—— 穿越者之能，朝臣或以「奇技淫巧」非之。`;
   if(summaryEl) summaryEl.innerHTML=sum;
-  // 矩阵渲染
-  let html="";
-  branches.forEach(bid=>{
-    html+=`<div class="tech-branch"><div class="tech-branch-name">${branchNames[bid]||bid}</div><div class="tech-ages">`;
-    ages.forEach(aid=>{
-      const cell=byBranchAge[bid+"|"+aid];
-      const isAheadEra = aid>prof.eraLevel;
-      const ownedHere = cell && cell.length;
-      const cls="tech-cell"+(ownedHere?" owned":" empty")+(isAheadEra?" ahead-era":"");
-      let inner="";
-      if(ownedHere){
-        inner=cell.map(c=>`<span class="tech-node${c.gap>0?" ahead":""}" title="${escapeHtml(c.node.desc||"")}">${escapeHtml(c.node.name)}·${c.lvl}${c.gap>0?"↑"+c.gap:""}</span>`).join("");
-      }else{
-        inner=`<span class="tech-era-label">${ageNames[aid]||("时代"+aid)}</span>`;
-      }
-      html+=`<div class="${cls}"><div class="tech-age-h">${ageNames[aid]||("时代"+aid)}</div>${inner}</div>`;
+  if(ptsEl) ptsEl.innerHTML=`<span class="tech-pts-num">${avail}</span> 点可分配（来自「科技」国力，研究即消耗）`;
+  // 当前分支（记忆上次选择）
+  if(!renderTechTree._branch || branches.indexOf(renderTechTree._branch)<0) renderTechTree._branch=branches[0];
+  const cur=renderTechTree._branch;
+  if(tabsEl){
+    tabsEl.innerHTML=branches.map(b=>`<button class="tech-tab${b===cur?' active':''}" onclick="renderTechTree._branch='${b}';renderTechTree()">${branchNames[b]||b}</button>`).join("");
+  }
+  // 科技树图：当前分支内，列=时代(递进/从左向右)，行=轨道，连线=依赖关系
+  if(treeEl){
+    const owned=state.ownedTechs||{};
+    const nodes=(tree.nodes||[]).filter(n=>n.branch===cur);
+    // 布局：列=时代(age)，行=轨道(track)
+    const ages=[...new Set(nodes.map(n=>n.age))].sort((a,b)=>a-b);
+    const tracks=[...new Set(nodes.map(n=>n.track))].sort((a,b)=>String(a).localeCompare(String(b)));
+    const colW=188,rowH=150,padX=18,padY=18,nodeW=150,nodeH=128;
+    const ageIdx={}; ages.forEach((a,i)=>ageIdx[a]=i);
+    const trackIdx={}; tracks.forEach((t,i)=>trackIdx[t]=i);
+    const pos={};
+    nodes.forEach(n=>{ const lx=padX+ageIdx[n.age]*colW, ty=padY+trackIdx[n.track]*rowH;
+      pos[n.id]={left:lx,top:ty,cx:lx+nodeW/2,cy:ty+nodeH/2}; });
+    const W=padX*2+(ages.length-1)*colW+nodeW;
+    const H=padY*2+(tracks.length-1)*rowH+nodeH;
+    // 状态：已解锁(owned) / 可解锁(unlockable, 前置已满足) / 未解锁(locked, 前置未满足)
+    const stateOf=n=>{ const lvl=owned[n.id]||0; if(lvl>0) return "owned";
+      const preOk=!n.prereq.length||n.prereq.every(p=>(owned[p]||0)>=1);
+      return preOk?"unlockable":"locked"; };
+    // 依赖连线（前置 → 本节点，箭头指向下一科技）
+    let edges="";
+    nodes.forEach(n=>{ (n.prereq||[]).forEach(p=>{ const pp=pos[p]; if(!pp) return;
+      const sxp=pp.left+nodeW, syp=pp.cy, exp=pos[n.id].left, eyp=pos[n.id].cy;
+      const mx=(sxp+exp)/2;
+      const d=`M ${sxp} ${syp} C ${mx} ${syp}, ${mx} ${eyp}, ${exp} ${eyp}`;
+      const st=stateOf(n); const cls= st==="owned"?"done":(st==="locked"?"locked":"open");
+      edges+=`<path class="tech-edge ${cls}" d="${d}" marker-end="url(#techArrow-${cls})"/>`; }); });
+    // 节点卡片
+    let cards="";
+    nodes.forEach(n=>{ const p=pos[n.id]; const st=stateOf(n); const lvl=owned[n.id]||0;
+      const gap=(n.age||0)-eraLevel; const isAhead=gap>0;
+      const maxed=lvl>=n.maxLevel; const preOk=!n.prereq.length||n.prereq.every(pp=>(owned[pp]||0)>=1);
+      const cost=TECH_ENGINE.costToUpgrade(n,lvl);
+      const canBuy=preOk&&!maxed&&avail>=cost;
+      const dots=Array.from({length:n.maxLevel},(_,i)=>`<span class="tn-dot${i<lvl?' on':''}"></span>`).join("");
+      const bonusTxt=Object.keys(n.bonusPerLevel||{}).map(a=>attrCn[a]+"+"+n.bonusPerLevel[a]).join("、");
+      const sa=n.specialAttr?attrCn[n.specialAttr]+"+"+(n.specialBonus||1):"";
+      const allBonus=[bonusTxt,sa].filter(Boolean).join("、");
+      const ageTag=isAhead?("越代+"+gap):("时代"+n.age);
+      const costLabel=maxed?"已满级":(preOk?("需 "+cost+" 点"):"需先解锁前置");
+      cards+=`<div class="tech-node-card ${st}${isAhead?' ahead':''}" style="left:${p.left}px;top:${p.top}px;width:${nodeW}px;height:${nodeH}px;">
+        <div class="tn-head"><span class="tn-age${isAhead?' ahead':''}">${ageTag}</span><span class="tn-name">${escapeHtml(n.name)}</span></div>
+        <div class="tn-meta">${escapeHtml(n.track||"")}　每级：${escapeHtml(allBonus)}</div>
+        <div class="tn-dots">${dots}</div>
+        <div class="tn-cost ${canBuy?'':'no'}">${costLabel}</div>
+        ${canBuy?`<button class="tn-buy" onclick="researchTech('${n.id}')">+ 升级</button>`:""}
+      </div>`;
     });
-    html+=`</div></div>`;
-  });
-  if(treeEl) treeEl.innerHTML=html;
+    treeEl.innerHTML=`<div class="tech-graph-inner" style="width:${W}px;height:${H}px;">
+      <svg class="tech-edges" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">
+        <defs>
+          <marker id="techArrow-done" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z"/></marker>
+          <marker id="techArrow-open" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z"/></marker>
+          <marker id="techArrow-locked" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z"/></marker>
+        </defs>${edges}
+      </svg>${cards}</div>`;
+  }
+  // 图例
+  const legendEl=document.getElementById("tech-legend");
+  if(legendEl) legendEl.innerHTML=`<span class="lg owned">已解锁</span><span class="lg unlockable">可解锁</span><span class="lg locked">未解锁</span><span class="lg note">连线箭头指向下一科技，体现依赖与解锁顺序（从左向右＝时代递进）</span>`;
 }
 
 /* ============ 朝代/皇帝列表渲染 ============ */
@@ -2136,21 +2311,27 @@ function selectDynasty(id){
   ).join("");
   goto("emperor");
 }
+// 顶层字段白话填充：有白话层直接写；否则白话模式且可联网时先写 waitingText 再异步补译，失败/离线回退原文
+function fillBaihuaField(emp, field, setText, setRaw, waitingText){
+  const got=(emp.baihua && emp.baihua[field]!=null && emp.baihua[field]!=="") ? emp.baihua[field] : null;
+  if(got){ setText(got); return; }
+  if(bhOn() && aiAvailable()){
+    setText(waitingText);
+    bhFetchField(emp, field, (t)=>{ setText(t); }, ()=>{ setRaw(); });
+  }else{
+    setRaw();
+  }
+}
 function selectEmperor(id){
   const emp=EMPEROR_REGISTRY.find(e=>e.id===id);
   pendingEmperor=emp;
   document.getElementById("intro-name").textContent=emp.name+" · "+emp.templeName;
-  document.getElementById("intro-reign").textContent=`${emp.dynasty} · ${fmtYear(emp.reignStart)}—${fmtYear(emp.reignEnd)} · ${BK(emp,'evaluation')}`;
+  const prefix=`${emp.dynasty} · ${fmtYear(emp.reignStart)}—${fmtYear(emp.reignEnd)} · `;
+  const reignEl=document.getElementById("intro-reign");
   const bgEl=document.getElementById("intro-bg");
-  bgEl.textContent=BK(emp,'background');
-  // 运行时缺译补译（仅顶层背景，事件由 renderEvent 处理）
-  if(bhOn() && aiAvailable()){
-    const ck=(emp.id||"_")+":background";
-    const c=bhCache();
-    if(!(emp.baihua && emp.baihua.background) && !c[ck]){
-      bhFetchField(emp,'background',(t)=>{ bgEl.textContent=t; });
-    }
-  }
+  // 顶层字段：白话模式优先显示白话；无白话层且可联网则先「生成中」再即时替换，避免闪现文言文
+  fillBaihuaField(emp,'evaluation',(t)=>{ reignEl.textContent=prefix+t; }, ()=>{ reignEl.textContent=prefix+(emp.evaluation||""); }, prefix+"白话文生成中…");
+  fillBaihuaField(emp,'background',(t)=>{ bgEl.textContent=t; }, ()=>{ bgEl.textContent=emp.background||""; }, "（正在将人物背景译为现代白话，请稍候）");
   goto("intro");
 }
 function startGame(){
@@ -2158,7 +2339,7 @@ function startGame(){
   state=newState(pendingEmperor);
   cohEnded=false;
   currentEvent=null; currentChoiceIndex=-1;
-  applyTechProfile();   // 接入科技树：按朝代预设计算档案并注入超前科技衰减加成
+  initTechAtStart();    // 科技树：按朝代预设填充 ownedTechs 并注入超前科技衰减加成
   goto("game");
   renderGame();
   enterMonth();
@@ -2470,20 +2651,48 @@ function stanceKey(hint){
   return null;
 }
 
+let _evSeq=0; // 事件渲染序号，用于异步补译回写时防止串台（避免旧事件白话覆盖新事件）
 function renderEvent(){
+  const seq=++_evSeq;
   const ev = currentEvent._ev || ((currentEvent.source && currentEvent.source!=="历史事件") ? currentEvent : null);
   const b=bhEventSync(state.emperor, ev);
-  const title = b? b.title : (currentEvent.title||"");
-  const desc = b? b.description : (currentEvent.description||"");
-  document.getElementById("evt-title").textContent=title;
-  document.getElementById("evt-desc").textContent=desc;
-  renderChoices(currentEvent.choices, b? b.choices : null);
+  if(b){
+    paintEventBaihua(b);
+  }else if(bhOn() && ev && currentEvent._ev && aiAvailable()){
+    // 预设（数据）事件暂无白话层：先显示「生成中」，译出后立即替换，避免闪现文言文。
+    // 注意：AI 生成的事件本身已是白话文（生成 prompt 强制），其 currentEvent._ev 为空，直接走下方原文渲染即可。
+    paintEventWaiting();
+    bhFetchEventBaihua(state.emperor, ev,
+      (bb)=>{ if(seq===_evSeq) applyEventBaihua(bb); },
+      ()=>{ if(seq===_evSeq) paintEventRaw(); });
+  }else{
+    // 非白话模式 / 离线无 AI / AI 生成事件（本身已是白话）：直接显示 currentEvent 原文（白话）
+    paintEventRaw();
+  }
+}
+// 已命中白话层：直接渲染白话
+function paintEventBaihua(b){
+  document.getElementById("evt-title").textContent=b.title||"";
+  document.getElementById("evt-desc").textContent=b.description||"";
+  renderChoices(currentEvent.choices, b.choices);
   document.getElementById("outcome-wrap").classList.add("hide");
   document.getElementById("event-panel").classList.remove("hide");
-  // 运行时缺译补译（事件文案）
-  if(bhOn() && !b && ev && aiAvailable()){
-    bhFetchEventBaihua(state.emperor, ev, (bb)=>{ applyEventBaihua(bb); });
-  }
+}
+// 原文（文言文）：非白话模式或离线无 AI 时的兜底
+function paintEventRaw(){
+  document.getElementById("evt-title").textContent=currentEvent.title||"";
+  document.getElementById("evt-desc").textContent=currentEvent.description||"";
+  renderChoices(currentEvent.choices, null);
+  document.getElementById("outcome-wrap").classList.add("hide");
+  document.getElementById("event-panel").classList.remove("hide");
+}
+// 白话文模式但本事件尚无白话层：显示「生成中」占位，避免先闪文言文
+function paintEventWaiting(){
+  document.getElementById("evt-title").textContent="白话文生成中…";
+  document.getElementById("evt-desc").textContent="（正在将本事件译为现代白话，请稍候）";
+  document.getElementById("choices").innerHTML='<div class="choice wait">白话文生成中…</div>';
+  document.getElementById("outcome-wrap").classList.add("hide");
+  document.getElementById("event-panel").classList.remove("hide");
 }
 function renderChoices(choices, baihuaChoices){
   const cs=document.getElementById("choices");
@@ -2536,8 +2745,8 @@ function bhEventSync(emp, ev){
   return null;
 }
 // 异步补译：事件（标题/描述/五选项）
-async function bhFetchEventBaihua(emp, ev, cb){
-  if(!aiAvailable() || !ev) return;
+async function bhFetchEventBaihua(emp, ev, cb, onErr){
+  if(!aiAvailable() || !ev){ if(onErr) onErr(); return; }
   const ck=bhEventKey(emp, ev);
   const choicesSrc=(ev.choices||[]).map((c,i)=>`${i+1}. ${c.text!=null?c.text:c}`).join("\n");
   const sys="你是严谨的古文今译专家，只输出JSON，不做任何解释。";
@@ -2549,14 +2758,14 @@ async function bhFetchEventBaihua(emp, ev, cb){
       bhCacheSet(ck, val);
       if(emp && emp.baihua){ emp.baihua.events=emp.baihua.events||{}; if(ev.id) emp.baihua.events[ev.id]=val; }
       if(cb) cb(val);
-    }
-  }catch(e){ /* 静默失败，保留原文 */ }
+    }else if(onErr){ onErr(); }
+  }catch(e){ if(onErr) onErr(); }
 }
 // 异步补译：顶层字段（背景/评价/时代背景）
-async function bhFetchField(emp, field, cb){
-  if(!aiAvailable() || !emp) return;
+async function bhFetchField(emp, field, cb, onErr){
+  if(!aiAvailable() || !emp){ if(onErr) onErr(); return; }
   const src=emp[field]||"";
-  if(!src) return;
+  if(!src){ if(onErr) onErr(); return; }
   const ck=(emp.id||"_")+":"+field;
   const sys="你是严谨的古文今译专家，只输出JSON，不做任何解释。";
   const user=`请将下列文言游戏文案准确译为通俗易懂的现代白话文，保持原意与语气：\n${src}\n输出JSON：{"text":"译文"}`;
@@ -2567,8 +2776,8 @@ async function bhFetchField(emp, field, cb){
       bhCacheSet(ck, t);
       if(emp.baihua) emp.baihua[field]=t;
       if(cb) cb(t);
-    }
-  }catch(e){ /* 静默失败，保留原文 */ }
+    }else if(onErr){ onErr(); }
+  }catch(e){ if(onErr) onErr(); }
 }
 // 一键切换白话文模式
 function toggleBaihua(){
@@ -2817,9 +3026,10 @@ function nextMonth(){
   if(avg>=55){ state.highStreak++; state.lowStreak=0; state.stats.health=clamp(state.stats.health+1,0,100); }
   else if(avg<30){ state.lowStreak++; state.highStreak=0; state.stats.health=clamp(state.stats.health-1,0,100); }
   else { state.highStreak=0; state.lowStreak=0; }
-  // 长期低位加速崩盘（连续6月极低，最低项再受重创）——仅影响非健康项，避免健康无端骤降
+  // 长期低位加速崩盘（连续6月极低，最低项再受重创）——仅影响非健康、非科技项，避免健康无端骤降；
+  // 科技归零仅表示属性无效，绝不作为"最弱项"被惩罚（即使科技恰为最低，也对次低国力项施压）
   if(state.lowStreak>=6){
-    const lowest=Object.entries(state.stats).filter(([k])=>k!=="health").sort((a,b)=>a[1]-b[1])[0];
+    const lowest=Object.entries(state.stats).filter(([k])=>k!=="health" && k!=="tech").sort((a,b)=>a[1]-b[1])[0];
     if(lowest) state.stats[lowest[0]]=clamp(state.stats[lowest[0]]-2,0,100);
   }
   // 自然寿命衰减：以"真实年龄"计（登基年龄 + 在位年数），消除把在位年数误当年龄的语义错误；
@@ -3288,6 +3498,7 @@ function doSave(slot){
     usedAnchors:[...(state.usedAnchors||[])],     monthsPlayed:state.monthsPlayed||0,
     historyEventMonths:state.historyEventMonths||0, anchorMonths:state.anchorMonths||0,
     midFired:state._midFired||[],
+    ownedTechs:state.ownedTechs, playerTechs:state.playerTechs, techBonus:state.techBonus,
     timestamp:Math.floor(Date.now()/1000)
   };
   localStorage.setItem(slot,JSON.stringify(data));
@@ -3307,6 +3518,7 @@ function autoSave(){
     usedAnchors:[...(state.usedAnchors||[])],     monthsPlayed:state.monthsPlayed||0,
     historyEventMonths:state.historyEventMonths||0, anchorMonths:state.anchorMonths||0,
     midFired:state._midFired||[],
+    ownedTechs:state.ownedTechs, playerTechs:state.playerTechs, techBonus:state.techBonus,
     timestamp:Math.floor(Date.now()/1000)
   };
   localStorage.setItem("coh_save_auto",JSON.stringify(data));
@@ -3330,14 +3542,16 @@ function doLoad(slot){
     historyEventMonths:data.historyEventMonths||0,
     anchorMonths:data.anchorMonths||0,
     _activeAnchor:null, _midFired:data._midFired||[],
-    pregenQueue:[], pregenPending:false   // 读档时清空预生成队列（原事件可能已过时）
+    pregenQueue:[], pregenPending:false,  // 读档时清空预生成队列（原事件可能已过时）
+    ownedTechs:data.ownedTechs||{}, playerTechs:data.playerTechs||{},
+    techBonus:data.techBonus||{treasury:0,people:0,military:0,court:0,health:0,tech:0},
+    techProfile:null, techBaseStats:null
   };
   currentEvent=null; currentChoiceIndex=-1;
   cohEnded=false;
-  // 读档后重算科技树档案：applyTechProfile 按朝代预设重建 ownedTechs/techProfile
-  // 并注入超前科技加成。此步缺失会导致读档后 techProfile 为 null —— 科技查看器显示
-  // “数据未加载”、科技阻力事件不再触发、AI 叙事丢失科技档案（科技树接入后的存档回归）。
-  applyTechProfile();
+  // 读档后重算科技树档案：恢复 ownedTechs/playerTechs/techBonus 后增量重算 techProfile。
+  // 旧档（无 techBonus）以 apply=false 仅登记基线、不重复注入，避免与已含在 stats 中的加成叠加。
+  if(data.techBonus) recomputeTechProfile(); else recomputeTechProfile(false);
   toast("已读档");
   goto("game");
   renderGame();
