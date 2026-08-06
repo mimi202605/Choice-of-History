@@ -1899,7 +1899,9 @@ const FLAG_OMEN = {
   amnesty:"赦令既下，怨气少纾而法纪稍弛",
   flood:"水患方殷，流移载道",
   famine:"饥馑荐臻，易子而食之忧",
-  rebellion:"叛火已燃，剿抚两难"
+  rebellion:"叛火已燃，剿抚两难",
+  abdicated:"帝已逊位，国本动摇，然神器未移",
+  restored:"帝复辟归位，朝局再定，威信待立"
 };
 function reignProgress(st){
   const span=Math.max(1,(st.emperor.reignEnd)-(st.emperor.reignStart));
@@ -1918,6 +1920,27 @@ const ACT_ATMOSPHERE = {
   "中局大考":"多事之秋，承敝易变",
   "晚岁·遗烈":"晚照将沉，顾命维艰"
 };
+function longTermMemory(st){
+  const flags=st.flags||{};
+  const parts=[];
+  // 退位/复辟记忆
+  if(flags.abdicated && !flags.restored){
+    parts.push("【重大记忆】帝已逊位（此前选择导致退位），朝局处于非常状态。若后续事件中有复辟机会，可据此展开。");
+  }else if(flags.restored){
+    parts.push("【重大记忆】帝已成功复辟归位，此前逊位之事已成过往，威信待重新树立。");
+  }
+  // 遍历 flags 中可能的死亡标记（以 _died 后缀的 flag 表示某角色已死亡）
+  const deadChars=Object.keys(flags).filter(f=>f.endsWith("_died"));
+  if(deadChars.length){
+    parts.push("【人物存亡】以下人物已故："+deadChars.map(f=>f.replace(/_died$/,"")).join("、")+"。后续事件中不应让其再出场。");
+  }
+  // 遍历 flags 中可能的假死标记
+  const fakeDeadChars=Object.keys(flags).filter(f=>f.endsWith("_fakedeath"));
+  if(fakeDeadChars.length){
+    parts.push("【隐秘线索】以下人物系假死，实际仍在世："+fakeDeadChars.map(f=>f.replace(/_fakedeath$/,"")).join("、")+"。此事为隐秘，可在适当时机揭露。");
+  }
+  return parts.length ? "\n"+parts.join("\n")+"\n" : "";
+}
 function narrativeContextFor(st){
   const e=st.emperor;
   if(!e.reignPremise && !(e.cast&&e.cast.length)) return "";
@@ -1987,7 +2010,7 @@ ${emperor.eraContext}
 }
 若要求"为既定选项生成后果"，则顶层仅含 { "outcomes":[ {"outcomeDescription":"后果叙述(史书体,80-150字)","historianComment":"史官评(30-60字)","statChanges":{"treasury":0,"people":0,"military":0,"court":0,"health":0,"tech":0},"setFlags":["..."]} ] }（共5项，与既定选项顺序对应；setFlags 可选，限用规范词表）。
 若要求"生成完整事件"，则顶层额外含 eventTitle/eventDescription/choices，并加 "outcomes"（共5项，与 choices 顺序一一对应）。
-各项数值变化范围：常规事件单项 -10~+10，危机事件单项最多 -20~+20（压强越高幅度越大），且多数应小幅变化。choices 与 outcomes 均必须正好5个。可选字段 "setFlags"（字符串数组，限用规范词表 unify/reform/long_peace/usurped/scholar_oppose/weak/war_win/war_loss/tax_cut/tax_heavy/scholar_purge/amnesty/flood/famine/rebellion，记录本选择达成的关键语义，供结局判定）。不要输出任何JSON以外的内容。`;
+各项数值变化范围：常规事件单项 -10~+10，危机事件单项最多 -20~+20（压强越高幅度越大），且多数应小幅变化。choices 与 outcomes 均必须正好5个。可选字段 "setFlags"（字符串数组，限用规范词表 unify/reform/long_peace/usurped/scholar_oppose/weak/war_win/war_loss/tax_cut/tax_heavy/scholar_purge/amnesty/flood/famine/rebellion/abdicated/restored，记录本选择达成的关键语义，供结局判定）。不要输出任何JSON以外的内容。`;
     // 科技树档案（接入 tech_engine）：让 AI 认知玩家所拥「超前（越代）科技」及其真实落地增益，据此生成后果与叙事
     const prof = (typeof state!=="undefined" && state && state.techProfile) ? state.techProfile : null;
     if(prof && prof.aiSummary){
@@ -2023,7 +2046,7 @@ ${emperor.eraContext}
       }else{
         crisisHint=`请生成一个符合时代与当前局势的日常政务事件+5选项。`;
       }
-      s+=`${crisisHint}\n并为每个选项预生成后果（含后果叙述、史官评、六项数值变化，可选 setFlags 规范词表）。\n输出JSON：\n{ "eventTitle":"", "eventDescription":"", "choices":[ {"text":"","hint":""} ], "outcomes":[ {"outcomeDescription":"","historianComment":"","statChanges":{"treasury":0,"people":0,"military":0,"court":0,"health":0,"tech":0},"setFlags":["..."]} ] }\nchoices 与 outcomes 均必须正好5个且顺序一一对应。不要输出JSON以外的内容。`;
+      s+=`${crisisHint}\n并为每个选项预生成后果（含后果叙述、史官评、六项数值变化，可选 setFlags 规范词表）。\n输出JSON：\n{ "eventTitle":"", "eventDescription":"", "choices":[ {"text":"","hint":""} ], "outcomes":[ {"outcomeDescription":"","historianComment":"","statChanges":{"treasury":0,"people":0,"military":0,"court":0,"health":0,"tech":0},"setFlags":["..."]} ] }\nchoices 与 outcomes 均必须正好5个且顺序一一对应。setFlags 限用规范词表 unify/reform/long_peace/usurped/scholar_oppose/weak/war_win/war_loss/tax_cut/tax_heavy/scholar_purge/amnesty/flood/famine/rebellion/abdicated/restored。不要输出JSON以外的内容。`;
     }
     // 史材锚点约束（1.1）：让 AI 月也锚定真实史实
     if(state._activeAnchor){
@@ -2042,6 +2065,10 @@ ${emperor.eraContext}
     }
     // 统一剧情叙事上下文（软约束注入；无 spine 数据则空串，完全保持原行为）
     s += narrativeContextFor(state);
+    // 长期记忆：退位、复辟、角色死亡/假死等关键状态（AI 必须记住，不可遗忘）
+    s += longTermMemory(state);
+    // 时间一致性指令：强制 AI 在事件描述中使用正确的年号、年份、月份
+    s += `\n【时间一致性要求】事件描述中提及的时间（年号、年份、季节、月份）必须与上述「当前时位」完全一致，严禁出现不符。例如若当前为「${state.era} ${fmtYear(state.year)}年 ${cnMonth(state.month)}月」，事件描述不应写其他年份或季节。\n`;
     if(settings.baihua){
       s+=`\n【白话文模式】当前玩家开启了「白话文模式」，请务必用通俗易懂的现代白话文（普通话书面语，口语化、易懂）撰写全部文案（事件描述、各选项、后果叙述、史官评），严禁使用文言文或半文半白。`;
     }
@@ -2050,7 +2077,7 @@ ${emperor.eraContext}
   },
   outcome(state,eventTitle,choiceText,hint){
     const e=state.emperor;
-    return `【皇帝】${e.name}（${e.templeName}） ${fmtYear(state.year)}年${cnMonth(state.month)}月\n【事件】${eventTitle}\n【玩家选择】${choiceText}（${hint||""}）\n【当前数值】国库${state.stats.treasury} 民心${state.stats.people} 军事${state.stats.military} 朝政${state.stats.court} 健康${state.stats.health} 科技${state.stats.tech}\n【近五月摘要】${recentSummary(state)}\n\n请依据史实逻辑与当前局势，生成此选择的后果：\n1. 后果叙述（史书体，80-150字）\n2. 史官评曰（仿论赞，30-60字）\n3. 六项数值变化（各-10到+10，多数应小幅变化；危机事件单项最多±20）\n4. 可选 setFlags（规范词表字符串数组：unify/reform/long_peace/usurped/scholar_oppose/weak/war_win/war_loss/tax_cut/tax_heavy/scholar_purge/amnesty/flood/famine/rebellion），记录本选择达成的关键语义，供结局判定。\n\n输出JSON：\n{ "outcomeDescription":"", "historianComment":"", "statChanges":{"treasury":0,"people":0,"military":0,"court":0,"health":0,"tech":0}, "setFlags":[] }\n${settings.baihua?'【白话文模式】请用通俗易懂的现代白话文撰写后果叙述与史官评，严禁文言文。':''}不要输出JSON以外的内容。`;
+    return `【皇帝】${e.name}（${e.templeName}） ${fmtYear(state.year)}年${cnMonth(state.month)}月\n【事件】${eventTitle}\n【玩家选择】${choiceText}（${hint||""}）\n【当前数值】国库${state.stats.treasury} 民心${state.stats.people} 军事${state.stats.military} 朝政${state.stats.court} 健康${state.stats.health} 科技${state.stats.tech}\n【近五月摘要】${recentSummary(state)}\n${longTermMemory(state)}【时间一致性】后果叙述中的时间须与当前 ${fmtYear(state.year)}年${cnMonth(state.month)}月一致。\n\n请依据史实逻辑与当前局势，生成此选择的后果：\n1. 后果叙述（史书体，80-150字）\n2. 史官评曰（仿论赞，30-60字）\n3. 六项数值变化（各-10到+10，多数应小幅变化；危机事件单项最多±20）\n4. 可选 setFlags（规范词表字符串数组：unify/reform/long_peace/usurped/scholar_oppose/weak/war_win/war_loss/tax_cut/tax_heavy/scholar_purge/amnesty/flood/famine/rebellion/abdicated/restored），记录本选择达成的关键语义，供结局判定。\n\n输出JSON：\n{ "outcomeDescription":"", "historianComment":"", "statChanges":{"treasury":0,"people":0,"military":0,"court":0,"health":0,"tech":0}, "setFlags":[] }\n${settings.baihua?'【白话文模式】请用通俗易懂的现代白话文撰写后果叙述与史官评，严禁文言文。':''}不要输出JSON以外的内容。`;
   }
 };
 
@@ -2289,7 +2316,8 @@ const MID_CRISIS_PROB = 0.35;        // rationale: 最终概率 = MID_CRISIS_PRO
 // [PLACEHOLDER] 词表随内容扩展；当前以 6 个结局旗标为骨干，AI 动态事件仅允许使用此表。
 const CANONICAL_FLAGS = [
   "unify","reform","long_peace","usurped","scholar_oppose","weak",
-  "war_win","war_loss","tax_cut","tax_heavy","scholar_purge","amnesty","flood","famine","rebellion"
+  "war_win","war_loss","tax_cut","tax_heavy","scholar_purge","amnesty","flood","famine","rebellion",
+  "abdicated","restored"
 ];
 
 // 失败链推进：在 nextMonth 内调用，评估四国力维的倾危升级；崩盘则触发终局并返回 true。
@@ -3099,7 +3127,12 @@ function applyEffectsFor(i){
 }
 function applyChoiceEffects(br, rd){
   if(br){
-    (br.setFlags||[]).forEach(f=>{ state.flags[f]=true; });
+    (br.setFlags||[]).forEach(f=>{
+      state.flags[f]=true;
+      // 退位/复辟自动互斥
+      if(f==="restored") delete state.flags.abdicated;
+      if(f==="abdicated") delete state.flags.restored;
+    });
     (br.clearFlags||[]).forEach(f=>{ delete state.flags[f]; });
     if(br.nextEventId){
       const ev=findEventById(br.nextEventId);
@@ -3131,7 +3164,14 @@ function applyOutcome(json,choice){
     sc[k]=v;   // 写回截断后的值，使“变化”面板与真实生效数值一致（避免显示 +15 实则 +10）
   });
   // B3：应用 AI 生成的规范旗标（仅限 CANONICAL_FLAGS，杜绝幽灵旗标污染结局判定）
-  if(Array.isArray(json.setFlags)) json.setFlags.forEach(f=>{ if(CANONICAL_FLAGS.includes(f)) state.flags[f]=true; });
+  if(Array.isArray(json.setFlags)) json.setFlags.forEach(f=>{
+    // 人物死亡/假死标记（动态后缀）不受规范词表限制
+    if(f.endsWith("_died") || f.endsWith("_fakedeath")){ state.flags[f]=true; return; }
+    if(CANONICAL_FLAGS.includes(f)) state.flags[f]=true;
+  });
+  // 退位/复辟互斥逻辑：若设了 restored 则清除 abdicated；若设了 abdicated 则清除 restored
+  if(json.setFlags && json.setFlags.includes("restored")) delete state.flags.abdicated;
+  if(json.setFlags && json.setFlags.includes("abdicated")) delete state.flags.restored;
   applyCoupling();
   recordHistory(choice,json.outcomeDescription,json.historianComment,sc);
   renderOutcome(json.outcomeDescription,json.historianComment,sc);
@@ -3680,9 +3720,10 @@ async function pregenerateMonths(){
   // 仅生成"日常政务"类事件（不含历史/危机），作为填充月的批量素材
   const ctx = `当前为 ${state.emperor.dynasty}·${state.era} ${fmtYear(state.year)}年 ${cnMonth(state.month)}月。
 请为未来 ${PREGEN_BATCH} 个月分别生成独立的"日常政务"事件。
-每个月的格式为 {"eventTitle":"...","eventDescription":"...","choices":[{"text":"...","hint":"...易·中·难）"}×5],"outcomes":[{"outcomeDescription":"...","historianComment":"...","statChanges":{"treasury":0,"people":0,"military":0,"court":0,"health":0,"tech":0}}×5]}。
-输出为 JSON 对象，含 "months" 数组，共 ${PREGEN_BATCH} 项，顺序对应未来各月。事件需符合当前朝代背景、连贯自然。
-不要输出 JSON 以外的内容。`;
+每个月的格式为 {"eventTitle":"...","eventDescription":"...","choices":[{"text":"...","hint":"...易·中·难）"}×5],"outcomes":[{"outcomeDescription":"...","historianComment":"...","statChanges":{"treasury":0,"people":0,"military":0,"court":0,"health":0,"tech":0},"setFlags":["..."]}×5]}。
+输出为 JSON 对象，含 "months" 数组，共 ${PREGEN_BATCH} 项，顺序对应未来各月。事件需符合当前朝代背景、连贯自然。setFlags 限用规范词表 unify/reform/long_peace/usurped/scholar_oppose/weak/war_win/war_loss/tax_cut/tax_heavy/scholar_purge/amnesty/flood/famine/rebellion/abdicated/restored。
+【重要·时间一致性】每个事件描述中提及的时间（年号、年份、季节、月份）必须与上述当前时位一致，不可写其他年份或季节。
+${longTermMemory(state)}不要输出 JSON 以外的内容。`;
   try{
     const json = await callAI(sys, ctx);
     if(!json || !Array.isArray(json.months)) return;
