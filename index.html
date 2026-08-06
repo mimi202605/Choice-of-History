@@ -360,7 +360,12 @@
   /* ===== 结果区域 ===== */
   .outcome{
     text-indent:2em;font-size:15px;margin:12px 0;text-align:justify;
+    white-space:pre-wrap;
     animation:fadeSlideIn .5s .1s both;
+  }
+  .outcome .mitigate-tech{
+    display:block;margin-top:8px;font-size:14px;
+    color:var(--jade);font-style:italic;
   }
   .historian{
     margin-top:16px;padding:14px 16px;border-left:4px solid var(--red);
@@ -2067,6 +2072,11 @@ ${emperor.eraContext}
     s += narrativeContextFor(state);
     // 长期记忆：退位、复辟、角色死亡/假死等关键状态（AI 必须记住，不可遗忘）
     s += longTermMemory(state);
+    // 越代科技提示：告知 AI 在生成事件时可提及科技如何减轻负面后果
+    const _prof = (typeof state.techProfile !== "undefined" && state.techProfile && state.techProfile.ahead && state.techProfile.ahead.count > 0);
+    if(_prof){
+      s += `\n【越代科技提示】当前玩家拥有超越时代等级的科技，在生成选项后果时，若某些选项会降低特定属性，可在叙事中自然提及这些科技如何减轻了负面冲击——例如先进水利缓解旱灾、精良甲胄减少军事损耗等。数值上的减免由系统自动计算，你只需在叙事中体现即可。\n`;
+    }
     // 时间一致性指令：强制 AI 在事件描述中使用正确的年号、年份、月份
     s += `\n【时间一致性要求】事件描述中提及的时间（年号、年份、季节、月份）必须与上述「当前时位」完全一致，严禁出现不符。例如若当前为「${state.era} ${fmtYear(state.year)}年 ${cnMonth(state.month)}月」，事件描述不应写其他年份或季节。\n`;
     if(settings.baihua){
@@ -2077,7 +2087,7 @@ ${emperor.eraContext}
   },
   outcome(state,eventTitle,choiceText,hint){
     const e=state.emperor;
-    return `【皇帝】${e.name}（${e.templeName}） ${fmtYear(state.year)}年${cnMonth(state.month)}月\n【事件】${eventTitle}\n【玩家选择】${choiceText}（${hint||""}）\n【当前数值】国库${state.stats.treasury} 民心${state.stats.people} 军事${state.stats.military} 朝政${state.stats.court} 健康${state.stats.health} 科技${state.stats.tech}\n【近五月摘要】${recentSummary(state)}\n${longTermMemory(state)}【时间一致性】后果叙述中的时间须与当前 ${fmtYear(state.year)}年${cnMonth(state.month)}月一致。\n\n请依据史实逻辑与当前局势，生成此选择的后果：\n1. 后果叙述（史书体，80-150字）\n2. 史官评曰（仿论赞，30-60字）\n3. 六项数值变化（各-10到+10，多数应小幅变化；危机事件单项最多±20）\n4. 可选 setFlags（规范词表字符串数组：unify/reform/long_peace/usurped/scholar_oppose/weak/war_win/war_loss/tax_cut/tax_heavy/scholar_purge/amnesty/flood/famine/rebellion/abdicated/restored），记录本选择达成的关键语义，供结局判定。\n\n输出JSON：\n{ "outcomeDescription":"", "historianComment":"", "statChanges":{"treasury":0,"people":0,"military":0,"court":0,"health":0,"tech":0}, "setFlags":[] }\n${settings.baihua?'【白话文模式】请用通俗易懂的现代白话文撰写后果叙述与史官评，严禁文言文。':''}不要输出JSON以外的内容。`;
+    return `【皇帝】${e.name}（${e.templeName}） ${fmtYear(state.year)}年${cnMonth(state.month)}月\n【事件】${eventTitle}\n【玩家选择】${choiceText}（${hint||""}）\n【当前数值】国库${state.stats.treasury} 民心${state.stats.people} 军事${state.stats.military} 朝政${state.stats.court} 健康${state.stats.health} 科技${state.stats.tech}\n【近五月摘要】${recentSummary(state)}\n${longTermMemory(state)}【时间一致性】后果叙述中的时间须与当前 ${fmtYear(state.year)}年${cnMonth(state.month)}月一致。\n\n请依据史实逻辑与当前局势，生成此选择的后果：\n1. 后果叙述（史书体，80-150字）\n2. 史官评曰（仿论赞，30-60字）\n3. 六项数值变化（各-10到+10，多数应小幅变化；危机事件单项最多±20）\n4. 可选 setFlags（规范词表字符串数组：unify/reform/long_peace/usurped/scholar_oppose/weak/war_win/war_loss/tax_cut/tax_heavy/scholar_purge/amnesty/flood/famine/rebellion/abdicated/restored），记录本选择达成的关键语义，供结局判定。\n\n【越代科技提示】若玩家拥有超出时代等级的科技（见上方系统提示），本选择在降低某些属性时，可酌情在叙事中提及这些科技如何减轻了负面冲击——例如先进水利缓解了旱灾损失、精良甲胄减少了军事损耗等。数值上的减免由系统自动处理，你只需在叙事中自然体现即可。\n\n输出JSON：\n{ "outcomeDescription":"", "historianComment":"", "statChanges":{"treasury":0,"people":0,"military":0,"court":0,"health":0,"tech":0}, "setFlags":[] }\n${settings.baihua?'【白话文模式】请用通俗易懂的现代白话文撰写后果叙述与史官评，严禁文言文。':''}不要输出JSON以外的内容。`;
   }
 };
 
@@ -3146,6 +3156,51 @@ function applyChoiceEffects(br, rd){
   }
 }
 
+/* ---- 超前科技减免：越代科技有概率减轻属性损失 ---- */
+function techMitigate(sc){
+  const prof = state.techProfile;
+  if(!prof || !prof.ahead || !prof.ahead.attrBonus) return { mitigated:false, narrative:"" };
+  const ahead = prof.ahead.attrBonus;
+  const totalAheadLevels = prof.ahead.levels || 0;
+  if(totalAheadLevels <= 0) return { mitigated:false, narrative:"" };
+
+  const STAT_LABEL = { treasury:"国库", people:"民心", military:"军事", court:"朝政", health:"健康", tech:"科技" };
+  const TRIGGER_BASE = 0.40;
+  const TRIGGER_PER_LEVEL = 0.04;
+  const TRIGGER_CAP = 0.80;
+  const MITIGATE_MIN = 0.30;
+  const MITIGATE_MAX = 0.60;
+  const MAX_NARRATIVE_TECHS = 3;
+
+  let anyMitigated = false;
+  let narrativeParts = [];
+  const aheadTechs = prof.ahead.techs || [];
+
+  for(const k of Object.keys(sc)){
+    const v = Number(sc[k]) || 0;
+    if(v >= 0) continue;
+    if(!ahead[k] || ahead[k] <= 0) continue;
+    const prob = Math.min(TRIGGER_CAP, TRIGGER_BASE + TRIGGER_PER_LEVEL * totalAheadLevels);
+    if(Math.random() >= prob) continue;
+
+    const protectingTechs = aheadTechs.filter(t => t.bonus && t.bonus[k] > 0);
+    const reduceAbs = Math.round(Math.abs(v) * (MITIGATE_MIN + Math.random() * (MITIGATE_MAX - MITIGATE_MIN)));
+    const mitigatedVal = v + reduceAbs;
+    sc[k] = mitigatedVal < 0 ? mitigatedVal : 0;
+    anyMitigated = true;
+
+    const techNames = protectingTechs.slice(0, MAX_NARRATIVE_TECHS).map(t => t.name);
+    if(techNames.length){
+      narrativeParts.push(`${STAT_LABEL[k]}损失因「${techNames.join("、")}」等越代科技的应用而减轻${reduceAbs}点`);
+    }else{
+      narrativeParts.push(`${STAT_LABEL[k]}损失因越代科技之力而减轻${reduceAbs}点`);
+    }
+  }
+
+  if(!anyMitigated) return { mitigated:false, narrative:"" };
+  return { mitigated:true, narrative: "（" + narrativeParts.join("；") + "。）" };
+}
+
 function applyOutcome(json,choice){
   // 数值校验与硬截断
   const sc=json.statChanges||{};
@@ -3156,12 +3211,14 @@ function applyOutcome(json,choice){
     const target=needy.length?needy.reduce((a,b)=>state.stats[a]<state.stats[b]?a:b):"people";
     sc[target]=(Number(sc[target])||0)+2;
   }
+  // 超前科技减免：在 AI 给出的后果基础上，越代科技有概率减轻属性惩罚
+  const mitigation = techMitigate(sc);
   const limit = outcomeLimit(currentEvent.source);   // B2 单一真相：常规±10 / 危机±20（此前 12+5p 与 12 两版打架）
   ["treasury","people","military","court","health","tech"].forEach(k=>{
     let v=Math.round(Number(sc[k])||0);
     v=clamp(v,-limit,limit);
     state.stats[k]=clamp(state.stats[k]+v,0,100);
-    sc[k]=v;   // 写回截断后的值，使“变化”面板与真实生效数值一致（避免显示 +15 实则 +10）
+    sc[k]=v;   // 写回截断后的值，使"变化"面板与真实生效数值一致（避免显示 +15 实则 +10）
   });
   // B3：应用 AI 生成的规范旗标（仅限 CANONICAL_FLAGS，杜绝幽灵旗标污染结局判定）
   if(Array.isArray(json.setFlags)) json.setFlags.forEach(f=>{
@@ -3173,8 +3230,10 @@ function applyOutcome(json,choice){
   if(json.setFlags && json.setFlags.includes("restored")) delete state.flags.abdicated;
   if(json.setFlags && json.setFlags.includes("abdicated")) delete state.flags.restored;
   applyCoupling();
-  recordHistory(choice,json.outcomeDescription,json.historianComment,sc);
-  renderOutcome(json.outcomeDescription,json.historianComment,sc);
+  // 合并科技减免叙事到结果描述中
+  const outcomeDesc = json.outcomeDescription + (mitigation.mitigated ? "\n\n" + mitigation.narrative : "");
+  recordHistory(choice,outcomeDesc,json.historianComment,sc);
+  renderOutcome(outcomeDesc,json.historianComment,sc);
 }
 
 // 各倾向的后果模板（按语义而非序号映射，避免"按编号刷分"）
@@ -3233,13 +3292,15 @@ function fallbackOutcome(choice){
     const target=needy.length?needy.reduce((a,b)=>state.stats[a]<state.stats[b]?a:b):"people";
     sc[target]=(sc[target]||0)+2;
   }
+  // 超前科技减免：规则推演后果基础上，越代科技有概率减轻属性惩罚
+  const mitigation = techMitigate(sc);
   const limit=outcomeLimit(currentEvent.source);   // B2 单一真相：常规±10 / 危机±20
   ["treasury","people","military","court","health","tech"].forEach(k=>{
     sc[k]=clamp(Math.round(sc[k]),-limit,limit);
     state.stats[k]=clamp(state.stats[k]+sc[k],0,100);
   });
   applyCoupling();
-  const outcome=`帝纳「${choice.text}」之策。${stanceFlavorText(sk)} 群臣奉行，朝野翕然。`;
+  const outcome=`帝纳「${choice.text}」之策。${stanceFlavorText(sk)} 群臣奉行，朝野翕然。` + (mitigation.mitigated ? "\n\n" + mitigation.narrative : "");
   const comment=stanceCommentText(sk);
   recordHistory(choice,outcome,comment,sc);
   renderOutcome(outcome,comment,sc);
@@ -3260,7 +3321,16 @@ function recordHistory(choice,outcomeDesc,comment,sc){
 }
 
 function renderOutcome(desc,comment,sc){
-  document.getElementById("outcome-desc").textContent=desc;
+  // 将科技减免叙事（倒数第二个 \n\n 之后的内容）用 .mitigate-tech 包裹以视觉区分
+  const mitIdx = desc.lastIndexOf("\n\n（");
+  if(mitIdx !== -1){
+    const mainPart = desc.slice(0, mitIdx);
+    const mitPart = desc.slice(mitIdx);
+    document.getElementById("outcome-desc").innerHTML =
+      mainPart.replace(/\n/g,"<br>") + `<span class="mitigate-tech">${mitPart.replace(/\n/g,"<br>")}</span>`;
+  }else{
+    document.getElementById("outcome-desc").innerHTML = desc.replace(/\n/g,"<br>");
+  }
   document.getElementById("historian-txt").textContent=comment;
   const chg=document.getElementById("changes");
   const labels={treasury:"国库",people:"民心",military:"军事",court:"朝政",health:"健康",tech:"科技"};
