@@ -626,6 +626,49 @@
     .subtitle{font-size:13px;letter-spacing:4px;}
     .btn.big{font-size:16px;padding:10px 20px;letter-spacing:3px;}
   }
+
+  /* ===== 科技树查看器 ===== */
+  #screen-tech .tech-summary{
+    border:2px double var(--ink);
+    background:var(--bg-light);
+    border-radius:var(--radius-md);
+    padding:12px 16px;margin:14px 0;
+    font-size:14px;line-height:1.7;color:var(--ink);
+    box-shadow:var(--shadow-soft);
+  }
+  #screen-tech .tech-summary b{color:var(--red);}
+  .tech-scroll{max-height:none;overflow:visible;}
+  .tech-branch{margin-bottom:14px;}
+  .tech-branch-name{
+    font-family:'Noto Serif SC',serif;font-size:18px;font-weight:700;color:var(--ink);
+    border-left:4px solid var(--gold);padding-left:10px;margin-bottom:8px;letter-spacing:2px;
+  }
+  .tech-ages{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;
+  }
+  .tech-cell{
+    border:1px solid rgba(120,98,74,.25);
+    border-radius:var(--radius-sm);
+    background:rgba(255,252,242,.4);
+    padding:8px;min-height:54px;
+    font-size:12px;line-height:1.5;
+    display:flex;flex-direction:column;gap:4px;
+  }
+  .tech-cell.empty{background:transparent;border-style:dashed;opacity:.5;}
+  .tech-cell.ahead-era{border-color:rgba(176,74,46,.45);background:rgba(176,74,46,.06);}
+  .tech-age-h{
+    font-size:11px;color:var(--dim);border-bottom:1px dotted rgba(120,98,74,.3);
+    padding-bottom:3px;margin-bottom:2px;letter-spacing:1px;
+  }
+  .tech-era-label{color:var(--dim);font-size:11px;}
+  .tech-node{
+    display:inline-block;background:rgba(74,106,154,.12);
+    border:1px solid rgba(74,106,154,.35);border-radius:4px;
+    padding:1px 5px;color:var(--ink);
+  }
+  .tech-node.ahead{
+    background:rgba(176,74,46,.14);border-color:rgba(176,74,46,.5);color:var(--red);font-weight:700;
+  }
 </style>
 </head>
 <body>
@@ -669,7 +712,7 @@
     <div class="topbar">
       <span class="era">本纪</span>
       <span class="right">
-        <button class="btn" id="bh-toggle-intro" onclick="toggleBaihua()" title="一键切换文言文 / 现代白话">白话：关</button>
+        <button class="btn" id="bh-toggle-intro" onclick="toggleBaihua()" title="一键切换文言文 / 现代白话">白话：开</button>
         <button class="btn" onclick="goto('emperor')">返回</button>
       </span>
     </div>
@@ -689,10 +732,11 @@
       <span class="seal" id="game-seal">汉</span>
       <span class="era" id="game-era">建元元年 · 正月</span>
       <span class="right">
-        <button class="btn" id="bh-toggle" onclick="toggleBaihua()" title="一键切换文言文 / 现代白话">白话：关</button>
+        <button class="btn" id="bh-toggle" onclick="toggleBaihua()" title="一键切换文言文 / 现代白话">白话：开</button>
         <button class="btn" onclick="openSave()">存档</button>
         <button class="btn" onclick="openLoad('game')">读档</button>
         <button class="btn" onclick="goto('settings');prevScreen='game'">设置</button>
+        <button class="btn" onclick="openTechTree()">科技</button>
         <button class="btn red" onclick="abandonGame()">弃位</button>
       </span>
     </div>
@@ -711,6 +755,16 @@
         </div>
       </div>
     </div>
+  </section>
+
+  <!-- 科技树查看器（接入 tech_engine，只读） -->
+  <section id="screen-tech" class="screen">
+    <div class="topbar">
+      <span class="era">科技树 · <span id="tech-era-name"></span></span>
+      <button class="btn" onclick="closeTechTree()">返回朝堂</button>
+    </div>
+    <div class="tech-summary" id="tech-summary"></div>
+    <div class="tech-scroll" id="tech-tree"></div>
   </section>
 
   <!-- Settings -->
@@ -828,6 +882,10 @@
 <!-- 内置皇帝数据库（由 tools/build_data.js 从 data/emperors/*.json 生成）。
      以经典 <script> 注入全局变量，可在 file:// 双击打开时正常加载，规避 fetch 的 CORS 限制。 -->
 <script src="data/emperors/coh_data.js"></script>
+<!-- 科技树数据（由 tools/build_techdata.js 从 data/tech_tree.json + data/tech_presets.json 生成）；同上，file:// 可直接加载。 -->
+<script src="data/tech_data.js"></script>
+<!-- 科技树计算引擎（浏览器/Node 通用，挂到 window.TechEngine）；纯函数 compute，详见 docs/科技树系统设计.md。 -->
+<script src="tools/tech_engine.js"></script>
 <!-- 凭据配置（7.2 去共享化）：部署期由 tools/gen_config.js 生成，含内置凭据密文与可选 provisionUrl，git 忽略，源码不内嵌任何共享密钥。 -->
 <script src="coh_config.js"></script>
 
@@ -1568,38 +1626,38 @@ function dynIdByEmperor(e){
 // 后备事件池（AI 不可用 / 离线模式 / 日常政务降级时启用）。
 // 选项倾向不再按序号套用，而由 hintFromText 依据选项文本实时推断，避免误导性标签。
 const DAILY_FALLBACK = [
-  {title:"岁入丰歉",description:"今岁郡国上计，仓廪实耗不一。或言丰收，或言歉收，户部请裁。",choices:["蠲免灾区田赋，宽恤百姓","严查郡国上计，惩治贪墨","开仓平粜，稳物价","加征丰区赋税，以充国用","募民垦荒，充仓廪"]},
-  {title:"边烽急报",description:"北边烽火屡警，斥候报胡骑游弋近塞，边将请命。",choices:["遣将巡边，示以军威","增戍长城，固守要隘","遣使和亲，缓边衅","联合属国共御之","纳粟拜爵，充实军资"]},
-  {title:"黄河水患",description:"黄河决口，淹没州县，百姓流离，有司告急。",choices:["发卒塞决，赈济灾民","徙民避水，缓图筑堤","罪己求言，禳灾弭患","籍没豪强，充修堤之费","求治水之才，专任之"]},
-  {title:"朝堂党争",description:"朝臣分立两派，互相攻讦，政事壅滞，诏令不下。",choices:["申明朋党之禁，严惩首恶","调和新旧，宽省其狱","外迁党首，远置郡县","广开言路，集议国是","自揽权纲，不偏一党"]},
-  {title:"蝗灾蔽天",description:"飞蝗蔽天，禾稼尽毁，民大饥，道殣相望。",choices:["下诏罪己，令郡国捕蝗","赦天下租赋，赈济灾民","祈禳弭灾，止捕蝗","募民捕蝗，易以粟","开仓赈济，宽恤百姓"]},
-  {title:"仓廪空虚",description:"户部奏：国库支绌，军国之费不给，百官俸廪难继。",choices:["节用省费，减宫廷之支","加征商税，充国用","卖官鬻爵，纳粟补官","籍没贪豪，充国库","劝富民助饷，给以爵赏"]},
-  {title:"疫疠流行",description:"数州疫疠流行，死者相望，乡里萧然。",choices:["遣使巡疫，施药赈济","设隔离之所，禁民流徙","罪己求言，禳灾弭患","大赦天下，以消天怒","求名医，专任救治"]},
-  {title:"外使入朝",description:"远方国遣使入贡，请通商互市，礼官以闻。",choices:["厚赐其使，许通商互市","却其贡，闭关不与通","许通商而严其法","联其国共讨敌国","遣使报聘，通好如故"]},
-  {title:"盗贼蜂起",description:"数郡盗贼蜂起，劫掠乡里，守令不能制。",choices:["遣将剿抚并用，速平之","招降盗首，赦其罪","严保甲，互相纠察","缓图之，先固京畿","罪己求言，宽省刑罚"]},
-  {title:"星变示警",description:"太史奏：星象变异，恐有天谴，百官请修省。",choices:["修德弭灾，下诏求言","大赦天下，以消天怒","改元以应天","罢土木，戒奢靡","遣使祭天，禳灾弭患"]},
-  {title:"科举取士",description:"科举利弊相争，或言宜广纳寒俊，或言当重门第。",choices:["广开科举，擢寒俊","复门第之制，重世家","行察举，举孝廉","设武举，文武并重","罢科举，专任吏员"]},
-  {title:"水利营田",description:"陂塘败坏，农田失溉，劝农之议起。",choices:["兴修陂塘，劝课农桑","募民屯田，实边备","减免田租，与民休息","遣使循行，核垦田","听民自便，不夺其时"]},
-  {title:"宗室封赏",description:"宗室蕃衍，或请裂土分封，或言宜削其权。",choices:["分封子弟，藩屏王室","削藩集权，抑宗室","厚禄养之，不任以政","联姻强国，结外援","徙封就藩，分其势"]},
-  {title:"工役兴作",description:"有司请营宫室、治驰道，言利病者不一。",choices:["罢土木，与民休息","营宫室，壮京师","募民应役，给以工值","征发罪徒，免扰平民","减役缓工，先务农"]},
-  {title:"驿传通信",description:"驿政废弛，边情迟滞，有司请整饬。",choices:["整饬驿政，速达边情","省并驿传，节国用","增置急递，军情毕达","严驿使，禁私遣","宽其禁，便民往来"]},
-  {title:"钱法币制",description:"钱法紊乱，私铸蜂起，物价腾踊。",choices:["更铸钱币，统一圜法","禁私铸，严其法","听民交易，不妄改作","铸大钱，济国用","平准物价，稳市廛"]},
-  {title:"边贸互市",description:"沿边互市之议：开则利市，禁则防戎。",choices:["开马市，通互市","闭关绝市，防戎心","设榷场，征其税","以茶帛易马，实军备","严互市之禁，防奸宄"]},
-  {title:"太子监国",description:"储贰未定，或请早建，或言宜历练政事。",choices:["立储君，早定大本","命太子监国，历练政事","托孤大臣，共辅幼主","自揽乾纲，不早建储","分封诸王，共夹辅"]},
-  {title:"祥瑞符命",description:"郡县屡报祥瑞，或言宜受，或言当戒盈。",choices:["受祥瑞，颁赦天下","却祥瑞，戒盈满","宣付史馆，彰治平","借符命制天下，收民心","遣使祭告，谢天贶"]},
-  {title:"流民就食",description:"连岁不登，流民载道，就食京师。",choices:["给流民田宅，使著籍","遣返原籍，各安其业","设粥厂，赈其饥","募为军屯，实边","严驱遣，禁流徙"]}
+  {title:"岁入丰歉",description:"今岁郡国上计，仓廪实耗不一。或言丰收，或言歉收，户部请裁。",choices:["蠲免灾区田赋，宽恤百姓","严查郡国上计，惩治贪墨","开仓平粜，稳物价","加征丰区赋税，以充国用","募民垦荒，充仓廪"],baihua:{title:"岁入盈亏",description:"今年各地呈报的赋税与粮食账目，粮仓的充实和消耗情况并不一致。有的说丰收，有的说歉收，户部请您定夺。",choices:["免除受灾地区的田赋，宽待抚恤百姓","严查各地呈报的账目，惩治贪赃枉法之徒","开仓平价售粮，稳定市场物价","对丰收地区加征赋税，以补充国家开支","招募百姓开垦荒地，充实粮仓"]}},
+  {title:"边烽急报",description:"北边烽火屡警，斥候报胡骑游弋近塞，边将请命。",choices:["遣将巡边，示以军威","增戍长城，固守要隘","遣使和亲，缓边衅","联合属国共御之","纳粟拜爵，充实军资"],baihua:{title:"边关警报",description:"北方边境警报频频，侦察兵报告胡人骑兵在边塞附近游动，边将请求朝廷指示。",choices:["派遣将领巡视边境，显示军威","增兵守卫长城，牢牢守住险要关隘","派使者前去和亲，缓和边境争端","联合附属国共同抵御外敌","允许纳粮买爵，充实军需物资"]}},
+  {title:"黄河水患",description:"黄河决口，淹没州县，百姓流离，有司告急。",choices:["发卒塞决，赈济灾民","徙民避水，缓图筑堤","罪己求言，禳灾弭患","籍没豪强，充修堤之费","求治水之才，专任之"],baihua:{title:"黄河决堤",description:"黄河堤坝决口，淹没了许多州县，百姓流离失所，地方官员紧急上报。",choices:["征发士卒堵塞决口，赈济受灾百姓","迁移百姓躲避水患，暂缓修筑堤坝","下罪己诏征求直言，祈求消灾","没收豪强财产，用作修堤费用","寻访善于治水的人才，专门委任他"]}},
+  {title:"朝堂党争",description:"朝臣分立两派，互相攻讦，政事壅滞，诏令不下。",choices:["申明朋党之禁，严惩首恶","调和新旧，宽省其狱","外迁党首，远置郡县","广开言路，集议国是","自揽权纲，不偏一党"],baihua:{title:"朝中朋党",description:"朝中大臣分成两派，互相攻击揭短，政务积滞不畅，诏令难以下达。",choices:["申明禁止结党的法令，严惩带头闹事者","调和新旧两派，从宽处理相关案件","将党派首领外调，远远安置到地方郡县","广开进言之路，召集朝臣商议国事","亲自总揽大权，不偏向任何一派"]}},
+  {title:"蝗灾蔽天",description:"飞蝗蔽天，禾稼尽毁，民大饥，道殣相望。",choices:["下诏罪己，令郡国捕蝗","赦天下租赋，赈济灾民","祈禳弭灾，止捕蝗","募民捕蝗，易以粟","开仓赈济，宽恤百姓"],baihua:{title:"蝗灾肆虐",description:"飞蝗遮天蔽日，庄稼全被吃光，百姓严重缺粮，路上到处是饿死的人。",choices:["下诏罪己，令各地捕捉蝗虫","免除天下租赋，赈济受灾百姓","祈祷消灾，停止捕蝗","招募百姓捕蝗，用粮食作为报酬","开仓赈济，宽待抚恤百姓"]}},
+  {title:"仓廪空虚",description:"户部奏：国库支绌，军国之费不给，百官俸廪难继。",choices:["节用省费，减宫廷之支","加征商税，充国用","卖官鬻爵，纳粟补官","籍没贪豪，充国库","劝富民助饷，给以爵赏"],baihua:{title:"国库空虚",description:"户部上奏：国库空虚，军队的供给和国家开支都难以为继，百官的俸禄也难以维持。",choices:["节省开支，削减宫廷费用","加征商业税，充实国库","卖官鬻爵，允许纳粮补官","没收贪官豪富的财产，充实国库","劝导富户捐助军饷，给予爵位奖赏"]}},
+  {title:"疫疠流行",description:"数州疫疠流行，死者相望，乡里萧然。",choices:["遣使巡疫，施药赈济","设隔离之所，禁民流徙","罪己求言，禳灾弭患","大赦天下，以消天怒","求名医，专任救治"],baihua:{title:"瘟疫蔓延",description:"数个州郡瘟疫流行，死的人一个接一个，乡里一片萧条。",choices:["派遣使者巡视疫情，发放药物赈济","设立隔离场所，禁止百姓随意流动","下罪己诏征求直言，祈求消灾","大赦天下，以消解上天的愤怒","寻访名医，专门委任他救治"]}},
+  {title:"外使入朝",description:"远方国遣使入贡，请通商互市，礼官以闻。",choices:["厚赐其使，许通商互市","却其贡，闭关不与通","许通商而严其法","联其国共讨敌国","遣使报聘，通好如故"],baihua:{title:"外邦来使",description:"远方的国家派遣使者前来进贡，请求开通贸易互市，礼官将此事禀报给您。",choices:["厚赏来使，允许开通贸易互市","拒绝其进贡，关闭关市不与往来","允许通商但严格立法管理","联合该国共同讨伐敌国","派遣使者回访，维持友好如初"]}},
+  {title:"盗贼蜂起",description:"数郡盗贼蜂起，劫掠乡里，守令不能制。",choices:["遣将剿抚并用，速平之","招降盗首，赦其罪","严保甲，互相纠察","缓图之，先固京畿","罪己求言，宽省刑罚"],baihua:{title:"盗贼四起",description:"数个郡县的盗贼纷纷兴起，劫掠乡里，地方官无法制止。",choices:["派遣将领剿匪与招抚并用，迅速平定","招降盗贼首领，赦免其罪","严格实行保甲制度，互相监督检举","从缓图之，先稳固京城周边","下罪己诏征求直言，从宽处理刑罚"]}},
+  {title:"星变示警",description:"太史奏：星象变异，恐有天谴，百官请修省。",choices:["修德弭灾，下诏求言","大赦天下，以消天怒","改元以应天","罢土木，戒奢靡","遣使祭天，禳灾弭患"],baihua:{title:"星象异变",description:"太史令上奏：星象出现异常变化，恐怕是上天的警示，百官请求朝廷修德自省。",choices:["修养德行消灾，下诏征求直言","大赦天下，以消解上天的愤怒","改换年号以顺应天命","停止土木工程，戒除奢侈","派遣使者祭天，祈求消灾"]}},
+  {title:"科举取士",description:"科举利弊相争，或言宜广纳寒俊，或言当重门第。",choices:["广开科举，擢寒俊","复门第之制，重世家","行察举，举孝廉","设武举，文武并重","罢科举，专任吏员"],baihua:{title:"科举选才",description:"关于科举的利弊争论不休，有人主张广泛录用出身寒微的才俊，有人主张应当看重门第世家。",choices:["广开科举，提拔出身寒微的才俊","恢复门第制度，看重世家大族","实行察举，举荐孝廉之士","增设武举，文武并重","废除科举，专门任用吏员"]}},
+  {title:"水利营田",description:"陂塘败坏，农田失溉，劝农之议起。",choices:["兴修陂塘，劝课农桑","募民屯田，实边备","减免田租，与民休息","遣使循行，核垦田","听民自便，不夺其时"],baihua:{title:"农田水利",description:"池塘水坝年久失修，农田得不到灌溉，鼓励农耕的议论随之兴起。",choices:["兴建修缮池塘水坝，督促农桑","招募百姓屯田，充实边境防备","减免田租，让百姓休养生息","派遣使者巡查，核查开垦的田地","听任百姓自便，不占用他们的农时"]}},
+  {title:"宗室封赏",description:"宗室蕃衍，或请裂土分封，或言宜削其权。",choices:["分封子弟，藩屏王室","削藩集权，抑宗室","厚禄养之，不任以政","联姻强国，结外援","徙封就藩，分其势"],baihua:{title:"宗室分封",description:"皇族子孙繁衍众多，有人请求分封土地，有人则认为应当削弱他们的权力。",choices:["分封子弟，作为王室的屏障","削夺藩王权力，集中皇权，抑制宗室","给予丰厚俸禄供养，不委以政务","与强国联姻，结交外援","调徙封地就藩，分散他们的势力"]}},
+  {title:"工役兴作",description:"有司请营宫室、治驰道，言利病者不一。",choices:["罢土木，与民休息","营宫室，壮京师","募民应役，给以工值","征发罪徒，免扰平民","减役缓工，先务农"],baihua:{title:"工程劳役",description:"有关官员请求兴建宫殿、修筑驰道，认为有利和有弊的人意见不一。",choices:["停止土木工程，让百姓休养生息","兴建宫殿，壮大国都气象","招募百姓服役，给付工钱","征发罪犯服役，以免骚扰平民","减少徭役暂缓工程，先务农事"]}},
+  {title:"驿传通信",description:"驿政废弛，边情迟滞，有司请整饬。",choices:["整饬驿政，速达边情","省并驿传，节国用","增置急递，军情毕达","严驿使，禁私遣","宽其禁，便民往来"],baihua:{title:"驿站传递",description:"驿站政务废弛，边境情报传递迟缓，有关官员请求整顿。",choices:["整顿驿站政务，使边境军情迅速送达","裁并驿站，节省国家开支","增设急递铺，使军情畅通无阻","严格驿站使者管理，禁止私自派遣","放宽禁令，方便百姓往来"]}},
+  {title:"钱法币制",description:"钱法紊乱，私铸蜂起，物价腾踊。",choices:["更铸钱币，统一圜法","禁私铸，严其法","听民交易，不妄改作","铸大钱，济国用","平准物价，稳市廛"],baihua:{title:"钱币制度",description:"钱币制度混乱，私铸钱币大量出现，物价飞涨。",choices:["重新铸造钱币，统一币制","禁止私铸，严立法令","听任百姓交易，不轻易更改","铸造大钱，接济国家开支","平抑物价，稳定市场"]}},
+  {title:"边贸互市",description:"沿边互市之议：开则利市，禁则防戎。",choices:["开马市，通互市","闭关绝市，防戎心","设榷场，征其税","以茶帛易马，实军备","严互市之禁，防奸宄"],baihua:{title:"边境互市",description:"关于沿边互市的议论：开放则有利于贸易，禁止则防备边患。",choices:["开设马市，开通互市贸易","关闭关市断绝贸易，防备边患之心","设立榷场，征收其税","用茶叶布帛换取马匹，充实军备","严格互市禁令，防备奸邪之人"]}},
+  {title:"太子监国",description:"储贰未定，或请早建，或言宜历练政事。",choices:["立储君，早定大本","命太子监国，历练政事","托孤大臣，共辅幼主","自揽乾纲，不早建储","分封诸王，共夹辅"],baihua:{title:"立储监国",description:"太子之位尚未确定，有人请求早日立储，有人则认为应当先历练政事。",choices:["册立太子，早日确定根本","命太子监国，历练政事","托付顾命大臣，共同辅佐幼主","亲自总揽大权，不早立太子","分封诸王，共同辅佐"]}},
+  {title:"祥瑞符命",description:"郡县屡报祥瑞，或言宜受，或言当戒盈。",choices:["受祥瑞，颁赦天下","却祥瑞，戒盈满","宣付史馆，彰治平","借符命制天下，收民心","遣使祭告，谢天贶"],baihua:{title:"祥瑞符命",description:"郡县屡次上报祥瑞，有人主张应当接受，有人则认为应当警惕自满。",choices:["接受祥瑞，颁布大赦","推却祥瑞，警惕自满","宣付史馆，彰显太平治绩","借符命之名制约天下，收揽民心","派遣使者祭告，感谢天赐"]}},
+  {title:"流民就食",description:"连岁不登，流民载道，就食京师。",choices:["给流民田宅，使著籍","遣返原籍，各安其业","设粥厂，赈其饥","募为军屯，实边","严驱遣，禁流徙"],baihua:{title:"流民谋生",description:"连年收成不好，流民络绎于道，到京城谋求生计。",choices:["分配给流民田宅，使他们登记入籍","遣返原籍，各安本业","设立粥厂，赈济他们的饥饿","招募为军屯，充实边境","严格驱赶遣返，禁止流徙"]}}
 ];
 
 // 危机后备池：在数值崩危时启用，选项偏重"救急/缓解"
 const CRISIS_FALLBACK = [
-  {title:"国库告罄",description:"府库一空，百官俸廪、军国之费皆无所出，有司惶惧。",choices:["开源节流，裁冗费","加征商税，充国用","卖官鬻爵，纳粟补官","籍没豪右，充府库","发义仓，赈穷乏"]},
-  {title:"民心离散",description:"苛政疲民，怨讟载道，流亡者众，社稷动摇。",choices:["大赦天下，与民更始","轻徭薄赋，宽恤百姓","严捕倡乱者，以靖地方","遣循吏抚循，察冤狱","罢弊政，罪己求言"]},
-  {title:"边军踰制",description:"边将拥兵，骄悍难制，兵变之虞隐隐。",choices:["罢不急之师，息民力","厚赏将士，固军心","易帅整军，申明军纪","简练精锐，汰老弱","增戍要害，示以兵威"]},
-  {title:"朝纲解纽",description:"政事壅滞，诏令不行，纪纲颓弛，朝野忧之。",choices:["亲揽万机，肃清怠政","引贤臣，共理朝政","宽假臣下，缓其狱","守成法，不轻更易","大阅天下，振威权"]},
-  {title:"灾异叠见",description:"水旱疾疫相继，星变又作，上下惴惴。",choices:["罪己修省，罢土木","发仓赈灾，活饥民","遣使巡省，平冤滞","严捕妖言，安众心","祷于山川，禳天变"]},
-  {title:"权臣擅命",description:"权臣窃柄，威福自恣，主势渐移。",choices:["骤夺其权，付廷尉","阳尊阴制，徐图之","引近臣制衡，分其势","厚赏以安之，不究其专","出巡亲政，收威柄"]},
-  {title:"盗寇成势",description:"啸聚日众，攻掠城邑，官兵屡北。",choices:["大发诸郡兵，合剿之","招抚渠帅，使自效","坚壁清野，困其众","行保甲，联村落","募死士，间其党"]},
-  {title:"粮价腾踊",description:"谷价数倍，穷民辍食，市井汹汹。",choices:["平粜仓粟，抑豪右","弛山川之禁，通转输","蠲逋赋，苏民困","禁遏籴，通有无","发内帑，赈贫窭"]}
+  {title:"国库告罄",description:"府库一空，百官俸廪、军国之费皆无所出，有司惶惧。",choices:["开源节流，裁冗费","加征商税，充国用","卖官鬻爵，纳粟补官","籍没豪右，充府库","发义仓，赈穷乏"],baihua:{title:"国库耗尽",description:"国库空空如也，百官的俸禄、军队和国家开支都拿不出来，官员们惶恐不安。",choices:["开源节流，裁减多余开支","加征商业税，充实国库","卖官鬻爵，允许纳粮补官","没收豪强地主的财产，充实府库","开义仓赈济穷困百姓"]}},
+  {title:"民心离散",description:"苛政疲民，怨讟载道，流亡者众，社稷动摇。",choices:["大赦天下，与民更始","轻徭薄赋，宽恤百姓","严捕倡乱者，以靖地方","遣循吏抚循，察冤狱","罢弊政，罪己求言"],baihua:{title:"民心涣散",description:"苛刻的政令使百姓疲困，怨言遍布道路，流亡的人很多，国家根基动摇。",choices:["大赦天下，与百姓重新开始","减轻徭役赋税，宽待抚恤百姓","严拿带头闹事的人，安定地方","派遣清官安抚，查察冤案","废除弊政，下罪己诏征求直言"]}},
+  {title:"边军踰制",description:"边将拥兵，骄悍难制，兵变之虞隐隐。",choices:["罢不急之师，息民力","厚赏将士，固军心","易帅整军，申明军纪","简练精锐，汰老弱","增戍要害，示以兵威"],baihua:{title:"边将坐大",description:"边境将领手握重兵，骄横剽悍难以制约，兵变的隐患隐隐浮现。",choices:["撤掉不急需的军队，让百姓休养生息","厚赏将士，稳固军心","更换主帅整肃军队，申明军纪","挑选精锐裁汰老弱","增兵守卫要害之地，显示军威"]}},
+  {title:"朝纲解纽",description:"政事壅滞，诏令不行，纪纲颓弛，朝野忧之。",choices:["亲揽万机，肃清怠政","引贤臣，共理朝政","宽假臣下，缓其狱","守成法，不轻更易","大阅天下，振威权"],baihua:{title:"朝政松弛",description:"政务积压不畅，诏令无法贯彻，法纪败坏松弛，朝野上下为此担忧。",choices:["亲自总揽政务，肃清怠惰之风","引荐贤臣，共同治理朝政","宽待臣下，减缓刑罚","谨守成法，不轻易变更","大举阅兵天下，重振权威"]}},
+  {title:"灾异叠见",description:"水旱疾疫相继，星变又作，上下惴惴。",choices:["罪己修省，罢土木","发仓赈灾，活饥民","遣使巡省，平冤滞","严捕妖言，安众心","祷于山川，禳天变"],baihua:{title:"灾祸连发",description:"水灾旱灾瘟疫接连发生，星象又出现异常，上下人等惶惶不安。",choices:["下罪己诏修身反省，停止土木工程","开仓赈灾，救活饥民","派遣使者巡视，平反冤案积滞","严拿散布妖言的人，安定人心","向山川祈祷，祈求消灾"]}},
+  {title:"权臣擅命",description:"权臣窃柄，威福自恣，主势渐移。",choices:["骤夺其权，付廷尉","阳尊阴制，徐图之","引近臣制衡，分其势","厚赏以安之，不究其专","出巡亲政，收威柄"],baihua:{title:"权臣专权",description:"权臣窃据权柄，作威作福随心所欲，君主的权势渐渐旁落。",choices:["突然夺去他的权力，交付廷尉治罪","表面尊崇暗中制约，慢慢图谋","引进近臣制衡，分散他的势力","厚加赏赐以安抚，不深究他的专断","出巡亲政，收回权威权柄"]}},
+  {title:"盗寇成势",description:"啸聚日众，攻掠城邑，官兵屡北。",choices:["大发诸郡兵，合剿之","招抚渠帅，使自效","坚壁清野，困其众","行保甲，联村落","募死士，间其党"],baihua:{title:"盗寇成势",description:"啸聚的盗贼越来越多，攻打劫掠城池，官兵屡战屡败。",choices:["大举征调各郡兵马，合力围剿","招抚盗寇首领，让他效力","坚壁清野，困住贼众","实行保甲，联结村落","招募敢死之士，离间其党羽"]}},
+  {title:"粮价腾踊",description:"谷价数倍，穷民辍食，市井汹汹。",choices:["平粜仓粟，抑豪右","弛山川之禁，通转输","蠲逋赋，苏民困","禁遏籴，通有无","发内帑，赈贫窭"],baihua:{title:"粮价飞涨",description:"粮价涨了好几倍，穷苦百姓吃不上饭，市井间人心惶惶。",choices:["平价出售仓中粮食，抑制豪强","放宽山川禁令，畅通转运","免除积欠的赋税，缓解百姓困顿","禁止阻止买粮，打通有无","动用内库钱财，赈济贫民"]}}
 ];
 
 // 科技阻力事件（核心创新的真实落地）：科技远超时代时触发，含分支选项与真实数值后果
@@ -1615,7 +1673,18 @@ const TECH_RESIST_EVENTS = [
       "召儒臣廷辩，折中以行新制",
       "尽罢新器以安人心，复祖制",
       "借新法之名行聚敛，充国库以固本"
-    ]
+    ],
+    baihua:{
+      title:"奇技淫巧之争",
+      description:"陛下锐意推行新法，科技水平远超这个时代。朝中老臣联名上疏，说这些新奇技艺是雕虫小技，会扰乱祖宗法度、失去民心、引发频繁变更，请求废止新器具、驱逐异端方术。议论纷纷，陛下需要做出决断。",
+      choices:[
+        "严词斥责上书大臣，进一步推行新法，用皇权压制众议",
+        "稍稍收敛锋芒，把奏疏留在宫中不发，慢慢图谋推进",
+        "召儒臣到朝堂辩论，折中调和以推行新制",
+        "全部废止新器具以安抚人心，恢复祖宗旧制",
+        "借推行新法之名横征暴敛，充实国库以巩固根本"
+      ]
+    }
   },
   { // 宋明理学语境
     title:"新学乱经之辩",
@@ -1627,7 +1696,18 @@ const TECH_RESIST_EVENTS = [
       "开经筵集议，折衷新旧",
       "尽黜新学以靖清议，崇程朱",
       "假新学理财，充内帑而固权"
-    ]
+    ],
+    baihua:{
+      title:"新学乱经之辩",
+      description:"陛下崇信探究事物的新学问与新技术，器械的精巧远远超出古制。台谏和儒臣接连上章弹劾，说这是抛弃儒家经术而追求功利，败坏人心、轻视纲常名教，请求诛除异端、端正学术。清流舆论大哗，陛下需要决断。",
+      choices:[
+        "下诏申明新学的正当性，用君主之权压制台谏",
+        "保留新学但收敛其锋芒，不废弃儒家经术",
+        "开设经筵召集议论，折中调和新旧两派",
+        "彻底罢黜新学以平息清议，尊崇程朱理学",
+        "借新学来理财，充实内库而巩固权位"
+      ]
+    }
   },
   { // 清中叶务实语境
     title:"用夷变夏之嫌",
@@ -1639,7 +1719,18 @@ const TECH_RESIST_EVENTS = [
       "设总理衙门，统筹中西",
       "尽焚新器以塞清议，守祖训",
       "借新法筹饷，厚兵力以自固"
-    ]
+    ],
+    baihua:{
+      title:"用夷变夏之嫌",
+      description:"陛下采用西洋的奇巧器具和新法，轮船火炮等机巧之物渐渐传入中原。廷臣哗然，上奏说这是用外夷改变华夏，有伤国家体面、会引发外人觊觎，请求禁绝那些器具、断绝那些方术。满汉大臣议论激烈对立，陛下需要决断。",
+      choices:[
+        "力排众议，坚持采买西洋器具",
+        "暗中推行，不张扬声张",
+        "设立总理衙门，统筹中西事务",
+        "把新器具全部焚毁以堵住清议，谨守祖宗训诫",
+        "借新法筹措军饷，厚实兵力以自我巩固"
+      ]
+    }
   }
 ];
 // 按朝代稳定选取一套阻力文案（同一皇帝每次触发文案一致）
@@ -1660,7 +1751,7 @@ function pickFallback(kind){
 /* ============ 提示词模板 ============ */
 const PROMPTS = {
   system(emperor){
-    return `你是一位精通中国历史的史官，依据《二十四史》《资治通鉴》的体例与史观，为皇帝模拟游戏生成事件与抉择。
+    let s = `你是一位精通中国历史的史官，依据《二十四史》《资治通鉴》的体例与史观，为皇帝模拟游戏生成事件与抉择。
 
 【当前皇帝】
 姓名：${emperor.name}（${emperor.templeName}）
@@ -1691,8 +1782,6 @@ ${emperor.eraContext}
 5. 相互排斥，后果非线性
 
 【输出格式】严格输出JSON，结构如下：
-{
-  "eventTitle": "事件标题（4-8字）",
   "eventDescription": "事件描述（100-200字，文言或半文言）",
   "choices": [
     { "text": "选项内容（20-40字）", "hint": "选项倾向暗示（10字内，如'进取·冒险'）" }
@@ -1701,6 +1790,12 @@ ${emperor.eraContext}
 若要求"为既定选项生成后果"，则顶层仅含 { "outcomes":[ {"outcomeDescription":"后果叙述(史书体,80-150字)","historianComment":"史官评(30-60字)","statChanges":{"treasury":0,"people":0,"military":0,"court":0,"health":0,"tech":0}} ] }（共5项，与既定选项顺序对应）。
 若要求"生成完整事件"，则顶层额外含 eventTitle/eventDescription/choices，并加 "outcomes"（共5项，与 choices 顺序一一对应）。
 各项数值变化范围：常规事件单项 -15~+15，危机事件单项最多 -25~+25。choices 与 outcomes 均必须正好5个。不要输出任何JSON以外的内容。`;
+    // 科技树档案（接入 tech_engine）：让 AI 认知玩家所拥「超前（越代）科技」及其真实落地增益，据此生成后果与叙事
+    const prof = (typeof state!=="undefined" && state && state.techProfile) ? state.techProfile : null;
+    if(prof && prof.aiSummary){
+      s += `\n\n${prof.aiSummary}`;
+    }
+    return s;
   },
   user(state,eventType,presetEvent){
     const e=state.emperor;
@@ -1868,8 +1963,36 @@ function newState(emperor){
     _activeAnchor:null,            // 本月注入的史材锚点（1.1）
     _midFired:[],                  // 已触发的中段定时炸弹下标（5.2）
     pregenQueue:[],               // 批量预生成的事件队列（降低 API 延迟）
-    pregenPending:false           // 批量预生成是否正在飞行中
+    pregenPending:false,          // 批量预生成是否正在飞行中
+    // ---- 科技树（接入 tech_engine，详见 docs/科技树系统设计.md）----
+    ownedTechs:{},                // 玩家已加点科技树：节点id -> 等级
+    techProfile:null,             // 最近一次 compute 出的 techProfile（含 aiSummary / 超前科技）
+    techBaseStats:null            // 注入科技树加成前的属性快照，供将来科研重算使用
   };
+}
+
+// 科技树引擎单例（数据由 data/tech_data.js 注入全局；缺失则降级为 null，游戏其余部分不受影响）
+const TECH_ENGINE = (typeof window!=="undefined" && window.TECH_TREE && window.TECH_PRESETS && typeof window.TechEngine==="function")
+  ? new window.TechEngine(window.TECH_TREE, window.TECH_PRESETS)
+  : null;
+
+// 将科技树档案应用到游戏状态：
+//  - 仅把「超前科技（穿越者）」的衰减加成注入六维——既有 initStats 已含时代基线，避免晚朝皇帝被预设加成瞬间满属性、破坏平衡；
+//  - 时代内科技视为已计入 initStats，不再重复叠加；
+//  - 计算并缓存 techProfile，供 AI 叙事与「科技阻力」阈值使用。
+function applyTechProfile(){
+  if(!TECH_ENGINE || !state) return;
+  const owned = TECH_ENGINE.presetFor(state.emperor.dynasty) || {};
+  state.ownedTechs = Object.assign({}, owned);
+  const profile = TECH_ENGINE.compute(state.emperor, state.ownedTechs);
+  state.techProfile = profile;
+  // 注入前的基线快照（须在 ahead 加成注入前记录，供将来科研重算使用）
+  state.techBaseStats = Object.assign({}, state.stats);
+  // 仅叠加超前科技（gap>0）的真实增益；attrBonus 已四舍五入，clamp 0–100
+  const ahead = profile.ahead.attrBonus || {};
+  ["treasury","people","military","court","health","tech"].forEach(k=>{
+    if(ahead[k]) state.stats[k] = clamp(state.stats[k] + ahead[k], 0, 100);
+  });
 }
 
 /* ============ 工具函数 ============ */
@@ -1893,7 +2016,7 @@ function avgStat(stats){
 }
 
 /* ============ 屏幕导航 ============ */
-const SCREENS=["menu","dynasty","emperor","intro","game","settings","about","save","ending"];
+const SCREENS=["menu","dynasty","emperor","intro","game","settings","about","save","ending","tech"];
 function goto(id){
   // 轻量过渡（仅跨大屏切换时用水墨过渡）
   const currentActive = document.querySelector(".screen.active");
@@ -1917,6 +2040,76 @@ function goto(id){
   }else{
     doSwitch();
   }
+}
+
+/* ============ 科技树查看器（接入 tech_engine，只读） ============ */
+function openTechTree(){
+  if(!state){ return; }
+  renderTechTree();
+  goto("tech");
+}
+function closeTechTree(){
+  goto("game");
+}
+// 渲染科技树：按「分支 → 时代」矩阵展示已拥科技，标记超前（越代）科技与落地效率
+function renderTechTree(){
+  const eraNameEl=document.getElementById("tech-era-name");
+  const summaryEl=document.getElementById("tech-summary");
+  const treeEl=document.getElementById("tech-tree");
+  if(!TECH_ENGINE || !state || !state.techProfile){
+    if(eraNameEl) eraNameEl.textContent="（科技树数据未加载）";
+    if(summaryEl) summaryEl.textContent="未能加载科技树引擎或数据，请确认 data/tech_data.js 与 tools/tech_engine.js 已随页面加载。";
+    if(treeEl) treeEl.innerHTML="";
+    return;
+  }
+  const prof=state.techProfile;
+  const tree=TECH_ENGINE.tree;
+  const meta=tree.meta||{};
+  const branches=(meta.branches||[]).map(b=>b.id);
+  const branchNames={}; (meta.branches||[]).forEach(b=>branchNames[b.id]=b.name);
+  const ages=(meta.ages||[]).map(a=>a.id);
+  const ageNames={}; (meta.ages||[]).forEach(a=>ageNames[a.id]=a.name);
+  // 收集已拥节点（来自预设），按 分支×时代 归类；ENGINE 未直接给节点级列表，这里由 ownedTechs + nodeById 重建
+  const nodeById=TECH_ENGINE.nodeById||{};
+  const byBranchAge={};
+  let ownedCount=0, aheadCount=0;
+  for(const id in state.ownedTechs){
+    const lvl=state.ownedTechs[id]; if(!lvl||lvl<=0) continue;
+    const node=nodeById[id]; if(!node) continue;
+    ownedCount++;
+    const gap=(node.age||0)-prof.eraLevel;
+    if(gap>0) aheadCount++;
+    const key=node.branch+"|"+node.age;
+    (byBranchAge[key]=byBranchAge[key]||[]).push({node,lvl,gap});
+  }
+  if(eraNameEl) eraNameEl.textContent=`${state.emperor.dynasty} · ${prof.eraName}（时代等级 ${prof.eraLevel}）`;
+  // 摘要：总览 + 六维增益 + 超前科技
+  const attr=prof.attrBonus||{};
+  const attrCn={treasury:"国库",people:"民心",military:"军事",court:"朝政",health:"健康",tech:"科技"};
+  const attrStr=Object.keys(attrCn).filter(k=>attr[k]).map(k=>`${attrCn[k]}${attr[k]>0?"+":""}${attr[k]}`).join("、")||"无";
+  let sum=`<b>已拥科技 ${ownedCount} 项</b>　累计 ${prof.totalLevels} 级　|　六维增益：${attrStr}`;
+  sum+=`<br><b>超前（越代）科技 ${prof.ahead.count} 项</b>`+(prof.ahead.count?`（最高领先 ${prof.ahead.maxGap} 代）`:"")+`　—— 穿越者之能，朝臣或以「奇技淫巧」非之。`;
+  if(summaryEl) summaryEl.innerHTML=sum;
+  // 矩阵渲染
+  let html="";
+  branches.forEach(bid=>{
+    html+=`<div class="tech-branch"><div class="tech-branch-name">${branchNames[bid]||bid}</div><div class="tech-ages">`;
+    ages.forEach(aid=>{
+      const cell=byBranchAge[bid+"|"+aid];
+      const isAheadEra = aid>prof.eraLevel;
+      const ownedHere = cell && cell.length;
+      const cls="tech-cell"+(ownedHere?" owned":" empty")+(isAheadEra?" ahead-era":"");
+      let inner="";
+      if(ownedHere){
+        inner=cell.map(c=>`<span class="tech-node${c.gap>0?" ahead":""}" title="${escapeHtml(c.node.desc||"")}">${escapeHtml(c.node.name)}·${c.lvl}${c.gap>0?"↑"+c.gap:""}</span>`).join("");
+      }else{
+        inner=`<span class="tech-era-label">${ageNames[aid]||("时代"+aid)}</span>`;
+      }
+      html+=`<div class="${cls}"><div class="tech-age-h">${ageNames[aid]||("时代"+aid)}</div>${inner}</div>`;
+    });
+    html+=`</div></div>`;
+  });
+  if(treeEl) treeEl.innerHTML=html;
 }
 
 /* ============ 朝代/皇帝列表渲染 ============ */
@@ -1965,6 +2158,7 @@ function startGame(){
   state=newState(pendingEmperor);
   cohEnded=false;
   currentEvent=null; currentChoiceIndex=-1;
+  applyTechProfile();   // 接入科技树：按朝代预设计算档案并注入超前科技衰减加成
   goto("game");
   renderGame();
   enterMonth();
@@ -2120,10 +2314,12 @@ function findEventById(id){
   return list.find(e=>(e.id||"")===id) || null;
 }
 
-// 是否触发"科技阻力"事件：科技超出时代基线 20 且距上次触发已满一年，避免刷屏
+// 是否触发"科技阻力"事件：科技超出时代基线 20，或玩家确拥有「超前（越代）科技」——后者由科技树引擎真实算出，
+// 比单纯看 tech 数值更贴合"奇技淫巧遭朝臣反对"的设定；距上次触发满一年避免刷屏
 function shouldTriggerTechResist(){
   const thr=state.emperor.initStats.tech+20;
-  if(state.stats.tech<=thr){ state._techResistArmed=false; return false; }
+  const aheadCount = state.techProfile ? (state.techProfile.ahead.count||0) : 0;
+  if(state.stats.tech<=thr && aheadCount===0){ state._techResistArmed=false; return false; }
   const now=state.year*12+state.month;
   if(state._techResistLast && (now-state._techResistLast)<12) return false;
   return true;
@@ -2165,7 +2361,7 @@ function loadEvent(eventType,preset){
         currentEvent={
           title:json.eventTitle,
           description:json.eventDescription,
-          choices:json.choices.map(c=>({text:c.text||"",hint:c.hint||""})),
+          choices:json.choices.map(c=> typeof c==="string" ? {text:c,hint:hintFromText(c)} : {text:c.text||"",hint:c.hint||""}),
           outcomes:(json.outcomes||[]).map(o=>o||{}),
           historicalChoice:-1,
           source:eventType
@@ -2210,7 +2406,8 @@ function fallbackEvent(eventType,preset){
       description:"近岁国政失当，"+crisis+"。朝野震动，群臣议急救之策，陛下需定夺。",
       choices:fb.choices.map(c=>({text:c,hint:hintFromText(c)})),
       historicalChoice:-1,
-      source:eventType
+      source:eventType,
+      _ev:fb
     };
     renderEvent();
   }else{
@@ -2221,7 +2418,8 @@ function fallbackEvent(eventType,preset){
       description:fb.description,
       choices:fb.choices.map(c=>({text:c,hint:hintFromText(c)})),
       historicalChoice:-1,
-      source:eventType
+      source:eventType,
+      _ev:fb
     };
     renderEvent();
   }
@@ -2327,6 +2525,9 @@ function BK(emp, field){
 // 事件字段同步解析（返回 {title,description,choices} 或 null）
 function bhEventSync(emp, ev){
   if(!bhOn() || !ev) return null;
+  // 优先使用事件自带的白话层（硬编码后备/危机/科技阻力事件池直接挂 baihua）
+  if(ev.baihua && ev.baihua.title!=null)
+    return {title:ev.baihua.title, description:ev.baihua.description||"", choices:ev.baihua.choices||null};
   if(emp && emp.baihua && emp.baihua.events && ev.id && emp.baihua.events[ev.id])
     return emp.baihua.events[ev.id];
   const ck=bhEventKey(emp, ev);
@@ -2402,6 +2603,8 @@ function rerenderCurrent(){
 
 function makeChoice(i){
   if(!currentEvent) return;
+  if(currentEvent._resolved) return;   // 防重复结算：同一事件已抉择后忽略后续点击，避免数值被二次扣加/历史被重复写入
+  currentEvent._resolved=true;
   animateChoice(i); // 美术增强：选项确认动画
   currentChoiceIndex=i;
   const choice=currentEvent.choices[i];
@@ -2482,6 +2685,7 @@ function applyOutcome(json,choice){
     let v=Math.round(Number(sc[k])||0);
     v=clamp(v,-limit,limit);
     state.stats[k]=clamp(state.stats[k]+v,0,100);
+    sc[k]=v;   // 写回截断后的值，使“变化”面板与真实生效数值一致（避免显示 +15 实则 +10）
   });
   applyCoupling();
   recordHistory(choice,json.outcomeDescription,json.historianComment,sc);
@@ -2591,9 +2795,11 @@ function renderOutcome(desc,comment,sc){
   }
   // 自动存档
   autoSave();
-  // 检查驾崩
+  // 检查驾崩：立即置终局标记，避免 1200ms 延迟期内玩家仍可"推进下月"造成死后续玩
   if(state.stats.health<=0){
+    cohEnded=true;
     setTimeout(()=>endGame("驾崩"),1200);
+    return;
   }
 }
 
@@ -2631,6 +2837,12 @@ function nextMonth(){
   // 被动损耗封顶：无论何种叠加，单月健康净损耗不超过 2，确保损耗速率符合预期、可预期
   if(passive < -2) passive = -2;
   if(passive !== 0) state.stats.health = clamp(state.stats.health + passive, 0, 100);
+  // 被动衰减致死：健康归零即驾崩（与"健康=0 皇帝驾崩"规则一致；此前仅在选项结算后检查，会漏掉自然衰减致死）
+  if(state.stats.health<=0){
+    state.stats.health=0;
+    endGame("驾崩");
+    return;
+  }
   // 推进月份
   state.month++;
   if(state.month>12){ state.month=1; state.year++; }
@@ -2687,6 +2899,7 @@ function evalEnding(st){
 }
 
 function endGame(reason){
+  if(cohEnded) return;   // 防止被动衰减与结算超时等多路径重复进入终局
   cohEnded=true;
   // 自动存档清理（保留历史）
   const reignYears = state.year - state.emperor.reignStart + 1;
@@ -2843,10 +3056,10 @@ function loadSettings(){
     const s=JSON.parse(localStorage.getItem("coh_settings")||"{}");
     if(s.builtin===false){
       // 用户自填模式：明文仅存于本地，由用户自行负责
-      return {builtin:false,api:s.api||"",key:s.key||"",model:s.model||BUILTIN_DEFAULT_MODEL,temp:s.temp!=null?s.temp:0.8,fastMode:!!s.fastMode,offlineMode:!!s.offlineMode,baihua:!!s.baihua};
+      return {builtin:false,api:s.api||"",key:s.key||"",model:s.model||BUILTIN_DEFAULT_MODEL,temp:s.temp!=null?s.temp:0.8,fastMode:!!s.fastMode,offlineMode:!!s.offlineMode,baihua: (s.baihua === undefined ? true : !!s.baihua)};
     }
     // 默认：内置加密凭据模式（api/key 不存明文，真实值仅存于密文）
-    return {builtin:true,api:"",key:"",model:BUILTIN_DEFAULT_MODEL,temp:0.8,fastMode:!!s.fastMode,offlineMode:!!s.offlineMode,baihua:!!s.baihua};
+    return {builtin:true,api:"",key:"",model:BUILTIN_DEFAULT_MODEL,temp:0.8,fastMode:!!s.fastMode,offlineMode:!!s.offlineMode,baihua: (s.baihua === undefined ? true : !!s.baihua)};
   }catch(e){ return {builtin:true,api:"",key:"",model:BUILTIN_DEFAULT_MODEL,temp:0.8,fastMode:false,offlineMode:false}; }
 }
 function loadSettingsToForm(){
@@ -2919,6 +3132,19 @@ async function testConnection(){
     document.getElementById("set-msg").textContent="连接失败："+e.message;
   }
 }
+// 鲁棒解析 AI 返回的 JSON：兼容 ```json 围栏包裹或前后附加说明文本的常见情况
+function safeParseJSON(content){
+  if(typeof content!=="string") return null;
+  let s=content.trim();
+  const fence=/```(?:json)?\s*([\s\S]*?)```/i.exec(s);
+  if(fence) s=fence[1].trim();
+  const objStart=s.indexOf("{"), arrStart=s.indexOf("[");
+  let start,end;
+  if(arrStart!==-1 && (objStart===-1 || arrStart<objStart)){ start=arrStart; end=s.lastIndexOf("]"); }
+  else { start=objStart; end=s.lastIndexOf("}"); }
+  if(start===-1||end===-1||end<start) return null;
+  try{ return JSON.parse(s.slice(start,end+1)); }catch(e){ return null; }
+}
 async function callAI(sysMsg,userMsg,isOutcome,isTest){
   const cfg=await resolveCreds();
   if(!cfg || !cfg.key){
@@ -2938,9 +3164,10 @@ async function callAI(sysMsg,userMsg,isOutcome,isTest){
   };
   let lastErr;
   for(let attempt=0;attempt<2;attempt++){
+    let t;
     try{
       const ctrl=new AbortController();
-      const t=setTimeout(()=>ctrl.abort(),30000);
+      t=setTimeout(()=>ctrl.abort(),30000);
       const resp=await fetch(url,{
         method:"POST",
         headers:{
@@ -2961,8 +3188,11 @@ async function callAI(sysMsg,userMsg,isOutcome,isTest){
       const data=await resp.json();
       const content=data.choices&&data.choices[0]&&data.choices[0].message&&data.choices[0].message.content;
       if(!content) throw new Error("空响应");
-      return JSON.parse(content);
+      const parsed=safeParseJSON(content);
+      if(!parsed) throw new Error("AI响应非合法JSON（可能被说明文本或代码围栏包裹）");
+      return parsed;
     }catch(e){
+      clearTimeout(t);
       lastErr=e;
       if(isTest) throw e;
     }
@@ -2993,7 +3223,7 @@ async function pregenerateMonths(){
       state.pregenQueue.push({
         eventTitle: ev.eventTitle,
         eventDescription: ev.eventDescription||"",
-        choices: ev.choices.map(c=>({text:c.text||"",hint:c.hint||""})),
+        choices: ev.choices.map(c=> typeof c==="string" ? {text:c,hint:hintFromText(c)} : {text:c.text||"",hint:c.hint||""}),
         outcomes: (ev.outcomes||[]).map(o=>o||{})
       });
     }
@@ -3104,6 +3334,10 @@ function doLoad(slot){
   };
   currentEvent=null; currentChoiceIndex=-1;
   cohEnded=false;
+  // 读档后重算科技树档案：applyTechProfile 按朝代预设重建 ownedTechs/techProfile
+  // 并注入超前科技加成。此步缺失会导致读档后 techProfile 为 null —— 科技查看器显示
+  // “数据未加载”、科技阻力事件不再触发、AI 叙事丢失科技档案（科技树接入后的存档回归）。
+  applyTechProfile();
   toast("已读档");
   goto("game");
   renderGame();
