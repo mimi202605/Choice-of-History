@@ -6,14 +6,15 @@
 <title>Choice of History · 科技树</title>
 <style>
   :root{
-    --bg:#0f1419; --panel:#161c24; --panel2:#1d2530; --line:#2a3340;
-    --txt:#e6edf3; --dim:#8b97a6; --acc:#6fb3ff; --gold:#e0b34a;
-    --red:#ff6b6b; --green:#5fd38a; --purple:#b388ff;
-    --b-agri:#7bc96f; --b-mil:#ff7a7a; --b-eng:#6fb3ff; --b-com:#e0b34a;
-    --b-civ:#b388ff; --b-med:#5fd38a; --b-sci:#56d4d4; --b-law:#d99a6c; --b-occ:#c98ad6;
+    /* 与主界面同源：宣纸 / 墨 / 朱红 / 金 / 玉 */
+    --bg:#f4ecd8; --panel:#fbf6e9; --panel2:#efe6d0; --line:#d8c9a8;
+    --txt:#2c2416; --dim:#6b5d4f; --acc:#7a5a24; --gold:#7d5e28;
+    --red:#8b3a3a; --green:#3a6b5a; --purple:#7a5a8a;
+    --b-agri:#5a8c4a; --b-mil:#a84545; --b-eng:#3a6b8c; --b-com:#9a7b3f;
+    --b-civ:#7a5a8a; --b-med:#3a6b5a; --b-sci:#4a7a9a; --b-law:#b07a4a; --b-occ:#8a6a9a;
   }
   *{box-sizing:border-box}
-  body{margin:0;font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;background:var(--bg);color:var(--txt);font-size:14px}
+  body{margin:0;font-family:'Noto Serif SC','Songti SC','SimSun',serif;background:var(--bg);color:var(--txt);font-size:14px}
   header{padding:14px 20px;background:var(--panel);border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:14px;align-items:center}
   h1{font-size:17px;margin:0;font-weight:600}
   h1 small{color:var(--dim);font-weight:400;font-size:12px;margin-left:8px}
@@ -30,7 +31,7 @@
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:10px}
   .card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px;position:relative;transition:.15s}
   .card.locked{opacity:.5}
-  .card.ahead{border-color:var(--red);box-shadow:0 0 0 1px rgba(255,107,107,.25)}
+  .card.ahead{border-color:var(--red);box-shadow:0 0 0 1px rgba(139,58,58,.25)}
   .card.owned{border-color:var(--green)}
   .card .nm{font-weight:600;font-size:13.5px;margin-bottom:3px}
   .card .meta{color:var(--dim);font-size:11px;line-height:1.5}
@@ -128,7 +129,7 @@ async function boot(){
   sel.onchange=()=>loadDyn(sel.value);
   document.getElementById("reset").onclick=()=>loadDyn(DYN);
   document.getElementById("clear").onclick=()=>{OWNED={};render();toast("已清空");};
-  document.getElementById("pts").oninput=render;
+  let _ptsTimer; document.getElementById("pts").oninput=()=>{clearTimeout(_ptsTimer);_ptsTimer=setTimeout(render,120);};
   loadDyn("秦");
 }
 

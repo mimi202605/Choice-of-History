@@ -22,6 +22,13 @@
         "tech": 40
       },
       "eraContext": "明万历后期朝纲废弛、辽东边备空虚，女真散部林立；努尔哈赤以遗甲十三副崛兴于东海之滨，辽东旧局将变，边患已成。",
+      "reignPremise": "边徼部族之主，能否以武力立国、突破中原千年之防？凭十三遗甲起兵，诸部初附而离心未消，汉民未附而明边已惊。穷兵则基业不稳，怀柔则霸业难成——此其一生之张力。",
+      "voiceTag": "质朴",
+      "cast": [
+        { "id": "eyidu", "name": "额亦都", "role": "宿将", "faction": "边将", "init": 42, "voiceTag": "悍直", "arc": "微时伴驾，晚岁骄倨" },
+        { "id": "shuerhaci", "name": "舒尔哈齐", "role": "宗亲·弟", "faction": "宗室", "init": 55, "voiceTag": "郁勃", "arc": "功高见忌，终至失和" },
+        { "id": "gongzhenglu", "name": "龚正陆", "role": "谋主·汉儒", "faction": "士大夫", "init": 18, "voiceTag": "谨婉", "arc": "倡抚汉民，不见信于贵胄" }
+      ],
       "tier": "A",
       "events": [
         {
@@ -51,6 +58,13 @@
               "宗室": 2,
               "士大夫": 2
             }
+          ],
+          "branches": [
+            { "setFlags": ["unify"] },
+            { "clearFlags": ["unify"] },
+            { "setFlags": ["unify"] },
+            { "setFlags": ["unify"] },
+            { "setFlags": ["unify"] }
           ]
         },
         {
@@ -410,7 +424,9 @@
           "atProgress": 0.5,
           "event": {
             "title": "努尔哈赤中年之厄",
-            "description": "中叶，努尔哈赤御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞，陛下需定夺。",
+            "description": "中叶，努尔哈赤御宇既久，积弊渐生，或水旱，或兵戈，或党论，朝野多有异辞。舒尔哈齐以功高见忌，额亦都等宿将渐骄，帝需定夺以安社稷。",
+            "historicalChoice": -1,
+            "id": "qing_taizu_e_zhongni",
             "choices": [
               "厉精图治，躬亲庶务以挽颓势",
               "赦宥罪戾，蠲免租赋以安民心",
@@ -418,7 +434,14 @@
               "崇儒重道，收士大夫之望",
               "稍事因循，徐观其变"
             ],
-            "historicalChoice": -1
+            "relationDeltas": [ { "宗室": 2, "士大夫": 1 }, { "people": 3, "士大夫": 1 }, { "边将": 3 }, { "士大夫": 4, "宗室": 1 }, {} ],
+            "branches": [
+              { "setFlags": ["reform"] },
+              { "setFlags": ["long_peace"] },
+              { "setFlags": ["unify", "war_win"] },
+              { "setFlags": ["long_peace", "scholar_oppose"], "clearFlags": ["reform"] },
+              {}
+            ]
           }
         }
       ]

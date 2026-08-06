@@ -21,10 +21,10 @@
     --red-bright:#a84545;
     --red-glow:rgba(139,58,58,.15);
     --dim:#6b5d4f;
-    --dim-light:#8a7b6a;
+    --dim-light:#6f6151;
     --bar-bg:#e8dcc0;
     --bar-fill:#5a4a3a;
-    --gold:#9a7b3f;
+    --gold:#7d5e28;
     --gold-bright:#b8922e;
     --gold-glow:rgba(154,123,63,.2);
     --jade:#3a6b5a;
@@ -50,6 +50,7 @@
     position:absolute;
     border-radius:50%;
     pointer-events:none;
+    will-change:transform,opacity;
     animation:inkFloat var(--dur) var(--delay) linear infinite;
     opacity:0;
   }
@@ -68,6 +69,11 @@
     90%{transform:translateX(95vw) translateY(calc(30vh + var(--dy)*2)) rotate(300deg);opacity:0;}
     100%{transform:translateX(105vw) translateY(calc(30vh + var(--dy)*2.5)) rotate(360deg);opacity:0;}
   }
+  @media (prefers-reduced-motion: reduce){
+    .ink-particle{animation:none!important;opacity:.04;}
+    .screen{animation:none!important;}
+    #ink-transition{transition:none!important;}
+  }
 
   /* ===== 水墨过渡遮罩 ===== */
   #ink-transition{
@@ -84,7 +90,7 @@
   /* ===== 基础样式 ===== */
   html,body{margin:0;padding:0;overflow-x:hidden;}
   body{
-    font-family:'Noto Serif SC',serif;
+    font-family:'Noto Serif SC','Songti SC','SimSun',serif;
     color:var(--ink);
     background:var(--bg);
     background-image:
@@ -98,7 +104,7 @@
     line-height:1.75;
     position:relative;
   }
-  .calli{font-family:'Ma Shan Zheng',cursive;}
+  .calli{font-family:'Ma Shan Zheng','Noto Serif SC','Songti SC',serif;}
   #app{max-width:920px;margin:0 auto;padding:18px 14px 60px;position:relative;z-index:1;}
   .screen{
     display:none;
@@ -119,6 +125,7 @@
     box-shadow:
       0 1px 0 rgba(90,74,58,.1) inset,
       var(--shadow-soft);
+    -webkit-backdrop-filter:blur(4px);
     backdrop-filter:blur(4px);
     position:sticky;top:0;z-index:50;
     overflow:hidden;
@@ -131,7 +138,7 @@
   .seal{
     display:inline-flex;align-items:center;justify-content:center;
     width:44px;height:44px;border:2px solid var(--red);color:var(--red);
-    font-family:'Ma Shan Zheng',cursive;font-size:22px;border-radius:var(--radius-sm);
+    font-family:'Ma Shan Zheng','Noto Serif SC','Songti SC',serif;font-size:22px;border-radius:var(--radius-sm);
     transform:rotate(-4deg);background:rgba(244,236,216,.45);
     letter-spacing:-2px;line-height:1;
     position:relative;
@@ -142,16 +149,16 @@
     0%,100%{box-shadow:0 0 0 3px rgba(139,58,58,.08);}
     50%{box-shadow:0 0 0 6px rgba(139,58,58,.03);}
   }
-  .era{font-family:'Ma Shan Zheng',cursive;font-size:23px;letter-spacing:3px;text-shadow:0 1px 0 rgba(255,250,235,.8);}
+  .era{font-family:'Ma Shan Zheng','Noto Serif SC','Songti SC',serif;font-size:23px;letter-spacing:3px;text-shadow:0 1px 0 rgba(255,250,235,.8);}
   .topbar .right{display:flex;gap:8px;}
 
   /* ===== 按钮系统 ===== */
   .btn{
-    font-family:'Noto Serif SC',serif;font-weight:600;font-size:14px;
+    font-family:'Noto Serif SC','Songti SC','SimSun',serif;font-weight:600;font-size:14px;
     background:rgba(255,250,235,.55);color:var(--ink);
     border:1px solid var(--ink);padding:7px 16px;border-radius:var(--radius-sm);
     cursor:pointer;
-    transition:all var(--transition-fast);
+    transition:background-color,color,box-shadow,border-color,transform var(--transition-fast);
     position:relative;overflow:hidden;
     letter-spacing:.5px;
   }
@@ -172,7 +179,7 @@
   .btn.red:hover{background:var(--red);color:var(--bg);box-shadow:0 4px 16px rgba(139,58,58,.3);}
   .btn.big{
     font-size:18px;padding:14px 36px;
-    font-family:'Ma Shan Zheng',cursive;letter-spacing:6px;
+    font-family:'Ma Shan Zheng','Noto Serif SC','Songti SC',serif;letter-spacing:6px;
     border-width:2px;
     background:linear-gradient(180deg, rgba(255,252,242,.75) 0, rgba(244,236,216,.6) 100%);
     box-shadow:var(--shadow-soft);
@@ -284,7 +291,7 @@
   .scroll .corner-tr::after,.scroll .corner-br::after{right:0;}
 
   .evt-title{
-    font-family:'Ma Shan Zheng',cursive;font-size:32px;text-align:center;
+    font-family:'Ma Shan Zheng','Noto Serif SC','Songti SC',serif;font-size:32px;text-align:center;
     color:var(--red);letter-spacing:8px;margin:8px 0 14px;
     text-shadow:0 2px 6px var(--red-glow);
     position:relative;
@@ -307,8 +314,8 @@
     background:rgba(255,250,235,.45);border:1px solid var(--dim-light);
     border-radius:var(--radius-sm);padding:12px 16px;margin:10px 0;
     cursor:pointer;
-    font-family:'Noto Serif SC',serif;font-size:15px;color:var(--ink);
-    transition:all var(--transition-smooth);
+    font-family:'Noto Serif SC','Songti SC','SimSun',serif;font-size:15px;color:var(--ink);
+    transition:transform,opacity,background-color,color,box-shadow,border-color var(--transition-smooth);
     position:relative;overflow:hidden;
   }
   .choice::before{
@@ -365,10 +372,10 @@
   .historian::before{
     content:""";
     position:absolute;left:-3px;top:-8px;
-    font-family:'Ma Shan Zheng',cursive;font-size:28px;color:var(--red);
+    font-family:'Ma Shan Zheng','Noto Serif SC','Songti SC',serif;font-size:28px;color:var(--red);
     opacity:.3;
   }
-  .historian .tag{color:var(--red);font-weight:700;font-family:'Ma Shan Zheng',cursive;font-size:19px;}
+  .historian .tag{color:var(--red);font-weight:700;font-family:'Ma Shan Zheng','Noto Serif SC','Songti SC',serif;font-size:19px;}
   .changes{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;font-size:13px;}
   .chg{
     padding:3px 10px;border-radius:12px;border:1px solid var(--dim);
@@ -389,7 +396,7 @@
     position:relative;
   }
   .title-big{
-    font-family:'Ma Shan Zheng',cursive;font-size:88px;color:var(--red);
+    font-family:'Ma Shan Zheng','Noto Serif SC','Songti SC',serif;font-size:88px;color:var(--red);
     letter-spacing:22px;
     text-shadow:
       2px 2px 0 rgba(90,74,58,.15),
@@ -419,7 +426,7 @@
   .card{
     background:rgba(255,252,242,.55);border:1px solid var(--dim-light);
     border-radius:var(--radius-md);padding:14px 16px;cursor:pointer;
-    transition:all var(--transition-smooth);
+    transition:transform,opacity,background-color,color,box-shadow,border-color var(--transition-smooth);
     position:relative;overflow:hidden;
   }
   .card::before{
@@ -442,7 +449,7 @@
   .card:hover::before{opacity:1;}
   .card:hover::after{opacity:1;}
   .card .dyn{
-    font-family:'Ma Shan Zheng',cursive;font-size:26px;color:var(--red);
+    font-family:'Ma Shan Zheng','Noto Serif SC','Songti SC',serif;font-size:26px;color:var(--red);
     letter-spacing:4px;margin-bottom:4px;
   }
   .card .cnt{color:var(--dim);font-size:12px;letter-spacing:1px;}
@@ -464,7 +471,7 @@
     position:relative;
   }
   .panel h2{
-    font-family:'Ma Shan Zheng',cursive;color:var(--red);letter-spacing:5px;
+    font-family:'Ma Shan Zheng','Noto Serif SC','Songti SC',serif;color:var(--red);letter-spacing:5px;
     margin:0 0 10px;font-size:22px;
     position:relative;display:inline-block;
   }
@@ -475,7 +482,7 @@
   }
   label.fld{display:block;margin:12px 0 5px;color:var(--dim);font-size:13px;letter-spacing:.5px;}
   input,select{
-    width:100%;font-family:'Noto Serif SC',serif;font-size:14px;
+    width:100%;font-family:'Noto Serif SC','Songti SC','SimSun',serif;font-size:14px;
     padding:8px 10px;border:1px solid var(--dim-light);border-radius:var(--radius-sm);
     background:rgba(255,252,242,.7);color:var(--ink);
     transition:border-color .3s, box-shadow .3s;
@@ -494,7 +501,7 @@
 
   /* ===== 即位介绍 ===== */
   .intro-box .emperor-name{
-    font-family:'Ma Shan Zheng',cursive;font-size:46px;color:var(--red);
+    font-family:'Ma Shan Zheng','Noto Serif SC','Songti SC',serif;font-size:46px;color:var(--red);
     letter-spacing:8px;text-align:center;
     text-shadow:0 2px 8px var(--red-glow);
     animation:fadeSlideIn .6s ease;
@@ -512,13 +519,13 @@
 
   /* ===== 终局结算 ===== */
   .ending-title{
-    font-family:'Ma Shan Zheng',cursive;font-size:52px;color:var(--red);
+    font-family:'Ma Shan Zheng','Noto Serif SC','Songti SC',serif;font-size:52px;color:var(--red);
     text-align:center;letter-spacing:10px;
     text-shadow:0 3px 10px var(--red-glow);
     animation:fadeSlideIn .6s ease;
   }
   .verdict{
-    font-family:'Ma Shan Zheng',cursive;font-size:34px;text-align:center;
+    font-family:'Ma Shan Zheng','Noto Serif SC','Songti SC',serif;font-size:34px;text-align:center;
     letter-spacing:8px;margin:10px 0;
     color:var(--gold);
     text-shadow:0 2px 4px var(--gold-glow);
@@ -548,7 +555,7 @@
     display:flex;justify-content:space-between;align-items:center;
     background:rgba(255,252,242,.55);border:1px solid var(--dim-light);
     border-radius:var(--radius-md);padding:12px 16px;margin:10px 0;
-    transition:all var(--transition-fast);
+    transition:background-color,color,box-shadow,border-color,transform var(--transition-fast);
     box-shadow:var(--shadow-soft);
   }
   .slot:hover{border-color:var(--red);background:rgba(255,252,242,.8);}
@@ -569,7 +576,7 @@
     display:flex;flex-direction:column;align-items:center;
   }
   #loader .ink{
-    font-family:'Ma Shan Zheng',cursive;font-size:30px;color:var(--red);
+    font-family:'Ma Shan Zheng','Noto Serif SC','Songti SC',serif;font-size:30px;color:var(--red);
     letter-spacing:6px;
     animation:loaderBrush 2.5s ease-in-out infinite;
   }
@@ -589,7 +596,7 @@
   /* 加载印章 */
   #loader .load-seal{
     width:50px;height:50px;border:2px solid var(--red);color:var(--red);
-    font-family:'Ma Shan Zheng',cursive;font-size:22px;
+    font-family:'Ma Shan Zheng','Noto Serif SC','Songti SC',serif;font-size:22px;
     border-radius:var(--radius-sm);transform:rotate(-4deg);
     display:flex;align-items:center;justify-content:center;
     background:rgba(244,236,216,.5);
@@ -640,7 +647,7 @@
   .tech-scroll{max-height:none;overflow:visible;}
   .tech-branch{margin-bottom:14px;}
   .tech-branch-name{
-    font-family:'Noto Serif SC',serif;font-size:18px;font-weight:700;color:var(--ink);
+    font-family:'Noto Serif SC','Songti SC','SimSun',serif;font-size:18px;font-weight:700;color:var(--ink);
     border-left:4px solid var(--gold);padding-left:10px;margin-bottom:8px;letter-spacing:2px;
   }
   .tech-ages{
@@ -674,18 +681,18 @@
     margin:12px 0 0;padding:8px 14px;border:1px solid var(--gold);border-radius:var(--radius-sm);
     background:rgba(196,160,86,.12);font-size:14px;color:var(--ink);
   }
-  .tech-points .tech-pts-num{font-size:21px;font-weight:800;color:var(--red);font-family:'Ma Shan Zheng',cursive;margin-right:2px;}
+  .tech-points .tech-pts-num{font-size:21px;font-weight:800;color:var(--red);font-family:'Ma Shan Zheng','Noto Serif SC','Songti SC',serif;margin-right:2px;}
   .tech-tabs{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0;}
   .tech-tab{
-    font-family:'Noto Serif SC',serif;font-size:13px;padding:6px 14px;border-radius:999px;cursor:pointer;
-    background:rgba(255,250,235,.5);color:var(--ink);border:1px solid var(--ink);transition:all var(--transition-fast);
+    font-family:'Noto Serif SC','Songti SC','SimSun',serif;font-size:13px;padding:6px 14px;border-radius:999px;cursor:pointer;
+    background:rgba(255,250,235,.5);color:var(--ink);border:1px solid var(--ink);transition:transform,opacity,background-color,color,box-shadow,border-color var(--transition-fast);
   }
   .tech-tab:hover{background:rgba(196,160,86,.18);}
   .tech-tab.active{background:var(--ink);color:#f7f0e2;border-color:var(--ink);}
   .tech-branch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px;margin-bottom:8px;}
   .tech-card{
     border:1px solid rgba(120,98,74,.3);border-radius:var(--radius-sm);background:rgba(255,252,242,.5);
-    padding:10px;display:flex;flex-direction:column;gap:6px;transition:all var(--transition-fast);
+    padding:10px;display:flex;flex-direction:column;gap:6px;transition:transform,opacity,background-color,color,box-shadow,border-color var(--transition-fast);
   }
   .tech-card.owned{border-color:rgba(74,106,154,.5);background:rgba(74,106,154,.08);}
   .tech-card.locked{opacity:.55;}
@@ -694,7 +701,7 @@
   .tech-age,.tech-aheadtag{font-size:10px;padding:1px 6px;border-radius:4px;white-space:nowrap;}
   .tech-age{background:rgba(120,98,74,.15);color:var(--dim);}
   .tech-aheadtag{background:rgba(176,74,46,.18);color:var(--red);font-weight:700;}
-  .tech-name{font-family:'Noto Serif SC',serif;font-weight:700;font-size:15px;color:var(--ink);}
+  .tech-name{font-family:'Noto Serif SC','Songti SC','SimSun',serif;font-weight:700;font-size:15px;color:var(--ink);}
   .tech-meta{font-size:11px;line-height:1.5;color:var(--dim);}
   .tech-dots{display:flex;gap:4px;}
   .tech-dot{width:9px;height:9px;border-radius:50%;border:1px solid rgba(120,98,74,.4);background:transparent;}
@@ -702,8 +709,8 @@
   .tech-cost{font-size:12px;color:var(--ink);}
   .tech-cost.no{color:var(--dim);}
   .tech-buy{
-    font-family:'Noto Serif SC',serif;font-weight:700;font-size:13px;margin-top:2px;padding:5px 10px;border-radius:var(--radius-sm);
-    cursor:pointer;color:#f7f0e2;background:var(--red);border:1px solid var(--red);transition:all var(--transition-fast);
+    font-family:'Noto Serif SC','Songti SC','SimSun',serif;font-weight:700;font-size:13px;margin-top:2px;padding:5px 10px;border-radius:var(--radius-sm);
+    cursor:pointer;color:#f7f0e2;background:var(--red);border:1px solid var(--red);transition:transform,opacity,background-color,color,box-shadow,border-color var(--transition-fast);
   }
   .tech-buy:hover{filter:brightness(1.08);}
   /* ===== 科技树图（依赖连线 + 三态 + 递进/网络感） ===== */
@@ -728,7 +735,7 @@
     position:absolute;z-index:2;box-sizing:border-box;
     border:1.5px solid rgba(120,98,74,.35);border-radius:var(--radius-sm);
     background:rgba(255,250,235,.96);padding:7px 9px;display:flex;flex-direction:column;gap:4px;
-    transition:all var(--transition-fast);overflow:visible;
+    transition:background-color,color,box-shadow,border-color,transform var(--transition-fast);overflow:visible;
   }
   .tech-node-card.owned{border-color:var(--gold);background:rgba(184,137,58,.16);box-shadow:0 0 0 2px rgba(184,137,58,.12),0 2px 8px rgba(120,90,40,.12);}
   .tech-node-card.unlockable{border-color:#3f7d6e;background:rgba(63,125,110,.10);}
@@ -739,7 +746,7 @@
   .tn-age,.tn-age.ahead{font-size:9px;padding:1px 5px;border-radius:3px;white-space:nowrap;}
   .tn-age{background:rgba(120,98,74,.14);color:var(--dim);}
   .tn-age.ahead{background:rgba(176,74,46,.18);color:var(--red);font-weight:700;}
-  .tn-name{font-family:'Noto Serif SC',serif;font-weight:700;font-size:13px;line-height:1.15;color:var(--ink);}
+  .tn-name{font-family:'Noto Serif SC','Songti SC','SimSun',serif;font-weight:700;font-size:13px;line-height:1.15;color:var(--ink);}
   .tn-meta{font-size:10px;line-height:1.35;color:var(--dim);}
   .tn-dots{display:flex;gap:3px;}
   .tn-dot{width:7px;height:7px;border-radius:50%;border:1px solid rgba(120,98,74,.4);background:transparent;}
@@ -748,8 +755,8 @@
   .tn-cost{font-size:10.5px;color:var(--ink);}
   .tn-cost.no{color:var(--dim);}
   .tn-buy{
-    font-family:'Noto Serif SC',serif;font-weight:700;font-size:12px;margin-top:1px;padding:3px 8px;border-radius:var(--radius-sm);
-    cursor:pointer;color:#f7f0e2;background:#3f7d6e;border:1px solid #3f7d6e;transition:all var(--transition-fast);align-self:flex-start;
+    font-family:'Noto Serif SC','Songti SC','SimSun',serif;font-weight:700;font-size:12px;margin-top:1px;padding:3px 8px;border-radius:var(--radius-sm);
+    cursor:pointer;color:#f7f0e2;background:#3f7d6e;border:1px solid #3f7d6e;transition:transform,opacity,background-color,color,box-shadow,border-color var(--transition-fast);align-self:flex-start;
   }
   .tn-buy:hover{filter:brightness(1.08);}
 </style>
@@ -994,7 +1001,7 @@ function initInkParticles(){
   if(!container) return;
   container.innerHTML = "";
   const isMobile = window.innerWidth < 600;
-  const count = isMobile ? 8 : 18;
+  const count = isMobile ? 6 : 12;
   const frag = document.createDocumentFragment();
   for(let i=0; i<count; i++){
     const p = document.createElement("div");
@@ -1031,8 +1038,11 @@ function inkTransition(callback){
   const overlay = document.getElementById("ink-transition");
   const canvas = document.getElementById("ink-transition-canvas");
   if(!overlay || !canvas) { callback(); return; }
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  canvas.width = Math.floor(window.innerWidth * dpr);
+  canvas.height = Math.floor(window.innerHeight * dpr);
+  canvas.style.width = window.innerWidth + "px";
+  canvas.style.height = window.innerHeight + "px";
   const ctx = canvas.getContext("2d");
   // 水墨扩散动画
   overlay.classList.add("active");
@@ -1829,12 +1839,114 @@ function pickTechResistEvent(emperor){
   return TECH_RESIST_EVENTS[idx];
 }
 
+// 后备事件抽取：优先从未出现过的条目中抽取，整池轮完后再放开，
+// 杜绝「同一局游戏中同一后备事件反复出现」（原实现为纯随机，无去重）。
 function pickFallback(kind){
   const pool = (kind==="crisis") ? CRISIS_FALLBACK : DAILY_FALLBACK;
-  return pool[Math.floor(Math.random()*pool.length)];
+  return drawNoRepeat(pool);
+}
+// 危机后备事件：按实际崩危维度匹配主题（如「民心崩危」→「民心离散」），
+// 主题命中且本轮未出现过者优先；否则退而求其次任取未出现过的危机条目。
+// 既修正「危机主题与文案错位」，又借 usedFallbackTitles 去重，避免连续月份出现同一危机事件。
+function crisisFallbackFor(crisisKey){
+  const used = state.usedFallbackTitles || (state.usedFallbackTitles=new Set());
+  const map = {
+    "国库崩危":"国库告罄",
+    "民心崩危":"民心离散",
+    "军事崩危":"边军踰制",
+    "朝政崩危":"朝纲解纽",
+    "皇帝健康危急":"灾异叠见"
+  };
+  const want = map[crisisKey];
+  let cand = CRISIS_FALLBACK.filter(fb => fb.title===want && !used.has(fb.title));
+  if(!cand.length) cand = CRISIS_FALLBACK.filter(fb => !used.has(fb.title));
+  return drawNoRepeat(cand.length ? cand : CRISIS_FALLBACK, cand.length ? null : CRISIS_FALLBACK);
+}
+// 通用「无相邻重复」抽取：优先取未出现过的条目；整池轮完则仅排除上一则，允许非相邻复用，杜绝死循环与相邻重复。
+function drawNoRepeat(pool, fallbackPool){
+  const used = state.usedFallbackTitles || (state.usedFallbackTitles=new Set());
+  let avail = pool.filter(fb => !used.has(fb.title));
+  if(!avail.length){
+    // 候选池已穷尽：退化为「仅排除上一则」，在 fallbackPool 或原 pool 中取，确保不立即重复
+    const src = fallbackPool || pool;
+    const last = state._lastFallbackTitle;
+    avail = src.filter(fb => fb.title !== last);
+    if(!avail.length) avail = src;
+  }
+  const fb = avail[Math.floor(Math.random()*avail.length)];
+  used.add(fb.title);
+  state._lastFallbackTitle = fb.title;
+  return fb;
 }
 
 /* ============ 提示词模板 ============ */
+// ===== 统一剧情叙事注入（NarrativeDesigner · 2026-08-06）=====
+// 设计意图：以"软约束"把每月 AI 事件串到同一根主线索/班底上，
+// 仍由 AI 自由生发具体情节——保留文字生成能力与叙事随机性，只定"引力源"，不代写剧本。
+// 无脊柱数据（reignPremise/cast 缺失）时全部返回空串，完全保持原行为，零回归。
+const FLAG_OMEN = {
+  unify:"一统之业方启，四境多事之端已萌",
+  reform:"更化之弓已满，清议之弦将断",
+  long_peace:"治世之象初成，逸豫之渐亦伏",
+  scholar_oppose:"士大夫之望已失，朝局离析之朕也",
+  usurped:"爪牙生心于下，威柄渐移之危也",
+  weak:"府库民命俱敝，社稷飘摇之候也",
+  war_win:"武功既著，穷兵之戒不可忘",
+  war_loss:"师丧气挫，雪耻之机当图",
+  tax_heavy:"横征之怨在野，民变之烽将燃",
+  tax_cut:"蠲赋之恩已布，府库之入渐绌",
+  scholar_purge:"猜忌之网既张，功臣宿将人人自危",
+  amnesty:"赦令既下，怨气少纾而法纪稍弛",
+  flood:"水患方殷，流移载道",
+  famine:"饥馑荐臻，易子而食之忧",
+  rebellion:"叛火已燃，剿抚两难"
+};
+function reignProgress(st){
+  const span=Math.max(1,(st.emperor.reignEnd)-(st.emperor.reignStart));
+  return Math.max(0,Math.min(1,(st.year-(st.emperor.reignStart))/span));
+}
+function actNameOf(st){
+  const p=reignProgress(st);
+  if(p<0.25) return "定鼎";
+  if(p<0.55) return "守成·拓业";
+  if(p<0.80) return "中局大考";
+  return "晚岁·遗烈";
+}
+const ACT_ATMOSPHERE = {
+  "定鼎":"草创初基，百事待举",
+  "守成·拓业":"鼎盛将启，经营方殷",
+  "中局大考":"多事之秋，承敝易变",
+  "晚岁·遗烈":"晚照将沉，顾命维艰"
+};
+function narrativeContextFor(st){
+  const e=st.emperor;
+  if(!e.reignPremise && !(e.cast&&e.cast.length)) return "";
+  const p=reignProgress(st);
+  const act=actNameOf(st);
+  let s="\n【叙事上下文·本朝主线（软约束：情节仍由你据时势自由生发，不必拘泥剧本）】\n";
+  if(e.reignPremise){
+    s+=`主线索：${e.reignPremise}\n`;
+    s+=`当前幕：${act}（在位进度 ${Math.round(p*100)}%）— ${ACT_ATMOSPHERE[act]}\n`;
+  }
+  const fs=st.flags||{};
+  const active=Object.keys(fs).filter(f=>fs[f]&&FLAG_OMEN[f]);
+  if(active.length){
+    s+="未了之事（宜在事件中隐隐回响，不必点破）："+active.map(f=>FLAG_OMEN[f]).join("；")+"。\n";
+  }
+  const cast=e.cast||[];
+  if(cast.length){
+    const rel=st.relations||{};
+    const lines=cast.map(c=>{
+      const v=(rel[c.id]!=null)?rel[c.id]:(rel[c.faction]!=null?rel[c.faction]:(c.init!=null?c.init:0));
+      const tone = v>=60?"效忠":(v>=30?"用事":(v>=0?"羁縻":(v>=-20?"疏离":"离心")));
+      return `${c.name}（${c.role}·${c.voiceTag||"—"}：${v>=0?"+":""}${v}，${tone}）`;
+    });
+    s+="常驻班底："+lines.join("｜")+"。事件可指名引用上述人物，体现其立场与声口；但他们未必每月出场。\n";
+  }
+  s+="请让本月事件围绕主线索矛盾展开、并可承续上月抉择的余波；具体人物、冲突、措辞皆由你生发，保持史实质感与随机性。\n";
+  return s;
+}
+
 const PROMPTS = {
   system(emperor){
     let s = `你是一位精通中国历史的史官，依据《二十四史》《资治通鉴》的体例与史观，为皇帝模拟游戏生成事件与抉择。
@@ -1873,13 +1985,24 @@ ${emperor.eraContext}
     { "text": "选项内容（20-40字）", "hint": "选项倾向暗示（10字内，如'进取·冒险'）" }
   ]
 }
-若要求"为既定选项生成后果"，则顶层仅含 { "outcomes":[ {"outcomeDescription":"后果叙述(史书体,80-150字)","historianComment":"史官评(30-60字)","statChanges":{"treasury":0,"people":0,"military":0,"court":0,"health":0,"tech":0}} ] }（共5项，与既定选项顺序对应）。
+若要求"为既定选项生成后果"，则顶层仅含 { "outcomes":[ {"outcomeDescription":"后果叙述(史书体,80-150字)","historianComment":"史官评(30-60字)","statChanges":{"treasury":0,"people":0,"military":0,"court":0,"health":0,"tech":0},"setFlags":["..."]} ] }（共5项，与既定选项顺序对应；setFlags 可选，限用规范词表）。
 若要求"生成完整事件"，则顶层额外含 eventTitle/eventDescription/choices，并加 "outcomes"（共5项，与 choices 顺序一一对应）。
-各项数值变化范围：常规事件单项 -15~+15，危机事件单项最多 -25~+25。choices 与 outcomes 均必须正好5个。不要输出任何JSON以外的内容。`;
+各项数值变化范围：常规事件单项 -10~+10，危机事件单项最多 -20~+20（压强越高幅度越大），且多数应小幅变化。choices 与 outcomes 均必须正好5个。可选字段 "setFlags"（字符串数组，限用规范词表 unify/reform/long_peace/usurped/scholar_oppose/weak/war_win/war_loss/tax_cut/tax_heavy/scholar_purge/amnesty/flood/famine/rebellion，记录本选择达成的关键语义，供结局判定）。不要输出任何JSON以外的内容。`;
     // 科技树档案（接入 tech_engine）：让 AI 认知玩家所拥「超前（越代）科技」及其真实落地增益，据此生成后果与叙事
     const prof = (typeof state!=="undefined" && state && state.techProfile) ? state.techProfile : null;
     if(prof && prof.aiSummary){
       s += `\n\n${prof.aiSummary}`;
+    }
+    // 统一剧情·主线索与班底（每帝一次，软约束；缺失则不影响）
+    if(emperor.reignPremise || (emperor.cast&&emperor.cast.length)){
+      let ns="\n\n【本朝叙事主线索】\n";
+      if(emperor.reignPremise) ns+=`中央戏剧问题：${emperor.reignPremise}\n`;
+      if(emperor.voiceTag) ns+=`史官声线：${emperor.voiceTag}\n`;
+      if(emperor.cast&&emperor.cast.length){
+        ns+="常驻班底："+emperor.cast.map(c=>`${c.name}（${c.role}·声口${c.voiceTag||"—"}）`).join("、")+"。\n";
+      }
+      ns+="（以上为叙事引力源，具体情节仍由你每月据时势自由生发，不必拘泥。）";
+      s+=ns;
     }
     return s;
   },
@@ -1890,17 +2013,17 @@ ${emperor.eraContext}
       // 保留作者考据的 5 个历史选项，仅请 AI 为既定选项生成后果（修复 1.6：AI 模式不再整体重生成选项）
       s+=`附预设历史事件「${presetEvent.title}」：${presetEvent.description}\n既定五选项（顺序固定，勿改动）：\n`;
       presetEvent.choices.forEach((c,i)=>{ s+=`${i+1}. ${c}\n`; });
-      s+=`请仅为上述5个既定选项分别生成后果，输出JSON：\n{ "outcomes":[ {"outcomeDescription":"","historianComment":"","statChanges":{"treasury":0,"people":0,"military":0,"court":0,"health":0,"tech":0}}, ...共5项 ] }\n`;
+      s+=`请仅为上述5个既定选项分别生成后果，输出JSON：\n{ "outcomes":[ {"outcomeDescription":"","historianComment":"","statChanges":{"treasury":0,"people":0,"military":0,"court":0,"health":0,"tech":0},"setFlags":["..."]}, ...共5项 ] }\n（setFlags 可选，限用规范词表）\n`;
     }else{
       // 日常/危机：一次性返回 事件 + 5选项 + 5后果（合并调用，消除第二次网络等待）
       let crisisHint="";
       if(eventType==="数值危机"){
         const crisis=detectCrisis(state.stats);
-        crisisHint=`围绕「${crisis}」的崩盘危机生成事件+5选项，后果可较重（单项最多±25）。`;
+        crisisHint=`围绕「${crisis}」的崩盘危机生成事件+5选项，后果较重（单项最多±20）。每个选项可附 setFlags（规范词表）记录关键语义。`;
       }else{
         crisisHint=`请生成一个符合时代与当前局势的日常政务事件+5选项。`;
       }
-      s+=`${crisisHint}\n并为每个选项预生成后果（含后果叙述、史官评、六项数值变化）。\n输出JSON：\n{ "eventTitle":"", "eventDescription":"", "choices":[ {"text":"","hint":""} ], "outcomes":[ {"outcomeDescription":"","historianComment":"","statChanges":{"treasury":0,"people":0,"military":0,"court":0,"health":0,"tech":0}} ] }\nchoices 与 outcomes 均必须正好5个且顺序一一对应。不要输出JSON以外的内容。`;
+      s+=`${crisisHint}\n并为每个选项预生成后果（含后果叙述、史官评、六项数值变化，可选 setFlags 规范词表）。\n输出JSON：\n{ "eventTitle":"", "eventDescription":"", "choices":[ {"text":"","hint":""} ], "outcomes":[ {"outcomeDescription":"","historianComment":"","statChanges":{"treasury":0,"people":0,"military":0,"court":0,"health":0,"tech":0},"setFlags":["..."]} ] }\nchoices 与 outcomes 均必须正好5个且顺序一一对应。不要输出JSON以外的内容。`;
     }
     // 史材锚点约束（1.1）：让 AI 月也锚定真实史实
     if(state._activeAnchor){
@@ -1917,6 +2040,8 @@ ${emperor.eraContext}
     if(_relKeys.length){
       s+=`\n【当前朝局关系】`+_relKeys.map(f=>`${f}:${(_rel[f]>0?"+":"")+_rel[f]}`).join("，")+`。事件须反映上述关系的张力。\n`;
     }
+    // 统一剧情叙事上下文（软约束注入；无 spine 数据则空串，完全保持原行为）
+    s += narrativeContextFor(state);
     if(settings.baihua){
       s+=`\n【白话文模式】当前玩家开启了「白话文模式」，请务必用通俗易懂的现代白话文（普通话书面语，口语化、易懂）撰写全部文案（事件描述、各选项、后果叙述、史官评），严禁使用文言文或半文半白。`;
     }
@@ -1925,7 +2050,7 @@ ${emperor.eraContext}
   },
   outcome(state,eventTitle,choiceText,hint){
     const e=state.emperor;
-    return `【皇帝】${e.name}（${e.templeName}） ${fmtYear(state.year)}年${cnMonth(state.month)}月\n【事件】${eventTitle}\n【玩家选择】${choiceText}（${hint||""}）\n【当前数值】国库${state.stats.treasury} 民心${state.stats.people} 军事${state.stats.military} 朝政${state.stats.court} 健康${state.stats.health} 科技${state.stats.tech}\n【近五月摘要】${recentSummary(state)}\n\n请依据史实逻辑与当前局势，生成此选择的后果：\n1. 后果叙述（史书体，80-150字）\n2. 史官评曰（仿论赞，30-60字）\n3. 六项数值变化（各-15到+15，多数应小幅变化；危机事件单项最多±25）\n\n输出JSON：\n{ "outcomeDescription":"", "historianComment":"", "statChanges":{"treasury":0,"people":0,"military":0,"court":0,"health":0,"tech":0} }\n${settings.baihua?'【白话文模式】请用通俗易懂的现代白话文撰写后果叙述与史官评，严禁文言文。':''}不要输出JSON以外的内容。`;
+    return `【皇帝】${e.name}（${e.templeName}） ${fmtYear(state.year)}年${cnMonth(state.month)}月\n【事件】${eventTitle}\n【玩家选择】${choiceText}（${hint||""}）\n【当前数值】国库${state.stats.treasury} 民心${state.stats.people} 军事${state.stats.military} 朝政${state.stats.court} 健康${state.stats.health} 科技${state.stats.tech}\n【近五月摘要】${recentSummary(state)}\n\n请依据史实逻辑与当前局势，生成此选择的后果：\n1. 后果叙述（史书体，80-150字）\n2. 史官评曰（仿论赞，30-60字）\n3. 六项数值变化（各-10到+10，多数应小幅变化；危机事件单项最多±20）\n4. 可选 setFlags（规范词表字符串数组：unify/reform/long_peace/usurped/scholar_oppose/weak/war_win/war_loss/tax_cut/tax_heavy/scholar_purge/amnesty/flood/famine/rebellion），记录本选择达成的关键语义，供结局判定。\n\n输出JSON：\n{ "outcomeDescription":"", "historianComment":"", "statChanges":{"treasury":0,"people":0,"military":0,"court":0,"health":0,"tech":0}, "setFlags":[] }\n${settings.baihua?'【白话文模式】请用通俗易懂的现代白话文撰写后果叙述与史官评，严禁文言文。':''}不要输出JSON以外的内容。`;
   }
 };
 
@@ -2023,7 +2148,9 @@ function cohMask(){
 
 let settings=loadSettings();
 let pendingEmperor=null;
+let _aiProbed=null; // 凭据运行时可用探查结果：null=未知, true=可用, false=不可用（供 aiAvailable 决策）
 updateBhUI();
+probeAi(); // 启动时探查凭据真实可用性，供 aiAvailable() 决策（修复「生成中」→文言文）
 let currentDynastyId=null;
 
 function newState(emperor){
@@ -2043,6 +2170,10 @@ function newState(emperor){
     pressure:0,                    // 中段压强（5.2）：0~1
     _branchQueue:null,             // 旗标分支串联的待载事件（2.2）
     usedAnchors:new Set(),         // 已消耗史材锚点 id（1.1，避免重复）
+    usedFallbackTitles:new Set(),  // 本局已出现过的后备事件标题（避免同一后备事件反复出现）
+    _techResistDone:false,         // 科技阻力事件每局至多触发一次（内容固定，避免重复）
+    _lastEventKey:null,            // 上月事件稳定键（即时去重守卫）
+    _lastFallbackTitle:null,      // 上一则后备事件标题（池穷尽时仅排除此项，避免相邻重复）
     monthsPlayed:0,                // 游玩月数统计（指标）
     historyEventMonths:0,          // 触史月数统计（指标）
     anchorMonths:0,                // 锚点渗透月数统计（指标）
@@ -2126,6 +2257,85 @@ function detectCrisis(stats){
 }
 function avgStat(stats){
   return (stats.treasury+stats.people+stats.military+stats.court+stats.health+stats.tech)/6;
+}
+
+/* ============ 平衡常量（B1/B2/B5/B3 统一契约，杜绝 magic number） ============ */
+// 数值变化幅度上限（单次抉择六维）：代码唯一真相，AI 契约必须与此一致。
+// [PLACEHOLDER · Monte Carlo 验证路径] 验证：常规±10 是否使单事件约占总量 10% 且可被后续事件对冲；
+//                                      危机±20 是否落在 1-2 月可恢复区间（配合 B1 失败链给反应窗口）。
+const OUTCOME_LIMIT_NORMAL = 10;   // rationale: 单事件约占总量 10%，保证"每波抉择可被后续事件对冲"，避免单事件锁死某维
+const OUTCOME_LIMIT_CRISIS = 20;   // rationale: 常规 2 倍，制造明显波峰但仍在 1-2 月可恢复区间
+function outcomeLimit(source){ return source==="数值危机" ? OUTCOME_LIMIT_CRISIS : OUTCOME_LIMIT_NORMAL; }
+
+// 失败链（B1）：让国库/民心/军事/朝政真正致命，但保留反应窗口（预警→恶化→崩盘）。
+// 健康已独立致死；科技归零仅无效，不致死。
+const FAIL_DIMS = ["treasury","people","military","court"];
+const DIM_LABEL = {treasury:"国库",people:"民心",military:"军事",court:"朝政",health:"健康",tech:"科技"};
+const FAIL_WARN = 15;          // 预警线：低于此值提示倾危
+const FAIL_LOW = 10;           // 恶化/崩盘计数线（连续 ≤10 的月数）
+const FAIL_LOW_MONTHS = 3;     // rationale: 连续 3 月 ≤10 → 恶化惩罚；约 3 月反应窗口，符合 Design Pillar：失败可避免
+const FAIL_CRIT_MONTHS = 2;    // rationale: 恶化后再连续 2 月 ≤10（共 5 月）→ 崩盘亡国；最后的悬崖
+const FAIL_PENALTY = 3;        // 恶化惩罚：自身再 -3，其余关联维各 -1（牵一发动全身）
+const COLLAPSE_REASON = {
+  treasury:"府库耗尽·社稷崩", people:"民变四起·国祚终",
+  military:"边军陷没·江山易主", court:"朝局倾覆·权柄旁落"
+};
+// 中段加压（B5）：压强超阈值时，将本月日常政务随机升级为数值危机，兑现设计文档 5.2 的 0.35*p 注入。
+// [PLACEHOLDER · Monte Carlo 验证路径] 验证稳态(avg≈55)下每月危机率是否 ≤8%，避免难度失控。
+const MID_PRESSURE_THRESHOLD = 0.4;  // rationale: computePressure=0.35*bell+0.4*healthFactor；中段 bell≈1 且体格尚可时 p≈0.35，取 0.4 为"明显加压"门槛
+const MID_CRISIS_PROB = 0.35;        // rationale: 最终概率 = MID_CRISIS_PROB * pressure
+
+// B3 跨事件通用语义旗标词表：选项置位、门控检验、结局读取必须用同一套词，否则多结局永远是数值伪装。
+// [PLACEHOLDER] 词表随内容扩展；当前以 6 个结局旗标为骨干，AI 动态事件仅允许使用此表。
+const CANONICAL_FLAGS = [
+  "unify","reform","long_peace","usurped","scholar_oppose","weak",
+  "war_win","war_loss","tax_cut","tax_heavy","scholar_purge","amnesty","flood","famine","rebellion"
+];
+
+// 失败链推进：在 nextMonth 内调用，评估四国力维的倾危升级；崩盘则触发终局并返回 true。
+function updateFailureChain(){
+  if(!state._fail) state._fail={};
+  let endReason=null;
+  for(const k of FAIL_DIMS){
+    const v=state.stats[k];
+    const c=state._fail[k]||(state._fail[k]={danger:0,deteriorated:false,warned:false});
+    if(v<=FAIL_WARN && !c.warned){ c.warned=true; toast(DIM_LABEL[k]+"告急（"+v+"），亟需匡救"); }
+    else if(v>FAIL_WARN) c.warned=false;
+    if(v<=FAIL_LOW){
+      c.danger++;
+      if(c.danger===FAIL_LOW_MONTHS && !c.deteriorated){
+        c.deteriorated=true;
+        state.stats[k]=clamp(state.stats[k]-FAIL_PENALTY,0,100);
+        FAIL_DIMS.forEach(o=>{ if(o!==k) state.stats[o]=clamp(state.stats[o]-1,0,100); }); // 牵一发动全身
+        toast(DIM_LABEL[k]+"持续崩坏，国势日蹙");
+      }
+      if(c.danger>=FAIL_LOW_MONTHS+FAIL_CRIT_MONTHS){ endReason=k; }
+    }else{
+      c.danger=0; c.deteriorated=false;
+    }
+  }
+  if(endReason){
+    state.stats[endReason]=0;
+    endGame("collapse:"+endReason);
+    return true;
+  }
+  return false;
+}
+
+// B3 开发期校验：扫描已加载皇帝事件的 setFlags，报告非规范旗标（内容作者据此收敛）；仅 dev 标记下运行。
+function validateFlags(){
+  if(!(window.COH_DEV)) return;
+  const list=(state && state.emperor && state.emperor.events)||[];
+  const bad={};
+  for(const ev of list){
+    for(const br of (ev.branches||[])){
+      for(const f of (br.setFlags||[])){
+        if(!CANONICAL_FLAGS.includes(f)) bad[f]=(bad[f]||0)+1;
+      }
+    }
+  }
+  const keys=Object.keys(bad);
+  if(keys.length) console.warn("[COH] 非规范旗标（建议收敛到 CANONICAL_FLAGS）：", bad);
 }
 
 /* ============ 屏幕导航 ============ */
@@ -2337,6 +2547,7 @@ function selectEmperor(id){
 function startGame(){
   if(!pendingEmperor) return;
   state=newState(pendingEmperor);
+  validateFlags();   // B3 开发期校验：扫描本帝事件 setFlags 是否收敛到 CANONICAL_FLAGS（仅 window.COH_DEV 下生效）
   cohEnded=false;
   currentEvent=null; currentChoiceIndex=-1;
   initTechAtStart();    // 科技树：按朝代预设填充 ownedTechs 并注入超前科技衰减加成
@@ -2393,9 +2604,13 @@ function enterMonth(){
         if(hit){
           eventType="历史事件"; preset=hit; markTriggered(hit);
           state.historyEventMonths=(state.historyEventMonths||0)+1;
-        }else if(shouldTriggerTechResist()){
+        }else if(shouldTriggerTechResist() && !state._techResistDone){
           // 科技远超时代 → 触发保守派阻力事件（核心创新的真实落地，按朝代情境化）
-          eventType="科技阻力"; preset=pickTechResistEvent(state.emperor);
+          // 该事件内容按朝代固定，每局至多触发一次，避免长期在位下重复出现同一事件
+          eventType="科技阻力"; preset=pickTechResistEvent(state.emperor); state._techResistDone=true;
+        }else if(state.pressure >= MID_PRESSURE_THRESHOLD && Math.random() < MID_CRISIS_PROB*state.pressure){
+          // B5 中段加压：压强驱动的日常政务→危机升级（兑现设计文档 5.2 的 0.35*p 注入；此前代码缺失）
+          eventType="数值危机";
         }else{
           eventType="日常政务";
         }
@@ -2407,7 +2622,14 @@ function enterMonth(){
   if(state._activeAnchor) state.anchorMonths=(state.anchorMonths||0)+1;
   // 日常政务优先走批量预生成队列（降低 API 延迟，秒出事件）
   if(eventType==="日常政务" && !preset && (state.pregenQueue||[]).length>0){
-    const ev=state.pregenQueue.shift();
+    // 即时去重：跳过与上月事件同名的预生成事件，避免 AI 批量产出中出现雷同
+    let ev=null;
+    for(let i=0;i<state.pregenQueue.length;i++){
+      const c=state.pregenQueue.shift();
+      if(c.eventTitle!==state._lastEventKey){ ev=c; break; }
+      state.pregenQueue.push(c);   // 同名则放回队尾，继续取下一个，避免丢弃已生成事件
+    }
+    if(!ev) ev=state.pregenQueue.shift();   // 全部同名则放行最近一个
     currentEvent={
       title:ev.eventTitle,
       description:ev.eventDescription,
@@ -2433,8 +2655,8 @@ function markTriggered(ev){
 }
 // 压强（5.2）：中段隆起的高斯峰 + 数值健康度
 function computePressure(st){
-  const span=Math.max(1,(st.emperor.reignEnd||st.year)-(st.emperor.reignStart||st.year));
-  const prog=(st.year-(st.emperor.reignStart||st.year))/span;
+  const span=Math.max(1,(st.emperor.reignEnd)-(st.emperor.reignStart));   // 不用 ||year 退化：reignStart 恒为史料年份，0 为假值会误判
+  const prog=(st.year-(st.emperor.reignStart))/span;
   const bell=Math.exp(-Math.pow((prog-0.5)/0.18,2));
   const healthFactor=1-avgStat(st.stats)/100;
   return Math.max(0,Math.min(1, 0.35*bell + 0.4*healthFactor));
@@ -2476,8 +2698,8 @@ function pickGatedMajor(){
 function loadMidCrisis(){
   const anchors=state.emperor.midCrisisAnchors||[];
   if(!anchors.length) return null;
-  const span=Math.max(1,(state.emperor.reignEnd||state.year)-(state.emperor.reignStart||state.year));
-  const prog=(state.year-(state.emperor.reignStart||state.year))/span;
+  const span=Math.max(1,(state.emperor.reignEnd)-(state.emperor.reignStart));
+  const prog=(state.year-(state.emperor.reignStart))/span;
   const fired=state._midFired||(state._midFired=[]);
   for(let i=0;i<anchors.length;i++){
     if(fired.includes(i)) continue;
@@ -2506,9 +2728,21 @@ function shouldTriggerTechResist(){
   return true;
 }
 
-// AI 是否可用：非离线模式且已配置凭据
+// AI 是否可用：非离线模式、已配置凭据，且凭据经运行时探查确实可用（resolveCreds 能取到 key）。
+// 关键修复：原先仅依赖 hasCreds()（只看配置项是否存在，如 provisionUrl 已填），
+// 当配置下发服务不可达、resolveCreds() 实际返回 null 时，aiAvailable() 仍误判为可用，
+// 导致白话文模式先显示「生成中」、翻译调用失败后却回退显示文言文。现以运行时探查结果为准。
+// _aiProbed 已在顶部初始化处声明（null=探查中/未知, true=可用, false=不可用）
 function aiAvailable(){
-  return !settings.offlineMode && hasCreds();
+  return !settings.offlineMode && hasCreds() && _aiProbed === true;
+}
+// 启动时探查一次凭据是否真正可用（含 provision token 下发 / 内置密文解密），结果缓存到 _aiProbed。
+// 探查结果决定白话文「生成中」占位是否出现：探查为不可用则直接显示原文，绝不误报「生成中」后回退文言文。
+function probeAi(){
+  if(settings.offlineMode){ _aiProbed = false; return Promise.resolve(); }
+  return resolveCreds()
+    .then(c => { _aiProbed = !!(c && c.key); })
+    .catch(() => { _aiProbed = false; });
 }
 
 function loadEvent(eventType,preset){
@@ -2579,11 +2813,11 @@ function fallbackEvent(eventType,preset){
     // 用预设事件（史实 / 科技阻力），倾向标签按文本语义推断，避免误导
     renderPreset(preset,eventType);
   }else if(eventType==="数值危机"){
-    // 危机事件：基于危机数值生成
+    // 危机事件：基于危机数值生成，按崩危维度匹配主题后备事件（去重，避免连续月份雷同）
     const crisis=detectCrisis(state.stats);
-    const fb=pickFallback("crisis");
+    const fb=crisisFallbackFor(crisis.split("、")[0]);
     currentEvent={
-      title:crisis.split("、")[0]+"危局",
+      title:fb.title,
       description:"近岁国政失当，"+crisis+"。朝野震动，群臣议急救之策，陛下需定夺。",
       choices:fb.choices.map(c=>({text:c,hint:hintFromText(c)})),
       historicalChoice:-1,
@@ -2653,6 +2887,7 @@ function stanceKey(hint){
 
 let _evSeq=0; // 事件渲染序号，用于异步补译回写时防止串台（避免旧事件白话覆盖新事件）
 function renderEvent(){
+  if(currentEvent && currentEvent.title) state._lastEventKey = currentEvent.title;  // 即时去重守卫：记录本月事件稳定键
   const seq=++_evSeq;
   const ev = currentEvent._ev || ((currentEvent.source && currentEvent.source!=="历史事件") ? currentEvent : null);
   const b=bhEventSync(state.emperor, ev);
@@ -2888,14 +3123,15 @@ function applyOutcome(json,choice){
     const target=needy.length?needy.reduce((a,b)=>state.stats[a]<state.stats[b]?a:b):"people";
     sc[target]=(Number(sc[target])||0)+2;
   }
-  const p = state.pressure||0;   // 中段压强上浮危机幅度（5.2）
-  const limit = currentEvent.source==="数值危机" ? Math.round(12 + 5*p) : 10;
+  const limit = outcomeLimit(currentEvent.source);   // B2 单一真相：常规±10 / 危机±20（此前 12+5p 与 12 两版打架）
   ["treasury","people","military","court","health","tech"].forEach(k=>{
     let v=Math.round(Number(sc[k])||0);
     v=clamp(v,-limit,limit);
     state.stats[k]=clamp(state.stats[k]+v,0,100);
     sc[k]=v;   // 写回截断后的值，使“变化”面板与真实生效数值一致（避免显示 +15 实则 +10）
   });
+  // B3：应用 AI 生成的规范旗标（仅限 CANONICAL_FLAGS，杜绝幽灵旗标污染结局判定）
+  if(Array.isArray(json.setFlags)) json.setFlags.forEach(f=>{ if(CANONICAL_FLAGS.includes(f)) state.flags[f]=true; });
   applyCoupling();
   recordHistory(choice,json.outcomeDescription,json.historianComment,sc);
   renderOutcome(json.outcomeDescription,json.historianComment,sc);
@@ -2957,7 +3193,7 @@ function fallbackOutcome(choice){
     const target=needy.length?needy.reduce((a,b)=>state.stats[a]<state.stats[b]?a:b):"people";
     sc[target]=(sc[target]||0)+2;
   }
-  const limit=currentEvent.source==="数值危机"?12:10;
+  const limit=outcomeLimit(currentEvent.source);   // B2 单一真相：常规±10 / 危机±20
   ["treasury","people","military","court","health","tech"].forEach(k=>{
     sc[k]=clamp(Math.round(sc[k]),-limit,limit);
     state.stats[k]=clamp(state.stats[k]+sc[k],0,100);
@@ -3032,13 +3268,24 @@ function nextMonth(){
     const lowest=Object.entries(state.stats).filter(([k])=>k!=="health" && k!=="tech").sort((a,b)=>a[1]-b[1])[0];
     if(lowest) state.stats[lowest[0]]=clamp(state.stats[lowest[0]]-2,0,100);
   }
-  // 自然寿命衰减：以"真实年龄"计（登基年龄 + 在位年数），消除把在位年数误当年龄的语义错误；
-  // 温和且可预期，配合下方超期执政的缓降，杜绝"无明确触发原因"的健康悬崖式暴跌
-  const ascendAge = (state.emperor.ascendAge!=null) ? state.emperor.ascendAge : 25;
-  const ageYears = ascendAge + (state.year - state.emperor.reignStart);
+  // 自然寿命衰减：优先用真实登基年龄（史料优先）；缺省时按"在位进度"估算龙体消耗，
+  // 使自然衰减对绝大多数皇帝也生效（修复：原默认 25 岁 + 在位<45 年 → 96% 皇帝永不触发衰减）。
+  const asc = (state.emperor.ascendAge!=null) ? state.emperor.ascendAge : null;
+  const reignStart = state.emperor.reignStart;   // 史料年份，无需 ||year 退化（避免 0 为假值误判）
+  const reignSpan = Math.max(1,(state.emperor.reignEnd)-reignStart);
+  const yearsInReign = state.year - reignStart;
   let passive = 0;
-  if(ageYears > 70) passive -= 1;                 // 古稀之年，龙体渐衰
-  if(ageYears > 80) passive -= 1;                 // 耄耋之后，损耗略增
+  if(asc!=null){
+    const ageYears = asc + yearsInReign;
+    if(ageYears > 70) passive -= 1;               // 古稀之年，龙体渐衰
+    if(ageYears > 80) passive -= 1;               // 耄耋之后，损耗略增
+  }else{
+    // 史料缺失时的保守估算（非真实年龄）：后 1/3 在位期开始轻微衰减，不给短祚皇帝拖垮
+    // [PLACEHOLDER · 验证路径] 若后续为各帝补入真实 ascendAge，此分支自动让位给真实年龄路径
+    const prog = yearsInReign / reignSpan;
+    if(prog > 0.66) passive -= 1;
+    if(prog > 0.85) passive -= 1;
+  }
   // 超期执政：温和递减，每超约3年额外-1（封顶-2），取消原有的 reignEnd+5 后骤降-3 悬崖
   if(state.year > state.emperor.reignEnd){
     const over = state.year - state.emperor.reignEnd;
@@ -3047,6 +3294,8 @@ function nextMonth(){
   // 被动损耗封顶：无论何种叠加，单月健康净损耗不超过 2，确保损耗速率符合预期、可预期
   if(passive < -2) passive = -2;
   if(passive !== 0) state.stats.health = clamp(state.stats.health + passive, 0, 100);
+  // B1 失败链：评估国库/民心/军事/朝政的倾危升级（预警→恶化→崩盘）；崩盘则已触发终局并 return
+  if(updateFailureChain()) return;
   // 被动衰减致死：健康归零即驾崩（与"健康=0 皇帝驾崩"规则一致；此前仅在选项结算后检查，会漏掉自然衰减致死）
   if(state.stats.health<=0){
     state.stats.health=0;
@@ -3118,7 +3367,12 @@ function endGame(reason){
   const govAvg = govKeys.reduce((a,k)=>a+state.stats[k],0)/govKeys.length;
   const ending = evalEnding(state) || defaultVerdictByGovAvg(govAvg, reignYears);
   const verdict=ending.title, review=ending.review;
-  document.getElementById("end-title").textContent=reason==="弃位"?"逊位归藩":"龙驭宾天";
+  let endTitle="龙驭宾天";
+  if(reason==="弃位") endTitle="逊位归藩";
+  else if(typeof reason==="string" && reason.indexOf("collapse:")===0){
+    endTitle = COLLAPSE_REASON[reason.slice(9)] || "社稷倾颓";   // B1 国力崩盘专属终局标题
+  }
+  document.getElementById("end-title").textContent=endTitle;
   document.getElementById("end-meta").textContent=`${state.emperor.name}（${state.emperor.templeName}）· 在位 ${reignYears} 载 · 龙体 ${state.stats.health}`;
   document.getElementById("end-verdict").textContent=verdict;
   document.getElementById("end-review").textContent=review;
@@ -3319,6 +3573,7 @@ function saveSettings(){
     localStorage.setItem("coh_settings",JSON.stringify(settings));
   }
   loadSettingsToForm();
+  probeAi(); // 凭据/离线/内置模式已变更，重新探查真实可用性
   document.getElementById("set-msg").textContent="已保存。";
   setTimeout(()=>{document.getElementById("set-msg").textContent="";},2000);
 }
@@ -3328,6 +3583,7 @@ function restoreBuiltin(){
   settings={builtin:true,api:"",key:"",model:BUILTIN_DEFAULT_MODEL,temp,fastMode,offlineMode,baihua};
   localStorage.setItem("coh_settings",JSON.stringify({builtin:true,temp,fastMode,offlineMode,baihua}));
   loadSettingsToForm();
+  probeAi(); // 恢复内置凭据后重新探查可用性
   document.getElementById("set-msg").textContent="已恢复为内置加密凭证。";
   setTimeout(()=>{document.getElementById("set-msg").textContent="";},2000);
 }
@@ -3357,6 +3613,7 @@ function safeParseJSON(content){
 }
 async function callAI(sysMsg,userMsg,isOutcome,isTest){
   const cfg=await resolveCreds();
+  _aiProbed = !!(cfg && cfg.key); // 凭据探查结果与运行时一致：能取到 key 即为可用
   if(!cfg || !cfg.key){
     if(isTest) throw new Error("无可用凭据");
     throw new Error("无可用凭据，请填入自有 Key 或检查配置");
@@ -3392,6 +3649,7 @@ async function callAI(sysMsg,userMsg,isOutcome,isTest){
         throw new Error("请求受限（额度/频率），请稍后或填写自有 Key");
       }
       if(!resp.ok){
+        if(resp.status===401 || resp.status===403){ _aiProbed=false; } // 凭据无效：永久禁用后续 AI 调用，避免反复失败并误导「生成中」
         const txt=await resp.text().catch(()=>"");
         throw new Error("HTTP "+resp.status+(txt?(" "+txt.slice(0,120)):""));
       }
@@ -3498,6 +3756,10 @@ function doSave(slot){
     usedAnchors:[...(state.usedAnchors||[])],     monthsPlayed:state.monthsPlayed||0,
     historyEventMonths:state.historyEventMonths||0, anchorMonths:state.anchorMonths||0,
     midFired:state._midFired||[],
+    usedFallbackTitles:[...(state.usedFallbackTitles||[])],  // 后备事件去重集合（序列化）
+    techResistDone:!!state._techResistDone,
+    lastEventKey:state._lastEventKey||null,
+    lastFallbackTitle:state._lastFallbackTitle||null,
     ownedTechs:state.ownedTechs, playerTechs:state.playerTechs, techBonus:state.techBonus,
     timestamp:Math.floor(Date.now()/1000)
   };
@@ -3518,6 +3780,10 @@ function autoSave(){
     usedAnchors:[...(state.usedAnchors||[])],     monthsPlayed:state.monthsPlayed||0,
     historyEventMonths:state.historyEventMonths||0, anchorMonths:state.anchorMonths||0,
     midFired:state._midFired||[],
+    usedFallbackTitles:[...(state.usedFallbackTitles||[])],  // 后备事件去重集合（序列化）
+    techResistDone:!!state._techResistDone,
+    lastEventKey:state._lastEventKey||null,
+    lastFallbackTitle:state._lastFallbackTitle||null,
     ownedTechs:state.ownedTechs, playerTechs:state.playerTechs, techBonus:state.techBonus,
     timestamp:Math.floor(Date.now()/1000)
   };
@@ -3542,6 +3808,10 @@ function doLoad(slot){
     historyEventMonths:data.historyEventMonths||0,
     anchorMonths:data.anchorMonths||0,
     _activeAnchor:null, _midFired:data._midFired||[],
+    usedFallbackTitles:new Set(data.usedFallbackTitles||[]),  // 后备事件去重集合（反序列化）
+    _techResistDone:!!data.techResistDone,
+    _lastEventKey:data.lastEventKey||null,
+    _lastFallbackTitle:data.lastFallbackTitle||null,
     pregenQueue:[], pregenPending:false,  // 读档时清空预生成队列（原事件可能已过时）
     ownedTechs:data.ownedTechs||{}, playerTechs:data.playerTechs||{},
     techBonus:data.techBonus||{treasury:0,people:0,military:0,court:0,health:0,tech:0},
