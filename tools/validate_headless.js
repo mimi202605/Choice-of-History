@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* 抉择千秋 — 无头回归验证
+/* 择决千秋 — 无头回归验证
  * 目标：在不启动浏览器的情况下，把 index.html 的内联主脚本加载进 Node 的 vm 沙箱，
  * 用 mock 的 DOM/localStorage/fetch 跑通真实游戏引擎，验证 6 大模块（1.1/1.2/2.1/2.2/2.4/5.2/7.2）
  * 的代码改动完整落地、无回归、可通过。
@@ -348,7 +348,7 @@ const result = await new Promise((res) => {
 });
 
 // ---------- 输出报告 ----------
-console.log("\n========== 抉择千秋 无头回归验证 ==========");
+console.log("\n========== 择决千秋 无头回归验证 ==========");
 // (i) 7.2 静态校验：内联脚本不得再内联任何共享明文凭据（在 vm 外对 body 做 grep）
 const noInlineCred = !/BUILTIN_CRED_CIPHER|BUILTIN_ENC_DISPLAY/.test(body);
 if (!noInlineCred) {
