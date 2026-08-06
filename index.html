@@ -1663,8 +1663,15 @@ function applyChoiceEffects(br, rd){
 function applyOutcome(json,choice){
   // 数值校验与硬截断
   const sc=json.statChanges||{};
+  // 安全网：若 AI 生成的后果全部 <=0（纯惩罚性选项），自动补一项增益，确保每个选项至少带来一个正面效果
+  const kAll=["treasury","people","military","court","health","tech"];
+  if(kAll.every(k=>(Number(sc[k])||0)<=0)){
+    const needy=kAll.filter(k=>k!=="health"&&state.stats[k]<50);
+    const target=needy.length?needy.reduce((a,b)=>state.stats[a]<state.stats[b]?a:b):"people";
+    sc[target]=(Number(sc[target])||0)+2;
+  }
   const p = state.pressure||0;   // 中段压强上浮危机幅度（5.2）
-  const limit = currentEvent.source==="数值危机" ? Math.round(25 + 8*p) : 15;
+  const limit = currentEvent.source==="数值危机" ? Math.round(12 + 5*p) : 10;
   ["treasury","people","military","court","health","tech"].forEach(k=>{
     let v=Math.round(Number(sc[k])||0);
     v=clamp(v,-limit,limit);
@@ -1677,11 +1684,12 @@ function applyOutcome(json,choice){
 
 // 各倾向的后果模板（按语义而非序号映射，避免"按编号刷分"）
 const STANCE_PROFILES={
-  "进取":{military:5,treasury:-3,people:-2,health:-1},
+  "进取":{military:5,treasury:-3,people:-2},
   "保守":{treasury:2,court:2,military:-2,people:1,health:1},
   "革新":{tech:5,treasury:-2,court:-2,people:1},
   "怀柔":{people:4,court:2,treasury:-2,health:1},
-  "铁腕":{military:3,court:3,people:-3,health:-2,treasury:1}
+  "铁腕":{military:3,court:3,people:-3,health:-1,treasury:1},
+  "权衡":{treasury:1,people:1,court:1}  // 兜底：所有选项至少有一项增益，避免纯零/纯负
 };
 function stanceFlavorText(s){
   return ({
@@ -1723,7 +1731,14 @@ function fallbackOutcome(choice){
     const lowest=Object.entries(state.stats).filter(([k])=>k!=="health").sort((a,b)=>a[1]-b[1])[0];
     if(lowest) sc[lowest[0]]+=6;
   }
-  const limit=currentEvent.source==="数值危机"?25:15;
+  // 安全网：兜底确保每个选项至少带来一项属性增益，避免纯零/纯负后果
+  const kAll=["treasury","people","military","court","health","tech"];
+  if(kAll.every(k=>(sc[k]||0)<=0)){
+    const needy=kAll.filter(k=>k!=="health"&&state.stats[k]<50);
+    const target=needy.length?needy.reduce((a,b)=>state.stats[a]<state.stats[b]?a:b):"people";
+    sc[target]=(sc[target]||0)+2;
+  }
+  const limit=currentEvent.source==="数值危机"?12:10;
   ["treasury","people","military","court","health","tech"].forEach(k=>{
     sc[k]=clamp(Math.round(sc[k]),-limit,limit);
     state.stats[k]=clamp(state.stats[k]+sc[k],0,100);
@@ -1783,25 +1798,34 @@ function nextMonth(){
     loadEvent("历史事件", ev);
     return;
   }
-  // 寿命机制：长期高低位影响健康
+  // 寿命机制：长期高低位影响健康（恢复更宽容，降低整体难度）
   const avg=avgStat(state.stats);
-  if(avg>60){ state.highStreak++; state.lowStreak=0; state.stats.health=clamp(state.stats.health+1,0,100); }
-  else if(avg<30){ state.lowStreak++; state.highStreak=0; state.stats.health=clamp(state.stats.health-2,0,100); }
+  if(avg>=55){ state.highStreak++; state.lowStreak=0; state.stats.health=clamp(state.stats.health+1,0,100); }
+  else if(avg<30){ state.lowStreak++; state.highStreak=0; state.stats.health=clamp(state.stats.health-1,0,100); }
   else { state.highStreak=0; state.lowStreak=0; }
-  // 长期低位加速崩盘（连续6月极低，最低项再受重创）
+  // 长期低位加速崩盘（连续6月极低，最低项再受重创）——仅影响非健康项，避免健康无端骤降
   if(state.lowStreak>=6){
     const lowest=Object.entries(state.stats).filter(([k])=>k!=="health").sort((a,b)=>a[1]-b[1])[0];
     if(lowest) state.stats[lowest[0]]=clamp(state.stats[lowest[0]]-2,0,100);
   }
-  // 自然寿命衰减：年迈体衰，给长线游玩收束压力
-  const ageYears=state.year-state.emperor.reignStart;
-  if(ageYears>45) state.stats.health=clamp(state.stats.health-1,0,100);
-  if(ageYears>60) state.stats.health=clamp(state.stats.health-1,0,100);
+  // 自然寿命衰减：以"真实年龄"计（登基年龄 + 在位年数），消除把在位年数误当年龄的语义错误；
+  // 温和且可预期，配合下方超期执政的缓降，杜绝"无明确触发原因"的健康悬崖式暴跌
+  const ascendAge = (state.emperor.ascendAge!=null) ? state.emperor.ascendAge : 25;
+  const ageYears = ascendAge + (state.year - state.emperor.reignStart);
+  let passive = 0;
+  if(ageYears > 70) passive -= 1;                 // 古稀之年，龙体渐衰
+  if(ageYears > 80) passive -= 1;                 // 耄耋之后，损耗略增
+  // 超期执政：温和递减，每超约3年额外-1（封顶-2），取消原有的 reignEnd+5 后骤降-3 悬崖
+  if(state.year > state.emperor.reignEnd){
+    const over = state.year - state.emperor.reignEnd;
+    passive -= Math.min(2, Math.floor(over / 3));
+  }
+  // 被动损耗封顶：无论何种叠加，单月健康净损耗不超过 2，确保损耗速率符合预期、可预期
+  if(passive < -2) passive = -2;
+  if(passive !== 0) state.stats.health = clamp(state.stats.health + passive, 0, 100);
   // 推进月份
   state.month++;
   if(state.month>12){ state.month=1; state.year++; }
-  // 超出在位结束年过多，健康自然衰退
-  if(state.year>state.emperor.reignEnd+5){ state.stats.health=clamp(state.stats.health-3,0,100); }
   renderGame();
   enterMonth();
 }
