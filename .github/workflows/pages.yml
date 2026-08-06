@@ -35,6 +35,10 @@ concurrency:
   group: pages
   cancel-in-progress: false
 
+# 兜底：强制所有 JS Action 在 Node 24 上运行，避开 Node 20 弃用警告导致的 timeout。
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+
 jobs:
   deploy:
     environment:
@@ -70,8 +74,10 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v6
 
+      # 注意：actions/upload-pages-artifact@v4 内部依赖 actions/upload-artifact@ea165f8d（Node 20），
+      # 在 Node 24 强制模式下会卡住导致超时。v5 已升级到内部依赖 v7（Node 24）。
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
           path: '.'
 
