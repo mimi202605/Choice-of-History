@@ -8,147 +8,482 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet" />
 <style>
+  /* ============================================================
+     抉择千秋 — 美术增强 v2.0
+     借鉴：《对马岛之魂》墨韵 · 《三国全战》金石质感 · 《Okami》水墨粒子
+     ============================================================ */
   :root{
     --bg:#f4ecd8;
+    --bg-light:rgba(255,252,242,.85);
     --ink:#2c2416;
+    --ink-light:#4a3f2f;
     --red:#8b3a3a;
+    --red-bright:#a84545;
+    --red-glow:rgba(139,58,58,.15);
     --dim:#6b5d4f;
+    --dim-light:#8a7b6a;
     --bar-bg:#e8dcc0;
     --bar-fill:#5a4a3a;
     --gold:#9a7b3f;
+    --gold-bright:#b8922e;
+    --gold-glow:rgba(154,123,63,.2);
+    --jade:#3a6b5a;
+    --jade-light:rgba(58,107,90,.1);
+    --shadow-soft:0 2px 12px rgba(44,36,22,.08);
+    --shadow-md:0 4px 20px rgba(44,36,22,.12);
+    --shadow-lg:0 8px 40px rgba(44,36,22,.18);
+    --radius-sm:3px;
+    --radius-md:6px;
+    --radius-lg:10px;
+    --transition-fast:.15s ease;
+    --transition-smooth:.35s cubic-bezier(.4,0,.2,1);
+    --transition-spring:.5s cubic-bezier(.34,1.56,.64,1);
   }
-  *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;}
+  *,*::before,*::after{box-sizing:border-box;}
+
+  /* ===== 水墨粒子系统 ===== */
+  #ink-particles{
+    position:fixed;inset:0;pointer-events:none;z-index:0;
+    overflow:hidden;
+  }
+  .ink-particle{
+    position:absolute;
+    border-radius:50%;
+    pointer-events:none;
+    animation:inkFloat var(--dur) var(--delay) linear infinite;
+    opacity:0;
+  }
+  @keyframes inkFloat{
+    0%{transform:translateY(105vh) translateX(0) rotate(0deg) scale(0);opacity:0;}
+    5%{opacity:var(--op);}
+    15%{transform:translateY(75vh) translateX(var(--dx1)) rotate(60deg) scale(var(--s1));opacity:var(--op);}
+    50%{transform:translateY(40vh) translateX(var(--dx2)) rotate(200deg) scale(var(--s2));opacity:calc(var(--op)*.7);}
+    85%{transform:translateY(10vh) translateX(var(--dx3)) rotate(340deg) scale(var(--s3));opacity:calc(var(--op)*.2);}
+    100%{transform:translateY(-5vh) translateX(var(--dx4)) rotate(360deg) scale(0);opacity:0;}
+  }
+  @keyframes inkDrift{
+    0%{transform:translateX(-5vw) translateY(30vh) rotate(0deg);opacity:0;}
+    10%{opacity:var(--op);}
+    40%{transform:translateX(45vw) translateY(calc(30vh + var(--dy))) rotate(120deg);opacity:var(--op);}
+    90%{transform:translateX(95vw) translateY(calc(30vh + var(--dy)*2)) rotate(300deg);opacity:0;}
+    100%{transform:translateX(105vw) translateY(calc(30vh + var(--dy)*2.5)) rotate(360deg);opacity:0;}
+  }
+
+  /* ===== 水墨过渡遮罩 ===== */
+  #ink-transition{
+    position:fixed;inset:0;pointer-events:none;z-index:100;
+    opacity:0;transition:opacity .3s;
+  }
+  #ink-transition.active{
+    opacity:1;
+  }
+  #ink-transition canvas{
+    width:100%;height:100%;
+  }
+
+  /* ===== 基础样式 ===== */
+  html,body{margin:0;padding:0;overflow-x:hidden;}
   body{
     font-family:'Noto Serif SC',serif;
     color:var(--ink);
     background:var(--bg);
     background-image:
-      radial-gradient(circle at 20% 10%, rgba(139,58,58,.04) 0, transparent 40%),
-      radial-gradient(circle at 80% 90%, rgba(90,74,58,.05) 0, transparent 45%),
-      repeating-linear-gradient(45deg, rgba(90,74,58,.012) 0 2px, transparent 2px 4px),
-      repeating-linear-gradient(-45deg, rgba(90,74,58,.012) 0 2px, transparent 2px 4px);
+      radial-gradient(ellipse at 15% 10%, rgba(139,58,58,.03) 0, transparent 50%),
+      radial-gradient(ellipse at 85% 90%, rgba(90,74,58,.04) 0, transparent 55%),
+      radial-gradient(ellipse at 50% 50%, rgba(154,123,63,.02) 0, transparent 60%),
+      repeating-linear-gradient(45deg, rgba(90,74,58,.008) 0 1px, transparent 1px 3px),
+      repeating-linear-gradient(-45deg, rgba(90,74,58,.008) 0 1px, transparent 1px 3px),
+      repeating-linear-gradient(0deg, rgba(90,74,58,.004) 0 1px, transparent 1px 20px);
     min-height:100vh;
-    line-height:1.7;
+    line-height:1.75;
+    position:relative;
   }
   .calli{font-family:'Ma Shan Zheng',cursive;}
-  #app{max-width:920px;margin:0 auto;padding:18px 14px 60px;}
-  .screen{display:none;}
+  #app{max-width:920px;margin:0 auto;padding:18px 14px 60px;position:relative;z-index:1;}
+  .screen{
+    display:none;
+    animation:fadeSlideIn .4s cubic-bezier(.4,0,.2,1);
+  }
   .screen.active{display:block;}
+  @keyframes fadeSlideIn{
+    from{opacity:0;transform:translateY(12px);}
+    to{opacity:1;transform:translateY(0);}
+  }
 
-  /* Top bar */
+  /* ===== 顶部栏 ===== */
   .topbar{
     display:flex;align-items:center;justify-content:space-between;
     border:2px double var(--ink);
-    background:rgba(255,250,235,.5);
-    padding:8px 14px;border-radius:4px;
-    box-shadow:0 1px 0 rgba(90,74,58,.15) inset;
+    background:var(--bg-light);
+    padding:10px 16px;border-radius:var(--radius-md);
+    box-shadow:
+      0 1px 0 rgba(90,74,58,.1) inset,
+      var(--shadow-soft);
+    backdrop-filter:blur(4px);
+    position:relative;
+    overflow:hidden;
+  }
+  .topbar::after{
+    content:"";position:absolute;top:0;left:0;right:0;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(154,123,63,.3),transparent);
+    pointer-events:none;
   }
   .seal{
     display:inline-flex;align-items:center;justify-content:center;
-    width:42px;height:42px;border:2px solid var(--red);color:var(--red);
-    font-family:'Ma Shan Zheng',cursive;font-size:20px;border-radius:4px;
-    transform:rotate(-4deg);background:rgba(244,236,216,.4);
+    width:44px;height:44px;border:2px solid var(--red);color:var(--red);
+    font-family:'Ma Shan Zheng',cursive;font-size:22px;border-radius:var(--radius-sm);
+    transform:rotate(-4deg);background:rgba(244,236,216,.45);
     letter-spacing:-2px;line-height:1;
+    position:relative;
+    box-shadow:0 0 0 3px rgba(139,58,58,.08);
+    animation:sealPulse 4s ease-in-out infinite;
   }
-  .era{font-family:'Ma Shan Zheng',cursive;font-size:22px;letter-spacing:2px;}
+  @keyframes sealPulse{
+    0%,100%{box-shadow:0 0 0 3px rgba(139,58,58,.08);}
+    50%{box-shadow:0 0 0 6px rgba(139,58,58,.03);}
+  }
+  .era{font-family:'Ma Shan Zheng',cursive;font-size:23px;letter-spacing:3px;text-shadow:0 1px 0 rgba(255,250,235,.8);}
   .topbar .right{display:flex;gap:8px;}
 
-  /* Buttons */
+  /* ===== 按钮系统 ===== */
   .btn{
     font-family:'Noto Serif SC',serif;font-weight:600;font-size:14px;
-    background:rgba(255,250,235,.6);color:var(--ink);
-    border:1px solid var(--ink);padding:6px 14px;border-radius:3px;
-    cursor:pointer;transition:all .15s;
+    background:rgba(255,250,235,.55);color:var(--ink);
+    border:1px solid var(--ink);padding:7px 16px;border-radius:var(--radius-sm);
+    cursor:pointer;
+    transition:all var(--transition-fast);
+    position:relative;overflow:hidden;
+    letter-spacing:.5px;
   }
-  .btn:hover{background:var(--ink);color:var(--bg);}
+  .btn::after{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(44,36,22,.08) 0, transparent 70%);
+    opacity:0;transition:opacity .3s;
+    pointer-events:none;
+  }
+  .btn:hover{
+    background:var(--ink);color:var(--bg);
+    box-shadow:0 4px 14px rgba(44,36,22,.25);
+    transform:translateY(-1px);
+  }
+  .btn:hover::after{opacity:1;}
+  .btn:active{transform:translateY(0);box-shadow:none;}
   .btn.red{border-color:var(--red);color:var(--red);}
-  .btn.red:hover{background:var(--red);color:var(--bg);}
-  .btn.big{font-size:18px;padding:12px 28px;font-family:'Ma Shan Zheng',cursive;letter-spacing:3px;}
-  .btn:disabled{opacity:.45;cursor:not-allowed;}
-
-  /* Stat bars */
-  .stats{
-    display:grid;grid-template-columns:1fr 1fr;gap:6px 22px;
-    border:2px double var(--ink);border-radius:4px;
-    background:rgba(255,250,235,.45);padding:12px 16px;margin-top:12px;
+  .btn.red:hover{background:var(--red);color:var(--bg);box-shadow:0 4px 16px rgba(139,58,58,.3);}
+  .btn.big{
+    font-size:18px;padding:14px 36px;
+    font-family:'Ma Shan Zheng',cursive;letter-spacing:6px;
+    border-width:2px;
+    background:linear-gradient(180deg, rgba(255,252,242,.75) 0, rgba(244,236,216,.6) 100%);
+    box-shadow:var(--shadow-soft);
   }
-  .stat{display:flex;align-items:center;gap:8px;font-size:14px;}
-  .stat .lbl{width:36px;font-weight:700;color:var(--dim);}
-  .stat .bar{flex:1;height:12px;background:var(--bar-bg);border:1px solid var(--dim);border-radius:2px;overflow:hidden;position:relative;}
-  .stat .fill{height:100%;background:var(--bar-fill);transition:width .6s ease, background .4s;}
-  .stat .val{width:30px;text-align:right;font-variant-numeric:tabular-nums;font-weight:700;}
-  .stat.low .fill{background:var(--red);}
-  .stat.high .fill{background:var(--gold);}
+  .btn.big:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 25px rgba(44,36,22,.2);
+  }
+  .btn:disabled{opacity:.4;cursor:not-allowed;transform:none!important;box-shadow:none!important;}
 
-  /* Scroll panel */
-  .scroll{
-    border:2px double var(--ink);border-radius:4px;
-    background:rgba(255,252,242,.6);padding:22px 26px;margin-top:14px;
+  /* ===== 数值栏 ===== */
+  .stats{
+    display:grid;grid-template-columns:1fr 1fr;gap:8px 22px;
+    border:2px double var(--ink);border-radius:var(--radius-md);
+    background:rgba(255,252,242,.5);padding:14px 18px;margin-top:12px;
+    box-shadow:var(--shadow-soft);
     position:relative;
   }
-  .scroll::before,.scroll::after{
-    content:"";display:block;height:2px;margin:6px 0;
-    background:radial-gradient(circle, var(--ink) 0, transparent 70%);
-    opacity:.5;
+  .stats::before{
+    content:"";position:absolute;top:0;left:50%;width:1px;height:100%;
+    background:linear-gradient(180deg,transparent,rgba(107,93,79,.15),transparent);
+    pointer-events:none;
   }
+  .stat{
+    display:flex;align-items:center;gap:10px;font-size:14px;
+    padding:2px 0;
+  }
+  .stat .lbl{
+    width:38px;font-weight:700;color:var(--dim);
+    font-size:13px;letter-spacing:1px;
+  }
+  .stat .bar{
+    flex:1;height:14px;background:var(--bar-bg);
+    border:1px solid rgba(107,93,79,.3);border-radius:7px;
+    overflow:hidden;position:relative;
+    box-shadow:inset 0 1px 3px rgba(0,0,0,.06);
+  }
+  .stat .bar::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(255,255,255,.15) 0, transparent 50%);
+    pointer-events:none;border-radius:7px;
+  }
+  .stat .fill{
+    height:100%;background:var(--bar-fill);
+    border-radius:7px;
+    transition:width .6s cubic-bezier(.4,0,.2,1), background .5s;
+    position:relative;
+  }
+  .stat .fill::after{
+    content:"";position:absolute;top:0;left:-100%;width:100%;height:100%;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);
+    animation:barShimmer 2.5s ease-in-out infinite;
+    border-radius:7px;
+  }
+  @keyframes barShimmer{
+    0%{left:-100%;}
+    100%{left:200%;}
+  }
+  .stat .val{
+    width:32px;text-align:right;font-variant-numeric:tabular-nums;
+    font-weight:700;font-size:15px;
+  }
+  .stat.low .fill{
+    background:linear-gradient(90deg, #8b3a3a, #a84545);
+    animation:criticalPulse 1s ease-in-out infinite;
+  }
+  @keyframes criticalPulse{
+    0%,100%{filter:brightness(1);}
+    50%{filter:brightness(1.3);}
+  }
+  .stat.low .lbl{color:var(--red);}
+  .stat.low .val{color:var(--red);}
+  .stat.high .fill{
+    background:linear-gradient(90deg, #7a6a3f, var(--gold-bright));
+  }
+  .stat.high .lbl{color:var(--gold);}
+  .stat.high .val{color:var(--gold);}
+
+  /* ===== 卷轴面板 ===== */
+  .scroll{
+    border:2px double var(--ink);border-radius:var(--radius-md);
+    background:rgba(255,252,242,.65);padding:26px 30px;margin-top:14px;
+    position:relative;
+    box-shadow:var(--shadow-md);
+  }
+  .scroll::before,.scroll::after{
+    content:"";display:block;height:2px;margin:8px 0;
+    background:linear-gradient(90deg,transparent,var(--dim-light),transparent);
+    opacity:.4;
+  }
+  /* 四角装饰 */
+  .scroll .corner{
+    position:absolute;width:18px;height:18px;pointer-events:none;
+    opacity:.35;
+  }
+  .scroll .corner::before,.scroll .corner::after{
+    content:"";position:absolute;
+    background:var(--dim);
+  }
+  .scroll .corner-tl{top:8px;left:8px;}
+  .scroll .corner-tr{top:8px;right:8px;}
+  .scroll .corner-bl{bottom:8px;left:8px;}
+  .scroll .corner-br{bottom:8px;right:8px;}
+  .scroll .corner::before{width:100%;height:1px;}
+  .scroll .corner::after{width:1px;height:100%;}
+  .scroll .corner-tl::before,.scroll .corner-tr::before{top:0;}
+  .scroll .corner-bl::before,.scroll .corner-br::before{bottom:0;}
+  .scroll .corner-tl::after,.scroll .corner-bl::after{left:0;}
+  .scroll .corner-tr::after,.scroll .corner-br::after{right:0;}
+
   .evt-title{
-    font-family:'Ma Shan Zheng',cursive;font-size:30px;text-align:center;
-    color:var(--red);letter-spacing:6px;margin:6px 0 10px;
+    font-family:'Ma Shan Zheng',cursive;font-size:32px;text-align:center;
+    color:var(--red);letter-spacing:8px;margin:8px 0 14px;
+    text-shadow:0 2px 6px var(--red-glow);
+    position:relative;
+  }
+  .evt-title::after{
+    content:"";display:block;width:60px;height:1px;
+    margin:8px auto 0;
+    background:linear-gradient(90deg,transparent,var(--red),transparent);
+    opacity:.4;
   }
   .evt-desc{
-    text-indent:2em;font-size:16px;margin:10px 0;
-    text-align:justify;
+    text-indent:2em;font-size:16px;margin:12px 0;
+    text-align:justify;line-height:1.9;
   }
-  .choices{margin:14px 0 6px;}
+
+  /* ===== 选项按钮 ===== */
+  .choices{margin:16px 0 8px;}
   .choice{
     display:block;width:100%;text-align:left;
-    background:rgba(255,250,235,.5);border:1px solid var(--dim);
-    border-radius:3px;padding:10px 14px;margin:8px 0;cursor:pointer;
+    background:rgba(255,250,235,.45);border:1px solid var(--dim-light);
+    border-radius:var(--radius-sm);padding:12px 16px;margin:10px 0;
+    cursor:pointer;
     font-family:'Noto Serif SC',serif;font-size:15px;color:var(--ink);
-    transition:all .15s;
+    transition:all var(--transition-smooth);
+    position:relative;overflow:hidden;
   }
-  .choice:hover{background:var(--ink);color:var(--bg);border-color:var(--ink);}
-  .choice .no{color:var(--red);font-weight:700;margin-right:8px;}
-  .choice .hint{display:block;font-size:12px;color:var(--dim);margin-top:2px;font-style:italic;}
-  .choice:hover .hint{color:rgba(244,236,216,.7);}
-  .choice:focus{outline:none;background:var(--ink);color:var(--bg);border-color:var(--ink);}
+  .choice::before{
+    content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
+    background:var(--red);
+    transform:scaleY(0);transition:transform .3s ease;
+  }
+  .choice:hover{
+    background:var(--ink);color:var(--bg);border-color:var(--ink);
+    box-shadow:0 6px 20px rgba(44,36,22,.25);
+    transform:translateX(3px);
+  }
+  .choice:hover::before{transform:scaleY(1);}
+  .choice .no{
+    color:var(--red);font-weight:700;margin-right:10px;
+    transition:color .3s;
+  }
+  .choice:hover .no{color:#ffd9b0;}
+  .choice .hint{
+    display:block;font-size:12px;color:var(--dim);margin-top:3px;
+    font-style:italic;transition:color .3s;
+  }
+  .choice:hover .hint{color:rgba(244,236,216,.65);}
+  .choice:focus{
+    outline:none;background:var(--ink);color:var(--bg);border-color:var(--ink);
+    box-shadow:0 0 0 3px rgba(44,36,22,.15);
+  }
   .choice:focus .no{color:#ffd9b0;}
   .choice:focus .hint{color:rgba(244,236,216,.7);}
-  .outcome{text-indent:2em;font-size:15px;margin:10px 0;text-align:justify;}
+  .choice.chosen{
+    background:var(--ink);color:var(--bg);border-color:var(--ink);
+    pointer-events:none;
+    animation:choiceConfirm .5s ease;
+  }
+  @keyframes choiceConfirm{
+    0%{transform:scale(1);}
+    30%{transform:scale(1.02);}
+    100%{transform:scale(1);}
+  }
+  .choice.chosen::before{transform:scaleY(1);}
+
+  /* ===== 结果区域 ===== */
+  .outcome{
+    text-indent:2em;font-size:15px;margin:12px 0;text-align:justify;
+    animation:fadeSlideIn .5s .1s both;
+  }
   .historian{
-    margin-top:14px;padding:12px 14px;border-left:3px solid var(--red);
-    background:rgba(139,58,58,.05);font-style:italic;color:var(--dim);
+    margin-top:16px;padding:14px 16px;border-left:4px solid var(--red);
+    background:var(--red-glow);font-style:italic;color:var(--dim);
+    border-radius:0 var(--radius-sm) var(--radius-sm) 0;
+    animation:fadeSlideIn .5s .15s both;
+    position:relative;
   }
-  .historian .tag{color:var(--red);font-weight:700;font-family:'Ma Shan Zheng',cursive;font-size:18px;}
-  .changes{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;font-size:13px;}
-  .chg{padding:2px 8px;border-radius:10px;border:1px solid var(--dim);background:rgba(255,250,235,.6);}
-  .chg.up{color:#3a6b3a;border-color:#3a6b3a;}
-  .chg.down{color:var(--red);border-color:var(--red);}
+  .historian::before{
+    content:""";
+    position:absolute;left:-3px;top:-8px;
+    font-family:'Ma Shan Zheng',cursive;font-size:28px;color:var(--red);
+    opacity:.3;
+  }
+  .historian .tag{color:var(--red);font-weight:700;font-family:'Ma Shan Zheng',cursive;font-size:19px;}
+  .changes{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;font-size:13px;}
+  .chg{
+    padding:3px 10px;border-radius:12px;border:1px solid var(--dim);
+    background:rgba(255,250,235,.6);
+    animation:popIn .3s ease both;
+  }
+  @keyframes popIn{
+    from{transform:scale(.8);opacity:0;}
+    to{transform:scale(1);opacity:1;}
+  }
+  .chg.up{color:var(--jade);border-color:var(--jade);background:var(--jade-light);font-weight:600;}
+  .chg.down{color:var(--red);border-color:var(--red);background:var(--red-glow);font-weight:600;}
 
-  /* Menus */
-  .menu-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:80vh;gap:18px;}
-  .title-big{font-family:'Ma Shan Zheng',cursive;font-size:88px;color:var(--red);letter-spacing:18px;text-shadow:2px 2px 0 rgba(90,74,58,.2);}
-  .subtitle{color:var(--dim);letter-spacing:8px;font-size:16px;margin-top:-6px;}
+  /* ===== 菜单页面 ===== */
+  .menu-wrap{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    min-height:80vh;gap:20px;
+    position:relative;
+  }
+  .title-big{
+    font-family:'Ma Shan Zheng',cursive;font-size:88px;color:var(--red);
+    letter-spacing:22px;
+    text-shadow:
+      2px 2px 0 rgba(90,74,58,.15),
+      4px 4px 0 rgba(139,58,58,.06);
+    position:relative;
+    animation:titleBreathe 6s ease-in-out infinite;
+  }
+  @keyframes titleBreathe{
+    0%,100%{text-shadow:2px 2px 0 rgba(90,74,58,.15),4px 4px 0 rgba(139,58,58,.06);}
+    50%{text-shadow:2px 2px 0 rgba(90,74,58,.2),6px 6px 12px rgba(139,58,58,.1);}
+  }
+  .title-big::after{
+    content:"";
+    position:absolute;bottom:-8px;left:10%;right:10%;height:1px;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent);
+    opacity:.5;
+  }
+  .subtitle{
+    color:var(--dim);letter-spacing:10px;font-size:17px;margin-top:-2px;
+  }
 
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:14px;}
+  /* ===== 网格/卡片系统 ===== */
+  .grid{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));
+    gap:12px;margin-top:14px;
+  }
   .card{
-    background:rgba(255,252,242,.6);border:1px solid var(--dim);border-radius:4px;
-    padding:12px 14px;cursor:pointer;transition:all .15s;
+    background:rgba(255,252,242,.55);border:1px solid var(--dim-light);
+    border-radius:var(--radius-md);padding:14px 16px;cursor:pointer;
+    transition:all var(--transition-smooth);
+    position:relative;overflow:hidden;
   }
-  .card:hover{border-color:var(--red);background:rgba(255,250,235,.85);transform:translateY(-1px);}
-  .card .dyn{font-family:'Ma Shan Zheng',cursive;font-size:24px;color:var(--red);letter-spacing:3px;}
-  .card .cnt{color:var(--dim);font-size:12px;}
-  .card .nm{font-weight:700;font-size:15px;margin-top:4px;}
-  .card .meta{color:var(--dim);font-size:12px;margin-top:2px;}
-  .card .ev{color:var(--dim);font-size:12px;font-style:italic;margin-top:4px;}
-  .badge{display:inline-block;font-size:10px;padding:1px 6px;border:1px solid var(--gold);color:var(--gold);border-radius:8px;margin-left:4px;}
+  .card::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:2px;
+    background:linear-gradient(90deg,transparent,var(--red),transparent);
+    opacity:0;transition:opacity .3s;
+  }
+  .card::after{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(circle at var(--mx,50%) var(--my,50%), var(--red-glow) 0, transparent 60%);
+    opacity:0;transition:opacity .3s;
+    pointer-events:none;
+  }
+  .card:hover{
+    border-color:var(--red);
+    background:rgba(255,252,242,.85);
+    transform:translateY(-3px);
+    box-shadow:0 8px 25px rgba(139,58,58,.12);
+  }
+  .card:hover::before{opacity:1;}
+  .card:hover::after{opacity:1;}
+  .card .dyn{
+    font-family:'Ma Shan Zheng',cursive;font-size:26px;color:var(--red);
+    letter-spacing:4px;margin-bottom:4px;
+  }
+  .card .cnt{color:var(--dim);font-size:12px;letter-spacing:1px;}
+  .card .nm{font-weight:700;font-size:15px;margin-top:6px;}
+  .card .meta{color:var(--dim);font-size:12px;margin-top:3px;line-height:1.5;}
+  .card .ev{color:var(--dim);font-size:12px;font-style:italic;margin-top:5px;}
+  .badge{
+    display:inline-block;font-size:10px;padding:2px 7px;
+    border:1px solid var(--gold);color:var(--gold);
+    border-radius:10px;margin-left:4px;font-weight:600;
+  }
   .badgeB{border-color:var(--dim);color:var(--dim);}
 
-  .panel{background:rgba(255,252,242,.6);border:2px double var(--ink);border-radius:4px;padding:18px 22px;margin-top:14px;}
-  .panel h2{font-family:'Ma Shan Zheng',cursive;color:var(--red);letter-spacing:4px;margin:0 0 8px;}
-  label.fld{display:block;margin:10px 0 4px;color:var(--dim);font-size:13px;}
-  input,select{width:100%;font-family:'Noto Serif SC',serif;font-size:14px;padding:7px 9px;border:1px solid var(--dim);border-radius:3px;background:rgba(255,250,235,.7);color:var(--ink);}
+  /* ===== 面板 ===== */
+  .panel{
+    background:rgba(255,252,242,.55);border:2px double var(--ink);
+    border-radius:var(--radius-md);padding:20px 24px;margin-top:14px;
+    box-shadow:var(--shadow-soft);
+    position:relative;
+  }
+  .panel h2{
+    font-family:'Ma Shan Zheng',cursive;color:var(--red);letter-spacing:5px;
+    margin:0 0 10px;font-size:22px;
+    position:relative;display:inline-block;
+  }
+  .panel h2::after{
+    content:"";display:block;height:1px;margin-top:4px;
+    background:linear-gradient(90deg,var(--red),transparent);
+    opacity:.3;
+  }
+  label.fld{display:block;margin:12px 0 5px;color:var(--dim);font-size:13px;letter-spacing:.5px;}
+  input,select{
+    width:100%;font-family:'Noto Serif SC',serif;font-size:14px;
+    padding:8px 10px;border:1px solid var(--dim-light);border-radius:var(--radius-sm);
+    background:rgba(255,252,242,.7);color:var(--ink);
+    transition:border-color .3s, box-shadow .3s;
+  }
+  input:focus,select:focus{
+    outline:none;border-color:var(--red);
+    box-shadow:0 0 0 3px var(--red-glow);
+  }
   input[type=range]{padding:0;}
   .row{display:flex;gap:10px;align-items:center;}
   .row>*{flex:1;}
@@ -157,35 +492,158 @@
   .muted{color:var(--dim);font-size:13px;}
   .hide{display:none!important;}
 
-  /* Intro */
-  .intro-box .emperor-name{font-family:'Ma Shan Zheng',cursive;font-size:42px;color:var(--red);letter-spacing:6px;text-align:center;}
-  .intro-box .reign-line{text-align:center;color:var(--dim);margin:4px 0 12px;}
-  .intro-box .bg-text{text-indent:2em;text-align:justify;font-size:15px;}
+  /* ===== 即位介绍 ===== */
+  .intro-box .emperor-name{
+    font-family:'Ma Shan Zheng',cursive;font-size:46px;color:var(--red);
+    letter-spacing:8px;text-align:center;
+    text-shadow:0 2px 8px var(--red-glow);
+    animation:fadeSlideIn .6s ease;
+  }
+  .intro-box .reign-line{
+    text-align:center;color:var(--dim);margin:6px 0 16px;
+    letter-spacing:2px;
+    position:relative;
+  }
+  .intro-box .reign-line::after{
+    content:"";display:block;width:40px;height:1px;margin:8px auto 0;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  }
+  .intro-box .bg-text{text-indent:2em;text-align:justify;font-size:15px;line-height:1.9;}
 
-  /* Ending */
-  .ending-title{font-family:'Ma Shan Zheng',cursive;font-size:48px;color:var(--red);text-align:center;letter-spacing:8px;}
-  .verdict{font-family:'Ma Shan Zheng',cursive;font-size:30px;text-align:center;letter-spacing:6px;margin:8px 0;}
-  .stat-curve{width:100%;height:160px;border:1px solid var(--dim);border-radius:3px;background:rgba(255,250,235,.6);margin-top:8px;}
+  /* ===== 终局结算 ===== */
+  .ending-title{
+    font-family:'Ma Shan Zheng',cursive;font-size:52px;color:var(--red);
+    text-align:center;letter-spacing:10px;
+    text-shadow:0 3px 10px var(--red-glow);
+    animation:fadeSlideIn .6s ease;
+  }
+  .verdict{
+    font-family:'Ma Shan Zheng',cursive;font-size:34px;text-align:center;
+    letter-spacing:8px;margin:10px 0;
+    color:var(--gold);
+    text-shadow:0 2px 4px var(--gold-glow);
+    animation:fadeSlideIn .6s .1s both;
+  }
+  .stat-curve{
+    width:100%;height:180px;border:1px solid var(--dim-light);
+    border-radius:var(--radius-md);background:rgba(255,252,242,.55);
+    margin-top:8px;box-shadow:var(--shadow-soft);
+  }
 
-  /* Toast */
-  #toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:4px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .3s;z-index:99;}
-  #toast.show{opacity:.95;}
+  /* ===== Toast 提示 ===== */
+  #toast{
+    position:fixed;left:50%;bottom:28px;transform:translateX(-50%);
+    background:rgba(44,36,22,.92);color:var(--bg);
+    padding:12px 22px;border-radius:var(--radius-md);font-size:14px;
+    opacity:0;pointer-events:none;
+    transition:opacity .35s,transform .35s;
+    z-index:99;
+    box-shadow:0 6px 24px rgba(44,36,22,.3);
+    letter-spacing:1px;
+  }
+  #toast.show{opacity:1;transform:translateX(-50%) translateY(-4px);}
 
-  /* Save slots */
-  .slot{display:flex;justify-content:space-between;align-items:center;background:rgba(255,252,242,.6);border:1px solid var(--dim);border-radius:4px;padding:10px 14px;margin:8px 0;}
+  /* ===== 存档槽 ===== */
+  .slot{
+    display:flex;justify-content:space-between;align-items:center;
+    background:rgba(255,252,242,.55);border:1px solid var(--dim-light);
+    border-radius:var(--radius-md);padding:12px 16px;margin:10px 0;
+    transition:all var(--transition-fast);
+    box-shadow:var(--shadow-soft);
+  }
+  .slot:hover{border-color:var(--red);background:rgba(255,252,242,.8);}
   .slot .info{font-size:13px;color:var(--dim);}
-  .slot .info b{color:var(--ink);font-size:15px;}
+  .slot .info b{color:var(--ink);font-size:16px;}
 
-  /* loading overlay */
-  #loader{position:fixed;inset:0;background:rgba(244,236,216,.85);display:none;align-items:center;justify-content:center;z-index:50;}
+  /* ===== 加载画面 ===== */
+  #loader{
+    position:fixed;inset:0;
+    background:
+      radial-gradient(ellipse at center, rgba(244,236,216,.92) 0, rgba(220,210,180,.95) 100%);
+    display:none;align-items:center;justify-content:center;z-index:50;
+    flex-direction:column;
+  }
   #loader.show{display:flex;}
-  #loader .ink{font-family:'Ma Shan Zheng',cursive;font-size:26px;color:var(--red);letter-spacing:4px;}
-  #loader .sub{color:var(--dim);font-size:13px;margin-top:8px;text-align:center;}
+  #loader .ink-wrap{
+    position:relative;
+    display:flex;flex-direction:column;align-items:center;
+  }
+  #loader .ink{
+    font-family:'Ma Shan Zheng',cursive;font-size:30px;color:var(--red);
+    letter-spacing:6px;
+    animation:loaderBrush 2.5s ease-in-out infinite;
+  }
+  @keyframes loaderBrush{
+    0%,100%{opacity:.6;transform:scale(.98);}
+    50%{opacity:1;transform:scale(1.02);}
+  }
+  #loader .sub{
+    color:var(--dim);font-size:14px;margin-top:10px;text-align:center;
+    letter-spacing:2px;
+    animation:loaderFade 2s ease-in-out infinite;
+  }
+  @keyframes loaderFade{
+    0%,100%{opacity:.4;}
+    50%{opacity:1;}
+  }
+  /* 加载印章 */
+  #loader .load-seal{
+    width:50px;height:50px;border:2px solid var(--red);color:var(--red);
+    font-family:'Ma Shan Zheng',cursive;font-size:22px;
+    border-radius:var(--radius-sm);transform:rotate(-4deg);
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(244,236,216,.5);
+    margin-bottom:16px;
+    animation:sealStamp 2s ease-in-out infinite;
+    box-shadow:0 2px 8px var(--red-glow);
+  }
+  @keyframes sealStamp{
+    0%,100%{transform:rotate(-4deg) scale(1);opacity:.7;}
+    50%{transform:rotate(-4deg) scale(1.08);opacity:1;}
+  }
 
+  /* ===== 速断面板 ===== */
+  #speed-decide{margin-top:20px;text-align:center;}
+  #speed-decide.show{display:block;animation:fadeSlideIn .3s ease;}
+  #speed-decide.hide{display:none;}
+  .speed-tip{color:var(--dim);font-size:11px;letter-spacing:3px;margin-bottom:10px;}
+  .speed-btns{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+  .speed-btns button{
+    background:rgba(255,250,235,.55);color:var(--ink);
+    border:1px solid var(--dim-light);
+    padding:7px 14px;border-radius:var(--radius-sm);font-size:13px;
+    cursor:pointer;font-family:'Noto Serif SC',serif;
+    transition:all var(--transition-fast);
+  }
+  .speed-btns button:hover{
+    background:var(--ink);color:var(--bg);
+    box-shadow:0 4px 12px rgba(44,36,22,.2);
+    transform:translateY(-1px);
+  }
+
+  /* ===== 响应式 ===== */
   @media(max-width:600px){
-    .title-big{font-size:58px;letter-spacing:10px;}
+    .title-big{font-size:52px;letter-spacing:12px;}
     .stats{grid-template-columns:1fr;}
-    .evt-title{font-size:24px;}
+    .stats::before{display:none;}
+    .evt-title{font-size:25px;letter-spacing:4px;}
+    .ending-title{font-size:36px;}
+    .verdict{font-size:26px;}
+    .scroll{padding:20px 18px;}
+    .card{padding:12px 14px;}
+    .topbar{flex-wrap:wrap;gap:8px;}
+    .topbar .right{width:100%;justify-content:flex-end;}
+    @keyframes inkFloat{
+      0%{transform:translateY(105vh) translateX(0) rotate(0deg) scale(0);opacity:0;}
+      5%{opacity:calc(var(--op)*.6);}
+      15%{transform:translateY(75vh) translateX(calc(var(--dx1)*.6)) rotate(60deg) scale(calc(var(--s1)*.7));opacity:calc(var(--op)*.6);}
+      100%{transform:translateY(-5vh) translateX(calc(var(--dx4)*.6)) rotate(360deg) scale(0);opacity:0;}
+    }
+  }
+  @media(max-width:400px){
+    .title-big{font-size:40px;letter-spacing:8px;}
+    .subtitle{font-size:13px;letter-spacing:4px;}
+    .btn.big{font-size:16px;padding:10px 20px;letter-spacing:3px;}
   }
 </style>
 </head>
@@ -364,8 +822,20 @@
 
 </div>
 
+<!-- 水墨粒子系统 -->
+<div id="ink-particles"></div>
+<!-- 水墨过渡遮罩 -->
+<div id="ink-transition"><canvas id="ink-transition-canvas"></canvas></div>
+
 <div id="toast"></div>
-<div id="loader" class="show"><div><div class="ink" id="loader-title">载入史册…</div><div class="sub" id="loader-sub">正在加载皇帝数据库</div></div></div>
+<div id="loader" class="show">
+  <div class="ink-wrap">
+    <div class="load-seal">史</div>
+    <div class="ink" id="loader-title">载入史册…</div>
+    <div class="sub" id="loader-sub">正在加载皇帝数据库</div>
+  </div>
+  <div id="speed-decide" class="hide"><div class="speed-tip">— 速断 · 无需等待 AI —</div><div id="speed-btns" class="speed-btns"></div></div>
+</div>
 
 <!-- 内置皇帝数据库（由 tools/build_data.js 从 data/emperors/*.json 生成）。
      以经典 <script> 注入全局变量，可在 file:// 双击打开时正常加载，规避 fetch 的 CORS 限制。 -->
@@ -380,6 +850,172 @@
    架构：状态(state) 与 渲染(render*) 分离；AI 调用含重试与降级；
    存档为可序列化状态；DOM 承载全部 HUD 与菜单。
    ============================================================ */
+
+/* ============ 美术增强：水墨粒子系统 ============ */
+const _INK_COLORS = [
+  "rgba(44,36,22,.12)", "rgba(44,36,22,.08)", "rgba(44,36,22,.05)",
+  "rgba(139,58,58,.07)", "rgba(139,58,58,.04)",
+  "rgba(154,123,63,.06)", "rgba(154,123,63,.03)",
+];
+function initInkParticles(){
+  const container = document.getElementById("ink-particles");
+  if(!container) return;
+  container.innerHTML = "";
+  const isMobile = window.innerWidth < 600;
+  const count = isMobile ? 8 : 18;
+  const frag = document.createDocumentFragment();
+  for(let i=0; i<count; i++){
+    const p = document.createElement("div");
+    p.className = "ink-particle";
+    const size = 4 + Math.random() * 12;
+    p.style.width = size + "px";
+    p.style.height = size + "px";
+    p.style.left = Math.random() * 100 + "%";
+    p.style.setProperty("--dur", (12 + Math.random() * 22) + "s");
+    p.style.setProperty("--delay", (-Math.random() * 20) + "s");
+    p.style.setProperty("--dx1", (Math.random()*60-30) + "px");
+    p.style.setProperty("--dx2", (Math.random()*80-40) + "px");
+    p.style.setProperty("--dx3", (Math.random()*40-20) + "px");
+    p.style.setProperty("--dx4", (Math.random()*50-25) + "px");
+    p.style.setProperty("--s1", (.4+Math.random()*.8).toFixed(2));
+    p.style.setProperty("--s2", (.2+Math.random()*.6).toFixed(2));
+    p.style.setProperty("--s3", (.1+Math.random()*.4).toFixed(2));
+    p.style.setProperty("--op", (.06+Math.random()*.1).toFixed(2));
+    p.style.background = _INK_COLORS[Math.floor(Math.random()*_INK_COLORS.length)];
+    // 少数粒子用横漂
+    if(Math.random() < .25){
+      p.style.animationName = "inkDrift";
+      p.style.top = (20+Math.random()*60) + "%";
+      p.style.setProperty("--dy", (Math.random()*40-20) + "px");
+    }
+    frag.appendChild(p);
+  }
+  container.appendChild(frag);
+}
+
+/* ============ 美术增强：水墨过渡 ============ */
+let _transitionTimer = null;
+function inkTransition(callback){
+  const overlay = document.getElementById("ink-transition");
+  const canvas = document.getElementById("ink-transition-canvas");
+  if(!overlay || !canvas) { callback(); return; }
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  const ctx = canvas.getContext("2d");
+  // 水墨扩散动画
+  overlay.classList.add("active");
+  let r = 0;
+  const cx = canvas.width/2, cy = canvas.height/2;
+  const maxR = Math.sqrt(cx*cx + cy*cy);
+  const step = () => {
+    r += maxR * .08;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // 多层墨晕
+    for(let i=3; i>=0; i--){
+      const rr = r - i*20;
+      if(rr <= 0) continue;
+      const alpha = Math.max(0, .15 - i*.03) * Math.min(1, rr/maxR);
+      const grad = ctx.createRadialGradient(cx, cy, rr*.3, cx, cy, rr);
+      grad.addColorStop(0, `rgba(44,36,22,${alpha})`);
+      grad.addColorStop(.7, `rgba(44,36,22,${alpha*.6})`);
+      grad.addColorStop(1, `rgba(44,36,22,0)`);
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+    if(r < maxR + 60){
+      requestAnimationFrame(step);
+    }else{
+      // 墨迹覆盖 → 执行回调 → 墨迹消退
+      callback();
+      setTimeout(() => {
+        let rr2 = maxR + 60;
+        const fadeOut = () => {
+          rr2 -= maxR * .1;
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          for(let i=2; i>=0; i--){
+            const rrr = rr2 - i*15;
+            if(rrr <= 0) continue;
+            const alpha = Math.max(0, .12 - i*.025) * Math.min(1, rrr/maxR);
+            const grad = ctx.createRadialGradient(cx, cy, rrr*.4, cx, cy, rrr);
+            grad.addColorStop(0, `rgba(244,236,216,${alpha})`);
+            grad.addColorStop(.8, `rgba(244,236,216,${alpha*.5})`);
+            grad.addColorStop(1, `rgba(244,236,216,0)`);
+            ctx.fillStyle = grad;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+          }
+          if(rr2 > 0) requestAnimationFrame(fadeOut);
+          else { ctx.clearRect(0, 0, canvas.width, canvas.height); overlay.classList.remove("active"); }
+        };
+        fadeOut();
+      }, 100);
+    }
+  };
+  requestAnimationFrame(step);
+}
+
+/* ============ 美术增强：加载诗词轮换 ============ */
+const _LOADER_POEMS = [
+  "青史几行名姓，北邙无数荒丘",
+  "滚滚长江东逝水，浪花淘尽英雄",
+  "古今多少事，都付笑谈中",
+  "江山代有才人出，各领风骚数百年",
+  "秦时明月汉时关，万里长征人未还",
+  "大江东去，浪淘尽，千古风流人物",
+  "人生自古谁无死，留取丹心照汗青",
+  "兴，百姓苦；亡，百姓苦",
+];
+let _loaderPoemIdx = 0;
+function rotateLoaderPoem(){
+  const sub = document.getElementById("loader-sub");
+  if(sub && document.getElementById("loader").classList.contains("show")){
+    sub.textContent = _LOADER_POEMS[_loaderPoemIdx];
+    _loaderPoemIdx = (_loaderPoemIdx + 1) % _LOADER_POEMS.length;
+  }
+}
+
+/* ============ 美术增强：卡片鼠标追踪光效 ============ */
+function initCardTracking(){
+  document.addEventListener("mousemove", function(e){
+    const cards = document.querySelectorAll(".card:hover");
+    cards.forEach(card => {
+      const rect = card.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width * 100).toFixed(1);
+      const y = ((e.clientY - rect.top) / rect.height * 100).toFixed(1);
+      card.style.setProperty("--mx", x + "%");
+      card.style.setProperty("--my", y + "%");
+    });
+    const btns = document.querySelectorAll(".btn:hover");
+    btns.forEach(btn => {
+      const rect = btn.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width * 100).toFixed(1);
+      const y = ((e.clientY - rect.top) / rect.height * 100).toFixed(1);
+      btn.style.setProperty("--mx", x + "%");
+      btn.style.setProperty("--my", y + "%");
+    });
+  }, {passive:true});
+}
+
+/* ============ 美术增强：选项确认动画 ============ */
+function animateChoice(index){
+  const choices = document.querySelectorAll("#choices .choice");
+  choices.forEach((c,i) => {
+    if(i === index) c.classList.add("chosen");
+    else c.style.opacity = ".35";
+  });
+}
+
+/* ============ 美术增强：滚动面板角花装饰 ============ */
+function decorateScrolls(){
+  document.querySelectorAll(".scroll").forEach(el => {
+    if(el.querySelector(".corner")) return; // 避免重复
+    const corners = ["tl","tr","bl","br"];
+    corners.forEach(c => {
+      const div = document.createElement("div");
+      div.className = "corner corner-"+c;
+      el.appendChild(div);
+    });
+  });
+}
 
 /* ---------- 朝代与皇帝数据库 ----------
    甲类(A)：明君/昏君/末代之主，带详细事件库（10余条）
@@ -1235,7 +1871,9 @@ function newState(emperor){
     historyEventMonths:0,          // 触史月数统计（指标）
     anchorMonths:0,                // 锚点渗透月数统计（指标）
     _activeAnchor:null,            // 本月注入的史材锚点（1.1）
-    _midFired:[]                   // 已触发的中段定时炸弹下标（5.2）
+    _midFired:[],                  // 已触发的中段定时炸弹下标（5.2）
+    pregenQueue:[],               // 批量预生成的事件队列（降低 API 延迟）
+    pregenPending:false           // 批量预生成是否正在飞行中
   };
 }
 
@@ -1262,11 +1900,28 @@ function avgStat(stats){
 /* ============ 屏幕导航 ============ */
 const SCREENS=["menu","dynasty","emperor","intro","game","settings","about","save","ending"];
 function goto(id){
-  SCREENS.forEach(s=>document.getElementById("screen-"+s).classList.remove("active"));
-  document.getElementById("screen-"+id).classList.add("active");
-  if(id==="dynasty") renderDynasties();
-  if(id==="settings") loadSettingsToForm();
-  window.scrollTo(0,0);
+  // 轻量过渡（仅跨大屏切换时用水墨过渡）
+  const currentActive = document.querySelector(".screen.active");
+  const useTransition = currentActive && id !== "game"; // 游戏内切换不用过渡
+  const doSwitch = () => {
+    SCREENS.forEach(s=>document.getElementById("screen-"+s).classList.remove("active"));
+    const target = document.getElementById("screen-"+id);
+    target.classList.add("active");
+    // 重新触发入场动画
+    target.style.animation = "none";
+    target.offsetHeight; // reflow
+    target.style.animation = "";
+    if(id==="dynasty") renderDynasties();
+    if(id==="settings") loadSettingsToForm();
+    if(id==="game") decorateScrolls();
+    if(id==="ending") decorateScrolls();
+    window.scrollTo(0,0);
+  };
+  if(useTransition){
+    inkTransition(doSwitch);
+  }else{
+    doSwitch();
+  }
 }
 
 /* ============ 朝代/皇帝列表渲染 ============ */
@@ -1319,10 +1974,15 @@ function renderGame(){
 function renderStats(){
   const bar=document.getElementById("stats-bar");
   const items=[["国库","treasury"],["民心","people"],["军事","military"],["朝政","court"],["健康","health"],["科技","tech"]];
-  bar.innerHTML=items.map(([lbl,k])=>{
+  bar.innerHTML=items.map(([lbl,k],i)=>{
     const v=state.stats[k];
     const cls=v<=10?"low":(v>=70?"high":"");
-    return `<div class="stat ${cls}"><span class="lbl">${lbl}</span><div class="bar"><div class="fill" style="width:${v}%"></div></div><span class="val">${v}</span></div>`;
+    const delay = (i * .06).toFixed(2);
+    return `<div class="stat ${cls}" style="animation:fadeSlideIn .4s ${delay}s both;">
+      <span class="lbl">${lbl}</span>
+      <div class="bar"><div class="fill" style="width:${v}%"></div></div>
+      <span class="val">${v}</span>
+    </div>`;
   }).join("");
 }
 
@@ -1364,7 +2024,27 @@ function enterMonth(){
   // 日常/危机 AI 月：注入就近史材锚点，提升真实感（1.1）
   state._activeAnchor = (eventType==="日常政务") ? pickAnchor() : null;
   if(state._activeAnchor) state.anchorMonths=(state.anchorMonths||0)+1;
-  loadEvent(eventType,preset);
+  // 日常政务优先走批量预生成队列（降低 API 延迟，秒出事件）
+  if(eventType==="日常政务" && !preset && (state.pregenQueue||[]).length>0){
+    const ev=state.pregenQueue.shift();
+    currentEvent={
+      title:ev.eventTitle,
+      description:ev.eventDescription,
+      choices:ev.choices.map(c=>({text:c.text||"",hint:c.hint||""})),
+      outcomes:(ev.outcomes||[]).map(o=>o||{}),
+      historicalChoice:-1,
+      source:"日常政务"
+    };
+    renderEvent();
+  }else{
+    loadEvent(eventType,preset);
+  }
+  // 后台补货：预生成队列低水位时触发批量生成（异步，不阻塞当前月）
+  if(eventType==="日常政务" && aiAvailable() && !settings.fastMode && !settings.offlineMode
+    && (state.pregenQueue||[]).length <= PREGEN_TRIGGER && !state.pregenPending){
+    state.pregenPending=true;
+    pregenerateMonths().finally(()=>{ state.pregenPending=false; });
+  }
 }
 function markTriggered(ev){
   if(ev.id) state.triggeredEvents.push(ev.id);
@@ -1460,9 +2140,11 @@ function loadEvent(eventType,preset){
     return;
   }
   // 合并调用：事件 + 5选项 + 5后果 一次返回，消除每月第二次网络等待
-  callAI(PROMPTS.system(state.emperor), PROMPTS.user(state,eventType,preset))
+  state._aiAbort = new AbortController();
+  showSpeedDecide();
+  callAI(PROMPTS.system(state.emperor), PROMPTS.user(state,eventType,preset), false, false, state._aiAbort.signal)
     .then(json=>{
-      hideLoader();
+      state._aiAbort=null; hideLoader();
       if(!json){ fallbackEvent(eventType,preset); return; }
       if(preset && eventType==="历史事件"){
         // 历史预设：保留作者 5 选项，仅用 AI 生成的 outcomes
@@ -1487,8 +2169,8 @@ function loadEvent(eventType,preset){
       }
     })
     .catch(err=>{
-      hideLoader();
-      toast("AI生成失败，使用预设事件："+err.message);
+      state._aiAbort=null; hideLoader();
+      if(err.name!=="AbortError") toast("AI生成失败，使用预设事件："+err.message);
       fallbackEvent(eventType,preset);
     });
 }
@@ -1597,6 +2279,7 @@ function escapeHtml(s){ return (s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&
 
 function makeChoice(i){
   if(!currentEvent) return;
+  animateChoice(i); // 美术增强：选项确认动画
   currentChoiceIndex=i;
   const choice=currentEvent.choices[i];
   // 合并调用已预生成后果 → 直接结算，无需第二次网络等待（节奏优化核心）
@@ -1925,21 +2608,35 @@ function endGame(reason){
 
 function drawCurve(){
   const cv=document.getElementById("end-curve");
+  // 响应式DPI适配
+  const dpr = window.devicePixelRatio || 1;
+  const rect = cv.getBoundingClientRect();
+  cv.width = rect.width * dpr;
+  cv.height = 200 * dpr;
+  cv.style.width = rect.width + "px";
+  cv.style.height = "200px";
   const ctx=cv.getContext("2d");
-  const W=cv.width,H=cv.height;
+  ctx.scale(dpr, dpr);
+  const W=rect.width, H=200;
   ctx.clearRect(0,0,W,H);
-  // 背景
-  ctx.fillStyle="rgba(255,250,235,0.6)"; ctx.fillRect(0,0,W,H);
-  // 数据点：每个历史记录的累计stat（近似用health+avg）
+
+  // 宣纸背景
+  ctx.fillStyle="rgba(255,252,242,.5)"; ctx.fillRect(0,0,W,H);
+
   const hist=state.history;
-  if(hist.length<2){ ctx.fillStyle="#6b5d4f"; ctx.font="14px 'Noto Serif SC'"; ctx.fillText("抉择记录不足，无法绘制曲线。",20,80); return; }
+  if(hist.length<2){
+    ctx.fillStyle="#6b5d4f"; ctx.font="14px 'Noto Serif SC'";
+    ctx.fillText("抉择记录不足，无法绘制曲线。",20,90); return;
+  }
+
   const keys=["treasury","people","military","court","health","tech"];
-  const colors=["#8b3a3a","#3a6b3a","#2c2416","#9a7b3f","#5a4a3a","#3a5a8b"];
-  // 重建各时点的stat
+  const labels=["国库","民心","军事","朝政","健康","科技"];
+  const colors=["#c44a4a","#4a8c5c","#3a3028","#b8922e","#6b5040","#4a6a9a"];
+  const fills=["rgba(196,74,74,.08)","rgba(74,140,92,.08)","rgba(58,48,40,.08)","rgba(184,146,46,.08)","rgba(107,80,64,.08)","rgba(74,106,154,.08)"];
+
+  // 推演各时点stat值
   const series=keys.map(()=>[]);
   let sim=Object.assign({},state.emperor.initStats);
-  // 推演
-  const startStats=Object.assign({},state.emperor.initStats);
   hist.forEach(h=>{
     keys.forEach((k,ki)=>{
       sim[k]=clamp(sim[k]+(h.statChanges[k]||0),0,100);
@@ -1947,23 +2644,65 @@ function drawCurve(){
     });
   });
   const N=hist.length;
-  const pad=30;
-  ctx.lineWidth=1.5;
+  const padL=42, padR=20, padT=24, padB=32;
+  const plotW=W-padL-padR, plotH=H-padT-padB;
+
+  // 网格线
+  ctx.strokeStyle="rgba(107,93,79,.12)"; ctx.lineWidth=.5;
+  for(let i=0; i<=4; i++){
+    const y=padT + plotH*i/4;
+    ctx.beginPath(); ctx.moveTo(padL,y); ctx.lineTo(W-padR,y); ctx.stroke();
+    ctx.fillStyle="#6b5d4f"; ctx.font="10px 'Noto Serif SC'";
+    ctx.fillText(100-i*25, 2, y+3);
+  }
+
+  // 先画填充区域
   keys.forEach((k,ki)=>{
-    ctx.strokeStyle=colors[ki];
+    ctx.fillStyle=fills[ki];
     ctx.beginPath();
     series[ki].forEach((v,i)=>{
-      const x=pad + (W-2*pad)*i/(N-1);
-      const y=H-pad - (H-2*pad)*v/100;
+      const x=padL + plotW*i/(N-1);
+      const y=padT + plotH*(1-v/100);
+      if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    });
+    ctx.lineTo(padL+plotW, padT+plotH);
+    ctx.lineTo(padL, padT+plotH);
+    ctx.closePath(); ctx.fill();
+  });
+
+  // 再画线条（带阴影）
+  ctx.lineWidth=2;
+  keys.forEach((k,ki)=>{
+    // 阴影线
+    ctx.strokeStyle="rgba(44,36,22,.06)"; ctx.lineWidth=3;
+    ctx.beginPath();
+    series[ki].forEach((v,i)=>{
+      const x=padL + plotW*i/(N-1);
+      const y=padT + plotH*(1-v/100) + 1;
+      if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    });
+    ctx.stroke();
+    // 主线
+    ctx.strokeStyle=colors[ki]; ctx.lineWidth=1.8;
+    ctx.beginPath();
+    series[ki].forEach((v,i)=>{
+      const x=padL + plotW*i/(N-1);
+      const y=padT + plotH*(1-v/100);
       if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
     });
     ctx.stroke();
   });
-  // 图例
-  ctx.font="12px 'Noto Serif SC'";
-  keys.forEach((k,ki)=>{
+
+  // 图例（横向排列在底部）
+  ctx.font="bold 11px 'Noto Serif SC'";
+  const legendY = H - 8;
+  const legendStartX = padL;
+  labels.forEach((lbl,ki)=>{
+    const x=legendStartX + ki*(plotW/6);
     ctx.fillStyle=colors[ki];
-    ctx.fillText(["国库","民心","军事","朝政","健康","科技"][ki], pad+ki*70, 14);
+    ctx.fillRect(x, legendY-8, 10, 3);
+    ctx.fillStyle=colors[ki];
+    ctx.fillText(lbl, x+13, legendY);
   });
 }
 
@@ -2046,7 +2785,7 @@ async function testConnection(){
     document.getElementById("set-msg").textContent="连接失败："+e.message;
   }
 }
-async function callAI(sysMsg,userMsg,isOutcome,isTest){
+async function callAI(sysMsg,userMsg,isOutcome,isTest,extSignal){
   const cfg=await resolveCreds();
   if(!cfg || !cfg.key){
     if(isTest) throw new Error("无可用凭据");
@@ -2068,6 +2807,11 @@ async function callAI(sysMsg,userMsg,isOutcome,isTest){
     try{
       const ctrl=new AbortController();
       const t=setTimeout(()=>ctrl.abort(),30000);
+      // 链接外部中止信号（速断面板等）
+      if(extSignal){
+        if(extSignal.aborted) throw new DOMException("已取消","AbortError");
+        extSignal.addEventListener("abort",()=>ctrl.abort());
+      }
       const resp=await fetch(url,{
         method:"POST",
         headers:{
@@ -2095,6 +2839,39 @@ async function callAI(sysMsg,userMsg,isOutcome,isTest){
     }
   }
   throw lastErr||new Error("未知错误");
+}
+
+/* ---- 批量预生成：一次 API 调用产未来 3 个月的日常政务事件，减少频繁网络等待 ---- */
+const PREGEN_BATCH = 3;
+const PREGEN_TRIGGER = 1;       // 队列余量 <= 此为低水位，触发补货
+
+async function pregenerateMonths(){
+  if(!aiAvailable() || !hasCreds()) return;
+  const cfg = await resolveCreds();
+  if(!cfg || !cfg.key) return;
+  const sys = PROMPTS.system(state.emperor);
+  // 仅生成"日常政务"类事件（不含历史/危机），作为填充月的批量素材
+  const ctx = `当前为 ${state.emperor.dynasty}·${state.era} ${fmtYear(state.year)}年 ${cnMonth(state.month)}月。
+请为未来 ${PREGEN_BATCH} 个月分别生成独立的"日常政务"事件。
+每个月的格式为 {"eventTitle":"...","eventDescription":"...","choices":[{"text":"...","hint":"...易·中·难）"}×5],"outcomes":[{"outcomeDescription":"...","historianComment":"...","statChanges":{"treasury":0,"people":0,"military":0,"court":0,"health":0,"tech":0}}×5]}。
+输出为 JSON 对象，含 "months" 数组，共 ${PREGEN_BATCH} 项，顺序对应未来各月。事件需符合当前朝代背景、连贯自然。
+不要输出 JSON 以外的内容。`;
+  try{
+    const json = await callAI(sys, ctx);
+    if(!json || !Array.isArray(json.months)) return;
+    for(const ev of json.months){
+      if(!ev||!ev.eventTitle||!Array.isArray(ev.choices)||ev.choices.length!==5) continue;
+      state.pregenQueue.push({
+        eventTitle: ev.eventTitle,
+        eventDescription: ev.eventDescription||"",
+        choices: ev.choices.map(c=>({text:c.text||"",hint:c.hint||""})),
+        outcomes: (ev.outcomes||[]).map(o=>o||{})
+      });
+    }
+  }catch(e){
+    // 静默失败：预生成失败不影响正常游戏，下次再试
+    if(e.name!=="AbortError") console.warn("预生成失败:",e.message);
+  }
 }
 
 /* ============ 存档 ============ */
@@ -2191,7 +2968,8 @@ function doLoad(slot){
     monthsPlayed:data.monthsPlayed||0,
     historyEventMonths:data.historyEventMonths||0,
     anchorMonths:data.anchorMonths||0,
-    _activeAnchor:null, _midFired:data._midFired||[]
+    _activeAnchor:null, _midFired:data._midFired||[],
+    pregenQueue:[], pregenPending:false   // 读档时清空预生成队列（原事件可能已过时）
   };
   currentEvent=null; currentChoiceIndex=-1;
   toast("已读档");
@@ -2207,7 +2985,61 @@ function backFromSettings(){
 
 /* ============ Loader / Toast ============ */
 function showLoader(t,sub){ document.getElementById("loader-title").textContent=t||"史官秉笔…"; document.getElementById("loader-sub").textContent=sub||""; document.getElementById("loader").classList.add("show"); }
-function hideLoader(){ document.getElementById("loader").classList.remove("show"); }
+function hideLoader(){ document.getElementById("loader").classList.remove("show"); hideSpeedDecide(); }
+/* ---- 速断面板：AI 加载期间展示 5 个固定姿态选项，不依赖 API ---- */
+const SPEED_STANCES=[
+  {label:"稳健守成", stance:"保守", hint:"保守·稳重"},
+  {label:"锐意更张", stance:"革新", hint:"革新·远图"},
+  {label:"怀柔安抚", stance:"怀柔", hint:"怀柔·安抚"},
+  {label:"铁腕整饬", stance:"铁腕", hint:"铁腕·果决"},
+  {label:"积极拓取", stance:"进取", hint:"进取·冒险"},
+];
+function showSpeedDecide(){
+  if(!aiAvailable() || settings.fastMode || settings.offlineMode) return;
+  const p=document.getElementById("speed-decide");
+  const b=document.getElementById("speed-btns");
+  b.innerHTML=SPEED_STANCES.map(s=>
+    `<button onclick="speedDecide('${s.stance}','${s.hint}')">${s.label}</button>`
+  ).join("");
+  p.classList.remove("hide"); p.classList.add("show");
+}
+function hideSpeedDecide(){
+  const p=document.getElementById("speed-decide");
+  p.classList.remove("show"); p.classList.add("hide");
+}
+function speedDecide(stance,hint){
+  // 中止当前 AI 请求
+  if(state._aiAbort){ try{state._aiAbort.abort();}catch(e){} state._aiAbort=null; }
+  hideLoader();
+  // 构建通用速断事件
+  currentEvent={
+    title:"临朝听政",
+    description:`${state.emperor.dynasty}·${state.era} ${fmtYear(state.year)}年 ${cnMonth(state.month)}月。陛下临朝，群臣奏事。`,
+    choices:[{text:`以「${SPEED_STANCES.find(s=>s.stance===stance)?.label||stance}」为纲`,hint}],
+    historicalChoice:-1,
+    source:"日常政务",
+    _speedStance:stance
+  };
+  currentChoiceIndex=0;
+  // 直接结算：用姿态模板规则推演
+  const sc={treasury:0,people:0,military:0,court:0,health:0,tech:0};
+  const profile=STANCE_PROFILES[stance]||{};
+  Object.assign(sc,profile);
+  // 安全网
+  if(["treasury","people","military","court","health","tech"].every(k=>(sc[k]||0)<=0)){
+    sc["people"]=(sc["people"]||0)+2;
+  }
+  ["treasury","people","military","court","health","tech"].forEach(k=>{
+    sc[k]=clamp(Math.round(sc[k]||0),-10,10);
+    state.stats[k]=clamp(state.stats[k]+sc[k],0,100);
+  });
+  applyCoupling();
+  const choiceTxt=`以「${SPEED_STANCES.find(s=>s.stance===stance)?.label||stance}」为纲`;
+  const outcomeDesc=`帝${choiceTxt}。${stanceFlavorText(stance)} 群臣奉行，朝野翕然。`;
+  const comment=stanceCommentText(stance);
+  recordHistory(currentEvent.choices[0], outcomeDesc, comment, sc);
+  renderOutcome(outcomeDesc, comment, sc);
+}
 let toastTimer=null;
 function toast(msg){
   const el=document.getElementById("toast");
@@ -2253,6 +3085,12 @@ function bindKeyboard(){
 /* ============ 初始化 ============ */
 loadSettingsToForm();
 bindKeyboard();
+initInkParticles();
+initCardTracking();
+
+// 加载诗词轮换
+let _poemInterval = setInterval(rotateLoaderPoem, 3000);
+rotateLoaderPoem(); // 立即显示第一首
 
 // 异步加载皇帝数据库，完成后隐藏载入画面并显示主菜单
 (async function(){
@@ -2262,11 +3100,18 @@ bindKeyboard();
     const w=document.getElementById("data-warn");
     if(w){ w.textContent="⚠ "+window.__cohDataWarn; w.style.display="block"; }
   }
-  document.getElementById("loader-sub").textContent = "载入完成！";
+  clearInterval(_poemInterval);
+  document.getElementById("loader-sub").textContent = "千秋兴亡，尽在抉择";
   setTimeout(() => {
     hideLoader();
     goto('menu');
-  }, 400);
+    // 窗口大小改变时重建粒子
+    window.addEventListener("resize", ()=>{
+      initInkParticles();
+      const cv = document.getElementById("ink-transition-canvas");
+      if(cv){ cv.width=window.innerWidth; cv.height=window.innerHeight; }
+    });
+  }, 500);
 })();
 </script>
 </body>
