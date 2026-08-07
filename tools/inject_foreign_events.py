@@ -99,6 +99,9 @@ def main():
             eid = e.get("id")
             if eid not in ne:
                 continue
+            # 幂等保护：该皇帝已注入过 _fe 事件则跳过，避免重复注入
+            if any(str(ev.get("id", "")).startswith(eid + "_fe") for ev in e.get("events", [])):
+                continue
             covered += 1
             start = to_int(e.get("reignStart"))
             end = to_int(e.get("reignEnd"))
