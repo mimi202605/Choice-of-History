@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Choice of History · 科技树</title>
+<style>
+  :root{
+    /* 与主界面同源：宣纸 / 墨 / 朱红 / 金 / 玉 */
+    --bg:#f4ecd8; --panel:#fbf6e9; --panel2:#efe6d0; --line:#d8c9a8;
+    --txt:#2c2416; --dim:#6b5d4f; --acc:#7a5a24; --gold:#7d5e28;
+    --red:#8b3a3a; --green:#3a6b5a; --purple:#7a5a8a;
+    --b-agri:#5a8c4a; --b-mil:#a84545; --b-eng:#3a6b8c; --b-com:#9a7b3f;
+    --b-civ:#7a5a8a; --b-med:#3a6b5a; --b-sci:#4a7a9a; --b-law:#b07a4a; --b-occ:#8a6a9a;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Noto Serif SC','Songti SC','SimSun',serif;background:var(--bg);color:var(--txt);font-size:14px}
+  header{padding:14px 20px;background:var(--panel);border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  h1{font-size:17px;margin:0;font-weight:600}
+  h1 small{color:var(--dim);font-weight:400;font-size:12px;margin-left:8px}
+  select,input,button{background:var(--panel2);color:var(--txt);border:1px solid var(--line);border-radius:6px;padding:6px 10px;font-size:13px}
+  button{cursor:pointer;transition:.15s}
+  button:hover{border-color:var(--acc)}
+  .pill{background:var(--panel2);border:1px solid var(--line);border-radius:20px;padding:4px 12px;font-size:12px;color:var(--dim)}
+  .pill b{color:var(--gold)}
+  .wrap{display:flex;gap:16px;padding:16px 20px;align-items:flex-start}
+  .main{flex:1;min-width:0}
+  .tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+  .tab{padding:6px 14px;border:1px solid var(--line);border-radius:6px;background:var(--panel);cursor:pointer;font-size:13px}
+  .tab.active{border-color:var(--acc);color:var(--acc)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px;position:relative;transition:.15s}
+  .card.locked{opacity:.5}
+  .card.ahead{border-color:var(--red);box-shadow:0 0 0 1px rgba(139,58,58,.25)}
+  .card.owned{border-color:var(--green)}
+  .card .nm{font-weight:600;font-size:13.5px;margin-bottom:3px}
+  .card .meta{color:var(--dim);font-size:11px;line-height:1.5}
+  .card .age{position:absolute;top:8px;right:8px;font-size:10px;color:var(--dim);border:1px solid var(--line);border-radius:4px;padding:1px 5px}
+  .card .aheadtag{position:absolute;top:8px;right:8px;font-size:10px;color:#fff;background:var(--red);border-radius:4px;padding:1px 5px}
+  .dots{display:flex;gap:3px;margin:7px 0}
+  .dot{width:11px;height:11px;border-radius:50%;background:var(--line)}
+  .dot.on{background:var(--green)}
+  .cost{font-size:11px;color:var(--gold)}
+  .cost.no{color:var(--red)}
+  .card:hover:not(.locked){border-color:var(--acc);transform:translateY(-1px)}
+  .card .bonus{font-size:11px;color:var(--acc);margin-top:4px}
+  .card .desc{font-size:11px;color:var(--dim);margin-top:5px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis}
+  .card .fn{font-size:11px;color:var(--acc);margin-top:5px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis}
+  /* 可升级闪烁 */
+  .card.blink{animation:blinkPulse 1.2s ease-in-out infinite;border-color:var(--gold);cursor:pointer}
+  .card.blink:hover{animation:none;border-color:var(--red);box-shadow:0 0 8px rgba(125,94,40,.5)}
+  @keyframes blinkPulse{0%,100%{box-shadow:0 0 0 0 rgba(125,94,40,.4);border-color:var(--gold)}50%{box-shadow:0 0 6px 2px rgba(125,94,40,.6);border-color:#b8963a}}
+  /* sidebar */
+  .side{width:320px;flex:0 0 320px;position:sticky;top:16px;display:flex;flex-direction:column;gap:14px}
+  .box{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px}
+  .box h3{margin:0 0 10px;font-size:13px;color:var(--dim);font-weight:600;letter-spacing:1px}
+  .dim{display:flex;align-items:center;gap:8px;margin:7px 0}
+  .dim .lab{width:34px;color:var(--dim);font-size:12px}
+  .dim .bar{flex:1;height:8px;background:var(--panel2);border-radius:5px;overflow:hidden}
+  .dim .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--acc),var(--purple));width:0}
+  .dim .val{width:46px;text-align:right;font-size:12px;color:var(--green)}
+  .ahead-list{font-size:12px;line-height:1.7;max-height:200px;overflow:auto}
+  .ahead-list .it{border-left:2px solid var(--red);padding-left:8px;margin-bottom:6px}
+  .ahead-list .it b{color:var(--red)}
+  textarea{width:100%;height:150px;background:var(--panel2);color:var(--txt);border:1px solid var(--line);border-radius:6px;padding:8px;font-size:12px;line-height:1.6;resize:vertical}
+  .hint{color:var(--dim);font-size:11px;margin-top:6px}
+  .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--panel2);border:1px solid var(--acc);padding:8px 16px;border-radius:8px;opacity:0;transition:.3s;pointer-events:none}
+  .toast.show{opacity:1}
+</style>
+</head>
+<body>
+<header>
+  <h1>科技树 <small>Choice of History · 上古→星际 · 1134 节点</small></h1>
+  <label>朝代
+    <select id="dyn"></select>
+  </label>
+  <span class="pill">时代：<b id="eraName">—</b> <span id="eraLv"></span></span>
+  <label>科技点数
+    <input id="pts" type="number" value="60" style="width:80px">
+  </label>
+  <span class="pill">剩余：<b id="remain">0</b></span>
+  <button id="reset">重置为时代预设</button>
+  <button id="clear">清空</button>
+</header>
+
+<div class="wrap">
+  <div class="main">
+    <div class="tabs" id="tabs"></div>
+    <div class="grid" id="grid"></div>
+    <div class="hint">点击卡片用科技点数解锁 / 升级（需满足前置：同分支上一时代同轨道已≥1级）。红色边框＝超前科技（越代），落地效率随代差衰减但仍生效。</div>
+  </div>
+
+  <aside class="side">
+    <div class="box">
+      <h3>皇帝生涯 · 六维增益</h3>
+      <div id="dims"></div>
+    </div>
+    <div class="box">
+      <h3>超前科技（AI 可识别）</h3>
+      <div id="ahead" class="ahead-list"><span class="hint">暂无越代科技</span></div>
+    </div>
+    <div class="box">
+      <h3>AI 科技档案（供大语言模型读取）</h3>
+      <textarea id="ai" readonly></textarea>
+      <div class="hint">将本档案注入事件生成的 system / user prompt，AI 即可理解玩家所拥越代科技并据以计算与叙事。</div>
+    </div>
+  </aside>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ---------- 内联精简引擎（与 tools/tech_engine.js 同源） ---------- */
+const DYNASTY_ERA={"夏":1,"商":2,"周":2,"秦":3,"汉":4,"新":4,"三国":4,"晋":5,"南北朝":5,"隋":5,"唐":5,"五代":5,"宋":6,"辽":6,"金":6,"西夏":6,"元":6,"明":7,"清":8,"未来近":9,"未来中":11,"未来远":13,"终末":14};
+const ATTRS=["treasury","people","military","court","health","tech"];
+const ATTR_CN={treasury:"国库",people:"民心",military:"军事",court:"朝政",health:"健康",tech:"科技"};
+const BR_COLORS={agri:"--b-agri",mil:"--b-mil",eng:"--b-eng",com:"--b-com",civ:"--b-civ",med:"--b-med",sci:"--b-sci",law:"--b-law",occ:"--b-occ"};
+function aheadDamp(gap){if(gap<=0)return 1;return Math.max(0.15,1-0.18*gap);}
+
+let TREE=null,PRESETS=null,OWNED={},ERA=1,DYN="秦",CUR_BRANCH=null;
+
+async function boot(){
+  try{
+    TREE=await (await fetch("data/tech_tree.json")).json();
+    PRESETS=await (await fetch("data/tech_presets.json")).json();
+  }catch(e){
+    document.getElementById("tabs").innerHTML='<div class="hint">未能自动加载 data/tech_tree.json 与 tech_presets.json。请将本页面置于项目根目录经本地服务器打开（fetch 需 http 环境），或把两份 JSON 与页面放同目录。</div>';
+    return;
+  }
+  const dyns=Object.keys(PRESETS.dynasties);
+  const sel=document.getElementById("dyn");
+  dyns.forEach(d=>{const o=document.createElement("option");o.value=d;o.textContent=d;sel.appendChild(o);});
+  sel.value="秦";
+  buildTabs();
+  sel.onchange=()=>loadDyn(sel.value);
+  document.getElementById("reset").onclick=()=>loadDyn(DYN);
+  document.getElementById("clear").onclick=()=>{OWNED={};render();toast("已清空");};
+  let _ptsTimer; document.getElementById("pts").oninput=()=>{clearTimeout(_ptsTimer);_ptsTimer=setTimeout(render,120);};
+  loadDyn("秦");
+}
+
+function loadDyn(d){
+  DYN=d; ERA=DYNASTY_ERA[d]||PRESETS.dynasties[d].eraLevel;
+  OWNED=Object.assign({},PRESETS.dynasties[d].techs);
+  render();
+}
+
+function buildTabs(){
+  const tabs=document.getElementById("tabs");tabs.innerHTML="";
+  TREE.meta.branches.forEach(b=>{
+    const t=document.createElement("div");t.className="tab";t.textContent=b.name;t.dataset.b=b.id;
+    t.onclick=()=>{CUR_BRANCH=b.id;buildTabs();renderGrid();};
+    tabs.appendChild(t);
+  });
+  CUR_BRANCH=TREE.meta.branches[0].id;
+}
+
+function nodeBonus(n,lvl,factor){
+  const b={};for(const a in n.bonusPerLevel)b[a]=n.bonusPerLevel[a]*lvl*factor;
+  const sa=n.specialAttr||TREE.meta.specialToAttr[n.special];if(sa)b[sa]=(b[sa]||0)+lvl*factor;return b;
+}
+function compute(){
+  const ab={treasury:0,people:0,military:0,court:0,health:0,tech:0};
+  const ahead=[];let own=0,lv=0;
+  for(const id in OWNED){const n=TREE.nodeById?id:null;const node=getNode(id);const l=OWNED[id];if(!node||l<=0)continue;own++;lv+=l;
+    const gap=node.age-ERA,f=aheadDamp(gap);
+    const b=nodeBonus(node,l,f);for(const a in b)ab[a]+=b[a];
+    if(gap>0)ahead.push({node,lvl:l,gap,factor:f,bonus:b});
+  }
+  const abr={};ATTRS.forEach(a=>abr[a]=Math.round(ab[a]));
+  ahead.sort((x,y)=>y.gap-x.gap||y.lvl-x.lvl);
+  const aheadAttr={};ahead.forEach(t=>{for(const a in t.bonus)aheadAttr[a]=(aheadAttr[a]||0)+t.bonus[a];});
+  ATTRS.forEach(a=>aheadAttr[a]=Math.round(aheadAttr[a]||0));
+  return {abr,ahead,aheadAttr,own,lv};
+}
+const _cache={};
+function getNode(id){return _cache[id]||(_cache[id]=TREE.nodes.find(n=>n.id===id));}
+
+function render(){
+  const pts=+document.getElementById("pts").value||0;
+  const p=compute();
+  // 花费
+  let spent=0;for(const id in OWNED){const n=getNode(id);const l=OWNED[id];if(n)spent+=n.cost.base+n.cost.perLevel*(l-1);}
+  document.getElementById("remain").textContent=Math.max(0,pts-spent);
+  document.getElementById("eraName").textContent=TREE.meta.ages.find(a=>a.id===ERA).name;
+  document.getElementById("eraLv").textContent="(Lv"+ERA+")";
+  renderGrid();renderDims(p);renderAhead(p);
+}
+function renderGrid(){
+  const grid=document.getElementById("grid");grid.innerHTML="";
+  document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("active",t.dataset.b===CUR_BRANCH));
+  const pts=+document.getElementById("pts").value||0;
+  let spent=0;for(const id in OWNED){const n=getNode(id);const l=OWNED[id];if(n)spent+=n.cost.base+n.cost.perLevel*(l-1);}
+  const remain=Math.max(0,pts-spent);
+  TREE.nodes.filter(n=>n.branch===CUR_BRANCH).sort((a,b)=>a.age-b.age||a.track.localeCompare(b.track)).forEach(n=>{
+    const lvl=OWNED[n.id]||0;const gap=n.age-ERA;const isAhead=gap>0;
+    const preOk=!n.prereq.length||n.prereq.every(p=> (OWNED[p]||0)>=1);
+    const maxed=lvl>=n.maxLevel;
+    const nextCost=n.cost.base+n.cost.perLevel*lvl;
+    const canBuy=preOk&&!maxed&&remain>=nextCost;
+    const c=document.createElement("div");
+    c.className="card"+(lvl>0?" owned":"")+(!preOk?" locked":"")+(isAhead?" ahead":"")+(canBuy?" blink":"");
+    const sa=n.specialAttr||TREE.meta.specialToAttr[n.special];
+    const allBonus=[...Object.keys(n.bonusPerLevel),sa].filter(Boolean);
+    const uniqBonus=[...new Set(allBonus)].map(a=>ATTR_CN[a]+"+1").join(" ");
+    // 提取 desc 中 "：" 后的描述部分
+    const descPart=n.desc.includes("：")?n.desc.split("：").slice(1).join("："):n.desc;
+    c.innerHTML=`<div class="${isAhead?'aheadtag':'age'}">${isAhead?'越代+'+gap:'时代'+n.age}</div>
+      <div class="nm">${n.name}</div>
+      <div class="desc">${descPart}</div>
+      <div class="fn">${n.functionDesc||""}</div>
+      <div class="meta">${n.branchName}·${n.track}<br>每级：${uniqBonus}</div>
+      <div class="dots">${Array.from({length:n.maxLevel},(_,i)=>`<span class="dot${i<lvl?' on':''}"></span>`).join("")}</div>
+      <div class="cost ${canBuy?'':'no'}">${maxed?'已满级':(preOk?('升级需 '+nextCost+' 点'):'需先解锁前置')}</div>`;
+    if(canBuy)c.onclick=()=>{OWNED[n.id]=(OWNED[n.id]||0)+1;render();toast("已解锁/升级："+n.name);};
+    grid.appendChild(c);
+  });
+}
+function renderDims(p){
+  const box=document.getElementById("dims");box.innerHTML="";
+  ATTRS.forEach(a=>{
+    const v=p.abr[a];const max=Math.max(50,Math.abs(v));
+    const d=document.createElement("div");d.className="dim";
+    d.innerHTML=`<span class="lab">${ATTR_CN[a]}</span><span class="bar"><i style="width:${Math.min(100,Math.abs(v)/6*100)}%"></i></span><span class="val">${v>=0?'+':''}${v}</span>`;
+    box.appendChild(d);
+  });
+}
+function renderAhead(p){
+  const box=document.getElementById("ahead");
+  if(!p.ahead.length){box.innerHTML='<span class="hint">暂无越代科技，科技树与时代相称。</span>';}
+  else{box.innerHTML=p.ahead.map(t=>`<div class="it"><b>${t.node.name}</b> · ${t.node.branchName}·${t.node.track}<br>领先${t.gap}代 · lv${t.lvl} · 落地${Math.round(t.factor*100)}% · +${Object.entries(t.bonus).map(([a,v])=>ATTR_CN[a]+v).join(" ")}</div>`).join("");}
+  // AI 摘要
+  const top=ATTRS.filter(a=>p.abr[a]!==0).sort((a,b)=>Math.abs(p.abr[b])-Math.abs(p.abr[a])).map(a=>ATTR_CN[a]+"+"+p.abr[a]).join("、");
+  let s=`【科技档案】${DYN}身处「${TREE.meta.ages.find(a=>a.id===ERA).name}」(时代等级${ERA})，已拥科技 ${p.own} 项、累计 ${p.lv} 级；六维增益：${top||"无"}。`;
+  if(p.ahead.length){
+    s+=`其越代科技 ${p.ahead.length} 项，最高跨越 ${p.ahead[0].gap} 个时代：`;
+    s+=p.ahead.slice(0,8).map(t=>`${t.node.name}(${t.node.branchName}·${t.node.ageName}，领先${t.gap}代，lv${t.lvl}，落地${Math.round(t.factor*100)}%)`).join("；")+"。";
+    const real=ATTRS.filter(a=>p.aheadAttr[a]!==0);
+    if(real.length)s+=`越代科技仍实质提升其${real.map(a=>ATTR_CN[a]).join("、")}（${real.map(a=>ATTR_CN[a]+"+"+p.aheadAttr[a]).join("、")}），应视为「穿越者之能」。`;
+    else s+="然时代鸿沟过巨，越代增益近乎为零，仅余名而无实。";
+  }else s+="暂无超越当世的科技。";
+  document.getElementById("ai").value=s;
+}
+function toast(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove("show"),1400);}
+
+boot();
+</script>
+</body>
+</html>

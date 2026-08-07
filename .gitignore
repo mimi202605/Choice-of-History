@@ -1,0 +1,11 @@
+# 凭据配置（7.2 去共享化）：
+#  - coh_config.js —— 官方内置密文配置文件，随仓库/部署版本一起发布（使“新版”默认绑定内置 API）。
+#    注意：其中为内置密文（非明文），且本就曾在 index.html 内联、对公开仓库可见；如需彻底不入库，
+#    请用 coh_config.local.js 本地覆盖，或改用 provisionUrl 每用户额度（见优化设计文档 7.2）。
+#  - coh_config.local.js —— 本地私有覆盖（含你自己的明文 key / api），禁止入库。
+coh_config.local.js
+
+# 依赖与构建产物
+node_modules/
+*.log
+.DS_Store

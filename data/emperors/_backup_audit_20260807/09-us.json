@@ -1,0 +1,9887 @@
+{
+"group": "G9 美国",
+"dynasties": [
+"开国立宪",
+"扩张与分裂",
+"重建与崛起",
+"冷战与当代"
+],
+"emperors": [
+{
+"id": "us_washington",
+"civilization": "us",
+"dynasty": "开国立宪",
+"name": "乔治·华盛顿",
+"templeName": "总统",
+"reignStart": 1789,
+"reignEnd": 1797,
+"evaluation": "开国奠基，拒做国王",
+"background": "大陆军总司令，独立战争统帅，1789年经选举人团一致推举为首任总统，1793年连任。确立内阁制、中立外交与和平交权先例，两任后主动归隐。",
+"eraContext": "新生的联邦债台高筑、政党初萌、各州离心，英法争霸夹缝中求存。",
+"reignPremise": "如何既立稳共和之基，又不让权力凝成新的王座？",
+"voiceTag": "冷峻",
+"era": "开国立宪",
+"initStats": {
+"treasury": 38,
+"people": 63,
+"military": 62,
+"court": 53,
+"health": 59,
+"tech": 36
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_war",
+"name": "战争部长",
+"role": "陆军统帅",
+"voiceTag": "质朴"
+},
+{
+"id": "us_cj",
+"name": "首席大法官",
+"role": "宪法守护",
+"voiceTag": "冷峻"
+}
+],
+"events": [
+{
+"year": 1789,
+"month": null,
+"title": "组阁与财政",
+"description": "首任内阁就位，财政部长汉密尔顿主张承担各州战债、设国家银行；国务卿杰斐逊力倡州权与农业立国。",
+"historicalChoice": 0,
+"choices": [
+"依汉密尔顿设国家银行、理国债",
+"从杰斐逊之议，重州权轻中央",
+"折中：部分承担战债、银行限设",
+"优先清偿外债以立国际信用",
+"设审计制衡，防财政集权"
+],
+"historicalOutcome": "",
+"id": "us_washington_e0",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"reform"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1793,
+"month": null,
+"title": "英法战争与中立",
+"description": "法国大革命动荡，英法再开战，双方都要求美国选边。华盛顿颁中立 proclamation，激怒亲法阵营。",
+"historicalChoice": 0,
+"choices": [
+"严守中立，与双方通商",
+"暗助法国，回报独立之恩",
+"偏向英国，保贸易命脉",
+"武装中立，扩海军自保",
+"召集国会共议外交"
+],
+"historicalOutcome": "",
+"id": "us_washington_e1",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1796,
+"month": null,
+"title": "拒做第三任",
+"description": "两任将满，党内倾轧、报纸攻讦日烈。华盛顿决意归隐，发表告别演说，劝诫勿陷党派与 Permanent alliances。",
+"historicalChoice": 0,
+"choices": [
+"功成身退，立两任先例",
+"接受第三任以稳乱局",
+"延任一届再交班",
+"组政党续推联邦党",
+"巡游各地安抚民意"
+],
+"historicalOutcome": "",
+"id": "us_washington_e2",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1790,
+"month": null,
+"title": "报刊攻讦",
+"description": "报纸主笔抨击施政，舆论沸腾，声誉受损。",
+"historicalChoice": 0,
+"choices": [
+"置之不理",
+"撰文反驳",
+"打压反对报刊",
+"收买舆论",
+"改组内阁安抚"
+],
+"historicalOutcome": "",
+"id": "us_washington_e3",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"us_gen_press"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_jadams",
+"civilization": "us",
+"dynasty": "开国立宪",
+"name": "约翰·亚当斯",
+"templeName": "总统",
+"reignStart": 1797,
+"reignEnd": 1801,
+"evaluation": "联邦党人，困于党争",
+"background": "华盛顿副手，1796年当选第二任总统。任内因《外侨与煽乱法》、与法国准战争而失民意，1800年败于杰斐逊。",
+"eraContext": "联邦党与民主共和党对立尖锐，法国革命余波冲击国内。",
+"reignPremise": "在党派撕裂与外交危机中，如何守住所剩的共识？",
+"voiceTag": "华赡",
+"era": "开国立宪",
+"initStats": {
+"treasury": 51,
+"people": 51,
+"military": 44,
+"court": 43,
+"health": 62,
+"tech": 48
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_press",
+"name": "报纸主笔",
+"role": "舆论锋镝",
+"voiceTag": "华赡"
+},
+{
+"id": "us_secstate",
+"name": "国务卿",
+"role": "外交主笔",
+"voiceTag": "华赡"
+}
+],
+"events": [
+{
+"year": 1798,
+"month": null,
+"title": "与法国准战争",
+"description": "海上扣留与外交破裂，美法进入未宣而战的准战争。亚当斯派使议和，国内主战声高。",
+"historicalChoice": 0,
+"choices": [
+"遣使巴黎谋求和解",
+"扩海军备战，强硬以对",
+"徵兵设常备军",
+"对法等货徵税筹饷",
+"召开特别国会授权"
+],
+"historicalOutcome": "",
+"id": "us_jadams_e0",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"war_win"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1798,
+"month": null,
+"title": "外侨与煽乱法",
+"description": "联邦党控制的国会通过限制外侨与批评政府的法律，被指压制言论、打击反对党。",
+"historicalChoice": 0,
+"choices": [
+"签署以安国内秩序",
+"搁置否决以护言论",
+"限缩适用范围",
+"仅针对敌国外侨",
+"交付最高法院裁断"
+],
+"historicalOutcome": "",
+"id": "us_jadams_e1",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"scholar_oppose"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1800,
+"month": null,
+"title": "败选交权",
+"description": "选举败于杰斐逊，成为首次和平政党轮替。亚当斯拒绝出席就职，黯然离任。",
+"historicalChoice": 0,
+"choices": [
+"坦然交权，立轮替典范",
+"质疑选举人团结果",
+"留任待诉诸司法",
+"争取部分官职保党力",
+"归隐马萨诸塞"
+],
+"historicalOutcome": "",
+"id": "us_jadams_e2",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1798,
+"month": null,
+"title": "报刊攻讦",
+"description": "报纸主笔抨击施政，舆论沸腾，声誉受损。",
+"historicalChoice": 0,
+"choices": [
+"置之不理",
+"撰文反驳",
+"打压反对报刊",
+"收买舆论",
+"改组内阁安抚"
+],
+"historicalOutcome": "",
+"id": "us_jadams_e3",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"us_gen_press"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_jefferson",
+"civilization": "us",
+"dynasty": "开国立宪",
+"name": "托马斯·杰斐逊",
+"templeName": "总统",
+"reignStart": 1801,
+"reignEnd": 1809,
+"evaluation": "购地扩张，平民共和",
+"background": "《独立宣言》起草人，1800年当选，主张小政府、农业共和与州权。任内以1500万美元购路易斯安那，版图倍增。",
+"eraContext": "年轻共和国向西拓殖冲动初显，与英法贸易纠缠难解。",
+"reignPremise": "如何以农立国、却又不止于十三州之旧界？",
+"voiceTag": "华赡",
+"era": "开国立宪",
+"initStats": {
+"treasury": 56,
+"people": 48,
+"military": 65,
+"court": 50,
+"health": 61,
+"tech": 44
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_war",
+"name": "战争部长",
+"role": "陆军统帅",
+"voiceTag": "质朴"
+},
+{
+"id": "us_cj",
+"name": "首席大法官",
+"role": "宪法守护",
+"voiceTag": "冷峻"
+}
+],
+"events": [
+{
+"year": 1803,
+"month": null,
+"title": "路易斯安那购地",
+"description": "拿破仑愿售法属路易斯安那，价1500万美元。杰斐逊本疑其违宪，终以国家利益行之，领土倍增。",
+"historicalChoice": 0,
+"choices": [
+"缔约购地，拓土倍增",
+"先咨国会修宪再购",
+"仅购新奥尔良港",
+"分期付款减负担",
+"派探险队先勘界"
+],
+"historicalOutcome": "",
+"id": "us_jefferson_e0",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"unify"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1807,
+"month": null,
+"title": "禁运法",
+"description": "英法海上劫掠美船，杰斐逊以禁运断绝对外贸易反制，反重创新英格兰经济。",
+"historicalChoice": 0,
+"choices": [
+"全面禁运以护商船",
+"仅对英法限运",
+"武装护航保贸易",
+"征关税替代禁运",
+"诉诸外交调停"
+],
+"historicalOutcome": "",
+"id": "us_jefferson_e1",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"tax_heavy"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1804,
+"month": null,
+"title": "连任与党争",
+"description": "轻松连任，但副总统伯尔决斗杀政敌、阴谋分裂西部，暴露党内裂痕。",
+"historicalChoice": 0,
+"choices": [
+"整肃党内异己",
+"宽恕伯尔以安人心",
+"强化联邦司法",
+"安抚西部拓殖者",
+"发表国情安民"
+],
+"historicalOutcome": "",
+"id": "us_jefferson_e2",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"scholar_oppose"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1802,
+"month": null,
+"title": "报刊攻讦",
+"description": "报纸主笔抨击施政，舆论沸腾，声誉受损。",
+"historicalChoice": 0,
+"choices": [
+"置之不理",
+"撰文反驳",
+"打压反对报刊",
+"收买舆论",
+"改组内阁安抚"
+],
+"historicalOutcome": "",
+"id": "us_jefferson_e3",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"us_gen_press"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_madison",
+"civilization": "us",
+"dynasty": "扩张与分裂",
+"name": "詹姆斯·麦迪逊",
+"templeName": "总统",
+"reignStart": 1809,
+"reignEnd": 1817,
+"evaluation": "宪法之父，惨胜1812",
+"background": "宪法主要起草人，1808年当选。任内因贸易封锁与英支持印第安袭扰，1812年对英开战，白宫被焚，终以平局收场。",
+"eraContext": "英法战争外溢，美国海军薄弱、银行解体、西部边患交织。",
+"reignPremise": "无强兵而欲尊严，如何在列强夹缝中自立？",
+"voiceTag": "冷峻",
+"era": "扩张与分裂",
+"initStats": {
+"treasury": 40,
+"people": 47,
+"military": 71,
+"court": 55,
+"health": 63,
+"tech": 30
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_cj",
+"name": "首席大法官",
+"role": "宪法守护",
+"voiceTag": "冷峻"
+},
+{
+"id": "us_press",
+"name": "报纸主笔",
+"role": "舆论锋镝",
+"voiceTag": "华赡"
+}
+],
+"events": [
+{
+"year": 1812,
+"month": null,
+"title": "对英宣战",
+"description": "国会授权对英开战，欲并加拿大、止海上强征。美军初战屡败，底特律陷落。",
+"historicalChoice": 0,
+"choices": [
+"宣战并攻加拿大",
+"先整军备再言战",
+"海上袭英商船",
+"联印第安部落中立",
+"以外交迫英让步"
+],
+"historicalOutcome": "",
+"id": "us_madison_e0",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"war_win"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1814,
+"month": null,
+"title": "火烧白宫",
+"description": "英军登陆切萨皮克，焚华盛顿、攻巴尔的摩。史称「第二独立战争」的低谷。",
+"historicalChoice": 0,
+"choices": [
+"死守首都外围",
+"迁都暂避、游击周旋",
+"民兵动员保巴尔的摩",
+"议和止损",
+"征国民警卫队"
+],
+"historicalOutcome": "",
+"id": "us_madison_e1",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"war_loss"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1815,
+"month": null,
+"title": "新奥尔良大捷",
+"description": "和约已签消息未到，杰克逊大败英军于新奥尔良，提振国威，战争以平局落幕。",
+"historicalChoice": 0,
+"choices": [
+"乘胜巩固西南",
+"依约停战不追击",
+"擢升杰克逊固边",
+"裁军省财",
+"庆功以凝共识"
+],
+"historicalOutcome": "",
+"id": "us_madison_e2",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"war_win"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1810,
+"month": null,
+"title": "国会党争",
+"description": "政党在国会缠斗，法案往往难产，施政受制。",
+"historicalChoice": 0,
+"choices": [
+"倚本党推进",
+"跨党妥协",
+"动用否决权",
+"诉诸民意",
+"暂缓待时"
+],
+"historicalOutcome": "",
+"id": "us_madison_e3",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"us_gen_congress"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_monroe",
+"civilization": "us",
+"dynasty": "扩张与分裂",
+"name": "詹姆斯·门罗",
+"templeName": "总统",
+"reignStart": 1817,
+"reignEnd": 1825,
+"evaluation": "门罗主义，好时光",
+"background": "1816年当选，史称「好时光总统」。1823年发表门罗主义，警告欧洲勿再干涉美洲，确立西半球霸权基调。",
+"eraContext": "战后经济回升，南北张力初显，拉美独立潮起。",
+"reignPremise": "新大陆初定，如何划下不容旧大陆插手的界线？",
+"voiceTag": "质朴",
+"era": "扩张与分裂",
+"initStats": {
+"treasury": 58,
+"people": 63,
+"military": 52,
+"court": 65,
+"health": 60,
+"tech": 34
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_press",
+"name": "报纸主笔",
+"role": "舆论锋镝",
+"voiceTag": "华赡"
+},
+{
+"id": "us_secstate",
+"name": "国务卿",
+"role": "外交主笔",
+"voiceTag": "华赡"
+}
+],
+"events": [
+{
+"year": 1819,
+"month": null,
+"title": "佛罗里达购地",
+"description": "从西班牙购得佛罗里达，并划定与西属领地的边界，南疆遂定。",
+"historicalChoice": 0,
+"choices": [
+"缔约购地",
+"以军压境逼让",
+"分期付款",
+"承认西属古巴以换",
+"先勘界后签约"
+],
+"historicalOutcome": "",
+"id": "us_monroe_e0",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"unify"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1823,
+"month": null,
+"title": "门罗主义",
+"description": "致国会咨文宣示：美洲不再受欧洲殖民，欧洲亦不得干涉美洲事务，违者视为敌意。",
+"historicalChoice": 0,
+"choices": [
+"公开发表以立原则",
+"先与英协调再宣示",
+"仅针对西半球殖民地",
+"低调外交照会",
+"联合拉美共宣言"
+],
+"historicalOutcome": "",
+"id": "us_monroe_e1",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1820,
+"month": null,
+"title": "密苏里妥协",
+"description": "南北就奴隶制边界争执，妥协定北纬36°30′为界，暂缓撕裂。",
+"historicalChoice": 0,
+"choices": [
+"接受妥协以维稳",
+"强硬禁奴隶西扩",
+"交最高法院裁",
+"搁置待后议",
+"各州自决"
+],
+"historicalOutcome": "",
+"id": "us_monroe_e2",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"scholar_oppose"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1818,
+"month": null,
+"title": "报刊攻讦",
+"description": "报纸主笔抨击施政，舆论沸腾，声誉受损。",
+"historicalChoice": 0,
+"choices": [
+"置之不理",
+"撰文反驳",
+"打压反对报刊",
+"收买舆论",
+"改组内阁安抚"
+],
+"historicalOutcome": "",
+"id": "us_monroe_e3",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"us_gen_press"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_jqadams",
+"civilization": "us",
+"dynasty": "扩张与分裂",
+"name": "约翰·昆西·亚当斯",
+"templeName": "总统",
+"reignStart": 1825,
+"reignEnd": 1829,
+"evaluation": "才高而孤立",
+"background": "门罗的国务卿，1824年众议院定夺当选。主张基建、科教，却乏民意基础，1828年败于杰克逊。",
+"eraContext": "民意政治兴起，精英共和让位于大众民主， Adams 格格不入。",
+"reignPremise": "以才学治国，却难敌民意的洪流，何以自处？",
+"voiceTag": "华赡",
+"era": "扩张与分裂",
+"initStats": {
+"treasury": 50,
+"people": 50,
+"military": 43,
+"court": 42,
+"health": 61,
+"tech": 47
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_secstate",
+"name": "国务卿",
+"role": "外交主笔",
+"voiceTag": "华赡"
+},
+{
+"id": "us_war",
+"name": "战争部长",
+"role": "陆军统帅",
+"voiceTag": "质朴"
+}
+],
+"events": [
+{
+"year": 1825,
+"month": null,
+"title": "争议当选",
+"description": "选举人团无人过半，由众议院票决，被指「腐败交易」。合法性受质疑。",
+"historicalChoice": 0,
+"choices": [
+"坦然就职以维宪序",
+"质疑结果拒就职",
+"邀杰克逊入阁和解",
+"诉诸民意",
+"低调施政"
+],
+"historicalOutcome": "",
+"id": "us_jqadams_e0",
+"relationDeltas": [
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"scholar_oppose"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1828,
+"month": null,
+"title": "高关税与分裂",
+"description": "保护关税激怒南方，卡尔洪倡「废止权」，联邦危机暗涌。",
+"historicalChoice": 0,
+"choices": [
+"维持高关税护工商",
+"降税以安南方",
+"折中税率",
+"依宪裁断废止权",
+"召集州长会议"
+],
+"historicalOutcome": "",
+"id": "us_jqadams_e1",
+"relationDeltas": [
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"tax_heavy"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1828,
+"month": null,
+"title": "败选",
+"description": "杰克逊以平民领袖姿态大胜，亚当斯黯然离任，后竟入选众议院续为国效力。",
+"historicalChoice": 0,
+"choices": [
+"认败交权",
+"质疑选举不公",
+"退守马萨诸塞",
+"著书立说",
+"转战国会"
+],
+"historicalOutcome": "",
+"id": "us_jqadams_e2",
+"relationDeltas": [
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1826,
+"month": null,
+"title": "报刊攻讦",
+"description": "报纸主笔抨击施政，舆论沸腾，声誉受损。",
+"historicalChoice": 0,
+"choices": [
+"置之不理",
+"撰文反驳",
+"打压反对报刊",
+"收买舆论",
+"改组内阁安抚"
+],
+"historicalOutcome": "",
+"id": "us_jqadams_e3",
+"relationDeltas": [
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"us_gen_press"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_jackson",
+"civilization": "us",
+"dynasty": "扩张与分裂",
+"name": "安德鲁·杰克逊",
+"templeName": "总统",
+"reignStart": 1829,
+"reignEnd": 1837,
+"evaluation": "平民帝王，强权总统",
+"background": "新奥尔良英雄，1828年凭平民拥护当选。任内废止第二银行、南卡罗来纳拒税法令时以武力相胁，塑造强总统范式。",
+"eraContext": "大众民主勃兴，银行与特权遭疑，州权与联邦再争。",
+"reignPremise": "以民意授权行帝王之权，强总统之制将往何处去？",
+"voiceTag": "冷峻",
+"era": "扩张与分裂",
+"initStats": {
+"treasury": 48,
+"people": 44,
+"military": 68,
+"court": 52,
+"health": 60,
+"tech": 38
+},
+"tier": "A",
+"cast": [
+{
+"id": "us_secstate",
+"name": "国务卿",
+"role": "外交主笔",
+"voiceTag": "华赡"
+},
+{
+"id": "us_war",
+"name": "战争部长",
+"role": "陆军统帅",
+"voiceTag": "质朴"
+},
+{
+"id": "us_cj",
+"name": "首席大法官",
+"role": "宪法守护",
+"voiceTag": "冷峻"
+}
+],
+"events": [
+{
+"year": 1832,
+"month": null,
+"title": "否决银行续期",
+"description": "第二合众国银行申请续牌，杰克逊以否决权封杀，称其助长特权、背离民意。",
+"historicalChoice": 0,
+"choices": [
+"否决以散其权",
+"妥协限其规模",
+"移交各州银行",
+"交国会覆议",
+"设独立金库"
+],
+"historicalOutcome": "",
+"id": "us_jackson_e0",
+"relationDeltas": [
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"scholar_oppose"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1832,
+"month": null,
+"title": "拒税法令危机",
+"description": "南卡依卡尔洪「废止权」拒交联邦税， Jackson 以武力相胁、促妥协税率。",
+"historicalChoice": 0,
+"choices": [
+"武力威慑护联邦",
+"让步降税息事",
+"诉诸最高法院",
+"召开州会议",
+"分税制妥协"
+],
+"historicalOutcome": "",
+"id": "us_jackson_e1",
+"relationDeltas": [
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"usurped"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1830,
+"month": null,
+"title": "印第安迁移",
+"description": "签署迁移法，迫东南部印第安人西徙「眼泪之路」，拓地予白人移民。",
+"historicalChoice": 0,
+"choices": [
+"强制西迁拓土",
+"设保留地缓迁",
+"延后执行",
+"购地替代强迁",
+"交各州处理"
+],
+"historicalOutcome": "",
+"id": "us_jackson_e2",
+"relationDeltas": [
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"weak"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1836,
+"month": null,
+"title": "铸币 circular",
+"description": "下令土地交易仅收金银，抽紧信贷，诱发恐慌。",
+"historicalChoice": 0,
+"choices": [
+"推行硬通货",
+"缓行以稳市",
+"例外通融",
+"交各州银行",
+"撤回成命"
+],
+"historicalOutcome": "",
+"id": "us_jackson_e3",
+"relationDeltas": [
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"tax_heavy"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1835,
+"month": null,
+"title": "国债清零",
+"description": "任内竟偿清联邦国债，史称首次且唯一，然经济隐患已积。",
+"historicalChoice": 0,
+"choices": [
+"维持盈余还债",
+"留备公共工程",
+"设偿债基金",
+"减税还民",
+"储金备荒"
+],
+"historicalOutcome": "",
+"id": "us_jackson_e4",
+"relationDeltas": [
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_vanburen",
+"civilization": "us",
+"dynasty": "扩张与分裂",
+"name": "马丁·范布伦",
+"templeName": "总统",
+"reignStart": 1837,
+"reignEnd": 1841,
+"evaluation": "遇恐慌的总统",
+"background": "杰克逊的副手与传人，1836年当选。上任即遇1837年经济大恐慌，银行倒闭、失业骤增，连任失败。",
+"eraContext": "杰克逊解散银行的后遗症爆发，纸钞泛滥、投机崩盘。",
+"reignPremise": "承强人之业而遇骤冷，如何收拾金融残局？",
+"voiceTag": "冷峻",
+"era": "扩张与分裂",
+"initStats": {
+"treasury": 31,
+"people": 41,
+"military": 50,
+"court": 41,
+"health": 50,
+"tech": 26
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_secstate",
+"name": "国务卿",
+"role": "外交主笔",
+"voiceTag": "华赡"
+},
+{
+"id": "us_war",
+"name": "战争部长",
+"role": "陆军统帅",
+"voiceTag": "质朴"
+}
+],
+"events": [
+{
+"year": 1837,
+"month": null,
+"title": "大恐慌",
+"description": "投机与硬通货政策叠加，银行停兑、物价暴跌，失业蔓延。",
+"historicalChoice": 0,
+"choices": [
+"设独立国库稳币",
+"联邦救济失业",
+"召集特别国会",
+"放任市场自愈",
+"徵济贫税"
+],
+"historicalOutcome": "",
+"id": "us_vanburen_e0",
+"relationDeltas": [
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"weak"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1838,
+"month": null,
+"title": " Carroll 反垄断",
+"description": "各州银行乱象，联邦尝试整饬，成效不彰。",
+"historicalChoice": 0,
+"choices": [
+"强化联邦监管",
+"交各州自理",
+"设审计署",
+"限纸币发行",
+"减开支"
+],
+"historicalOutcome": "",
+"id": "us_vanburen_e1",
+"relationDeltas": [
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"tax_heavy"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1840,
+"month": null,
+"title": "连任失败",
+"description": "经济不振、辉格党乘势，范布伦败于军事英雄哈里森。",
+"historicalChoice": 0,
+"choices": [
+"坦诚认责交权",
+"质疑选举",
+"转战纽约政坛",
+"著文辩护",
+"退隐"
+],
+"historicalOutcome": "",
+"id": "us_vanburen_e2",
+"relationDeltas": [
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1838,
+"month": null,
+"title": "报刊攻讦",
+"description": "报纸主笔抨击施政，舆论沸腾，声誉受损。",
+"historicalChoice": 0,
+"choices": [
+"置之不理",
+"撰文反驳",
+"打压反对报刊",
+"收买舆论",
+"改组内阁安抚"
+],
+"historicalOutcome": "",
+"id": "us_vanburen_e3",
+"relationDeltas": [
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"us_gen_press"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_whharrison",
+"civilization": "us",
+"dynasty": "扩张与分裂",
+"name": "威廉·亨利·哈里森",
+"templeName": "总统",
+"reignStart": 1841,
+"reignEnd": 1841,
+"evaluation": "一月而殁",
+"background": "1840年「蒂珀卡努与泰勒」平民军事英雄当选，就职一月后染肺炎去世，开在位最短纪录。",
+"eraContext": "辉格党借反范布伦情绪上台，政策未及展开。",
+"reignPremise": "未及施政而骤逝，继任之争已伏笔。",
+"voiceTag": "质朴",
+"era": "扩张与分裂",
+"initStats": {
+"treasury": 59,
+"people": 64,
+"military": 53,
+"court": 66,
+"health": 61,
+"tech": 35
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_secstate",
+"name": "国务卿",
+"role": "外交主笔",
+"voiceTag": "华赡"
+},
+{
+"id": "us_war",
+"name": "战争部长",
+"role": "陆军统帅",
+"voiceTag": "质朴"
+}
+],
+"events": [
+{
+"year": 1841,
+"month": null,
+"title": "就职与病逝",
+"description": "冗长就职演说后受寒病逝，副总统泰勒继任，权力交接突兀。",
+"historicalChoice": 0,
+"choices": [
+"倚重内阁辅政",
+"急颁政纲",
+"安抚辉格党",
+"巡视为民",
+"因病休养"
+],
+"historicalOutcome": "",
+"id": "us_whharrison_e0",
+"relationDeltas": [
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"weak"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1842,
+"month": null,
+"title": "报刊攻讦",
+"description": "报纸主笔抨击施政，舆论沸腾，声誉受损。",
+"historicalChoice": 0,
+"choices": [
+"置之不理",
+"撰文反驳",
+"打压反对报刊",
+"收买舆论",
+"改组内阁安抚"
+],
+"historicalOutcome": "",
+"id": "us_whharrison_e1",
+"relationDeltas": [
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"us_gen_press"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1843,
+"month": null,
+"title": "国会党争",
+"description": "政党在国会缠斗，法案往往难产，施政受制。",
+"historicalChoice": 0,
+"choices": [
+"倚本党推进",
+"跨党妥协",
+"动用否决权",
+"诉诸民意",
+"暂缓待时"
+],
+"historicalOutcome": "",
+"id": "us_whharrison_e2",
+"relationDeltas": [
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"us_gen_congress"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_tyler",
+"civilization": "us",
+"dynasty": "扩张与分裂",
+"name": "约翰·泰勒",
+"templeName": "总统",
+"reignStart": 1841,
+"reignEnd": 1845,
+"evaluation": "意外总统，遭党除名",
+"background": "哈里森副手，依宪继任，自称「全权总统」。否决辉格党银行案，遭本党开除党籍，却促成得州并入。",
+"eraContext": "继任合法性受疑，辉格党与总统决裂，吞并得州引发墨美紧张。",
+"reignPremise": "以副座骤登大宝，如何在全党背弃中自立？",
+"voiceTag": "华赡",
+"era": "扩张与分裂",
+"initStats": {
+"treasury": 47,
+"people": 50,
+"military": 67,
+"court": 52,
+"health": 63,
+"tech": 35
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_press",
+"name": "报纸主笔",
+"role": "舆论锋镝",
+"voiceTag": "华赡"
+},
+{
+"id": "us_secstate",
+"name": "国务卿",
+"role": "外交主笔",
+"voiceTag": "华赡"
+}
+],
+"events": [
+{
+"year": 1841,
+"month": null,
+"title": "否决银行案",
+"description": "两拒辉格党设立第三银行，被开除党籍，内阁大半辞职。",
+"historicalChoice": 0,
+"choices": [
+"坚持否决",
+"妥协设分行",
+"交各州银行",
+"咨国会覆议",
+"改组内阁"
+],
+"historicalOutcome": "",
+"id": "us_tyler_e0",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"scholar_oppose"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1845,
+"month": null,
+"title": "并入得州",
+"description": "推动国会并得克萨斯为州，触怒墨西哥，墨美战争在即。",
+"historicalChoice": 0,
+"choices": [
+"并得州拓疆",
+"缓议待谈判",
+"购地替代",
+"设准州过渡",
+"交各州表决"
+],
+"historicalOutcome": "",
+"id": "us_tyler_e1",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"unify"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1842,
+"month": null,
+"title": "韦伯斯特—阿什伯顿",
+"description": "与英划定美加东北边界，缓和争端。",
+"historicalChoice": 0,
+"choices": [
+"签约定界",
+"强硬争界",
+"提交仲裁",
+"暂搁争议",
+"联英制法"
+],
+"historicalOutcome": "",
+"id": "us_tyler_e2",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1842,
+"month": null,
+"title": "国会党争",
+"description": "政党在国会缠斗，法案往往难产，施政受制。",
+"historicalChoice": 0,
+"choices": [
+"倚本党推进",
+"跨党妥协",
+"动用否决权",
+"诉诸民意",
+"暂缓待时"
+],
+"historicalOutcome": "",
+"id": "us_tyler_e3",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"us_gen_congress"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_polk",
+"civilization": "us",
+"dynasty": "扩张与分裂",
+"name": "詹姆斯·波尔克",
+"templeName": "总统",
+"reignStart": 1845,
+"reignEnd": 1849,
+"evaluation": "Manifest Destiny 的推行者",
+"background": "1844年以扩张纲领当选，任内发动墨美战争，夺得加州与新墨西哥，确立俄勒冈边界，一任而功成身退。",
+"eraContext": "「天定命运」论盛行，奴隶制随新土扩张再起争执。",
+"reignPremise": "以四年尽扩版图，却把奴隶制之争推向不可回。",
+"voiceTag": "华赡",
+"era": "扩张与分裂",
+"initStats": {
+"treasury": 51,
+"people": 43,
+"military": 71,
+"court": 56,
+"health": 56,
+"tech": 39
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_war",
+"name": "战争部长",
+"role": "陆军统帅",
+"voiceTag": "质朴"
+},
+{
+"id": "us_cj",
+"name": "首席大法官",
+"role": "宪法守护",
+"voiceTag": "冷峻"
+}
+],
+"events": [
+{
+"year": 1846,
+"month": null,
+"title": "俄勒冈边界",
+"description": "与英议定北纬49°为界，和平取得太平洋西北。",
+"historicalChoice": 0,
+"choices": [
+"定49°线",
+"争54°40′",
+"分治俄勒冈",
+"暂租借",
+"联英制俄"
+],
+"historicalOutcome": "",
+"id": "us_polk_e0",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"unify"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1846,
+"month": null,
+"title": "墨美战争",
+"description": "因得州边界与墨开战，美军直取墨西哥城，迫签瓜达卢佩—伊达尔戈条约。",
+"historicalChoice": 0,
+"choices": [
+"开战夺加州与新墨",
+"先外交索价",
+"限占边境",
+"海上封锁逼和",
+"分兵守占区"
+],
+"historicalOutcome": "",
+"id": "us_polk_e1",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"war_win"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1848,
+"month": null,
+"title": "淘金与建州",
+"description": "加州发现金矿，人口骤增，建州之争使奴隶制矛盾激化。",
+"historicalChoice": 0,
+"choices": [
+"速准加州建州",
+"折中划奴隶线",
+"暂缓建州",
+"设军事管制",
+"分而治之"
+],
+"historicalOutcome": "",
+"id": "us_polk_e2",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"scholar_oppose"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1846,
+"month": null,
+"title": "国会党争",
+"description": "政党在国会缠斗，法案往往难产，施政受制。",
+"historicalChoice": 0,
+"choices": [
+"倚本党推进",
+"跨党妥协",
+"动用否决权",
+"诉诸民意",
+"暂缓待时"
+],
+"historicalOutcome": "",
+"id": "us_polk_e3",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"us_gen_congress"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_taylor",
+"civilization": "us",
+"dynasty": "扩张与分裂",
+"name": "扎卡里·泰勒",
+"templeName": "总统",
+"reignStart": 1849,
+"reignEnd": 1850,
+"evaluation": "军人之殁",
+"background": "墨美战争英雄，1848年当选，主张新州自决奴隶制。在职十六月后病逝，妥协案由其副手推动。",
+"eraContext": "1850年危机：新占领土奴隶制何去何从，南北濒临决裂。",
+"reignPremise": "老将不善党争，未及调停而身死。",
+"voiceTag": "冷峻",
+"era": "扩张与分裂",
+"initStats": {
+"treasury": 41,
+"people": 48,
+"military": 72,
+"court": 56,
+"health": 53,
+"tech": 31
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_cj",
+"name": "首席大法官",
+"role": "宪法守护",
+"voiceTag": "冷峻"
+},
+{
+"id": "us_press",
+"name": "报纸主笔",
+"role": "舆论锋镝",
+"voiceTag": "华赡"
+}
+],
+"events": [
+{
+"year": 1850,
+"month": null,
+"title": "1850危机",
+"description": "加州请建自由州，南方以脱离相胁。泰勒欲强硬镇压脱离。",
+"historicalChoice": 0,
+"choices": [
+"强压脱离言论",
+"妥协分治",
+"交国会裁",
+"军事戒备",
+"安抚南方"
+],
+"historicalOutcome": "",
+"id": "us_taylor_e0",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"usurped"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1850,
+"month": null,
+"title": "病逝",
+"description": "猝然病故， Millard Fillmore 继任，转向妥协。",
+"historicalChoice": 0,
+"choices": [
+"倚重内阁",
+"急颁政纲",
+"巡视为民",
+"养病",
+"传位副手"
+],
+"historicalOutcome": "",
+"id": "us_taylor_e1",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"weak"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1850,
+"month": null,
+"title": "国会党争",
+"description": "政党在国会缠斗，法案往往难产，施政受制。",
+"historicalChoice": 0,
+"choices": [
+"倚本党推进",
+"跨党妥协",
+"动用否决权",
+"诉诸民意",
+"暂缓待时"
+],
+"historicalOutcome": "",
+"id": "us_taylor_e2",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"us_gen_congress"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1851,
+"month": null,
+"title": "报刊攻讦",
+"description": "报纸主笔抨击施政，舆论沸腾，声誉受损。",
+"historicalChoice": 0,
+"choices": [
+"置之不理",
+"撰文反驳",
+"打压反对报刊",
+"收买舆论",
+"改组内阁安抚"
+],
+"historicalOutcome": "",
+"id": "us_taylor_e3",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"us_gen_press"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_fillmore",
+"civilization": "us",
+"dynasty": "扩张与分裂",
+"name": "米勒德·菲尔莫尔",
+"templeName": "总统",
+"reignStart": 1850,
+"reignEnd": 1853,
+"evaluation": "妥协总统",
+"background": "泰勒副手继任，转支持1850年妥协案（含逃奴法），暂缓南北决裂，却失北方民意。",
+"eraContext": "妥协案勉强维系联邦，逃奴法激北方良知。",
+"reignPremise": "以妥协买来的平静，能撑多久？",
+"voiceTag": "质朴",
+"era": "扩张与分裂",
+"initStats": {
+"treasury": 64,
+"people": 58,
+"military": 47,
+"court": 60,
+"health": 66,
+"tech": 40
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_war",
+"name": "战争部长",
+"role": "陆军统帅",
+"voiceTag": "质朴"
+},
+{
+"id": "us_cj",
+"name": "首席大法官",
+"role": "宪法守护",
+"voiceTag": "冷峻"
+}
+],
+"events": [
+{
+"year": 1850,
+"month": null,
+"title": "1850妥协案",
+"description": "签署含严厉逃奴法的妥协，加州为自由州，南北暂安。",
+"historicalChoice": 0,
+"choices": [
+"签署以维稳",
+"否决逃奴条款",
+"折中修订",
+"交各州执行",
+"延后表决"
+],
+"historicalOutcome": "",
+"id": "us_fillmore_e0",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"scholar_oppose"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1852,
+"month": null,
+"title": "背水一战",
+"description": "试图争连任未获提名，辉格党分裂。",
+"historicalChoice": 0,
+"choices": [
+"争取提名",
+"退而支持党",
+"转投第三党",
+"著书",
+"归隐"
+],
+"historicalOutcome": "",
+"id": "us_fillmore_e1",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1851,
+"month": null,
+"title": "报刊攻讦",
+"description": "报纸主笔抨击施政，舆论沸腾，声誉受损。",
+"historicalChoice": 0,
+"choices": [
+"置之不理",
+"撰文反驳",
+"打压反对报刊",
+"收买舆论",
+"改组内阁安抚"
+],
+"historicalOutcome": "",
+"id": "us_fillmore_e2",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"us_gen_press"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1852,
+"month": null,
+"title": "国会党争",
+"description": "政党在国会缠斗，法案往往难产，施政受制。",
+"historicalChoice": 0,
+"choices": [
+"倚本党推进",
+"跨党妥协",
+"动用否决权",
+"诉诸民意",
+"暂缓待时"
+],
+"historicalOutcome": "",
+"id": "us_fillmore_e3",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"us_gen_congress"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_pierce",
+"civilization": "us",
+"dynasty": "扩张与分裂",
+"name": "富兰克林·皮尔斯",
+"templeName": "总统",
+"reignStart": 1853,
+"reignEnd": 1857,
+"evaluation": "软弱的总统",
+"background": "1852年当选，推动堪萨斯—内布拉斯加法案，以「人民主权」决奴隶制，反引爆「血溅堪萨斯」。",
+"eraContext": "奴隶制北扩引发暴力，政党重组，分裂加速。",
+"reignPremise": "本欲以地方自决息争，却点燃内战的引信。",
+"voiceTag": "质朴",
+"era": "扩张与分裂",
+"initStats": {
+"treasury": 44,
+"people": 42,
+"military": 35,
+"court": 43,
+"health": 53,
+"tech": 36
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_press",
+"name": "报纸主笔",
+"role": "舆论锋镝",
+"voiceTag": "华赡"
+},
+{
+"id": "us_secstate",
+"name": "国务卿",
+"role": "外交主笔",
+"voiceTag": "华赡"
+}
+],
+"events": [
+{
+"year": 1854,
+"month": null,
+"title": "堪萨斯—内布拉斯加",
+"description": "废密苏里妥协，许两地自决奴隶制，边境武装冲突骤起。",
+"historicalChoice": 0,
+"choices": [
+"签署以行自决",
+"维持旧妥协线",
+"分而治之",
+"联邦驻军维稳",
+"交最高法院"
+],
+"historicalOutcome": "",
+"id": "us_pierce_e0",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"rebellion"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1856,
+"month": null,
+"title": "血溅堪萨斯",
+"description": "亲奴与反奴武装在堪萨斯厮杀，联邦威信扫地。",
+"historicalChoice": 0,
+"choices": [
+"派军平乱",
+"中立观望",
+"调和两派",
+"撤军交州",
+"召特别国会"
+],
+"historicalOutcome": "",
+"id": "us_pierce_e1",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"rebellion"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1856,
+"month": null,
+"title": "失败连任",
+"description": "党内分裂、民意背离，未获提名。",
+"historicalChoice": 0,
+"choices": [
+"争取提名",
+"退党",
+"支持第三人",
+"归隐",
+"著文"
+],
+"historicalOutcome": "",
+"id": "us_pierce_e2",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1854,
+"month": null,
+"title": "报刊攻讦",
+"description": "报纸主笔抨击施政，舆论沸腾，声誉受损。",
+"historicalChoice": 0,
+"choices": [
+"置之不理",
+"撰文反驳",
+"打压反对报刊",
+"收买舆论",
+"改组内阁安抚"
+],
+"historicalOutcome": "",
+"id": "us_pierce_e3",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"us_gen_press"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_buchanan",
+"civilization": "us",
+"dynasty": "扩张与分裂",
+"name": "詹姆斯·布坎南",
+"templeName": "总统",
+"reignStart": 1857,
+"reignEnd": 1861,
+"evaluation": "末任裂前总统",
+"background": "1856年当选，任内德雷德·斯科特案、恐慌、南方威胁脱离，束手无策，眼看联邦崩解。",
+"eraContext": "最高法院判黑奴非公民、南方磨刀，分裂已不可逆。",
+"reignPremise": "守成之主遇倾覆之局，纵无过亦难逃其责。",
+"voiceTag": "质朴",
+"era": "扩张与分裂",
+"initStats": {
+"treasury": 36,
+"people": 45,
+"military": 38,
+"court": 46,
+"health": 45,
+"tech": 28
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_press",
+"name": "报纸主笔",
+"role": "舆论锋镝",
+"voiceTag": "华赡"
+},
+{
+"id": "us_secstate",
+"name": "国务卿",
+"role": "外交主笔",
+"voiceTag": "华赡"
+}
+],
+"events": [
+{
+"year": 1857,
+"month": null,
+"title": "斯科特案",
+"description": "最高法院判奴隶非公民、国会无权禁奴隶入准州，北方哗然。",
+"historicalChoice": 0,
+"choices": [
+"接受判决",
+"吁国会立法抵销",
+"限其适用范围",
+"交各州",
+"保持沉默"
+],
+"historicalOutcome": "",
+"id": "us_buchanan_e0",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"scholar_oppose"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1860,
+"month": null,
+"title": "南卡脱离",
+"description": "林肯当选后南卡率先脱离，布坎南称无权强制挽留。",
+"historicalChoice": 0,
+"choices": [
+"武力护联邦",
+"承认脱离权",
+"召集调解会议",
+"静待继任者",
+"加固要塞"
+],
+"historicalOutcome": "",
+"id": "us_buchanan_e1",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"usurped"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1861,
+"month": null,
+"title": "交接危局",
+"description": "任末联邦已裂，仓促交权于林肯。",
+"historicalChoice": 0,
+"choices": [
+"尽力维稳",
+"提前交权",
+"巩固华盛顿",
+"联络北方州",
+"退隐"
+],
+"historicalOutcome": "",
+"id": "us_buchanan_e2",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"weak"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1858,
+"month": null,
+"title": "报刊攻讦",
+"description": "报纸主笔抨击施政，舆论沸腾，声誉受损。",
+"historicalChoice": 0,
+"choices": [
+"置之不理",
+"撰文反驳",
+"打压反对报刊",
+"收买舆论",
+"改组内阁安抚"
+],
+"historicalOutcome": "",
+"id": "us_buchanan_e3",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"us_gen_press"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_lincoln",
+"civilization": "us",
+"dynasty": "扩张与分裂",
+"name": "亚伯拉罕·林肯",
+"templeName": "总统",
+"reignStart": 1861,
+"reignEnd": 1865,
+"evaluation": "统一分裂，解放黑奴",
+"background": "1860年当选，南方诸州脱离，内战爆发。任内发表《解放宣言》、葛底斯堡演说，1865年北方取胜，旋即遇刺。",
+"eraContext": "联邦崩裂、蓄奴制存废决战，四百万人身系自由，国运悬于一线。",
+"reignPremise": "以民主之国行统一之战，如何在流血中保全那「民有、民治、民享」之念？",
+"voiceTag": "冷峻",
+"era": "扩张与分裂",
+"initStats": {
+"treasury": 46,
+"people": 42,
+"military": 77,
+"court": 50,
+"health": 58,
+"tech": 36
+},
+"tier": "A",
+"cast": [
+{
+"id": "us_cj",
+"name": "首席大法官",
+"role": "宪法守护",
+"voiceTag": "冷峻"
+},
+{
+"id": "us_press",
+"name": "报纸主笔",
+"role": "舆论锋镝",
+"voiceTag": "华赡"
+},
+{
+"id": "us_secstate",
+"name": "国务卿",
+"role": "外交主笔",
+"voiceTag": "华赡"
+}
+],
+"events": [
+{
+"year": 1861,
+"month": null,
+"title": "萨姆特与宣战",
+"description": "南军炮击萨姆特要塞，林肯征兵保联邦，全面内战开启。",
+"historicalChoice": 0,
+"choices": [
+"宣战征兵保联邦",
+"先封锁南方港",
+"外交孤立南方",
+"暂缓以待调解",
+"巩固华盛顿"
+],
+"historicalOutcome": "",
+"id": "us_lincoln_e0",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"war_win"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1862,
+"month": null,
+"title": "解放宣言",
+"description": "以军事必要颁布，解放叛区黑奴，使战争升格为自由之战，并允黑人参军。",
+"historicalChoice": 0,
+"choices": [
+"颁布以夺道义高地",
+"暂缓以安边境州",
+"限解放叛区",
+"先咨国会",
+"以行政令试行"
+],
+"historicalOutcome": "",
+"id": "us_lincoln_e1",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"reform"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1863,
+"month": null,
+"title": "葛底斯堡",
+"description": "击败李将军攻势，林肯演说重定义国本为「自由之新生的平等」。",
+"historicalChoice": 0,
+"choices": [
+"乘胜巩固宾州",
+"转入维吉尼亚决战",
+"募黑奴为兵",
+"发表演说凝共识",
+"缓攻养民"
+],
+"historicalOutcome": "",
+"id": "us_lincoln_e2",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"war_win"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1864,
+"month": null,
+"title": "连任与总攻",
+"description": "连任后格兰特总攻，消耗战拖垮南方。",
+"historicalChoice": 0,
+"choices": [
+"全线总攻",
+"议和以止流血",
+"保边境州",
+"经济封锁",
+"擢升格兰特"
+],
+"historicalOutcome": "",
+"id": "us_lincoln_e3",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"war_win"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1865,
+"month": null,
+"title": "阿波马托克斯与遇刺",
+"description": "李将军投降，内战终结数日后，林肯于剧院遇刺身亡。",
+"historicalChoice": 0,
+"choices": [
+"宽待南方以复原",
+"严究叛逆",
+"赦南方将领",
+"巩固重建",
+"巡视为民"
+],
+"historicalOutcome": "",
+"id": "us_lincoln_e4",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_ajohnson",
+"civilization": "us",
+"dynasty": "重建与崛起",
+"name": "安德鲁·约翰逊",
+"templeName": "总统",
+"reignStart": 1865,
+"reignEnd": 1869,
+"evaluation": "被弹劾的重建者",
+"background": "林肯副手，南方民主党人，继任后宽待前邦联、与激进共和党人冲突，成首位遭弹劾（未罪）的总统。",
+"eraContext": "南方重建路向之争：宽容归化还是惩戒改造，党争白热。",
+"reignPremise": "北人总统而恤南，如何在复仇与和解间走钢丝？",
+"voiceTag": "华赡",
+"era": "重建与崛起",
+"initStats": {
+"treasury": 48,
+"people": 48,
+"military": 52,
+"court": 51,
+"health": 59,
+"tech": 45
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_press",
+"name": "报纸主笔",
+"role": "舆论锋镝",
+"voiceTag": "华赡"
+},
+{
+"id": "us_secstate",
+"name": "国务卿",
+"role": "外交主笔",
+"voiceTag": "华赡"
+}
+],
+"events": [
+{
+"year": 1865,
+"month": null,
+"title": "宽恕南方",
+"description": "以赦令速复南方州权，激怒激进派，重建步伐失控。",
+"historicalChoice": 0,
+"choices": [
+"宽赦以速统",
+"附条件重建",
+"暂管南方军",
+"交国会定",
+"安抚黑人"
+],
+"historicalOutcome": "",
+"id": "us_ajohnson_e0",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1867,
+"month": null,
+"title": "购买阿拉斯加",
+"description": "自俄购阿拉斯加，时讥「西华德的冰箱」，后证为巨利。",
+"historicalChoice": 0,
+"choices": [
+"签约购入",
+"议价压价",
+"分期付",
+"暂缓",
+"交国会"
+],
+"historicalOutcome": "",
+"id": "us_ajohnson_e1",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"unify"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1868,
+"month": null,
+"title": "弹劾案",
+"description": "以违反官职任期法遭众院弹劾，参院一票之差未罪。",
+"historicalChoice": 0,
+"choices": [
+"抗辩到底",
+"妥协认罪",
+"辞职息事",
+"倚最高法院",
+"动员民意"
+],
+"historicalOutcome": "",
+"id": "us_ajohnson_e2",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"usurped"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1866,
+"month": null,
+"title": "报刊攻讦",
+"description": "报纸主笔抨击施政，舆论沸腾，声誉受损。",
+"historicalChoice": 0,
+"choices": [
+"置之不理",
+"撰文反驳",
+"打压反对报刊",
+"收买舆论",
+"改组内阁安抚"
+],
+"historicalOutcome": "",
+"id": "us_ajohnson_e3",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"us_gen_press"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_grant",
+"civilization": "us",
+"dynasty": "重建与崛起",
+"name": "尤利西斯·格兰特",
+"templeName": "总统",
+"reignStart": 1869,
+"reignEnd": 1877,
+"evaluation": "英雄之败于贪腐",
+"background": "内战北军统帅，1868年当选。任内通过第十五条修正案，却陷 credit mobilier 等丑闻，经济陷1873恐慌。",
+"eraContext": "重建后期，南方「 redeem」、贪腐与投机并发，声望下滑。",
+"reignPremise": "战场的胜者，未必是和平的良相。",
+"voiceTag": "冷峻",
+"era": "重建与崛起",
+"initStats": {
+"treasury": 43,
+"people": 50,
+"military": 74,
+"court": 58,
+"health": 55,
+"tech": 33
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_press",
+"name": "报纸主笔",
+"role": "舆论锋镝",
+"voiceTag": "华赡"
+},
+{
+"id": "us_secstate",
+"name": "国务卿",
+"role": "外交主笔",
+"voiceTag": "华赡"
+}
+],
+"events": [
+{
+"year": 1870,
+"month": null,
+"title": "第十五条修正案",
+"description": "保障黑人投票权，南方抵制， Enforcement 法随之。",
+"historicalChoice": 0,
+"choices": [
+"推动修宪",
+"限其范围",
+"交各州",
+"联邦驻军保票",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_grant_e0",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"reform"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1873,
+"month": null,
+"title": "恐慌与萧条",
+"description": "铁路投机崩盘，银行倒闭，长期萧条。",
+"historicalChoice": 0,
+"choices": [
+"设复苏基金",
+"放任市场",
+"徵济贫",
+"减开支",
+"召国会"
+],
+"historicalOutcome": "",
+"id": "us_grant_e1",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"weak"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1876,
+"month": null,
+"title": "选举僵局",
+"description": "海斯—蒂尔登争议，妥协令联邦军撤出南方，重建终结。",
+"historicalChoice": 0,
+"choices": [
+"接受妥协交权",
+"力争到底",
+"交国会裁",
+"军事戒备",
+"安抚南方"
+],
+"historicalOutcome": "",
+"id": "us_grant_e2",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1870,
+"month": null,
+"title": "国会党争",
+"description": "政党在国会缠斗，法案往往难产，施政受制。",
+"historicalChoice": 0,
+"choices": [
+"倚本党推进",
+"跨党妥协",
+"动用否决权",
+"诉诸民意",
+"暂缓待时"
+],
+"historicalOutcome": "",
+"id": "us_grant_e3",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"us_gen_congress"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_hayes",
+"civilization": "us",
+"dynasty": "重建与崛起",
+"name": "拉瑟福德·海斯",
+"templeName": "总统",
+"reignStart": 1877,
+"reignEnd": 1881,
+"evaluation": "重建终结者",
+"background": "1876年争议选举中经妥协上台，撤出南方联邦军，结束重建，许诺文官改革。",
+"eraContext": "两党以撤军换总统，南方「 redeem」完成，种族隔离渐立。",
+"reignPremise": "以撤军换来的和平，代价是南方的倒退。",
+"voiceTag": "质朴",
+"era": "重建与崛起",
+"initStats": {
+"treasury": 57,
+"people": 62,
+"military": 51,
+"court": 64,
+"health": 70,
+"tech": 33
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_war",
+"name": "战争部长",
+"role": "陆军统帅",
+"voiceTag": "质朴"
+},
+{
+"id": "us_cj",
+"name": "首席大法官",
+"role": "宪法守护",
+"voiceTag": "冷峻"
+}
+],
+"events": [
+{
+"year": 1877,
+"month": null,
+"title": "撤军终重建",
+"description": "履约撤联邦军，南方民主党全面掌权。",
+"historicalChoice": 0,
+"choices": [
+"履约撤军",
+"留象征驻军",
+"保黑人权益",
+"交各州",
+"延后"
+],
+"historicalOutcome": "",
+"id": "us_hayes_e0",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1879,
+"month": null,
+"title": "文官改革",
+"description": "推动考试任官，打击分赃制。",
+"historicalChoice": 0,
+"choices": [
+"立法改革",
+"渐进试行",
+"交国会",
+"设委员会",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_hayes_e1",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"reform"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1880,
+"month": null,
+"title": "一任而退",
+"description": "恪守承诺不连任，立贤明先例。",
+"historicalChoice": 0,
+"choices": [
+"坚持不连任",
+"破例再选",
+"荐接班人",
+"著书",
+"归隐"
+],
+"historicalOutcome": "",
+"id": "us_hayes_e2",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1878,
+"month": null,
+"title": "国会党争",
+"description": "政党在国会缠斗，法案往往难产，施政受制。",
+"historicalChoice": 0,
+"choices": [
+"倚本党推进",
+"跨党妥协",
+"动用否决权",
+"诉诸民意",
+"暂缓待时"
+],
+"historicalOutcome": "",
+"id": "us_hayes_e3",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"us_gen_congress"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_garfield",
+"civilization": "us",
+"dynasty": "重建与崛起",
+"name": "詹姆斯·加菲尔德",
+"templeName": "总统",
+"reignStart": 1881,
+"reignEnd": 1881,
+"evaluation": "半年遇刺",
+"background": "1880年当选，主张文官改革与黑人教育，在职四月后遭求官未遂者刺杀。",
+"eraContext": "分赃制积弊深重，改革呼声与党内旧势力相争。",
+"reignPremise": "未及展志而殒，改革因之加速。",
+"voiceTag": "华赡",
+"era": "重建与崛起",
+"initStats": {
+"treasury": 52,
+"people": 52,
+"military": 45,
+"court": 44,
+"health": 63,
+"tech": 49
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_war",
+"name": "战争部长",
+"role": "陆军统帅",
+"voiceTag": "质朴"
+},
+{
+"id": "us_cj",
+"name": "首席大法官",
+"role": "宪法守护",
+"voiceTag": "冷峻"
+}
+],
+"events": [
+{
+"year": 1881,
+"month": null,
+"title": "遇刺",
+"description": "于车站遭刺，两月后去世，举国震动，文官改革提速。",
+"historicalChoice": 0,
+"choices": [
+"倚内阁",
+"急颁政纲",
+"养病",
+"安抚党",
+"传副手"
+],
+"historicalOutcome": "",
+"id": "us_garfield_e0",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"weak"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1882,
+"month": null,
+"title": "报刊攻讦",
+"description": "报纸主笔抨击施政，舆论沸腾，声誉受损。",
+"historicalChoice": 0,
+"choices": [
+"置之不理",
+"撰文反驳",
+"打压反对报刊",
+"收买舆论",
+"改组内阁安抚"
+],
+"historicalOutcome": "",
+"id": "us_garfield_e1",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"us_gen_press"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1883,
+"month": null,
+"title": "国会党争",
+"description": "政党在国会缠斗，法案往往难产，施政受制。",
+"historicalChoice": 0,
+"choices": [
+"倚本党推进",
+"跨党妥协",
+"动用否决权",
+"诉诸民意",
+"暂缓待时"
+],
+"historicalOutcome": "",
+"id": "us_garfield_e2",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"us_gen_congress"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_arthur",
+"civilization": "us",
+"dynasty": "重建与崛起",
+"name": "切斯特·阿瑟",
+"templeName": "总统",
+"reignStart": 1881,
+"reignEnd": 1885,
+"evaluation": "意料之外的改革者",
+"background": "加菲尔德副手，原为分赃制老手，继任后竟推《彭德尔顿法》确立文官考试。",
+"eraContext": "改革派与党机器拉锯， Arthur 转向中立务实。",
+"reignPremise": "出身旧窠臼，竟成新规奠基人。",
+"voiceTag": "华赡",
+"era": "重建与崛起",
+"initStats": {
+"treasury": 53,
+"people": 53,
+"military": 46,
+"court": 45,
+"health": 64,
+"tech": 50
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_war",
+"name": "战争部长",
+"role": "陆军统帅",
+"voiceTag": "质朴"
+},
+{
+"id": "us_cj",
+"name": "首席大法官",
+"role": "宪法守护",
+"voiceTag": "冷峻"
+}
+],
+"events": [
+{
+"year": 1883,
+"month": null,
+"title": "彭德尔顿法",
+"description": "确立联邦文官考试任官，分赃制开始退场。",
+"historicalChoice": 0,
+"choices": [
+"签署立法",
+"限其范围",
+"渐进试行",
+"交各州",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_arthur_e0",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"reform"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1884,
+"month": null,
+"title": "未获提名",
+"description": "因健康与党内嫌隙未获连任提名。",
+"historicalChoice": 0,
+"choices": [
+"争取",
+"退党",
+"支持第三人",
+"归隐",
+"著文"
+],
+"historicalOutcome": "",
+"id": "us_arthur_e1",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1882,
+"month": null,
+"title": "国会党争",
+"description": "政党在国会缠斗，法案往往难产，施政受制。",
+"historicalChoice": 0,
+"choices": [
+"倚本党推进",
+"跨党妥协",
+"动用否决权",
+"诉诸民意",
+"暂缓待时"
+],
+"historicalOutcome": "",
+"id": "us_arthur_e2",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"us_gen_congress"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1883,
+"month": null,
+"title": "报刊攻讦",
+"description": "报纸主笔抨击施政，舆论沸腾，声誉受损。",
+"historicalChoice": 0,
+"choices": [
+"置之不理",
+"撰文反驳",
+"打压反对报刊",
+"收买舆论",
+"改组内阁安抚"
+],
+"historicalOutcome": "",
+"id": "us_arthur_e3",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"us_gen_press"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_cleveland",
+"civilization": "us",
+"dynasty": "重建与崛起",
+"name": "格罗弗·克利夫兰",
+"templeName": "总统",
+"reignStart": 1885,
+"reignEnd": 1897,
+"evaluation": "两任非连续",
+"background": "1884年当选（第22任），1888年竞选连任失利，1892年再选（第24任），为唯一非连续两任者。任内反高关税、稳财政。",
+"eraContext": "工业化提速、农民与劳工怨声起，民主党回归保守财政。",
+"reignPremise": "以诚实著称，却两度在民意浪尖起落。",
+"voiceTag": "质朴",
+"era": "重建与崛起",
+"initStats": {
+"treasury": 58,
+"people": 63,
+"military": 52,
+"court": 65,
+"health": 60,
+"tech": 34
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_war",
+"name": "战争部长",
+"role": "陆军统帅",
+"voiceTag": "质朴"
+},
+{
+"id": "us_cj",
+"name": "首席大法官",
+"role": "宪法守护",
+"voiceTag": "冷峻"
+}
+],
+"events": [
+{
+"year": 1887,
+"month": null,
+"title": "减税法",
+"description": "否高保护关税，主张低税，触怒工业北方。",
+"historicalChoice": 0,
+"choices": [
+"否决议案",
+"折中降税",
+"交国会",
+"保收入",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_cleveland_e0",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"tax_cut"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1893,
+"month": null,
+"title": "恐慌",
+"description": "再任即遇1893年严重恐慌，金本位受挤兑。",
+"historicalChoice": 0,
+"choices": [
+"保金本位",
+"购银妥协",
+"减开支",
+"召国会",
+"放任"
+],
+"historicalOutcome": "",
+"id": "us_cleveland_e1",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"weak"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1894,
+"month": null,
+"title": "普尔曼罢工",
+"description": "联邦出兵镇压铁路罢工，得罪劳工。",
+"historicalChoice": 0,
+"choices": [
+"出兵保邮路",
+"调解劳资",
+"交州处理",
+"中立",
+"限用兵"
+],
+"historicalOutcome": "",
+"id": "us_cleveland_e2",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"rebellion"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1886,
+"month": null,
+"title": "报刊攻讦",
+"description": "报纸主笔抨击施政，舆论沸腾，声誉受损。",
+"historicalChoice": 0,
+"choices": [
+"置之不理",
+"撰文反驳",
+"打压反对报刊",
+"收买舆论",
+"改组内阁安抚"
+],
+"historicalOutcome": "",
+"id": "us_cleveland_e3",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"us_gen_press"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_bharri",
+"civilization": "us",
+"dynasty": "重建与崛起",
+"name": "本杰明·哈里森",
+"templeName": "总统",
+"reignStart": 1889,
+"reignEnd": 1893,
+"evaluation": "祖父总统",
+"background": "1888年当选（败普选票却赢选举人团），任内通过麦金莱关税、谢尔曼反托拉斯法，吞并夏威夷未遂。",
+"eraContext": "工业托拉斯兴起，农民抗衡，对外略显进取。",
+"reignPremise": "共和党复兴的一任，遗产在立法不在功业。",
+"voiceTag": "质朴",
+"era": "重建与崛起",
+"initStats": {
+"treasury": 66,
+"people": 60,
+"military": 49,
+"court": 62,
+"health": 68,
+"tech": 42
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_press",
+"name": "报纸主笔",
+"role": "舆论锋镝",
+"voiceTag": "华赡"
+},
+{
+"id": "us_secstate",
+"name": "国务卿",
+"role": "外交主笔",
+"voiceTag": "华赡"
+}
+],
+"events": [
+{
+"year": 1890,
+"month": null,
+"title": "麦金莱关税",
+"description": "大幅提高关税，保护工业，物价上涨激民怨。",
+"historicalChoice": 0,
+"choices": [
+"签署",
+"折中",
+"交国会",
+"限农产品",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_bharri_e0",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"tax_heavy"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1890,
+"month": null,
+"title": "谢尔曼法",
+"description": "首部联邦反托拉斯法，剑指垄断。",
+"historicalChoice": 0,
+"choices": [
+"签署执法",
+"限其力",
+"交各州",
+"设委员会",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_bharri_e1",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"reform"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1891,
+"month": null,
+"title": "海外拓点",
+"description": "取夏威夷、萨摩亚等据点，初显帝国姿态。",
+"historicalChoice": 0,
+"choices": [
+"并夏威夷",
+"设保护国",
+"租借港",
+"暂搁",
+"交国会"
+],
+"historicalOutcome": "",
+"id": "us_bharri_e2",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"unify"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1890,
+"month": null,
+"title": "报刊攻讦",
+"description": "报纸主笔抨击施政，舆论沸腾，声誉受损。",
+"historicalChoice": 0,
+"choices": [
+"置之不理",
+"撰文反驳",
+"打压反对报刊",
+"收买舆论",
+"改组内阁安抚"
+],
+"historicalOutcome": "",
+"id": "us_bharri_e3",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"us_gen_press"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_mckinley",
+"civilization": "us",
+"dynasty": "重建与崛起",
+"name": "威廉·麦金莱",
+"templeName": "总统",
+"reignStart": 1897,
+"reignEnd": 1901,
+"evaluation": "帝国时代的揭幕人",
+"background": "1896年当选，任内赢得美西战争、吞并夏威夷与菲律宾，经济繁荣，1901年遇刺。",
+"eraContext": "工业跃升为世界第一，海外扩张与帝国主义争论并起。",
+"reignPremise": "承平的总统，把共和国推上帝国之阶。",
+"voiceTag": "华赡",
+"era": "重建与崛起",
+"initStats": {
+"treasury": 57,
+"people": 49,
+"military": 66,
+"court": 51,
+"health": 62,
+"tech": 45
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_press",
+"name": "报纸主笔",
+"role": "舆论锋镝",
+"voiceTag": "华赡"
+},
+{
+"id": "us_secstate",
+"name": "国务卿",
+"role": "外交主笔",
+"voiceTag": "华赡"
+}
+],
+"events": [
+{
+"year": 1898,
+"month": null,
+"title": "美西战争",
+"description": "因缅因号爆炸对西开战，速胜夺得波多黎各、菲律宾、关岛。",
+"historicalChoice": 0,
+"choices": [
+"开战夺殖民地",
+"先外交索偿",
+"限占古巴",
+"海上封锁",
+"分兵守"
+],
+"historicalOutcome": "",
+"id": "us_mckinley_e0",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"war_win"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1898,
+"month": null,
+"title": "并夏威夷",
+"description": "正式并夏威夷为领土，太平洋布局成型。",
+"historicalChoice": 0,
+"choices": [
+"并土",
+"设保护国",
+"租借",
+"暂搁",
+"交国会"
+],
+"historicalOutcome": "",
+"id": "us_mckinley_e1",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"unify"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1900,
+"month": null,
+"title": "金本位法",
+"description": "立金本位，稳币值、吸资本。",
+"historicalChoice": 0,
+"choices": [
+"立法",
+"折中复本位",
+"交国会",
+"保储备",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_mckinley_e2",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1901,
+"month": null,
+"title": "遇刺",
+"description": "于泛美博览会遇无政府主义者刺杀，副总统罗斯福继任。",
+"historicalChoice": 0,
+"choices": [
+"倚内阁",
+"急颁政纲",
+"养病",
+"安抚",
+"传副手"
+],
+"historicalOutcome": "",
+"id": "us_mckinley_e3",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"weak"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_troosevelt",
+"civilization": "us",
+"dynasty": "重建与崛起",
+"name": "西奥多·罗斯福",
+"templeName": "总统",
+"reignStart": 1901,
+"reignEnd": 1909,
+"evaluation": "进步主义与大国姿态",
+"background": "麦金莱遇刺后继任，1904年连任。反托拉斯、护自然、开巴拿马运河、调停日俄战争获诺贝尔和平奖。",
+"eraContext": "垄断资本横行、工农崛起，进步运动高涨，美国走向世界舞台中央。",
+"reignPremise": "以「公平交易」整饬豪强，又以大棒外交立国威，如何平衡？",
+"voiceTag": "华赡",
+"era": "重建与崛起",
+"initStats": {
+"treasury": 50,
+"people": 50,
+"military": 43,
+"court": 42,
+"health": 61,
+"tech": 47
+},
+"tier": "A",
+"cast": [
+{
+"id": "us_cj",
+"name": "首席大法官",
+"role": "宪法守护",
+"voiceTag": "冷峻"
+},
+{
+"id": "us_press",
+"name": "报纸主笔",
+"role": "舆论锋镝",
+"voiceTag": "华赡"
+},
+{
+"id": "us_secstate",
+"name": "国务卿",
+"role": "外交主笔",
+"voiceTag": "华赡"
+}
+],
+"events": [
+{
+"year": 1902,
+"month": null,
+"title": "反托拉斯",
+"description": "诉分拆北方证券等托拉斯，树政府监管资本之先例。",
+"historicalChoice": 0,
+"choices": [
+"强诉分拆",
+"和解限规模",
+"立管制法",
+"交各州",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_troosevelt_e0",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"reform"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1903,
+"month": null,
+"title": "巴拿马运河",
+"description": "支持巴拿马自哥伦比亚独立，获运河区，连通两洋。",
+"historicalChoice": 0,
+"choices": [
+"建运河",
+"先购权",
+"中立区",
+"交国际仲裁",
+"缓建"
+],
+"historicalOutcome": "",
+"id": "us_troosevelt_e1",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"unify"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1904,
+"month": null,
+"title": "罗斯福推论",
+"description": "扩张门罗主义，自称有权代欧债介入拉美，大棒外交成型。",
+"historicalChoice": 0,
+"choices": [
+"发表推论",
+"限其范围",
+"联英协调",
+"交国会",
+"低调"
+],
+"historicalOutcome": "",
+"id": "us_troosevelt_e2",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"war_win"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1905,
+"month": null,
+"title": "调停日俄",
+"description": "斡旋朴茨茅斯和约，获诺贝尔和平奖，国威大涨。",
+"historicalChoice": 0,
+"choices": [
+"出面调停",
+"偏日促和",
+"偏俄促和",
+"中立观察",
+"联合欧洲"
+],
+"historicalOutcome": "",
+"id": "us_troosevelt_e3",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1906,
+"month": null,
+"title": "食品安全法",
+"description": "据《丛林》揭黑，立纯净食品与药品法。",
+"historicalChoice": 0,
+"choices": [
+"立法",
+"限范围",
+"设监管",
+"交州",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_troosevelt_e4",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"reform"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_taft",
+"civilization": "us",
+"dynasty": "重建与崛起",
+"name": "威廉·塔夫脱",
+"templeName": "总统",
+"reignStart": 1909,
+"reignEnd": 1913,
+"evaluation": "大而拙的总统",
+"background": "罗斯福钦点继任，却转向保守、扩反托拉斯更甚，与旧友决裂，1912年两党夹击下败选。",
+"eraContext": "进步派分裂，共和党保守与激进对立，塔夫脱左右不讨好。",
+"reignPremise": "承人之志而悖其法，终为党争所弃。",
+"voiceTag": "质朴",
+"era": "重建与崛起",
+"initStats": {
+"treasury": 67,
+"people": 61,
+"military": 50,
+"court": 63,
+"health": 69,
+"tech": 43
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_cj",
+"name": "首席大法官",
+"role": "宪法守护",
+"voiceTag": "冷峻"
+},
+{
+"id": "us_press",
+"name": "报纸主笔",
+"role": "舆论锋镝",
+"voiceTag": "华赡"
+}
+],
+"events": [
+{
+"year": 1909,
+"month": null,
+"title": "削减关税",
+"description": "通过佩恩—奥德里奇税，降税有限，触怒进步派。",
+"historicalChoice": 0,
+"choices": [
+"签署降税",
+"维持高税",
+"折中",
+"交国会",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_taft_e0",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"tax_cut"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1911,
+"month": null,
+"title": "拆标准油",
+"description": "分拆标准石油公司，反托拉斯更猛于罗斯福。",
+"historicalChoice": 0,
+"choices": [
+"强诉分拆",
+"和解",
+"限范围",
+"交州",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_taft_e1",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"reform"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1912,
+"month": null,
+"title": "败选分裂",
+"description": "罗斯福另组进步党，分散选票，塔夫脱惨败。",
+"historicalChoice": 0,
+"choices": [
+"争取连任",
+"退党",
+"支持第三人",
+"归隐",
+"著文"
+],
+"historicalOutcome": "",
+"id": "us_taft_e2",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1910,
+"month": null,
+"title": "国会党争",
+"description": "政党在国会缠斗，法案往往难产，施政受制。",
+"historicalChoice": 0,
+"choices": [
+"倚本党推进",
+"跨党妥协",
+"动用否决权",
+"诉诸民意",
+"暂缓待时"
+],
+"historicalOutcome": "",
+"id": "us_taft_e3",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"us_gen_congress"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_wilson",
+"civilization": "us",
+"dynasty": "重建与崛起",
+"name": "伍德罗·威尔逊",
+"templeName": "总统",
+"reignStart": 1913,
+"reignEnd": 1921,
+"evaluation": "理想主义的参战者",
+"background": "1912年当选，推行联邦储备、反托拉斯与渐进所得税。一战后率美参战，倡国联，却遭参议院拒批。",
+"eraContext": "欧洲大战外溢，孤立主义与干预主义拉锯，国内进步改革并行。",
+"reignPremise": "以「让世界安全于民主」之名参战，理想能否落地？",
+"voiceTag": "华赡",
+"era": "重建与崛起",
+"initStats": {
+"treasury": 51,
+"people": 51,
+"military": 44,
+"court": 43,
+"health": 62,
+"tech": 48
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_press",
+"name": "报纸主笔",
+"role": "舆论锋镝",
+"voiceTag": "华赡"
+},
+{
+"id": "us_secstate",
+"name": "国务卿",
+"role": "外交主笔",
+"voiceTag": "华赡"
+}
+],
+"events": [
+{
+"year": 1913,
+"month": null,
+"title": "联邦储备法",
+"description": "建联储系统，统一货币政策。",
+"historicalChoice": 0,
+"choices": [
+"立法",
+"限权力",
+"交各州银行",
+"设委员会",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_wilson_e0",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"reform"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1917,
+"month": null,
+"title": "对德宣战",
+"description": "无限制潜艇战逼美参战，出兵欧洲，定一战结局。",
+"historicalChoice": 0,
+"choices": [
+"宣战出兵",
+"先备战",
+"海上护航",
+"中立至终",
+"联协约"
+],
+"historicalOutcome": "",
+"id": "us_wilson_e1",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"war_win"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1918,
+"month": null,
+"title": "十四点与国联",
+"description": "倡民族自决与国联，巴黎和会受挫，参议院拒批。",
+"historicalChoice": 0,
+"choices": [
+"力推国联",
+"折中加盟",
+"先和约后国联",
+"交国会",
+"低调"
+],
+"historicalOutcome": "",
+"id": "us_wilson_e2",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1919,
+"month": null,
+"title": "红恐与干预",
+"description": "国内反共恐慌、干预俄国内战，矛盾政策并存。",
+"historicalChoice": 0,
+"choices": [
+"镇压激进",
+"宽容",
+"撤干预",
+"交各州",
+"限移民"
+],
+"historicalOutcome": "",
+"id": "us_wilson_e3",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"scholar_purge"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_harding",
+"civilization": "us",
+"dynasty": "重建与崛起",
+"name": "沃伦·哈定",
+"templeName": "总统",
+"reignStart": 1921,
+"reignEnd": 1923,
+"evaluation": "回归常态的丑闻总统",
+"background": "1920年当选，标榜「回归常态」，任内繁荣但「茶壶穹顶」丑闻曝光，1923年猝逝。",
+"eraContext": "一战后繁荣与享乐主义并行，政府贪腐暗生。",
+"reignPremise": "求安而不得安，丑闻随葬其身。",
+"voiceTag": "质朴",
+"era": "重建与崛起",
+"initStats": {
+"treasury": 58,
+"people": 63,
+"military": 52,
+"court": 65,
+"health": 60,
+"tech": 34
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_secstate",
+"name": "国务卿",
+"role": "外交主笔",
+"voiceTag": "华赡"
+},
+{
+"id": "us_war",
+"name": "战争部长",
+"role": "陆军统帅",
+"voiceTag": "质朴"
+}
+],
+"events": [
+{
+"year": 1921,
+"month": null,
+"title": "缩减军备",
+"description": "倡华盛顿海军条约，限列强造舰。",
+"historicalChoice": 0,
+"choices": [
+"签约限军",
+"保守秘密",
+"交国会",
+"联英日",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_harding_e0",
+"relationDeltas": [
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1922,
+"month": null,
+"title": "福特尼—麦库伯",
+"description": "高关税护工商，农业怨声。",
+"historicalChoice": 0,
+"choices": [
+"签署",
+"折中",
+"交国会",
+"限农",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_harding_e1",
+"relationDeltas": [
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"tax_heavy"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1923,
+"month": null,
+"title": "猝逝与丑闻",
+"description": "于任内病逝，其后茶壶穹顶等丑闻浮出。",
+"historicalChoice": 0,
+"choices": [
+"倚内阁",
+"急颁政纲",
+"养病",
+"安抚",
+"传副手"
+],
+"historicalOutcome": "",
+"id": "us_harding_e2",
+"relationDeltas": [
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"weak"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1922,
+"month": null,
+"title": "报刊攻讦",
+"description": "报纸主笔抨击施政，舆论沸腾，声誉受损。",
+"historicalChoice": 0,
+"choices": [
+"置之不理",
+"撰文反驳",
+"打压反对报刊",
+"收买舆论",
+"改组内阁安抚"
+],
+"historicalOutcome": "",
+"id": "us_harding_e3",
+"relationDeltas": [
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"us_gen_press"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_coolidge",
+"civilization": "us",
+"dynasty": "重建与崛起",
+"name": "卡尔文·柯立芝",
+"templeName": "总统",
+"reignStart": 1923,
+"reignEnd": 1929,
+"evaluation": "无为而治",
+"background": "哈定副手继任，信奉小政府，任内经济繁荣（柯立芝景气），1928年拒绝连任。",
+"eraContext": "咆哮的二十年代，股市狂飙、贫富拉大，隐患暗积。",
+"reignPremise": "以不做事为德，盛世之下危机已萌。",
+"voiceTag": "质朴",
+"era": "重建与崛起",
+"initStats": {
+"treasury": 67,
+"people": 61,
+"military": 50,
+"court": 63,
+"health": 69,
+"tech": 43
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_war",
+"name": "战争部长",
+"role": "陆军统帅",
+"voiceTag": "质朴"
+},
+{
+"id": "us_cj",
+"name": "首席大法官",
+"role": "宪法守护",
+"voiceTag": "冷峻"
+}
+],
+"events": [
+{
+"year": 1924,
+"month": null,
+"title": "减税与繁荣",
+"description": "连任后维持低税、小政府，景气冲顶。",
+"historicalChoice": 0,
+"choices": [
+"维持低税",
+"加税补福利",
+"交国会",
+"限赤字",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_coolidge_e0",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"tax_cut"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1927,
+"month": null,
+"title": "密西西比洪灾",
+"description": "特大洪灾，联邦救灾不力受讥。",
+"historicalChoice": 0,
+"choices": [
+"联邦救灾",
+"交各州",
+"徵灾税",
+"设工程",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_coolidge_e1",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"flood"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1928,
+"month": null,
+"title": "拒绝连任",
+"description": "恪守不恋栈，归隐 Vermont。",
+"historicalChoice": 0,
+"choices": [
+"坚持不连任",
+"破例再选",
+"荐接班人",
+"著书",
+"归隐"
+],
+"historicalOutcome": "",
+"id": "us_coolidge_e2",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1924,
+"month": null,
+"title": "报刊攻讦",
+"description": "报纸主笔抨击施政，舆论沸腾，声誉受损。",
+"historicalChoice": 0,
+"choices": [
+"置之不理",
+"撰文反驳",
+"打压反对报刊",
+"收买舆论",
+"改组内阁安抚"
+],
+"historicalOutcome": "",
+"id": "us_coolidge_e3",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"us_gen_press"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_hoover",
+"civilization": "us",
+"dynasty": "重建与崛起",
+"name": "赫伯特·胡佛",
+"templeName": "总统",
+"reignStart": 1929,
+"reignEnd": 1933,
+"evaluation": "危机总统",
+"background": "1928年当选，数月后华尔街崩盘，大萧条降临。胡佛反危机不力，1932年败于罗斯福。",
+"eraContext": "史上最严重经济危机，失业暴增、银行崩塌，旧自由主义失灵。",
+"reignPremise": "以工程治国之才，难挡滔天之萧条。",
+"voiceTag": "冷峻",
+"era": "重建与崛起",
+"initStats": {
+"treasury": 30,
+"people": 40,
+"military": 49,
+"court": 40,
+"health": 60,
+"tech": 25
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_cj",
+"name": "首席大法官",
+"role": "宪法守护",
+"voiceTag": "冷峻"
+},
+{
+"id": "us_press",
+"name": "报纸主笔",
+"role": "舆论锋镝",
+"voiceTag": "华赡"
+}
+],
+"events": [
+{
+"year": 1929,
+"month": null,
+"title": "黑色星期二",
+"description": "股市崩盘，胡佛称基本面仍好，劝民众镇定。",
+"historicalChoice": 0,
+"choices": [
+"安抚信心",
+"降息救市",
+"限卖空",
+"交美联储",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_hoover_e0",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"weak"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1930,
+"month": null,
+"title": "斯穆特—霍利",
+"description": "高关税以护就业，反触发全球贸易战。",
+"historicalChoice": 0,
+"choices": [
+"签署",
+"否决",
+"折中",
+"交国会",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_hoover_e1",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"tax_heavy"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1932,
+"month": null,
+"title": "老兵补偿",
+"description": "一战老兵讨补偿金，胡佛派军驱散（酬恤金进军），形象重创。",
+"historicalChoice": 0,
+"choices": [
+"和平遣散",
+"武力驱离",
+"折中付款",
+"交国会",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_hoover_e2",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"rebellion"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1932,
+"month": null,
+"title": "败选",
+"description": "大萧条未解，惨败于罗斯福。",
+"historicalChoice": 0,
+"choices": [
+"认责交权",
+"质疑",
+"转顾问",
+"著书",
+"归隐"
+],
+"historicalOutcome": "",
+"id": "us_hoover_e3",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"weak"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_fdr",
+"civilization": "us",
+"dynasty": "重建与崛起",
+"name": "富兰克林·罗斯福",
+"templeName": "总统",
+"reignStart": 1933,
+"reignEnd": 1945,
+"evaluation": "新政与二战领袖",
+"background": "1932年当选，连任四届。新政以救济、复兴、改革应对大萧条；领导美国打赢二战，1945年猝逝。",
+"eraContext": "大萧条与世界大战接踵，政府角色空前扩张，美国跃居世界霸主。",
+"reignPremise": "以试验代替教条，在绝望与战火中重写国家契约，他能走多远？",
+"voiceTag": "华赡",
+"era": "重建与崛起",
+"initStats": {
+"treasury": 51,
+"people": 51,
+"military": 44,
+"court": 43,
+"health": 62,
+"tech": 48
+},
+"tier": "A",
+"cast": [
+{
+"id": "us_press",
+"name": "报纸主笔",
+"role": "舆论锋镝",
+"voiceTag": "华赡"
+},
+{
+"id": "us_secstate",
+"name": "国务卿",
+"role": "外交主笔",
+"voiceTag": "华赡"
+},
+{
+"id": "us_war",
+"name": "战争部长",
+"role": "陆军统帅",
+"voiceTag": "质朴"
+}
+],
+"events": [
+{
+"year": 1933,
+"month": null,
+"title": "百日新政",
+"description": "上任即推银行假、紧急银行法、以工代赈，稳住金融体系。",
+"historicalChoice": 0,
+"choices": [
+"强推新政",
+"先稳银行",
+"限赤字",
+"交国会",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_fdr_e0",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"reform"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1935,
+"month": null,
+"title": "社会保障法",
+"description": "立养老金与失业险，奠定福利国家基石。",
+"historicalChoice": 0,
+"choices": [
+"立法",
+"限范围",
+"交州",
+"设基金",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_fdr_e1",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1941,
+"month": null,
+"title": "租借法案",
+"description": "德意日扩张，美以租借援英苏抗轴心，渐离孤立。",
+"historicalChoice": 0,
+"choices": [
+"通过租借",
+"先中立",
+"限援英",
+"海上护航",
+"交国会"
+],
+"historicalOutcome": "",
+"id": "us_fdr_e2",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"war_win"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1941,
+"month": null,
+"title": "珍珠港",
+"description": "日本偷袭珍珠港，美对日德意宣战，全面卷入二战。",
+"historicalChoice": 0,
+"choices": [
+"宣战总动员",
+"先稳住太平洋",
+"联英苏",
+"征兵",
+"经济转轨"
+],
+"historicalOutcome": "",
+"id": "us_fdr_e3",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"war_win"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1944,
+"month": null,
+"title": "布雷顿森林",
+"description": "确立美元为国际储备、建 IMF 与世界银行，定战后经济秩序。",
+"historicalChoice": 0,
+"choices": [
+"主导建制",
+"限其权",
+"联英",
+"缓行",
+"交国会"
+],
+"historicalOutcome": "",
+"id": "us_fdr_e4",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1945,
+"month": null,
+"title": "雅尔塔与逝去",
+"description": "与丘吉尔、斯大林划战后势力范围，旋于任内病逝。",
+"historicalChoice": 0,
+"choices": [
+"强定格局",
+"护中国权益",
+"限苏扩张",
+"交联合国",
+"养病"
+],
+"historicalOutcome": "",
+"id": "us_fdr_e5",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_truman",
+"civilization": "us",
+"dynasty": "冷战与当代",
+"name": "哈里·杜鲁门",
+"templeName": "总统",
+"reignStart": 1945,
+"reignEnd": 1953,
+"evaluation": "冷战揭幕人",
+"background": "罗斯福副手，继任后投原子弹、结束二战，旋即开启冷战：杜鲁门主义、马歇尔计划、北约、韩战。",
+"eraContext": "二战甫停，美苏对峙，核武器与意识形态全面竞争。",
+"reignPremise": "接下残局即入新冷战，如何在威慑与克制间拿捏？",
+"voiceTag": "冷峻",
+"era": "冷战与当代",
+"initStats": {
+"treasury": 46,
+"people": 42,
+"military": 77,
+"court": 50,
+"health": 58,
+"tech": 36
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_cj",
+"name": "首席大法官",
+"role": "宪法守护",
+"voiceTag": "冷峻"
+},
+{
+"id": "us_press",
+"name": "报纸主笔",
+"role": "舆论锋镝",
+"voiceTag": "华赡"
+}
+],
+"events": [
+{
+"year": 1945,
+"month": null,
+"title": "广岛长崎",
+"description": "对日投原子弹，加速其投降，也开启核时代。",
+"historicalChoice": 0,
+"choices": [
+"投弹止战",
+"先示威逼降",
+"留日自决",
+"海上封锁",
+"交盟国"
+],
+"historicalOutcome": "",
+"id": "us_truman_e0",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"war_win"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1947,
+"month": null,
+"title": "杜鲁门主义",
+"description": "援希土抗共，宣示遏制战略，冷战成形。",
+"historicalChoice": 0,
+"choices": [
+"宣布遏制",
+"限援范围",
+"联西欧",
+"交国会",
+"低调"
+],
+"historicalOutcome": "",
+"id": "us_truman_e1",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"war_win"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1948,
+"month": null,
+"title": "马歇尔计划",
+"description": "援西欧重建，防经济崩溃投共。",
+"historicalChoice": 0,
+"choices": [
+"大援重建",
+"限金额",
+"绑条件",
+"联英法",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_truman_e2",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1950,
+"month": null,
+"title": "韩战",
+"description": "北韩南下，美率联合国军干涉，仁川登陆后越过三八线引中国参战。",
+"historicalChoice": 0,
+"choices": [
+"出兵护南韩",
+"先守三八线",
+"海上封锁",
+"联联合国",
+"授权国会"
+],
+"historicalOutcome": "",
+"id": "us_truman_e3",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"war_loss"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_eisenhower",
+"civilization": "us",
+"dynasty": "冷战与当代",
+"name": "德怀特·艾森豪威尔",
+"templeName": "总统",
+"reignStart": 1953,
+"reignEnd": 1961,
+"evaluation": "军人总统，州际时代",
+"background": "二战盟军统帅，1952年当选。任内结束韩战、建州际公路、警告「军工复合体」，经济平稳。",
+"eraContext": "冷战高峰、麦卡锡主义退潮、 suburban 繁荣与民权暗涌。",
+"reignPremise": "以军人而主和平，临去以警语留世。",
+"voiceTag": "质朴",
+"era": "冷战与当代",
+"initStats": {
+"treasury": 63,
+"people": 57,
+"military": 57,
+"court": 59,
+"health": 65,
+"tech": 39
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_secstate",
+"name": "国务卿",
+"role": "外交主笔",
+"voiceTag": "华赡"
+},
+{
+"id": "us_war",
+"name": "战争部长",
+"role": "陆军统帅",
+"voiceTag": "质朴"
+}
+],
+"events": [
+{
+"year": 1953,
+"month": null,
+"title": "停战朝鲜",
+"description": "签板门店协定，维持三八线，脱身半岛泥淖。",
+"historicalChoice": 0,
+"choices": [
+"停战撤出",
+"先巩固南韩",
+"限驻军",
+"交联合国",
+"经济援"
+],
+"historicalOutcome": "",
+"id": "us_eisenhower_e0",
+"relationDeltas": [
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1956,
+"month": null,
+"title": "苏伊士危机",
+"description": "压英法以自埃及撤军，显示美主导中东。",
+"historicalChoice": 0,
+"choices": [
+"外交施压",
+"偏以",
+"中立",
+"联苏调停",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_eisenhower_e1",
+"relationDeltas": [
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1957,
+"month": null,
+"title": "州际公路",
+"description": "立州际国防公路网，重塑美国地理与经济。",
+"historicalChoice": 0,
+"choices": [
+"立法建网",
+"限规模",
+"交州",
+"设基金",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_eisenhower_e2",
+"relationDeltas": [
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1961,
+"month": null,
+"title": "军工复合体警告",
+"description": "告别演说警示军工与国会—军工利益绑架外交。",
+"historicalChoice": 0,
+"choices": [
+"公开发表",
+"限其词",
+"交智库",
+"低调",
+"著文"
+],
+"historicalOutcome": "",
+"id": "us_eisenhower_e3",
+"relationDeltas": [
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_jfk",
+"civilization": "us",
+"dynasty": "冷战与当代",
+"name": "约翰·肯尼迪",
+"templeName": "总统",
+"reignStart": 1961,
+"reignEnd": 1963,
+"evaluation": "新星陨落",
+"background": "1960年险胜当选，任内猪湾惨败、古巴导弹危机险酿核战、推太空与民权，1963年遇刺。",
+"eraContext": "冷战最危险时刻、民权运动高涨、青年理想主义风行。",
+"reignPremise": "以「新边疆」燃希望，却未竟其志而殒。",
+"voiceTag": "华赡",
+"era": "冷战与当代",
+"initStats": {
+"treasury": 44,
+"people": 55,
+"military": 48,
+"court": 47,
+"health": 55,
+"tech": 41
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_cj",
+"name": "首席大法官",
+"role": "宪法守护",
+"voiceTag": "冷峻"
+},
+{
+"id": "us_press",
+"name": "报纸主笔",
+"role": "舆论锋镝",
+"voiceTag": "华赡"
+}
+],
+"events": [
+{
+"year": 1961,
+"month": null,
+"title": "猪湾事件",
+"description": "授权流亡者登陆古巴失败，颜面受损，反促卡斯特罗靠苏。",
+"historicalChoice": 0,
+"choices": [
+"强攻",
+"先空袭",
+"撤计划",
+"外交施压",
+"交中情局"
+],
+"historicalOutcome": "",
+"id": "us_jfk_e0",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"war_loss"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1962,
+"month": null,
+"title": "古巴导弹危机",
+"description": "发现苏在古巴部署导弹，海上封锁对峙十三日，终令苏撤弹。",
+"historicalChoice": 0,
+"choices": [
+"海上封锁",
+"空袭摧毁",
+"外交谈判",
+"全面戒备",
+"联联合国"
+],
+"historicalOutcome": "",
+"id": "us_jfk_e1",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"war_win"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1963,
+"month": null,
+"title": "民权与太空",
+"description": "推民权法、誓于十年内登月，提振国志。",
+"historicalChoice": 0,
+"choices": [
+"立法民权",
+"加速登月",
+"折中",
+"交国会",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_jfk_e2",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"reform"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1963,
+"month": null,
+"title": "达拉斯遇刺",
+"description": "于车队巡游时中枪身亡，举国震惊，副总统约翰逊继任。",
+"historicalChoice": 0,
+"choices": [
+"倚内阁",
+"急颁政纲",
+"安抚",
+"调查",
+"传副手"
+],
+"historicalOutcome": "",
+"id": "us_jfk_e3",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"weak"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_lbj",
+"civilization": "us",
+"dynasty": "冷战与当代",
+"name": "林登·约翰逊",
+"templeName": "总统",
+"reignStart": 1963,
+"reignEnd": 1969,
+"evaluation": "大社会与越战泥潭",
+"background": "肯尼迪副手继任，1964年大胜。推「大社会」与民权立法，却深陷越南战争，民意的分裂令其弃选。",
+"eraContext": "民权胜利与越战升级并行，国内反战与骚乱交织。",
+"reignPremise": "以国内之善政，陷海外之恶战，功过何居？",
+"voiceTag": "华赡",
+"era": "冷战与当代",
+"initStats": {
+"treasury": 45,
+"people": 56,
+"military": 49,
+"court": 48,
+"health": 56,
+"tech": 42
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_press",
+"name": "报纸主笔",
+"role": "舆论锋镝",
+"voiceTag": "华赡"
+},
+{
+"id": "us_secstate",
+"name": "国务卿",
+"role": "外交主笔",
+"voiceTag": "华赡"
+}
+],
+"events": [
+{
+"year": 1964,
+"month": null,
+"title": "民权法案",
+"description": "签署标志性别与种族歧视非法，里程碑。",
+"historicalChoice": 0,
+"choices": [
+"签署",
+"限范围",
+"交各州",
+"设执法",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_lbj_e0",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"reform"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1965,
+"month": null,
+"title": "越南升级",
+"description": "东京湾后大规模派兵，地面战升级，伤亡与反战齐增。",
+"historicalChoice": 0,
+"choices": [
+"增兵平叛",
+"限空袭",
+"谈判脱身",
+"扩征兵",
+"交盟国"
+],
+"historicalOutcome": "",
+"id": "us_lbj_e1",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"war_loss"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1965,
+"month": null,
+"title": "医疗照顾",
+"description": "立 Medicare/Medicaid，扩社会福利。",
+"historicalChoice": 0,
+"choices": [
+"立法",
+"限范围",
+"交州",
+"设基金",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_lbj_e2",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1968,
+"month": null,
+"title": "弃选",
+"description": "反战与骚乱压顶，宣布不连任。",
+"historicalChoice": 0,
+"choices": [
+"弃选",
+"坚持到底",
+"换策略",
+"安抚",
+"归隐"
+],
+"historicalOutcome": "",
+"id": "us_lbj_e3",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"weak"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_nixon",
+"civilization": "us",
+"dynasty": "冷战与当代",
+"name": "理查德·尼克松",
+"templeName": "总统",
+"reignStart": 1969,
+"reignEnd": 1974,
+"evaluation": "破冰与耻辱",
+"background": "1968年当选，1972年访华破冰、缓和苏联、结束越战，却因水门事件成为首位辞职总统。",
+"eraContext": "冷战转折、越战收尾、国内信任危机与总统权膨胀。",
+"reignPremise": "以外交之高手，毁于掩盖之愚行。",
+"voiceTag": "质朴",
+"era": "冷战与当代",
+"initStats": {
+"treasury": 62,
+"people": 56,
+"military": 56,
+"court": 69,
+"health": 64,
+"tech": 38
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_press",
+"name": "报纸主笔",
+"role": "舆论锋镝",
+"voiceTag": "华赡"
+},
+{
+"id": "us_secstate",
+"name": "国务卿",
+"role": "外交主笔",
+"voiceTag": "华赡"
+}
+],
+"events": [
+{
+"year": 1972,
+"month": null,
+"title": "访华破冰",
+"description": "历史性访华，撬动中苏美三角，打开对华关系。",
+"historicalChoice": 0,
+"choices": [
+"访华建交",
+"先秘密渠道",
+"限接触",
+"联华制苏",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_nixon_e0",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1973,
+"month": null,
+"title": "巴黎和平",
+"description": "签协定撤出越南，终结美军参战。",
+"historicalChoice": 0,
+"choices": [
+"撤军止战",
+"限驻军",
+"交盟国",
+"经济援南越",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_nixon_e1",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1973,
+"month": null,
+"title": "缓和苏联",
+"description": "与苏签限制战略武器条约，降温核对峙。",
+"historicalChoice": 0,
+"choices": [
+"签约限武",
+"限范围",
+"联华压苏",
+"交国会",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_nixon_e2",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1974,
+"month": null,
+"title": "水门辞职",
+"description": "掩盖窃听败露，面临弹劾，宣布辞职以保体面。",
+"historicalChoice": 0,
+"choices": [
+"辞职",
+"抗辩到底",
+"焚证灭迹",
+"倚副手",
+"交法院"
+],
+"historicalOutcome": "",
+"id": "us_nixon_e3",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"usurped"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_ford",
+"civilization": "us",
+"dynasty": "冷战与当代",
+"name": "杰拉尔德·福特",
+"templeName": "总统",
+"reignStart": 1974,
+"reignEnd": 1977,
+"evaluation": "未经选举的总统",
+"background": "尼克松副手、未经大选继任，上任即赦尼克松，经济滞胀，1976年败选。",
+"eraContext": "水门余波、越战终结、滞胀初现、信任崩塌。",
+"reignPremise": "以修补裂痕为己任，却难挽民意。",
+"voiceTag": "质朴",
+"era": "冷战与当代",
+"initStats": {
+"treasury": 61,
+"people": 55,
+"military": 55,
+"court": 68,
+"health": 63,
+"tech": 37
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_cj",
+"name": "首席大法官",
+"role": "宪法守护",
+"voiceTag": "冷峻"
+},
+{
+"id": "us_press",
+"name": "报纸主笔",
+"role": "舆论锋镝",
+"voiceTag": "华赡"
+}
+],
+"events": [
+{
+"year": 1974,
+"month": null,
+"title": "赦免尼克松",
+"description": "以赦令止纷争，反招「暗箱」质疑。",
+"historicalChoice": 0,
+"choices": [
+"赦免以安局",
+" conditional 赦",
+"交法院",
+"设调查",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_ford_e0",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1975,
+"month": null,
+"title": "西贡陷落",
+"description": "南越崩解，美撤出，越战彻底落幕。",
+"historicalChoice": 0,
+"choices": [
+"撤侨保民",
+"先空桥",
+"承认结局",
+"援难民",
+"低调"
+],
+"historicalOutcome": "",
+"id": "us_ford_e1",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"war_loss"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1976,
+"month": null,
+"title": "败选",
+"description": "经济滞胀、民意未复，败于卡特。",
+"historicalChoice": 0,
+"choices": [
+"认败交权",
+"质疑",
+"转顾问",
+"著书",
+"归隐"
+],
+"historicalOutcome": "",
+"id": "us_ford_e2",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1975,
+"month": null,
+"title": "国会党争",
+"description": "政党在国会缠斗，法案往往难产，施政受制。",
+"historicalChoice": 0,
+"choices": [
+"倚本党推进",
+"跨党妥协",
+"动用否决权",
+"诉诸民意",
+"暂缓待时"
+],
+"historicalOutcome": "",
+"id": "us_ford_e3",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"us_gen_congress"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_carter",
+"civilization": "us",
+"dynasty": "冷战与当代",
+"name": "吉米·卡特",
+"templeName": "总统",
+"reignStart": 1977,
+"reignEnd": 1981,
+"evaluation": "理想主义与困局",
+"background": "1976年当选，推人权外交、巴以和谈（戴维营），却受石油危机、伊朗人质危机拖累，1980年败选。",
+"eraContext": "滞胀、能源冲击、伊朗革命与苏军侵阿，美国自信受挫。",
+"reignPremise": "以道义行外交，却难敌现实的荆棘。",
+"voiceTag": "华赡",
+"era": "冷战与当代",
+"initStats": {
+"treasury": 49,
+"people": 49,
+"military": 53,
+"court": 41,
+"health": 60,
+"tech": 46
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_secstate",
+"name": "国务卿",
+"role": "外交主笔",
+"voiceTag": "华赡"
+},
+{
+"id": "us_war",
+"name": "战争部长",
+"role": "陆军统帅",
+"voiceTag": "质朴"
+}
+],
+"events": [
+{
+"year": 1978,
+"month": null,
+"title": "戴维营协议",
+"description": "斡旋埃以和约，中东和平破冰。",
+"historicalChoice": 0,
+"choices": [
+"促成和约",
+"偏以",
+"偏埃",
+"联苏调停",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_carter_e0",
+"relationDeltas": [
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1979,
+"month": null,
+"title": "伊朗人质",
+"description": "美使馆人员被扣，救援失败，任期蒙羞。",
+"historicalChoice": 0,
+"choices": [
+"军事营救",
+"外交施压",
+"经济制裁",
+"联盟国",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_carter_e1",
+"relationDeltas": [
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"weak"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1979,
+"month": null,
+"title": "能源与通胀",
+"description": "石油冲击叠加滞胀，卡特吁节约，成效不彰。",
+"historicalChoice": 0,
+"choices": [
+"节能立法",
+"限价",
+"征能源税",
+"交各州",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_carter_e2",
+"relationDeltas": [
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"tax_heavy"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1980,
+"month": null,
+"title": "败选",
+"description": "人质未归、经济疲软，败于里根。",
+"historicalChoice": 0,
+"choices": [
+"认败",
+"质疑",
+"转斡旋",
+"著书",
+"归隐"
+],
+"historicalOutcome": "",
+"id": "us_carter_e3",
+"relationDeltas": [
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"weak"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_reagan",
+"civilization": "us",
+"dynasty": "冷战与当代",
+"name": "罗纳德·里根",
+"templeName": "总统",
+"reignStart": 1981,
+"reignEnd": 1989,
+"evaluation": "保守主义复兴",
+"background": "1980年当选，以减税、松管制、强军对抗苏联（「邪恶帝国」），经济「里根繁荣」，末期与戈尔巴乔夫缓和。",
+"eraContext": "冷战最后十年、保守回潮、贫富分化与赤字并存。",
+"reignPremise": "以「政府即问题」之论松绑，又以军备压垮对手，平衡何在？",
+"voiceTag": "质朴",
+"era": "冷战与当代",
+"initStats": {
+"treasury": 62,
+"people": 56,
+"military": 56,
+"court": 69,
+"health": 64,
+"tech": 38
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_war",
+"name": "战争部长",
+"role": "陆军统帅",
+"voiceTag": "质朴"
+},
+{
+"id": "us_cj",
+"name": "首席大法官",
+"role": "宪法守护",
+"voiceTag": "冷峻"
+}
+],
+"events": [
+{
+"year": 1981,
+"month": null,
+"title": "经济复兴法",
+"description": "大幅减税、松管制，供给侧经济学登场。",
+"historicalChoice": 0,
+"choices": [
+"减税松管",
+"折中",
+"交国会",
+"限赤字",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_reagan_e0",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"tax_cut"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1983,
+"month": null,
+"title": "星球大战",
+"description": "倡战略防御倡议，以军备竞赛拖垮苏联经济。",
+"historicalChoice": 0,
+"choices": [
+"立项研发",
+"限规模",
+"联盟国",
+"交国会",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_reagan_e1",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"war_win"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1986,
+"month": null,
+"title": "伊朗门",
+"description": "秘密售武伊朗以资尼加拉瓜反政府武装，曝光成丑闻。",
+"historicalChoice": 0,
+"choices": [
+"否认到底",
+"认错",
+"交国会",
+"焚证",
+"设调查"
+],
+"historicalOutcome": "",
+"id": "us_reagan_e2",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"usurped"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1987,
+"month": null,
+"title": "中导条约",
+"description": "与戈尔巴乔夫签条约，销毁中程导弹，冷战趋缓。",
+"historicalChoice": 0,
+"choices": [
+"签约裁武",
+"限范围",
+"联欧",
+"交国会",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_reagan_e3",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_ghwbush",
+"civilization": "us",
+"dynasty": "冷战与当代",
+"name": "乔治·H·W·布什",
+"templeName": "总统",
+"reignStart": 1989,
+"reignEnd": 1993,
+"evaluation": "冷战后秩序者",
+"background": "里根副手继任，任内柏林墙倒塌、德国统一、海湾战争大胜，却因经济与「 read my lips」食言败选。",
+"eraContext": "冷战终结、新世界秩序初构、经济减速。",
+"reignPremise": "赢下战争却输掉选举，外交之胜难抵 domestic 之失。",
+"voiceTag": "质朴",
+"era": "冷战与当代",
+"initStats": {
+"treasury": 60,
+"people": 65,
+"military": 54,
+"court": 67,
+"health": 62,
+"tech": 36
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_press",
+"name": "报纸主笔",
+"role": "舆论锋镝",
+"voiceTag": "华赡"
+},
+{
+"id": "us_secstate",
+"name": "国务卿",
+"role": "外交主笔",
+"voiceTag": "华赡"
+}
+],
+"events": [
+{
+"year": 1990,
+"month": null,
+"title": "德国统一",
+"description": "借变局推动两德统一，欧陆格局重写。",
+"historicalChoice": 0,
+"choices": [
+"推动统一",
+"限速",
+"联英法",
+"交欧共体",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_ghwbush_e0",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1991,
+"month": null,
+"title": "海湾战争",
+"description": "伊拉克侵科威特，美率多国部队「沙漠风暴」逐敌。",
+"historicalChoice": 0,
+"choices": [
+"出兵逐伊",
+"先制裁",
+"限空袭",
+"联联合国",
+"授权国会"
+],
+"historicalOutcome": "",
+"id": "us_ghwbush_e1",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"war_win"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1990,
+"month": null,
+"title": "赤字与增税",
+"description": "为削赤字背弃不增税承诺，民意反噬。",
+"historicalChoice": 0,
+"choices": [
+"增税削赤",
+"坚守诺言",
+"折中",
+"交国会",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_ghwbush_e2",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"tax_heavy"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1992,
+"month": null,
+"title": "败选",
+"description": "经济疲弱、食言风波，败于克林顿。",
+"historicalChoice": 0,
+"choices": [
+"认败",
+"质疑",
+"转顾问",
+"著书",
+"归隐"
+],
+"historicalOutcome": "",
+"id": "us_ghwbush_e3",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"weak"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_clinton",
+"civilization": "us",
+"dynasty": "冷战与当代",
+"name": "比尔·克林顿",
+"templeName": "总统",
+"reignStart": 1993,
+"reignEnd": 2001,
+"evaluation": "新经济与绯闻",
+"background": "1992年当选，任内平衡预算、信息产业繁荣、北约东扩，却受白水与莱温斯基案弹劾（未罪）。",
+"eraContext": "后冷战繁荣、全球化加速、党争与个人丑闻交织。",
+"reignPremise": "以中间路线致经济佳绩，却因私德险遭倾覆。",
+"voiceTag": "质朴",
+"era": "冷战与当代",
+"initStats": {
+"treasury": 64,
+"people": 58,
+"military": 47,
+"court": 60,
+"health": 66,
+"tech": 40
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_cj",
+"name": "首席大法官",
+"role": "宪法守护",
+"voiceTag": "冷峻"
+},
+{
+"id": "us_press",
+"name": "报纸主笔",
+"role": "舆论锋镝",
+"voiceTag": "华赡"
+}
+],
+"events": [
+{
+"year": 1993,
+"month": null,
+"title": "北美自贸",
+"description": "签 NAFTA，深化北美经济整合。",
+"historicalChoice": 0,
+"choices": [
+"签署",
+"限范围",
+"交国会",
+"保劳工",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_clinton_e0",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1994,
+"month": null,
+"title": "医改受挫",
+"description": "推全民医保失败，共和党夺国会。",
+"historicalChoice": 0,
+"choices": [
+"再推折中",
+"限儿童",
+"交州",
+"设基金",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_clinton_e1",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"reform"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1998,
+"month": null,
+"title": "弹劾案",
+"description": "因伪证与妨碍司法遭众院弹劾，参院未罪。",
+"historicalChoice": 0,
+"choices": [
+"抗辩到底",
+"认错和解",
+"辞职",
+"交法院",
+"倚副手"
+],
+"historicalOutcome": "",
+"id": "us_clinton_e2",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"usurped"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 1999,
+"month": null,
+"title": "科索沃",
+"description": "北约空袭南联盟，止科索沃种族清洗。",
+"historicalChoice": 0,
+"choices": [
+"空袭干预",
+"先外交",
+"限规模",
+"联北约",
+"交联合国"
+],
+"historicalOutcome": "",
+"id": "us_clinton_e3",
+"relationDeltas": [
+{
+"边将": 2
+},
+{
+"商贾": -1
+},
+{
+"宗室": 2
+},
+{
+"士大夫": -1
+},
+{
+"边将": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"war_win"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_gwbush",
+"civilization": "us",
+"dynasty": "冷战与当代",
+"name": "乔治·W·布什",
+"templeName": "总统",
+"reignStart": 2001,
+"reignEnd": 2009,
+"evaluation": "反恐战争总统",
+"background": "2000年争议选举上台，9·11后发动阿富汗、伊拉克战争，推国土安全，2008年金融危机收尾。",
+"eraContext": "9·11改写国家安全、两场战争久拖、金融危机爆发。",
+"reignPremise": "以反恐重塑国安，却陷两战与金融危机之局。",
+"voiceTag": "冷峻",
+"era": "冷战与当代",
+"initStats": {
+"treasury": 41,
+"people": 48,
+"military": 72,
+"court": 56,
+"health": 53,
+"tech": 31
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_press",
+"name": "报纸主笔",
+"role": "舆论锋镝",
+"voiceTag": "华赡"
+},
+{
+"id": "us_secstate",
+"name": "国务卿",
+"role": "外交主笔",
+"voiceTag": "华赡"
+}
+],
+"events": [
+{
+"year": 2001,
+"month": null,
+"title": "9·11与反恐",
+"description": "恐怖袭击后宣战恐怖主义，建国土安全部、出兵阿富汗。",
+"historicalChoice": 0,
+"choices": [
+"出兵阿富汗",
+"先反恐网络",
+"限用兵",
+"联盟国",
+"授权国会"
+],
+"historicalOutcome": "",
+"id": "us_gwbush_e0",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"war_win"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 2003,
+"month": null,
+"title": "伊拉克战争",
+"description": "以大规模杀伤性武器为由侵伊，后期陷入叛乱。",
+"historicalChoice": 0,
+"choices": [
+"出兵倒萨",
+"先核查",
+"限空袭",
+"联盟国",
+"交联合国"
+],
+"historicalOutcome": "",
+"id": "us_gwbush_e1",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"war_loss"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 2008,
+"month": null,
+"title": "金融海啸",
+"description": "次贷危机引爆全球金融海啸，政府救市（ TARP）。",
+"historicalChoice": 0,
+"choices": [
+"救市注资",
+"任其破产",
+"限规模",
+"交美联储",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_gwbush_e2",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"weak"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 2005,
+"month": null,
+"title": "卡特里娜",
+"description": "新奥尔良溃堤，联邦救灾迟缓受讥。",
+"historicalChoice": 0,
+"choices": [
+"联邦救灾",
+"交州",
+"征灾税",
+"设工程",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_gwbush_e3",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"flood"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_obama",
+"civilization": "us",
+"dynasty": "冷战与当代",
+"name": "贝拉克·奥巴马",
+"templeName": "总统",
+"reignStart": 2009,
+"reignEnd": 2017,
+"evaluation": "变革与僵局",
+"background": "2008年当选，首位非裔总统，推医保改革、救市复苏、击毙本·拉登、伊核协议，党争致立法受阻。",
+"eraContext": "金融危机余波、医保争论、极化加剧、海外收缩。",
+"reignPremise": "以「希望」登场，在极化的泥沼中推进与妥协。",
+"voiceTag": "华赡",
+"era": "冷战与当代",
+"initStats": {
+"treasury": 48,
+"people": 48,
+"military": 52,
+"court": 51,
+"health": 59,
+"tech": 45
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_press",
+"name": "报纸主笔",
+"role": "舆论锋镝",
+"voiceTag": "华赡"
+},
+{
+"id": "us_secstate",
+"name": "国务卿",
+"role": "外交主笔",
+"voiceTag": "华赡"
+}
+],
+"events": [
+{
+"year": 2010,
+"month": null,
+"title": "医保改革",
+"description": "签《可负担医疗法》（奥巴马医改），扩覆盖。",
+"historicalChoice": 0,
+"choices": [
+"立法",
+"限范围",
+"交州",
+"设基金",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_obama_e0",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"reform"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 2011,
+"month": null,
+"title": "击毙拉登",
+"description": "海豹突击队击毙本·拉登，反恐标志性胜利。",
+"historicalChoice": 0,
+"choices": [
+"行动击毙",
+"先捕获",
+"联巴方",
+"保密",
+"交军方"
+],
+"historicalOutcome": "",
+"id": "us_obama_e1",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"war_win"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 2015,
+"month": null,
+"title": "伊核协议",
+"description": "与伊达成限核协议，缓和海湾。",
+"historicalChoice": 0,
+"choices": [
+"签约限核",
+"限范围",
+"联欧盟",
+"交国会",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_obama_e2",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 2014,
+"month": null,
+"title": "出兵叙伊",
+"description": " ISIS 崛起，美重返空袭叙伊。",
+"historicalChoice": 0,
+"choices": [
+"空袭 ISIS",
+"先训地面",
+"限规模",
+"联盟友",
+"交联合国"
+],
+"historicalOutcome": "",
+"id": "us_obama_e3",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"war_win"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_trump",
+"civilization": "us",
+"dynasty": "冷战与当代",
+"name": "唐纳德·特朗普",
+"templeName": "总统",
+"reignStart": 2017,
+"reignEnd": 2026,
+"evaluation": "交易式总统",
+"background": "2016年当选（第45任），以「美国优先」重组贸易、税改、最高法院，2020年败选后拒认结果引发国会山骚乱；2024年再选（第47任），任内持续重塑内外政策。",
+"eraContext": "后冷战秩序松动、民粹兴起、极化与制度张力凸显、对华战略竞争加剧。",
+"reignPremise": "以商人式交易逻辑重写总统范式，极化时代下其遗产仍待后世评判。",
+"voiceTag": "质朴",
+"era": "冷战与当代",
+"initStats": {
+"treasury": 58,
+"people": 63,
+"military": 52,
+"court": 65,
+"health": 60,
+"tech": 34
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_press",
+"name": "报纸主笔",
+"role": "舆论锋镝",
+"voiceTag": "华赡"
+},
+{
+"id": "us_secstate",
+"name": "国务卿",
+"role": "外交主笔",
+"voiceTag": "华赡"
+}
+],
+"events": [
+{
+"year": 2017,
+"month": null,
+"title": "税改与放松",
+"description": "签署大规模减税法、松监管，刺激企业与市场。",
+"historicalChoice": 0,
+"choices": [
+"减税松管",
+"折中",
+"交国会",
+"限赤字",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_trump_e0",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"tax_cut"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 2018,
+"month": null,
+"title": "贸易战",
+"description": "对华及多国加征关税，重谈 NAFTA（ USMCA）。",
+"historicalChoice": 0,
+"choices": [
+"加关税",
+"限范围",
+"先谈判",
+"联盟友",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_trump_e1",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"tax_heavy"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 2020,
+"month": null,
+"title": "大选争议",
+"description": "败选后质疑结果，2021年国会山骚乱，两度弹劾未罪。",
+"historicalChoice": 0,
+"choices": [
+"认败交权",
+"法律挑战",
+"限集会",
+"交法院",
+"倚副手"
+],
+"historicalOutcome": "",
+"id": "us_trump_e2",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"usurped"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 2025,
+"month": null,
+"title": "再任与重组",
+"description": "2024年再当选，第二任重启关税、移民与行政扩权议程。",
+"historicalChoice": 0,
+"choices": [
+"推进议程",
+"折中缓和",
+"交国会",
+"限用兵",
+"联盟友"
+],
+"historicalOutcome": "",
+"id": "us_trump_e3",
+"relationDeltas": [
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+},
+{
+"id": "us_biden",
+"civilization": "us",
+"dynasty": "冷战与当代",
+"name": "乔·拜登",
+"templeName": "总统",
+"reignStart": 2021,
+"reignEnd": 2025,
+"evaluation": "复苏与对峙",
+"background": "2020年当选（第46任），推基建法、通胀削减法、援乌抗俄，2024年退选不连任。",
+"eraContext": "疫情后复苏、俄乌战争、对华竞争、党内世代更替。",
+"reignPremise": "以经验掌舵动荡之世，终以体面交棒收场。",
+"voiceTag": "质朴",
+"era": "冷战与当代",
+"initStats": {
+"treasury": 65,
+"people": 59,
+"military": 48,
+"court": 61,
+"health": 67,
+"tech": 41
+},
+"tier": "B",
+"cast": [
+{
+"id": "us_war",
+"name": "战争部长",
+"role": "陆军统帅",
+"voiceTag": "质朴"
+},
+{
+"id": "us_cj",
+"name": "首席大法官",
+"role": "宪法守护",
+"voiceTag": "冷峻"
+}
+],
+"events": [
+{
+"year": 2021,
+"month": null,
+"title": "基建法",
+"description": "推逾万亿基建与投资法案，补实体短板。",
+"historicalChoice": 0,
+"choices": [
+"立法投资",
+"限规模",
+"交州",
+"设基金",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_biden_e0",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 2022,
+"month": null,
+"title": "援乌抗俄",
+"description": "俄乌开战，美牵头军援与制裁俄。",
+"historicalChoice": 0,
+"choices": [
+"军援制裁",
+"限规模",
+"先外交",
+"联北约",
+"交联合国"
+],
+"historicalOutcome": "",
+"id": "us_biden_e1",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"war_win"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 2022,
+"month": null,
+"title": "通胀法案",
+"description": "签气候与药价法案，控通胀与促绿色。",
+"historicalChoice": 0,
+"choices": [
+"立法",
+"限范围",
+"交国会",
+"保医保",
+"暂缓"
+],
+"historicalOutcome": "",
+"id": "us_biden_e2",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"reform"
+]
+},
+{},
+{},
+{},
+{}
+]
+},
+{
+"year": 2024,
+"month": null,
+"title": "退选交棒",
+"description": "退选不连任，背书副手，体面交权。",
+"historicalChoice": 0,
+"choices": [
+"退选交棒",
+"坚持到底",
+"换将",
+"安抚党",
+"归隐"
+],
+"historicalOutcome": "",
+"id": "us_biden_e3",
+"relationDeltas": [
+{
+"士大夫": 2
+},
+{
+"边将": -1
+},
+{
+"商贾": 2
+},
+{
+"宗室": -1
+},
+{
+"士大夫": 2
+}
+],
+"branches": [
+{
+"setFlags": [
+"long_peace"
+]
+},
+{},
+{},
+{},
+{}
+]
+}
+]
+}
+]
+}

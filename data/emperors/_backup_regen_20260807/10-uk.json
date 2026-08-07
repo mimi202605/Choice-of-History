@@ -1,0 +1,9654 @@
+{
+ "group": "G10 英国",
+ "dynasties": [
+  "诺曼—金雀花",
+  "都铎—斯图亚特",
+  "汉诺威—温莎"
+ ],
+ "emperors": [
+  {
+   "id": "uk_william1",
+   "civilization": "uk",
+   "dynasty": "诺曼—金雀花",
+   "name": "征服者威廉",
+   "templeName": "国王",
+   "reignStart": 1066,
+   "reignEnd": 1087,
+   "evaluation": "诺曼征服，王权初立",
+   "background": "诺曼底公爵，1066年黑斯廷斯之战击败哈罗德，加冕英格兰王，以封建制与《末日审判书》夯实王权。",
+   "eraContext": "盎格鲁—撒克逊旧秩序崩解，诺曼贵族入主，教会与封建网重构。",
+   "reignPremise": "以异族之身君临不列颠，如何使征服化为长治久安？",
+   "voiceTag": "冷峻",
+   "era": "诺曼—金雀花",
+   "initStats": {
+    "treasury": 47,
+    "people": 43,
+    "military": 67,
+    "court": 51,
+    "health": 59,
+    "tech": 37
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "uk_fav",
+     "name": "王室近臣",
+     "role": "君侧宠信",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "uk_pm",
+     "name": "首相",
+     "role": "内阁首脑",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": 1066,
+     "month": null,
+     "title": "黑斯廷斯",
+     "description": "渡海登陆，败杀哈罗德，圣诞加冕，征服成定局。",
+     "historicalChoice": 0,
+     "choices": [
+      "加冕立威",
+      "先稳伦敦",
+      "分封亲信",
+      "镇北方叛",
+      "联教会"
+     ],
+     "historicalOutcome": "渡海登陆，败杀哈罗德，圣诞加冕，征服成定局",
+     "id": "uk_william1_e0",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "unify"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1067,
+     "month": null,
+     "title": "御前会议之争",
+     "description": "御前会议（Curia Regis）诸臣与主教各执一词，敕令难下、人事难定，封臣观望。",
+     "historicalChoice": 0,
+     "choices": [
+      "改组内阁",
+      "解散议会重选",
+      "坚持到底",
+      "寻求王室支持",
+      "让步妥协"
+     ],
+     "historicalOutcome": "御前争议久悬，敕令迟行",
+     "id": "uk_william1_e3",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "uk_gen_parliament"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1086,
+     "month": null,
+     "title": "末日审判书",
+     "description": "全国土地人口普查，定税基、明权属，王权入细。",
+     "historicalChoice": 0,
+     "choices": [
+      "普查定籍",
+      "限王室直领",
+      "交郡长",
+      "缓行减负",
+      "仅征兵册"
+     ],
+     "historicalOutcome": "全国土地人口普查，定税基、明权属，王权入细",
+     "id": "uk_william1_e1",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "reform"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1087,
+     "month": null,
+     "title": "征伐而终",
+     "description": "征伐法领时坠马身亡，诸子分土。",
+     "historicalChoice": 0,
+     "choices": [
+      "分封诸子",
+      "集权于嫡",
+      "倚贤相",
+      "平叛",
+      "归葬"
+     ],
+     "historicalOutcome": "征伐法领时坠马身亡，诸子分土",
+     "id": "uk_william1_e2",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "weak"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_william2",
+   "civilization": "uk",
+   "dynasty": "诺曼—金雀花",
+   "name": "威廉二世",
+   "templeName": "国王",
+   "reignStart": 1087,
+   "reignEnd": 1100,
+   "evaluation": "红脸王，好战而暴卒",
+   "background": "威廉一世次子，好战、与教会龃龉，1099年猎场神秘中箭而亡，弟亨利继。",
+   "eraContext": "王权与坎特伯雷相争，苏格兰与威尔士边患未靖。",
+   "reignPremise": "以武力治教，终以诡谲之死留疑。",
+   "voiceTag": "冷峻",
+   "era": "诺曼—金雀花",
+   "initStats": {
+    "treasury": 43,
+    "people": 50,
+    "military": 74,
+    "court": 58,
+    "health": 55,
+    "tech": 33
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "uk_pm",
+     "name": "首相",
+     "role": "内阁首脑",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "uk_ab",
+     "name": "坎特伯雷大主教",
+     "role": "国教领袖",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": 1088,
+     "month": null,
+     "title": "御前会议之争",
+     "description": "御前会议（Curia Regis）诸臣与主教各执一词，敕令难下、人事难定，封臣观望。",
+     "historicalChoice": 0,
+     "choices": [
+      "改组内阁",
+      "解散议会重选",
+      "坚持到底",
+      "寻求王室支持",
+      "让步妥协"
+     ],
+     "historicalOutcome": "御前争议久悬，敕令迟行",
+     "id": "uk_william2_e3",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "uk_gen_parliament"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1093,
+     "month": null,
+     "title": "主教之争",
+     "description": "长期空置坎特伯雷主教位以收其利，与安瑟伦冲突。",
+     "historicalChoice": 0,
+     "choices": [
+      "强控教职",
+      "妥协任命",
+      "收教产",
+      "交教皇",
+      "缓行"
+     ],
+     "historicalOutcome": "长期空置坎特伯雷主教位以收其利，与安瑟伦冲突",
+     "id": "uk_william2_e0",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "scholar_oppose"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1096,
+     "month": null,
+     "title": "十字军与边务",
+     "description": "兄征十字军，威廉镇守本土、伐苏格兰。",
+     "historicalChoice": 0,
+     "choices": [
+      "巩固北疆",
+      "资助东征",
+      "联诺曼",
+      "征兵",
+      "缓战"
+     ],
+     "historicalOutcome": "兄征十字军，威廉镇守本土、伐苏格兰",
+     "id": "uk_william2_e1",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1100,
+     "month": null,
+     "title": "猎场暴卒",
+     "description": "新林猎场中箭身亡，弟亨利抢先加冕。",
+     "historicalChoice": 0,
+     "choices": [
+      "倚重近臣",
+      "严查弑君",
+      "速传位",
+      "平乱",
+      "归葬"
+     ],
+     "historicalOutcome": "新林猎场中箭身亡，弟亨利抢先加冕",
+     "id": "uk_william2_e2",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "weak"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_henry1",
+   "civilization": "uk",
+   "dynasty": "诺曼—金雀花",
+   "name": "亨利一世",
+   "templeName": "国王",
+   "reignStart": 1100,
+   "reignEnd": 1135,
+   "evaluation": "学者王，法制初兴",
+   "background": "威廉一世幼子，以智取兄位，立《自由宪章》限王权、兴司法，1135年无嗣而崩，引发继承战。",
+   "eraContext": "诺曼与安茹系争嗣，中央司法渐立。",
+   "reignPremise": "以法立国却无嗣，制度的成果随继承而危。",
+   "voiceTag": "华赡",
+   "era": "诺曼—金雀花",
+   "initStats": {
+    "treasury": 51,
+    "people": 51,
+    "military": 44,
+    "court": 43,
+    "health": 62,
+    "tech": 48
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "uk_adm",
+     "name": "海军大臣",
+     "role": "海上长城",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "uk_fav",
+     "name": "王室近臣",
+     "role": "君侧宠信",
+     "voiceTag": "质朴"
+    }
+   ],
+   "events": [
+    {
+     "year": 1100,
+     "month": null,
+     "title": "加冕宪章",
+     "description": "即位即颁限王权、保教俗权利的宪章，收民心。",
+     "historicalChoice": 0,
+     "choices": [
+      "颁宪章",
+      "限贵族",
+      "交教会",
+      "缓行",
+      "立誓"
+     ],
+     "historicalOutcome": "即位即颁限王权、保教俗权利的宪章，收民心",
+     "id": "uk_henry1_e0",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "reform"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1101,
+     "month": null,
+     "title": "御前会议之争",
+     "description": "御前会议（Curia Regis）诸臣与主教各执一词，敕令难下、人事难定，封臣观望。",
+     "historicalChoice": 0,
+     "choices": [
+      "改组内阁",
+      "解散议会重选",
+      "坚持到底",
+      "寻求王室支持",
+      "让步妥协"
+     ],
+     "historicalOutcome": "御前争议久悬，敕令迟行",
+     "id": "uk_henry1_e3",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "uk_gen_parliament"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1106,
+     "month": null,
+     "title": "坦什布赖",
+     "description": "擒兄罗伯特，统一英诺两岸。",
+     "historicalChoice": 0,
+     "choices": [
+      "擒敌固疆",
+      "分封安抚",
+      "联教",
+      "征兵",
+      "赦兄"
+     ],
+     "historicalOutcome": "擒兄罗伯特，统一英诺两岸",
+     "id": "uk_henry1_e1",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "unify"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1120,
+     "month": null,
+     "title": "白船之祸",
+     "description": "王储溺亡，继承虚悬，埋下无政府之乱。",
+     "historicalChoice": 0,
+     "choices": [
+      "立庶女承",
+      "改娶续嗣",
+      "联诸侯",
+      "缓立",
+      "设摄政"
+     ],
+     "historicalOutcome": "王储溺亡，继承虚悬，埋下无政府之乱",
+     "id": "uk_henry1_e2",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "weak"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_stephen",
+   "civilization": "uk",
+   "dynasty": "诺曼—金雀花",
+   "name": "斯蒂芬",
+   "templeName": "国王",
+   "reignStart": 1135,
+   "reignEnd": 1154,
+   "evaluation": "篡位与无政府",
+   "background": "亨利一世外甥，趁嗣位空窗夺权，与表妹玛蒂尔达内战近廿年，民不聊生，终以和约传安茹系。",
+   "eraContext": "王权崩散、城堡林立、盗匪横行，史称「无政府」。",
+   "reignPremise": "以篡立而失序，终以传位换和平。",
+   "voiceTag": "质朴",
+   "era": "诺曼—金雀花",
+   "initStats": {
+    "treasury": 41,
+    "people": 39,
+    "military": 43,
+    "court": 40,
+    "health": 50,
+    "tech": 33
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "uk_adm",
+     "name": "海军大臣",
+     "role": "海上长城",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "uk_fav",
+     "name": "王室近臣",
+     "role": "君侧宠信",
+     "voiceTag": "质朴"
+    }
+   ],
+   "events": [
+    {
+     "year": 1136,
+     "month": null,
+     "title": "御前会议之争",
+     "description": "御前会议（Curia Regis）诸臣与主教各执一词，敕令难下、人事难定，封臣观望。",
+     "historicalChoice": 0,
+     "choices": [
+      "改组内阁",
+      "解散议会重选",
+      "坚持到底",
+      "寻求王室支持",
+      "让步妥协"
+     ],
+     "historicalOutcome": "御前争议久悬，敕令迟行",
+     "id": "uk_stephen_e3",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "uk_gen_parliament"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1139,
+     "month": null,
+     "title": "玛蒂尔达登陆",
+     "description": "表妹兴兵争位，内战爆发，王令不行。",
+     "historicalChoice": 0,
+     "choices": [
+      "平叛固位",
+      "和谈分治",
+      "联教会",
+      "筑堡",
+      "赦敌"
+     ],
+     "historicalOutcome": "表妹兴兵争位，内战爆发，王令不行",
+     "id": "uk_stephen_e0",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rebellion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1153,
+     "month": null,
+     "title": "威斯敏斯特和约",
+     "description": "认玛蒂尔达之子亨利为嗣，结束战乱。",
+     "historicalChoice": 0,
+     "choices": [
+      "立嗣止战",
+      "坚持己系",
+      "折中分权",
+      "交诸侯",
+      "暂缓"
+     ],
+     "historicalOutcome": "认玛蒂尔达之子亨利为嗣，结束战乱",
+     "id": "uk_stephen_e1",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1154,
+     "month": null,
+     "title": "让位而崩",
+     "description": "依约传安茹系，自身黯然离世。",
+     "historicalChoice": 0,
+     "choices": [
+      "履行和约",
+      "毁约",
+      "倚近臣",
+      "安抚",
+      "归葬"
+     ],
+     "historicalOutcome": "依约传安茹系，自身黯然离世",
+     "id": "uk_stephen_e2",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_henry2",
+   "civilization": "uk",
+   "dynasty": "诺曼—金雀花",
+   "name": "亨利二世",
+   "templeName": "国王",
+   "reignStart": 1154,
+   "reignEnd": 1189,
+   "evaluation": "安茹帝国与法改革",
+   "background": "安茹系的亨利，领有英、诺曼、安茹、阿基坦，推王室法庭与陪审制，却因贝克特之争蒙羞。",
+   "eraContext": "金雀花帝国横跨英吉利，教会特权与王权激烈碰撞。",
+   "reignPremise": "以法网织帝国，却因杀友（贝克特）留千古骂名。",
+   "voiceTag": "华赡",
+   "era": "诺曼—金雀花",
+   "initStats": {
+    "treasury": 47,
+    "people": 47,
+    "military": 51,
+    "court": 50,
+    "health": 58,
+    "tech": 44
+   },
+   "tier": "A",
+   "cast": [
+    {
+     "id": "uk_fav",
+     "name": "王室近臣",
+     "role": "君侧宠信",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "uk_pm",
+     "name": "首相",
+     "role": "内阁首脑",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "uk_ab",
+     "name": "坎特伯雷大主教",
+     "role": "国教领袖",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": 1164,
+     "month": null,
+     "title": "克拉伦登宪法",
+     "description": "定王权高于教会的司法权，与贝克特决裂。",
+     "historicalChoice": 0,
+     "choices": [
+      "强推限教",
+      "妥协",
+      "交教皇",
+      "缓行",
+      "联诸侯"
+     ],
+     "historicalOutcome": "定王权高于教会的司法权，与贝克特决裂",
+     "id": "uk_henry2_e0",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "scholar_oppose"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1170,
+     "month": null,
+     "title": "贝克特之死",
+     "description": "四骑士杀坎特伯雷大主教，亨利公开悔罪。",
+     "historicalChoice": 0,
+     "choices": [
+      "悔罪和解",
+      "诿过部属",
+      "联罗马",
+      "严查",
+      "赦凶"
+     ],
+     "historicalOutcome": "四骑士杀坎特伯雷大主教，亨利公开悔罪",
+     "id": "uk_henry2_e1",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "scholar_oppose"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1171,
+     "month": null,
+     "title": "入爱尔兰",
+     "description": "应教皇邀入爱尔兰，拓英格兰势力。",
+     "historicalChoice": 0,
+     "choices": [
+      "征爱尔兰",
+      "先册封",
+      "限领地",
+      "联本地王",
+      "缓行"
+     ],
+     "historicalOutcome": "应教皇邀入爱尔兰，拓英格兰势力",
+     "id": "uk_henry2_e2",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "unify"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1173,
+     "month": null,
+     "title": "子叛父",
+     "description": "诸子联法王叛，亨利平之，然家乱不绝。",
+     "historicalChoice": 0,
+     "choices": [
+      "平叛",
+      "分封安抚",
+      "联教",
+      "囚子",
+      "赦"
+     ],
+     "historicalOutcome": "诸子联法王叛，亨利平之，然家乱不绝",
+     "id": "uk_henry2_e3",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rebellion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1189,
+     "month": null,
+     "title": "受辱而终",
+     "description": "晚年诸子再叛、法王压境，含恨而崩。",
+     "historicalChoice": 0,
+     "choices": [
+      "倚忠臣",
+      "和法",
+      "囚逆子",
+      "分土",
+      "归葬"
+     ],
+     "historicalOutcome": "晚年诸子再叛、法王压境，含恨而崩",
+     "id": "uk_henry2_e4",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "weak"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_richard1",
+   "civilization": "uk",
+   "dynasty": "诺曼—金雀花",
+   "name": "理查一世",
+   "templeName": "国王",
+   "reignStart": 1189,
+   "reignEnd": 1199,
+   "evaluation": "狮心王，远征者",
+   "background": "亨利二世之子，热衷十字军，少居英格兰，以勇名世，1199年围城伤重而亡。",
+   "eraContext": "第三次十字军、与法王争雄、国债筹措。",
+   "reignPremise": "以骑士之勇名世，却少理国事，王冠系于远征。",
+   "voiceTag": "冷峻",
+   "era": "诺曼—金雀花",
+   "initStats": {
+    "treasury": 42,
+    "people": 49,
+    "military": 73,
+    "court": 57,
+    "health": 54,
+    "tech": 32
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "uk_ab",
+     "name": "坎特伯雷大主教",
+     "role": "国教领袖",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "uk_adm",
+     "name": "海军大臣",
+     "role": "海上长城",
+     "voiceTag": "质朴"
+    }
+   ],
+   "events": [
+    {
+     "year": 1190,
+     "month": 1,
+     "title": "十字军",
+     "description": "率军东征，阿卡围城、阿苏夫破萨拉丁。",
+     "historicalChoice": 0,
+     "choices": [
+      "东征扬威",
+      "先稳英",
+      "联德",
+      "筹饷",
+      "缓行"
+     ],
+     "historicalOutcome": "率军东征，阿卡围城、阿苏夫破萨拉丁",
+     "id": "uk_richard1_e0",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1190,
+     "month": 7,
+     "title": "御前会议之争",
+     "description": "御前会议（Curia Regis）诸臣与主教各执一词，敕令难下、人事难定，封臣观望。",
+     "historicalChoice": 0,
+     "choices": [
+      "改组内阁",
+      "解散议会重选",
+      "坚持到底",
+      "寻求王室支持",
+      "让步妥协"
+     ],
+     "historicalOutcome": "御前争议久悬，敕令迟行",
+     "id": "uk_richard1_e3",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "uk_gen_parliament"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1192,
+     "month": null,
+     "title": "归途被俘",
+     "description": "返程为奥都督留，赎金耗尽国库。",
+     "historicalChoice": 0,
+     "choices": [
+      "筹赎",
+      "联教调解",
+      "弃赎",
+      "联法",
+      "缓归"
+     ],
+     "historicalOutcome": "返程为奥都督留，赎金耗尽国库",
+     "id": "uk_richard1_e1",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "weak"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1199,
+     "month": null,
+     "title": "征法而亡",
+     "description": "围小堡中箭，伤发而薨。",
+     "historicalChoice": 0,
+     "choices": [
+      "倚副将",
+      "撤围",
+      "和法",
+      "平内",
+      "归葬"
+     ],
+     "historicalOutcome": "围小堡中箭，伤发而薨",
+     "id": "uk_richard1_e2",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "weak"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_john",
+   "civilization": "uk",
+   "dynasty": "诺曼—金雀花",
+   "name": "约翰",
+   "templeName": "国王",
+   "reignStart": 1199,
+   "reignEnd": 1216,
+   "evaluation": "失地王，大宪章",
+   "background": "理查之弟，失诺曼底、与教皇及贵族决裂，1215年被逼签《大宪章》，王权首受成文限制。",
+   "eraContext": "对法战败失土、教禁（ interdict）与贵族叛乱交织。",
+   "reignPremise": "失土又失权，以宪章成千古转折，是福是祸？",
+   "voiceTag": "质朴",
+   "era": "诺曼—金雀花",
+   "initStats": {
+    "treasury": 44,
+    "people": 42,
+    "military": 35,
+    "court": 43,
+    "health": 53,
+    "tech": 36
+   },
+   "tier": "A",
+   "cast": [
+    {
+     "id": "uk_adm",
+     "name": "海军大臣",
+     "role": "海上长城",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "uk_fav",
+     "name": "王室近臣",
+     "role": "君侧宠信",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "uk_pm",
+     "name": "首相",
+     "role": "内阁首脑",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": 1204,
+     "month": null,
+     "title": "失诺曼底",
+     "description": "法王腓力夺诺曼底等领地，金雀花帝国崩一角。",
+     "historicalChoice": 0,
+     "choices": [
+      "反攻",
+      "和谈保英",
+      "联教",
+      "征兵",
+      "弃土"
+     ],
+     "historicalOutcome": "法王腓力夺诺曼底等领地，金雀花帝国崩一角",
+     "id": "uk_john_e0",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_loss"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1208,
+     "month": null,
+     "title": "教禁之争",
+     "description": "拒认兰顿为大主教，教皇禁英格兰教务。",
+     "historicalChoice": 0,
+     "choices": [
+      "屈服认教",
+      "坚持",
+      "联德",
+      "缓行",
+      "征教产"
+     ],
+     "historicalOutcome": "拒认兰顿为大主教，教皇禁英格兰教务",
+     "id": "uk_john_e1",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "scholar_oppose"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1215,
+     "month": null,
+     "title": "大宪章",
+     "description": "贵族武装逼宫，签宪章限王权、保封建权利。",
+     "historicalChoice": 0,
+     "choices": [
+      "签署止叛",
+      "毁约再战",
+      "折中",
+      "交仲裁",
+      "暂缓"
+     ],
+     "historicalOutcome": "贵族武装逼宫，签宪章限王权、保封建权利",
+     "id": "uk_john_e2",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "reform"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1216,
+     "month": null,
+     "title": "败亡",
+     "description": "贵族引法王子入侵，约翰逃亡中病逝。",
+     "historicalChoice": 0,
+     "choices": [
+      "倚忠臣",
+      "和谈",
+      "平叛",
+      "联教",
+      "归葬"
+     ],
+     "historicalOutcome": "贵族引法王子入侵，约翰逃亡中病逝",
+     "id": "uk_john_e3",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "weak"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_henry3",
+   "civilization": "uk",
+   "dynasty": "诺曼—金雀花",
+   "name": "亨利三世",
+   "templeName": "国王",
+   "reignStart": 1216,
+   "reignEnd": 1272,
+   "evaluation": "虔信而弱",
+   "background": "约翰之子，幼冲即位，亲政后崇法籍宠臣、兴建威斯敏斯特，引发西门起义与国会雏形。",
+   "eraContext": "王权软弱、诸侯坐大、国会（ Parliament）初现。",
+   "reignPremise": "以虔信失权，反催生代议之制。",
+   "voiceTag": "质朴",
+   "era": "诺曼—金雀花",
+   "initStats": {
+    "treasury": 35,
+    "people": 44,
+    "military": 37,
+    "court": 45,
+    "health": 55,
+    "tech": 27
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "uk_pm",
+     "name": "首相",
+     "role": "内阁首脑",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "uk_ab",
+     "name": "坎特伯雷大主教",
+     "role": "国教领袖",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": 1236,
+     "month": null,
+     "title": "宠臣干政",
+     "description": "重用法籍亲属，英贵族侧目。",
+     "historicalChoice": 0,
+     "choices": [
+      "抑宠臣",
+      "安抚贵族",
+      "联教",
+      "分权",
+      "缓行"
+     ],
+     "historicalOutcome": "重用法籍亲属，英贵族侧目",
+     "id": "uk_henry3_e0",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "scholar_oppose"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1258,
+     "month": null,
+     "title": "牛津条例",
+     "description": "贵族迫王受「牛津条例」限权，设十五人会议。",
+     "historicalChoice": 0,
+     "choices": [
+      "受条限权",
+      "毁约",
+      "折中",
+      "交国会",
+      "暂缓"
+     ],
+     "historicalOutcome": "贵族迫王受「牛津条例」限权，设十五人会议",
+     "id": "uk_henry3_e1",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "reform"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1264,
+     "month": null,
+     "title": "刘易斯之战",
+     "description": "西门·德·蒙特福德败王俘之，短暂执政。",
+     "historicalChoice": 0,
+     "choices": [
+      "平叛",
+      "和谈",
+      "联教",
+      "囚叛",
+      "赦"
+     ],
+     "historicalOutcome": "西门·德·蒙特福德败王俘之，短暂执政",
+     "id": "uk_henry3_e2",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rebellion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1265,
+     "month": null,
+     "title": "早期国会",
+     "description": "西门召世俗与市民与会，国会雏形现。",
+     "historicalChoice": 0,
+     "choices": [
+      "承认国会",
+      "限其权",
+      "交各郡",
+      "缓行",
+      "设规则"
+     ],
+     "historicalOutcome": "西门召世俗与市民与会，国会雏形现",
+     "id": "uk_henry3_e3",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "reform"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_edward1",
+   "civilization": "uk",
+   "dynasty": "诺曼—金雀花",
+   "name": "爱德华一世",
+   "templeName": "国王",
+   "reignStart": 1272,
+   "reignEnd": 1307,
+   "evaluation": "长腿王，立法者",
+   "background": "十字军归来的强王，征威尔士、迫苏格兰臣服，开「模范国会」，以立法著称。",
+   "eraContext": "不列颠岛统一进程、与苏格兰「勇敢的心」华莱士/布鲁斯相抗。",
+   "reignPremise": "以铁腕并威尔士、逼苏格兰，立法之君亦是征伐之主。",
+   "voiceTag": "冷峻",
+   "era": "诺曼—金雀花",
+   "initStats": {
+    "treasury": 43,
+    "people": 50,
+    "military": 74,
+    "court": 58,
+    "health": 55,
+    "tech": 33
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "uk_fav",
+     "name": "王室近臣",
+     "role": "君侧宠信",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "uk_pm",
+     "name": "首相",
+     "role": "内阁首脑",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": 1282,
+     "month": null,
+     "title": "并威尔士",
+     "description": "灭末代亲王，筑堡置公，威尔斯入版图。",
+     "historicalChoice": 0,
+     "choices": [
+      "征服设公",
+      "先册封",
+      "限自治",
+      "联本地",
+      "缓行"
+     ],
+     "historicalOutcome": "灭末代亲王，筑堡置公，威尔斯入版图",
+     "id": "uk_edward1_e0",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "unify"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1295,
+     "month": null,
+     "title": "模范国会",
+     "description": "召各等级与会，征课税以支战，国会定型。",
+     "historicalChoice": 0,
+     "choices": [
+      "开国会",
+      "限税",
+      "交各郡",
+      "缓行",
+      "设规则"
+     ],
+     "historicalOutcome": "召各等级与会，征课税以支战，国会定型",
+     "id": "uk_edward1_e1",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "reform"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1296,
+     "month": null,
+     "title": "征苏格兰",
+     "description": "迫苏格兰王效忠，华莱士起兵反抗。",
+     "historicalChoice": 0,
+     "choices": [
+      "压服苏格兰",
+      "先外交",
+      "限驻军",
+      "联贵族",
+      "撤"
+     ],
+     "historicalOutcome": "迫苏格兰王效忠，华莱士起兵反抗",
+     "id": "uk_edward1_e2",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1305,
+     "month": null,
+     "title": "华莱士伏法",
+     "description": "擒杀华莱士，然布鲁斯再起。",
+     "historicalChoice": 0,
+     "choices": [
+      "镇苏格兰",
+      "赦降",
+      "联本地",
+      "缓行",
+      "设官"
+     ],
+     "historicalOutcome": "擒杀华莱士，然布鲁斯再起",
+     "id": "uk_edward1_e3",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_edward2",
+   "civilization": "uk",
+   "dynasty": "诺曼—金雀花",
+   "name": "爱德华二世",
+   "templeName": "国王",
+   "reignStart": 1307,
+   "reignEnd": 1327,
+   "evaluation": "懦弱而废",
+   "background": "宠信佞臣、败于班诺克本，终被后党废黜虐杀，开弑君先例。",
+   "eraContext": "宠臣乱政、苏格兰独立、贵族倾轧。",
+   "reignPremise": "以柔暗失国，终为臣下所弑。",
+   "voiceTag": "质朴",
+   "era": "诺曼—金雀花",
+   "initStats": {
+    "treasury": 45,
+    "people": 43,
+    "military": 36,
+    "court": 44,
+    "health": 54,
+    "tech": 37
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "uk_pm",
+     "name": "首相",
+     "role": "内阁首脑",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "uk_ab",
+     "name": "坎特伯雷大主教",
+     "role": "国教领袖",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": 1308,
+     "month": null,
+     "title": "大议会与征税",
+     "description": "大宪章之后，大议会（magnum concilium）以「无共同同意不得课税」相抗，助军金迟迟不下。",
+     "historicalChoice": 0,
+     "choices": [
+      "改组内阁",
+      "解散议会重选",
+      "坚持到底",
+      "寻求王室支持",
+      "让步妥协"
+     ],
+     "historicalOutcome": "男爵持约拒赋，军费告匮",
+     "id": "uk_edward2_e3",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "uk_gen_parliament"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1314,
+     "month": null,
+     "title": "班诺克本",
+     "description": "伐苏格兰大败于布鲁斯，独立难逆转。",
+     "historicalChoice": 0,
+     "choices": [
+      "再征",
+      "和谈认独",
+      "限驻军",
+      "联法",
+      "撤"
+     ],
+     "historicalOutcome": "伐苏格兰大败于布鲁斯，独立难逆转",
+     "id": "uk_edward2_e0",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_loss"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1322,
+     "month": null,
+     "title": "宠臣祸国",
+     "description": "重用德斯彭瑟，贵族离心。",
+     "historicalChoice": 0,
+     "choices": [
+      "抑宠臣",
+      "安抚",
+      "联后党",
+      "囚宠",
+      "缓行"
+     ],
+     "historicalOutcome": "重用德斯彭瑟，贵族离心",
+     "id": "uk_edward2_e1",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "usurped"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1327,
+     "month": null,
+     "title": "废黜虐杀",
+     "description": "后被伊莎贝拉废黜，于伯克利城堡遇害。",
+     "historicalChoice": 0,
+     "choices": [
+      "平叛",
+      "逊位保身",
+      "联子",
+      "倚忠臣",
+      "归隐"
+     ],
+     "historicalOutcome": "后被伊莎贝拉废黜，于伯克利城堡遇害",
+     "id": "uk_edward2_e2",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "usurped"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_edward3",
+   "civilization": "uk",
+   "dynasty": "诺曼—金雀花",
+   "name": "爱德华三世",
+   "templeName": "国王",
+   "reignStart": 1327,
+   "reignEnd": 1377,
+   "evaluation": "百年战争开启者",
+   "background": "废父自立，Claim 法王位，开百年战争，克雷西、普瓦捷大胜，黑死病同期袭来。",
+   "eraContext": "英法世仇、骑士荣光、黑死病重塑社会。",
+   "reignPremise": "以武功耀英、启百年之战争，也迎死亡之流行。",
+   "voiceTag": "冷峻",
+   "era": "诺曼—金雀花",
+   "initStats": {
+    "treasury": 46,
+    "people": 42,
+    "military": 77,
+    "court": 50,
+    "health": 58,
+    "tech": 36
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "uk_ab",
+     "name": "坎特伯雷大主教",
+     "role": "国教领袖",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "uk_adm",
+     "name": "海军大臣",
+     "role": "海上长城",
+     "voiceTag": "质朴"
+    }
+   ],
+   "events": [
+    {
+     "year": 1337,
+     "month": null,
+     "title": "百年战争",
+     "description": "宣称法兰西王位，开长期征伐。",
+     "historicalChoice": 0,
+     "choices": [
+      "宣战",
+      "先海战",
+      "联低地",
+      "征兵",
+      "缓行"
+     ],
+     "historicalOutcome": "宣称法兰西王位，开长期征伐",
+     "id": "uk_edward3_e0",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1346,
+     "month": null,
+     "title": "克雷西",
+     "description": "以长弓破法骑士，大胜。",
+     "historicalChoice": 0,
+     "choices": [
+      "乘胜围城",
+      "固英土",
+      "联神圣罗马",
+      "赦俘",
+      "缓攻"
+     ],
+     "historicalOutcome": "以长弓破法骑士，大胜",
+     "id": "uk_edward3_e1",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1348,
+     "month": null,
+     "title": "黑死病",
+     "description": "鼠疫横扫，人口锐减、农奴制松动。",
+     "historicalChoice": 0,
+     "choices": [
+      "赈疫",
+      "限流动",
+      "祈祷",
+      "设隔离",
+      "缓行"
+     ],
+     "historicalOutcome": "鼠疫横扫，人口锐减、农奴制松动",
+     "id": "uk_edward3_e2",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "famine"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1356,
+     "month": null,
+     "title": "普瓦捷",
+     "description": "俘法王约翰，攫巨额赎金。",
+     "historicalChoice": 0,
+     "choices": [
+      "索赎",
+      "立和约",
+      "释俘",
+      "联法贵",
+      "缓攻"
+     ],
+     "historicalOutcome": "俘法王约翰，攫巨额赎金",
+     "id": "uk_edward3_e3",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_richard2",
+   "civilization": "uk",
+   "dynasty": "诺曼—金雀花",
+   "name": "理查二世",
+   "templeName": "国王",
+   "reignStart": 1377,
+   "reignEnd": 1399,
+   "evaluation": "骄奢而废",
+   "background": "幼冲即位，镇压农民起义，后专权逐叔，终被兰开斯特的亨利废黜，饿死。",
+   "eraContext": "农民起义、贵族分裂、王权与议会张力。",
+   "reignPremise": "以少年登基、壮年失国，专制之念毁其身。",
+   "voiceTag": "质朴",
+   "era": "诺曼—金雀花",
+   "initStats": {
+    "treasury": 44,
+    "people": 42,
+    "military": 35,
+    "court": 43,
+    "health": 53,
+    "tech": 36
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "uk_adm",
+     "name": "海军大臣",
+     "role": "海上长城",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "uk_fav",
+     "name": "王室近臣",
+     "role": "君侧宠信",
+     "voiceTag": "质朴"
+    }
+   ],
+   "events": [
+    {
+     "year": 1378,
+     "month": null,
+     "title": "两院争贡赋",
+     "description": "上下两院分立，下院握钱袋而争条陈，先陈冤抑、后议拨款，御前请款屡遭驳回。",
+     "historicalChoice": 0,
+     "choices": [
+      "改组内阁",
+      "解散议会重选",
+      "坚持到底",
+      "寻求王室支持",
+      "让步妥协"
+     ],
+     "historicalOutcome": "下院持款相持，御用不充",
+     "id": "uk_richard2_e3",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "uk_gen_parliament"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1381,
+     "month": null,
+     "title": "农民起义",
+     "description": "瓦特·泰勒起义，理查佯诺后镇压。",
+     "historicalChoice": 0,
+     "choices": [
+      "镇压",
+      "安抚减税",
+      "联贵族",
+      "赦首",
+      "缓行"
+     ],
+     "historicalOutcome": "瓦特·泰勒起义，理查佯诺后镇压",
+     "id": "uk_richard2_e0",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rebellion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1397,
+     "month": null,
+     "title": "逐叔专权",
+     "description": "清洗冈特的约翰等，集权招怨。",
+     "historicalChoice": 0,
+     "choices": [
+      "集权",
+      "妥协",
+      "联叔",
+      "缓行",
+      "赦"
+     ],
+     "historicalOutcome": "清洗冈特的约翰等，集权招怨",
+     "id": "uk_richard2_e1",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "usurped"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1399,
+     "month": null,
+     "title": "废黜饿死",
+     "description": "亨利·博林布鲁克返国废之，理查幽死。",
+     "historicalChoice": 0,
+     "choices": [
+      "平叛",
+      "逊位",
+      "联忠臣",
+      "倚教",
+      "归隐"
+     ],
+     "historicalOutcome": "亨利·博林布鲁克返国废之，理查幽死",
+     "id": "uk_richard2_e2",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "usurped"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_henry4",
+   "civilization": "uk",
+   "dynasty": "诺曼—金雀花",
+   "name": "亨利四世",
+   "templeName": "国王",
+   "reignStart": 1399,
+   "reignEnd": 1413,
+   "evaluation": "篡位者，多叛",
+   "background": "兰开斯特系，废理查自立，任内叛乱不绝、健康不佳。",
+   "eraContext": "篡位合法性受疑、威尔士与北部叛乱。",
+   "reignPremise": "以篡得国，终其世在叛火中自固。",
+   "voiceTag": "质朴",
+   "era": "诺曼—金雀花",
+   "initStats": {
+    "treasury": 42,
+    "people": 40,
+    "military": 33,
+    "court": 41,
+    "health": 51,
+    "tech": 34
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "uk_ab",
+     "name": "坎特伯雷大主教",
+     "role": "国教领袖",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "uk_adm",
+     "name": "海军大臣",
+     "role": "海上长城",
+     "voiceTag": "质朴"
+    }
+   ],
+   "events": [
+    {
+     "year": 1400,
+     "month": 1,
+     "title": "北叛频起",
+     "description": "珀西家族等屡叛，王疲于镇压。",
+     "historicalChoice": 0,
+     "choices": [
+      "平叛",
+      "赦叛",
+      "联教",
+      "分土",
+      "缓行"
+     ],
+     "historicalOutcome": "珀西家族等屡叛，王疲于镇压",
+     "id": "uk_henry4_e0",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rebellion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1400,
+     "month": 7,
+     "title": "两院争贡赋",
+     "description": "上下两院分立，下院握钱袋而争条陈，先陈冤抑、后议拨款，御前请款屡遭驳回。",
+     "historicalChoice": 0,
+     "choices": [
+      "改组内阁",
+      "解散议会重选",
+      "坚持到底",
+      "寻求王室支持",
+      "让步妥协"
+     ],
+     "historicalOutcome": "下院持款相持，御用不充",
+     "id": "uk_henry4_e3",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "uk_gen_parliament"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1401,
+     "month": null,
+     "title": "异端法案",
+     "description": "立法镇压威克里夫派（ Lollard），保正统。",
+     "historicalChoice": 0,
+     "choices": [
+      "立法",
+      "限范围",
+      "交教会",
+      "缓行",
+      "赦"
+     ],
+     "historicalOutcome": "立法镇压威克里夫派（ Lollard），保正统",
+     "id": "uk_henry4_e1",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "scholar_purge"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1413,
+     "month": null,
+     "title": "病笃而崩",
+     "description": "久病缠身，传位亨利五世。",
+     "historicalChoice": 0,
+     "choices": [
+      "倚太子",
+      "平叛",
+      "联教",
+      "安抚",
+      "归葬"
+     ],
+     "historicalOutcome": "久病缠身，传位亨利五世",
+     "id": "uk_henry4_e2",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "weak"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_henry5",
+   "civilization": "uk",
+   "dynasty": "诺曼—金雀花",
+   "name": "亨利五世",
+   "templeName": "国王",
+   "reignStart": 1413,
+   "reignEnd": 1422,
+   "evaluation": "阿金库尔英雄",
+   "background": "重振王威，阿金库尔大败法军，娶法公主、几并法国，旋因痢疾亡。",
+   "eraContext": "百年战争中段、法国内乱、天主教分裂。",
+   "reignPremise": "以一战成名近并法，惜天不假年。",
+   "voiceTag": "冷峻",
+   "era": "诺曼—金雀花",
+   "initStats": {
+    "treasury": 43,
+    "people": 50,
+    "military": 74,
+    "court": 58,
+    "health": 55,
+    "tech": 33
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "uk_adm",
+     "name": "海军大臣",
+     "role": "海上长城",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "uk_fav",
+     "name": "王室近臣",
+     "role": "君侧宠信",
+     "voiceTag": "质朴"
+    }
+   ],
+   "events": [
+    {
+     "year": 1414,
+     "month": null,
+     "title": "两院争贡赋",
+     "description": "上下两院分立，下院握钱袋而争条陈，先陈冤抑、后议拨款，御前请款屡遭驳回。",
+     "historicalChoice": 0,
+     "choices": [
+      "改组内阁",
+      "解散议会重选",
+      "坚持到底",
+      "寻求王室支持",
+      "让步妥协"
+     ],
+     "historicalOutcome": "下院持款相持，御用不充",
+     "id": "uk_henry5_e3",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "uk_gen_parliament"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1415,
+     "month": null,
+     "title": "阿金库尔",
+     "description": "以少破多，长弓再显神威。",
+     "historicalChoice": 0,
+     "choices": [
+      "乘胜逼和",
+      "固英土",
+      "联勃艮第",
+      "赦俘",
+      "缓攻"
+     ],
+     "historicalOutcome": "以少破多，长弓再显神威",
+     "id": "uk_henry5_e0",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1420,
+     "month": null,
+     "title": "特鲁瓦条约",
+     "description": "订约娶法公主、定为法王嗣，几并法国。",
+     "historicalChoice": 0,
+     "choices": [
+      "立约",
+      "限其权",
+      "联勃艮第",
+      "缓行",
+      "设官"
+     ],
+     "historicalOutcome": "订约娶法公主、定为法王嗣，几并法国",
+     "id": "uk_henry5_e1",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "unify"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1422,
+     "month": null,
+     "title": "法殇",
+     "description": "征法途中病逝，幼子亨利六世继，成果渐失。",
+     "historicalChoice": 0,
+     "choices": [
+      "倚忠臣",
+      "和法",
+      "保疆",
+      "归葬",
+      "立摄政"
+     ],
+     "historicalOutcome": "征法途中病逝，幼子亨利六世继，成果渐失",
+     "id": "uk_henry5_e2",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "weak"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_henry6",
+   "civilization": "uk",
+   "dynasty": "诺曼—金雀花",
+   "name": "亨利六世",
+   "templeName": "国王",
+   "reignStart": 1422,
+   "reignEnd": 1471,
+   "evaluation": "愚王与玫瑰战",
+   "background": "幼冲即位，百年战争败绩、失法领地，精神失常，玫瑰战争爆发，终被约克系弑。",
+   "eraContext": "英法尽失、王权虚、约克与兰开斯特红白玫瑰内战。",
+   "reignPremise": "以懦弱失土、以疯癫失国，红白之争的血由其而流。",
+   "voiceTag": "质朴",
+   "era": "诺曼—金雀花",
+   "initStats": {
+    "treasury": 45,
+    "people": 43,
+    "military": 36,
+    "court": 44,
+    "health": 54,
+    "tech": 37
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "uk_fav",
+     "name": "王室近臣",
+     "role": "君侧宠信",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "uk_pm",
+     "name": "首相",
+     "role": "内阁首脑",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": 1423,
+     "month": null,
+     "title": "属地骚动",
+     "description": "海外属地（爱尔兰边区、加莱、诺曼底旧领）赋役苛重，守臣失驭，土豪叛服不常。",
+     "historicalChoice": 0,
+     "choices": [
+      "派军镇压",
+      "谈判予自治",
+      "增派总督",
+      "经济封锁",
+      "暂缓观望"
+     ],
+     "historicalOutcome": "属地骚然，驻军不敷",
+     "id": "uk_henry6_e3",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "uk_gen_colony"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1450,
+     "month": null,
+     "title": "失诺曼底",
+     "description": "法军反攻，英在法领地尽失。",
+     "historicalChoice": 0,
+     "choices": [
+      "反攻",
+      "和谈保加莱",
+      "联勃艮第",
+      "征兵",
+      "撤"
+     ],
+     "historicalOutcome": "法军反攻，英在法领地尽失",
+     "id": "uk_henry6_e0",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_loss"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1455,
+     "month": null,
+     "title": "玫瑰战争",
+     "description": "约克公爵举兵，红白玫瑰内战始。",
+     "historicalChoice": 0,
+     "choices": [
+      "平叛",
+      "和谈分权",
+      "联贵族",
+      "赦",
+      "缓行"
+     ],
+     "historicalOutcome": "约克公爵举兵，红白玫瑰内战始",
+     "id": "uk_henry6_e1",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rebellion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1471,
+     "month": null,
+     "title": "陨落",
+     "description": "约克系获胜，亨利被弑于伦敦塔。",
+     "historicalChoice": 0,
+     "choices": [
+      "倚后党",
+      "逊位",
+      "联兰开斯特",
+      "平叛",
+      "归隐"
+     ],
+     "historicalOutcome": "约克系获胜，亨利被弑于伦敦塔",
+     "id": "uk_henry6_e2",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "usurped"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_edward4",
+   "civilization": "uk",
+   "dynasty": "诺曼—金雀花",
+   "name": "爱德华四世",
+   "templeName": "国王",
+   "reignStart": 1461,
+   "reignEnd": 1483,
+   "evaluation": "约克雄主",
+   "background": "约克系，两度在位，击败兰开斯特、暂结玫瑰战争，然身后幼子遭叔理查篡。",
+   "eraContext": "红白玫瑰拉锯、商业复兴、王权暂稳。",
+   "reignPremise": "以武定乱、以商富民，却留孤儿于狼舅之手。",
+   "voiceTag": "冷峻",
+   "era": "诺曼—金雀花",
+   "initStats": {
+    "treasury": 42,
+    "people": 49,
+    "military": 73,
+    "court": 57,
+    "health": 54,
+    "tech": 32
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "uk_adm",
+     "name": "海军大臣",
+     "role": "海上长城",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "uk_fav",
+     "name": "王室近臣",
+     "role": "君侧宠信",
+     "voiceTag": "质朴"
+    }
+   ],
+   "events": [
+    {
+     "year": 1461,
+     "month": null,
+     "title": "陶顿之战",
+     "description": "大败兰开斯特，加冕复位。",
+     "historicalChoice": 0,
+     "choices": [
+      "乘胜清剿",
+      "赦降",
+      "联贵族",
+      "固北",
+      "缓行"
+     ],
+     "historicalOutcome": "大败兰开斯特，加冕复位",
+     "id": "uk_edward4_e0",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1462,
+     "month": null,
+     "title": "属地骚动",
+     "description": "海外属地（爱尔兰边区、加莱、诺曼底旧领）赋役苛重，守臣失驭，土豪叛服不常。",
+     "historicalChoice": 0,
+     "choices": [
+      "派军镇压",
+      "谈判予自治",
+      "增派总督",
+      "经济封锁",
+      "暂缓观望"
+     ],
+     "historicalOutcome": "属地骚然，驻军不敷",
+     "id": "uk_edward4_e3",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "uk_gen_colony"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1470,
+     "month": null,
+     "title": "复辟波折",
+     "description": "沃里克倒戈，亨利六世暂复，爱德华反攻再立。",
+     "historicalChoice": 0,
+     "choices": [
+      "反攻",
+      "和谈",
+      "联勃艮第",
+      "赦",
+      "缓行"
+     ],
+     "historicalOutcome": "沃里克倒戈，亨利六世暂复，爱德华反攻再立",
+     "id": "uk_edward4_e1",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1483,
+     "month": null,
+     "title": "骤崩",
+     "description": "壮年暴卒，弟理查摄政、篡位孤儿。",
+     "historicalChoice": 0,
+     "choices": [
+      "托孤",
+      "平叛",
+      "联后党",
+      "立太子",
+      "归葬"
+     ],
+     "historicalOutcome": "壮年暴卒，弟理查摄政、篡位孤儿",
+     "id": "uk_edward4_e2",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "weak"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_edward5",
+   "civilization": "uk",
+   "dynasty": "诺曼—金雀花",
+   "name": "爱德华五世",
+   "templeName": "国王",
+   "reignStart": 1483,
+   "reignEnd": 1483,
+   "evaluation": "塔中王子",
+   "background": "爱德华四世嫡子，十二岁即位，旋被叔理查摄政、宣非法，与弟同囚伦敦塔后蹊跷失踪，史称「塔中王子」。",
+   "eraContext": "约克幼主、摄政权斗、都铎系伺机而动。",
+   "reignPremise": "以童子之身入塔再未出，王位沦为叔侄的赌注。",
+   "voiceTag": "质朴",
+   "era": "诺曼—金雀花",
+   "initStats": {
+    "treasury": 44,
+    "people": 42,
+    "military": 35,
+    "court": 43,
+    "health": 53,
+    "tech": 36
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "uk_fav",
+     "name": "王室近臣",
+     "role": "君侧宠信",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "uk_pm",
+     "name": "首相",
+     "role": "内阁首脑",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": 1483,
+     "month": 1,
+     "title": "加冕未竟",
+     "description": "父崩即位数月，加冕前被叔摄政、宣非法。",
+     "historicalChoice": 0,
+     "choices": [
+      "就位",
+      "联母党",
+      "请加冕",
+      "托孤",
+      "缓行"
+     ],
+     "historicalOutcome": "父崩即位数月，加冕前被叔摄政、宣非法",
+     "id": "uk_edward5_e0",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "usurped"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1483,
+     "month": 4,
+     "title": "入塔失踪",
+     "description": "与弟同囚伦敦塔，夏秋间失踪，疑叔所害。",
+     "historicalChoice": 0,
+     "choices": [
+      "求救",
+      "联贵族",
+      "抗摄政",
+      "祈求",
+      "归葬"
+     ],
+     "historicalOutcome": "与弟同囚伦敦塔，夏秋间失踪，疑叔所害",
+     "id": "uk_edward5_e1",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "weak"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1483,
+     "month": 7,
+     "title": "属地骚动",
+     "description": "海外属地（爱尔兰边区、加莱、诺曼底旧领）赋役苛重，守臣失驭，土豪叛服不常。",
+     "historicalChoice": 0,
+     "choices": [
+      "派军镇压",
+      "谈判予自治",
+      "增派总督",
+      "经济封锁",
+      "暂缓观望"
+     ],
+     "historicalOutcome": "属地骚然，驻军不敷",
+     "id": "uk_edward5_e2",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "uk_gen_colony"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1483,
+     "month": 10,
+     "title": "两院争贡赋",
+     "description": "上下两院分立，下院握钱袋而争条陈，先陈冤抑、后议拨款，御前请款屡遭驳回。",
+     "historicalChoice": 0,
+     "choices": [
+      "改组内阁",
+      "解散议会重选",
+      "坚持到底",
+      "寻求王室支持",
+      "让步妥协"
+     ],
+     "historicalOutcome": "下院持款相持，御用不充",
+     "id": "uk_edward5_e3",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "uk_gen_parliament"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_richard3",
+   "civilization": "uk",
+   "dynasty": "诺曼—金雀花",
+   "name": "理查三世",
+   "templeName": "国王",
+   "reignStart": 1483,
+   "reignEnd": 1485,
+   "evaluation": "篡侄的驼背王",
+   "background": "爱德华四世之弟，篡侄位、传说杀侄，1485年博斯沃思战死，约克系绝。",
+   "eraContext": "兰开斯特余绪亨利·都铎兴兵、王位合法性争议。",
+   "reignPremise": "以弑侄得位，终战死沙场，身败名裂。",
+   "voiceTag": "冷峻",
+   "era": "诺曼—金雀花",
+   "initStats": {
+    "treasury": 45,
+    "people": 41,
+    "military": 76,
+    "court": 60,
+    "health": 57,
+    "tech": 35
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "uk_fav",
+     "name": "王室近臣",
+     "role": "君侧宠信",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "uk_pm",
+     "name": "首相",
+     "role": "内阁首脑",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": 1483,
+     "month": null,
+     "title": "篡侄",
+     "description": "宣布侄子非法、自篡，传杀幼主。",
+     "historicalChoice": 0,
+     "choices": [
+      "加冕",
+      "立侄",
+      "联贵族",
+      "抑反对",
+      "缓行"
+     ],
+     "historicalOutcome": "宣布侄子非法、自篡，传杀幼主",
+     "id": "uk_richard3_e0",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "usurped"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1484,
+     "month": null,
+     "title": "两院争贡赋",
+     "description": "上下两院分立，下院握钱袋而争条陈，先陈冤抑、后议拨款，御前请款屡遭驳回。",
+     "historicalChoice": 0,
+     "choices": [
+      "改组内阁",
+      "解散议会重选",
+      "坚持到底",
+      "寻求王室支持",
+      "让步妥协"
+     ],
+     "historicalOutcome": "下院持款相持，御用不充",
+     "id": "uk_richard3_e2",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "uk_gen_parliament"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1485,
+     "month": 1,
+     "title": "博斯沃思",
+     "description": "战亨利·都铎，败死，都铎兴。",
+     "historicalChoice": 0,
+     "choices": [
+      "平叛",
+      "和谈",
+      "联贵族",
+      "征兵",
+      "撤"
+     ],
+     "historicalOutcome": "战亨利·都铎，败死，都铎兴",
+     "id": "uk_richard3_e1",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_loss"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1485,
+     "month": 7,
+     "title": "属地骚动",
+     "description": "海外属地（爱尔兰边区、加莱、诺曼底旧领）赋役苛重，守臣失驭，土豪叛服不常。",
+     "historicalChoice": 0,
+     "choices": [
+      "派军镇压",
+      "谈判予自治",
+      "增派总督",
+      "经济封锁",
+      "暂缓观望"
+     ],
+     "historicalOutcome": "属地骚然，驻军不敷",
+     "id": "uk_richard3_e3",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "uk_gen_colony"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_henry7",
+   "civilization": "uk",
+   "dynasty": "都铎—斯图亚特",
+   "name": "亨利七世",
+   "templeName": "国王",
+   "reignStart": 1485,
+   "reignEnd": 1509,
+   "evaluation": "都铎开国，敛财王",
+   "background": "博斯沃思胜理查，娶约克伊丽莎白统两系，开创都铎，厉行理财、抑贵族。",
+   "eraContext": "玫瑰战争余波、王权重建、贸易与海权萌芽。",
+   "reignPremise": "以联姻弥内战之裂、以财权固新朝之基。",
+   "voiceTag": "质朴",
+   "era": "都铎—斯图亚特",
+   "initStats": {
+    "treasury": 63,
+    "people": 57,
+    "military": 57,
+    "court": 59,
+    "health": 65,
+    "tech": 39
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "uk_pm",
+     "name": "首相",
+     "role": "内阁首脑",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "uk_ab",
+     "name": "坎特伯雷大主教",
+     "role": "国教领袖",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": 1486,
+     "month": 1,
+     "title": "联姻统系",
+     "description": "娶约克伊丽莎白，红白玫瑰合流。",
+     "historicalChoice": 0,
+     "choices": [
+      "联姻",
+      "限约克",
+      "联教",
+      "赦",
+      "缓行"
+     ],
+     "historicalOutcome": "娶约克伊丽莎白，红白玫瑰合流",
+     "id": "uk_henry7_e0",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "unify"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1486,
+     "month": 7,
+     "title": "属地骚动",
+     "description": "海外属地（爱尔兰边区、加莱、诺曼底旧领）赋役苛重，守臣失驭，土豪叛服不常。",
+     "historicalChoice": 0,
+     "choices": [
+      "派军镇压",
+      "谈判予自治",
+      "增派总督",
+      "经济封锁",
+      "暂缓观望"
+     ],
+     "historicalOutcome": "属地骚然，驻军不敷",
+     "id": "uk_henry7_e3",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "uk_gen_colony"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1497,
+     "month": null,
+     "title": "平叛理财",
+     "description": "平珀金·沃贝克伪王之乱，整顿财政。",
+     "historicalChoice": 0,
+     "choices": [
+      "平叛",
+      "赦伪",
+      "征商税",
+      "限贵族",
+      "缓行"
+     ],
+     "historicalOutcome": "平珀金·沃贝克伪王之乱，整顿财政",
+     "id": "uk_henry7_e1",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1503,
+     "month": null,
+     "title": "联西姻盟",
+     "description": "与西班牙联姻，外交转向欧陆。",
+     "historicalChoice": 0,
+     "choices": [
+      "联西",
+      "限约",
+      "联教",
+      "缓行",
+      "设商约"
+     ],
+     "historicalOutcome": "与西班牙联姻，外交转向欧陆",
+     "id": "uk_henry7_e2",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_henry8",
+   "civilization": "uk",
+   "dynasty": "都铎—斯图亚特",
+   "name": "亨利八世",
+   "templeName": "国王",
+   "reignStart": 1509,
+   "reignEnd": 1547,
+   "evaluation": "六妻与宗教改革",
+   "background": "以刚勇始、以专制终，为休妻与罗马决裂、立英国国教、解散修道院、权倾一时。",
+   "eraContext": "宗教改革、王权至上、与欧陆缠斗、财政挥霍。",
+   "reignPremise": "为子嗣与尊严裂教，以「王权至尊」重写英格兰的信仰与国体。",
+   "voiceTag": "冷峻",
+   "era": "都铎—斯图亚特",
+   "initStats": {
+    "treasury": 42,
+    "people": 49,
+    "military": 73,
+    "court": 57,
+    "health": 54,
+    "tech": 32
+   },
+   "tier": "A",
+   "cast": [
+    {
+     "id": "uk_ab",
+     "name": "坎特伯雷大主教",
+     "role": "国教领袖",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "uk_adm",
+     "name": "海军大臣",
+     "role": "海上长城",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "uk_fav",
+     "name": "王室近臣",
+     "role": "君侧宠信",
+     "voiceTag": "质朴"
+    }
+   ],
+   "events": [
+    {
+     "year": 1533,
+     "month": null,
+     "title": "与罗马决裂",
+     "description": "为休凯瑟琳娶安妮·博林，遭教皇绝罚，国会立王为教首。",
+     "historicalChoice": 0,
+     "choices": [
+      "立国教",
+      "妥协",
+      "联德新教",
+      "缓行",
+      "限教权"
+     ],
+     "historicalOutcome": "为休凯瑟琳娶安妮·博林，遭教皇绝罚，国会立王为教首",
+     "id": "uk_henry8_e0",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "reform"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1536,
+     "month": 1,
+     "title": "解散修道院",
+     "description": "没收修院地产归王，富国库亦激北方叛。",
+     "historicalChoice": 0,
+     "choices": [
+      "没收",
+      "折中",
+      "限规模",
+      "联新贵",
+      "缓行"
+     ],
+     "historicalOutcome": "没收修院地产归王，富国库亦激北方叛",
+     "id": "uk_henry8_e1",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "scholar_purge"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1536,
+     "month": 7,
+     "title": "求嗣风波",
+     "description": "连娶连斩，子嗣艰难，朝局随后宫起伏。",
+     "historicalChoice": 0,
+     "choices": [
+      "立嗣",
+      "稳后宫",
+      "联贵族",
+      "缓行",
+      "赦"
+     ],
+     "historicalOutcome": "连娶连斩，子嗣艰难，朝局随后宫起伏",
+     "id": "uk_henry8_e2",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "weak"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1542,
+     "month": null,
+     "title": "苏格兰与边务",
+     "description": "伐苏格兰、结同盟，北疆未靖。",
+     "historicalChoice": 0,
+     "choices": [
+      "征苏",
+      "先外交",
+      "联亲英派",
+      "限驻军",
+      "撤"
+     ],
+     "historicalOutcome": "伐苏格兰、结同盟，北疆未靖",
+     "id": "uk_henry8_e3",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1544,
+     "month": null,
+     "title": "法陆征战",
+     "description": "趁法国内乱出兵，取布雷与加莱。",
+     "historicalChoice": 0,
+     "choices": [
+      "征法",
+      "先海战",
+      "联神圣罗马",
+      "限驻军",
+      "撤"
+     ],
+     "historicalOutcome": "趁法国内乱出兵，取布雷与加莱",
+     "id": "uk_henry8_e4",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_edward6",
+   "civilization": "uk",
+   "dynasty": "都铎—斯图亚特",
+   "name": "爱德华六世",
+   "templeName": "国王",
+   "reignStart": 1547,
+   "reignEnd": 1553,
+   "evaluation": "幼主与新教",
+   "background": "亨利八世独子，幼冲即位，摄政推新教化，早夭无嗣，姊玛丽继。",
+   "eraContext": "新教激进、贵族摄政争权、经济困顿。",
+   "reignPremise": "以童稚之身推信仰之剧变，未竟而夭。",
+   "voiceTag": "华赡",
+   "era": "都铎—斯图亚特",
+   "initStats": {
+    "treasury": 48,
+    "people": 48,
+    "military": 52,
+    "court": 51,
+    "health": 59,
+    "tech": 45
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "uk_pm",
+     "name": "首相",
+     "role": "内阁首脑",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "uk_ab",
+     "name": "坎特伯雷大主教",
+     "role": "国教领袖",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": 1548,
+     "month": null,
+     "title": "属地骚动",
+     "description": "海外属地（爱尔兰边区、加莱、诺曼底旧领）赋役苛重，守臣失驭，土豪叛服不常。",
+     "historicalChoice": 0,
+     "choices": [
+      "派军镇压",
+      "谈判予自治",
+      "增派总督",
+      "经济封锁",
+      "暂缓观望"
+     ],
+     "historicalOutcome": "属地骚然，驻军不敷",
+     "id": "uk_edward6_e3",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "uk_gen_colony"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1549,
+     "month": null,
+     "title": "祈祷书争端",
+     "description": "颁统一祈祷书，西部农民以旧教起事。",
+     "historicalChoice": 0,
+     "choices": [
+      "镇压",
+      "折中",
+      "联新贵",
+      "赦",
+      "缓行"
+     ],
+     "historicalOutcome": "颁统一祈祷书，西部农民以旧教起事",
+     "id": "uk_edward6_e0",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rebellion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1552,
+     "month": null,
+     "title": "新教法典",
+     "description": "立四十二条款，英格兰新教化定型。",
+     "historicalChoice": 0,
+     "choices": [
+      "立法",
+      "限范围",
+      "交教会",
+      "缓行",
+      "设规"
+     ],
+     "historicalOutcome": "立四十二条款，英格兰新教化定型",
+     "id": "uk_edward6_e1",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "reform"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1553,
+     "month": null,
+     "title": "早夭传位",
+     "description": "病危改遗嘱立Jane Grey，旋被玛丽废。",
+     "historicalChoice": 0,
+     "choices": [
+      "立嫡",
+      "联姐",
+      "缓立",
+      "设摄政",
+      "归葬"
+     ],
+     "historicalOutcome": "病危改遗嘱立Jane Grey，旋被玛丽废",
+     "id": "uk_edward6_e2",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "weak"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_jane_grey",
+   "civilization": "uk",
+   "dynasty": "都铎—斯图亚特",
+   "name": "简·格雷",
+   "templeName": "女王",
+   "reignStart": 1553,
+   "reignEnd": 1553,
+   "evaluation": "九日女王",
+   "background": "亨利之曾甥女，受诺森伯兰胁立，在位九日即被玛丽废黜，次年以叛处死，年仅十七。",
+   "eraContext": "新教权臣弄权、民望归玛丽、国内外同情寡。",
+   "reignPremise": "以傀儡之身登基九日，便成权力游戏的祭品。",
+   "voiceTag": "质朴",
+   "era": "都铎—斯图亚特",
+   "initStats": {
+    "treasury": 44,
+    "people": 42,
+    "military": 35,
+    "court": 43,
+    "health": 53,
+    "tech": 36
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "uk_fav",
+     "name": "王室近臣",
+     "role": "君侧宠信",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "uk_pm",
+     "name": "首相",
+     "role": "内阁首脑",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": 1553,
+     "month": 1,
+     "title": "胁立九日",
+     "description": "垂危爱德华改遗嘱立之，诺森伯兰拥立，旋被玛丽兵临废黜。",
+     "historicalChoice": 0,
+     "choices": [
+      "就位",
+      "拒位",
+      "联民",
+      "求援",
+      "逊位"
+     ],
+     "historicalOutcome": "垂危爱德华改遗嘱立之，诺森伯兰拥立，旋被玛丽兵临废黜",
+     "id": "uk_jane_grey_e0",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "usurped"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1553,
+     "month": 4,
+     "title": "以叛伏法",
+     "description": "夫家起事牵连，被玛丽囚塔、处死。",
+     "historicalChoice": 0,
+     "choices": [
+      "陈情",
+      "联新教",
+      "求赦",
+      "抗审",
+      "归葬"
+     ],
+     "historicalOutcome": "夫家起事牵连，被玛丽囚塔、处死",
+     "id": "uk_jane_grey_e1",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "weak"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1553,
+     "month": 7,
+     "title": "属地骚动",
+     "description": "海外属地（爱尔兰边区、加莱、诺曼底旧领）赋役苛重，守臣失驭，土豪叛服不常。",
+     "historicalChoice": 0,
+     "choices": [
+      "派军镇压",
+      "谈判予自治",
+      "增派总督",
+      "经济封锁",
+      "暂缓观望"
+     ],
+     "historicalOutcome": "属地骚然，驻军不敷",
+     "id": "uk_jane_grey_e2",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "uk_gen_colony"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1553,
+     "month": 10,
+     "title": "两院争贡赋",
+     "description": "上下两院分立，下院握钱袋而争条陈，先陈冤抑、后议拨款，御前请款屡遭驳回。",
+     "historicalChoice": 0,
+     "choices": [
+      "改组内阁",
+      "解散议会重选",
+      "坚持到底",
+      "寻求王室支持",
+      "让步妥协"
+     ],
+     "historicalOutcome": "下院持款相持，御用不充",
+     "id": "uk_jane_grey_e3",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "uk_gen_parliament"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_mary1",
+   "civilization": "uk",
+   "dynasty": "都铎—斯图亚特",
+   "name": "玛丽一世",
+   "templeName": "女王",
+   "reignStart": 1553,
+   "reignEnd": 1558,
+   "evaluation": "血腥玛丽",
+   "background": "亨利之女，复天主教、嫁西王腓力、烧死新教徒数百，失加莱，无嗣而终。",
+   "eraContext": "宗教复辟、西英绑定、对法失土。",
+   "reignPremise": "以信仰之名行火刑，反失民心与海疆。",
+   "voiceTag": "质朴",
+   "era": "都铎—斯图亚特",
+   "initStats": {
+    "treasury": 39,
+    "people": 37,
+    "military": 41,
+    "court": 49,
+    "health": 48,
+    "tech": 31
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "uk_ab",
+     "name": "坎特伯雷大主教",
+     "role": "国教领袖",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "uk_adm",
+     "name": "海军大臣",
+     "role": "海上长城",
+     "voiceTag": "质朴"
+    }
+   ],
+   "events": [
+    {
+     "year": 1554,
+     "month": 1,
+     "title": "复天主教",
+     "description": "废新教、复罗马权威，异端火刑起。",
+     "historicalChoice": 0,
+     "choices": [
+      "复教",
+      "折中",
+      "联西",
+      "限迫",
+      "缓行"
+     ],
+     "historicalOutcome": "废新教、复罗马权威，异端火刑起",
+     "id": "uk_mary1_e0",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "scholar_purge"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1554,
+     "month": 5,
+     "title": "嫁西王",
+     "description": "嫁西班牙腓力二世，英沦为西附庸之嫌。",
+     "historicalChoice": 0,
+     "choices": [
+      "联姻",
+      "限权约",
+      "拒婚",
+      "联法",
+      "缓行"
+     ],
+     "historicalOutcome": "嫁西班牙腓力二世，英沦为西附庸之嫌",
+     "id": "uk_mary1_e1",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1554,
+     "month": 9,
+     "title": "两院争贡赋",
+     "description": "上下两院分立，下院握钱袋而争条陈，先陈冤抑、后议拨款，御前请款屡遭驳回。",
+     "historicalChoice": 0,
+     "choices": [
+      "改组内阁",
+      "解散议会重选",
+      "坚持到底",
+      "寻求王室支持",
+      "让步妥协"
+     ],
+     "historicalOutcome": "下院持款相持，御用不充",
+     "id": "uk_mary1_e3",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "uk_gen_parliament"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1558,
+     "month": null,
+     "title": "失加莱",
+     "description": "对法战败，失欧陆最后据点加莱。",
+     "historicalChoice": 0,
+     "choices": [
+      "反攻",
+      "和谈",
+      "联西",
+      "征兵",
+      "撤"
+     ],
+     "historicalOutcome": "对法战败，失欧陆最后据点加莱",
+     "id": "uk_mary1_e2",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_loss"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_elizabeth1",
+   "civilization": "uk",
+   "dynasty": "都铎—斯图亚特",
+   "name": "伊丽莎白一世",
+   "templeName": "女王",
+   "reignStart": 1558,
+   "reignEnd": 1603,
+   "evaluation": "童贞女王，黄金时代",
+   "background": "亨利八世之女，以中庸宗教、挫西班牙无敌舰队、奖航海与文艺，开伊丽莎白黄金时代，终身未嫁。",
+   "eraContext": "宗教妥协、西葡争霸、海盗殖民、文艺复兴英格兰。",
+   "reignPremise": "以「中庸之道」安内外、以海权抗西霸，终生未婚而嫁于国，盛世的底气从何而来？",
+   "voiceTag": "质朴",
+   "era": "都铎—斯图亚特",
+   "initStats": {
+    "treasury": 63,
+    "people": 57,
+    "military": 57,
+    "court": 59,
+    "health": 65,
+    "tech": 39
+   },
+   "tier": "A",
+   "cast": [
+    {
+     "id": "uk_pm",
+     "name": "首相",
+     "role": "内阁首脑",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "uk_ab",
+     "name": "坎特伯雷大主教",
+     "role": "国教领袖",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "uk_adm",
+     "name": "海军大臣",
+     "role": "海上长城",
+     "voiceTag": "质朴"
+    }
+   ],
+   "events": [
+    {
+     "year": 1559,
+     "month": null,
+     "title": "宗教中庸",
+     "description": "立《三十九条款》折中新旧，止流血宗教战。",
+     "historicalChoice": 0,
+     "choices": [
+      "立中庸",
+      "偏新",
+      "偏旧",
+      "交教会",
+      "缓行"
+     ],
+     "historicalOutcome": "立《三十九条款》折中新旧，止流血宗教战",
+     "id": "uk_elizabeth1_e0",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "reform"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1577,
+     "month": null,
+     "title": "航海殖民",
+     "description": "授 Gilbert、德雷克等探险殖民，海权与私掠兴。",
+     "historicalChoice": 0,
+     "choices": [
+      "奖航海",
+      "限殖民",
+      "联商人",
+      "缓行",
+      "设公司"
+     ],
+     "historicalOutcome": "授 Gilbert、德雷克等探险殖民，海权与私掠兴",
+     "id": "uk_elizabeth1_e3",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "unify"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1588,
+     "month": null,
+     "title": "无敌舰队",
+     "description": "西王腓力以庞大舰队征英，遭风暴与火船破之。",
+     "historicalChoice": 0,
+     "choices": [
+      "海战御敌",
+      "先外交",
+      "联荷",
+      "募民兵",
+      "撤"
+     ],
+     "historicalOutcome": "西王腓力以庞大舰队征英，遭风暴与火船破之",
+     "id": "uk_elizabeth1_e1",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1601,
+     "month": null,
+     "title": "济贫法",
+     "description": "立法定济贫，应对圈地流民。",
+     "historicalChoice": 0,
+     "choices": [
+      "立法济贫",
+      "限范围",
+      "交各郡",
+      "设税",
+      "缓行"
+     ],
+     "historicalOutcome": "立法定济贫，应对圈地流民",
+     "id": "uk_elizabeth1_e2",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1603,
+     "month": null,
+     "title": "无嗣而终",
+     "description": "终身未嫁，传苏格兰詹姆士，都铎绝、斯图亚特兴。",
+     "historicalChoice": 0,
+     "choices": [
+      "立嗣",
+      "联苏",
+      "托孤",
+      "缓行",
+      "归葬"
+     ],
+     "historicalOutcome": "终身未嫁，传苏格兰詹姆士，都铎绝、斯图亚特兴",
+     "id": "uk_elizabeth1_e4",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_james1",
+   "civilization": "uk",
+   "dynasty": "都铎—斯图亚特",
+   "name": "詹姆斯一世",
+   "templeName": "国王",
+   "reignStart": 1603,
+   "reignEnd": 1625,
+   "evaluation": "君权神授",
+   "background": "苏格兰詹姆士六世兼英格兰王，倡「君权神授」、译圣经，与议会渐生龃龉，火药阴谋惊魂。",
+   "eraContext": "英苏共主、议会与王权理念冲突、殖民起步（弗吉尼亚）。",
+   "reignPremise": "以神授之说压议会，埋下革命之种。",
+   "voiceTag": "质朴",
+   "era": "都铎—斯图亚特",
+   "initStats": {
+    "treasury": 43,
+    "people": 41,
+    "military": 34,
+    "court": 42,
+    "health": 52,
+    "tech": 35
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "uk_pm",
+     "name": "首相",
+     "role": "内阁首脑",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "uk_ab",
+     "name": "坎特伯雷大主教",
+     "role": "国教领袖",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": 1604,
+     "month": null,
+     "title": "两院争贡赋",
+     "description": "上下两院分立，下院握钱袋而争条陈，先陈冤抑、后议拨款，御前请款屡遭驳回。",
+     "historicalChoice": 0,
+     "choices": [
+      "改组内阁",
+      "解散议会重选",
+      "坚持到底",
+      "寻求王室支持",
+      "让步妥协"
+     ],
+     "historicalOutcome": "下院持款相持，御用不充",
+     "id": "uk_james1_e3",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "uk_gen_parliament"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1605,
+     "month": null,
+     "title": "火药阴谋",
+     "description": "天主教徒密谋炸议会，败露，反促反 Catholic 立法。",
+     "historicalChoice": 0,
+     "choices": [
+      "严查",
+      "赦从犯",
+      "联教",
+      "限天主教",
+      "缓行"
+     ],
+     "historicalOutcome": "天主教徒密谋炸议会，败露，反促反 Catholic 立法",
+     "id": "uk_james1_e0",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "scholar_oppose"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1611,
+     "month": null,
+     "title": "钦定圣经",
+     "description": "颁权威英译圣经，文化功垂。",
+     "historicalChoice": 0,
+     "choices": [
+      "颁译",
+      "限范围",
+      "交教会",
+      "缓行",
+      "设学"
+     ],
+     "historicalOutcome": "颁权威英译圣经，文化功垂",
+     "id": "uk_james1_e1",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1621,
+     "month": null,
+     "title": "议会之争",
+     "description": "与议会争征税权，解散议会，积怨。",
+     "historicalChoice": 0,
+     "choices": [
+      "强征",
+      "妥协",
+      "交议会",
+      "缓行",
+      "限权"
+     ],
+     "historicalOutcome": "与议会争征税权，解散议会，积怨",
+     "id": "uk_james1_e2",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "usurped"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_charles1",
+   "civilization": "uk",
+   "dynasty": "都铎—斯图亚特",
+   "name": "查理一世",
+   "templeName": "国王",
+   "reignStart": 1625,
+   "reignEnd": 1649,
+   "evaluation": "被斩的国王",
+   "background": "詹姆斯之子，强征Ship Money、倡高教会，与议会决裂，英国内战爆发，终被公审斩首。",
+   "eraContext": "王权与议会、圣公会清教徒之争白热，内战改写政体。",
+   "reignPremise": "以专断拒妥协，把王冠送上断头台——君主制的红线，他踩穿了。",
+   "voiceTag": "质朴",
+   "era": "都铎—斯图亚特",
+   "initStats": {
+    "treasury": 39,
+    "people": 37,
+    "military": 41,
+    "court": 49,
+    "health": 48,
+    "tech": 31
+   },
+   "tier": "A",
+   "cast": [
+    {
+     "id": "uk_adm",
+     "name": "海军大臣",
+     "role": "海上长城",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "uk_fav",
+     "name": "王室近臣",
+     "role": "君侧宠信",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "uk_pm",
+     "name": "首相",
+     "role": "内阁首脑",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": 1639,
+     "month": null,
+     "title": "主教战争",
+     "description": "强推圣公会于苏格兰，引发两国战，王财政破产。",
+     "historicalChoice": 0,
+     "choices": [
+      "退让",
+      "强推",
+      "联英保",
+      "征兵",
+      "和谈"
+     ],
+     "historicalOutcome": "强推圣公会于苏格兰，引发两国战，王财政破产",
+     "id": "uk_charles1_e0",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "scholar_oppose"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1642,
+     "month": null,
+     "title": "内战爆发",
+     "description": "御旗于诺丁汉，议会军与王军开战。",
+     "historicalChoice": 0,
+     "choices": [
+      "平叛",
+      "和谈",
+      "联苏格兰",
+      "征兵",
+      "撤"
+     ],
+     "historicalOutcome": "御旗于诺丁汉，议会军与王军开战",
+     "id": "uk_charles1_e1",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rebellion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1645,
+     "month": null,
+     "title": "纳斯比",
+     "description": "王军主力溃败，查理乞援苏格兰后被卖。",
+     "historicalChoice": 0,
+     "choices": [
+      "再战",
+      "和谈",
+      "联外部",
+      "缓行",
+      "降"
+     ],
+     "historicalOutcome": "王军主力溃败，查理乞援苏格兰后被卖",
+     "id": "uk_charles1_e2",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_loss"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1649,
+     "month": null,
+     "title": "公审斩首",
+     "description": "被克伦威尔等以暴君、叛国罪斩于白厅。",
+     "historicalChoice": 0,
+     "choices": [
+      "抗辩",
+      "逊位",
+      "联子",
+      "乞外援",
+      "归隐"
+     ],
+     "historicalOutcome": "被克伦威尔等以暴君、叛国罪斩于白厅",
+     "id": "uk_charles1_e3",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "usurped"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_charles2",
+   "civilization": "uk",
+   "dynasty": "都铎—斯图亚特",
+   "name": "查理二世",
+   "templeName": "国王",
+   "reignStart": 1660,
+   "reignEnd": 1685,
+   "evaluation": "快活王，复辟",
+   "background": "共和末复辟即位，享乐而务实，大瘟疫、伦敦大火、复辟政体、联荷战事并存。",
+   "eraContext": "王政复辟、议会制回归、科学（皇家学会）与殖民扩张。",
+   "reignPremise": "以风流掩机变，在复辟的狂欢中重立王权。",
+   "voiceTag": "质朴",
+   "era": "都铎—斯图亚特",
+   "initStats": {
+    "treasury": 57,
+    "people": 62,
+    "military": 51,
+    "court": 64,
+    "health": 70,
+    "tech": 33
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "uk_fav",
+     "name": "王室近臣",
+     "role": "君侧宠信",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "uk_pm",
+     "name": "首相",
+     "role": "内阁首脑",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": 1665,
+     "month": null,
+     "title": "大瘟疫",
+     "description": "伦敦鼠疫横行，数万人殁，市政瘫痪。",
+     "historicalChoice": 0,
+     "choices": [
+      "封城防疫",
+      "祈祷",
+      "设隔离",
+      "限流动",
+      "缓行"
+     ],
+     "historicalOutcome": "伦敦鼠疫横行，数万人殁，市政瘫痪",
+     "id": "uk_charles2_e0",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "famine"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1666,
+     "month": null,
+     "title": "伦敦大火",
+     "description": "城大火焚九日，重建促都市更新。",
+     "historicalChoice": 0,
+     "choices": [
+      "赈灾重建",
+      "交各郡",
+      "征灾税",
+      "设规划",
+      "缓行"
+     ],
+     "historicalOutcome": "城大火焚九日，重建促都市更新",
+     "id": "uk_charles2_e1",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "flood"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1670,
+     "month": null,
+     "title": "多佛密约",
+     "description": "私联法王受俸、许复天主教， leaked 伤信任。",
+     "historicalChoice": 0,
+     "choices": [
+      "联法",
+      "限约",
+      "联荷",
+      "缓行",
+      "保密"
+     ],
+     "historicalOutcome": "私联法王受俸、许复天主教， leaked 伤信任",
+     "id": "uk_charles2_e2",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1679,
+     "month": null,
+     "title": "人身保护法",
+     "description": "议会立限制拘禁之法案，自由传统进。",
+     "historicalChoice": 0,
+     "choices": [
+      "签署",
+      "限权",
+      "交议会",
+      "缓行",
+      "设规"
+     ],
+     "historicalOutcome": "议会立限制拘禁之法案，自由传统进",
+     "id": "uk_charles2_e3",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "reform"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_james2",
+   "civilization": "uk",
+   "dynasty": "都铎—斯图亚特",
+   "name": "詹姆斯二世",
+   "templeName": "国王",
+   "reignStart": 1685,
+   "reignEnd": 1688,
+   "evaluation": "被逐的天主教王",
+   "background": "查理之弟，公然复天主教、违《宣誓法》，光荣革命中被女婿威廉逐走。",
+   "eraContext": "天主教复辟恐慌、议会与荷兰威廉密约、政体危机。",
+   "reignPremise": "以信仰逆潮流，被一场不流血的革命请下台。",
+   "voiceTag": "质朴",
+   "era": "都铎—斯图亚特",
+   "initStats": {
+    "treasury": 39,
+    "people": 37,
+    "military": 41,
+    "court": 49,
+    "health": 48,
+    "tech": 31
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "uk_ab",
+     "name": "坎特伯雷大主教",
+     "role": "国教领袖",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "uk_adm",
+     "name": "海军大臣",
+     "role": "海上长城",
+     "voiceTag": "质朴"
+    }
+   ],
+   "events": [
+    {
+     "year": 1686,
+     "month": null,
+     "title": "殖民地危机",
+     "description": "海外殖民地抗税抗令，总督告急，本土商人与议会各持一议。",
+     "historicalChoice": 0,
+     "choices": [
+      "派军镇压",
+      "谈判予自治",
+      "增派总督",
+      "经济封锁",
+      "暂缓观望"
+     ],
+     "historicalOutcome": "殖民地骚动，商路受阻",
+     "id": "uk_james2_e3",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "uk_gen_colony"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1687,
+     "month": null,
+     "title": "信教自由令",
+     "description": "废反 Catholic 法，激新教精英恐慌。",
+     "historicalChoice": 0,
+     "choices": [
+      "强推",
+      "折中",
+      "限范围",
+      "交议会",
+      "缓行"
+     ],
+     "historicalOutcome": "废反 Catholic 法，激新教精英恐慌",
+     "id": "uk_james2_e0",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "scholar_oppose"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1688,
+     "month": 6,
+     "title": "王子诞生",
+     "description": "王后诞下王子詹姆斯·弗朗西斯，天主教一系将永续，七位显贵密函邀威廉入英。",
+     "historicalChoice": 0,
+     "choices": [
+      "昭告天下正统",
+      "安抚新教诸侯",
+      "罢黜异议大臣",
+      "召荷兰女婿共商",
+      "增募常备军"
+     ],
+     "historicalOutcome": "王子既生，新教绝望，七贤密邀威廉",
+     "id": "uk_james2_e2",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "reform"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1688,
+     "month": 11,
+     "title": "光荣革命",
+     "description": "威廉率荷军登陆托贝，军民响应，詹姆斯出亡法国，不流血而易主。",
+     "historicalChoice": 0,
+     "choices": [
+      "抗登陆",
+      "和谈",
+      "逊位",
+      "联法",
+      "缓行"
+     ],
+     "historicalOutcome": "威廉率荷军登陆托贝，军民响应，詹姆斯出亡法国，不流血而易主",
+     "id": "uk_james2_e1",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "usurped"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_mary2",
+   "civilization": "uk",
+   "dynasty": "都铎—斯图亚特",
+   "name": "玛丽二世",
+   "templeName": "女王",
+   "reignStart": 1689,
+   "reignEnd": 1694,
+   "evaluation": "共治之女王",
+   "background": "詹姆斯二世长女、新教徒，与夫威廉共受议会邀请入主，光荣革命后共治，1694年染天花而崩。",
+   "eraContext": "立宪初立、夫妇共政、议会权升、宗教和解。",
+   "reignPremise": "以公主之身请夫代父，共治中早逝，立宪却由此生根。",
+   "voiceTag": "质朴",
+   "era": "都铎—斯图亚特",
+   "initStats": {
+    "treasury": 57,
+    "people": 62,
+    "military": 51,
+    "court": 64,
+    "health": 70,
+    "tech": 33
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "uk_adm",
+     "name": "海军大臣",
+     "role": "海上长城",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "uk_fav",
+     "name": "王室近臣",
+     "role": "君侧宠信",
+     "voiceTag": "质朴"
+    }
+   ],
+   "events": [
+    {
+     "year": 1689,
+     "month": null,
+     "title": "共治登基",
+     "description": "与威廉同受议会邀请，共戴王冠、立权利法案。",
+     "historicalChoice": 0,
+     "choices": [
+      "共治",
+      "让夫主政",
+      "联议会",
+      "限王权",
+      "缓行"
+     ],
+     "historicalOutcome": "与威廉同受议会邀请，共戴王冠、立权利法案",
+     "id": "uk_mary2_e0",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "reform"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1690,
+     "month": 1,
+     "title": "摄政御国",
+     "description": "威廉征爱尔兰时留京摄政，稳内政、抚新教。",
+     "historicalChoice": 0,
+     "choices": [
+      "摄政",
+      "联臣",
+      "抚民",
+      "限军",
+      "缓行"
+     ],
+     "historicalOutcome": "威廉征爱尔兰时留京摄政，稳内政、抚新教",
+     "id": "uk_mary2_e1",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1690,
+     "month": 7,
+     "title": "国会争权",
+     "description": "国会与御前争兵权、税权与教务，弹劾大臣、悬置岁入，朝野分党。",
+     "historicalChoice": 0,
+     "choices": [
+      "改组内阁",
+      "解散议会重选",
+      "坚持到底",
+      "寻求王室支持",
+      "让步妥协"
+     ],
+     "historicalOutcome": "国会持权相抗，政令两歧",
+     "id": "uk_mary2_e3",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "uk_gen_parliament"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1694,
+     "month": null,
+     "title": "痘殁",
+     "description": "盛年染天花而崩，威廉独揽。",
+     "historicalChoice": 0,
+     "choices": [
+      "托孤",
+      "设嗣",
+      "联姐",
+      "归葬",
+      "缓行"
+     ],
+     "historicalOutcome": "盛年染天花而崩，威廉独揽",
+     "id": "uk_mary2_e2",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "weak"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_william3",
+   "civilization": "uk",
+   "dynasty": "都铎—斯图亚特",
+   "name": "威廉三世",
+   "templeName": "国王",
+   "reignStart": 1689,
+   "reignEnd": 1702,
+   "evaluation": "立宪与抗法",
+   "background": "荷兰奥兰治亲王，光荣革命入主，与妻玛丽共位，立立宪君主、组反法大同盟。",
+   "eraContext": "英法争霸、爱尔兰亲詹叛、荷兰战争延续。",
+   "reignPremise": "以外来者之身立英国宪制，反法而强英。",
+   "voiceTag": "冷峻",
+   "era": "都铎—斯图亚特",
+   "initStats": {
+    "treasury": 50,
+    "people": 46,
+    "military": 70,
+    "court": 54,
+    "health": 62,
+    "tech": 40
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "uk_ab",
+     "name": "坎特伯雷大主教",
+     "role": "国教领袖",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "uk_adm",
+     "name": "海军大臣",
+     "role": "海上长城",
+     "voiceTag": "质朴"
+    }
+   ],
+   "events": [
+    {
+     "year": 1690,
+     "month": 1,
+     "title": "博因河",
+     "description": "败詹姆斯支持者于爱尔兰，固位。",
+     "historicalChoice": 0,
+     "choices": [
+      "平叛",
+      "赦降",
+      "联新教",
+      "限驻军",
+      "缓行"
+     ],
+     "historicalOutcome": "败詹姆斯支持者于爱尔兰，固位",
+     "id": "uk_william3_e0",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1690,
+     "month": 7,
+     "title": "国会争权",
+     "description": "国会与御前争兵权、税权与教务，弹劾大臣、悬置岁入，朝野分党。",
+     "historicalChoice": 0,
+     "choices": [
+      "改组内阁",
+      "解散议会重选",
+      "坚持到底",
+      "寻求王室支持",
+      "让步妥协"
+     ],
+     "historicalOutcome": "国会持权相抗，政令两歧",
+     "id": "uk_william3_e3",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "uk_gen_parliament"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1692,
+     "month": null,
+     "title": "拉乌格海战",
+     "description": "败法舰队，保英伦不被入侵。",
+     "historicalChoice": 0,
+     "choices": [
+      "海战",
+      "先外交",
+      "联荷",
+      "募民兵",
+      "撤"
+     ],
+     "historicalOutcome": "败法舰队，保英伦不被入侵",
+     "id": "uk_william3_e1",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1701,
+     "month": null,
+     "title": "嗣位法",
+     "description": "立新教嗣位、排天主教，王位传承定。",
+     "historicalChoice": 0,
+     "choices": [
+      "立法",
+      "限范围",
+      "交议会",
+      "缓行",
+      "设规"
+     ],
+     "historicalOutcome": "立新教嗣位、排天主教，王位传承定",
+     "id": "uk_william3_e2",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "reform"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_anne",
+   "civilization": "uk",
+   "dynasty": "都铎—斯图亚特",
+   "name": "安妮女王",
+   "templeName": "女王",
+   "reignStart": 1702,
+   "reignEnd": 1714,
+   "evaluation": "联合与西班牙续",
+   "background": "威廉妻妹继，1707年并苏格兰为「大不列颠」、胜西班牙王位战争、辉格托利党争。",
+   "eraContext": "英苏合并、马尔普拉凯、西班牙继承战、政党政治成型。",
+   "reignPremise": "以合并成大不列颠，以党争显议会之重。",
+   "voiceTag": "质朴",
+   "era": "都铎—斯图亚特",
+   "initStats": {
+    "treasury": 63,
+    "people": 57,
+    "military": 57,
+    "court": 59,
+    "health": 65,
+    "tech": 39
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "uk_ab",
+     "name": "坎特伯雷大主教",
+     "role": "国教领袖",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "uk_adm",
+     "name": "海军大臣",
+     "role": "海上长城",
+     "voiceTag": "质朴"
+    }
+   ],
+   "events": [
+    {
+     "year": 1703,
+     "month": null,
+     "title": "国会争权",
+     "description": "国会与御前争兵权、税权与教务，弹劾大臣、悬置岁入，朝野分党。",
+     "historicalChoice": 0,
+     "choices": [
+      "改组内阁",
+      "解散议会重选",
+      "坚持到底",
+      "寻求王室支持",
+      "让步妥协"
+     ],
+     "historicalOutcome": "国会持权相抗，政令两歧",
+     "id": "uk_anne_e3",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "uk_gen_parliament"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1704,
+     "month": null,
+     "title": "布伦海姆",
+     "description": "马尔伯勒大败法巴伐，扭转西班牙战局。",
+     "historicalChoice": 0,
+     "choices": [
+      "乘胜",
+      "固英土",
+      "联荷奥",
+      "赦俘",
+      "缓攻"
+     ],
+     "historicalOutcome": "马尔伯勒大败法巴伐，扭转西班牙战局",
+     "id": "uk_anne_e1",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1707,
+     "month": null,
+     "title": "联合法案",
+     "description": "英格兰与苏格兰并为大不列颠王国。",
+     "historicalChoice": 0,
+     "choices": [
+      "并合",
+      "限苏格兰权",
+      "联贵族",
+      "缓行",
+      "设议"
+     ],
+     "historicalOutcome": "英格兰与苏格兰并为大不列颠王国",
+     "id": "uk_anne_e0",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "unify"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1713,
+     "month": null,
+     "title": "乌得勒支和",
+     "description": "结束西战，夺直布罗陀、新斯科舍。",
+     "historicalChoice": 0,
+     "choices": [
+      "签约",
+      "限条款",
+      "联荷",
+      "缓行",
+      "设商"
+     ],
+     "historicalOutcome": "结束西战，夺直布罗陀、新斯科舍",
+     "id": "uk_anne_e2",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_george1",
+   "civilization": "uk",
+   "dynasty": "汉诺威—温莎",
+   "name": "乔治一世",
+   "templeName": "国王",
+   "reignStart": 1714,
+   "reignEnd": 1727,
+   "evaluation": "不问政的德裔王",
+   "background": "汉诺威选帝侯，因新教嗣位入主，不通英语、倚内阁，首相制萌芽。",
+   "eraContext": "辉格长期执政、南海泡沫、内阁代王行政。",
+   "reignPremise": "以疏政成内阁，王权渐隐于大臣之后。",
+   "voiceTag": "质朴",
+   "era": "汉诺威—温莎",
+   "initStats": {
+    "treasury": 63,
+    "people": 57,
+    "military": 57,
+    "court": 59,
+    "health": 65,
+    "tech": 39
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "uk_ab",
+     "name": "坎特伯雷大主教",
+     "role": "国教领袖",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "uk_adm",
+     "name": "海军大臣",
+     "role": "海上长城",
+     "voiceTag": "质朴"
+    }
+   ],
+   "events": [
+    {
+     "year": 1715,
+     "month": 1,
+     "title": "詹党叛乱",
+     "description": "詹姆斯党（老僭王）苏格兰起事，旋平。",
+     "historicalChoice": 0,
+     "choices": [
+      "平叛",
+      "赦降",
+      "联新教",
+      "限驻军",
+      "缓行"
+     ],
+     "historicalOutcome": "詹姆斯党（老僭王）苏格兰起事，旋平",
+     "id": "uk_george1_e0",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rebellion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1715,
+     "month": 7,
+     "title": "殖民地危机",
+     "description": "海外殖民地抗税抗令，总督告急，本土商人与议会各持一议。",
+     "historicalChoice": 0,
+     "choices": [
+      "派军镇压",
+      "谈判予自治",
+      "增派总督",
+      "经济封锁",
+      "暂缓观望"
+     ],
+     "historicalOutcome": "殖民地骚动，商路受阻",
+     "id": "uk_george1_e3",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "uk_gen_colony"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1720,
+     "month": null,
+     "title": "南海泡沫",
+     "description": "南海公司股灾，财政与信任重创。",
+     "historicalChoice": 0,
+     "choices": [
+      "救市",
+      "查贪",
+      "限公司",
+      "交议会",
+      "缓行"
+     ],
+     "historicalOutcome": "南海公司股灾，财政与信任重创",
+     "id": "uk_george1_e1",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "weak"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1721,
+     "month": null,
+     "title": "首相制萌",
+     "description": "沃波尔主政，事实首相成形。",
+     "historicalChoice": 0,
+     "choices": [
+      "倚首相",
+      "限权",
+      "交议会",
+      "缓行",
+      "设规"
+     ],
+     "historicalOutcome": "沃波尔主政，事实首相成形",
+     "id": "uk_george1_e2",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "reform"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_george2",
+   "civilization": "uk",
+   "dynasty": "汉诺威—温莎",
+   "name": "乔治二世",
+   "templeName": "国王",
+   "reignStart": 1727,
+   "reignEnd": 1760,
+   "evaluation": "末代亲征王",
+   "background": "乔治一世之子，末位亲临战场的英王，胜丰特努瓦、平詹党，七年战争开局。",
+   "eraContext": "奥地利继位战、詹党再叛、七年战争序幕。",
+   "reignPremise": "以亲征留勇名，王权却更委于内阁。",
+   "voiceTag": "冷峻",
+   "era": "汉诺威—温莎",
+   "initStats": {
+    "treasury": 42,
+    "people": 49,
+    "military": 73,
+    "court": 57,
+    "health": 54,
+    "tech": 32
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "uk_adm",
+     "name": "海军大臣",
+     "role": "海上长城",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "uk_fav",
+     "name": "王室近臣",
+     "role": "君侧宠信",
+     "voiceTag": "质朴"
+    }
+   ],
+   "events": [
+    {
+     "year": 1728,
+     "month": null,
+     "title": "殖民地危机",
+     "description": "海外殖民地抗税抗令，总督告急，本土商人与议会各持一议。",
+     "historicalChoice": 0,
+     "choices": [
+      "派军镇压",
+      "谈判予自治",
+      "增派总督",
+      "经济封锁",
+      "暂缓观望"
+     ],
+     "historicalOutcome": "殖民地骚动，商路受阻",
+     "id": "uk_george2_e3",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "uk_gen_colony"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1743,
+     "month": null,
+     "title": "德廷根",
+     "description": "亲率军胜法，末代亲征之君。",
+     "historicalChoice": 0,
+     "choices": [
+      "乘胜",
+      "固汉诺威",
+      "联奥",
+      "赦俘",
+      "缓攻"
+     ],
+     "historicalOutcome": "亲率军胜法，末代亲征之君",
+     "id": "uk_george2_e0",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1745,
+     "month": null,
+     "title": "卡洛登",
+     "description": "平小僭王查理爱德华苏格兰叛。",
+     "historicalChoice": 0,
+     "choices": [
+      "平叛",
+      "赦降",
+      "联新教",
+      "限驻军",
+      "缓行"
+     ],
+     "historicalOutcome": "平小僭王查理爱德华苏格兰叛",
+     "id": "uk_george2_e1",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rebellion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1756,
+     "month": null,
+     "title": "七年战争",
+     "description": "全球争霸开打，皮特主战。",
+     "historicalChoice": 0,
+     "choices": [
+      "宣战",
+      "先海战",
+      "联普",
+      "征兵",
+      "缓行"
+     ],
+     "historicalOutcome": "全球争霸开打，皮特主战",
+     "id": "uk_george2_e2",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_george3",
+   "civilization": "uk",
+   "dynasty": "汉诺威—温莎",
+   "name": "乔治三世",
+   "templeName": "国王",
+   "reignStart": 1760,
+   "reignEnd": 1820,
+   "evaluation": "失美洲的国王",
+   "background": "力图亲政、失北美十三州、胜拿破仑却疯癫晚景，在位最久之一。",
+   "eraContext": "美洲独立、对法大革命与拿破仑战争、工业革命的英国。",
+   "reignPremise": "以「农夫乔治」图振王权，却失帝国之花（美洲），又在欧陆战火中守住不列颠。",
+   "voiceTag": "质朴",
+   "era": "汉诺威—温莎",
+   "initStats": {
+    "treasury": 66,
+    "people": 60,
+    "military": 49,
+    "court": 62,
+    "health": 68,
+    "tech": 42
+   },
+   "tier": "A",
+   "cast": [
+    {
+     "id": "uk_fav",
+     "name": "王室近臣",
+     "role": "君侧宠信",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "uk_pm",
+     "name": "首相",
+     "role": "内阁首脑",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "uk_ab",
+     "name": "坎特伯雷大主教",
+     "role": "国教领袖",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": 1765,
+     "month": null,
+     "title": "印花税法",
+     "description": "向北美征税，殖民地抗议「无代表不纳税」。",
+     "historicalChoice": 0,
+     "choices": [
+      "强征",
+      " repeal",
+      "折中",
+      "联商",
+      "缓行"
+     ],
+     "historicalOutcome": "向北美征税，殖民地抗议「无代表不纳税」",
+     "id": "uk_george3_e0",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "tax_heavy"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1775,
+     "month": null,
+     "title": "美洲独立战",
+     "description": "镇压北美叛，反失十三州。",
+     "historicalChoice": 0,
+     "choices": [
+      "平叛",
+      "和谈认独",
+      "限驻军",
+      "联保王党",
+      "撤"
+     ],
+     "historicalOutcome": "镇压北美叛，反失十三州",
+     "id": "uk_george3_e1",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_loss"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1805,
+     "month": null,
+     "title": "特拉法加",
+     "description": "纳尔逊碎拿破仑海军，英制海权无虞。",
+     "historicalChoice": 0,
+     "choices": [
+      "海战",
+      "先外交",
+      "联欧",
+      "募民兵",
+      "撤"
+     ],
+     "historicalOutcome": "纳尔逊碎拿破仑海军，英制海权无虞",
+     "id": "uk_george3_e2",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1811,
+     "month": null,
+     "title": "疯癫摄政",
+     "description": "病疯，子摄政（后为乔治四世），晚景昏暗。",
+     "historicalChoice": 0,
+     "choices": [
+      "设摄政",
+      "倚医",
+      "交议会",
+      "缓行",
+      "归养"
+     ],
+     "historicalOutcome": "病疯，子摄政（后为乔治四世），晚景昏暗",
+     "id": "uk_george3_e4",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "weak"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1815,
+     "month": null,
+     "title": "滑铁卢",
+     "description": "威灵顿败拿破仑，百年欧陆霸权定。",
+     "historicalChoice": 0,
+     "choices": [
+      "出兵",
+      "联普",
+      "固英土",
+      "赦俘",
+      "缓攻"
+     ],
+     "historicalOutcome": "威灵顿败拿破仑，百年欧陆霸权定",
+     "id": "uk_george3_e3",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_george4",
+   "civilization": "uk",
+   "dynasty": "汉诺威—温莎",
+   "name": "乔治四世",
+   "templeName": "国王",
+   "reignStart": 1820,
+   "reignEnd": 1830,
+   "evaluation": "纨绔摄政王",
+   "background": "长期摄政后即位，奢靡、与妻卡罗琳丑闻，推行天主解放却乏建树。",
+   "eraContext": "摄政时期摄政风、工业革命、天主教解放争论。",
+   "reignPremise": "以奢华与丑闻留名，治国之功寡。",
+   "voiceTag": "质朴",
+   "era": "汉诺威—温莎",
+   "initStats": {
+    "treasury": 40,
+    "people": 38,
+    "military": 42,
+    "court": 50,
+    "health": 49,
+    "tech": 32
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "uk_pm",
+     "name": "首相",
+     "role": "内阁首脑",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "uk_ab",
+     "name": "坎特伯雷大主教",
+     "role": "国教领袖",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": 1820,
+     "month": null,
+     "title": "王后丑闻",
+     "description": "拒认妻卡罗琳、审叛妻案，民意哗然。",
+     "historicalChoice": 0,
+     "choices": [
+      "和解",
+      "弃审",
+      "联贵族",
+      "缓行",
+      "设规"
+     ],
+     "historicalOutcome": "拒认妻卡罗琳、审叛妻案，民意哗然",
+     "id": "uk_george4_e2",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "scholar_oppose"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1821,
+     "month": null,
+     "title": "帝国属地危机",
+     "description": "自治领与属地要求扩权，总督与本土大臣龃龉，帝国之维系日耗。",
+     "historicalChoice": 0,
+     "choices": [
+      "派军镇压",
+      "谈判予自治",
+      "增派总督",
+      "经济封锁",
+      "暂缓观望"
+     ],
+     "historicalOutcome": "属地扩权，帝国渐弛",
+     "id": "uk_george4_e3",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "uk_gen_colony"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1824,
+     "month": null,
+     "title": "摄政风与债",
+     "description": "大兴土木（布莱顿穹顶），国债高企。",
+     "historicalChoice": 0,
+     "choices": [
+      "节用",
+      "续建",
+      "交议会",
+      "限债",
+      "缓行"
+     ],
+     "historicalOutcome": "大兴土木（布莱顿穹顶），国债高企",
+     "id": "uk_george4_e1",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "tax_heavy"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1829,
+     "month": null,
+     "title": "天主教解放",
+     "description": "顶议会压力解放天主教徒参政权。",
+     "historicalChoice": 0,
+     "choices": [
+      "解放",
+      "限范围",
+      "交议会",
+      "缓行",
+      "设规"
+     ],
+     "historicalOutcome": "顶议会压力解放天主教徒参政权",
+     "id": "uk_george4_e0",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "reform"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_william4",
+   "civilization": "uk",
+   "dynasty": "汉诺威—温莎",
+   "name": "威廉四世",
+   "templeName": "国王",
+   "reignStart": 1830,
+   "reignEnd": 1837,
+   "evaluation": "改革王",
+   "background": "海军出身的「水手王」，任内通过1832年改革法，扩选举权、削腐败选区。",
+   "eraContext": "议会改革、工业革命、宪章运动前夜。",
+   "reignPremise": "以海军朴直促成选举改革，旧特权的一步退。",
+   "voiceTag": "华赡",
+   "era": "汉诺威—温莎",
+   "initStats": {
+    "treasury": 49,
+    "people": 49,
+    "military": 53,
+    "court": 41,
+    "health": 60,
+    "tech": 46
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "uk_adm",
+     "name": "海军大臣",
+     "role": "海上长城",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "uk_fav",
+     "name": "王室近臣",
+     "role": "君侧宠信",
+     "voiceTag": "质朴"
+    }
+   ],
+   "events": [
+    {
+     "year": 1831,
+     "month": null,
+     "title": "议会不信任",
+     "description": "下院提出不信任案，内阁摇摇欲坠，首相进退失据。",
+     "historicalChoice": 0,
+     "choices": [
+      "改组内阁",
+      "解散议会重选",
+      "坚持到底",
+      "寻求王室支持",
+      "让步妥协"
+     ],
+     "historicalOutcome": "不信任案过，内阁改组",
+     "id": "uk_william4_e3",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "uk_gen_parliament"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1832,
+     "month": null,
+     "title": "改革法",
+     "description": "扩选举权、重划选区，议会现代转型。",
+     "historicalChoice": 0,
+     "choices": [
+      "签署",
+      "限范围",
+      "交议会",
+      "缓行",
+      "设规"
+     ],
+     "historicalOutcome": "扩选举权、重划选区，议会现代转型",
+     "id": "uk_william4_e0",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "reform"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1833,
+     "month": null,
+     "title": "废奴补偿",
+     "description": "帝国废奴，补偿奴主，自由工兴。",
+     "historicalChoice": 0,
+     "choices": [
+      "废奴",
+      "限补偿",
+      "交各域",
+      "缓行",
+      "设规"
+     ],
+     "historicalOutcome": "帝国废奴，补偿奴主，自由工兴",
+     "id": "uk_william4_e1",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "reform"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1836,
+     "month": null,
+     "title": "市政改革",
+     "description": "改市政、清腐败 borough。",
+     "historicalChoice": 0,
+     "choices": [
+      "立法",
+      "限范围",
+      "交各郡",
+      "缓行",
+      "设规"
+     ],
+     "historicalOutcome": "改市政、清腐败 borough",
+     "id": "uk_william4_e2",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "reform"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_victoria",
+   "civilization": "uk",
+   "dynasty": "汉诺威—温莎",
+   "name": "维多利亚",
+   "templeName": "女王",
+   "reignStart": 1837,
+   "reignEnd": 1901,
+   "evaluation": "日不落帝国之君",
+   "background": "18岁即位，经工业革命、帝国扩张、君主立宪成熟，号「维多利亚时代」，晚年成帝国主义象征。",
+   "eraContext": "工业革命巅峰、大英帝国全球殖民、中产阶级与劳工运动兴起。",
+   "reignPremise": "以长久与克制，把君主变成国家的象征而非掌权者——帝国的体量，与君主的退隐，竟同时到达顶峰。",
+   "voiceTag": "质朴",
+   "era": "汉诺威—温莎",
+   "initStats": {
+    "treasury": 57,
+    "people": 62,
+    "military": 51,
+    "court": 64,
+    "health": 70,
+    "tech": 33
+   },
+   "tier": "A",
+   "cast": [
+    {
+     "id": "uk_pm",
+     "name": "首相",
+     "role": "内阁首脑",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "uk_ab",
+     "name": "坎特伯雷大主教",
+     "role": "国教领袖",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "uk_adm",
+     "name": "海军大臣",
+     "role": "海上长城",
+     "voiceTag": "质朴"
+    }
+   ],
+   "events": [
+    {
+     "year": 1839,
+     "month": null,
+     "title": "阿富汗挫折",
+     "description": "第一次英阿战争惨败，帝国扩张受挫。",
+     "historicalChoice": 0,
+     "choices": [
+      "撤出",
+      "再征",
+      "联本地",
+      "限驻军",
+      "缓行"
+     ],
+     "historicalOutcome": "第一次英阿战争惨败，帝国扩张受挫",
+     "id": "uk_victoria_e0",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_loss"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1857,
+     "month": null,
+     "title": "印度兵变",
+     "description": "镇压印度兵变，翌年废东印度公司、直辖印度。",
+     "historicalChoice": 0,
+     "choices": [
+      "平叛",
+      "赦降",
+      "直辖",
+      "联土王",
+      "缓行"
+     ],
+     "historicalOutcome": "镇压印度兵变，翌年废东印度公司、直辖印度",
+     "id": "uk_victoria_e1",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rebellion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1861,
+     "month": null,
+     "title": "寡居亲德",
+     "description": "夫阿尔伯特卒，长期哀悼、亲德外交偏斜。",
+     "historicalChoice": 0,
+     "choices": [
+      "理政",
+      "联德",
+      "缓哀",
+      "交首相",
+      "设规"
+     ],
+     "historicalOutcome": "夫阿尔伯特卒，长期哀悼、亲德外交偏斜",
+     "id": "uk_victoria_e2",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1876,
+     "month": null,
+     "title": "印度女皇",
+     "description": "受封印度女皇，帝国仪式化巅峰。",
+     "historicalChoice": 0,
+     "choices": [
+      "受封",
+      "限其权",
+      "联土王",
+      "缓行",
+      "设官"
+     ],
+     "historicalOutcome": "受封印度女皇，帝国仪式化巅峰",
+     "id": "uk_victoria_e3",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "unify"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1899,
+     "month": null,
+     "title": "布尔战争",
+     "description": "南非布尔战争久拖、手段争议，帝国形象损。",
+     "historicalChoice": 0,
+     "choices": [
+      "增兵",
+      "和谈",
+      "限手段",
+      "联本地",
+      "撤"
+     ],
+     "historicalOutcome": "南非布尔战争久拖、手段争议，帝国形象损",
+     "id": "uk_victoria_e4",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_loss"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1901,
+     "month": null,
+     "title": "长世而终",
+     "description": "在位64年，立宪君主制成型，国势渐的相对回落。",
+     "historicalChoice": 0,
+     "choices": [
+      "传位",
+      "立宪交权",
+      "联德",
+      "缓行",
+      "归葬"
+     ],
+     "historicalOutcome": "在位64年，立宪君主制成型，国势渐的相对回落",
+     "id": "uk_victoria_e5",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_edward7",
+   "civilization": "uk",
+   "dynasty": "汉诺威—温莎",
+   "name": "爱德华七世",
+   "templeName": "国王",
+   "reignStart": 1901,
+   "reignEnd": 1910,
+   "evaluation": "和平制造者",
+   "background": "维多利亚长子，亲法疏德、促英法协约（ Entente），缓和欧陆紧张。",
+   "eraContext": "英法协约、德英海军竞赛、爱德华时代社交。",
+   "reignPremise": "以亲法外交为后来的大战埋下阵营之线。",
+   "voiceTag": "质朴",
+   "era": "汉诺威—温莎",
+   "initStats": {
+    "treasury": 58,
+    "people": 63,
+    "military": 52,
+    "court": 65,
+    "health": 60,
+    "tech": 34
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "uk_ab",
+     "name": "坎特伯雷大主教",
+     "role": "国教领袖",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "uk_adm",
+     "name": "海军大臣",
+     "role": "海上长城",
+     "voiceTag": "质朴"
+    }
+   ],
+   "events": [
+    {
+     "year": 1902,
+     "month": null,
+     "title": "帝国属地危机",
+     "description": "自治领与属地要求扩权，总督与本土大臣龃龉，帝国之维系日耗。",
+     "historicalChoice": 0,
+     "choices": [
+      "派军镇压",
+      "谈判予自治",
+      "增派总督",
+      "经济封锁",
+      "暂缓观望"
+     ],
+     "historicalOutcome": "属地扩权，帝国渐弛",
+     "id": "uk_edward7_e3",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "uk_gen_colony"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1904,
+     "month": null,
+     "title": "英法协约",
+     "description": "与法 reconciliation，制衡德。",
+     "historicalChoice": 0,
+     "choices": [
+      "签约",
+      "限范围",
+      "联俄",
+      "缓行",
+      "设商"
+     ],
+     "historicalOutcome": "与法 reconciliation，制衡德",
+     "id": "uk_edward7_e0",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1906,
+     "month": null,
+     "title": "无畏舰竞赛",
+     "description": "德英海军竞赛升级，军备压力增。",
+     "historicalChoice": 0,
+     "choices": [
+      "扩舰",
+      "限建造",
+      "联法",
+      "交议会",
+      "缓行"
+     ],
+     "historicalOutcome": "德英海军竞赛升级，军备压力增",
+     "id": "uk_edward7_e1",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1908,
+     "month": null,
+     "title": "宪政危机",
+     "description": "上院阻预算，宪政张力现。",
+     "historicalChoice": 0,
+     "choices": [
+      "压上院",
+      "折中",
+      "交议会",
+      "缓行",
+      "设规"
+     ],
+     "historicalOutcome": "上院阻预算，宪政张力现",
+     "id": "uk_edward7_e2",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "reform"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_george5",
+   "civilization": "uk",
+   "dynasty": "汉诺威—温莎",
+   "name": "乔治五世",
+   "templeName": "国王",
+   "reignStart": 1910,
+   "reignEnd": 1936,
+   "evaluation": "战时与改名",
+   "background": "爱德华七世之子，历一战、改王室姓温莎、处理1931年宪政危机（与鲍德温）。",
+   "eraContext": "第一次世界大战、爱尔兰分治、大萧条、王室现代化。",
+   "reignPremise": "以改名「温莎」割德缘，在战争与萧条中守君主象征。",
+   "voiceTag": "质朴",
+   "era": "汉诺威—温莎",
+   "initStats": {
+    "treasury": 58,
+    "people": 63,
+    "military": 52,
+    "court": 65,
+    "health": 60,
+    "tech": 34
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "uk_ab",
+     "name": "坎特伯雷大主教",
+     "role": "国教领袖",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "uk_adm",
+     "name": "海军大臣",
+     "role": "海上长城",
+     "voiceTag": "质朴"
+    }
+   ],
+   "events": [
+    {
+     "year": 1914,
+     "month": null,
+     "title": "世界大战",
+     "description": "对德宣战，举国动员，王室去德化。",
+     "historicalChoice": 0,
+     "choices": [
+      "宣战",
+      "先外交",
+      "联法俄",
+      "征兵",
+      "撤"
+     ],
+     "historicalOutcome": "对德宣战，举国动员，王室去德化",
+     "id": "uk_george5_e0",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1916,
+     "month": null,
+     "title": "爱尔兰张力",
+     "description": "复活节起义，后促分治（自由邦）。",
+     "historicalChoice": 0,
+     "choices": [
+      "镇压",
+      "和谈分治",
+      "联新教",
+      "限驻军",
+      "缓行"
+     ],
+     "historicalOutcome": "复活节起义，后促分治（自由邦）",
+     "id": "uk_george5_e1",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rebellion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1917,
+     "month": null,
+     "title": "改姓温莎",
+     "description": "去德姓、改温莎，护君主合法性。",
+     "historicalChoice": 0,
+     "choices": [
+      "改名",
+      "限其效",
+      "联民",
+      "缓行",
+      "设规"
+     ],
+     "historicalOutcome": "去德姓、改温莎，护君主合法性",
+     "id": "uk_george5_e2",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "reform"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1931,
+     "month": null,
+     "title": "威斯敏斯特法",
+     "description": "确认自治领独立，帝国转英联邦。",
+     "historicalChoice": 0,
+     "choices": [
+      "立法",
+      "限范围",
+      "联自治领",
+      "缓行",
+      "设规"
+     ],
+     "historicalOutcome": "确认自治领独立，帝国转英联邦",
+     "id": "uk_george5_e3",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_edward8",
+   "civilization": "uk",
+   "dynasty": "汉诺威—温莎",
+   "name": "爱德华八世",
+   "templeName": "国王",
+   "reignStart": 1936,
+   "reignEnd": 1936,
+   "evaluation": "为爱退位",
+   "background": "乔治五世长子，为娶离婚的美人辛普森夫人，在位326天退位，弟乔治六世继。",
+   "eraContext": "宪政危机、王室与婚姻、纳粹同情质疑。",
+   "reignPremise": "以爱情弃王冠，把「君主不能为所欲为」写成判例。",
+   "voiceTag": "质朴",
+   "era": "汉诺威—温莎",
+   "initStats": {
+    "treasury": 43,
+    "people": 41,
+    "military": 34,
+    "court": 42,
+    "health": 52,
+    "tech": 35
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "uk_adm",
+     "name": "海军大臣",
+     "role": "海上长城",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "uk_fav",
+     "name": "王室近臣",
+     "role": "君侧宠信",
+     "voiceTag": "质朴"
+    }
+   ],
+   "events": [
+    {
+     "year": 1936,
+     "month": 1,
+     "title": "退位危机",
+     "description": "坚持娶辛普森，政府以辞职相胁，终退位。",
+     "historicalChoice": 0,
+     "choices": [
+      "退位",
+      "抗争",
+      "折中",
+      "交议会",
+      "缓行"
+     ],
+     "historicalOutcome": "坚持娶辛普森，政府以辞职相胁，终退位",
+     "id": "uk_edward8_e0",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "abdicated"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1936,
+     "month": 4,
+     "title": "温莎公爵",
+     "description": "退后封温莎公爵，赴外任，争议不绝。",
+     "historicalChoice": 0,
+     "choices": [
+      "受封",
+      "联美",
+      "缓行",
+      "设规",
+      "归隐"
+     ],
+     "historicalOutcome": "退后封温莎公爵，赴外任，争议不绝",
+     "id": "uk_edward8_e1",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1936,
+     "month": 7,
+     "title": "帝国属地危机",
+     "description": "自治领与属地要求扩权，总督与本土大臣龃龉，帝国之维系日耗。",
+     "historicalChoice": 0,
+     "choices": [
+      "派军镇压",
+      "谈判予自治",
+      "增派总督",
+      "经济封锁",
+      "暂缓观望"
+     ],
+     "historicalOutcome": "属地扩权，帝国渐弛",
+     "id": "uk_edward8_e2",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "uk_gen_colony"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1936,
+     "month": 10,
+     "title": "议会不信任",
+     "description": "下院提出不信任案，内阁摇摇欲坠，首相进退失据。",
+     "historicalChoice": 0,
+     "choices": [
+      "改组内阁",
+      "解散议会重选",
+      "坚持到底",
+      "寻求王室支持",
+      "让步妥协"
+     ],
+     "historicalOutcome": "不信任案过，内阁改组",
+     "id": "uk_edward8_e3",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "uk_gen_parliament"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_george6",
+   "civilization": "uk",
+   "dynasty": "汉诺威—温莎",
+   "name": "乔治六世",
+   "templeName": "国王",
+   "reignStart": 1936,
+   "reignEnd": 1952,
+   "evaluation": "战时国王",
+   "background": "爱德华八世之弟，口吃而坚毅，二战中坚守伦敦、鼓舞国民，帝国渐向英联邦转型。",
+   "eraContext": "第二次世界大战、不列颠空战、去殖民开端、王室亲民。",
+   "reignPremise": "以结巴之口、不屈之志，在轰炸中成为民族的定心丸。",
+   "voiceTag": "质朴",
+   "era": "汉诺威—温莎",
+   "initStats": {
+    "treasury": 65,
+    "people": 59,
+    "military": 48,
+    "court": 61,
+    "health": 67,
+    "tech": 41
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "uk_adm",
+     "name": "海军大臣",
+     "role": "海上长城",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "uk_fav",
+     "name": "王室近臣",
+     "role": "君侧宠信",
+     "voiceTag": "质朴"
+    }
+   ],
+   "events": [
+    {
+     "year": 1939,
+     "month": null,
+     "title": "对德宣战",
+     "description": "二战爆发，王室留伦敦、拒撤离。",
+     "historicalChoice": 0,
+     "choices": [
+      "宣战",
+      "先外交",
+      "联法",
+      "征兵",
+      "撤"
+     ],
+     "historicalOutcome": "二战爆发，王室留伦敦、拒撤离",
+     "id": "uk_george6_e0",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1940,
+     "month": null,
+     "title": "不列颠空战",
+     "description": "王室与民共艰，鼓舞士气。",
+     "historicalChoice": 0,
+     "choices": [
+      "固防空",
+      "联美",
+      "征民兵",
+      "限轰炸",
+      "缓行"
+     ],
+     "historicalOutcome": "王室与民共艰，鼓舞士气",
+     "id": "uk_george6_e1",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1947,
+     "month": null,
+     "title": "印度独立",
+     "description": "允印度独立、分治，帝国落幕。",
+     "historicalChoice": 0,
+     "choices": [
+      "允独立",
+      "限分治",
+      "联本地",
+      "缓行",
+      "设英联邦"
+     ],
+     "historicalOutcome": "允印度独立、分治，帝国落幕",
+     "id": "uk_george6_e2",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1952,
+     "month": null,
+     "title": "早逝",
+     "description": "久病肺癌逝，女伊丽莎白继。",
+     "historicalChoice": 0,
+     "choices": [
+      "传位",
+      "倚医",
+      "交议会",
+      "缓行",
+      "归葬"
+     ],
+     "historicalOutcome": "久病肺癌逝，女伊丽莎白继",
+     "id": "uk_george6_e3",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "weak"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_elizabeth2",
+   "civilization": "uk",
+   "dynasty": "汉诺威—温莎",
+   "name": "伊丽莎白二世",
+   "templeName": "女王",
+   "reignStart": 1952,
+   "reignEnd": 2022,
+   "evaluation": "长期与去殖民",
+   "background": "乔治六世长女，在位70年，见证去殖民、英联邦、福克兰战争、戴安娜风波与君主立宪的现代转型。",
+   "eraContext": "去殖民浪潮、英联邦维系、马岛战争、王室现代化与信任危机。",
+   "reignPremise": "以超长在位把君主熬成「国家象征」的活化石，帝国的退潮与制度的存续，由她一人贯穿。",
+   "voiceTag": "质朴",
+   "era": "汉诺威—温莎",
+   "initStats": {
+    "treasury": 59,
+    "people": 64,
+    "military": 53,
+    "court": 66,
+    "health": 61,
+    "tech": 35
+   },
+   "tier": "A",
+   "cast": [
+    {
+     "id": "uk_ab",
+     "name": "坎特伯雷大主教",
+     "role": "国教领袖",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "uk_adm",
+     "name": "海军大臣",
+     "role": "海上长城",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "uk_fav",
+     "name": "王室近臣",
+     "role": "君侧宠信",
+     "voiceTag": "质朴"
+    }
+   ],
+   "events": [
+    {
+     "year": 1956,
+     "month": null,
+     "title": "苏伊士危机",
+     "description": "英法以侵埃失利，帝国地位再挫。",
+     "historicalChoice": 0,
+     "choices": [
+      "撤出",
+      "和谈",
+      "联美",
+      "限驻军",
+      "缓行"
+     ],
+     "historicalOutcome": "英法以侵埃失利，帝国地位再挫",
+     "id": "uk_elizabeth2_e0",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_loss"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1982,
+     "month": null,
+     "title": "福克兰战争",
+     "description": "阿根廷占岛，英跨洋远征收复。",
+     "historicalChoice": 0,
+     "choices": [
+      "出兵收复",
+      "先外交",
+      "联美",
+      "限规模",
+      "撤"
+     ],
+     "historicalOutcome": "阿根廷占岛，英跨洋远征收复",
+     "id": "uk_elizabeth2_e1",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1997,
+     "month": null,
+     "title": "戴安娜逝",
+     "description": "前媳车祸身亡，王室应对迟缓受讥。",
+     "historicalChoice": 0,
+     "choices": [
+      "哀悼",
+      "改革公关",
+      "联民",
+      "缓行",
+      "设规"
+     ],
+     "historicalOutcome": "前媳车祸身亡，王室应对迟缓受讥",
+     "id": "uk_elizabeth2_e2",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "scholar_oppose"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 2014,
+     "month": null,
+     "title": "苏格兰公投",
+     "description": "苏格兰独立公投未过，联合暂保。",
+     "historicalChoice": 0,
+     "choices": [
+      "促统一",
+      "限让步",
+      "联英",
+      "缓行",
+      "设商"
+     ],
+     "historicalOutcome": "苏格兰独立公投未过，联合暂保",
+     "id": "uk_elizabeth2_e3",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 2022,
+     "month": null,
+     "title": "长世而终",
+     "description": "在位70年，查理斯继，君主制续转现代。",
+     "historicalChoice": 0,
+     "choices": [
+      "传位",
+      "立宪交权",
+      "联英联邦",
+      "缓行",
+      "归葬"
+     ],
+     "historicalOutcome": "在位70年，查理斯继，君主制续转现代",
+     "id": "uk_elizabeth2_e4",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uk_charles3",
+   "civilization": "uk",
+   "dynasty": "汉诺威—温莎",
+   "name": "查理三世",
+   "templeName": "国王",
+   "reignStart": 2022,
+   "reignEnd": 2026,
+   "evaluation": "环保君主",
+   "background": "伊丽莎白二世长子，2022年即位，长期倡环保与跨宗教对话，在位初年续推君主制现代化。",
+   "eraContext": "后伊丽莎白时代、英联邦松动、气候与现代化议题。",
+   "reignPremise": "以「等待最久的储君」登基，在质疑与期待中接棒暮年帝国。",
+   "voiceTag": "质朴",
+   "era": "汉诺威—温莎",
+   "initStats": {
+    "treasury": 64,
+    "people": 58,
+    "military": 47,
+    "court": 60,
+    "health": 66,
+    "tech": 40
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "uk_pm",
+     "name": "首相",
+     "role": "内阁首脑",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "uk_ab",
+     "name": "坎特伯雷大主教",
+     "role": "国教领袖",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": 2023,
+     "month": null,
+     "title": "王国领之议",
+     "description": "苏格兰与北爱各有异声，加勒比诸王国领议废君主为共和；君主须超然于政争而不失体统。",
+     "historicalChoice": 0,
+     "choices": [
+      "亲巡抚绥",
+      "一切付诸民意",
+      "削减王室用度",
+      "重申联合王国之谊",
+      "缄默不预"
+     ],
+     "historicalOutcome": "数国相继议废君统，王室以简朴与巡访应之",
+     "id": "uk_charles3_e3",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "uk_gen_colony"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 2023,
+     "month": 1,
+     "title": "加冕与紧缩",
+     "description": "盛大加冕同期财政紧缩，公众观感两歧。",
+     "historicalChoice": 0,
+     "choices": [
+      "简办",
+      "续传统",
+      "联民",
+      "限费",
+      "缓行"
+     ],
+     "historicalOutcome": "盛大加冕同期财政紧缩，公众观感两歧",
+     "id": "uk_charles3_e0",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 2024,
+     "month": null,
+     "title": "英联邦存续",
+     "description": "维系英联邦与共和倾向（如加、澳）的张力。",
+     "historicalChoice": 0,
+     "choices": [
+      "促留",
+      "限让步",
+      "联自治领",
+      "缓行",
+      "设商"
+     ],
+     "historicalOutcome": "维系英联邦与共和倾向（如加、澳）的张力",
+     "id": "uk_charles3_e1",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 2025,
+     "month": null,
+     "title": "现代化君主",
+     "description": "推王室瘦身、公务透明，应民意。",
+     "historicalChoice": 0,
+     "choices": [
+      "改革",
+      "限范围",
+      "交议会",
+      "缓行",
+      "设规"
+     ],
+     "historicalOutcome": "推王室瘦身、公务透明，应民意",
+     "id": "uk_charles3_e2",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "reform"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  }
+ ]
+}

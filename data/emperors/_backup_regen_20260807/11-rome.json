@@ -1,0 +1,11335 @@
+{
+ "group": "G11 罗马",
+ "dynasties": [
+  "王政",
+  "共和",
+  "帝国",
+  "拜占庭"
+ ],
+ "emperors": [
+  {
+   "id": "rome_romulus",
+   "civilization": "rome",
+   "dynasty": "王政",
+   "name": "罗穆路斯",
+   "templeName": "王",
+   "reignStart": -753,
+   "reignEnd": -717,
+   "evaluation": "母狼哺育，建城立国",
+   "background": "传说由母狼哺育长大，于台伯河畔建罗马城，划避难所聚流民，设元老院与库里亚大会，杀弟独掌。",
+   "eraContext": "七丘初聚、邻邦敌视、性别失衡需掠萨宾妇女以繁衍。",
+   "reignPremise": "一座城如何从流民据点，在血与盟中站稳？",
+   "voiceTag": "冷峻",
+   "era": "王政",
+   "initStats": {
+    "treasury": 37,
+    "people": 62,
+    "military": 61,
+    "court": 52,
+    "health": 58,
+    "tech": 35
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_leg",
+     "name": "军团统帅",
+     "role": "鹰旗之下",
+     "voiceTag": "冷峻"
+    },
+    {
+     "id": "rome_pont",
+     "name": "大祭司",
+     "role": "神人之媒",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": -753,
+     "month": null,
+     "title": "建城与划界",
+     "description": "以犁沟圈定城界，逾界者死；聚流民、设元老百人、库里亚大会。",
+     "historicalChoice": 0,
+     "choices": [
+      "立元老院共治",
+      "独断划界",
+      "开放避难所聚民",
+      "先筑城防",
+      "联萨宾人和亲"
+     ],
+     "historicalOutcome": "聚流民、设元老百人、库里亚大会",
+     "id": "rome_romulus_e0",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "unify"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -752,
+     "month": 1,
+     "title": "掠萨宾妇女",
+     "description": "掳邻族妇女为妻引发战争，终以和亲合并两族。",
+     "historicalChoice": 0,
+     "choices": [
+      "武力掠妇",
+      "先遣使求亲",
+      "和亲并族",
+      "筑墙自守",
+      "联周边小邦"
+     ],
+     "historicalOutcome": "掳邻族妇女为妻引发战争，终以和亲合并两族",
+     "id": "rome_romulus_e1",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "unify"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -752,
+     "month": 7,
+     "title": "部族征召之争",
+     "description": "库里亚各部族抗拒征召，谓王擅兴师、不循古礼，兵不满伍。",
+     "historicalChoice": 0,
+     "choices": [
+      "补饷安抚",
+      "严惩首恶",
+      "许以土地",
+      "调虎离山",
+      "谈判招抚"
+     ],
+     "historicalOutcome": "部族抗征，兵不满伍",
+     "id": "rome_romulus_e3",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_legion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -717,
+     "month": null,
+     "title": "升天传位",
+     "description": "传说雷暴中升天，罗马人奉为奎里努斯；传位努马。",
+     "historicalChoice": 0,
+     "choices": [
+      "托神迹立威",
+      "传贤不传子",
+      "定祭仪安民",
+      "扩城界",
+      "设军制"
+     ],
+     "historicalOutcome": "传说雷暴中升天，罗马人奉为奎里努斯，传位努马",
+     "id": "rome_romulus_e2",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_numa",
+   "civilization": "rome",
+   "dynasty": "王政",
+   "name": "努马·庞皮利乌斯",
+   "templeName": "王",
+   "reignStart": -717,
+   "reignEnd": -673,
+   "evaluation": "和平立法者",
+   "background": "萨宾人，罗穆路斯之后被推为王，罢战事、定历法、设祭司团与雅努斯神庙（战时启门）。",
+   "eraContext": "新邦需礼法而非刀兵以凝聚，宗教与历法待立。",
+   "reignPremise": "以礼代兵，能否让好战的流民之城学会秩序？",
+   "voiceTag": "质朴",
+   "era": "王政",
+   "initStats": {
+    "treasury": 61,
+    "people": 55,
+    "military": 55,
+    "court": 68,
+    "health": 63,
+    "tech": 37
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_lib",
+     "name": "释奴谋臣",
+     "role": "密室之谋",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "rome_sen",
+     "name": "元老院首领",
+     "role": "元老之首",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": -716,
+     "month": null,
+     "title": "长老会议龃龉",
+     "description": "百人长老会议（patres）与库里亚大会相持，王命不行，贵族各拥其部族。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "长老掣肘，王命难行",
+     "id": "rome_numa_e2",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -715,
+     "month": 1,
+     "title": "定历与祭仪",
+     "description": "创历法分农时，设维斯塔贞女与祭司团，以宗教黏合城邦。",
+     "historicalChoice": 0,
+     "choices": [
+      "立历法安农",
+      "设祭司团",
+      "闭雅努斯门示和",
+      "编民法",
+      "联萨宾旧族"
+     ],
+     "historicalOutcome": "创历法分农时，设维斯塔贞女与祭司团，以宗教黏合城邦",
+     "id": "rome_numa_e0",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -715,
+     "month": 7,
+     "title": "部族征召之争",
+     "description": "库里亚各部族抗拒征召，谓王擅兴师、不循古礼，兵不满伍。",
+     "historicalChoice": 0,
+     "choices": [
+      "补饷安抚",
+      "严惩首恶",
+      "许以土地",
+      "调虎离山",
+      "谈判招抚"
+     ],
+     "historicalOutcome": "部族抗征，兵不满伍",
+     "id": "rome_numa_e3",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_legion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -700,
+     "month": null,
+     "title": "建制元老",
+     "description": "扩充元老家族、定氏族秩序，缓和血统之争。",
+     "historicalChoice": 0,
+     "choices": [
+      "扩元老院",
+      "定氏族法",
+      "设仲裁",
+      "优抚老兵",
+      "限王权"
+     ],
+     "historicalOutcome": "扩充元老家族、定氏族秩序，缓和血统之争",
+     "id": "rome_numa_e1",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "reform"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_tullus",
+   "civilization": "rome",
+   "dynasty": "王政",
+   "name": "图卢斯·霍斯提利乌斯",
+   "templeName": "王",
+   "reignStart": -673,
+   "reignEnd": -642,
+   "evaluation": "尚武之君",
+   "background": "好战之主，破阿尔巴、废其城，迁民入罗马，重启战端以振尚武风。",
+   "eraContext": "承平日久，民气渐惰，邻邦阿尔巴构成威胁。",
+   "reignPremise": "以战复武，能否把劫后之城锻成铁军？",
+   "voiceTag": "冷峻",
+   "era": "王政",
+   "initStats": {
+    "treasury": 42,
+    "people": 49,
+    "military": 73,
+    "court": 57,
+    "health": 54,
+    "tech": 32
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_lib",
+     "name": "释奴谋臣",
+     "role": "密室之谋",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "rome_sen",
+     "name": "元老院首领",
+     "role": "元老之首",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": -672,
+     "month": null,
+     "title": "部族征召之争",
+     "description": "库里亚各部族抗拒征召，谓王擅兴师、不循古礼，兵不满伍。",
+     "historicalChoice": 0,
+     "choices": [
+      "补饷安抚",
+      "严惩首恶",
+      "许以土地",
+      "调虎离山",
+      "谈判招抚"
+     ],
+     "historicalOutcome": "部族抗征，兵不满伍",
+     "id": "rome_tullus_e2",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_legion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -671,
+     "month": null,
+     "title": "长老会议龃龉",
+     "description": "百人长老会议（patres）与库里亚大会相持，王命不行，贵族各拥其部族。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "长老掣肘，王命难行",
+     "id": "rome_tullus_e3",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -670,
+     "month": null,
+     "title": "破阿尔巴",
+     "description": "三对三决斗胜阿尔巴，废其城、迁其民入罗马。",
+     "historicalChoice": 0,
+     "choices": [
+      "决战兼并",
+      "先外交迫降",
+      "留自治",
+      "迁民实城",
+      "立军功制"
+     ],
+     "historicalOutcome": "三对三决斗胜阿尔巴，废其城、迁其民入罗马",
+     "id": "rome_tullus_e0",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -650,
+     "month": null,
+     "title": "尚武改制",
+     "description": "重振军训与征召，抑文崇武。",
+     "historicalChoice": 0,
+     "choices": [
+      "扩征召",
+      "设军功赏",
+      "罢冗祭",
+      "联拉丁盟",
+      "筑城防"
+     ],
+     "historicalOutcome": "重振军训与征召，抑文崇武",
+     "id": "rome_tullus_e1",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_ancus",
+   "civilization": "rome",
+   "dynasty": "王政",
+   "name": "安库斯·马尔西乌斯",
+   "templeName": "王",
+   "reignStart": -642,
+   "reignEnd": -617,
+   "evaluation": "建港扩疆",
+   "background": "努马之孙，既尚武又重礼，建奥斯提亚港、架首座桥、扩疆至海岸。",
+   "eraContext": "内陆之邦需出海口，台伯河口海盗与邻族环伺。",
+   "reignPremise": "文武兼资，能否为罗马打开通海之门？",
+   "voiceTag": "华赡",
+   "era": "王政",
+   "initStats": {
+    "treasury": 49,
+    "people": 52,
+    "military": 69,
+    "court": 54,
+    "health": 54,
+    "tech": 37
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_sen",
+     "name": "元老院首领",
+     "role": "元老之首",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "rome_leg",
+     "name": "军团统帅",
+     "role": "鹰旗之下",
+     "voiceTag": "冷峻"
+    }
+   ],
+   "events": [
+    {
+     "year": -641,
+     "month": null,
+     "title": "长老会议龃龉",
+     "description": "百人长老会议（patres）与库里亚大会相持，王命不行，贵族各拥其部族。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "长老掣肘，王命难行",
+     "id": "rome_ancus_e2",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -640,
+     "month": 1,
+     "title": "建奥斯提亚港",
+     "description": "于台伯河口筑港，通海运、控商路。",
+     "historicalChoice": 0,
+     "choices": [
+      "建港通海",
+      "先筑桥",
+      "联拉丁商",
+      "设海关",
+      "驻戍兵"
+     ],
+     "historicalOutcome": "于台伯河口筑港，通海运、控商路",
+     "id": "rome_ancus_e0",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "unify"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -640,
+     "month": 7,
+     "title": "部族征召之争",
+     "description": "库里亚各部族抗拒征召，谓王擅兴师、不循古礼，兵不满伍。",
+     "historicalChoice": 0,
+     "choices": [
+      "补饷安抚",
+      "严惩首恶",
+      "许以土地",
+      "调虎离山",
+      "谈判招抚"
+     ],
+     "historicalOutcome": "部族抗征，兵不满伍",
+     "id": "rome_ancus_e3",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_legion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -625,
+     "month": null,
+     "title": "架桥扩疆",
+     "description": "建第一座跨越台伯之桥，并滨海地带入版图。",
+     "historicalChoice": 0,
+     "choices": [
+      "架桥实边",
+      "结盟沿海",
+      "迁民屯垦",
+      "设市集",
+      "限驻军"
+     ],
+     "historicalOutcome": "建第一座跨越台伯之桥，并滨海地带入版图",
+     "id": "rome_ancus_e1",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "unify"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_tarq_priscus",
+   "civilization": "rome",
+   "dynasty": "王政",
+   "name": "塔克文·普里斯库斯",
+   "templeName": "王",
+   "reignStart": -616,
+   "reignEnd": -579,
+   "evaluation": "伊特鲁里亚之雄",
+   "background": "伊特鲁里亚裔，大兴广场、排水渠与竞技，始设凯旋式与环兽戏。",
+   "eraContext": "城邦待整饬，沼泽需排水，王权威仪待立。",
+   "reignPremise": "以外来者之身，能否把罗马修成体面之都？",
+   "voiceTag": "质朴",
+   "era": "王政",
+   "initStats": {
+    "treasury": 65,
+    "people": 59,
+    "military": 48,
+    "court": 61,
+    "health": 67,
+    "tech": 41
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_pont",
+     "name": "大祭司",
+     "role": "神人之媒",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "rome_lib",
+     "name": "释奴谋臣",
+     "role": "密室之谋",
+     "voiceTag": "质朴"
+    }
+   ],
+   "events": [
+    {
+     "year": -615,
+     "month": null,
+     "title": "部族征召之争",
+     "description": "库里亚各部族抗拒征召，谓王擅兴师、不循古礼，兵不满伍。",
+     "historicalChoice": 0,
+     "choices": [
+      "补饷安抚",
+      "严惩首恶",
+      "许以土地",
+      "调虎离山",
+      "谈判招抚"
+     ],
+     "historicalOutcome": "部族抗征，兵不满伍",
+     "id": "rome_tarq_priscus_e2",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_legion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -614,
+     "month": null,
+     "title": "长老会议龃龉",
+     "description": "百人长老会议（patres）与库里亚大会相持，王命不行，贵族各拥其部族。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "长老掣肘，王命难行",
+     "id": "rome_tarq_priscus_e3",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -610,
+     "month": null,
+     "title": "排沼筑广场",
+     "description": "排干forum沼泽、建中心广场，奠定城市骨架。",
+     "historicalChoice": 0,
+     "choices": [
+      "排沼建场",
+      "先修渠",
+      "迁民环居",
+      "设市集",
+      "限工役"
+     ],
+     "historicalOutcome": "排干forum沼泽、建中心广场，奠定城市骨架",
+     "id": "rome_tarq_priscus_e0",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "reform"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -600,
+     "month": null,
+     "title": "创凯旋礼",
+     "description": "定凯旋式与环兽戏，以威仪凝民心。",
+     "historicalChoice": 0,
+     "choices": [
+      "立凯旋式",
+      "设竞技",
+      "限耗费",
+      "联元老共礼",
+      "优抚老兵"
+     ],
+     "historicalOutcome": "定凯旋式与环兽戏，以威仪凝民心",
+     "id": "rome_tarq_priscus_e1",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_servius",
+   "civilization": "rome",
+   "dynasty": "王政",
+   "name": "塞尔维乌斯·图利乌斯",
+   "templeName": "王",
+   "reignStart": -578,
+   "reignEnd": -535,
+   "evaluation": "改革元老院",
+   "background": "依财产分公民为百人队，重划部落、扩公民权，筑塞尔维城墙。",
+   "eraContext": "旧氏族垄断兵权与政，新富与平民需纳入体系。",
+   "reignPremise": "以财产代血统，能否把城邦变成公民之军？",
+   "voiceTag": "华赡",
+   "era": "王政",
+   "initStats": {
+    "treasury": 47,
+    "people": 47,
+    "military": 51,
+    "court": 50,
+    "health": 58,
+    "tech": 44
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_lib",
+     "name": "释奴谋臣",
+     "role": "密室之谋",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "rome_sen",
+     "name": "元老院首领",
+     "role": "元老之首",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": -577,
+     "month": null,
+     "title": "部族征召之争",
+     "description": "库里亚各部族抗拒征召，谓王擅兴师、不循古礼，兵不满伍。",
+     "historicalChoice": 0,
+     "choices": [
+      "补饷安抚",
+      "严惩首恶",
+      "许以土地",
+      "调虎离山",
+      "谈判招抚"
+     ],
+     "historicalOutcome": "部族抗征，兵不满伍",
+     "id": "rome_servius_e2",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_legion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -576,
+     "month": null,
+     "title": "长老会议龃龉",
+     "description": "百人长老会议（patres）与库里亚大会相持，王命不行，贵族各拥其部族。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "长老掣肘，王命难行",
+     "id": "rome_servius_e3",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -575,
+     "month": null,
+     "title": "百人队改革",
+     "description": "按财产编百人队大会，兵权与票权挂钩，弱氏族。",
+     "historicalChoice": 0,
+     "choices": [
+      "行财产编队",
+      "保氏族席位",
+      "扩平民权",
+      "设部落",
+      "限王权"
+     ],
+     "historicalOutcome": "按财产编百人队大会，兵权与票权挂钩，弱氏族",
+     "id": "rome_servius_e0",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "reform"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -550,
+     "month": null,
+     "title": "筑塞尔维墙",
+     "description": "环城筑石墙，定罗马七丘为一体。",
+     "historicalChoice": 0,
+     "choices": [
+      "筑墙固防",
+      "迁郭外民入",
+      "设关隘",
+      "联拉丁盟",
+      "限工役"
+     ],
+     "historicalOutcome": "环城筑石墙，定罗马七丘为一体",
+     "id": "rome_servius_e1",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "unify"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_tarq_superbus",
+   "civilization": "rome",
+   "dynasty": "王政",
+   "name": "塔克文·苏佩布",
+   "templeName": "王",
+   "reignStart": -535,
+   "reignEnd": -509,
+   "evaluation": "傲慢王，共和起",
+   "background": "暴虐之主，诛元老、强征役，子辱卢克丽霞，终被逐，王政亡、共和兴。",
+   "eraContext": "专制积怨，贵族与平民同愤，弑君之乱一发。",
+   "reignPremise": "以暴虐自毁，王冠如何坠地、共和如何破壳？",
+   "voiceTag": "质朴",
+   "era": "王政",
+   "initStats": {
+    "treasury": 35,
+    "people": 44,
+    "military": 37,
+    "court": 45,
+    "health": 55,
+    "tech": 27
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_pont",
+     "name": "大祭司",
+     "role": "神人之媒",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "rome_lib",
+     "name": "释奴谋臣",
+     "role": "密室之谋",
+     "voiceTag": "质朴"
+    }
+   ],
+   "events": [
+    {
+     "year": -534,
+     "month": null,
+     "title": "长老会议龃龉",
+     "description": "百人长老会议（patres）与库里亚大会相持，王命不行，贵族各拥其部族。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "长老掣肘，王命难行",
+     "id": "rome_tarq_superbus_e2",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -533,
+     "month": null,
+     "title": "部族征召之争",
+     "description": "库里亚各部族抗拒征召，谓王擅兴师、不循古礼，兵不满伍。",
+     "historicalChoice": 0,
+     "choices": [
+      "补饷安抚",
+      "严惩首恶",
+      "许以土地",
+      "调虎离山",
+      "谈判招抚"
+     ],
+     "historicalOutcome": "部族抗征，兵不满伍",
+     "id": "rome_tarq_superbus_e3",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_legion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -520,
+     "month": null,
+     "title": "强征与诛异",
+     "description": "滥征劳役筑神庙、诛异己元老，怨声载道。",
+     "historicalChoice": 0,
+     "choices": [
+      "强征立威",
+      "稍敛赋役",
+      "联贵族",
+      "设监工",
+      "限工期"
+     ],
+     "historicalOutcome": "滥征劳役筑神庙、诛异己元老，怨声载道",
+     "id": "rome_tarq_superbus_e0",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "usurped"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -509,
+     "month": null,
+     "title": "卢克丽霞之辱",
+     "description": "子奸卢克丽霞，布鲁图率众逐王，立共和。",
+     "historicalChoice": 0,
+     "choices": [
+      "镇压反抗",
+      "遣子谢罪",
+      "退位保身",
+      "联元老",
+      "流亡伊特鲁里亚"
+     ],
+     "historicalOutcome": "子奸卢克丽霞，布鲁图率众逐王，立共和",
+     "id": "rome_tarq_superbus_e1",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "usurped"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_brutus",
+   "civilization": "rome",
+   "dynasty": "共和",
+   "name": "卢基乌斯·尤尼乌斯·布鲁图斯",
+   "templeName": "执政官",
+   "reignStart": -509,
+   "reignEnd": -509,
+   "evaluation": "共和奠基人",
+   "background": "逐暴王、立共和，任首任执政官，为法宁诛己子叛党，终战死。",
+   "eraContext": "新制初立，旧王党伺复辟，贵族与平民权力待分。",
+   "reignPremise": "以弑子护法，能否为共和立下不回头之锚？",
+   "voiceTag": "华赡",
+   "era": "共和",
+   "initStats": {
+    "treasury": 50,
+    "people": 50,
+    "military": 43,
+    "court": 42,
+    "health": 61,
+    "tech": 47
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_lib",
+     "name": "释奴谋臣",
+     "role": "密室之谋",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "rome_sen",
+     "name": "元老院首领",
+     "role": "元老之首",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": -509,
+     "month": 1,
+     "title": "立誓废王",
+     "description": "率民宣誓永不许王，设双执政官、强元老院。",
+     "historicalChoice": 0,
+     "choices": [
+      "立共和誓",
+      "留监察官",
+      "分权贵族",
+      "优抚平民",
+      "诛王党"
+     ],
+     "historicalOutcome": "率民宣誓永不许王，设双执政官、强元老院",
+     "id": "rome_brutus_e0",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "reform"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -509,
+     "month": 4,
+     "title": "诛子护法",
+     "description": "亲子谋复辟，亲判死刑以正国法。",
+     "historicalChoice": 0,
+     "choices": [
+      "依法诛子",
+      "流放其子",
+      "设陪审",
+      "大赦余党",
+      "强化誓约"
+     ],
+     "historicalOutcome": "亲子谋复辟，亲判死刑以正国法",
+     "id": "rome_brutus_e1",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -509,
+     "month": 7,
+     "title": "元老院龃龉",
+     "description": "元老院内部派系倾轧，法令受阻、人事难定。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "元老分党，法令壅塞",
+     "id": "rome_brutus_e2",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -509,
+     "month": 10,
+     "title": "公民兵拒征",
+     "description": "有产公民苦于连年征调，田荒债积，拒赴征兵集会，护民官从中鼓噪。",
+     "historicalChoice": 0,
+     "choices": [
+      "补饷安抚",
+      "严惩首恶",
+      "许以土地",
+      "调虎离山",
+      "谈判招抚"
+     ],
+     "historicalOutcome": "公民拒征，兵源枯竭",
+     "id": "rome_brutus_e3",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_legion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_consuls_494",
+   "civilization": "rome",
+   "dynasty": "共和",
+   "name": "执政官：维吉尼乌斯与维图里乌斯",
+   "templeName": "执政官",
+   "reignStart": -494,
+   "reignEnd": -494,
+   "evaluation": "平民首次撤离",
+   "background": "公元前494年，平民因债务与兵役集体撤至圣山，迫使贵族设保民官；本届双执政官体制下平民首获代言。",
+   "eraContext": "债务奴役盛行、平民拒战、贵族须让步以维兵源。",
+   "reignPremise": "无元首而靠年度执政官与平民撤离，共和如何在阶层张力中自稳？",
+   "voiceTag": "华赡",
+   "era": "共和",
+   "initStats": {
+    "treasury": 53,
+    "people": 53,
+    "military": 46,
+    "court": 45,
+    "health": 64,
+    "tech": 50
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_leg",
+     "name": "军团统帅",
+     "role": "鹰旗之下",
+     "voiceTag": "冷峻"
+    },
+    {
+     "id": "rome_pont",
+     "name": "大祭司",
+     "role": "神人之媒",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": -494,
+     "month": 1,
+     "title": "圣山撤离",
+     "description": "平民撤出罗马、拒役，逼贵族谈判。",
+     "historicalChoice": 0,
+     "choices": [
+      "让步设保民官",
+      "镇压",
+      "折中",
+      "联元老",
+      "缓行"
+     ],
+     "historicalOutcome": "平民撤出罗马、拒役，逼贵族谈判",
+     "id": "rome_consuls_494_e0",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "reform"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -494,
+     "month": 4,
+     "title": "保民官初立",
+     "description": "选保民官护平民、否决议案，阶层缓冲成制。",
+     "historicalChoice": 0,
+     "choices": [
+      "立保民官",
+      "限其权",
+      "交元老",
+      "设法条",
+      "缓行"
+     ],
+     "historicalOutcome": "选保民官护平民、否决议案，阶层缓冲成制",
+     "id": "rome_consuls_494_e1",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -494,
+     "month": 7,
+     "title": "元老院龃龉",
+     "description": "元老院内部派系倾轧，法令受阻、人事难定。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "元老分党，法令壅塞",
+     "id": "rome_consuls_494_e2",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -494,
+     "month": 10,
+     "title": "公民兵拒征",
+     "description": "有产公民苦于连年征调，田荒债积，拒赴征兵集会，护民官从中鼓噪。",
+     "historicalChoice": 0,
+     "choices": [
+      "补饷安抚",
+      "严惩首恶",
+      "许以土地",
+      "调虎离山",
+      "谈判招抚"
+     ],
+     "historicalOutcome": "公民拒征，兵源枯竭",
+     "id": "rome_consuls_494_e3",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_legion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_cincinnatus",
+   "civilization": "rome",
+   "dynasty": "共和",
+   "name": "辛辛纳图斯",
+   "templeName": "独裁官",
+   "reignStart": -458,
+   "reignEnd": -458,
+   "evaluation": "退隐农夫",
+   "background": "被召为独裁官退敌，十六日内平乱、即卸权归田，成共和美德象征。",
+   "eraContext": "外敌压境、执政官被困，需临时绝对权威。",
+   "reignPremise": "权柄在握仅十六日便归犁锄，这般克制能否为后世立范？",
+   "voiceTag": "质朴",
+   "era": "共和",
+   "initStats": {
+    "treasury": 64,
+    "people": 58,
+    "military": 47,
+    "court": 60,
+    "health": 66,
+    "tech": 40
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_leg",
+     "name": "军团统帅",
+     "role": "鹰旗之下",
+     "voiceTag": "冷峻"
+    },
+    {
+     "id": "rome_pont",
+     "name": "大祭司",
+     "role": "神人之媒",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": -458,
+     "month": 1,
+     "title": "临危受任",
+     "description": "元老院授独裁权，急募兵解围。",
+     "historicalChoice": 0,
+     "choices": [
+      "受任平乱",
+      "辞权保共和",
+      "限独裁期",
+      "联盟邦",
+      "优抚老兵"
+     ],
+     "historicalOutcome": "元老院授独裁权，急募兵解围",
+     "id": "rome_cincinnatus_e0",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -458,
+     "month": 4,
+     "title": "功成归田",
+     "description": "解围后即刻卸权返农，拒长期掌兵。",
+     "historicalChoice": 0,
+     "choices": [
+      "即卸权",
+      "受田赏",
+      "设先例",
+      "抑军功派",
+      "归隐"
+     ],
+     "historicalOutcome": "解围后即刻卸权返农，拒长期掌兵",
+     "id": "rome_cincinnatus_e1",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -458,
+     "month": 7,
+     "title": "公民兵拒征",
+     "description": "有产公民苦于连年征调，田荒债积，拒赴征兵集会，护民官从中鼓噪。",
+     "historicalChoice": 0,
+     "choices": [
+      "补饷安抚",
+      "严惩首恶",
+      "许以土地",
+      "调虎离山",
+      "谈判招抚"
+     ],
+     "historicalOutcome": "公民拒征，兵源枯竭",
+     "id": "rome_cincinnatus_e2",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_legion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -458,
+     "month": 10,
+     "title": "元老院龃龉",
+     "description": "元老院内部派系倾轧，法令受阻、人事难定。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "元老分党，法令壅塞",
+     "id": "rome_cincinnatus_e3",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_camillus",
+   "civilization": "rome",
+   "dynasty": "共和",
+   "name": "卡米卢斯",
+   "templeName": "独裁官",
+   "reignStart": -396,
+   "reignEnd": -365,
+   "evaluation": "罗马救星",
+   "background": "收复陷于高卢人之罗马，被视为建城以来第二奠基者，五度任独裁。",
+   "eraContext": "高卢人焚城、罗马几灭，士气崩散。",
+   "reignPremise": "城破之后，能否把残烬之城重新立起？",
+   "voiceTag": "冷峻",
+   "era": "共和",
+   "initStats": {
+    "treasury": 49,
+    "people": 45,
+    "military": 69,
+    "court": 53,
+    "health": 61,
+    "tech": 39
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_sen",
+     "name": "元老院首领",
+     "role": "元老之首",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "rome_leg",
+     "name": "军团统帅",
+     "role": "鹰旗之下",
+     "voiceTag": "冷峻"
+    }
+   ],
+   "events": [
+    {
+     "year": -395,
+     "month": null,
+     "title": "元老院龃龉",
+     "description": "元老院内部派系倾轧，法令受阻、人事难定。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "元老分党，法令壅塞",
+     "id": "rome_camillus_e2",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -394,
+     "month": null,
+     "title": "公民兵拒征",
+     "description": "有产公民苦于连年征调，田荒债积，拒赴征兵集会，护民官从中鼓噪。",
+     "historicalChoice": 0,
+     "choices": [
+      "补饷安抚",
+      "严惩首恶",
+      "许以土地",
+      "调虎离山",
+      "谈判招抚"
+     ],
+     "historicalOutcome": "公民拒征，兵源枯竭",
+     "id": "rome_camillus_e3",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_legion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -390,
+     "month": null,
+     "title": "高卢焚城",
+     "description": "高卢破罗马，卡米卢斯集结残军反攻收复。",
+     "historicalChoice": 0,
+     "choices": [
+      "募兵反击",
+      "先议和赎城",
+      "迁民南避",
+      "筑新防",
+      "联拉丁盟"
+     ],
+     "historicalOutcome": "高卢破罗马，卡米卢斯集结残军反攻收复",
+     "id": "rome_camillus_e0",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -367,
+     "month": null,
+     "title": "护贵族制",
+     "description": "抵制平民争任执政官，终妥协保寡头框架。",
+     "historicalChoice": 0,
+     "choices": [
+      "保贵族权",
+      "许平民执政",
+      "折中分权",
+      "设保民官",
+      "限任期"
+     ],
+     "historicalOutcome": "抵制平民争任执政官，终妥协保寡头框架",
+     "id": "rome_camillus_e1",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "scholar_oppose"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_consuls_390",
+   "civilization": "rome",
+   "dynasty": "共和",
+   "name": "执政官：苏尔皮基乌斯与法比乌斯",
+   "templeName": "执政官",
+   "reignStart": -390,
+   "reignEnd": -390,
+   "evaluation": "高卢焚城之年",
+   "background": "公元前390年，高卢人破罗马、焚城，元老院倚卡米卢斯反攻；本届执政官主城内防御与议赎。",
+   "eraContext": "高卢压境、城防崩溃、士气几灭。",
+   "reignPremise": "城破之年，年度执政官如何在亡城边缘维系国脉？",
+   "voiceTag": "冷峻",
+   "era": "共和",
+   "initStats": {
+    "treasury": 38,
+    "people": 37,
+    "military": 46,
+    "court": 37,
+    "health": 57,
+    "tech": 33
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_sen",
+     "name": "元老院首领",
+     "role": "元老之首",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "rome_leg",
+     "name": "军团统帅",
+     "role": "鹰旗之下",
+     "voiceTag": "冷峻"
+    }
+   ],
+   "events": [
+    {
+     "year": -390,
+     "month": 1,
+     "title": "高卢破城",
+     "description": "蛮族入城焚掠，执政官率残部退守卡皮托。",
+     "historicalChoice": 0,
+     "choices": [
+      "死守卡皮托",
+      "议赎城",
+      "弃城迁民",
+      "联拉丁",
+      "缓行"
+     ],
+     "historicalOutcome": "蛮族入城焚掠，执政官率残部退守卡皮托",
+     "id": "rome_consuls_390_e0",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_loss"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -390,
+     "month": 4,
+     "title": "赎回与反攻",
+     "description": "凑金赎城、待卡米卢斯反攻收复。",
+     "historicalChoice": 0,
+     "choices": [
+      "筹金赎城",
+      "抗缴",
+      "联残军",
+      "设防",
+      "归复"
+     ],
+     "historicalOutcome": "凑金赎城、待卡米卢斯反攻收复",
+     "id": "rome_consuls_390_e1",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -390,
+     "month": 7,
+     "title": "公民兵拒征",
+     "description": "有产公民苦于连年征调，田荒债积，拒赴征兵集会，护民官从中鼓噪。",
+     "historicalChoice": 0,
+     "choices": [
+      "补饷安抚",
+      "严惩首恶",
+      "许以土地",
+      "调虎离山",
+      "谈判招抚"
+     ],
+     "historicalOutcome": "公民拒征，兵源枯竭",
+     "id": "rome_consuls_390_e2",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_legion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -390,
+     "month": 10,
+     "title": "元老院龃龉",
+     "description": "元老院内部派系倾轧，法令受阻、人事难定。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "元老分党，法令壅塞",
+     "id": "rome_consuls_390_e3",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_consuls_264",
+   "civilization": "rome",
+   "dynasty": "共和",
+   "name": "执政官：克劳狄与弗拉库斯",
+   "templeName": "执政官",
+   "reignStart": -264,
+   "reignEnd": -264,
+   "evaluation": "布匿战起之年",
+   "background": "公元前264年，罗马介入西西里墨西拿，与迦太基开战，首届海战拉开两强百年角逐。",
+   "eraContext": "西西里争端、海军空白、迦太基海权压境。",
+   "reignPremise": "陆权之邦初造舰队跨海，年度执政官如何开启帝国序章？",
+   "voiceTag": "华赡",
+   "era": "共和",
+   "initStats": {
+    "treasury": 55,
+    "people": 47,
+    "military": 64,
+    "court": 49,
+    "health": 60,
+    "tech": 43
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_sen",
+     "name": "元老院首领",
+     "role": "元老之首",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "rome_leg",
+     "name": "军团统帅",
+     "role": "鹰旗之下",
+     "voiceTag": "冷峻"
+    }
+   ],
+   "events": [
+    {
+     "year": -264,
+     "month": 1,
+     "title": "介入西西里",
+     "description": "应墨西拿乞援出兵，与迦太基正面冲突。",
+     "historicalChoice": 0,
+     "choices": [
+      "出兵西西里",
+      "先外交",
+      "联叙拉古",
+      "筑港",
+      "缓行"
+     ],
+     "historicalOutcome": "应墨西拿乞援出兵，与迦太基正面冲突",
+     "id": "rome_consuls_264_e0",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -264,
+     "month": 4,
+     "title": "初造海军",
+     "description": "伐木建舰队，平民划桨手破海权垄断。",
+     "historicalChoice": 0,
+     "choices": [
+      "建军舰",
+      "雇希腊水手",
+      "联商贾",
+      "设船坞",
+      "缓行"
+     ],
+     "historicalOutcome": "伐木建舰队，平民划桨手破海权垄断",
+     "id": "rome_consuls_264_e1",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "reform"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -264,
+     "month": 7,
+     "title": "公民兵拒征",
+     "description": "有产公民苦于连年征调，田荒债积，拒赴征兵集会，护民官从中鼓噪。",
+     "historicalChoice": 0,
+     "choices": [
+      "补饷安抚",
+      "严惩首恶",
+      "许以土地",
+      "调虎离山",
+      "谈判招抚"
+     ],
+     "historicalOutcome": "公民拒征，兵源枯竭",
+     "id": "rome_consuls_264_e2",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_legion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -264,
+     "month": 10,
+     "title": "元老院龃龉",
+     "description": "元老院内部派系倾轧，法令受阻、人事难定。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "元老分党，法令壅塞",
+     "id": "rome_consuls_264_e3",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_consuls_216",
+   "civilization": "rome",
+   "dynasty": "共和",
+   "name": "执政官：保卢斯与瓦罗",
+   "templeName": "执政官",
+   "reignStart": -216,
+   "reignEnd": -216,
+   "evaluation": "坎尼之败之年",
+   "background": "公元前216年，两执政官合兵与汉尼拔决战坎尼，八万罗马军几灭，却未求和、续战。",
+   "eraContext": "汉尼拔纵横意大利、同盟动摇、兵员枯竭。",
+   "reignPremise": "惨败之年，年度执政官如何在灭顶之灾里不让共和低头？",
+   "voiceTag": "冷峻",
+   "era": "共和",
+   "initStats": {
+    "treasury": 39,
+    "people": 38,
+    "military": 47,
+    "court": 38,
+    "health": 58,
+    "tech": 34
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_leg",
+     "name": "军团统帅",
+     "role": "鹰旗之下",
+     "voiceTag": "冷峻"
+    },
+    {
+     "id": "rome_pont",
+     "name": "大祭司",
+     "role": "神人之媒",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": -216,
+     "month": 1,
+     "title": "坎尼会战",
+     "description": "瓦罗主战、保卢斯阵亡，罗马军被合围歼灭。",
+     "historicalChoice": 0,
+     "choices": [
+      "决战",
+      "分兵避战",
+      "固城",
+      "联同盟",
+      "缓行"
+     ],
+     "historicalOutcome": "瓦罗主战、保卢斯阵亡，罗马军被合围歼灭",
+     "id": "rome_consuls_216_e0",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_loss"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -216,
+     "month": 4,
+     "title": "败而不降",
+     "description": "拒和、募奴隶为兵、守意大利待转机。",
+     "historicalChoice": 0,
+     "choices": [
+      "拒和续战",
+      "议和",
+      "募释奴",
+      "联西班牙",
+      "设防"
+     ],
+     "historicalOutcome": "拒和、募奴隶为兵、守意大利待转机",
+     "id": "rome_consuls_216_e1",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -216,
+     "month": 7,
+     "title": "公民兵拒征",
+     "description": "有产公民苦于连年征调，田荒债积，拒赴征兵集会，护民官从中鼓噪。",
+     "historicalChoice": 0,
+     "choices": [
+      "补饷安抚",
+      "严惩首恶",
+      "许以土地",
+      "调虎离山",
+      "谈判招抚"
+     ],
+     "historicalOutcome": "公民拒征，兵源枯竭",
+     "id": "rome_consuls_216_e2",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_legion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -216,
+     "month": 10,
+     "title": "元老院龃龉",
+     "description": "元老院内部派系倾轧，法令受阻、人事难定。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "元老分党，法令壅塞",
+     "id": "rome_consuls_216_e3",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_consuls_146",
+   "civilization": "rome",
+   "dynasty": "共和",
+   "name": "执政官：穆米乌斯与伦图卢斯",
+   "templeName": "执政官",
+   "reignStart": -146,
+   "reignEnd": -146,
+   "evaluation": "希腊覆灭之年",
+   "background": "公元前146年，罗马平希腊 Achaea 同盟、毁科林斯，东西地中海霸权尽归罗马；同年迦太基亦陷。",
+   "eraContext": "希腊自治诉求、罗马霸权定型、东方财富涌入。",
+   "reignPremise": "双线凯旋之年，年度执政官如何把共和推向帝国？",
+   "voiceTag": "华赡",
+   "era": "共和",
+   "initStats": {
+    "treasury": 48,
+    "people": 51,
+    "military": 68,
+    "court": 53,
+    "health": 53,
+    "tech": 36
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_lib",
+     "name": "释奴谋臣",
+     "role": "密室之谋",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "rome_sen",
+     "name": "元老院首领",
+     "role": "元老之首",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": -146,
+     "month": 1,
+     "title": "毁科林斯",
+     "description": "平 Achaea 同盟、夷科林斯示威，希腊臣服。",
+     "historicalChoice": 0,
+     "choices": [
+      "夷城立威",
+      "宽待",
+      "联希腊精英",
+      "设行省",
+      "缓行"
+     ],
+     "historicalOutcome": "平 Achaea 同盟、夷科林斯示威，希腊臣服",
+     "id": "rome_consuls_146_e0",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -146,
+     "month": 4,
+     "title": "迦太基同陷",
+     "description": "西庇阿毁迦太基，千年敌国成罗马属地。",
+     "historicalChoice": 0,
+     "choices": [
+      "并阿非利加",
+      "留城",
+      "联努米底亚",
+      "设总督",
+      "缓行"
+     ],
+     "historicalOutcome": "西庇阿毁迦太基，千年敌国成罗马属地",
+     "id": "rome_consuls_146_e1",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "unify"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -146,
+     "month": 7,
+     "title": "公民兵拒征",
+     "description": "有产公民苦于连年征调，田荒债积，拒赴征兵集会，护民官从中鼓噪。",
+     "historicalChoice": 0,
+     "choices": [
+      "补饷安抚",
+      "严惩首恶",
+      "许以土地",
+      "调虎离山",
+      "谈判招抚"
+     ],
+     "historicalOutcome": "公民拒征，兵源枯竭",
+     "id": "rome_consuls_146_e2",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_legion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -146,
+     "month": 10,
+     "title": "元老院龃龉",
+     "description": "元老院内部派系倾轧，法令受阻、人事难定。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "元老分党，法令壅塞",
+     "id": "rome_consuls_146_e3",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_tiberius_gracchus",
+   "civilization": "rome",
+   "dynasty": "共和",
+   "name": "提比略·格拉古",
+   "templeName": "保民官",
+   "reignStart": -133,
+   "reignEnd": -133,
+   "evaluation": "土地改革者",
+   "background": "任保民官行土地法，限占公地、分给贫民，触贵族利，被害于任上。",
+   "eraContext": "公地尽归豪强、平民失地从军难，兵源与稳定告急。",
+   "reignPremise": "以分地救贫弱，能否在不流血中撼动豪强？",
+   "voiceTag": "华赡",
+   "era": "共和",
+   "initStats": {
+    "treasury": 45,
+    "people": 56,
+    "military": 49,
+    "court": 48,
+    "health": 56,
+    "tech": 42
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_sen",
+     "name": "元老院首领",
+     "role": "元老之首",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "rome_leg",
+     "name": "军团统帅",
+     "role": "鹰旗之下",
+     "voiceTag": "冷峻"
+    }
+   ],
+   "events": [
+    {
+     "year": -133,
+     "month": 1,
+     "title": "土地法之争",
+     "description": "提限占公地、分给无地者，贵族以贿渎渎阻。",
+     "historicalChoice": 0,
+     "choices": [
+      "强推土法",
+      "折中限亩",
+      "设委员会",
+      "贿反对者",
+      "诉诸民会"
+     ],
+     "historicalOutcome": "提限占公地、分给无地者，贵族以贿渎渎阻",
+     "id": "rome_tiberius_gracchus_e0",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "reform"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -133,
+     "month": 4,
+     "title": "再选与遇害",
+     "description": "谋求连任触怒元老，偕弟被殴杀于 Capitol。",
+     "historicalChoice": 0,
+     "choices": [
+      "竞选连任",
+      "退守",
+      "武装自卫",
+      "联平民",
+      "诉诸元老"
+     ],
+     "historicalOutcome": "谋求连任触怒元老，偕弟被殴杀于 Capitol",
+     "id": "rome_tiberius_gracchus_e1",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "usurped"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -133,
+     "month": 7,
+     "title": "元老院龃龉",
+     "description": "元老院内部派系倾轧，法令受阻、人事难定。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "元老分党，法令壅塞",
+     "id": "rome_tiberius_gracchus_e2",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -133,
+     "month": 10,
+     "title": "公民兵拒征",
+     "description": "有产公民苦于连年征调，田荒债积，拒赴征兵集会，护民官从中鼓噪。",
+     "historicalChoice": 0,
+     "choices": [
+      "补饷安抚",
+      "严惩首恶",
+      "许以土地",
+      "调虎离山",
+      "谈判招抚"
+     ],
+     "historicalOutcome": "公民拒征，兵源枯竭",
+     "id": "rome_tiberius_gracchus_e3",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_legion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_gaius_gracchus",
+   "civilization": "rome",
+   "dynasty": "共和",
+   "name": "盖乌斯·格拉古",
+   "templeName": "保民官",
+   "reignStart": -123,
+   "reignEnd": -121,
+   "evaluation": "兄志续者",
+   "background": "续行兄策，加授粮、建殖民、授拉丁同盟公民权，终兵围自杀。",
+   "eraContext": "改革派与元老对峙，意大利同盟求权未果。",
+   "reignPremise": "步步进逼的改革，如何撞上元老的墙？",
+   "voiceTag": "华赡",
+   "era": "共和",
+   "initStats": {
+    "treasury": 50,
+    "people": 50,
+    "military": 43,
+    "court": 42,
+    "health": 61,
+    "tech": 47
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_pont",
+     "name": "大祭司",
+     "role": "神人之媒",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "rome_lib",
+     "name": "释奴谋臣",
+     "role": "密室之谋",
+     "voiceTag": "质朴"
+    }
+   ],
+   "events": [
+    {
+     "year": -123,
+     "month": null,
+     "title": "平粜与殖民",
+     "description": "设平价粮、建海外殖民以安贫民。",
+     "historicalChoice": 0,
+     "choices": [
+      "行平粜",
+      "限规模",
+      "设殖民",
+      "联骑士",
+      "暂缓"
+     ],
+     "historicalOutcome": "设平价粮、建海外殖民以安贫民",
+     "id": "rome_gaius_gracchus_e0",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "reform"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -122,
+     "month": 1,
+     "title": "授同盟公民权",
+     "description": "许拉丁同盟公民权，遭罗马平民反对而败。",
+     "historicalChoice": 0,
+     "choices": [
+      "强推公民权",
+      "折中",
+      "弃同盟案",
+      "联骑士",
+      "退守"
+     ],
+     "historicalOutcome": "许拉丁同盟公民权，遭罗马平民反对而败",
+     "id": "rome_gaius_gracchus_e1",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "scholar_oppose"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -122,
+     "month": 7,
+     "title": "元老院龃龉",
+     "description": "元老院内部派系倾轧，法令受阻、人事难定。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "元老分党，法令壅塞",
+     "id": "rome_gaius_gracchus_e3",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -121,
+     "month": null,
+     "title": "兵围自尽",
+     "description": "元老授权「护国」出兵，盖乌斯兵败自尽。",
+     "historicalChoice": 0,
+     "choices": [
+      "武装对峙",
+      "自杀全节",
+      "流亡",
+      "求和",
+      "诉诸民会"
+     ],
+     "historicalOutcome": "元老授权「护国」出兵，盖乌斯兵败自尽",
+     "id": "rome_gaius_gracchus_e2",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "usurped"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_marius",
+   "civilization": "rome",
+   "dynasty": "共和",
+   "name": "马略",
+   "templeName": "执政官",
+   "reignStart": -107,
+   "reignEnd": -86,
+   "evaluation": "军事改革者",
+   "background": "改革征兵、以志愿贫民代财产兵，七任执政官，胜朱古达与辛布里，开军阀先河。",
+   "eraContext": "小农破产、兵源枯竭，外敌朱古达与日耳曼压境。",
+   "reignPremise": "以无产者充军、以战功绑将，共和的兵是谁的兵？",
+   "voiceTag": "冷峻",
+   "era": "共和",
+   "initStats": {
+    "treasury": 50,
+    "people": 46,
+    "military": 70,
+    "court": 54,
+    "health": 62,
+    "tech": 40
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_lib",
+     "name": "释奴谋臣",
+     "role": "密室之谋",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "rome_sen",
+     "name": "元老院首领",
+     "role": "元老之首",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": -107,
+     "month": null,
+     "title": "募兵改革",
+     "description": "废财产限、募志愿兵，兵附将领而非国。",
+     "historicalChoice": 0,
+     "choices": [
+      "行志愿兵",
+      "保公民兵",
+      "折中",
+      "设军饷",
+      "限服役"
+     ],
+     "historicalOutcome": "废财产限、募志愿兵，兵附将领而非国",
+     "id": "rome_marius_e0",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "reform"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -106,
+     "month": null,
+     "title": "军团哗变",
+     "description": "边省军团因欠饷或将帅野心哗变，兵锋内向。",
+     "historicalChoice": 0,
+     "choices": [
+      "补饷安抚",
+      "严惩首恶",
+      "许以土地",
+      "调虎离山",
+      "谈判招抚"
+     ],
+     "historicalOutcome": "军团哗变，兵锋内向",
+     "id": "rome_marius_e3",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_legion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -102,
+     "month": null,
+     "title": "胜日耳曼",
+     "description": "阿拉乌斯之役灭辛布里，解意大利之危。",
+     "historicalChoice": 0,
+     "choices": [
+      "决战灭敌",
+      "先固防",
+      "联盟友",
+      "迁民实边",
+      "优抚老兵"
+     ],
+     "historicalOutcome": "阿拉乌斯之役灭辛布里，解意大利之危",
+     "id": "rome_marius_e1",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -88,
+     "month": null,
+     "title": "率军入城",
+     "description": "与苏拉争令，首开罗马人攻罗马之恶例。",
+     "historicalChoice": 0,
+     "choices": [
+      "兵入罗马",
+      "先法争",
+      "和解",
+      "联平民",
+      "避内战"
+     ],
+     "historicalOutcome": "与苏拉争令，首开罗马人攻罗马之恶例",
+     "id": "rome_marius_e2",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "usurped"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_consuls_88",
+   "civilization": "rome",
+   "dynasty": "共和",
+   "name": "执政官：苏拉与庞培乌斯",
+   "templeName": "执政官",
+   "reignStart": -88,
+   "reignEnd": -88,
+   "evaluation": "进军罗马之年",
+   "background": "公元前88年，执政官苏拉为争米特里达提征伐令，首率军向罗马进军，逐马略派，开内战先河。",
+   "eraContext": "东方战事、马略苏拉争功、平民与贵族撕裂。",
+   "reignPremise": "执政官以军团向自己的城邦进军，共和的红线由谁守、由谁破？",
+   "voiceTag": "冷峻",
+   "era": "共和",
+   "initStats": {
+    "treasury": 48,
+    "people": 44,
+    "military": 68,
+    "court": 52,
+    "health": 60,
+    "tech": 38
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_sen",
+     "name": "元老院首领",
+     "role": "元老之首",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "rome_leg",
+     "name": "军团统帅",
+     "role": "鹰旗之下",
+     "voiceTag": "冷峻"
+    }
+   ],
+   "events": [
+    {
+     "year": -88,
+     "month": 1,
+     "title": "争东征令",
+     "description": "元老改令予马略，苏拉愤而率军团入罗马。",
+     "historicalChoice": 0,
+     "choices": [
+      "兵入罗马",
+      "先法争",
+      "和解分权",
+      "联元老",
+      "避内战"
+     ],
+     "historicalOutcome": "元老改令予马略，苏拉愤而率军团入罗马",
+     "id": "rome_consuls_88_e0",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "usurped"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -88,
+     "month": 4,
+     "title": "逐马略派",
+     "description": "占城、整肃对手、东征米特里达提。",
+     "historicalChoice": 0,
+     "choices": [
+      "肃敌",
+      "限名单",
+      "大赦",
+      "联东方",
+      "设监护"
+     ],
+     "historicalOutcome": "占城、整肃对手、东征米特里达提",
+     "id": "rome_consuls_88_e1",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "scholar_purge"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -88,
+     "month": 7,
+     "title": "元老院龃龉",
+     "description": "元老院内部派系倾轧，法令受阻、人事难定。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "元老分党，法令壅塞",
+     "id": "rome_consuls_88_e2",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -88,
+     "month": 10,
+     "title": "军团哗变",
+     "description": "边省军团因欠饷或将帅野心哗变，兵锋内向。",
+     "historicalChoice": 0,
+     "choices": [
+      "补饷安抚",
+      "严惩首恶",
+      "许以土地",
+      "调虎离山",
+      "谈判招抚"
+     ],
+     "historicalOutcome": "军团哗变，兵锋内向",
+     "id": "rome_consuls_88_e3",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_legion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_sulla",
+   "civilization": "rome",
+   "dynasty": "共和",
+   "name": "苏拉",
+   "templeName": "独裁官",
+   "reignStart": -82,
+   "reignEnd": -79,
+   "evaluation": "独裁与反扑",
+   "background": "率军占罗马、任终身独裁，整肃政敌（公敌宣告）、抑保民官，后突然引退。",
+   "eraContext": "马略派与贵族派血斗，共和制度失序。",
+   "reignPremise": "以恐怖整肃复位，又骤然归隐，这独裁是药还是毒？",
+   "voiceTag": "冷峻",
+   "era": "共和",
+   "initStats": {
+    "treasury": 47,
+    "people": 43,
+    "military": 67,
+    "court": 51,
+    "health": 59,
+    "tech": 37
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_lib",
+     "name": "释奴谋臣",
+     "role": "密室之谋",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "rome_sen",
+     "name": "元老院首领",
+     "role": "元老之首",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": -82,
+     "month": null,
+     "title": "公敌宣告",
+     "description": "列名肃清政敌，血流罗马，巩固权位。",
+     "historicalChoice": 0,
+     "choices": [
+      "行公敌肃",
+      "限名单",
+      "大赦",
+      "联元老",
+      "设法庭"
+     ],
+     "historicalOutcome": "列名肃清政敌，血流罗马，巩固权位",
+     "id": "rome_sulla_e0",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "scholar_purge"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -81,
+     "month": 1,
+     "title": "宪制整饬",
+     "description": "削保民官权、扩元老院，欲还政贵族。",
+     "historicalChoice": 0,
+     "choices": [
+      "抑民官",
+      "扩元老",
+      "折中",
+      "设任期",
+      "限独裁"
+     ],
+     "historicalOutcome": "削保民官权、扩元老院，欲还政贵族",
+     "id": "rome_sulla_e1",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "reform"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -81,
+     "month": 7,
+     "title": "元老院龃龉",
+     "description": "元老院内部派系倾轧，法令受阻、人事难定。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "元老分党，法令壅塞",
+     "id": "rome_sulla_e3",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -79,
+     "month": null,
+     "title": "突引退",
+     "description": "骤然卸独裁归私园，震动罗马。",
+     "historicalChoice": 0,
+     "choices": [
+      "即卸权",
+      "留监护",
+      "荐继任",
+      "归隐",
+      "设先例"
+     ],
+     "historicalOutcome": "骤然卸独裁归私园，震动罗马",
+     "id": "rome_sulla_e2",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_pompey",
+   "civilization": "rome",
+   "dynasty": "共和",
+   "name": "庞培",
+   "templeName": "执政官",
+   "reignStart": -70,
+   "reignEnd": -48,
+   "evaluation": "三头之一",
+   "background": "平海盗、征东方、与恺撒克拉苏结前三头，终于法萨卢败于恺撒、逃埃被杀。",
+   "eraContext": "东方功高震主、元老猜忌，与恺撒由婿而敌。",
+   "reignPremise": "功盖天下却困于元老与婿敌，名将如何自处？",
+   "voiceTag": "冷峻",
+   "era": "共和",
+   "initStats": {
+    "treasury": 47,
+    "people": 43,
+    "military": 67,
+    "court": 51,
+    "health": 59,
+    "tech": 37
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_sen",
+     "name": "元老院首领",
+     "role": "元老之首",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "rome_leg",
+     "name": "军团统帅",
+     "role": "鹰旗之下",
+     "voiceTag": "冷峻"
+    }
+   ],
+   "events": [
+    {
+     "year": -69,
+     "month": null,
+     "title": "元老院龃龉",
+     "description": "元老院内部派系倾轧，法令受阻、人事难定。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "元老分党，法令壅塞",
+     "id": "rome_pompey_e3",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -67,
+     "month": null,
+     "title": "清地中海海盗",
+     "description": "获广权三月肃清海盗，通商路复。",
+     "historicalChoice": 0,
+     "choices": [
+      "广权剿匪",
+      "限权",
+      "联海军",
+      "设基地",
+      "优抚降者"
+     ],
+     "historicalOutcome": "获广权三月肃清海盗，通商路复",
+     "id": "rome_pompey_e0",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -60,
+     "month": null,
+     "title": "结前三头",
+     "description": "与恺撒、克拉苏密约分权，共和名存实亡。",
+     "historicalChoice": 0,
+     "choices": [
+      "结盟分权",
+      "联元老抗",
+      "折中",
+      "设代理人",
+      "暂缓"
+     ],
+     "historicalOutcome": "与恺撒、克拉苏密约分权，共和名存实亡",
+     "id": "rome_pompey_e1",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "usurped"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -48,
+     "month": null,
+     "title": "法萨卢之败",
+     "description": "与恺撒决战失利，逃埃及被杀。",
+     "historicalChoice": 0,
+     "choices": [
+      "决战",
+      "先固东方",
+      "议和",
+      "联帕提亚",
+      "退守"
+     ],
+     "historicalOutcome": "与恺撒决战失利，逃埃及被杀",
+     "id": "rome_pompey_e2",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_loss"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_cicero",
+   "civilization": "rome",
+   "dynasty": "共和",
+   "name": "西塞罗",
+   "templeName": "执政官",
+   "reignStart": -63,
+   "reignEnd": -43,
+   "evaluation": "演说家执政",
+   "background": "以演说揭喀提林阴谋、护共和，终在后三头清洗中被杀。",
+   "eraContext": "共和末世、阴谋与兵争交织，文士难挽狂澜。",
+   "reignPremise": "以辞锋护法，能否在刀兵时代为共和留一声？",
+   "voiceTag": "华赡",
+   "era": "共和",
+   "initStats": {
+    "treasury": 44,
+    "people": 55,
+    "military": 48,
+    "court": 47,
+    "health": 55,
+    "tech": 41
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_lib",
+     "name": "释奴谋臣",
+     "role": "密室之谋",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "rome_sen",
+     "name": "元老院首领",
+     "role": "元老之首",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": -63,
+     "month": null,
+     "title": "挫喀提林",
+     "description": "揭发喀提林篡谋，处决党羽，护共和。",
+     "historicalChoice": 0,
+     "choices": [
+      "即处决",
+      "交审判",
+      "大赦",
+      "联元老",
+      "设警卫"
+     ],
+     "historicalOutcome": "揭发喀提林篡谋，处决党羽，护共和",
+     "id": "rome_cicero_e0",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "scholar_oppose"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -62,
+     "month": null,
+     "title": "军团哗变",
+     "description": "边省军团因欠饷或将帅野心哗变，兵锋内向。",
+     "historicalChoice": 0,
+     "choices": [
+      "补饷安抚",
+      "严惩首恶",
+      "许以土地",
+      "调虎离山",
+      "谈判招抚"
+     ],
+     "historicalOutcome": "军团哗变，兵锋内向",
+     "id": "rome_cicero_e2",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_legion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -61,
+     "month": null,
+     "title": "元老院龃龉",
+     "description": "元老院内部派系倾轧，法令受阻、人事难定。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "元老分党，法令壅塞",
+     "id": "rome_cicero_e3",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -43,
+     "month": null,
+     "title": "腓力辩与死",
+     "description": "后三头列名，西塞罗被安东尼所杀，悬首示众。",
+     "historicalChoice": 0,
+     "choices": [
+      "抗辩",
+      "流亡",
+      "联屋大维",
+      "求和",
+      "退隐著书"
+     ],
+     "historicalOutcome": "后三头列名，西塞罗被安东尼所杀，悬首示众",
+     "id": "rome_cicero_e1",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "usurped"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_caesar",
+   "civilization": "rome",
+   "dynasty": "共和",
+   "name": "盖乌斯·尤利乌斯·恺撒",
+   "templeName": "独裁官",
+   "reignStart": -49,
+   "reignEnd": -44,
+   "evaluation": "跨卢比孔",
+   "background": "跨卢比孔河进军罗马、胜庞培、任终身独裁，行历法改革、广授公民，终被元老刺杀。",
+   "eraContext": "共和末世、兵权在握，元老惧其称王。",
+   "reignPremise": "以战功与宽赦凌驾共和，这一步跨过便无回桥？",
+   "voiceTag": "冷峻",
+   "era": "共和",
+   "initStats": {
+    "treasury": 43,
+    "people": 50,
+    "military": 74,
+    "court": 58,
+    "health": 55,
+    "tech": 33
+   },
+   "tier": "A",
+   "cast": [
+    {
+     "id": "rome_leg",
+     "name": "军团统帅",
+     "role": "鹰旗之下",
+     "voiceTag": "冷峻"
+    },
+    {
+     "id": "rome_pont",
+     "name": "大祭司",
+     "role": "神人之媒",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "rome_lib",
+     "name": "释奴谋臣",
+     "role": "密室之谋",
+     "voiceTag": "质朴"
+    }
+   ],
+   "events": [
+    {
+     "year": -49,
+     "month": null,
+     "title": "跨卢比孔",
+     "description": "率军越界向罗马进军，内战爆发。",
+     "historicalChoice": 0,
+     "choices": [
+      "渡河进军",
+      "先外交",
+      "固高卢",
+      "联平民",
+      "避战"
+     ],
+     "historicalOutcome": "率军越界向罗马进军，内战爆发",
+     "id": "rome_caesar_e0",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -46,
+     "month": null,
+     "title": "胜庞培派",
+     "description": "法萨卢、塔普苏斯连胜，控罗马全域。",
+     "historicalChoice": 0,
+     "choices": [
+      "穷追残敌",
+      "宽赦降者",
+      "设行省",
+      "优抚老兵",
+      "返罗马"
+     ],
+     "historicalOutcome": "法萨卢、塔普苏斯连胜，控罗马全域",
+     "id": "rome_caesar_e1",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -45,
+     "month": null,
+     "title": "行儒略历",
+     "description": "颁新历（儒略历）定岁首，影响千年。",
+     "historicalChoice": 0,
+     "choices": [
+      "颁新历",
+      "折中旧历",
+      "设祭司",
+      "联学者",
+      "暂缓"
+     ],
+     "historicalOutcome": "颁新历（儒略历）定岁首，影响千年",
+     "id": "rome_caesar_e2",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "reform"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -44,
+     "month": null,
+     "title": "刺杀于元老院",
+     "description": "以「为国除暴」被布鲁图等刺杀，共和终幕。",
+     "historicalChoice": 0,
+     "choices": [
+      "宽赦政敌",
+      "受终身衔",
+      "设护卫",
+      "联元老",
+      "退隐"
+     ],
+     "historicalOutcome": "以「为国除暴」被布鲁图等刺杀，共和终幕",
+     "id": "rome_caesar_e3",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "usurped"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_antony",
+   "civilization": "rome",
+   "dynasty": "共和",
+   "name": "马克·安东尼",
+   "templeName": "后三头",
+   "reignStart": -43,
+   "reignEnd": -30,
+   "evaluation": "东方的陨落",
+   "background": "与屋大维、雷必达结后三头，分掌东方，恋克里奥帕特拉，终败于阿克提乌姆、自尽。",
+   "eraContext": "后三头裂、屋大维西控、安东尼东倚埃及。",
+   "reignPremise": "以东方为基、以情为累，能否敌过屋大维的算计？",
+   "voiceTag": "冷峻",
+   "era": "共和",
+   "initStats": {
+    "treasury": 40,
+    "people": 47,
+    "military": 71,
+    "court": 55,
+    "health": 63,
+    "tech": 30
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_lib",
+     "name": "释奴谋臣",
+     "role": "密室之谋",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "rome_sen",
+     "name": "元老院首领",
+     "role": "元老之首",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": -43,
+     "month": null,
+     "title": "结后三头",
+     "description": "与屋大维、雷必达分治，行公敌肃清。",
+     "historicalChoice": 0,
+     "choices": [
+      "盟分治",
+      "联元老",
+      "折中",
+      "设代理人",
+      "暂缓"
+     ],
+     "historicalOutcome": "与屋大维、雷必达分治，行公敌肃清",
+     "id": "rome_antony_e0",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "usurped"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -42,
+     "month": null,
+     "title": "军团哗变",
+     "description": "边省军团因欠饷或将帅野心哗变，兵锋内向。",
+     "historicalChoice": 0,
+     "choices": [
+      "补饷安抚",
+      "严惩首恶",
+      "许以土地",
+      "调虎离山",
+      "谈判招抚"
+     ],
+     "historicalOutcome": "军团哗变，兵锋内向",
+     "id": "rome_antony_e3",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_legion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -31,
+     "month": null,
+     "title": "阿克提乌姆",
+     "description": "海战败于屋大维，东方基业崩。",
+     "historicalChoice": 0,
+     "choices": [
+      "决战",
+      "先固埃及",
+      "议和",
+      "联帕提亚",
+      "退守"
+     ],
+     "historicalOutcome": "海战败于屋大维，东方基业崩",
+     "id": "rome_antony_e1",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_loss"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -30,
+     "month": null,
+     "title": "自尽",
+     "description": "屋大维入埃及，安东尼与克里奥帕特拉相继自尽。",
+     "historicalChoice": 0,
+     "choices": [
+      "死战",
+      "自杀全节",
+      "求和",
+      "联埃及",
+      "流亡"
+     ],
+     "historicalOutcome": "屋大维入埃及，安东尼与克里奥帕特拉相继自尽",
+     "id": "rome_antony_e2",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "weak"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_augustus",
+   "civilization": "rome",
+   "dynasty": "帝国",
+   "name": "奥古斯都（屋大维）",
+   "templeName": "皇帝",
+   "reignStart": -27,
+   "reignEnd": 14,
+   "evaluation": "首任皇帝，罗马和平",
+   "background": "击败安东尼、结束百年内乱，称「第一公民」，行元首制、整军、兴文治，开两百年太平。",
+   "eraContext": "共和废墟上需新秩序，边患与继承待定。",
+   "reignPremise": "以共和之名行帝制之实，如何把刀兵熬成和平？",
+   "voiceTag": "质朴",
+   "era": "帝国",
+   "initStats": {
+    "treasury": 64,
+    "people": 58,
+    "military": 47,
+    "court": 60,
+    "health": 66,
+    "tech": 40
+   },
+   "tier": "A",
+   "cast": [
+    {
+     "id": "rome_lib",
+     "name": "释奴谋臣",
+     "role": "密室之谋",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "rome_sen",
+     "name": "元老院首领",
+     "role": "元老之首",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "rome_leg",
+     "name": "军团统帅",
+     "role": "鹰旗之下",
+     "voiceTag": "冷峻"
+    }
+   ],
+   "events": [
+    {
+     "year": -27,
+     "month": null,
+     "title": "元首制成型",
+     "description": "辞「独裁」名、受「奥古斯都」号，掌军与元老共治。",
+     "historicalChoice": 0,
+     "choices": [
+      "立元首制",
+      "保元老面",
+      "设禁卫",
+      "限任期",
+      "优抚老兵"
+     ],
+     "historicalOutcome": "辞「独裁」名、受「奥古斯都」号，掌军与元老共治",
+     "id": "rome_augustus_e0",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": -2,
+     "month": null,
+     "title": "整军与边",
+     "description": "定常备军、设行省总督，固莱茵多瑙之防。",
+     "historicalChoice": 0,
+     "choices": [
+      "常备军",
+      "限军费",
+      "设边墙",
+      "联附庸",
+      "折中"
+     ],
+     "historicalOutcome": "定常备军、设行省总督，固莱茵多瑙之防",
+     "id": "rome_augustus_e1",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 4,
+     "month": null,
+     "title": "定继承",
+     "description": "收养提比略为继，开养子继承先例。",
+     "historicalChoice": 0,
+     "choices": [
+      "养子继",
+      "血亲子",
+      "元老推",
+      "设监国",
+      "暂缓"
+     ],
+     "historicalOutcome": "收养提比略为继，开养子继承先例",
+     "id": "rome_augustus_e3",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 9,
+     "month": null,
+     "title": "条顿堡之挫",
+     "description": "瓦卢斯三军团覆没于日耳曼林，弃东扩日耳曼。",
+     "historicalChoice": 0,
+     "choices": [
+      "固守莱茵",
+      "复仇再征",
+      "联附庸",
+      "设缓冲区",
+      "撤"
+     ],
+     "historicalOutcome": "瓦卢斯三军团覆没于日耳曼林，弃东扩日耳曼",
+     "id": "rome_augustus_e2",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_loss"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 14,
+     "month": null,
+     "title": "和平而终",
+     "description": "在位四十载，罗马由乱入治，谥「神」。",
+     "historicalChoice": 0,
+     "choices": [
+      "传位",
+      "立宪交权",
+      "兴文治",
+      "恤民",
+      "归葬"
+     ],
+     "historicalOutcome": "在位四十载，罗马由乱入治，谥「神」",
+     "id": "rome_augustus_e4",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_tiberius",
+   "civilization": "rome",
+   "dynasty": "帝国",
+   "name": "提比略",
+   "templeName": "皇帝",
+   "reignStart": 14,
+   "reignEnd": 37,
+   "evaluation": "隐忍之君",
+   "background": "奥古斯都养子，善治军却多疑，晚年退卡普里、任近卫长官弄权。",
+   "eraContext": "继承 legitimacy 弱、元老猜忌、边境待稳。",
+   "reignPremise": "能臣而寡欢，猜忌如何蚀掉明君之名？",
+   "voiceTag": "质朴",
+   "era": "帝国",
+   "initStats": {
+    "treasury": 58,
+    "people": 63,
+    "military": 52,
+    "court": 65,
+    "health": 60,
+    "tech": 34
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_leg",
+     "name": "军团统帅",
+     "role": "鹰旗之下",
+     "voiceTag": "冷峻"
+    },
+    {
+     "id": "rome_pont",
+     "name": "大祭司",
+     "role": "神人之媒",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": 14,
+     "month": null,
+     "title": "稳继位",
+     "description": "平莱茵兵变、立威，续奥古斯都策。",
+     "historicalChoice": 0,
+     "choices": [
+      "平兵变",
+      "大赦",
+      "优抚",
+      "设监",
+      "暂缓"
+     ],
+     "historicalOutcome": "平莱茵兵变、立威，续奥古斯都策",
+     "id": "rome_tiberius_e0",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 15,
+     "month": null,
+     "title": "军团哗变",
+     "description": "边省军团因欠饷或将帅野心哗变，兵锋内向。",
+     "historicalChoice": 0,
+     "choices": [
+      "补饷安抚",
+      "严惩首恶",
+      "许以土地",
+      "调虎离山",
+      "谈判招抚"
+     ],
+     "historicalOutcome": "军团哗变，兵锋内向",
+     "id": "rome_tiberius_e2",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_legion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 16,
+     "month": null,
+     "title": "元老院龃龉",
+     "description": "元老院内部派系倾轧，法令受阻、人事难定。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "元老分党，法令壅塞",
+     "id": "rome_tiberius_e3",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 26,
+     "month": null,
+     "title": "退卡普里",
+     "description": "离罗马、委近卫长官，朝纲渐弛。",
+     "historicalChoice": 0,
+     "choices": [
+      "退隐遥控",
+      "留朝",
+      "设摄政",
+      "联元老",
+      "归省"
+     ],
+     "historicalOutcome": "离罗马、委近卫长官，朝纲渐弛",
+     "id": "rome_tiberius_e1",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "weak"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_caligula",
+   "civilization": "rome",
+   "dynasty": "帝国",
+   "name": "卡里古拉",
+   "templeName": "皇帝",
+   "reignStart": 37,
+   "reignEnd": 41,
+   "evaluation": "暴君",
+   "background": "初得人心，病后暴虐、自命神、滥费与滥杀，终被近卫刺杀。",
+   "eraContext": "病后性格剧变、财政因前朝奢糜告急。",
+   "reignPremise": "从明君苗子到疯王，权不受制会怎样？",
+   "voiceTag": "质朴",
+   "era": "帝国",
+   "initStats": {
+    "treasury": 41,
+    "people": 39,
+    "military": 43,
+    "court": 40,
+    "health": 50,
+    "tech": 33
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_sen",
+     "name": "元老院首领",
+     "role": "元老之首",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "rome_leg",
+     "name": "军团统帅",
+     "role": "鹰旗之下",
+     "voiceTag": "冷峻"
+    }
+   ],
+   "events": [
+    {
+     "year": 38,
+     "month": 1,
+     "title": "滥费与自神",
+     "description": "耗国库、令臣称神，失元老与军心。",
+     "historicalChoice": 0,
+     "choices": [
+      "崇己为神",
+      "稍敛",
+      "设祭",
+      "联近卫",
+      "限费"
+     ],
+     "historicalOutcome": "耗国库、令臣称神，失元老与军心",
+     "id": "rome_caligula_e0",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "weak"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 38,
+     "month": 7,
+     "title": "元老院龃龉",
+     "description": "元老院内部派系倾轧，法令受阻、人事难定。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "元老分党，法令壅塞",
+     "id": "rome_caligula_e2",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 39,
+     "month": null,
+     "title": "军团哗变",
+     "description": "边省军团因欠饷或将帅野心哗变，兵锋内向。",
+     "historicalChoice": 0,
+     "choices": [
+      "补饷安抚",
+      "严惩首恶",
+      "许以土地",
+      "调虎离山",
+      "谈判招抚"
+     ],
+     "historicalOutcome": "军团哗变，兵锋内向",
+     "id": "rome_caligula_e3",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_legion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 41,
+     "month": null,
+     "title": "被刺",
+     "description": "近卫密谋，元老乐见，卡里古拉死于刀下。",
+     "historicalChoice": 0,
+     "choices": [
+      "镇压",
+      "退避",
+      "联元老",
+      "设护卫",
+      "流亡"
+     ],
+     "historicalOutcome": "近卫密谋，元老乐见，卡里古拉死于刀下",
+     "id": "rome_caligula_e1",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "usurped"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_claudius",
+   "civilization": "rome",
+   "dynasty": "帝国",
+   "name": "克劳狄",
+   "templeName": "皇帝",
+   "reignStart": 41,
+   "reignEnd": 54,
+   "evaluation": "学者皇帝",
+   "background": "被视为愚钝而被推上位，实则善政：扩公民权、征服不列颠、整司法。",
+   "eraContext": "近卫拥立、宫廷阴私、扩张待决。",
+   "reignPremise": "被轻视者反成能吏，这皇帝真傻还是装傻？",
+   "voiceTag": "华赡",
+   "era": "帝国",
+   "initStats": {
+    "treasury": 52,
+    "people": 52,
+    "military": 45,
+    "court": 44,
+    "health": 63,
+    "tech": 49
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_sen",
+     "name": "元老院首领",
+     "role": "元老之首",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "rome_leg",
+     "name": "军团统帅",
+     "role": "鹰旗之下",
+     "voiceTag": "冷峻"
+    }
+   ],
+   "events": [
+    {
+     "year": 42,
+     "month": null,
+     "title": "元老院龃龉",
+     "description": "元老院内部派系倾轧，法令受阻、人事难定。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "元老分党，法令壅塞",
+     "id": "rome_claudius_e3",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 43,
+     "month": null,
+     "title": "征服不列颠",
+     "description": "出兵不列颠，拓帝国西北疆。",
+     "historicalChoice": 0,
+     "choices": [
+      "远征不列颠",
+      "先外交",
+      "设附庸",
+      "限规模",
+      "缓行"
+     ],
+     "historicalOutcome": "出兵不列颠，拓帝国西北疆",
+     "id": "rome_claudius_e0",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 48,
+     "month": null,
+     "title": "扩公民权",
+     "description": "许高卢等行省精英入元老院，融帝国。",
+     "historicalChoice": 0,
+     "choices": [
+      "扩公民权",
+      "限范围",
+      "设行省议",
+      "联精英",
+      "暂缓"
+     ],
+     "historicalOutcome": "许高卢等行省精英入元老院，融帝国",
+     "id": "rome_claudius_e1",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "reform"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 54,
+     "month": null,
+     "title": "宫闱而终",
+     "description": "疑被妻阿格里皮娜毒杀，尼禄继。",
+     "historicalChoice": 0,
+     "choices": [
+      "传尼禄",
+      "立遗嘱",
+      "设监护",
+      "联元老",
+      "归葬"
+     ],
+     "historicalOutcome": "疑被妻阿格里皮娜毒杀，尼禄继",
+     "id": "rome_claudius_e2",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "weak"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_nero",
+   "civilization": "rome",
+   "dynasty": "帝国",
+   "name": "尼禄",
+   "templeName": "皇帝",
+   "reignStart": 54,
+   "reignEnd": 68,
+   "evaluation": "焚城与崩",
+   "background": "初受贤臣辅，后杀母杀师、大兴土木、疑焚罗马嫁祸基督徒，终众叛自尽，朱里亚·克劳狄亡。",
+   "eraContext": "母后干政、财政虚耗、行省与军心动摇。",
+   "reignPremise": "从琴艺少年到众叛之君，放纵如何烧穿王座？",
+   "voiceTag": "质朴",
+   "era": "帝国",
+   "initStats": {
+    "treasury": 38,
+    "people": 47,
+    "military": 40,
+    "court": 48,
+    "health": 47,
+    "tech": 30
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_pont",
+     "name": "大祭司",
+     "role": "神人之媒",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "rome_lib",
+     "name": "释奴谋臣",
+     "role": "密室之谋",
+     "voiceTag": "质朴"
+    }
+   ],
+   "events": [
+    {
+     "year": 55,
+     "month": null,
+     "title": "元老院龃龉",
+     "description": "元老院内部派系倾轧，法令受阻、人事难定。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "元老分党，法令壅塞",
+     "id": "rome_nero_e3",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 59,
+     "month": null,
+     "title": "杀母专权",
+     "description": "除母后阿格里皮娜，独揽大权。",
+     "historicalChoice": 0,
+     "choices": [
+      "诛母党",
+      "流放",
+      "设监护",
+      "联近卫",
+      "暂缓"
+     ],
+     "historicalOutcome": "除母后阿格里皮娜，独揽大权",
+     "id": "rome_nero_e0",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "usurped"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 64,
+     "month": null,
+     "title": "罗马大火",
+     "description": "城焚，传尼禄袖手，嫁祸基督徒迫害起。",
+     "historicalChoice": 0,
+     "choices": [
+      "赈灾安民",
+      "嫁祸基督徒",
+      "查真凶",
+      "设重建",
+      "限赋"
+     ],
+     "historicalOutcome": "城焚，传尼禄袖手，嫁祸基督徒迫害起",
+     "id": "rome_nero_e1",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "weak"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 68,
+     "month": null,
+     "title": "众叛自尽",
+     "description": "高卢与西班牙起兵，元老判死，尼禄自尽。",
+     "historicalChoice": 0,
+     "choices": [
+      "镇压",
+      "自杀",
+      "议和",
+      "联近卫",
+      "流亡"
+     ],
+     "historicalOutcome": "高卢与西班牙起兵，元老判死，尼禄自尽",
+     "id": "rome_nero_e2",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "usurped"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_vespasian",
+   "civilization": "rome",
+   "dynasty": "帝国",
+   "name": "韦斯巴芗",
+   "templeName": "皇帝",
+   "reignStart": 69,
+   "reignEnd": 79,
+   "evaluation": "弗拉维中兴",
+   "background": "内战后即位，整财政、征犹太、建斗兽场，开弗拉维朝。",
+   "eraContext": "四帝之年乱后、库空、犹太叛乱。",
+   "reignPremise": "以老兵之实补帝国的虚，能否稳住倾摇之舟？",
+   "voiceTag": "质朴",
+   "era": "帝国",
+   "initStats": {
+    "treasury": 58,
+    "people": 63,
+    "military": 52,
+    "court": 65,
+    "health": 60,
+    "tech": 34
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_sen",
+     "name": "元老院首领",
+     "role": "元老之首",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "rome_leg",
+     "name": "军团统帅",
+     "role": "鹰旗之下",
+     "voiceTag": "冷峻"
+    }
+   ],
+   "events": [
+    {
+     "year": 70,
+     "month": 1,
+     "title": "平犹太",
+     "description": "提图斯破耶路撒冷，平犹太之乱。",
+     "historicalChoice": 0,
+     "choices": [
+      "远征平叛",
+      "先招抚",
+      "设驻军",
+      "联附庸",
+      "限规模"
+     ],
+     "historicalOutcome": "提图斯破耶路撒冷，平犹太之乱",
+     "id": "rome_vespasian_e0",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 70,
+     "month": 7,
+     "title": "军团哗变",
+     "description": "边省军团因欠饷或将帅野心哗变，兵锋内向。",
+     "historicalChoice": 0,
+     "choices": [
+      "补饷安抚",
+      "严惩首恶",
+      "许以土地",
+      "调虎离山",
+      "谈判招抚"
+     ],
+     "historicalOutcome": "军团哗变，兵锋内向",
+     "id": "rome_vespasian_e3",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_legion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 72,
+     "month": null,
+     "title": "整财政",
+     "description": "增税、查漏、省冗，补内战亏空。",
+     "historicalChoice": 0,
+     "choices": [
+      "增税补库",
+      "省冗费",
+      "设审计",
+      "联商贾",
+      "恤民"
+     ],
+     "historicalOutcome": "增税、查漏、省冗，补内战亏空",
+     "id": "rome_vespasian_e1",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "tax_heavy"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 75,
+     "month": null,
+     "title": "建斗兽场",
+     "description": "以战俘劳建弗拉维圆形剧场，凝聚民意。",
+     "historicalChoice": 0,
+     "choices": [
+      "建剧场",
+      "限费",
+      "设工程",
+      "联民",
+      "暂缓"
+     ],
+     "historicalOutcome": "以战俘劳建弗拉维圆形剧场，凝聚民意",
+     "id": "rome_vespasian_e2",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_titus",
+   "civilization": "rome",
+   "dynasty": "帝国",
+   "name": "提图斯",
+   "templeName": "皇帝",
+   "reignStart": 79,
+   "reignEnd": 81,
+   "evaluation": "仁君",
+   "background": "韦斯巴芗子，短祚而贤：平犹太、赈 Pompeii 火山灾、宽政。",
+   "eraContext": "维苏威喷发、财政待复、继承未稳。",
+   "reignPremise": "两年贤主，天灾与仁政齐来，如何留名？",
+   "voiceTag": "质朴",
+   "era": "帝国",
+   "initStats": {
+    "treasury": 67,
+    "people": 61,
+    "military": 50,
+    "court": 63,
+    "health": 69,
+    "tech": 43
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_lib",
+     "name": "释奴谋臣",
+     "role": "密室之谋",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "rome_sen",
+     "name": "元老院首领",
+     "role": "元老之首",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": 79,
+     "month": null,
+     "title": "维苏威之灾",
+     "description": "庞贝与赫库兰尼姆被埋，提图斯赈灾安葬。",
+     "historicalChoice": 0,
+     "choices": [
+      "开仓赈灾",
+      "设祭",
+      "迁民",
+      "联元老",
+      "限赋"
+     ],
+     "historicalOutcome": "庞贝与赫库兰尼姆被埋，提图斯赈灾安葬",
+     "id": "rome_titus_e0",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "famine"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 80,
+     "month": null,
+     "title": "元老院龃龉",
+     "description": "元老院内部派系倾轧，法令受阻、人事难定。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "元老分党，法令壅塞",
+     "id": "rome_titus_e2",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 81,
+     "month": 1,
+     "title": "宽政而终",
+     "description": "短祚病逝，民悼「人类的短暂喜悦」。",
+     "historicalChoice": 0,
+     "choices": [
+      "传弟",
+      "大赦",
+      "优抚",
+      "设纪念",
+      "归葬"
+     ],
+     "historicalOutcome": "短祚病逝，民悼「人类的短暂喜悦」",
+     "id": "rome_titus_e1",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 81,
+     "month": 7,
+     "title": "军团哗变",
+     "description": "边省军团因欠饷或将帅野心哗变，兵锋内向。",
+     "historicalChoice": 0,
+     "choices": [
+      "补饷安抚",
+      "严惩首恶",
+      "许以土地",
+      "调虎离山",
+      "谈判招抚"
+     ],
+     "historicalOutcome": "军团哗变，兵锋内向",
+     "id": "rome_titus_e3",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_legion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_domitian",
+   "civilization": "rome",
+   "dynasty": "帝国",
+   "name": "图密善",
+   "templeName": "皇帝",
+   "reignStart": 81,
+   "reignEnd": 96,
+   "evaluation": "恐怖统治",
+   "background": "强化君权、整军备、兴建筑，然多疑滥杀，终被元老刺杀，弗拉维朝终。",
+   "eraContext": "元老离心、边境紧张、个人崇拜过度。",
+   "reignPremise": "能政与暴政一线间，猜忌如何招来刀？",
+   "voiceTag": "冷峻",
+   "era": "帝国",
+   "initStats": {
+    "treasury": 47,
+    "people": 43,
+    "military": 67,
+    "court": 51,
+    "health": 59,
+    "tech": 37
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_lib",
+     "name": "释奴谋臣",
+     "role": "密室之谋",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "rome_sen",
+     "name": "元老院首领",
+     "role": "元老之首",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": 82,
+     "month": null,
+     "title": "元老院龃龉",
+     "description": "元老院内部派系倾轧，法令受阻、人事难定。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "元老分党，法令壅塞",
+     "id": "rome_domitian_e3",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 83,
+     "month": null,
+     "title": "征卡蒂",
+     "description": "莱茵多瑙整军、征日耳曼卡蒂部。",
+     "historicalChoice": 0,
+     "choices": [
+      "远征",
+      "先固防",
+      "设边墙",
+      "联附庸",
+      "缓行"
+     ],
+     "historicalOutcome": "莱茵多瑙整军、征日耳曼卡蒂部",
+     "id": "rome_domitian_e0",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 89,
+     "month": null,
+     "title": "元老之惧",
+     "description": "整肃元老、称「主与神」， paranoia 升级。",
+     "historicalChoice": 0,
+     "choices": [
+      "强君权",
+      "稍敛",
+      "设密探",
+      "联近卫",
+      "限杀"
+     ],
+     "historicalOutcome": "整肃元老、称「主与神」， paranoia 升级",
+     "id": "rome_domitian_e1",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "scholar_purge"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 96,
+     "month": null,
+     "title": "被刺",
+     "description": "元老与近卫合谋，图密善死于寝宫。",
+     "historicalChoice": 0,
+     "choices": [
+      "镇压",
+      "退避",
+      "联元老",
+      "设护卫",
+      "流亡"
+     ],
+     "historicalOutcome": "元老与近卫合谋，图密善死于寝宫",
+     "id": "rome_domitian_e2",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "usurped"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_trajan",
+   "civilization": "rome",
+   "dynasty": "帝国",
+   "name": "图拉真",
+   "templeName": "皇帝",
+   "reignStart": 98,
+   "reignEnd": 117,
+   "evaluation": "极盛之君",
+   "background": "贤帝，扩疆至达契亚与美索不达米亚，行赡老、兴公益，帝国版图至极。",
+   "eraContext": "边患达契亚与帕提亚、内政待抚。",
+   "reignPremise": "以征服把帝国推到极限，盛极之后如何守？",
+   "voiceTag": "华赡",
+   "era": "帝国",
+   "initStats": {
+    "treasury": 48,
+    "people": 51,
+    "military": 68,
+    "court": 53,
+    "health": 53,
+    "tech": 36
+   },
+   "tier": "A",
+   "cast": [
+    {
+     "id": "rome_pont",
+     "name": "大祭司",
+     "role": "神人之媒",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "rome_lib",
+     "name": "释奴谋臣",
+     "role": "密室之谋",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "rome_sen",
+     "name": "元老院首领",
+     "role": "元老之首",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": 101,
+     "month": null,
+     "title": "征达契亚",
+     "description": "两征达契亚，拓多瑙之疆、获金矿。",
+     "historicalChoice": 0,
+     "choices": [
+      "远征拓疆",
+      "先招抚",
+      "设行省",
+      "联附庸",
+      "限规模"
+     ],
+     "historicalOutcome": "两征达契亚，拓多瑙之疆、获金矿",
+     "id": "rome_trajan_e0",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 107,
+     "month": null,
+     "title": "赡老兴公",
+     "description": "设赡老金、建道路广场，惠民政。",
+     "historicalChoice": 0,
+     "choices": [
+      "行公益",
+      "限费",
+      "设基金",
+      "联市政",
+      "暂缓"
+     ],
+     "historicalOutcome": "设赡老金、建道路广场，惠民政",
+     "id": "rome_trajan_e2",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 114,
+     "month": null,
+     "title": "东征帕提亚",
+     "description": "破帕提亚、置美索不达米亚省，版图极盛。",
+     "historicalChoice": 0,
+     "choices": [
+      "东征",
+      "先外交",
+      "设附庸",
+      "限驻军",
+      "缓行"
+     ],
+     "historicalOutcome": "破帕提亚、置美索不达米亚省，版图极盛",
+     "id": "rome_trajan_e1",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 117,
+     "month": null,
+     "title": "极盛而终",
+     "description": "东征难守，还师途中崩，哈德良弃东省。",
+     "historicalChoice": 0,
+     "choices": [
+      "传哈德良",
+      "弃东省",
+      "固两河",
+      "设监护",
+      "归葬"
+     ],
+     "historicalOutcome": "东征难守，还师途中崩，哈德良弃东省",
+     "id": "rome_trajan_e3",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_hadrian",
+   "civilization": "rome",
+   "dynasty": "帝国",
+   "name": "哈德良",
+   "templeName": "皇帝",
+   "reignStart": 117,
+   "reignEnd": 138,
+   "evaluation": "筑墙者",
+   "background": "弃图拉真东省、固边、筑不列颠长城、巡行帝国、崇希腊文化。",
+   "eraContext": "疆过广难守、行省待抚、文化融合。",
+   "reignPremise": "以退为守、以巡代征，能否把庞大帝国缝紧？",
+   "voiceTag": "质朴",
+   "era": "帝国",
+   "initStats": {
+    "treasury": 62,
+    "people": 56,
+    "military": 56,
+    "court": 69,
+    "health": 64,
+    "tech": 38
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_leg",
+     "name": "军团统帅",
+     "role": "鹰旗之下",
+     "voiceTag": "冷峻"
+    },
+    {
+     "id": "rome_pont",
+     "name": "大祭司",
+     "role": "神人之媒",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": 118,
+     "month": null,
+     "title": "元老院龃龉",
+     "description": "元老院内部派系倾轧，法令受阻、人事难定。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "元老分党，法令壅塞",
+     "id": "rome_hadrian_e2",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 119,
+     "month": null,
+     "title": "军团哗变",
+     "description": "边省军团因欠饷或将帅野心哗变，兵锋内向。",
+     "historicalChoice": 0,
+     "choices": [
+      "补饷安抚",
+      "严惩首恶",
+      "许以土地",
+      "调虎离山",
+      "谈判招抚"
+     ],
+     "historicalOutcome": "军团哗变，兵锋内向",
+     "id": "rome_hadrian_e3",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_legion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 122,
+     "month": null,
+     "title": "筑哈德良墙",
+     "description": "不列颠北疆筑石墙，定守势。",
+     "historicalChoice": 0,
+     "choices": [
+      "筑墙固防",
+      "设驻军",
+      "联蛮族",
+      "限征",
+      "缓行"
+     ],
+     "historicalOutcome": "不列颠北疆筑石墙，定守势",
+     "id": "rome_hadrian_e0",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 130,
+     "month": null,
+     "title": "巡行与希腊热",
+     "description": "遍巡行省、崇雅典、建华构，融多元。",
+     "historicalChoice": 0,
+     "choices": [
+      "巡行抚民",
+      "限费",
+      "设文化节",
+      "联精英",
+      "暂缓"
+     ],
+     "historicalOutcome": "遍巡行省、崇雅典、建华构，融多元",
+     "id": "rome_hadrian_e1",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_antoninus",
+   "civilization": "rome",
+   "dynasty": "帝国",
+   "name": "安敦宁·毕尤",
+   "templeName": "皇帝",
+   "reignStart": 138,
+   "reignEnd": 161,
+   "evaluation": "贤帝",
+   "background": "以和平仁厚著称，国库充盈、司法宽平，养子马可继。",
+   "eraContext": "承平日久、边防待备、继承有序。",
+   "reignPremise": "无为而治的太平，靠的是什么底子？",
+   "voiceTag": "质朴",
+   "era": "帝国",
+   "initStats": {
+    "treasury": 62,
+    "people": 56,
+    "military": 56,
+    "court": 69,
+    "health": 64,
+    "tech": 38
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_leg",
+     "name": "军团统帅",
+     "role": "鹰旗之下",
+     "voiceTag": "冷峻"
+    },
+    {
+     "id": "rome_pont",
+     "name": "大祭司",
+     "role": "神人之媒",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": 139,
+     "month": null,
+     "title": "军团哗变",
+     "description": "边省军团因欠饷或将帅野心哗变，兵锋内向。",
+     "historicalChoice": 0,
+     "choices": [
+      "补饷安抚",
+      "严惩首恶",
+      "许以土地",
+      "调虎离山",
+      "谈判招抚"
+     ],
+     "historicalOutcome": "军团哗变，兵锋内向",
+     "id": "rome_antoninus_e2",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_legion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 140,
+     "month": 1,
+     "title": "宽政惠民",
+     "description": "轻赋、修法、赈灾，太平之治。",
+     "historicalChoice": 0,
+     "choices": [
+      "轻赋",
+      "修法",
+      "设仓储",
+      "联元老",
+      "暂缓"
+     ],
+     "historicalOutcome": "轻赋、修法、赈灾，太平之治",
+     "id": "rome_antoninus_e0",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 140,
+     "month": 7,
+     "title": "元老院龃龉",
+     "description": "元老院内部派系倾轧，法令受阻、人事难定。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "元老分党，法令壅塞",
+     "id": "rome_antoninus_e3",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 160,
+     "month": null,
+     "title": "传贤",
+     "description": "养子马可·奥勒留继，贤嗣相承。",
+     "historicalChoice": 0,
+     "choices": [
+      "传养子",
+      "传亲子",
+      "设共帝",
+      "联元老",
+      "暂缓"
+     ],
+     "historicalOutcome": "养子马可·奥勒留继，贤嗣相承",
+     "id": "rome_antoninus_e1",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_marcus",
+   "civilization": "rome",
+   "dynasty": "帝国",
+   "name": "马可·奥勒留",
+   "templeName": "皇帝",
+   "reignStart": 161,
+   "reignEnd": 180,
+   "evaluation": "哲人皇帝",
+   "background": "贤帝兼斯多葛哲人，御马可曼尼之役、写《沉思录》，传子康茂德致衰始。",
+   "eraContext": "北方蛮族压境、瘟疫流行、继承难题。",
+   "reignPremise": "以哲思御蛮、以贤名传世，却把帝国交给了庸子？",
+   "voiceTag": "质朴",
+   "era": "帝国",
+   "initStats": {
+    "treasury": 58,
+    "people": 63,
+    "military": 52,
+    "court": 65,
+    "health": 60,
+    "tech": 34
+   },
+   "tier": "A",
+   "cast": [
+    {
+     "id": "rome_leg",
+     "name": "军团统帅",
+     "role": "鹰旗之下",
+     "voiceTag": "冷峻"
+    },
+    {
+     "id": "rome_pont",
+     "name": "大祭司",
+     "role": "神人之媒",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "rome_lib",
+     "name": "释奴谋臣",
+     "role": "密室之谋",
+     "voiceTag": "质朴"
+    }
+   ],
+   "events": [
+    {
+     "year": 162,
+     "month": null,
+     "title": "元老院龃龉",
+     "description": "元老院内部派系倾轧，法令受阻、人事难定。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "元老分党，法令壅塞",
+     "id": "rome_marcus_e3",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 166,
+     "month": null,
+     "title": "马可曼尼之战",
+     "description": "北方蛮族越多瑙，亲征苦战。",
+     "historicalChoice": 0,
+     "choices": [
+      "亲征御蛮",
+      "先固防",
+      "设边市",
+      "联附庸",
+      "缓行"
+     ],
+     "historicalOutcome": "北方蛮族越多瑙，亲征苦战",
+     "id": "rome_marcus_e0",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 168,
+     "month": null,
+     "title": "大疫与文",
+     "description": "瘟疫肆虐，仍著《沉思录》、整法赈民。",
+     "historicalChoice": 0,
+     "choices": [
+      "赈疫",
+      "修法",
+      "设医",
+      "联元老",
+      "暂缓"
+     ],
+     "historicalOutcome": "瘟疫肆虐，仍著《沉思录》、整法赈民",
+     "id": "rome_marcus_e1",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "famine"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 177,
+     "month": null,
+     "title": "立康茂德",
+     "description": "幼子共治，埋下衰乱之种。",
+     "historicalChoice": 0,
+     "choices": [
+      "立亲子",
+      "立养子",
+      "设监护",
+      "联元老",
+      "暂缓"
+     ],
+     "historicalOutcome": "幼子共治，埋下衰乱之种",
+     "id": "rome_marcus_e2",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "weak"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_commodus",
+   "civilization": "rome",
+   "dynasty": "帝国",
+   "name": "康茂德",
+   "templeName": "皇帝",
+   "reignStart": 180,
+   "reignEnd": 192,
+   "evaluation": "堕落的终结",
+   "background": "弑妹杀臣、自比赫拉克勒斯、斗兽为乐，终被扼杀，安敦宁朝终、乱世启。",
+   "eraContext": "父荫而骄、朝纲崩、近卫弄权。",
+   "reignPremise": "哲人之子成斗兽之主，德不配位会怎样？",
+   "voiceTag": "质朴",
+   "era": "帝国",
+   "initStats": {
+    "treasury": 36,
+    "people": 45,
+    "military": 38,
+    "court": 46,
+    "health": 45,
+    "tech": 28
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_leg",
+     "name": "军团统帅",
+     "role": "鹰旗之下",
+     "voiceTag": "冷峻"
+    },
+    {
+     "id": "rome_pont",
+     "name": "大祭司",
+     "role": "神人之媒",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": 181,
+     "month": null,
+     "title": "军团哗变",
+     "description": "边省军团因欠饷或将帅野心哗变，兵锋内向。",
+     "historicalChoice": 0,
+     "choices": [
+      "补饷安抚",
+      "严惩首恶",
+      "许以土地",
+      "调虎离山",
+      "谈判招抚"
+     ],
+     "historicalOutcome": "军团哗变，兵锋内向",
+     "id": "rome_commodus_e2",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_legion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 182,
+     "month": 1,
+     "title": "暴敛与斗兽",
+     "description": "滥费斗兽、自神化，财政与民心俱损。",
+     "historicalChoice": 0,
+     "choices": [
+      "斗兽自娱",
+      "稍敛",
+      "设工程",
+      "联近卫",
+      "限费"
+     ],
+     "historicalOutcome": "滥费斗兽、自神化，财政与民心俱损",
+     "id": "rome_commodus_e0",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "weak"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 182,
+     "month": 7,
+     "title": "元老院龃龉",
+     "description": "元老院内部派系倾轧，法令受阻、人事难定。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "元老分党，法令壅塞",
+     "id": "rome_commodus_e3",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 192,
+     "month": null,
+     "title": "被扼杀",
+     "description": "近卫与元老合谋，康茂德于浴室被扼。",
+     "historicalChoice": 0,
+     "choices": [
+      "镇压",
+      "退避",
+      "联近卫",
+      "设护卫",
+      "流亡"
+     ],
+     "historicalOutcome": "近卫与元老合谋，康茂德于浴室被扼",
+     "id": "rome_commodus_e1",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "usurped"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_severus",
+   "civilization": "rome",
+   "dynasty": "帝国",
+   "name": "塞普蒂米乌斯·塞维鲁",
+   "templeName": "皇帝",
+   "reignStart": 193,
+   "reignEnd": 211,
+   "evaluation": "军营皇帝",
+   "background": "内战后即位，倚军、提军饷、弱元老，遗言「富兵、余可不顾」。",
+   "eraContext": "帝位频易、军权崛起、元老失势。",
+   "reignPremise": "把帝国绑上军饷的战车，能稳多久？",
+   "voiceTag": "冷峻",
+   "era": "帝国",
+   "initStats": {
+    "treasury": 49,
+    "people": 45,
+    "military": 69,
+    "court": 53,
+    "health": 61,
+    "tech": 39
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_lib",
+     "name": "释奴谋臣",
+     "role": "密室之谋",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "rome_sen",
+     "name": "元老院首领",
+     "role": "元老之首",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": 194,
+     "month": null,
+     "title": "元老院龃龉",
+     "description": "元老院内部派系倾轧，法令受阻、人事难定。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "元老分党，法令壅塞",
+     "id": "rome_severus_e3",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 197,
+     "month": null,
+     "title": "平内敌",
+     "description": "击败争位者，定一尊。",
+     "historicalChoice": 0,
+     "choices": [
+      "决战",
+      "先招抚",
+      "设驻军",
+      "联近卫",
+      "限杀"
+     ],
+     "historicalOutcome": "击败争位者，定一尊",
+     "id": "rome_severus_e0",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 208,
+     "month": null,
+     "title": "不列颠远征",
+     "description": "亲征不列颠、固北疆，崩于约克。",
+     "historicalChoice": 0,
+     "choices": [
+      "远征固边",
+      "先固防",
+      "设边墙",
+      "联附庸",
+      "缓行"
+     ],
+     "historicalOutcome": "亲征不列颠、固北疆，崩于约克",
+     "id": "rome_severus_e1",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 211,
+     "month": null,
+     "title": "遗命富兵",
+     "description": "诫子「和军、侮余可也」，军权凌驾文治。",
+     "historicalChoice": 0,
+     "choices": [
+      "厚饷军",
+      "抑元老",
+      "设监护",
+      "联近卫",
+      "暂缓"
+     ],
+     "historicalOutcome": "诫子「和军、侮余可也」，军权凌驾文治",
+     "id": "rome_severus_e2",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "militarist"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_caracalla",
+   "civilization": "rome",
+   "dynasty": "帝国",
+   "name": "卡拉卡拉",
+   "templeName": "皇帝",
+   "reignStart": 211,
+   "reignEnd": 217,
+   "evaluation": "公民权敕令",
+   "background": "杀弟独尊、颁敕赐全体自由民公民权（实增税源）、暴虐，终被近卫杀。",
+   "eraContext": "内战隐患、财政紧、兵骄。",
+   "reignPremise": "广授公民权以充库，权谋与暴虐齐行？",
+   "voiceTag": "质朴",
+   "era": "帝国",
+   "initStats": {
+    "treasury": 43,
+    "people": 41,
+    "military": 34,
+    "court": 42,
+    "health": 52,
+    "tech": 35
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_pont",
+     "name": "大祭司",
+     "role": "神人之媒",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "rome_lib",
+     "name": "释奴谋臣",
+     "role": "密室之谋",
+     "voiceTag": "质朴"
+    }
+   ],
+   "events": [
+    {
+     "year": 212,
+     "month": 1,
+     "title": "安东尼敕令",
+     "description": "许帝国全体自由民为公民，扩税基。",
+     "historicalChoice": 0,
+     "choices": [
+      "广授公民",
+      "限税",
+      "设登记",
+      "联商贾",
+      "暂缓"
+     ],
+     "historicalOutcome": "许帝国全体自由民为公民，扩税基",
+     "id": "rome_caracalla_e0",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "tax_heavy"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 212,
+     "month": 7,
+     "title": "军团哗变",
+     "description": "边省军团因欠饷或将帅野心哗变，兵锋内向。",
+     "historicalChoice": 0,
+     "choices": [
+      "补饷安抚",
+      "严惩首恶",
+      "许以土地",
+      "调虎离山",
+      "谈判招抚"
+     ],
+     "historicalOutcome": "军团哗变，兵锋内向",
+     "id": "rome_caracalla_e2",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_legion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 213,
+     "month": null,
+     "title": "元老院龃龉",
+     "description": "元老院内部派系倾轧，法令受阻、人事难定。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "元老分党，法令壅塞",
+     "id": "rome_caracalla_e3",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 217,
+     "month": null,
+     "title": "被刺",
+     "description": "东征途中被近卫杀，兵祸再起。",
+     "historicalChoice": 0,
+     "choices": [
+      "镇压",
+      "退避",
+      "联近卫",
+      "设护卫",
+      "流亡"
+     ],
+     "historicalOutcome": "东征途中被近卫杀，兵祸再起",
+     "id": "rome_caracalla_e1",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "usurped"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_diocletian",
+   "civilization": "rome",
+   "dynasty": "帝国",
+   "name": "戴克里先",
+   "templeName": "皇帝",
+   "reignStart": 284,
+   "reignEnd": 305,
+   "evaluation": "四帝共治",
+   "background": "_end乱世、行四帝共治、分东西、整价令、大迫基督徒，后主动退隐。",
+   "eraContext": "三世纪危机后疆裂、价乱、继承乱。",
+   "reignPremise": "以分权与铁腕止血，又主动交权，这 dictator 与众不同？",
+   "voiceTag": "华赡",
+   "era": "帝国",
+   "initStats": {
+    "treasury": 46,
+    "people": 57,
+    "military": 50,
+    "court": 49,
+    "health": 57,
+    "tech": 43
+   },
+   "tier": "A",
+   "cast": [
+    {
+     "id": "rome_pont",
+     "name": "大祭司",
+     "role": "神人之媒",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "rome_lib",
+     "name": "释奴谋臣",
+     "role": "密室之谋",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "rome_sen",
+     "name": "元老院首领",
+     "role": "元老之首",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": 286,
+     "month": null,
+     "title": "四帝共治",
+     "description": "分东西两奥古斯都、两凯撒，分疆而治。",
+     "historicalChoice": 0,
+     "choices": [
+      "行四帝制",
+      "保独尊",
+      "设副手",
+      "联军",
+      "缓行"
+     ],
+     "historicalOutcome": "分东西两奥古斯都、两凯撒，分疆而治",
+     "id": "rome_diocletian_e0",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "reform"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 301,
+     "month": null,
+     "title": "限价敕令",
+     "description": "颁最高限价令抑通胀，成效不彰。",
+     "historicalChoice": 0,
+     "choices": [
+      "行限价",
+      "折中",
+      "设监察",
+      "联商贾",
+      "暂缓"
+     ],
+     "historicalOutcome": "颁最高限价令抑通胀，成效不彰",
+     "id": "rome_diocletian_e1",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "tax_heavy"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 303,
+     "month": null,
+     "title": "大迫基督教",
+     "description": "颁令迫基督徒，教难起。",
+     "historicalChoice": 0,
+     "choices": [
+      "迫教",
+      "限范围",
+      "设祭",
+      "联元老",
+      "暂缓"
+     ],
+     "historicalOutcome": "颁令迫基督徒，教难起",
+     "id": "rome_diocletian_e2",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "scholar_purge"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 305,
+     "month": null,
+     "title": "主动退隐",
+     "description": "首位主动禅位归园，破「皇帝至死」惯例。",
+     "historicalChoice": 0,
+     "choices": [
+      "即退隐",
+      "留监护",
+      "荐继",
+      "设先例",
+      "归田"
+     ],
+     "historicalOutcome": "首位主动禅位归园，破「皇帝至死」惯例",
+     "id": "rome_diocletian_e3",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_constantine",
+   "civilization": "rome",
+   "dynasty": "帝国",
+   "name": "君士坦丁大帝",
+   "templeName": "皇帝",
+   "reignStart": 306,
+   "reignEnd": 337,
+   "evaluation": "基督教与新都",
+   "background": "统一帝国、败马克森提与李锡尼、颁米兰敕令容基督教、迁都拜占庭（新罗马）。",
+   "eraContext": "东西分裂隐患、宗教争端、帝国重心东移。",
+   "reignPremise": "以一教一都重塑帝国，罗马的魂往东去了？",
+   "voiceTag": "质朴",
+   "era": "帝国",
+   "initStats": {
+    "treasury": 58,
+    "people": 63,
+    "military": 52,
+    "court": 65,
+    "health": 60,
+    "tech": 34
+   },
+   "tier": "A",
+   "cast": [
+    {
+     "id": "rome_sen",
+     "name": "元老院首领",
+     "role": "元老之首",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "rome_leg",
+     "name": "军团统帅",
+     "role": "鹰旗之下",
+     "voiceTag": "冷峻"
+    },
+    {
+     "id": "rome_pont",
+     "name": "大祭司",
+     "role": "神人之媒",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": 307,
+     "month": null,
+     "title": "元老院龃龉",
+     "description": "元老院内部派系倾轧，法令受阻、人事难定。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "元老分党，法令壅塞",
+     "id": "rome_constantine_e3",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 312,
+     "month": null,
+     "title": "米尔维桥",
+     "description": "十字之帜胜马克森提，控西帝国。",
+     "historicalChoice": 0,
+     "choices": [
+      "决战",
+      "先外交",
+      "联教会",
+      "设凯旋",
+      "缓行"
+     ],
+     "historicalOutcome": "十字之帜胜马克森提，控西帝国",
+     "id": "rome_constantine_e0",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 313,
+     "month": null,
+     "title": "米兰敕令",
+     "description": "容基督教、停迫教，教势转盛。",
+     "historicalChoice": 0,
+     "choices": [
+      "容基督教",
+      "限教权",
+      "设教会法",
+      "联主教",
+      "暂缓"
+     ],
+     "historicalOutcome": "容基督教、停迫教，教势转盛",
+     "id": "rome_constantine_e1",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "reform"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 330,
+     "month": null,
+     "title": "迁都拜占庭",
+     "description": "建君士坦丁堡为新都，重心东移。",
+     "historicalChoice": 0,
+     "choices": [
+      "迁新都",
+      "保罗马",
+      "设东省",
+      "联教会",
+      "缓行"
+     ],
+     "historicalOutcome": "建君士坦丁堡为新都，重心东移",
+     "id": "rome_constantine_e2",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "unify"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_julian",
+   "civilization": "rome",
+   "dynasty": "帝国",
+   "name": "尤利安（背教者）",
+   "templeName": "皇帝",
+   "reignStart": 361,
+   "reignEnd": 363,
+   "evaluation": "最后的异教帝",
+   "background": "哲人军帝，试图复兴异教、抑基督教，东征波斯受伤死，异教回潮止。",
+   "eraContext": "基督教已盛、波斯压东、信仰拉锯。",
+   "reignPremise": "以一己之力逆流复旧，能否挡住时代的河？",
+   "voiceTag": "华赡",
+   "era": "帝国",
+   "initStats": {
+    "treasury": 43,
+    "people": 54,
+    "military": 47,
+    "court": 46,
+    "health": 65,
+    "tech": 40
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_leg",
+     "name": "军团统帅",
+     "role": "鹰旗之下",
+     "voiceTag": "冷峻"
+    },
+    {
+     "id": "rome_pont",
+     "name": "大祭司",
+     "role": "神人之媒",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": 362,
+     "month": 1,
+     "title": "复兴异教",
+     "description": "倡异教哲学、削教会特权，欲逆转潮。",
+     "historicalChoice": 0,
+     "choices": [
+      "复异教",
+      "限教权",
+      "设学院",
+      "联哲士",
+      "暂缓"
+     ],
+     "historicalOutcome": "倡异教哲学、削教会特权，欲逆转潮",
+     "id": "rome_julian_e0",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "scholar_oppose"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 362,
+     "month": 7,
+     "title": "元老院龃龉",
+     "description": "元老院内部派系倾轧，法令受阻、人事难定。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "元老分党，法令壅塞",
+     "id": "rome_julian_e2",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 363,
+     "month": 1,
+     "title": "东征波斯",
+     "description": "亲征波斯中流矢死，改革随殁。",
+     "historicalChoice": 0,
+     "choices": [
+      "东征",
+      "先固东",
+      "议和",
+      "联亚美",
+      "退守"
+     ],
+     "historicalOutcome": "亲征波斯中流矢死，改革随殁",
+     "id": "rome_julian_e1",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_loss"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 363,
+     "month": 7,
+     "title": "军团哗变",
+     "description": "边省军团因欠饷或将帅野心哗变，兵锋内向。",
+     "historicalChoice": 0,
+     "choices": [
+      "补饷安抚",
+      "严惩首恶",
+      "许以土地",
+      "调虎离山",
+      "谈判招抚"
+     ],
+     "historicalOutcome": "军团哗变，兵锋内向",
+     "id": "rome_julian_e3",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_legion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_theodosius",
+   "civilization": "rome",
+   "dynasty": "帝国",
+   "name": "狄奥多西一世",
+   "templeName": "皇帝",
+   "reignStart": 379,
+   "reignEnd": 395,
+   "evaluation": "分治之帝",
+   "background": "最后统治东西全境之帝，定基督教为国教、禁异教，临终分帝国与二子。",
+   "eraContext": "哥特入边、信仰归一、帝国难再合。",
+   "reignPremise": "以一教统魂、以二分终统，帝国从此东西各走？",
+   "voiceTag": "质朴",
+   "era": "帝国",
+   "initStats": {
+    "treasury": 64,
+    "people": 58,
+    "military": 47,
+    "court": 60,
+    "health": 66,
+    "tech": 40
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_leg",
+     "name": "军团统帅",
+     "role": "鹰旗之下",
+     "voiceTag": "冷峻"
+    },
+    {
+     "id": "rome_pont",
+     "name": "大祭司",
+     "role": "神人之媒",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": 380,
+     "month": 1,
+     "title": "国教化",
+     "description": "敕令以尼西亚基督教为国教，异教退场。",
+     "historicalChoice": 0,
+     "choices": [
+      "定国教",
+      "限异教",
+      "设教会",
+      "联主教",
+      "暂缓"
+     ],
+     "historicalOutcome": "敕令以尼西亚基督教为国教，异教退场",
+     "id": "rome_theodosius_e0",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "reform"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 380,
+     "month": 7,
+     "title": "军团哗变",
+     "description": "边省军团因欠饷或将帅野心哗变，兵锋内向。",
+     "historicalChoice": 0,
+     "choices": [
+      "补饷安抚",
+      "严惩首恶",
+      "许以土地",
+      "调虎离山",
+      "谈判招抚"
+     ],
+     "historicalOutcome": "军团哗变，兵锋内向",
+     "id": "rome_theodosius_e3",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_legion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 394,
+     "month": null,
+     "title": "终合之役",
+     "description": "胜异教复辟者于弗里吉德，统一暂复。",
+     "historicalChoice": 0,
+     "choices": [
+      "决战",
+      "先招抚",
+      "设驻军",
+      "联教会",
+      "缓行"
+     ],
+     "historicalOutcome": "胜异教复辟者于弗里吉德，统一暂复",
+     "id": "rome_theodosius_e1",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 395,
+     "month": null,
+     "title": "分予二子",
+     "description": "崩前分东西帝国，永久分裂始。",
+     "historicalChoice": 0,
+     "choices": [
+      "分东西",
+      "留监国",
+      "设共帝",
+      "联元老",
+      "暂缓"
+     ],
+     "historicalOutcome": "崩前分东西帝国，永久分裂始",
+     "id": "rome_theodosius_e2",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "unify"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_romulus_augustulus",
+   "civilization": "rome",
+   "dynasty": "帝国",
+   "name": "罗慕路斯·奥古斯都卢斯",
+   "templeName": "皇帝",
+   "reignStart": 475,
+   "reignEnd": 476,
+   "evaluation": "西帝国末帝",
+   "background": "幼帝，被日耳曼统帅奥多亚克废黜，西罗马帝国亡，西欧入中世纪。",
+   "eraContext": "西帝国名存实亡、蛮将掌兵、意大利失控。",
+   "reignPremise": "少年之君遇上蛮将之刀，千年帝国如何落幕？",
+   "voiceTag": "质朴",
+   "era": "帝国",
+   "initStats": {
+    "treasury": 42,
+    "people": 40,
+    "military": 33,
+    "court": 41,
+    "health": 51,
+    "tech": 34
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_pont",
+     "name": "大祭司",
+     "role": "神人之媒",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "rome_lib",
+     "name": "释奴谋臣",
+     "role": "密室之谋",
+     "voiceTag": "质朴"
+    }
+   ],
+   "events": [
+    {
+     "year": 475,
+     "month": 9,
+     "title": "蛮族佣兵索地",
+     "description": "意大利境内日耳曼佣兵（foederati）索取三分之一田土为饷，奥雷斯特不许，营中鼓噪。",
+     "historicalChoice": 0,
+     "choices": [
+      "许其田土",
+      "断然拒绝",
+      "折以金帛",
+      "拆散其部",
+      "拖延待援"
+     ],
+     "historicalOutcome": "拒之，佣兵推奥多亚克为主，西帝国倾覆在即",
+     "id": "rome_romulus_augustulus_e1",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_legion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 475,
+     "month": 10,
+     "title": "拉文纳朝议",
+     "description": "幼帝拥虚位于拉文纳，实权在其父奥雷斯特；元老遗族与蛮族将佐各持一议，东帝亦不承其号。",
+     "historicalChoice": 0,
+     "choices": [
+      "倚重父帅",
+      "结好元老",
+      "遣使求东帝册命",
+      "厚赂蛮将",
+      "闭门不问"
+     ],
+     "historicalOutcome": "东帝不认，元老离心，孤悬拉文纳",
+     "id": "rome_romulus_augustulus_e2",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 476,
+     "month": 1,
+     "title": "被废",
+     "description": "奥多亚克废幼帝、不另立西帝，西帝国亡。",
+     "historicalChoice": 0,
+     "choices": [
+      "求和退位",
+      "抵抗",
+      "联东帝",
+      "流亡",
+      "设傀儡"
+     ],
+     "historicalOutcome": "奥多亚克废幼帝、不另立西帝，西帝国亡",
+     "id": "rome_romulus_augustulus_e0",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "usurped"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_justinian",
+   "civilization": "rome",
+   "dynasty": "拜占庭",
+   "name": "查士丁尼一世",
+   "templeName": "皇帝",
+   "reignStart": 527,
+   "reignEnd": 565,
+   "evaluation": "法典与再征服",
+   "background": "编纂《国法大全》、重建圣索菲亚、征意大利与北非并部分西土，瘟疫与财耗并存。",
+   "eraContext": "西土待复、法律待整、波斯与蛮族环伺。",
+   "reignPremise": "以法典与战刀重画帝国，盛世之下隐忧几重？",
+   "voiceTag": "华赡",
+   "era": "拜占庭",
+   "initStats": {
+    "treasury": 44,
+    "people": 55,
+    "military": 48,
+    "court": 47,
+    "health": 55,
+    "tech": 41
+   },
+   "tier": "A",
+   "cast": [
+    {
+     "id": "rome_lib",
+     "name": "释奴谋臣",
+     "role": "密室之谋",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "rome_sen",
+     "name": "元老院首领",
+     "role": "元老之首",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "rome_leg",
+     "name": "军团统帅",
+     "role": "鹰旗之下",
+     "voiceTag": "冷峻"
+    }
+   ],
+   "events": [
+    {
+     "year": 529,
+     "month": null,
+     "title": "纂罗马法",
+     "description": "颁《国法大全》，集罗马法之大成。",
+     "historicalChoice": 0,
+     "choices": [
+      "纂法典",
+      "限范围",
+      "设法学家",
+      "联学者",
+      "暂缓"
+     ],
+     "historicalOutcome": "颁《国法大全》，集罗马法之大成",
+     "id": "rome_justinian_e0",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "reform"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 533,
+     "month": null,
+     "title": "再征服",
+     "description": "贝利撒留收复北非、旋攻意大利，短暂复西土。",
+     "historicalChoice": 0,
+     "choices": [
+      "远征西土",
+      "先北非",
+      "设总督",
+      "联教宗",
+      "限规模"
+     ],
+     "historicalOutcome": "贝利撒留收复北非、旋攻意大利，短暂复西土",
+     "id": "rome_justinian_e1",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 537,
+     "month": null,
+     "title": "圣索菲亚",
+     "description": "建成圣索菲亚大教堂，立东正教地标。",
+     "historicalChoice": 0,
+     "choices": [
+      "建教堂",
+      "限费",
+      "设工役",
+      "联主教",
+      "暂缓"
+     ],
+     "historicalOutcome": "建成圣索菲亚大教堂，立东正教地标",
+     "id": "rome_justinian_e3",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 542,
+     "month": null,
+     "title": "大疫",
+     "description": "查士丁尼瘟疫横扫，人口财赋俱损。",
+     "historicalChoice": 0,
+     "choices": [
+      "赈疫",
+      "减赋",
+      "设医",
+      "联教会",
+      "暂缓"
+     ],
+     "historicalOutcome": "查士丁尼瘟疫横扫，人口财赋俱损",
+     "id": "rome_justinian_e2",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "famine"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 565,
+     "month": null,
+     "title": "盛极而终",
+     "description": "版图暂复、法度立，然耗散已深。",
+     "historicalChoice": 0,
+     "choices": [
+      "传位",
+      "撤西驻",
+      "设监护",
+      "联元老",
+      "归葬"
+     ],
+     "historicalOutcome": "版图暂复、法度立，然耗散已深",
+     "id": "rome_justinian_e4",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "long_peace"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_heraclius",
+   "civilization": "rome",
+   "dynasty": "拜占庭",
+   "name": "希拉克略",
+   "templeName": "皇帝",
+   "reignStart": 610,
+   "reignEnd": 641,
+   "evaluation": "抗波斯与阿拉伯",
+   "background": "起兵夺位，败萨珊波斯、复圣十字，然阿拉伯崛起失叙利亚埃及。",
+   "eraContext": "波斯压境、圣物被掳、新兴阿拉伯威胁。",
+   "reignPremise": "先胜波斯、后失圣土，帝国重心如何再移？",
+   "voiceTag": "冷峻",
+   "era": "拜占庭",
+   "initStats": {
+    "treasury": 48,
+    "people": 44,
+    "military": 68,
+    "court": 52,
+    "health": 60,
+    "tech": 38
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_pont",
+     "name": "大祭司",
+     "role": "神人之媒",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "rome_lib",
+     "name": "释奴谋臣",
+     "role": "密室之谋",
+     "voiceTag": "质朴"
+    }
+   ],
+   "events": [
+    {
+     "year": 611,
+     "month": null,
+     "title": "宫廷与教会之争",
+     "description": "皇宫内侍、大牧首与元老遗族各争其权，教义之争牵动人事，敕令屡遭驳回。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "宫廷教会相持，敕令难行",
+     "id": "rome_heraclius_e2",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 612,
+     "month": null,
+     "title": "军区将领异动",
+     "description": "各军区（θέματα）将领拥兵自重，或索赏，或觊觎紫袍，京畿震恐。",
+     "historicalChoice": 0,
+     "choices": [
+      "补饷安抚",
+      "严惩首恶",
+      "许以土地",
+      "调虎离山",
+      "谈判招抚"
+     ],
+     "historicalOutcome": "军区拥兵，紫袍可危",
+     "id": "rome_heraclius_e3",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_legion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 622,
+     "month": null,
+     "title": "反击波斯",
+     "description": "亲征波斯、九战复圣地，帝国暂振。",
+     "historicalChoice": 0,
+     "choices": [
+      "亲征",
+      "先固都",
+      "联高加索",
+      "设边",
+      "缓行"
+     ],
+     "historicalOutcome": "亲征波斯、九战复圣地，帝国暂振",
+     "id": "rome_heraclius_e0",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 636,
+     "month": null,
+     "title": "雅尔穆克",
+     "description": "阿拉伯军破拜占庭于叙利亚，圣土Permanent失。",
+     "historicalChoice": 0,
+     "choices": [
+      "决战",
+      "先固埃及",
+      "议和",
+      "联波斯余",
+      "退守"
+     ],
+     "historicalOutcome": "阿拉伯军破拜占庭于叙利亚，圣土Permanent失",
+     "id": "rome_heraclius_e1",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_loss"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_constantine_v",
+   "civilization": "rome",
+   "dynasty": "拜占庭",
+   "name": "君士坦丁五世",
+   "templeName": "皇帝",
+   "reignStart": 741,
+   "reignEnd": 775,
+   "evaluation": "捣像者",
+   "background": "笃信圣像破坏、胜保加利亚、整军，然宗教撕裂。",
+   "eraContext": "圣像之争、保加利亚压北、军制待振。",
+   "reignPremise": "以破像强兵、以异端树敌，铁腕能否守北疆？",
+   "voiceTag": "冷峻",
+   "era": "拜占庭",
+   "initStats": {
+    "treasury": 47,
+    "people": 43,
+    "military": 67,
+    "court": 51,
+    "health": 59,
+    "tech": 37
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_leg",
+     "name": "军团统帅",
+     "role": "鹰旗之下",
+     "voiceTag": "冷峻"
+    },
+    {
+     "id": "rome_pont",
+     "name": "大祭司",
+     "role": "神人之媒",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": 742,
+     "month": null,
+     "title": "宫廷与教会之争",
+     "description": "皇宫内侍、大牧首与元老遗族各争其权，教义之争牵动人事，敕令屡遭驳回。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "宫廷教会相持，敕令难行",
+     "id": "rome_constantine_v_e2",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 743,
+     "month": null,
+     "title": "军区将领异动",
+     "description": "各军区（θέματα）将领拥兵自重，或索赏，或觊觎紫袍，京畿震恐。",
+     "historicalChoice": 0,
+     "choices": [
+      "补饷安抚",
+      "严惩首恶",
+      "许以土地",
+      "调虎离山",
+      "谈判招抚"
+     ],
+     "historicalOutcome": "军区拥兵，紫袍可危",
+     "id": "rome_constantine_v_e3",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_legion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 754,
+     "month": null,
+     "title": "破圣像",
+     "description": "召开会议禁圣像，东方教会分裂加剧。",
+     "historicalChoice": 0,
+     "choices": [
+      "禁圣像",
+      "限范围",
+      "设密探",
+      "联军",
+      "暂缓"
+     ],
+     "historicalOutcome": "召开会议禁圣像，东方教会分裂加剧",
+     "id": "rome_constantine_v_e0",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "scholar_oppose"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 763,
+     "month": null,
+     "title": "胜保加利亚",
+     "description": "北疆屡败保加利亚，稳色雷斯。",
+     "historicalChoice": 0,
+     "choices": [
+      "北伐",
+      "先固防",
+      "设边墙",
+      "联可萨",
+      "缓行"
+     ],
+     "historicalOutcome": "北疆屡败保加利亚，稳色雷斯",
+     "id": "rome_constantine_v_e1",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_basil2",
+   "civilization": "rome",
+   "dynasty": "拜占庭",
+   "name": "巴西尔二世",
+   "templeName": "皇帝",
+   "reignStart": 976,
+   "reignEnd": 1025,
+   "evaluation": "屠戮保加尔人",
+   "background": "剿平内部、盲杀保加利亚战俘、扩疆至两河，帝国军事巅峰。",
+   "eraContext": "内乱将起、保加利亚强、边疆待清。",
+   "reignPremise": "以铁血把帝国推回顶峰，代价是万名盲囚？",
+   "voiceTag": "冷峻",
+   "era": "拜占庭",
+   "initStats": {
+    "treasury": 45,
+    "people": 41,
+    "military": 76,
+    "court": 60,
+    "health": 57,
+    "tech": 35
+   },
+   "tier": "A",
+   "cast": [
+    {
+     "id": "rome_lib",
+     "name": "释奴谋臣",
+     "role": "密室之谋",
+     "voiceTag": "质朴"
+    },
+    {
+     "id": "rome_sen",
+     "name": "元老院首领",
+     "role": "元老之首",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "rome_leg",
+     "name": "军团统帅",
+     "role": "鹰旗之下",
+     "voiceTag": "冷峻"
+    }
+   ],
+   "events": [
+    {
+     "year": 977,
+     "month": null,
+     "title": "宫廷与教会之争",
+     "description": "皇宫内侍、大牧首与元老遗族各争其权，教义之争牵动人事，敕令屡遭驳回。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "宫廷教会相持，敕令难行",
+     "id": "rome_basil2_e3",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1014,
+     "month": null,
+     "title": "克莱迪昂",
+     "description": "俘万计保加利亚兵、盲之放归，敌国崩溃。",
+     "historicalChoice": 0,
+     "choices": [
+      "屠俘震慑",
+      "稍恤",
+      "设驻军",
+      "联附庸",
+      "限杀"
+     ],
+     "historicalOutcome": "俘万计保加利亚兵、盲之放归，敌国崩溃",
+     "id": "rome_basil2_e0",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1021,
+     "month": null,
+     "title": "东扩至两河",
+     "description": "征亚美尼亚与两河，版图复盛。",
+     "historicalChoice": 0,
+     "choices": [
+      "东征",
+      "先招抚",
+      "设总督",
+      "联格鲁吉",
+      "限规模"
+     ],
+     "historicalOutcome": "征亚美尼亚与两河，版图复盛",
+     "id": "rome_basil2_e1",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1025,
+     "month": null,
+     "title": "无嗣而终",
+     "description": "终身未婚无嗣，死后王朝渐衰。",
+     "historicalChoice": 0,
+     "choices": [
+      "传侄",
+      "立养子",
+      "设监护",
+      "联元老",
+      "归葬"
+     ],
+     "historicalOutcome": "终身未婚无嗣，死后王朝渐衰",
+     "id": "rome_basil2_e2",
+     "relationDeltas": [
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "weak"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_alexios1",
+   "civilization": "rome",
+   "dynasty": "拜占庭",
+   "name": "阿莱克修斯一世",
+   "templeName": "皇帝",
+   "reignStart": 1081,
+   "reignEnd": 1118,
+   "evaluation": "科穆宁中兴",
+   "background": "挽狂澜于诺曼与塞尔柱之间，求援西方致第一次十字军，开科穆宁中兴。",
+   "eraContext": "曼齐克特后疆裂、诺曼侵南、财政枯竭。",
+   "reignPremise": "向东求援却引来西师，中兴的代价是引狼？",
+   "voiceTag": "质朴",
+   "era": "拜占庭",
+   "initStats": {
+    "treasury": 65,
+    "people": 59,
+    "military": 48,
+    "court": 61,
+    "health": 67,
+    "tech": 41
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_sen",
+     "name": "元老院首领",
+     "role": "元老之首",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "rome_leg",
+     "name": "军团统帅",
+     "role": "鹰旗之下",
+     "voiceTag": "冷峻"
+    }
+   ],
+   "events": [
+    {
+     "year": 1082,
+     "month": null,
+     "title": "宫廷与教会之争",
+     "description": "皇宫内侍、大牧首与元老遗族各争其权，教义之争牵动人事，敕令屡遭驳回。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "宫廷教会相持，敕令难行",
+     "id": "rome_alexios1_e2",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1083,
+     "month": null,
+     "title": "军区将领异动",
+     "description": "各军区（θέματα）将领拥兵自重，或索赏，或觊觎紫袍，京畿震恐。",
+     "historicalChoice": 0,
+     "choices": [
+      "补饷安抚",
+      "严惩首恶",
+      "许以土地",
+      "调虎离山",
+      "谈判招抚"
+     ],
+     "historicalOutcome": "军区拥兵，紫袍可危",
+     "id": "rome_alexios1_e3",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_legion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1085,
+     "month": null,
+     "title": "稳小亚",
+     "description": "御诺曼于巴尔干、暂稳西欧边境。",
+     "historicalChoice": 0,
+     "choices": [
+      "御诺曼",
+      "先外交",
+      "设总督",
+      "联威尼斯",
+      "限规模"
+     ],
+     "historicalOutcome": "御诺曼于巴尔干、暂稳西欧边境",
+     "id": "rome_alexios1_e1",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1095,
+     "month": null,
+     "title": "召十字军",
+     "description": "求西方援抗突厥，反启十字军东征。",
+     "historicalChoice": 0,
+     "choices": [
+      "求援西方",
+      "先固都",
+      "设附庸",
+      "联教宗",
+      "缓行"
+     ],
+     "historicalOutcome": "求西方援抗突厥，反启十字军东征",
+     "id": "rome_alexios1_e0",
+     "relationDeltas": [
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_manuel1",
+   "civilization": "rome",
+   "dynasty": "拜占庭",
+   "name": "曼努埃尔一世",
+   "templeName": "皇帝",
+   "reignStart": 1143,
+   "reignEnd": 1180,
+   "evaluation": "最后的雄图",
+   "background": "联西抗突厥、战意大利，然密列奥塞法隆惨败，霸权回落。",
+   "eraContext": "突厥复起、意大利纠缠、财政紧。",
+   "reignPremise": "亲西而战东，雄图未竟身先衰？",
+   "voiceTag": "冷峻",
+   "era": "拜占庭",
+   "initStats": {
+    "treasury": 46,
+    "people": 42,
+    "military": 77,
+    "court": 50,
+    "health": 58,
+    "tech": 36
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_leg",
+     "name": "军团统帅",
+     "role": "鹰旗之下",
+     "voiceTag": "冷峻"
+    },
+    {
+     "id": "rome_pont",
+     "name": "大祭司",
+     "role": "神人之媒",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": 1144,
+     "month": null,
+     "title": "军区将领异动",
+     "description": "各军区（θέματα）将领拥兵自重，或索赏，或觊觎紫袍，京畿震恐。",
+     "historicalChoice": 0,
+     "choices": [
+      "补饷安抚",
+      "严惩首恶",
+      "许以土地",
+      "调虎离山",
+      "谈判招抚"
+     ],
+     "historicalOutcome": "军区拥兵，紫袍可危",
+     "id": "rome_manuel1_e2",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_legion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1145,
+     "month": null,
+     "title": "宫廷与教会之争",
+     "description": "皇宫内侍、大牧首与元老遗族各争其权，教义之争牵动人事，敕令屡遭驳回。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "宫廷教会相持，敕令难行",
+     "id": "rome_manuel1_e3",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1155,
+     "month": null,
+     "title": "意大利之役",
+     "description": "出兵南意、联教宗抗诺曼，初胜后挫。",
+     "historicalChoice": 0,
+     "choices": [
+      "远征意",
+      "先外交",
+      "设附庸",
+      "联教宗",
+      "限规模"
+     ],
+     "historicalOutcome": "出兵南意、联教宗抗诺曼，初胜后挫",
+     "id": "rome_manuel1_e0",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1176,
+     "month": null,
+     "title": "密列奥塞法隆",
+     "description": "征突厥中伏大败，东疆主动权失。",
+     "historicalChoice": 0,
+     "choices": [
+      "决战",
+      "先固防",
+      "议和",
+      "联十字军",
+      "退守"
+     ],
+     "historicalOutcome": "征突厥中伏大败，东疆主动权失",
+     "id": "rome_manuel1_e1",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_loss"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_michael8",
+   "civilization": "rome",
+   "dynasty": "拜占庭",
+   "name": "米海尔八世",
+   "templeName": "皇帝",
+   "reignStart": 1259,
+   "reignEnd": 1282,
+   "evaluation": "复国者",
+   "background": "尼西亚帝国皇帝，收复君士坦丁堡、复国，然妥协教会合一失民心。",
+   "eraContext": "拉丁帝国占都、疆土分裂、东西教会裂。",
+   "reignPremise": "以一城复国、以信约失民，复国者难两全？",
+   "voiceTag": "华赡",
+   "era": "拜占庭",
+   "initStats": {
+    "treasury": 49,
+    "people": 49,
+    "military": 53,
+    "court": 41,
+    "health": 60,
+    "tech": 46
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_leg",
+     "name": "军团统帅",
+     "role": "鹰旗之下",
+     "voiceTag": "冷峻"
+    },
+    {
+     "id": "rome_pont",
+     "name": "大祭司",
+     "role": "神人之媒",
+     "voiceTag": "华赡"
+    }
+   ],
+   "events": [
+    {
+     "year": 1260,
+     "month": null,
+     "title": "宫廷与教会之争",
+     "description": "皇宫内侍、大牧首与元老遗族各争其权，教义之争牵动人事，敕令屡遭驳回。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "宫廷教会相持，敕令难行",
+     "id": "rome_michael8_e2",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1261,
+     "month": 1,
+     "title": "收复君堡",
+     "description": "趁拉丁内乱奇袭收复都城，帝国复国。",
+     "historicalChoice": 0,
+     "choices": [
+      "奇袭复都",
+      "先外交",
+      "设驻军",
+      "联热那亚",
+      "缓行"
+     ],
+     "historicalOutcome": "趁拉丁内乱奇袭收复都城，帝国复国",
+     "id": "rome_michael8_e0",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_win"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1262,
+     "month": null,
+     "title": "普罗尼亚封授之争",
+     "description": "军区旧制已废，代以普罗尼亚（pronoia）封地养兵；封授不均，将佐怨望，边地骑士索加田租。",
+     "historicalChoice": 0,
+     "choices": [
+      "加封安抚",
+      "收回滥授",
+      "改折现钱",
+      "募雇佣兵代之",
+      "暂置不论"
+     ],
+     "historicalOutcome": "封授愈广，国赋愈薄，兵仍不强",
+     "id": "rome_michael8_e3",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_legion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1274,
+     "month": null,
+     "title": "教会合一",
+     "description": "许与罗马教会合一换援，东正教徒离心。",
+     "historicalChoice": 0,
+     "choices": [
+      "合教会",
+      "限条款",
+      "设妥协",
+      "联教宗",
+      "暂缓"
+     ],
+     "historicalOutcome": "许与罗马教会合一换援，东正教徒离心",
+     "id": "rome_michael8_e1",
+     "relationDeltas": [
+      {
+       "士大夫": 2
+      },
+      {
+       "边将": -1
+      },
+      {
+       "商贾": 2
+      },
+      {
+       "宗室": -1
+      },
+      {
+       "士大夫": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "scholar_oppose"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rome_constantine11",
+   "civilization": "rome",
+   "dynasty": "拜占庭",
+   "name": "君士坦丁十一世",
+   "templeName": "皇帝",
+   "reignStart": 1449,
+   "reignEnd": 1453,
+   "evaluation": "末代皇帝",
+   "background": "守孤城抗奥斯曼，1453年君士坦丁堡陷、战死，千年帝国终。",
+   "eraContext": "奥斯曼围城、援绝、西欧冷眼。",
+   "reignPremise": "以最后一战为帝国收尾，千年之烛如何熄灭？",
+   "voiceTag": "冷峻",
+   "era": "拜占庭",
+   "initStats": {
+    "treasury": 45,
+    "people": 41,
+    "military": 76,
+    "court": 60,
+    "health": 57,
+    "tech": 35
+   },
+   "tier": "B",
+   "cast": [
+    {
+     "id": "rome_pont",
+     "name": "大祭司",
+     "role": "神人之媒",
+     "voiceTag": "华赡"
+    },
+    {
+     "id": "rome_lib",
+     "name": "释奴谋臣",
+     "role": "密室之谋",
+     "voiceTag": "质朴"
+    }
+   ],
+   "events": [
+    {
+     "year": 1451,
+     "month": null,
+     "title": "宫廷与教会之争",
+     "description": "皇宫内侍、大牧首与元老遗族各争其权，教义之争牵动人事，敕令屡遭驳回。",
+     "historicalChoice": 0,
+     "choices": [
+      "拉拢元老",
+      "压制反对派",
+      "诉诸公民大会",
+      "悬置争议",
+      "武力威慑"
+     ],
+     "historicalOutcome": "宫廷教会相持，敕令难行",
+     "id": "rome_constantine11_e3",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_senate"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1452,
+     "month": null,
+     "title": "城防与佣兵",
+     "description": "狄奥多西城墙年久失修，库帑空竭；热那亚、威尼斯佣兵索饷，守陴之众不满八千。",
+     "historicalChoice": 0,
+     "choices": [
+      "熔教产铸饷",
+      "厚币留佣兵",
+      "增征市税",
+      "遣使乞援西方",
+      "收缩守内城"
+     ],
+     "historicalOutcome": "熔器求援皆不足，以寡守孤城",
+     "id": "rome_constantine11_e2",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "rome_gen_legion"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1453,
+     "month": 1,
+     "title": "围城死守",
+     "description": "奥斯曼巨炮轰城，君堡粮尽援绝。",
+     "historicalChoice": 0,
+     "choices": [
+      "死守",
+      "求援西",
+      "议和",
+      "联热那亚",
+      "撤民"
+     ],
+     "historicalOutcome": "奥斯曼巨炮轰城，君堡粮尽援绝",
+     "id": "rome_constantine11_e0",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "war_loss"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    },
+    {
+     "year": 1453,
+     "month": 7,
+     "title": "城破战死",
+     "description": "城破，君士坦丁脱冕战死，帝国亡。",
+     "historicalChoice": 0,
+     "choices": [
+      "战死",
+      "突围",
+      "议降",
+      "联教宗",
+      "流亡"
+     ],
+     "historicalOutcome": "城破，君士坦丁脱冕战死，帝国亡",
+     "id": "rome_constantine11_e1",
+     "relationDeltas": [
+      {
+       "边将": 2
+      },
+      {
+       "商贾": -1
+      },
+      {
+       "宗室": 2
+      },
+      {
+       "士大夫": -1
+      },
+      {
+       "边将": 2
+      }
+     ],
+     "branches": [
+      {
+       "setFlags": [
+        "usurped"
+       ]
+      },
+      {},
+      {},
+      {},
+      {}
+     ]
+    }
+   ]
+  }
+ ]
+}
