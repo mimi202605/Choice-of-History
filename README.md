@@ -4,20 +4,21 @@
 > Emperor Sim · Monthly Choices · Branching History
 
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Emperors](https://img.shields.io/badge/emperors-320%2B-brightgreen.svg)]
-[![Events](https://img.shields.io/badge/events-1900%2B-orange.svg)]
+[![Rulers](https://img.shields.io/badge/rulers-488-brightgreen.svg)]
+[![Civilizations](https://img.shields.io/badge/civilizations-5-informational.svg)]
+[![Events](https://img.shields.io/badge/events-2800%2B-orange.svg)]
 [![Tech Tree](https://img.shields.io/badge/tech%20tree-1134%20nodes-blue.svg)]
 [![Stack](https://img.shields.io/badge/stack-Vanilla%20JS%20%7C%20Zero--dep-lightgrey.svg)]
 [![Demo](https://img.shields.io/badge/demo-GitHub%20Pages-red.svg)](https://mimi202605.github.io/Choice-of-History/)
 [![Language](https://img.shields.io/badge/language-简体中文-informational.svg)]
 
-**择决千秋** 是一款纯前端的中国历代皇帝模拟游戏。你将从夏至清的 320 余位皇帝中任选一位，以「每月五选一」的抉择推进国运——历史为骨，选择为肉，你的每一个决定都可能改写千秋。
+**择决千秋** 是一款纯前端的历史君主模拟游戏。你将从「中华、美国、英国、罗马、俄罗斯」五大文明、近 500 位君主中任选一位，以「每月五选一」的抉择推进国运——历史为骨，选择为肉，你的每一个决定都可能改写千秋。
 
-*Choice of History is a zero-dependency, browser-based emperor simulation. Pick any of 300+ emperors from the Xia to Qing dynasties and steer the realm through monthly five-option decisions — where history is the skeleton and your choices are the flesh.*
+*Choice of History is a zero-dependency, browser-based ruler simulation. Pick any of nearly 500 rulers across five civilizations — China, America, Britain, Rome, and Russia — and steer the realm through monthly five-option decisions — where history is the skeleton and your choices are the flesh.*
 
 ## ✨ Features
 
-- 📜 **历史为骨，选择为肉** — 320+ 位皇帝（夏→清 18 朝代全覆盖），1900+ 基于《二十四史》《资治通鉴》的史实事件；其中 18 位旗舰帝王拥有手写精修事件库。
+- 🌏 **五文明 · 近 500 君主** — 中华 18 朝代全覆盖，另有美国、英国、罗马、俄罗斯 4 大文明；2800+ 基于《二十四史》《资治通鉴》及诸文明信史的史实事件，其中 18 位旗舰帝王拥有手写精修事件库。
 - 📊 **六维数值，寿命自决** — 国库 / 民心 / 军事 / 朝政 / 健康 / 科技；健康归零即驾崩，寿命由你的累积抉择决定。
 - 🔬 **科技穿越** — 1134 节点宏大科技树（9 分支 × 14 时代），可超越时代但会触发保守派阻力。
 - 🤖 **AI 史官** — 通过 OpenAI 兼容 API 实时生成事件与史书体例点评，严谨的中文容错提示词保障稳定性。
@@ -54,7 +55,7 @@ cp coh_config.sample.js coh_config.js
 
 ## 📖 How to Play
 
-1. 选择朝代与皇帝，阅读开局背景与初始六维数值。
+1. 选择文明、时期与君主，阅读开局背景与初始六维数值。
 2. 每月系统判定事件来源：**历史节点 / 日常政务（AI 生成）/ 数值危机 / 随机时局**。
 3. 面对事件做出「五选一」抉择——进取 / 保守 / 革新 / 怀柔 / 铁腕，各有得失，需权衡短期收益与长期风险。
 4. 查看史官点评与六维变化动画，自动存档，推进下月。
@@ -100,11 +101,11 @@ window.COH_CONFIG = {
 
 ## 🗺 Roadmap
 
-- [x] 320+ 帝王 / 1900+ 史实事件 / 1134 节点科技树
+- [x] 五文明近 500 君主 / 2800+ 史实事件 / 1134 节点科技树
 - [x] 退位 / 复辟旗标、长期记忆注入、越代科技减免、时间一致性约束
+- [x] 外国篇：美国 / 英国 / 罗马 / 俄罗斯 四大文明首领与时期
 - [ ] 更多旗舰帝王的精修事件库
 - [ ] 移动端布局与触控优化
-- [ ] 其他更多文明首领
 
 ## 🤝 Contributing
 

@@ -1,22 +1,26 @@
 # -*- coding: utf-8 -*-
 """
-择决千秋 · 科技具体作用注入器（非破坏式增强，分带多样性版）
+择决千秋 · 科技具体作用注入器（非破坏式增强，按 age 差异化版）
 ======================================================
 给 data/tech_tree.json 中每个科技节点补充：
   - node["effect"]   : 结构化效果数组（type/target/perTier/cap），供引擎解析
   - node["effectDesc"]: 一句话具体作用文案（含随时代放大的数值），供科技卡展示
 重写 node["functionDesc"] = 原功能介绍 + 具体作用文案。
 
-设计约束（见对话，2026-08-08 第三轮）：
-  - 每条线（同 branch×track，14 个 age 节点）按**时代分带**挂不同效果类型：
-      early(age 1-4) / mid(age 5-8) / late(age 9-11) / peak(age 12-14)
-    旧版把「效果类型」钉死在 special 上 → 同一条线 14 个节点效果种类完全相同，单调。
-    新版本带后，玩家顺着一条线往下点，每张卡片看到的效果类型都不一样的（仍随时代放大数值）。
+设计约束（见对话，2026-08-08 → 第四轮修正）：
+  - **粒度升级为 (special, age)**：旧版按「时代分带」(early/mid/late/peak 4 档) 注入，
+    同一轨道、落在同一档的相邻 age 必然拿到完全相同的 effect（如曲辕犁 age5 与占城稻
+    age6 同为 yield+mid → 效果文案一字不差）。本轮改为每个科技按其 age(1..14) 取一条
+    **专属演进序列**，相邻 age 的效果类型强制不同 → 每个科技都体现出差异化。
+  - **短码序列**：每个 special 写一条 14 段空格分隔的短码串（复合用 '+' 连接），
+    脚本按 (age-1) 取对应段。短码 → (type/target/perTier/cap) 见 SHORTCODE。
   - **全部当代通道**：passive(每年正月属性) / shield(灾异损失−) / eventLess(灾异触发−)
     / warEdge(战争) / relation(派系) / costLess(研究费−) / unlock(特殊抉择)。
-    **移除 score（终评）通道**——用户明确要求「影响当代的」，终评加成整体移出科技实效。
-  - 每个带的效果类型由该轨道的史实主题决定（根据科技本身），不纯按 age 机械轮替。
-  - 所有 magnitude 有 rationale，但未经 playtest，标 [待playtest校准]。
+    **已移除 score（终评）通道**——用户明确要求「影响当代的」。
+  - 引擎缩放公式保持 tierOfAge(age) 不变（age≤3→1, ≤7→2, ≥8→3），本脚本只改效果「类型」
+    的 age 分布，不动 perTier 数值体系，避免动摇全局平衡。
+  - 相邻 age 类型不同是硬约束（脚本自检会报雷同）；跨带重复的类型因 tier 数值不同
+    而使文案数值也不同，不会「完全相同」。
   - 不重跑 gen_techtree.py（保住已清理的命名/占位修复）；先备份再改，可逆。
 """
 import json, os, shutil, datetime
@@ -28,366 +32,156 @@ ATTR_CN = {"treasury": "国库", "people": "民心", "military": "军事", "cour
 CRISIS_CN = {"flood": "水患", "famine": "饥荒", "epidemic": "疫疠", "wound": "战伤", "dispute": "讼争", "curse": "妖异"}
 FACTION_CN = {"宗室": "宗室", "士大夫": "士大夫", "边将": "边将", "商贾": "商贾"}
 
-# 81 个 special → 4 个时代分带 → 效果数组。
-# perTier 含义（与引擎一致）：
-#   passive/relation : 每档(tier=age分1/2/3)×每级 的绝对增量（passive 为每年正月结算点数）
-#   shield/eventLess/costLess/warEdge : 每档×每级的「百分点」
-#     - warEdge winBonus : 战争胜算 +% ；lossMitigate : 战败军事损失 −%
-# 分带设计原则：early 为轨道核心作用；mid/late/peak 随时代演进叠加/切换不同作用类型，
-# 既保证「上下有别」(同线 14 节点效果种类不同)，又「根据科技本身」(类型贴合该轨道史实主题)。
-EFFECTS = {
-    # ===== 农政 =====
-    "yield":     {"early":[{"type":"passive","target":"treasury","perTier":0.09,"cap":2.0}],
-                  "mid":  [{"type":"passive","target":"treasury","perTier":0.09,"cap":2.0},{"type":"relation","target":"商贾","perTier":1,"cap":6}],
-                  "late": [{"type":"eventLess","target":"famine","perTier":6,"cap":40}],
-                  "peak": [{"type":"shield","target":"famine","perTier":8,"cap":50}]},
-    "flood":     {"early":[{"type":"shield","target":"flood","perTier":8,"cap":50}],
-                  "mid":  [{"type":"eventLess","target":"flood","perTier":5,"cap":30}],
-                  "late": [{"type":"passive","target":"people","perTier":0.06,"cap":1.4}],
-                  "peak": [{"type":"relation","target":"士大夫","perTier":1,"cap":6}]},
-    "fertility": {"early":[{"type":"passive","target":"people","perTier":0.07,"cap":1.6}],
-                  "mid":  [{"type":"passive","target":"people","perTier":0.07,"cap":1.6},{"type":"passive","target":"treasury","perTier":0.03,"cap":0.8}],
-                  "late": [{"type":"relation","target":"士大夫","perTier":1,"cap":5}],
-                  "peak": [{"type":"eventLess","target":"famine","perTier":5,"cap":30}]},
-    "seed":      {"early":[{"type":"eventLess","target":"famine","perTier":6,"cap":40}],
-                  "mid":  [{"type":"eventLess","target":"famine","perTier":6,"cap":40},{"type":"shield","target":"famine","perTier":6,"cap":40}],
-                  "late": [{"type":"shield","target":"famine","perTier":8,"cap":50}],
-                  "peak": [{"type":"passive","target":"people","perTier":0.05,"cap":1.2}]},
-    "tool":      {"early":[{"type":"passive","target":"treasury","perTier":0.06,"cap":1.4},{"type":"passive","target":"tech","perTier":0.02,"cap":0.5}],
-                  "mid":  [{"type":"passive","target":"tech","perTier":0.06,"cap":1.4}],
-                  "late": [{"type":"relation","target":"商贾","perTier":1,"cap":6}],
-                  "peak": [{"type":"costLess","target":"research","perTier":3,"cap":20}]},
-    "storage":   {"early":[{"type":"shield","target":"famine","perTier":8,"cap":50}],
-                  "mid":  [{"type":"shield","target":"famine","perTier":8,"cap":50},{"type":"passive","target":"treasury","perTier":0.03,"cap":0.8}],
-                  "late": [{"type":"passive","target":"people","perTier":0.05,"cap":1.2}],
-                  "peak": [{"type":"relation","target":"商贾","perTier":1,"cap":6}]},
-    "landlaw":   {"early":[{"type":"relation","target":"士大夫","perTier":1,"cap":8}],
-                  "mid":  [{"type":"relation","target":"士大夫","perTier":1,"cap":8},{"type":"passive","target":"people","perTier":0.03,"cap":0.8}],
-                  "late": [{"type":"passive","target":"treasury","perTier":0.05,"cap":1.2}],
-                  "peak": [{"type":"passive","target":"court","perTier":0.05,"cap":1.2}]},
-    "reclaim":   {"early":[{"type":"passive","target":"treasury","perTier":0.05,"cap":1.2},{"type":"passive","target":"people","perTier":0.03,"cap":0.8}],
-                  "mid":  [{"type":"passive","target":"people","perTier":0.06,"cap":1.4}],
-                  "late": [{"type":"relation","target":"边将","perTier":1,"cap":6}],
-                  "peak": [{"type":"warEdge","target":"lossMitigate","perTier":8,"cap":40}]},
-    "pasture":   {"early":[{"type":"passive","target":"treasury","perTier":0.04,"cap":1.0},{"type":"passive","target":"military","perTier":0.03,"cap":0.8}],
-                  "mid":  [{"type":"passive","target":"military","perTier":0.05,"cap":1.0}],
-                  "late": [{"type":"relation","target":"边将","perTier":1,"cap":6}],
-                  "peak": [{"type":"warEdge","target":"winBonus","perTier":1.5,"cap":10}]},
-    # ===== 军工（核心 warEdge，按带叠加 派系/属性/减费，避免整线同一句）=====
-    "armor":     {"early":[{"type":"warEdge","target":"lossMitigate","perTier":10,"cap":50}],
-                  "mid":  [{"type":"warEdge","target":"lossMitigate","perTier":10,"cap":50},{"type":"passive","target":"military","perTier":0.03,"cap":0.8}],
-                  "late": [{"type":"relation","target":"边将","perTier":1,"cap":6}],
-                  "peak": [{"type":"passive","target":"military","perTier":0.06,"cap":1.4}]},
-    "weapon":    {"early":[{"type":"warEdge","target":"winBonus","perTier":2.0,"cap":15}],
-                  "mid":  [{"type":"warEdge","target":"winBonus","perTier":2.0,"cap":15},{"type":"passive","target":"military","perTier":0.03,"cap":0.8}],
-                  "late": [{"type":"relation","target":"边将","perTier":1,"cap":6}],
-                  "peak": [{"type":"costLess","target":"research","perTier":3,"cap":20}]},
-    "formation": {"early":[{"type":"warEdge","target":"winBonus","perTier":1.8,"cap":14}],
-                  "mid":  [{"type":"warEdge","target":"winBonus","perTier":1.8,"cap":14},{"type":"relation","target":"边将","perTier":1,"cap":6}],
-                  "late": [{"type":"passive","target":"military","perTier":0.05,"cap":1.2}],
-                  "peak": [{"type":"warEdge","target":"lossMitigate","perTier":8,"cap":40}]},
-    "defense":   {"early":[{"type":"warEdge","target":"lossMitigate","perTier":8,"cap":40}],
-                  "mid":  [{"type":"warEdge","target":"lossMitigate","perTier":8,"cap":40},{"type":"passive","target":"military","perTier":0.03,"cap":0.8}],
-                  "late": [{"type":"relation","target":"边将","perTier":1,"cap":6}],
-                  "peak": [{"type":"shield","target":"wound","perTier":7,"cap":45}]},
-    "cavalry":   {"early":[{"type":"warEdge","target":"winBonus","perTier":2.2,"cap":16}],
-                  "mid":  [{"type":"warEdge","target":"winBonus","perTier":2.2,"cap":16},{"type":"passive","target":"military","perTier":0.03,"cap":0.8}],
-                  "late": [{"type":"relation","target":"边将","perTier":1,"cap":6}],
-                  "peak": [{"type":"costLess","target":"research","perTier":3,"cap":20}]},
-    "navy":      {"early":[{"type":"warEdge","target":"winBonus","perTier":1.6,"cap":12}],
-                  "mid":  [{"type":"warEdge","target":"winBonus","perTier":1.6,"cap":12},{"type":"relation","target":"边将","perTier":1,"cap":6}],
-                  "late": [{"type":"passive","target":"military","perTier":0.05,"cap":1.2}],
-                  "peak": [{"type":"warEdge","target":"lossMitigate","perTier":8,"cap":40}]},
-    "gunpowder": {"early":[{"type":"warEdge","target":"winBonus","perTier":2.5,"cap":18}],
-                  "mid":  [{"type":"warEdge","target":"winBonus","perTier":2.5,"cap":18},{"type":"passive","target":"tech","perTier":0.03,"cap":0.8}],
-                  "late": [{"type":"relation","target":"边将","perTier":1,"cap":6}],
-                  "peak": [{"type":"costLess","target":"research","perTier":3,"cap":20}]},
-    "intel":     {"early":[{"type":"warEdge","target":"winBonus","perTier":1.4,"cap":10}],
-                  "mid":  [{"type":"warEdge","target":"winBonus","perTier":1.4,"cap":10},{"type":"relation","target":"边将","perTier":1,"cap":6}],
-                  "late": [{"type":"passive","target":"military","perTier":0.05,"cap":1.2}],
-                  "peak": [{"type":"warEdge","target":"lossMitigate","perTier":8,"cap":40}]},
-    "logistics": {"early":[{"type":"warEdge","target":"lossMitigate","perTier":9,"cap":45}],
-                  "mid":  [{"type":"warEdge","target":"lossMitigate","perTier":9,"cap":45},{"type":"passive","target":"military","perTier":0.03,"cap":0.8}],
-                  "late": [{"type":"relation","target":"商贾","perTier":1,"cap":6}],
-                  "peak": [{"type":"costLess","target":"research","perTier":3,"cap":20}]},
-    # ===== 营造（palace/brick 原为 score→朝政/民心，改当代 passive+派系）=====
-    "palace":    {"early":[{"type":"passive","target":"court","perTier":0.06,"cap":1.4}],
-                  "mid":  [{"type":"relation","target":"宗室","perTier":1,"cap":8}],
-                  "late": [{"type":"passive","target":"people","perTier":0.05,"cap":1.2}],
-                  "peak": [{"type":"relation","target":"士大夫","perTier":1,"cap":6}]},
-    "bridge":    {"early":[{"type":"passive","target":"treasury","perTier":0.05,"cap":1.2},{"type":"passive","target":"people","perTier":0.02,"cap":0.5}],
-                  "mid":  [{"type":"passive","target":"people","perTier":0.05,"cap":1.2}],
-                  "late": [{"type":"relation","target":"商贾","perTier":1,"cap":6}],
-                  "peak": [{"type":"costLess","target":"research","perTier":3,"cap":20}]},
-    "road":      {"early":[{"type":"passive","target":"court","perTier":0.06,"cap":1.4}],
-                  "mid":  [{"type":"passive","target":"court","perTier":0.06,"cap":1.4},{"type":"relation","target":"士大夫","perTier":1,"cap":5}],
-                  "late": [{"type":"costLess","target":"research","perTier":3,"cap":20}],
-                  "peak": [{"type":"passive","target":"treasury","perTier":0.04,"cap":1.0}]},
-    "hydraulics":{"early":[{"type":"shield","target":"flood","perTier":9,"cap":55}],
-                  "mid":  [{"type":"shield","target":"flood","perTier":9,"cap":55},{"type":"eventLess","target":"flood","perTier":5,"cap":30}],
-                  "late": [{"type":"passive","target":"people","perTier":0.05,"cap":1.2}],
-                  "peak": [{"type":"relation","target":"士大夫","perTier":1,"cap":6}]},
-    "smelt":     {"early":[{"type":"passive","target":"tech","perTier":0.07,"cap":1.6},{"type":"passive","target":"military","perTier":0.02,"cap":0.5}],
-                  "mid":  [{"type":"passive","target":"military","perTier":0.05,"cap":1.0}],
-                  "late": [{"type":"relation","target":"商贾","perTier":1,"cap":6}],
-                  "peak": [{"type":"costLess","target":"research","perTier":3,"cap":20}]},
-    "machine":   {"early":[{"type":"passive","target":"treasury","perTier":0.07,"cap":1.6}],
-                  "mid":  [{"type":"passive","target":"treasury","perTier":0.07,"cap":1.6},{"type":"passive","target":"tech","perTier":0.03,"cap":0.8}],
-                  "late": [{"type":"relation","target":"商贾","perTier":1,"cap":6}],
-                  "peak": [{"type":"costLess","target":"research","perTier":3,"cap":20}]},
-    "brick":     {"early":[{"type":"passive","target":"court","perTier":0.05,"cap":1.2}],
-                  "mid":  [{"type":"relation","target":"宗室","perTier":1,"cap":6}],
-                  "late": [{"type":"passive","target":"people","perTier":0.05,"cap":1.2}],
-                  "peak": [{"type":"passive","target":"treasury","perTier":0.04,"cap":1.0}]},
-    "city":      {"early":[{"type":"passive","target":"treasury","perTier":0.05,"cap":1.2},{"type":"relation","target":"商贾","perTier":1,"cap":6}],
-                  "mid":  [{"type":"passive","target":"people","perTier":0.05,"cap":1.2}],
-                  "late": [{"type":"relation","target":"士大夫","perTier":1,"cap":5}],
-                  "peak": [{"type":"costLess","target":"research","perTier":3,"cap":20}]},
-    "ship":      {"early":[{"type":"passive","target":"treasury","perTier":0.06,"cap":1.5},{"type":"passive","target":"military","perTier":0.02,"cap":0.5}],
-                  "mid":  [{"type":"passive","target":"military","perTier":0.05,"cap":1.0}],
-                  "late": [{"type":"relation","target":"商贾","perTier":1,"cap":6}],
-                  "peak": [{"type":"warEdge","target":"winBonus","perTier":1.6,"cap":12}]},
-    # ===== 商工 =====
-    "market":    {"early":[{"type":"passive","target":"treasury","perTier":0.08,"cap":1.8}],
-                  "mid":  [{"type":"passive","target":"treasury","perTier":0.08,"cap":1.8},{"type":"relation","target":"商贾","perTier":1,"cap":6}],
-                  "late": [{"type":"costLess","target":"research","perTier":3,"cap":20}],
-                  "peak": [{"type":"passive","target":"people","perTier":0.04,"cap":1.0}]},
-    "coin":      {"early":[{"type":"costLess","target":"research","perTier":4,"cap":25}],
-                  "mid":  [{"type":"costLess","target":"research","perTier":4,"cap":25},{"type":"passive","target":"treasury","perTier":0.03,"cap":0.8}],
-                  "late": [{"type":"relation","target":"商贾","perTier":1,"cap":6}],
-                  "peak": [{"type":"passive","target":"treasury","perTier":0.06,"cap":1.4}]},
-    "workshop":  {"early":[{"type":"passive","target":"treasury","perTier":0.07,"cap":1.6},{"type":"passive","target":"tech","perTier":0.02,"cap":0.5}],
-                  "mid":  [{"type":"passive","target":"tech","perTier":0.06,"cap":1.4}],
-                  "late": [{"type":"relation","target":"商贾","perTier":1,"cap":6}],
-                  "peak": [{"type":"costLess","target":"research","perTier":3,"cap":20}]},
-    "shipping":  {"early":[{"type":"passive","target":"treasury","perTier":0.075,"cap":1.7}],
-                  "mid":  [{"type":"passive","target":"treasury","perTier":0.075,"cap":1.7},{"type":"relation","target":"商贾","perTier":1,"cap":6}],
-                  "late": [{"type":"warEdge","target":"winBonus","perTier":1.6,"cap":12}],
-                  "peak": [{"type":"costLess","target":"research","perTier":3,"cap":20}]},
-    "saltiron":  {"early":[{"type":"passive","target":"treasury","perTier":0.09,"cap":2.0},{"type":"passive","target":"court","perTier":0.02,"cap":0.5}],
-                  "mid":  [{"type":"passive","target":"court","perTier":0.05,"cap":1.2}],
-                  "late": [{"type":"relation","target":"商贾","perTier":1,"cap":6}],
-                  "peak": [{"type":"costLess","target":"research","perTier":3,"cap":20}]},
-    "teahorse":  {"early":[{"type":"relation","target":"边将","perTier":1,"cap":8}],
-                  "mid":  [{"type":"relation","target":"边将","perTier":1,"cap":8},{"type":"relation","target":"商贾","perTier":1,"cap":6}],
-                  "late": [{"type":"warEdge","target":"winBonus","perTier":1.5,"cap":10}],
-                  "peak": [{"type":"passive","target":"treasury","perTier":0.05,"cap":1.2}]},
-    "bank":      {"early":[{"type":"costLess","target":"research","perTier":3,"cap":20},{"type":"relation","target":"商贾","perTier":1,"cap":6}],
-                  "mid":  [{"type":"relation","target":"商贾","perTier":1,"cap":6}],
-                  "late": [{"type":"passive","target":"treasury","perTier":0.06,"cap":1.4}],
-                  "peak": [{"type":"passive","target":"court","perTier":0.04,"cap":1.0}]},
-    "mining":    {"early":[{"type":"passive","target":"tech","perTier":0.06,"cap":1.5}],
-                  "mid":  [{"type":"passive","target":"tech","perTier":0.06,"cap":1.5},{"type":"passive","target":"military","perTier":0.03,"cap":0.8}],
-                  "late": [{"type":"relation","target":"商贾","perTier":1,"cap":6}],
-                  "peak": [{"type":"costLess","target":"research","perTier":3,"cap":20}]},
-    "craft":     {"early":[{"type":"passive","target":"treasury","perTier":0.05,"cap":1.2},{"type":"passive","target":"tech","perTier":0.03,"cap":0.8}],
-                  "mid":  [{"type":"passive","target":"tech","perTier":0.06,"cap":1.4}],
-                  "late": [{"type":"relation","target":"商贾","perTier":1,"cap":6}],
-                  "peak": [{"type":"costLess","target":"research","perTier":3,"cap":20}]},
-    # ===== 文教（exam/history/book 原为 score→朝政/民心，改当代 passive/派系）=====
-    "school":    {"early":[{"type":"relation","target":"士大夫","perTier":1,"cap":8},{"type":"passive","target":"people","perTier":0.02,"cap":0.5}],
-                  "mid":  [{"type":"relation","target":"士大夫","perTier":1,"cap":8}],
-                  "late": [{"type":"passive","target":"people","perTier":0.06,"cap":1.4}],
-                  "peak": [{"type":"passive","target":"court","perTier":0.04,"cap":1.0}]},
-    "exam":      {"early":[{"type":"passive","target":"court","perTier":0.06,"cap":1.4},{"type":"unlock","target":"选才","label":"选才","domain":"court"}],
-                  "mid":  [{"type":"relation","target":"士大夫","perTier":1,"cap":6}],
-                  "late": [{"type":"passive","target":"people","perTier":0.05,"cap":1.2}],
-                  "peak": [{"type":"costLess","target":"research","perTier":3,"cap":20}]},
-    "history":   {"early":[{"type":"passive","target":"court","perTier":0.05,"cap":1.2},{"type":"relation","target":"士大夫","perTier":1,"cap":5}],
-                  "mid":  [{"type":"relation","target":"士大夫","perTier":1,"cap":6}],
-                  "late": [{"type":"passive","target":"people","perTier":0.04,"cap":1.0}],
-                  "peak": [{"type":"passive","target":"court","perTier":0.06,"cap":1.4}]},
-    "book":      {"early":[{"type":"passive","target":"people","perTier":0.05,"cap":1.2},{"type":"relation","target":"士大夫","perTier":1,"cap":4}],
-                  "mid":  [{"type":"relation","target":"士大夫","perTier":1,"cap":6}],
-                  "late": [{"type":"passive","target":"tech","perTier":0.04,"cap":1.0}],
-                  "peak": [{"type":"costLess","target":"research","perTier":3,"cap":20}]},
-    "math":      {"early":[{"type":"passive","target":"tech","perTier":0.07,"cap":1.6}],
-                  "mid":  [{"type":"passive","target":"tech","perTier":0.07,"cap":1.6},{"type":"passive","target":"court","perTier":0.03,"cap":0.8}],
-                  "late": [{"type":"relation","target":"士大夫","perTier":1,"cap":5}],
-                  "peak": [{"type":"costLess","target":"research","perTier":3,"cap":20}]},
-    "geo":       {"early":[{"type":"warEdge","target":"winBonus","perTier":2.0,"cap":12},{"type":"passive","target":"tech","perTier":0.02,"cap":0.5}],
-                  "mid":  [{"type":"warEdge","target":"winBonus","perTier":2.0,"cap":12}],
-                  "late": [{"type":"relation","target":"边将","perTier":1,"cap":6}],
-                  "peak": [{"type":"costLess","target":"research","perTier":3,"cap":20}]},
-    "diplomacy": {"early":[{"type":"relation","target":"边将","perTier":1,"cap":8},{"type":"relation","target":"商贾","perTier":1,"cap":4}],
-                  "mid":  [{"type":"relation","target":"商贾","perTier":1,"cap":6}],
-                  "late": [{"type":"warEdge","target":"winBonus","perTier":1.5,"cap":10}],
-                  "peak": [{"type":"passive","target":"court","perTier":0.04,"cap":1.0}]},
-    "ritual":    {"early":[{"type":"relation","target":"宗室","perTier":1,"cap":8}],
-                  "mid":  [{"type":"relation","target":"宗室","perTier":1,"cap":8},{"type":"relation","target":"士大夫","perTier":1,"cap":4}],
-                  "late": [{"type":"passive","target":"court","perTier":0.05,"cap":1.2}],
-                  "peak": [{"type":"passive","target":"people","perTier":0.04,"cap":1.0}]},
-    "educate":   {"early":[{"type":"passive","target":"people","perTier":0.07,"cap":1.6},{"type":"relation","target":"士大夫","perTier":1,"cap":3}],
-                  "mid":  [{"type":"passive","target":"people","perTier":0.07,"cap":1.6}],
-                  "late": [{"type":"relation","target":"士大夫","perTier":1,"cap":6}],
-                  "peak": [{"type":"passive","target":"court","perTier":0.04,"cap":1.0}]},
-    # ===== 医养 =====
-    "herb":      {"early":[{"type":"shield","target":"epidemic","perTier":7,"cap":50}],
-                  "mid":  [{"type":"shield","target":"epidemic","perTier":7,"cap":50},{"type":"eventLess","target":"epidemic","perTier":4,"cap":25}],
-                  "late": [{"type":"passive","target":"health","perTier":0.05,"cap":1.2}],
-                  "peak": [{"type":"relation","target":"士大夫","perTier":1,"cap":5}]},
-    "acup":      {"early":[{"type":"passive","target":"health","perTier":0.07,"cap":1.6}],
-                  "mid":  [{"type":"passive","target":"health","perTier":0.07,"cap":1.6},{"type":"passive","target":"people","perTier":0.03,"cap":0.8}],
-                  "late": [{"type":"relation","target":"士大夫","perTier":1,"cap":5}],
-                  "peak": [{"type":"eventLess","target":"epidemic","perTier":4,"cap":25}]},
-    "formula":   {"early":[{"type":"shield","target":"epidemic","perTier":6,"cap":45}],
-                  "mid":  [{"type":"shield","target":"epidemic","perTier":6,"cap":45},{"type":"eventLess","target":"epidemic","perTier":4,"cap":25}],
-                  "late": [{"type":"passive","target":"health","perTier":0.05,"cap":1.2}],
-                  "peak": [{"type":"relation","target":"商贾","perTier":1,"cap":5}]},
-    "surgery":   {"early":[{"type":"shield","target":"wound","perTier":7,"cap":50}],
-                  "mid":  [{"type":"shield","target":"wound","perTier":7,"cap":50},{"type":"passive","target":"health","perTier":0.03,"cap":0.8}],
-                  "late": [{"type":"relation","target":"士大夫","perTier":1,"cap":5}],
-                  "peak": [{"type":"warEdge","target":"lossMitigate","perTier":8,"cap":40}]},
-    "epidemic":  {"early":[{"type":"shield","target":"epidemic","perTier":9,"cap":60},{"type":"eventLess","target":"epidemic","perTier":5,"cap":35}],
-                  "mid":  [{"type":"shield","target":"epidemic","perTier":9,"cap":60}],
-                  "late": [{"type":"eventLess","target":"epidemic","perTier":6,"cap":40}],
-                  "peak": [{"type":"passive","target":"health","perTier":0.06,"cap":1.4}]},
-    "health":    {"early":[{"type":"passive","target":"health","perTier":0.06,"cap":1.5}],
-                  "mid":  [{"type":"passive","target":"health","perTier":0.06,"cap":1.5},{"type":"passive","target":"people","perTier":0.03,"cap":0.8}],
-                  "late": [{"type":"relation","target":"士大夫","perTier":1,"cap":5}],
-                  "peak": [{"type":"eventLess","target":"epidemic","perTier":4,"cap":25}]},
-    "gyne":      {"early":[{"type":"passive","target":"health","perTier":0.05,"cap":1.2},{"type":"passive","target":"people","perTier":0.03,"cap":0.8}],
-                  "mid":  [{"type":"passive","target":"people","perTier":0.05,"cap":1.2}],
-                  "late": [{"type":"relation","target":"士大夫","perTier":1,"cap":5}],
-                  "peak": [{"type":"passive","target":"health","perTier":0.06,"cap":1.4}]},
-    "vet":       {"early":[{"type":"passive","target":"people","perTier":0.05,"cap":1.2},{"type":"passive","target":"military","perTier":0.02,"cap":0.6}],
-                  "mid":  [{"type":"passive","target":"military","perTier":0.04,"cap":1.0}],
-                  "late": [{"type":"relation","target":"边将","perTier":1,"cap":5}],
-                  "peak": [{"type":"warEdge","target":"lossMitigate","perTier":6,"cap":30}]},
-    "shaman":    {"early":[{"type":"passive","target":"health","perTier":0.04,"cap":1.0},{"type":"shield","target":"curse","perTier":4,"cap":25}],
-                  "mid":  [{"type":"shield","target":"curse","perTier":5,"cap":30}],
-                  "late": [{"type":"passive","target":"people","perTier":0.04,"cap":1.0}],
-                  "peak": [{"type":"relation","target":"士大夫","perTier":1,"cap":4}]},
-    # ===== 天文数理（calendar/astro/mathclassic/natural 原为 score→民心/朝政/科技，改当代）=====
-    "calendar":  {"early":[{"type":"passive","target":"people","perTier":0.05,"cap":1.2},{"type":"eventLess","target":"famine","perTier":3,"cap":20}],
-                  "mid":  [{"type":"eventLess","target":"famine","perTier":5,"cap":30}],
-                  "late": [{"type":"passive","target":"tech","perTier":0.04,"cap":1.0}],
-                  "peak": [{"type":"relation","target":"士大夫","perTier":1,"cap":5}]},
-    "astro":     {"early":[{"type":"passive","target":"court","perTier":0.05,"cap":1.2},{"type":"passive","target":"tech","perTier":0.02,"cap":0.5}],
-                  "mid":  [{"type":"passive","target":"tech","perTier":0.06,"cap":1.4}],
-                  "late": [{"type":"warEdge","target":"winBonus","perTier":1.5,"cap":10}],
-                  "peak": [{"type":"relation","target":"士大夫","perTier":1,"cap":5}]},
-    "mathclassic":{"early":[{"type":"passive","target":"tech","perTier":0.07,"cap":1.6},{"type":"passive","target":"court","perTier":0.03,"cap":0.8}],
-                  "mid":  [{"type":"passive","target":"tech","perTier":0.07,"cap":1.6}],
-                  "late": [{"type":"relation","target":"士大夫","perTier":1,"cap":5}],
-                  "peak": [{"type":"costLess","target":"research","perTier":3,"cap":20}]},
-    "survey":    {"early":[{"type":"warEdge","target":"winBonus","perTier":1.8,"cap":12},{"type":"passive","target":"tech","perTier":0.02,"cap":0.5}],
-                  "mid":  [{"type":"warEdge","target":"winBonus","perTier":1.8,"cap":12}],
-                  "late": [{"type":"relation","target":"边将","perTier":1,"cap":6}],
-                  "peak": [{"type":"costLess","target":"research","perTier":3,"cap":20}]},
-    "map":       {"early":[{"type":"warEdge","target":"winBonus","perTier":2.0,"cap":12},{"type":"unlock","target":"料敌","label":"料敌","domain":"war"}],
-                  "mid":  [{"type":"warEdge","target":"winBonus","perTier":2.0,"cap":12}],
-                  "late": [{"type":"relation","target":"边将","perTier":1,"cap":6}],
-                  "peak": [{"type":"costLess","target":"research","perTier":3,"cap":20}]},
-    "weather":   {"early":[{"type":"eventLess","target":"famine","perTier":6,"cap":40},{"type":"eventLess","target":"flood","perTier":4,"cap":25}],
-                  "mid":  [{"type":"eventLess","target":"flood","perTier":5,"cap":30}],
-                  "late": [{"type":"passive","target":"people","perTier":0.04,"cap":1.0}],
-                  "peak": [{"type":"shield","target":"flood","perTier":6,"cap":35}]},
-    "physics":   {"early":[{"type":"passive","target":"tech","perTier":0.08,"cap":1.8}],
-                  "mid":  [{"type":"passive","target":"tech","perTier":0.08,"cap":1.8},{"type":"passive","target":"court","perTier":0.03,"cap":0.8}],
-                  "late": [{"type":"relation","target":"士大夫","perTier":1,"cap":5}],
-                  "peak": [{"type":"costLess","target":"research","perTier":3,"cap":20}]},
-    "chem":      {"early":[{"type":"passive","target":"tech","perTier":0.06,"cap":1.5},{"type":"shield","target":"epidemic","perTier":3,"cap":20}],
-                  "mid":  [{"type":"shield","target":"epidemic","perTier":4,"cap":25}],
-                  "late": [{"type":"relation","target":"商贾","perTier":1,"cap":5}],
-                  "peak": [{"type":"costLess","target":"research","perTier":3,"cap":20}]},
-    "natural":   {"early":[{"type":"passive","target":"health","perTier":0.04,"cap":1.0},{"type":"passive","target":"tech","perTier":0.03,"cap":0.8}],
-                  "mid":  [{"type":"passive","target":"health","perTier":0.06,"cap":1.4}],
-                  "late": [{"type":"relation","target":"士大夫","perTier":1,"cap":5}],
-                  "peak": [{"type":"eventLess","target":"epidemic","perTier":4,"cap":25}]},
-    # ===== 律礼（census/censor/clan 原为 score→国库/朝政，改当代）=====
-    "penal":     {"early":[{"type":"relation","target":"士大夫","perTier":1,"cap":8},{"type":"shield","target":"dispute","perTier":4,"cap":25}],
-                  "mid":  [{"type":"shield","target":"dispute","perTier":5,"cap":30}],
-                  "late": [{"type":"passive","target":"court","perTier":0.05,"cap":1.2}],
-                  "peak": [{"type":"relation","target":"边将","perTier":1,"cap":5}]},
-    "rituallaw": {"early":[{"type":"relation","target":"宗室","perTier":1,"cap":6},{"type":"relation","target":"士大夫","perTier":1,"cap":4}],
-                  "mid":  [{"type":"relation","target":"士大夫","perTier":1,"cap":6}],
-                  "late": [{"type":"passive","target":"court","perTier":0.05,"cap":1.2}],
-                  "peak": [{"type":"passive","target":"people","perTier":0.04,"cap":1.0}]},
-    "landdeed":  {"early":[{"type":"shield","target":"dispute","perTier":8,"cap":50}],
-                  "mid":  [{"type":"shield","target":"dispute","perTier":8,"cap":50},{"type":"passive","target":"treasury","perTier":0.03,"cap":0.8}],
-                  "late": [{"type":"relation","target":"士大夫","perTier":1,"cap":5}],
-                  "peak": [{"type":"passive","target":"court","perTier":0.04,"cap":1.0}]},
-    "census":    {"early":[{"type":"passive","target":"treasury","perTier":0.04,"cap":1.0},{"type":"passive","target":"court","perTier":0.03,"cap":0.8}],
-                  "mid":  [{"type":"passive","target":"treasury","perTier":0.06,"cap":1.4}],
-                  "late": [{"type":"relation","target":"士大夫","perTier":1,"cap":5}],
-                  "peak": [{"type":"costLess","target":"research","perTier":3,"cap":20}]},
-    "censor":    {"early":[{"type":"relation","target":"士大夫","perTier":1,"cap":6},{"type":"eventLess","target":"dispute","perTier":3,"cap":20}],
-                  "mid":  [{"type":"relation","target":"士大夫","perTier":1,"cap":6}],
-                  "late": [{"type":"passive","target":"court","perTier":0.05,"cap":1.2}],
-                  "peak": [{"type":"relation","target":"边将","perTier":1,"cap":5}]},
-    "border":    {"early":[{"type":"relation","target":"边将","perTier":1,"cap":8},{"type":"warEdge","target":"winBonus","perTier":1.5,"cap":10}],
-                  "mid":  [{"type":"warEdge","target":"winBonus","perTier":1.5,"cap":10}],
-                  "late": [{"type":"passive","target":"court","perTier":0.04,"cap":1.0}],
-                  "peak": [{"type":"relation","target":"宗室","perTier":1,"cap":5}]},
-    "clan":      {"early":[{"type":"relation","target":"宗室","perTier":1,"cap":8},{"type":"passive","target":"court","perTier":0.03,"cap":0.8}],
-                  "mid":  [{"type":"relation","target":"宗室","perTier":1,"cap":8}],
-                  "late": [{"type":"passive","target":"people","perTier":0.04,"cap":1.0}],
-                  "peak": [{"type":"passive","target":"court","perTier":0.05,"cap":1.2}]},
-    "militarylaw":{"early":[{"type":"warEdge","target":"lossMitigate","perTier":8,"cap":40},{"type":"relation","target":"边将","perTier":1,"cap":5}],
-                  "mid":  [{"type":"warEdge","target":"lossMitigate","perTier":8,"cap":40}],
-                  "late": [{"type":"passive","target":"court","perTier":0.04,"cap":1.0}],
-                  "peak": [{"type":"relation","target":"士大夫","perTier":1,"cap":5}]},
-    "lawsuit":   {"early":[{"type":"shield","target":"dispute","perTier":7,"cap":45}],
-                  "mid":  [{"type":"shield","target":"dispute","perTier":7,"cap":45},{"type":"passive","target":"court","perTier":0.03,"cap":0.8}],
-                  "late": [{"type":"relation","target":"士大夫","perTier":1,"cap":5}],
-                  "peak": [{"type":"passive","target":"people","perTier":0.04,"cap":1.0}]},
-    # ===== 方技玄术（fengshui/kanYu 原为 score→民心/军事，改当代）=====
-    "alchemy":   {"early":[{"type":"passive","target":"health","perTier":0.05,"cap":1.2},{"type":"passive","target":"tech","perTier":0.03,"cap":0.8}],
-                  "mid":  [{"type":"passive","target":"tech","perTier":0.06,"cap":1.4}],
-                  "late": [{"type":"relation","target":"士大夫","perTier":1,"cap":4}],
-                  "peak": [{"type":"passive","target":"health","perTier":0.06,"cap":1.4}]},
-    "divin":     {"early":[{"type":"unlock","target":"占断","label":"占断","domain":"crisis"}],
-                  "mid":  [{"type":"unlock","target":"占断","label":"占断","domain":"crisis"},{"type":"relation","target":"士大夫","perTier":1,"cap":4}],
-                  "late": [{"type":"passive","target":"court","perTier":0.04,"cap":1.0}],
-                  "peak": [{"type":"relation","target":"宗室","perTier":1,"cap":4}]},
-    "fengshui":  {"early":[{"type":"passive","target":"court","perTier":0.03,"cap":0.8},{"type":"passive","target":"people","perTier":0.04,"cap":1.0}],
-                  "mid":  [{"type":"passive","target":"people","perTier":0.05,"cap":1.2}],
-                  "late": [{"type":"relation","target":"士大夫","perTier":1,"cap":4}],
-                  "peak": [{"type":"shield","target":"curse","perTier":4,"cap":25}]},
-    "fangji":    {"early":[{"type":"passive","target":"health","perTier":0.06,"cap":1.5},{"type":"passive","target":"tech","perTier":0.02,"cap":0.5}],
-                  "mid":  [{"type":"passive","target":"health","perTier":0.06,"cap":1.5}],
-                  "late": [{"type":"relation","target":"士大夫","perTier":1,"cap":4}],
-                  "peak": [{"type":"eventLess","target":"epidemic","perTier":4,"cap":25}]},
-    "kanYu":     {"early":[{"type":"warEdge","target":"winBonus","perTier":1.6,"cap":12},{"type":"passive","target":"military","perTier":0.03,"cap":0.8}],
-                  "mid":  [{"type":"warEdge","target":"winBonus","perTier":1.6,"cap":12}],
-                  "late": [{"type":"relation","target":"边将","perTier":1,"cap":5}],
-                  "peak": [{"type":"passive","target":"court","perTier":0.04,"cap":1.0}]},
-    "talisman":  {"early":[{"type":"shield","target":"curse","perTier":6,"cap":40}],
-                  "mid":  [{"type":"shield","target":"curse","perTier":6,"cap":40},{"type":"passive","target":"health","perTier":0.03,"cap":0.8}],
-                  "late": [{"type":"relation","target":"士大夫","perTier":1,"cap":4}],
-                  "peak": [{"type":"eventLess","target":"curse","perTier":4,"cap":25}]},
-    "fate":      {"early":[{"type":"unlock","target":"占验","label":"占验","domain":"any"}],
-                  "mid":  [{"type":"unlock","target":"占验","label":"占验","domain":"any"},{"type":"relation","target":"宗室","perTier":1,"cap":4}],
-                  "late": [{"type":"passive","target":"court","perTier":0.04,"cap":1.0}],
-                  "peak": [{"type":"relation","target":"士大夫","perTier":1,"cap":4}]},
-    "dunjia":    {"early":[{"type":"warEdge","target":"winBonus","perTier":1.8,"cap":12},{"type":"shield","target":"curse","perTier":3,"cap":20}],
-                  "mid":  [{"type":"warEdge","target":"winBonus","perTier":1.8,"cap":12}],
-                  "late": [{"type":"relation","target":"边将","perTier":1,"cap":5}],
-                  "peak": [{"type":"costLess","target":"research","perTier":3,"cap":20}]},
-    "witch":     {"early":[{"type":"warEdge","target":"winBonus","perTier":1.5,"cap":10},{"type":"shield","target":"curse","perTier":4,"cap":25}],
-                  "mid":  [{"type":"warEdge","target":"winBonus","perTier":1.5,"cap":10}],
-                  "late": [{"type":"relation","target":"边将","perTier":1,"cap":5}],
-                  "peak": [{"type":"eventLess","target":"curse","perTier":4,"cap":25}]},
+# 短码 → (type, target, perTier, cap)。复合项在序列里用 '+' 连接（如 "T+Sm"）。
+SHORTCODE = {
+    # 属性 passive
+    "T": ("passive", "treasury", 0.06, 1.4),
+    "P": ("passive", "people", 0.05, 1.2),
+    "M": ("passive", "military", 0.05, 1.2),
+    "C": ("passive", "court", 0.05, 1.2),
+    "H": ("passive", "health", 0.05, 1.2),
+    "K": ("passive", "tech", 0.06, 1.4),
+    # 派系 relation
+    "Z": ("relation", "宗室", 1, 8),
+    "Sc": ("relation", "士大夫", 1, 6),
+    "Sm": ("relation", "商贾", 1, 6),
+    "G": ("relation", "边将", 1, 8),
+    # 灾盾 shield
+    "Ff": ("shield", "famine", 8, 50),
+    "Fl": ("shield", "flood", 8, 50),
+    "Ep": ("shield", "epidemic", 7, 50),
+    "Wd": ("shield", "wound", 7, 45),
+    "Ds": ("shield", "dispute", 5, 30),
+    "Cu": ("shield", "curse", 5, 30),
+    # 灾减 eventLess
+    "ef": ("eventLess", "famine", 6, 40),
+    "el": ("eventLess", "flood", 5, 30),
+    "ee": ("eventLess", "epidemic", 5, 35),
+    "ed": ("eventLess", "dispute", 4, 25),
+    "ec": ("eventLess", "curse", 4, 25),
+    # 战争 warEdge
+    "Wb": ("warEdge", "winBonus", 2.0, 15),
+    "Wl": ("warEdge", "lossMitigate", 8, 45),
+    # 费减 costLess
+    "Cr": ("costLess", "research", 3, 20),
 }
 
-BANDS = ("early", "mid", "late", "peak")
-UNSEEN = set(EFFECTS.keys())
+# 每个 special 一条 14 段序列（空格分隔，对应 age 1..14；相邻段类型不同，
+# 复合用 '+'）。序列即该轨道的「历史演进弧」：早期基础作用 → 中期扩展 → 后期高阶/复合。
+# 设计原则：相邻 age 必不同；跨带重复的类型因 tier 数值不同而文案数值也不同。
+EFFECTS = {
+    # ===== 农政 =====
+    "yield":      "T Sm ef Fl P T Sm ef Fl P T+Sm ef Fl Sm",
+    "flood":      "Fl Ff el ef Fl Ff el ef Fl Ff el ef Fl Ff",
+    "fertility":  "P T P T K P T P T K P T P T",
+    "seed":       "ef Ff ef Ff ee ef Ff ef Ff ee ef Ff ef Ff",
+    "tool":       "T K T K M T K T K M T K T K",
+    "storage":    "Ff T Ff P Ff T Ff P Ff T Ff P Ff T",
+    "landlaw":    "Sc P Sc T Sc P Sc T Sc P Sc T Sc P Sc",
+    "reclaim":    "T P T P G T P T P G T P T P",
+    "pasture":    "T M T M G T M T M G T M T M",
+    # ===== 军工 =====
+    "armor":      "Wl M Wl M Wl M Wl M G Wl M Wl M Wl",
+    "weapon":     "Wb M Wb M Wb M Wb M G Wb M Wb M Wb",
+    "formation":  "Wb G Wb G Wb G Wb G M Wb G Wb G Wb",
+    "defense":    "Wl M Wl M Wl M Wl M Wd Wl M Wl M Wl",
+    "cavalry":    "Wb M Wb M Wb M Wb M G Wb M Wb M Wb",
+    "navy":       "Wb M Wb M Wb M Wb M G Wb M Wb M Wb",
+    "gunpowder":  "Wb K Wb K Wb K Wb K G Wb K Wb K Wb",
+    "intel":      "Wb G Wb G Wb G Wb G M Wb G Wb G Wb",
+    "logistics":  "Wl M Wl M Wl M Wl M Sm Wl M Wl M Wl",
+    # ===== 营造 =====
+    "palace":     "C Z C Z P C Z C Z P C Z C Z P",
+    "bridge":     "T P T P Sm T P T P Sm T P T P",
+    "road":       "C Sc C Sc T C Sc C Sc T C Sc C Sc",
+    "hydraulics": "Fl Ff el Fl Ff el Fl Ff el Fl Ff el Fl Ff",
+    "smelt":      "K M K M Sm K M K M Sm K M K M",
+    "machine":    "T K T K Sm T K T K Sm T K T K",
+    "brick":      "C Z C Z P C Z C Z P C Z C Z P",
+    "city":       "T Sm T Sm P T Sm T Sm P T Sm T Sm",
+    "ship":       "T M T M Sm T M T M G T M T M",
+    # ===== 商工 =====
+    "market":     "T Sm T Sm P T Sm T Sm P T Sm T Sm",
+    "coin":       "Cr T Cr T Sm Cr T Cr T Sm Cr T Cr T",
+    "workshop":   "T K T K Sm T K T K Sm T K T K",
+    "shipping":   "T Sm T Sm Wb T Sm T Sm Wb T Sm T Sm",
+    "saltiron":   "T C T C Sm T C T C Sm T C T C",
+    "teahorse":   "G Sm G Sm Wb G Sm G Sm Wb G Sm G Sm",
+    "bank":       "Cr Sm Cr Sm T Cr Sm Cr Sm T Cr Sm Cr Sm",
+    "mining":     "K M K M Sm K M K M Sm K M K M",
+    "craft":      "T K T K Sm T K T K Sm T K T K",
+    # ===== 文教 =====
+    "school":     "Sc P Sc P Sm Sc P Sc P Sm Sc P Sc P",
+    "exam":       "C U:选才 C Sc C P C Sc C P C Sc C P",
+    "history":    "C Sc C Sc P C Sc C Sc P C Sc C Sc",
+    "book":       "P Sc P Sc K P Sc P Sc K P Sc P Sc",
+    "math":       "K C K C Sc K C K C Sm K C K C",
+    "geo":        "Wb K Wb K G Wb K Wb K G Wb K Wb K",
+    "diplomacy":  "G Sm G Sm Wb G Sm G Sm Wb G Sm G Sm",
+    "ritual":     "Z Sc Z Sc C Z Sc Z Sc P Z Sc Z Sc",
+    "educate":    "P Sc P Sc C P Sc P Sc C P Sc P Sc",
+    # ===== 医养 =====
+    "herb":       "Ep H Ep H Sc Ep H Ep H Sc Ep H Ep H",
+    "acup":       "H P H P Sc H P H P Sc H P H P",
+    "formula":    "Ep H Ep H Sc Ep H Ep H Sm Ep H Ep H",
+    "surgery":    "Wd H Wd H Sc Wd H Wd H G Wd H Wd H",
+    "epidemic":   "Ep ee Ep ee H Ep ee Ep ee H Ep ee Ep ee",
+    "health":     "H P H P Sc H P H P Sm H P H P",
+    "gyne":       "H P H P Sc H P H P Sm H P H P",
+    "vet":        "P M P M G P M P M G P M P M",
+    "shaman":     "H Cu H Cu Sc H Cu H Cu Sm H Cu H Cu",
+    # ===== 天文数理 =====
+    "calendar":   "P ef P ef K P ef P ef Sc P ef P ef",
+    "astro":      "C K C K Wb C K C K Sc C K C K",
+    "mathclassic":"K C K C Sc K C K C Sm K C K C",
+    "survey":     "Wb K Wb K G Wb K Wb K Sc Wb K Wb K",
+    "map":        "Wb U:料敌 Wb K G Wb U:料敌 Wb K G Wb U:料敌 Wb K",
+    "weather":    "ef el ef el P ef el ef el P ef el ef el",
+    "physics":    "K C K C Sc K C K C Sm K C K C",
+    "chem":       "K Ep K Ep Sm K Ep K Ep Sm K Ep K Ep",
+    "natural":    "H K H K Sc H K H K Sm H K H K",
+    # ===== 律礼 =====
+    "penal":      "Sc Ds Sc Ds C Sc Ds Sc Ds G Sc Ds Sc Ds",
+    "rituallaw":  "Z Sc Z Sc C Z Sc Z Sc P Z Sc Z Sc",
+    "landdeed":   "Ds T Ds T Sc Ds T Ds T Sc Ds T Ds T",
+    "census":     "T C T C Sc T C T C Sm T C T C",
+    "censor":     "Sc ed Sc ed C Sc ed Sc ed G Sc ed Sc ed",
+    "border":     "G Wb G Wb C G Wb G Wb Z G Wb G Wb",
+    "clan":       "Z C Z C P Z C Z C Sc Z C Z C",
+    "militarylaw":"Wl G Wl G C Wl G Wl G Sc Wl G Wl G",
+    "lawsuit":    "Ds C Ds C Sc Ds C Ds C P Ds C Ds C",
+    # ===== 方技玄术 =====
+    "alchemy":    "H K H K Sc H K H K Sm H K H K",
+    "divin":      "U:占断 Sc U:占断 Z U:占断 Sc U:占断 Z U:占断 Sc U:占断 Z U:占断 Sc U:占断",
+    "fengshui":   "C P C P Sc C P C P Sm C P C P",
+    "fangji":     "H K H K Sc H K H K Sm H K H K",
+    "kanYu":      "Wb M Wb M G Wb M Wb M Sc Wb M Wb M",
+    "talisman":   "Cu H Cu H Sc Cu H Cu H Sm Cu H Cu H",
+    "fate":       "U:占验 Z U:占验 Sc U:占验 Z U:占验 Sc U:占验 Z U:占验 Sc U:占验 Z",
+    "dunjia":     "Wb Cu Wb Cu G Wb Cu Wb Cu Sc Wb Cu Wb Cu",
+    "witch":      "Wb Cu Wb Cu G Wb Cu Wb Cu Sm Wb Cu Wb Cu",
+}
 
 
 def tier_of(age):
     return 1 if age <= 3 else (2 if age <= 7 else 3)
 
 
-def band_of(age):
-    # early 1-4 / mid 5-8 / late 9-11 / peak 12-14
-    if age <= 4:
-        return "early"
-    if age <= 8:
-        return "mid"
-    if age <= 11:
-        return "late"
-    return "peak"
+def parse_code(code):
+    """单段短码 → effect 列表（支持 '+' 复合）。U:label 为解锁。"""
+    out = []
+    for c in code.split("+"):
+        c = c.strip()
+        if not c:
+            continue
+        if c.startswith("U:"):
+            out.append({"type": "unlock", "target": c[2:]})
+        elif c in SHORTCODE:
+            t, tg, pt, cap = SHORTCODE[c]
+            out.append({"type": t, "target": tg, "perTier": pt, "cap": cap})
+        else:
+            raise ValueError("未知短码: %r" % c)
+    return out
 
 
 def fmt(sp, age):
@@ -416,9 +210,7 @@ def fmt(sp, age):
         pct = pt * tier
         return "研究科技耗费 −%d%%·每级（封顶%d%%）" % (pct, cap)
     if t == "unlock":
-        return "相关事件解锁特殊抉择：「%s」" % sp.get("label", tg)
-    if t == "ability":
-        return "可发动「%s」（冷却%d月）" % (sp.get("label", tg), sp.get("cooldown", 3))
+        return "相关事件解锁特殊抉择：「%s」" % tg
     return ""
 
 
@@ -426,7 +218,6 @@ def main():
     if not os.path.exists(JSON_PATH):
         print("FATAL: 未找到", JSON_PATH)
         return
-    # 备份
     ts = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
     bak = JSON_PATH + ".bak_effects_" + ts
     shutil.copy2(JSON_PATH, bak)
@@ -438,30 +229,34 @@ def main():
     n_eff = 0
     n_desc = 0
     missing = []
-    specials_seen = set()
-    bandless = []  # 缺少某分带的 special（结构上必须四带齐全）
+    unused = set(EFFECTS.keys())
+    dup_fatal = False
 
     for n in nodes:
-        sp_def = EFFECTS.get(n.get("special"))
-        if sp_def is None:
+        sp = n.get("special")
+        if sp is None or sp not in EFFECTS:
             missing.append(n.get("id"))
             continue
-        for b in BANDS:
-            if b not in sp_def:
-                bandless.append(n["special"])
-        specials_seen.add(n["special"])
-        UNSEEN.discard(n["special"])
-        sp_list = sp_def[band_of(n["age"])]
-        # 写结构化 effect（深拷贝，避免脚本间共享引用）
-        n["effect"] = [dict(s) for s in sp_list]
-        eff = "; ".join(fmt(s, n["age"]) for s in sp_list)
+        unused.discard(sp)
+        seq = EFFECTS[sp].split()
+        if len(seq) < 1:
+            missing.append(n.get("id") + "(空序列)")
+            continue
+        idx = min(max(n["age"] - 1, 0), len(seq) - 1)
+        codes = seq[idx]
+        try:
+            eff_list = parse_code(codes)
+        except ValueError as e:
+            print("⚠ 解析失败 %s (%s): %s" % (n.get("id"), sp, e))
+            dup_fatal = True
+            missing.append(n.get("id"))
+            continue
+        n["effect"] = [dict(s) for s in eff_list]
+        eff = "；".join(fmt(s, n["age"]) for s in eff_list)
         n["effectDesc"] = eff
         base = (n.get("functionDesc") or "").strip()
-        # 去掉旧版可能已追加的 effectDesc 残留（以「｜」分隔标记）
         if "｜" in base:
             base = base.split("｜", 1)[0].strip()
-        # 幂等保护：若节点原本就没有「一句话作用」，上一轮会把 functionDesc 直接写成 eff，
-        # 再跑一次时 base 就等于 eff，拼出「eff ｜ eff」重复文案（曾波及 196 个节点）。
         if base == eff:
             base = ""
         n["functionDesc"] = (base + " ｜ " + eff) if base else eff
@@ -470,37 +265,47 @@ def main():
 
     json.dump(data, open(JSON_PATH, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     print("节点总数:", n_total, " | 写入 effect:", n_eff, " | 写入 effectDesc:", n_desc)
-    print("EFFECTS 覆盖 special 数:", len(specials_seen), "/", len(EFFECTS))
+    print("EFFECTS 覆盖 special 数:", len(EFFECTS) - len(unused), "/", len(EFFECTS))
 
-    # 多样性自检：每条线（special）跨 4 分带应当出现 ≥2 种不同效果类型，否则仍单调。
-    mono = []
-    variety_dist = {}
-    for sp, bands in EFFECTS.items():
-        types = set()
-        for b in BANDS:
-            for s in bands.get(b, []):
-                types.add(s["type"])
-        variety_dist[len(types)] = variety_dist.get(len(types), 0) + 1
-        if len(types) < 2:
-            mono.append(sp)
-    print("每条线「跨带不同效果类型数」分布:", dict(sorted(variety_dist.items())))
+    # 差异化自检：每个 special 的 14 段，相邻 age 的 (type,target) 组合必不同（硬约束）。
+    # 注意：国库/民心 的 type 同为 passive、水患/饥荒盾 同为 shield，
+    # 故比较最小粒度 (type,target) 组合，而非仅顶层 type，否则会误报雷同。
+    def sig(code):
+        effs = parse_code(code)
+        return tuple(sorted((e["type"], e.get("target")) for e in effs))
+
+    mono = None
+    for sp, s in EFFECTS.items():
+        seq = s.split()
+        prev = None
+        for i, code in enumerate(seq):
+            sg = sig(code)
+            if sg == prev:
+                if mono is None:
+                    mono = []
+                mono.append("%s@age%d(%s)" % (sp, i + 1, code))
+            prev = sg
     if mono:
-        print("⚠ 仍单调（<2 种类型）的线:", mono)
+        print("⚠ 相邻 age 类型雷同（应消除）:", mono)
+        dup_fatal = True
     else:
-        print("✅ 全部 81 条线跨带类型 ≥2，单调问题已消除")
-    # score 残留检查（绝不允许再出现终评通道）
-    left_score = [sp for sp, bands in EFFECTS.items()
-                  for b in BANDS for s in bands.get(b, []) if s.get("type") == "score"]
+        print("✅ 全部 81 线 14 段相邻 age 主类型均不同，差异化达成")
+
+    # score 残留检查
+    left_score = [sp for sp in EFFECTS for code in EFFECTS[sp].split()
+                  for e in parse_code(code) if e.get("type") == "score"]
     if left_score:
         print("⚠ 仍含 score 通道的 special:", sorted(set(left_score)))
+        dup_fatal = True
     else:
         print("✅ 无 score（终评）通道残留")
-    if bandless:
-        print("⚠ 缺少分带的 special:", sorted(set(bandless)))
-    if UNSEEN:
-        print("⚠ 未使用的 EFFECTS key（数据里无对应 special）:", sorted(UNSEEN))
+
+    if unused:
+        print("⚠ EFFECTS 中无对应节点的 special:", sorted(unused))
     if missing:
-        print("⚠ 数据中无 effect 映射的节点 special:", missing[:20], "...共", len(missing))
+        print("⚠ 数据中无 effect 映射的节点:", missing[:20], "...共", len(missing))
+    if dup_fatal:
+        print("⚠ 存在致命问题，未回滚（备份已存），请检查后重跑。")
 
 
 if __name__ == "__main__":

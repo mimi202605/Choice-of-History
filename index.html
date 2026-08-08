@@ -74,6 +74,11 @@
     .screen{animation:none!important;}
     #ink-transition{transition:none!important;}
     .seal::before{animation:none!important;opacity:.4;}
+    .menu-sun,.menu-mist,.menu-mtn,.title-seal{animation:none!important;}
+    .menu-mist{opacity:.25;}
+    .menu-wrap .title-row,.menu-wrap .subtitle,.menu-btns,.menu-btns .btn{
+      animation:none!important;opacity:1!important;transform:none!important;
+    }
   }
 
   /* ===== 水墨过渡遮罩 ===== */
@@ -478,6 +483,85 @@
     color:var(--dim);letter-spacing:10px;font-size:17px;margin-top:-2px;
   }
 
+  /* ===== 主菜单 · 江山画卷场景（纯 CSS / 零位图） ===== */
+  #screen-menu{position:relative;overflow:hidden;}
+  .menu-scene{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+  .menu-wrap{position:relative;z-index:2;}
+  /* 落日（朱红晕，仿朝阳/落日） */
+  .menu-sun{
+    position:absolute;left:50%;top:13vh;
+    width:min(34vh,260px);height:min(34vh,260px);transform:translateX(-50%);
+    border-radius:50%;
+    background:radial-gradient(circle at 50% 50%,
+      rgba(168,69,69,.30) 0%, rgba(168,69,69,.14) 42%, rgba(154,123,63,.07) 64%, transparent 72%);
+    will-change:transform,opacity;
+  }
+  /* 流动雾气（祥云） */
+  .menu-mist{
+    position:absolute;left:-25%;width:150%;height:26vh;bottom:20vh;
+    background:linear-gradient(180deg, transparent, rgba(255,250,235,.5) 48%, transparent);
+    filter:blur(16px);opacity:.55;will-change:transform,opacity;
+  }
+  .menu-mist.m1{animation:menuMist 30s ease-in-out infinite;}
+  .menu-mist.m2{bottom:30vh;height:20vh;opacity:.4;animation:menuMist 42s ease-in-out infinite reverse;}
+  @keyframes menuMist{0%,100%{transform:translateX(-3%);}50%{transform:translateX(3%);}}
+  /* 层叠山峦（远山淡、近山浓；双段并排无缝向左流动，视差体现时光流逝） */
+  .menu-mtn{
+    position:absolute;left:0;bottom:0;width:200%;display:flex;
+    pointer-events:none;will-change:transform;
+  }
+  .menu-mtn > span{flex:0 0 50%;height:100%;}
+  .menu-mtn.far{height:44vh;animation:menuScroll 75s linear infinite;}
+  .menu-mtn.far > span{
+    background:linear-gradient(180deg, rgba(74,63,47,0) 0%, rgba(74,63,47,.16) 55%, rgba(74,63,47,.26) 100%);
+    clip-path:polygon(0% 100%,0% 70%,8% 56%,16% 66%,26% 50%,36% 64%,46% 52%,56% 64%,66% 52%,76% 66%,86% 56%,94% 68%,100% 70%,100% 100%);
+  }
+  .menu-mtn.mid{height:30vh;animation:menuScroll 40s linear infinite;}
+  .menu-mtn.mid > span{
+    background:linear-gradient(180deg, rgba(58,49,36,0) 0%, rgba(58,49,36,.28) 50%, rgba(58,49,36,.42) 100%);
+    clip-path:polygon(0% 100%,0% 74%,10% 60%,20% 72%,30% 56%,40% 70%,50% 58%,60% 72%,70% 58%,80% 72%,90% 60%,100% 74%,100% 100%);
+  }
+  .menu-mtn.near{height:18vh;animation:menuScroll 22s linear infinite;}
+  .menu-mtn.near > span{
+    background:linear-gradient(180deg, rgba(44,36,22,0) 0%, rgba(44,36,22,.5) 55%, rgba(44,36,22,.7) 100%);
+    clip-path:polygon(0% 100%,0% 66%,12% 48%,24% 66%,36% 46%,48% 64%,60% 48%,72% 66%,84% 50%,100% 66%,100% 100%);
+  }
+  /* 父级平移一个山段宽（50%）即可无缝接上第二段，循环连绵 */
+  @keyframes menuScroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+  /* 装裱框 + 四角云纹 */
+  .menu-frame{
+    position:absolute;inset:5% 4%;border:1px solid rgba(44,36,22,.10);
+    border-radius:var(--radius-md);pointer-events:none;
+    box-shadow:inset 0 0 0 4px rgba(255,250,235,.16);
+  }
+  .menu-frame span{position:absolute;width:16px;height:16px;border:2px solid rgba(139,58,58,.5);}
+  .menu-frame .tl{top:-1px;left:-1px;border-right:none;border-bottom:none;}
+  .menu-frame .tr{top:-1px;right:-1px;border-left:none;border-bottom:none;}
+  .menu-frame .bl{bottom:-1px;left:-1px;border-right:none;border-top:none;}
+  .menu-frame .br{bottom:-1px;right:-1px;border-left:none;border-top:none;}
+  /* 标题 + 印章 */
+  .title-row{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;}
+  .title-seal{
+    flex:0 0 auto;width:54px;height:54px;margin-top:6px;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Ma Shan Zheng','Noto Serif SC','Songti SC',serif;font-size:34px;
+    color:var(--bg);background:var(--red);border-radius:var(--radius-sm);
+    transform:rotate(-6deg);letter-spacing:0;line-height:1;
+    box-shadow:0 0 0 3px rgba(139,58,58,.12), 0 6px 18px rgba(139,58,58,.28);
+    text-shadow:0 1px 1px rgba(0,0,0,.18);
+  }
+  /* 入场分级（在 .screen 整体淡入之上叠加错峰） */
+  .menu-wrap .title-row{animation:menuIn .7s cubic-bezier(.2,.7,.2,1) backwards;animation-delay:.05s;}
+  .menu-wrap .subtitle{animation:menuIn .7s cubic-bezier(.2,.7,.2,1) backwards;animation-delay:.18s;}
+  .menu-btns{display:flex;flex-direction:column;gap:12px;width:min(280px,80vw);margin-top:14px;
+    animation:menuIn .7s cubic-bezier(.2,.7,.2,1) backwards;animation-delay:.30s;}
+  .menu-btns .btn{animation:menuIn .6s cubic-bezier(.2,.7,.2,1) backwards;}
+  .menu-btns .btn:nth-child(1){animation-delay:.34s;}
+  .menu-btns .btn:nth-child(2){animation-delay:.42s;}
+  .menu-btns .btn:nth-child(3){animation-delay:.50s;}
+  .menu-btns .btn:nth-child(4){animation-delay:.58s;}
+  @keyframes menuIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+
   /* ===== 网格/卡片系统 ===== */
   .grid{
     display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));
@@ -700,7 +784,19 @@
       100%{transform:translateY(-5vh) translateX(calc(var(--dx4)*.6)) rotate(360deg) scale(0);opacity:0;}
     }
   }
+  /* 主菜单场景 · 响应式收敛 */
+  @media(max-width:600px){
+    .menu-sun{top:9vh;width:min(26vh,170px);height:min(26vh,170px);}
+    .menu-mtn.far{height:30vh;}
+    .menu-mtn.mid{height:20vh;}
+    .menu-mtn.near{height:12vh;}
+    .menu-frame{inset:3% 3%;}
+  }
   @media(max-width:400px){
+    .menu-mist,.menu-frame{display:none;}
+    .menu-mtn.far{height:24vh;}
+    .menu-mtn.mid{height:16vh;}
+    .menu-mtn.near{height:10vh;}
     .title-big{font-size:40px;letter-spacing:8px;}
     .subtitle{font-size:13px;letter-spacing:4px;}
     .btn.big{font-size:16px;padding:10px 20px;letter-spacing:3px;}
@@ -940,10 +1036,22 @@
   <!-- Main Menu -->
   <section id="screen-menu" class="screen">
     <div id="data-warn" style="display:none;margin:0 auto 10px;max-width:520px;border:1px solid var(--red);color:var(--red);background:rgba(139,58,58,.08);padding:8px 12px;border-radius:4px;font-size:13px;"></div>
+    <div class="menu-scene" aria-hidden="true">
+      <div class="menu-sun"></div>
+      <div class="menu-mist m1"></div>
+      <div class="menu-mist m2"></div>
+      <div class="menu-mtn far"><span></span><span></span></div>
+      <div class="menu-mtn mid"><span></span><span></span></div>
+      <div class="menu-mtn near"><span></span><span></span></div>
+      <div class="menu-frame"><span class="tl"></span><span class="tr"></span><span class="bl"></span><span class="br"></span></div>
+    </div>
     <div class="menu-wrap">
-      <div class="title-big">择决千秋</div>
+      <div class="title-row">
+        <div class="title-big">择决千秋</div>
+        <div class="title-seal">御</div>
+      </div>
       <div class="subtitle">皇帝模拟 · 月度抉择 · 历史分支</div>
-      <div style="display:flex;flex-direction:column;gap:12px;margin-top:14px;">
+      <div class="menu-btns">
         <button class="btn big" onclick="goto('civilization')">新 游 戏</button>
         <button class="btn big" onclick="openLoad('menu')">读 档</button>
         <button class="btn big" onclick="goto('settings')">设 置</button>
@@ -1101,9 +1209,10 @@
     </div>
     <div class="scroll">
       <div class="evt-title">择决千秋</div>
-      <p class="evt-desc">玩家择中国历史上任意一位皇帝而扮演之，以每月一次「五选一」抉择推进国运。抉择须合于时、异于彼、无显见之臧否。前序之择，影响于后。游戏以《二十四史》《资治通鉴》为骨，然玩家之决策可改易历史走向。</p>
+      <p class="evt-desc">玩家先「择文明」——中华，或美国、英国、罗马、俄罗斯——再于其历代君主中择一而扮演之，以每月一次「五选一」抉择推进国运。抉择须合于时、异于彼、无显见之臧否；前序之择，影响于后。游戏以《二十四史》《资治通鉴》及诸文明信史为骨，然玩家之决策可改易历史走向。</p>
       <p class="evt-desc">六维数值——国库、民心、军事、朝政、健康、科技——通贯始终。健康归零，则龙驭宾天。科技可越时代，是为「穿越者」之能，然朝臣必以「奇技淫巧」非之。</p>
-      <p class="muted center" style="margin-top:18px;">单文件 · 水墨古籍风 · OpenAI 兼容 API</p>
+      <p class="evt-desc">在位期间，史官（AI）将就每月抉择实时评点，体例谨严；可一键切换文言与白话。另有「速通」「离线」二途：速通略去 AI 推演以求快，离线纯以本地规则推演，全程不联网。</p>
+      <p class="muted center" style="margin-top:18px;">单文件 · 水墨古籍风 · OpenAI 兼容 API · 488 位君主 · 5 大文明</p>
     </div>
   </section>
 
@@ -2016,6 +2125,20 @@ function dynIdByEmperor(e){
 // 首领归属：中国(cn)复用 DYNASTIES；外国按 civilization 字段归属 FOREIGN_PERIODS。
 function civOf(e){ return (e && e.civilization) || "cn"; }
 function isForeign(e){ return civOf(e) !== "cn"; }
+// 派系文明感知：中国四阶层为真实历史阶层；外国君主无「士大夫」，按各文明换名（罗马元老/英乡绅/美精英/俄贵族）。
+// 槽位键恒为 cn 名（数据层 SPECIAL_DESC 与事件 flag 以此为准），仅在「显示名」与「state.relations 键」上做文明映射；
+// cn 走恒等映射，零回归。改此表即改全文明派系命名，无需动数据与事件。
+const FACTION_DISPLAY = {
+  cn:   {宗室:"宗室", 士大夫:"士大夫", 边将:"边将", 商贾:"商贾"},
+  rome: {宗室:"王族", 士大夫:"元老", 边将:"军团", 商贾:"商贾"},
+  uk:   {宗室:"王室", 士大夫:"乡绅", 边将:"将领", 商贾:"商贾"},
+  us:   {宗室:"家族", 士大夫:"精英", 边将:"将领", 商贾:"商贾"},
+  ru:   {宗室:"皇族", 士大夫:"贵族", 边将:"将领", 商贾:"商贾"}
+};
+function factionLabels(civ){ const m=FACTION_DISPLAY[civ]||FACTION_DISPLAY.cn; return [m.宗室, m.士大夫, m.边将, m.商贾]; }
+function factionLabel(name, civ){ const m=FACTION_DISPLAY[civ]||FACTION_DISPLAY.cn; return (name in m) ? m[name] : name; }
+function factionText(t){ const civ=techCiv(); if(civ==="cn"||!t) return t; const m=FACTION_DISPLAY[civ]||FACTION_DISPLAY.cn; let s=t; for(const k in m){ if(m[k]!==k) s=s.split(k).join(m[k]); } return s; }
+function defaultRelations(civ){ const m=FACTION_DISPLAY[civ]||FACTION_DISPLAY.cn; return {[m.宗室]:50, [m.士大夫]:40, [m.边将]:30, [m.商贾]:10}; }
 function civNameOf(e){ const c=CIVILIZATIONS.find(x=>x.id===civOf(e)); return c?c.name:""; }
 function civLabelOf(e){ return isForeign(e) ? (civNameOf(e)+"·") : ""; }
 function periodOf(e){
@@ -2297,7 +2420,7 @@ function narrativeContextFor(st){
   const fs=st.flags||{};
   const active=Object.keys(fs).filter(f=>fs[f]&&FLAG_OMEN[f]);
   if(active.length){
-    s+="未了之事（宜在事件中隐隐回响，不必点破）："+active.map(f=>FLAG_OMEN[f]).join("；")+"。\n";
+    s+="未了之事（宜在事件中隐隐回响，不必点破）："+active.map(f=>factionText(FLAG_OMEN[f], civOf(e))).join("；")+"。\n";
   }
   const cast=e.cast||[];
   if(cast.length){
@@ -2437,7 +2560,7 @@ function buildModernFinalReview(emp, ending, reason, endTitle, flags){
   }else{
     txt += `然终世无赫赫之功，亦无滔天之过，治忽之间，特中人耳。`;
   }
-  const relBuckets=["宗室","士大夫","边将","商贾"];
+  const relBuckets=factionLabels(civOf(emp));
   const relNotes=relBuckets.filter(b=>Math.abs((r[b]||0))>=30).map(b=>`${b}${(r[b]||0)>0?"亲附":(r[b]||0)<=-30?"离心":""}${Math.abs(r[b]||0)}`);
   if(relNotes.length) txt += `至于人心向背：${relNotes.join("、")}，皆可观其兴衰之几。`;
   const prof=state.techProfile||{};
@@ -2496,7 +2619,7 @@ function buildHistorianFinalReview(emp, ending, reason, endTitle, flags){
   }else{
     txt += `然终世无赫赫之功，亦无滔天之过，治忽之间，特中人耳；史之所书，不过日用之常事，而常事之中，乃见人主之诚伪与习尚。`;
   }
-  const relBuckets=["宗室","士大夫","边将","商贾"];
+  const relBuckets=factionLabels(civOf(emp));
   const relNotes=relBuckets.filter(b=>Math.abs((r[b]||0))>=30).map(b=>`${b}${(r[b]||0)>0?"亲附":(r[b]||0)<=-30?"离心":""}${Math.abs(r[b]||0)}`);
   if(relNotes.length) txt += `至于人心向背：${relNotes.join("、")}，皆可观其兴衰之几。`;
   const prof=state.techProfile||{};
@@ -2829,7 +2952,7 @@ let currentDynastyId=null;
 let currentCivId="cn";       // 当前所选文明（外国篇扩展）：cn/us/uk/rome/ru
 
 function newState(emperor){
-  const rel = Object.assign({}, emperor.initRelations || {宗室:50,士大夫:40,边将:30,商贾:10});
+  const rel = Object.assign({}, emperor.initRelations || defaultRelations(civOf(emperor)));
   return {
     emperor,
     era:emperor.era,
@@ -3055,7 +3178,7 @@ function deriveRelationDeltas(outcomes){
   if(!Array.isArray(outcomes)) return null;
   const arr = outcomes.map(o=>{
     const d={};
-    (o.setFlags||[]).forEach(f=>{ const m=FLAG_RELATION[f]; if(m) d[m[0]]=(d[m[0]]||0)+m[1]; });
+    (o.setFlags||[]).forEach(f=>{ const m=FLAG_RELATION[f]; if(m){ const fk=factionLabel(m[0], civOf(state.emperor)); d[fk]=(d[fk]||0)+m[1]; } });
     return d;
   });
   if(arr.every(d=>Object.keys(d).length===0)) return null;
@@ -3306,8 +3429,8 @@ function renderTechTree(){
       const ageTag=isAhead?("越代+"+gap):("时代"+n.age);
       const costLabel=maxed?"已满级":(preOk?("需 "+cost+" 点"):"需先解锁前置");
       // 具体作用（属性加点之外的实效）：functionDesc 尾部已含 effectDesc，此处拆开分行呈现
-      const effTxt=n.effectDesc||"";
-      let funcTxt=n.functionDesc||"";
+      const effTxt=factionText(n.effectDesc||"", civOf(state.emperor));
+      let funcTxt=factionText(n.functionDesc||"", civOf(state.emperor));
       if(effTxt){ const _i=funcTxt.indexOf(effTxt); if(_i>=0) funcTxt=funcTxt.slice(0,_i).replace(/[\s｜|·、，,]+$/,""); }
       // 实效只按「自研级数」计（computeTechEffects 读 playerTechs），开局预设不计 —— 卡片如实标注，勿让玩家误以为已生效
       const plvl=(state.playerTechs||{})[n.id]||0;
@@ -4129,7 +4252,7 @@ function computeTechEffects(){
           { const wt = (sp.target==="winBonus") ? "winBonus" : "lossMitigate";
             E.warEdge[wt]=Math.min(60,(E.warEdge[wt]||0)+sp.perTier*tier*lvl); }
           break;
-        case "relation": E.relations[sp.target]=(E.relations[sp.target]||0)+Math.min(sp.cap, mag); break;
+        case "relation": { const fk=factionLabel(sp.target, techCiv()); E.relations[fk]=(E.relations[fk]||0)+Math.min(sp.cap, mag); break; }
         case "costLess": E.costLess[sp.target]=Math.min(sp.cap,(E.costLess[sp.target]||0)+sp.perTier*tier*lvl); break;
         case "unlock": if(E.unlocks.indexOf(sp.target)<0) E.unlocks.push(sp.target); break;
         case "ability": E.abilities.push(sp); break;
@@ -4147,7 +4270,7 @@ function applyTechRelationBonus(){
   const rel = state.relations; if(!rel) return;
   const prev = state._techRelApplied||{};
   const next = E.relations||{};
-  for(const f of ["宗室","士大夫","边将","商贾"]){
+  for(const f of factionLabels(techCiv())){
     const want = next[f]||0, had = prev[f]||0, d = want-had;
     if(d) rel[f] = clamp((rel[f]||0)+d, -100, 100);
   }
@@ -4853,7 +4976,7 @@ function updateMemory(setFlags){
     if(CANONICAL_FLAGS.includes(f) && !state.memory.decisions.find(d=>d.flag===f)){
       state.memory.decisions.push({
         flag:f,
-        label:(FLAG_OMEN[f]||f),
+        label:(factionText(FLAG_OMEN[f]||f, civOf(state.emperor))),
         when:`${state.era} ${fmtYear(state.year)}年${cnMonth(state.month)}月`
       });
     }
@@ -4994,8 +5117,9 @@ const ENDING_RULES = [
 function matchRule(need, flags, s, r){
   if(need.flags && !need.flags.every(f=>flags[f])) return false;
   if(need.minStats) for(const k in need.minStats) if((s[k]||0)<need.minStats[k]) return false;
-  if(need.maxRelation) for(const f in need.maxRelation) if((r[f]||0)>need.maxRelation[f]) return false;
-  if(need.minRelation) for(const f in need.minRelation) if((r[f]||0)<need.minRelation[f]) return false;
+  const _fciv = civOf(state.emperor);
+  if(need.maxRelation) for(const f in need.maxRelation) if((r[factionLabel(f,_fciv)]||0)>need.maxRelation[f]) return false;
+  if(need.minRelation) for(const f in need.minRelation) if((r[factionLabel(f,_fciv)]||0)<need.minRelation[f]) return false;
   return true;
 }
 function defaultVerdictByGovAvg(govAvg, reignYears){
@@ -5011,13 +5135,13 @@ function evalEnding(st){
     unify: (s.military>=70 && s.treasury>=55),
     reform: (s.tech>=65),
     long_peace: (s.people>=65 && s.court>=65),
-    scholar_oppose: ((r["士大夫"]||0) <= -30),
-    usurped: (s.military<=25 && (r["边将"]||0) <= -20),
+    scholar_oppose: ((r[factionLabel("士大夫", civOf(st.emperor))]||0) <= -30),
+    usurped: (s.military<=25 && (r[factionLabel("边将", civOf(st.emperor))]||0) <= -20),
     weak: (s.treasury<=20 || s.people<=20)
   };
   const flags=Object.assign({}, derived, st.flags||{});
   for(const rule of ENDING_RULES){
-    if(matchRule(rule.need, flags, s, r)) return {title:rule.title, review:rule.review, flags};
+    if(matchRule(rule.need, flags, s, r)) return {title:rule.title, review:factionText(rule.review, civOf(st.emperor)), flags};
   }
   return null;
 }
@@ -5490,7 +5614,7 @@ function doLoad(slot){
     triggeredEvents:data.triggeredEvents||[],
     lowStreak:data.lowStreak||0, highStreak:data.highStreak||0,
     flags:data.flags||{},
-    relations:data.relations||Object.assign({},emp.initRelations||{宗室:50,士大夫:40,边将:30,商贾:10}),
+    relations:data.relations||Object.assign({},emp.initRelations||defaultRelations(civOf(emp))),
     relationsTouched:data.relationsTouched||{},    // B13：还原被改动过的阵营集合
     pressure:data.pressure||0,
     _fail:data.fail||{},                         // B7：还原失败链计数器

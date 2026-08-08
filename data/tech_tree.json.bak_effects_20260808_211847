@@ -40930,14 +40930,12 @@
    "specialBonus": 4,
    "effect": [
     {
-     "type": "relation",
-     "target": "宗室",
-     "perTier": 1,
-     "cap": 8
+     "type": "unlock",
+     "target": "占验"
     }
    ],
-   "effectDesc": "派系「宗室」好感 +3·每级（封顶8）",
-   "functionDesc": "推演星命，占验祸福吉凶。 ｜ 派系「宗室」好感 +3·每级（封顶8）"
+   "effectDesc": "相关事件解锁特殊抉择：「占验」",
+   "functionDesc": "推演星命，占验祸福吉凶。 ｜ 相关事件解锁特殊抉择：「占验」"
   },
   {
    "id": "occ_14_07",
