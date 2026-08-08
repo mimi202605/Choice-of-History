@@ -796,6 +796,95 @@
     cursor:pointer;color:#f7f0e2;background:#3f7d6e;border:1px solid #3f7d6e;transition:transform,opacity,background-color,color,box-shadow,border-color var(--transition-fast);align-self:flex-start;
   }
   .tn-buy:hover{filter:brightness(1.08);}
+
+  /* ============ UX 升级：高优先级视觉（H1–H4） ============ */
+  /* 模式徽标（顶栏，常显当前 AI/离线/速通 状态） */
+  .mode-badge{
+    display:inline-flex;align-items:center;gap:5px;font-size:11px;line-height:1;
+    padding:4px 9px;border-radius:999px;font-family:'Noto Sans SC','PingFang SC',sans-serif;
+    border:1px solid var(--dim);color:var(--dim);background:transparent;cursor:default;white-space:nowrap;
+  }
+  .mode-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--dim);}
+  .mode-badge.online{color:var(--jade);border-color:var(--jade);}
+  .mode-badge.online .dot{background:var(--jade);box-shadow:0 0 6px var(--jade);}
+  .mode-badge.offline{color:#b07a3a;border-color:#b07a3a;}
+  .mode-badge.offline .dot{background:#b07a3a;}
+  .mode-badge.fast{color:#5a7fb0;border-color:#5a7fb0;}
+  .mode-badge.fast .dot{background:#5a7fb0;}
+
+  /* AI 降级横幅（非阻塞，可关） */
+  .ai-banner{
+    margin:8px 0 0;padding:10px 12px;border-radius:var(--radius-sm);
+    background:rgba(176,122,58,.12);border:1px solid #b07a3a;color:#6b4e22;
+    font-size:13px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+    animation:fadeSlideIn .4s both;
+  }
+  .ai-banner .ai-banner-msg{flex:1 1 200px;min-width:160px;}
+  .ai-banner .btn{padding:5px 12px;font-size:12px;}
+  .ai-banner .ai-close{cursor:pointer;opacity:.6;font-size:16px;padding:0 4px;}
+  .ai-banner .ai-close:hover{opacity:1;}
+
+  /* 军备态势预告（战争事件结算前） */
+  .war-status{
+    margin:10px 0 4px;padding:9px 12px;border-radius:var(--radius-sm);
+    background:rgba(139,58,58,.1);border:1px solid var(--red);color:#7a2e2e;
+    font-size:13px;display:flex;align-items:center;justify-content:space-between;gap:10px;
+    animation:fadeSlideIn .4s both;
+  }
+  .war-status .ws-rate{font-weight:700;font-size:15px;color:var(--red);}
+  .war-status .ws-meter{flex:1;height:7px;border-radius:99px;background:rgba(139,58,58,.18);overflow:hidden;max-width:160px;}
+  .war-status .ws-meter > i{display:block;height:100%;background:var(--red);border-radius:99px;}
+
+  /* 后果面板「科技增益」行视觉区分 */
+  .outcome .tech-callout{
+    display:block;margin-top:8px;font-size:14px;color:var(--gold,#9a7b3f);font-weight:600;
+    padding:6px 10px;border-left:3px solid var(--gold,#9a7b3f);background:rgba(154,123,63,.08);border-radius:0 var(--radius-sm) var(--radius-sm) 0;
+  }
+
+  /* 属性释疑 tooltip（六维条悬停/聚焦） */
+  .stat{cursor:help;}
+  .stat[data-tip]:hover::after, .stat[data-tip]:focus::after{
+    content:attr(data-tip);position:absolute;left:50%;top:calc(100% + 8px);transform:translateX(-50%);
+    width:max-content;max-width:240px;z-index:50;pointer-events:none;
+    background:#2b2316;color:#f3ecdc;font-size:12px;line-height:1.5;font-weight:400;font-style:normal;
+    padding:8px 10px;border-radius:var(--radius-sm);box-shadow:0 6px 20px rgba(0,0,0,.35);
+    text-align:left;white-space:normal;
+  }
+  .stat[data-tip]:hover::before, .stat[data-tip]:focus::before{
+    content:"";position:absolute;left:50%;top:calc(100% + 2px);transform:translateX(-50%);
+    border:6px solid transparent;border-bottom-color:#2b2316;z-index:50;
+  }
+
+  /* 首玩引导浮层 */
+  .onboard{
+    position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;
+    background:rgba(28,22,12,.62);backdrop-filter:blur(2px);animation:fadeIn .35s both;
+  }
+  .onboard-card{
+    width:min(440px,90vw);background:var(--paper,#fffaf0);border:1px solid var(--gold,#9a7b3f);
+    border-radius:var(--radius);padding:22px 24px;box-shadow:0 18px 50px rgba(0,0,0,.4);
+    animation:fadeSlideIn .4s both;text-align:center;
+  }
+  .onboard-card .ob-step{font-size:12px;color:var(--jade);letter-spacing:.2em;margin-bottom:6px;}
+  .onboard-card .ob-ico{font-size:34px;margin:4px 0 6px;}
+  .onboard-card h3{font-family:'Ma Shan Zheng','Noto Serif SC',serif;font-size:23px;margin:2px 0 8px;color:var(--ink,#2b2316);}
+  .onboard-card p{font-size:14px;line-height:1.7;color:var(--dim);margin:0 0 16px;}
+  .onboard-card .ob-dots{display:flex;gap:6px;justify-content:center;margin-bottom:14px;}
+  .onboard-card .ob-dots i{width:7px;height:7px;border-radius:50%;background:var(--dim);opacity:.35;}
+  .onboard-card .ob-dots i.on{opacity:1;background:var(--jade);}
+  .onboard-card .ob-actions{display:flex;gap:10px;justify-content:center;}
+
+  /* 分享王朝卡 */
+  .share-panel{background:rgba(255,250,235,.5);}
+  .share-card-wrap{display:flex;justify-content:center;margin:10px 0;}
+  .share-card-wrap canvas{max-width:100%;border-radius:var(--radius-sm);box-shadow:0 8px 24px rgba(0,0,0,.2);}
+  .share-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:6px;}
+  .share-copy-msg{font-size:12px;color:var(--jade);min-height:16px;margin-top:6px;text-align:center;}
+
+  @media (max-width:520px){
+    .mode-badge{font-size:10px;padding:3px 7px;}
+    .stat[data-tip]:hover::after{max-width:200px;font-size:11px;}
+  }
 </style>
 </head>
 <body>
@@ -874,14 +963,22 @@
         <button class="btn" onclick="openLoad('game')">读档</button>
         <button class="btn" onclick="goto('settings');prevScreen='game'">设置</button>
         <button class="btn red" onclick="abandonGame()">弃位</button>
+        <span class="mode-badge" id="mode-badge"><span class="dot"></span><span id="mode-badge-txt">AI</span></span>
       </span>
     </div>
     <div class="stats" id="stats-bar"></div>
+    <div class="ai-banner hide" id="ai-banner">
+      <span class="ai-banner-msg" id="ai-banner-msg"></span>
+      <button class="btn" onclick="toggleFastFromBanner()">切换速通</button>
+      <button class="btn" onclick="goto('settings');prevScreen='game'">设置</button>
+      <span class="ai-close" onclick="hideAiBanner()">×</span>
+    </div>
 
     <div class="scroll" id="event-panel">
       <div class="evt-title" id="evt-title"></div>
       <div class="evt-source badge badgeB" id="evt-source" style="display:none;margin:4px 0 0;"></div>
       <div class="evt-desc" id="evt-desc"></div>
+      <div class="war-status hide" id="war-status"></div>
       <div class="choices" id="choices"></div>
       <div id="outcome-wrap" class="hide">
         <div class="outcome" id="outcome-desc"></div>
@@ -997,6 +1094,17 @@
         <h2 style="font-size:20px;">关键抉择回顾</h2>
         <div id="end-decisions" class="decisions-scroll"></div>
       </div>
+      <div class="panel share-panel" style="background:rgba(255,250,235,.5);">
+        <h2 style="font-size:20px;">分享王朝</h2>
+        <div class="muted" style="font-size:13px;margin-bottom:6px;">生成您的帝王评传卡，邀友人共览兴亡。</div>
+        <div class="share-card-wrap"><canvas id="share-card" width="600" height="760"></canvas></div>
+        <div class="share-actions">
+          <button class="btn" onclick="shareCopyCard()">复制图片</button>
+          <button class="btn" onclick="shareDownloadCard()">下载图片</button>
+          <button class="btn" onclick="shareCopyText()">复制文案</button>
+        </div>
+        <div class="share-copy-msg" id="share-copy-msg"></div>
+      </div>
       <div class="center" style="margin-top:18px;">
         <button class="btn big" onclick="goto('menu')">归 于 史 册</button>
       </div>
@@ -1016,6 +1124,21 @@
     <div class="load-seal">史</div>
     <div class="ink" id="loader-title">载入史册…</div>
     <div class="sub" id="loader-sub">正在加载皇帝数据库</div>
+  </div>
+</div>
+
+<!-- 首玩引导浮层（H1） -->
+<div class="onboard hide" id="onboard">
+  <div class="onboard-card">
+    <div class="ob-step" id="ob-step">引导 · 1 / 3</div>
+    <div class="ob-ico" id="ob-ico">🏯</div>
+    <h3 id="ob-title">君临天下</h3>
+    <p id="ob-text"></p>
+    <div class="ob-dots"><i class="on"></i><i></i><i></i></div>
+    <div class="ob-actions">
+      <button class="btn" id="ob-skip" onclick="closeOnboarding(true)">跳过</button>
+      <button class="btn big" id="ob-next" onclick="onboardNext()">下一步</button>
+    </div>
   </div>
 </div>
 
@@ -3033,6 +3156,12 @@ function renderTechTree(){
   if(prof.eraDeficit && prof.eraDeficit.active){
     sum+=`<br><b style="color:#e8a33d">⚠ 科技落后于世</b>：当世科技(${prof.presentCount}项)少于越代科技(${prof.aheadCount}项)，民心/朝政/军事/国库正受微弱侵蚀（补全当世科技即消）。`;
   }
+  // H2：本局事件增益总览（科技→事件属性加成可视化）
+  const _wl=militaryTechLevel();
+  const _p=clamp(0.5+(state.stats.military-50)/200+Math.min(0.3,_wl*0.01),0.1,0.9);
+  const _dom=["mil","com","agri","civ","med"].map(b=>{const a=TECH_DOMAIN_ATTR[b];const bo=techDomainBonus(b);const cn={military:"军事",treasury:"国库",people:"民心",court:"朝政",health:"健康"}[a];return `${cn}${bo>0?" +"+bo:""}`;}).join("、");
+  sum+=`<br><b>事件增益（按科技分支累计）</b>：战事军事封顶+10，其余封顶+6 —— 当前 `+_dom;
+  sum+=`<br><b>军备态势</b>：军备科技等级 ${_wl} → 战事预计胜算约 ${(_p*100).toFixed(0)}%（每级+1%，封顶+30%）`;
   if(summaryEl) summaryEl.innerHTML=sum;
   if(ptsEl) ptsEl.innerHTML=`<span class="tech-pts-num">${avail}</span> 点可分配（来自「科技」国力，研究即消耗）`;
   // 当前分支（记忆上次选择）
@@ -3197,6 +3326,7 @@ function startGame(){
   goto("game");
   renderGame();
   enterMonth();
+  maybeOnboard();
 }
 
 /* ============ 游戏渲染 ============ */
@@ -3205,6 +3335,7 @@ function renderGame(){
   document.getElementById("game-seal").textContent=periodSealOf(e);
   document.getElementById("game-era").textContent=`${state.era} · ${fmtYear(state.year)}年 ${cnMonth(state.month)}`;
   renderStats();
+  updateModeBadge();
 }
 function renderStats(){
   const bar=document.getElementById("stats-bar");
@@ -3221,7 +3352,7 @@ function renderStats(){
         + ` onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openTechTree();}"`
       : "";
     const hint = isTech ? `<span class="tech-hint">✦ 点击加点</span>` : "";
-    return `<div class="stat ${cls}${extraCls}" style="animation:fadeSlideIn .4s ${delay}s both;"${attrs}>
+    return `<div class="stat ${cls}${extraCls}" style="animation:fadeSlideIn .4s ${delay}s both;" data-tip="${ATTR_TIPS[k]||''}" tabindex="0"${attrs}>
       <span class="lbl">${lbl}</span>
       <div class="bar"><div class="fill" style="width:${v}%"></div></div>
       <span class="val">${v}</span>
@@ -3568,6 +3699,7 @@ function loadEvent(eventType,preset){
   // 速通模式 / 无 AI：完全跳过事件生成 AI，走本地预设或后备池（真正"秒开"）
   if(!aiAvailable() || settings.fastMode){
     hideLoader();
+    if(!settings.fastMode && !settings.offlineMode) notifyAiDown();
     fallbackEvent(eventType,preset);
     return;
   }
@@ -3601,7 +3733,10 @@ function loadEvent(eventType,preset){
     })
     .catch(err=>{
       hideLoader();
-      if(err.name!=="AbortError") toast("AI生成失败，使用预设事件："+err.message);
+      if(err.name!=="AbortError"){
+        toast("AI生成失败，使用预设事件："+err.message);
+        if(!settings.fastMode && !settings.offlineMode) notifyAiDown();
+      }
       fallbackEvent(eventType,preset);
     });
 }
@@ -3795,6 +3930,7 @@ function renderEvent(){
     // 非白话模式 / 离线无 AI / AI 生成事件（本身已是白话）：直接显示 currentEvent 原文（白话）
     paintEventRaw();
   }
+  paintWarStatus();
 }
 // 已命中白话层：直接渲染白话
 function paintEventBaihua(b){
@@ -4330,17 +4466,15 @@ function rebuildChronicle(){
 }
 
 function renderOutcome(desc,comment,sc){
-  // 将科技减免叙事（倒数第二个 \n\n 之后的内容）用 .mitigate-tech 包裹以视觉区分
-  const mitIdx = desc.lastIndexOf("\n\n（");
-  if(mitIdx !== -1){
-    // B5：先 escapeHtml 再替换换行，避免后果/随机事件文案中的 < > & 破坏 DOM 或注入标签
-    const mainPart = escapeHtml(desc.slice(0, mitIdx));
-    const mitPart = escapeHtml(desc.slice(mitIdx));
-    document.getElementById("outcome-desc").innerHTML =
-      mainPart.replace(/\n/g,"<br>") + `<span class="mitigate-tech">${mitPart.replace(/\n/g,"<br>")}</span>`;
-  }else{
-    document.getElementById("outcome-desc").innerHTML = escapeHtml(desc).replace(/\n/g,"<br>");
-  }
+  // 将科技减免 / 科技增益 / 战事结果 叙事以视觉区分包裹（B5：先 escapeHtml，避免 < > & 破坏 DOM 或注入标签）
+  const segs = desc.split("\n\n").map(s=>s.trim()).filter(Boolean);
+  document.getElementById("outcome-desc").innerHTML = segs.map(seg=>{
+    if(seg.startsWith("科技增益") || seg.startsWith("（战事告捷") || seg.startsWith("（战事受挫"))
+      return `<span class="tech-callout">${escapeHtml(seg)}</span>`;
+    if(seg.startsWith("（"))
+      return `<span class="mitigate-tech">${escapeHtml(seg)}</span>`;
+    return escapeHtml(seg);
+  }).join("<br><br>");
   document.getElementById("historian-txt").textContent=comment;
   const chg=document.getElementById("changes");
   const labels={treasury:"国库",people:"民心",military:"军事",court:"朝政",health:"健康",tech:"科技"};
@@ -4544,6 +4678,7 @@ function endGame(reason){
   }).join("") : '<p class="muted">无重大抉择记录。</p>');
   // 数值曲线
   drawCurve();
+  try{ shareBuildCard(); }catch(e){ console.warn("分享卡生成失败",e); }
   goto("ending");
 }
 
@@ -4712,6 +4847,7 @@ function saveSettings(){
   }
   loadSettingsToForm();
   probeAi(); // 凭据/离线/内置模式已变更，重新探查真实可用性
+  updateModeBadge(); // 模式徽标即时刷新（H3）
   document.getElementById("set-msg").textContent="已保存。";
   setTimeout(()=>{document.getElementById("set-msg").textContent="";},2000);
 }
@@ -4993,14 +5129,224 @@ function backFromSettings(){
 }
 
 /* ============ Loader / Toast ============ */
-function showLoader(t,sub){ document.getElementById("loader-title").textContent=t||"史官秉笔…"; document.getElementById("loader-sub").textContent=sub||""; document.getElementById("loader").classList.add("show"); }
-function hideLoader(){ document.getElementById("loader").classList.remove("show"); }
+let _loaderTimer=null;
+const LOADER_FLAVOR=["史官研墨，润笔以待…","秉笔直书，权衡取舍…","金匮石室，事在人为…","观天象，察民心，待诏…","运筹帷幄，一念兴亡…"];
+function showLoader(t,sub){
+  const lt=document.getElementById("loader-title"); const ls=document.getElementById("loader-sub"); const ld=document.getElementById("loader");
+  if(lt) lt.textContent=t||"史官秉笔…";
+  if(ls) ls.textContent=sub||"";
+  if(ld) ld.classList.add("show");
+  if(_loaderTimer){ clearInterval(_loaderTimer); _loaderTimer=null; }
+  let fi=0;
+  _loaderTimer=setInterval(()=>{ fi=(fi+1)%LOADER_FLAVOR.length; if(ls) ls.textContent=(sub?sub+" · ":"")+LOADER_FLAVOR[fi]; },2200);
+}
+function hideLoader(){ const ld=document.getElementById("loader"); if(ld) ld.classList.remove("show"); if(_loaderTimer){ clearInterval(_loaderTimer); _loaderTimer=null; } }
 let toastTimer=null;
 function toast(msg){
   const el=document.getElementById("toast");
   el.textContent=msg; el.classList.add("show");
   clearTimeout(toastTimer);
   toastTimer=setTimeout(()=>el.classList.remove("show"),2600);
+}
+
+/* ============ UX 升级：高优先级（H1–H4） ============ */
+
+/* ---------- H1：属性释疑 + 首玩引导 ---------- */
+const ATTR_TIPS = {
+  treasury:"国库：国家财赋。≤10 课税加重、军饷难继；归零触发财政崩盘。",
+  people:"民心：庶民归附。≤10 流民四起、易生民变；归零触发社会崩盘。",
+  military:"军事：甲兵强弱。≤10 边备空虚、外敌易侵；归零触发军事崩盘。战争胜负亦受军备科技影响。",
+  court:"朝政：中枢运转。≤10 政令不行、党争蜂起；归零触发朝局崩盘。",
+  health:"健康：龙体康泰。归零即驾崩。长期高位可延寿，长期低位损寿。",
+  tech:"科技：研发国力。研究即消耗；转化为六维增益与事件加成，亦含越代奇技之险。"
+};
+const ONBOARD_STEPS = [
+  {ico:"🏯", title:"君临天下", text:"您将扮演一位帝王，从即位御极到龙驭宾天。每推进一月，史官会呈上一桩政务或危机，待您定夺。"},
+  {ico:"⚖️", title:"五选一 · 定国运", text:"每月有五条对策供择。每个选项都会牵动六维国力（国库·民心·军事·朝政·健康·科技），落子无悔，国势随之起伏。"},
+  {ico:"📜", title:"六维 · 兴衰所系", text:"国库将竭则财崩，民心离散则民变，军事空虚则外侮，朝政失序则党争，龙体归零则驾崩。悬停任一数值可查看其含义与崩盘之戒。"}
+];
+let _obIdx = 0;
+function showOnboarding(){
+  _obIdx = 0;
+  const ov=document.getElementById("onboard"); if(ov) ov.classList.remove("hide");
+  renderOnboardStep();
+}
+function renderOnboardStep(){
+  const s = ONBOARD_STEPS[_obIdx];
+  const set=(id,v)=>{ const el=document.getElementById(id); if(el) el.textContent=v; };
+  set("ob-step", `引导 · ${_obIdx+1} / ${ONBOARD_STEPS.length}`);
+  set("ob-ico", s.ico); set("ob-title", s.title); set("ob-text", s.text);
+  const dots=document.querySelectorAll("#onboard .ob-dots i");
+  dots.forEach((d,i)=> d.classList.toggle("on", i===_obIdx));
+  const next=document.getElementById("ob-next");
+  if(next) next.textContent = (_obIdx===ONBOARD_STEPS.length-1) ? "开始临朝" : "下一步";
+}
+function onboardNext(){
+  if(_obIdx < ONBOARD_STEPS.length-1){ _obIdx++; renderOnboardStep(); }
+  else closeOnboarding(false);
+}
+function closeOnboarding(){
+  const ov=document.getElementById("onboard"); if(ov) ov.classList.add("hide");
+  try{ localStorage.setItem("coh_onboarded","1"); }catch(e){}
+}
+function maybeOnboard(){
+  let done=false; try{ done = localStorage.getItem("coh_onboarded")==="1"; }catch(e){}
+  if(!done) setTimeout(showOnboarding, 350);
+}
+
+/* ---------- H2：科技影响可视化 ---------- */
+// 分支 → 事件属性（与 eventDomain 映射一致）
+const TECH_DOMAIN_ATTR = { mil:"military", com:"treasury", agri:"people", civ:"court", med:"health" };
+function techDomainBonus(branch){
+  const lvl = branchTechLevels(branch);
+  if(lvl<=0) return 0;
+  const cap = (branch==="mil") ? 10 : 6;
+  const k = (branch==="mil") ? 0.5 : 0.35;
+  return Math.min(cap, Math.round(lvl*k));
+}
+function paintWarStatus(){
+  const el = document.getElementById("war-status");
+  if(!el) return;
+  if(!currentEvent || !isWarEvent(currentEvent)){ el.classList.add("hide"); return; }
+  const wlvl = militaryTechLevel();
+  const mil = state.stats.military;
+  const p = clamp(0.5 + (mil-50)/200 + Math.min(0.3, wlvl*0.01), 0.1, 0.9);
+  const pct = Math.round(p*100);
+  el.innerHTML = `<span>⚔ 军备态势：军备科技等级 <b>${wlvl}</b> · 当前军事 <b>${mil}</b></span>`
+    + `<span class="ws-rate">预计胜算 ${pct}%</span>`
+    + `<span class="ws-meter"><i style="width:${pct}%"></i></span>`;
+  el.classList.remove("hide");
+}
+
+/* ---------- H3：模式徽标 + 配额急救 + 等待可预期 ---------- */
+function updateModeBadge(){
+  const el=document.getElementById("mode-badge");
+  const txt=document.getElementById("mode-badge-txt");
+  if(!el||!txt) return;
+  el.classList.remove("online","offline","fast");
+  let mode,label;
+  if(settings.offlineMode){ mode="offline"; label="离线"; }
+  else if(settings.fastMode){ mode="fast"; label="速通"; }
+  else if(aiAvailable()){ mode="online"; label="AI在线"; }
+  else { mode="offline"; label="AI离线"; }
+  el.classList.add(mode); txt.textContent=label;
+}
+let _aiDownNotified=false;
+function hideAiBanner(){ const b=document.getElementById("ai-banner"); if(b) b.classList.add("hide"); }
+function notifyAiDown(){
+  if(_aiDownNotified) return;
+  if(settings.offlineMode || settings.fastMode) return;  // 用户主动选择，不提示
+  _aiDownNotified=true;
+  const b=document.getElementById("ai-banner");
+  const m=document.getElementById("ai-banner-msg");
+  if(!b||!m) return;
+  m.textContent="AI 生成额度已用尽或不可用，已自动切换离线/预设事件继续。可开启「速通」加快节奏，或填入自有 Key。";
+  b.classList.remove("hide");
+  updateModeBadge();
+}
+function toggleFastFromBanner(){
+  settings.fastMode=true;
+  try{ saveSettings(); }catch(e){}
+  updateModeBadge(); hideAiBanner();
+  toast("已切换速通模式");
+}
+
+/* ---------- H4：分享王朝卡 ---------- */
+function shareCardText(){
+  const e=state.emperor;
+  const reignYears=state.year-e.reignStart+1;
+  const govAvg=["treasury","people","military","court","health"].reduce((a,k)=>a+state.stats[k],0)/5;
+  const ending=evalEnding(state)||defaultVerdictByGovAvg(govAvg,reignYears);
+  const gov=["treasury","people","military","court","health","tech"].map(k=>`${DIM_LABEL[k]}${state.stats[k]}`).join(" ");
+  const top3=(state.history||[]).slice(0,3).map(h=>`· ${fmtYear(h.year)}年${cnMonth(h.month)} ${h.eventTitle}：选「${h.choiceText}」`);
+  return [
+    "【择决千秋 · 帝王评传】",
+    `${e.name}（${e.templeName||""}）· ${periodSealOf(e)}${e.era} · 在位 ${reignYears} 载`,
+    `结局：${ending.title}`,
+    `六维：${gov}`,
+    top3.join("\n"),
+    "—— 你的抉择，改写历史。来《择决千秋》做一位皇帝吧！"
+  ].join("\n");
+}
+function shareClip(ctx,text,maxW){
+  if(ctx.measureText(text).width<=maxW) return text;
+  let s=text;
+  while(s.length>1 && ctx.measureText(s+"…").width>maxW) s=s.slice(0,-1);
+  return s+"…";
+}
+function shareBuildCard(){
+  const cv=document.getElementById("share-card"); if(!cv) return;
+  const ctx=cv.getContext("2d"); if(!ctx) return;
+  const W=cv.width,H=cv.height;
+  ctx.clearRect(0,0,W,H);
+  ctx.fillStyle="#f7f0e0"; ctx.fillRect(0,0,W,H);
+  ctx.strokeStyle="#9a7b3f"; ctx.lineWidth=6; ctx.strokeRect(18,18,W-36,H-36);
+  ctx.strokeStyle="rgba(154,123,63,.4)"; ctx.lineWidth=1; ctx.strokeRect(30,30,W-60,H-60);
+  const e=state.emperor; const reignYears=state.year-e.reignStart+1;
+  const govAvg=["treasury","people","military","court","health"].reduce((a,k)=>a+state.stats[k],0)/5;
+  const ending=evalEnding(state)||defaultVerdictByGovAvg(govAvg,reignYears);
+  ctx.textAlign="center"; ctx.fillStyle="#2b2316";
+  ctx.font="bold 40px 'Ma Shan Zheng','Noto Serif SC',serif";
+  ctx.fillText("帝王评传",W/2,96);
+  ctx.font="20px 'Noto Serif SC',serif"; ctx.fillStyle="#6b5d4f";
+  ctx.fillText(`${e.name}（${e.templeName||""}） · ${periodSealOf(e)}${e.era}`,W/2,138);
+  ctx.fillText(`在位 ${reignYears} 载 · 结局「${ending.title}」`,W/2,170);
+  const keys=[["国库","treasury"],["民心","people"],["军事","military"],["朝政","court"],["健康","health"],["科技","tech"]];
+  const bx=70,by=210,bw=220,bh=20,gap=46;
+  ctx.font="16px 'Noto Sans SC',sans-serif";
+  keys.forEach(([lbl,k],i)=>{
+    const col=i%2, row=Math.floor(i/2);
+    const x=bx+col*(bw+70), y=by+row*gap;
+    ctx.textAlign="left"; ctx.fillStyle="#6b5d4f"; ctx.fillText(lbl,x,y-4);
+    ctx.fillStyle="rgba(139,58,58,.15)"; ctx.fillRect(x,y,bw,bh);
+    const v=state.stats[k]; const c=v>=70?"#3f7d6e":(v<=10?"#b03a3a":"#9a7b3f");
+    ctx.fillStyle=c; ctx.fillRect(x,y,bw*v/100,bh);
+    ctx.fillStyle="#2b2316"; ctx.textAlign="right"; ctx.fillText(String(v),x+bw+34,y+bh-5);
+  });
+  ctx.textAlign="center"; ctx.fillStyle="#2b2316"; ctx.font="bold 18px 'Noto Serif SC',serif";
+  ctx.fillText("—— 关键抉择 ——",W/2,360);
+  ctx.font="14px 'Noto Sans SC',sans-serif"; ctx.fillStyle="#4a3f2e"; ctx.textAlign="left";
+  const hist=state.history||[];
+  let yy=392;
+  if(!hist.length){ ctx.fillText("（无重大抉择记录）",70,yy); }
+  hist.slice(0,6).forEach(h=>{
+    ctx.fillStyle="#6b5d4f"; ctx.fillText(shareClip(ctx,`${fmtYear(h.year)}年${cnMonth(h.month)} ${h.eventTitle}`,W-140),70,yy);
+    ctx.fillStyle="#9a7b3f"; ctx.fillText(shareClip(ctx,`→ 选「${h.choiceText}」`,W-140),70,yy+20);
+    yy+=46;
+  });
+  ctx.textAlign="center"; ctx.fillStyle="#9a7b3f"; ctx.font="italic 15px 'Noto Serif SC',serif";
+  ctx.fillText("你的抉择，改写历史 · 择决千秋",W/2,H-50);
+}
+function setShareMsg(m){ const el=document.getElementById("share-copy-msg"); if(el) el.textContent=m; }
+function shareDownloadCard(){
+  const cv=document.getElementById("share-card"); if(!cv) return;
+  try{
+    const a=document.createElement("a");
+    a.download=`择决千秋_${state.emperor.name}_评传.png`;
+    a.href=cv.toDataURL("image/png"); a.click();
+    setShareMsg("已下载评传卡");
+  }catch(err){ setShareMsg("下载失败："+err.message); }
+}
+function shareCopyCard(){
+  const cv=document.getElementById("share-card"); if(!cv) return;
+  try{
+    cv.toBlob(async (blob)=>{
+      if(!blob){ shareDownloadCard(); return; }
+      if(navigator.clipboard && window.ClipboardItem){
+        try{
+          await navigator.clipboard.write([new window.ClipboardItem({"image/png":blob})]);
+          setShareMsg("评传卡已复制到剪贴板");
+        }catch(e2){ setShareMsg("复制失败，已改为下载"); shareDownloadCard(); }
+      }else{ setShareMsg("当前环境不支持复制图片，已改为下载"); shareDownloadCard(); }
+    },"image/png");
+  }catch(err){ setShareMsg("复制失败："+err.message); }
+}
+function shareCopyText(){
+  const txt=shareCardText();
+  try{
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(()=>setShareMsg("文案已复制"),()=>setShareMsg("复制失败")); }
+    else setShareMsg("当前环境不支持复制");
+  }catch(e){ setShareMsg("复制失败："+e.message); }
 }
 
 /* ============ 键盘操作 ============ */
