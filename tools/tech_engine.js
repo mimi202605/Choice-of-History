@@ -21,6 +21,10 @@
     "夏": 1, "商": 2, "周": 2, "秦": 3,
     "汉": 4, "新": 4, "三国": 4,
     "晋": 5, "南北朝": 5, "隋": 5, "唐": 5, "五代": 5,
+    // 南北朝诸朝（应属中古 era5；皇帝 dynasty 字段用具体朝名，此处补全映射）
+    "齐": 5, "梁": 5, "陈": 5, "北魏": 5, "东魏": 5, "西魏": 5, "北齐": 5, "北周": 5,
+    // 五代诸朝（应属中古 era5；同上，补全子朝映射）
+    "后梁": 5, "后唐": 5, "后晋": 5, "后汉": 5, "后周": 5,
     "宋": 6, "辽": 6, "金": 6, "西夏": 6, "元": 6,
     "明": 7, "清": 8,
     "未来近": 9, "未来中": 11, "未来远": 13, "终末": 14,
@@ -29,6 +33,15 @@
     "诺曼—金雀花": 6, "都铎—斯图亚特": 7, "汉诺威—温莎": 8,
     "王政": 3, "共和": 4, "帝国": 5, "拜占庭": 6,
     "留里克王朝": 5, "罗曼诺夫王朝": 7, "苏联": 9, "俄罗斯联邦": 11,
+  };
+
+  // 子朝代 → 父朝代（汇总朝）：皇帝 dynasty 字段常写具体朝名（后梁/北魏…），
+  // 而 DYNASTY_ERA / 预设只登记汇总朝（五代/南北朝）。查不到时回退到父朝，
+  // 既补 era 映射、也能借到父朝初始科技树，杜绝缺映射掉到 era1（蒙昧石器时代）。
+  const DYN_SUB_TO_PARENT = {
+    "齐": "南北朝", "梁": "南北朝", "陈": "南北朝",
+    "北魏": "南北朝", "东魏": "南北朝", "西魏": "南北朝", "北齐": "南北朝", "北周": "南北朝",
+    "后梁": "五代", "后唐": "五代", "后晋": "五代", "后汉": "五代", "后周": "五代",
   };
 
   const ATTR_CN = { treasury: "国库", people: "民心", military: "军事", court: "朝政", health: "健康", tech: "科技" };
@@ -67,12 +80,15 @@
 
     eraLevelOf(emperor) {
       if (emperor.eraLevel) return emperor.eraLevel;
-      return DYNASTY_ERA[emperor.dynasty] || 1;
+      const d = emperor.dynasty;
+      const k = DYNASTY_ERA[d] ? d : (DYN_SUB_TO_PARENT[d] || d);
+      return DYNASTY_ERA[k] || 1;
     }
 
     /** 取某朝代的时代预设（皇帝初始科技树） */
     presetFor(dynasty) {
-      const p = this.presets[dynasty];
+      const k = this.presets[dynasty] ? dynasty : (DYN_SUB_TO_PARENT[dynasty] || dynasty);
+      const p = this.presets[k];
       if (!p) return {};
       const out = {};
       for (const id in p.techs) out[id] = p.techs[id];
