@@ -16,8 +16,8 @@
 - 引擎 `tools/tech_engine.js`：`TechEngine.compute(emperor, ownedTechs)`→`techProfile`（specials/perBranch/eraLevel）。
 - 节点 id=`{branch}_{age:02d}_{trackIdx:02d}`；命名真源=gen_techtree.py 分支矩阵，改名须矩阵+json 双修再 `build_techdata.js`。
 - `functionDesc`（一句话作用）由 `SPECIAL_DESC` 映射 + `tools/add_tech_functiondesc.py` 补；按文明改名层 `data/tech_names_overlay.json`（cn 永不覆盖）。
-- 科技「具体作用」层（属性外）：`tools/add_tech_effects.py` 按 81 special 注入 `effect`+`effectDesc`（跑完须 `build_techdata.js`）。8 通道 passive/shield/eventLess/warEdge/relation/costLess/score/unlock；量级=`perTier×时代档(age≤3→1/≤7→2/≥8→3)×等级`，逐 special 有 cap。
-- index.html `computeTechEffects`(≈4063) 聚合 + 9 处钩子落地；封顶常量 `PASSIVE_YEAR_CAP=3`/`REL_TOTAL_CAP=25`/`SCORE_TOTAL_CAP=8`（≈4040），改动须同步 `tools/_sim_tech_effects.js` 顶部常量。
+- 科技「具体作用」层（属性外）：`tools/add_tech_effects.py` 按 81 special 注入 `effect`+`effectDesc`（跑完须 `build_techdata.js`）。**7 通道** passive/shield/eventLess/warEdge/relation/costLess/unlock（**score 终评通道已于 2026-08-08 移除**——陛下要求科技只影响当代，终评不再含科技加成）；效果按**时代分带** early(age1-4)/mid(5-8)/late(9-11)/peak(12-14) 各挂不同效果类型，同一条线不再单调。量级=`perTier×时代档(age≤3→1/≤7→2/≥8→3)×等级`，逐 special 有 cap。
+- index.html `computeTechEffects`(≈4063) 聚合 + 钩子落地；封顶常量 `PASSIVE_YEAR_CAP=3`/`REL_TOTAL_CAP=25`（≈4040；**SCORE_TOTAL_CAP 已删**），改引擎须同步 `tools/_sim_tech_effects.js` 顶部常量。
 - ⚠️ 坑：`initTechAtStart` 把朝代预设灌进 `state.ownedTechs`（清最多 543 项）→ 读 ownedTechs 的「玩家回报」类机制会开局即封顶。玩家自研增量在 `state.playerTechs`；`computeTechEffects` 只计 playerTechs。
 - `warWinChance()` 是战争胜算**唯一真源**：`edgeBreadth=min(0.15, wlvl*0.01)`（时代底子）+ `edgeElite=min(0.20, warEdgeWinBonus()/100)`（自研尖端）。`paintWarStatus` 与科技树战争行都须调它。
 
