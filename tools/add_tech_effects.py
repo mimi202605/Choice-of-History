@@ -151,16 +151,16 @@ EFFECTS = {
     "clan":       "Z C Z C P Z C Z C Sc Z C Z C",
     "militarylaw":"Wl G Wl G C Wl G Wl G Sc Wl G Wl G",
     "lawsuit":    "Ds C Ds C Sc Ds C Ds C P Ds C Ds C",
-    # ===== 方技玄术 =====
-    "alchemy":    "H K H K Sc H K H K Sm H K H K",
-    "divin":      "U:占断 Sc U:占断 Z U:占断 Sc U:占断 Z U:占断 Sc U:占断 Z U:占断 Sc U:占断",
-    "fengshui":   "C P C P Sc C P C P Sm C P C P",
-    "fangji":     "H K H K Sc H K H K Sm H K H K",
-    "kanYu":      "Wb M Wb M G Wb M Wb M Sc Wb M Wb M",
-    "talisman":   "Cu H Cu H Sc Cu H Cu H Sm Cu H Cu H",
-    "fate":       "U:占验 Z U:占验 Sc U:占验 Z U:占验 Sc U:占验 Z U:占验 Sc U:占验 Z",
-    "dunjia":     "Wb Cu Wb Cu G Wb Cu Wb Cu Sc Wb Cu Wb Cu",
-    "witch":      "Wb Cu Wb Cu G Wb Cu Wb Cu Sm Wb Cu Wb Cu",
+    # ===== 格物穷理（原方技玄术）=====
+    "cosmos":     "C K C K Sc C K C K Sm C K C K",
+    "logic":      "K C K C Sc K C K C Sm K C K C",
+    "poliphil":   "C Z C Z P C Z C Z P C Z C Z P",
+    "ethics":     "C Sc C Sc P C Sc C Sc P C Sc C Sc",
+    "enlighten":  "U:实证 C U:实证 Sc U:实证 C U:实证 Sc U:实证 C U:实证 Sc U:实证 C U:实证",
+    "historio":   "C Sc C Sc K C Sc C Sc K C Sc C Sc",
+    "scimethod":  "K C K C Cr K C K C Sm K C K C",
+    "social":     "C Sm C Sm P C Sm C Sm P C Sm C Sm",
+    "systemic":   "U:统观 C U:统观 Sc U:统观 C U:统观 Sc U:统观 C U:统观 Sc U:统观 C U:统观",
 }
 
 

@@ -4395,7 +4395,7 @@ function padOutcomesAligned(){
   if(outs.length > n) outs.length = n;
 }
 // 科技解锁的特殊抉择
-const UNLOCK_DOMAIN = { "选才":"court", "占断":"crisis", "料敌":"war", "占验":"any" };
+const UNLOCK_DOMAIN = { "选才":"court", "实证":"crisis", "料敌":"war", "统观":"any" };
 function eventBranchOf(ev){ const d=eventDomain(ev); return d?d.branch:null; }
 function techUnlockChoices(ev){
   const E=state.techEffects; if(!E||!E.unlocks||!E.unlocks.length) return [];
@@ -4424,15 +4424,15 @@ function injectTechUnlocks(){
   if(m.tag==="选才"){
     choice={ text:"下诏广开才路，破格擢用寒素（选才）", hint:"怀柔·育才" };
     outcome={ outcomeDescription:"帝从科技所启之新法，破格用人，寒士竞劝，朝堂为之一新。", historianComment:"不拘一格，诚得人矣。", statChanges:{court:4,people:2}, setFlags:["reform"] };
-  }else if(m.tag==="占断"){
-    choice={ text:"召方士卜筮，先机定策（占断）", hint:"进取·先知" };
-    outcome={ outcomeDescription:"以科技所通之占验，先事而备，灾异虽至而损失大减。", historianComment:"事有先觉，备豫不虞。", statChanges:{treasury:2,people:2}, setFlags:["amnesty"] };
+  }else if(m.tag==="实证"){
+    choice={ text:"命儒臣格物实证，先机定策（实证）", hint:"进取·究理" };
+    outcome={ outcomeDescription:"以科技所究之实证，先事而备，灾异虽至而损失大减。", historianComment:"事有先觉，备豫不虞。", statChanges:{treasury:2,people:2}, setFlags:["amnesty"] };
   }else if(m.tag==="料敌"){
     choice={ text:"凭舆地测绘，料敌于未战（料敌）", hint:"进取·庙算" };
     outcome={ outcomeDescription:"藉科技之测绘舆图，敌情了然于胸，战局先胜一筹。", historianComment:"知己知彼，百战不殆。", statChanges:{military:3}, setFlags:["war_win"] };
   }else{
-    choice={ text:"仰观天象、推验灾祥（占验）", hint:"权衡·顺天" };
-    outcome={ outcomeDescription:"以科技所究之象数，顺天应人，朝野胥安。", historianComment:"观象授时，王道所先。", statChanges:{court:2,health:2}, setFlags:[] };
+    choice={ text:"仰观宇宙、统观万化（统观）", hint:"权衡·达观" };
+    outcome={ outcomeDescription:"以科技所明之统观，综理群变，朝野胥安。", historianComment:"格物穷理，王道所基。", statChanges:{court:2,health:2}, setFlags:[] };
   }
   padOutcomesAligned();
   currentEvent.choices = currentEvent.choices.concat([choice]);
@@ -4454,7 +4454,7 @@ function renderEvent(){
   state._monthAdvancing=false;   // B6：新事件渲染完成，解除重入锁
   if(currentEvent && currentEvent.title) state._lastEventKey = currentEvent.title;  // 即时去重守卫：记录本月事件稳定键
   injectTechChoices();   // 科技树相关选项注入（v0.3）：统一挂载点，覆盖 AI/预设/历史/fallback 全部事件类型
-  injectTechUnlocks();   // 科技具体作用：科举/卜筮/舆地等解锁特殊抉择
+  injectTechUnlocks();   // 科技解锁特殊抉择：选才/实证/料敌/统观 等
   const seq=++_evSeq;
   const ev = currentEvent._ev || ((currentEvent.source && currentEvent.source!=="历史事件") ? currentEvent : null);
   const b=bhEventSync(state.emperor, ev);
