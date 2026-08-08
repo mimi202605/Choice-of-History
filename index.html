@@ -2656,6 +2656,13 @@ choices 与 outcomes 均必须正好5个且顺序一一对应。setFlags 限用�
       s+=`附预设历史事件「${presetEvent.title}」：${presetEvent.description}\n既定五选项（顺序固定，勿改动）：\n`;
       presetEvent.choices.forEach((c,i)=>{ s+=`${i+1}. ${c}\n`; });
       s+=`请仅为上述5个既定选项分别生成后果，输出JSON：\n{ "outcomes":[ {"outcomeDescription":"","historianComment":"","statChanges":{"treasury":0,"people":0,"military":0,"court":0,"health":0,"tech":0},"setFlags":["..."]}, ...共5项 ] }\n（setFlags 可选，限用规范词表）。史官评须用统一史官口吻（记—指—悬三段式，见【本朝叙事主线索】）\n`;
+      // 战争事件：在 AI 生成后果前掷定胜算并锁存，强制 AI 服从系统裁决（修复"预计胜算被无视"）
+      if(isWarEvent(presetEvent)){
+        if(!state._warRoll || state._warRoll.key !== (presetEvent.id||presetEvent.title)){
+          state._warRoll = Object.assign(computeWarRoll(), { key: presetEvent.id||presetEvent.title });
+        }
+        s += warDirectiveText();
+      }
     }else{
       // 日常/危机：一次性返回 事件 + 5选项 + 5后果（合并调用，消除第二次网络等待）
       let crisisHint="";
@@ -2705,7 +2712,7 @@ choices 与 outcomes 均必须正好5个且顺序一一对应。setFlags 限用�
     const e=state.emperor;
     return `【皇帝】${e.name}（${e.templeName}） ${fmtYear(state.year)}年${cnMonth(state.month)}月\n【事件】${eventTitle}\n【玩家选择】${choiceText}（${hint||""}）\n【当前数值】国库${state.stats.treasury} 民心${state.stats.people} 军事${state.stats.military} 朝政${state.stats.court} 健康${state.stats.health} 科技${state.stats.tech}\n【分级记忆】\n${buildMemoryContext(state)}\n${longTermMemory(state)}【时间一致性】后果叙述中的时间须与当前 ${fmtYear(state.year)}年${cnMonth(state.month)}月一致。\n\n请依据史实逻辑与当前局势，生成此选择的后果：\n1. 后果叙述（史书体，80-150字）\n2. 史官评曰（仿《资治通鉴》臣光曰体，30-60字；先记后果，末半句回指主线索进展、轻点活跃旗标未了之事；记—指—悬三段）\n3. 六项数值变化（各-10到+10，多数应小幅变化；危机事件单项最多±20）\n4. 可选 setFlags（规范词表字符串数组：unify/reform/long_peace/usurped/scholar_oppose/weak/war_win/war_loss/tax_cut/tax_heavy/scholar_purge/amnesty/flood/famine/rebellion/abdicated/restored），记录本选择达成的关键语义，供结局判定。\n\n【越代科技提示】若玩家拥有超出时代等级的科技（见上方系统提示），本选择在降低某些属性时，可酌情在叙事中提及这些科技如何减轻了负面冲击——例如先进水利缓解了旱灾损失、精良甲胄减少了军事损耗等。数值上的减免由系统自动处理，你只需在叙事中自然体现即可。
 
-【军备提示】若当前为战争、征伐、御边类事件，且玩家军工科技（武器、火器、甲胄、骑射、舟师、阵法）累计等级较高，可在叙事中自然体现装备优势对战局的有利影响（如"铳炮齐发，虏众披靡""楼船乘风，海寇丧胆"）。具体军事属性增益与胜负几率由系统按军备等级自动结算，你只需在叙述中顺带点出、勿另设数值。\n\n输出JSON：\n{ "outcomeDescription":"", "historianComment":"", "statChanges":{"treasury":0,"people":0,"military":0,"court":0,"health":0,"tech":0}, "setFlags":[] }\n${(settings.baihua?'【白话文模式】请用通俗易懂的现代白话文撰写后果叙述与史官评，严禁文言文，且严禁任何英文字母/拉丁字符，须为纯中文。':'【文言文模式】请以前述史官口吻（文言或半文言）撰写后果叙述与史官评，严禁现代白话口语，且严禁任何英文字母/拉丁字符，须为纯中文。')}不要输出JSON以外的内容。`;
+${currentEvent && currentEvent.description ? currentEvent.description : ""}\n${warDirectiveText()}\n\n【军备提示】若当前为战争、征伐、御边类事件，且玩家军工科技（武器、火器、甲胄、骑射、舟师、阵法）累计等级较高，可在叙事中自然体现装备优势对战局的有利影响（如"铳炮齐发，虏众披靡""楼船乘风，海寇丧胆"）。具体军事属性增益与胜负几率由系统按军备等级自动结算，你只需在叙述中顺带点出、勿另设数值。\n\n输出JSON：\n{ "outcomeDescription":"", "historianComment":"", "statChanges":{"treasury":0,"people":0,"military":0,"court":0,"health":0,"tech":0}, "setFlags":[] }\n${(settings.baihua?'【白话文模式】请用通俗易懂的现代白话文撰写后果叙述与史官评，严禁文言文，且严禁任何英文字母/拉丁字符，须为纯中文。':'【文言文模式】请以前述史官口吻（文言或半文言）撰写后果叙述与史官评，严禁现代白话口语，且严禁任何英文字母/拉丁字符，须为纯中文。')}不要输出JSON以外的内容。`;
   }
 };
 
@@ -3780,6 +3787,7 @@ function loadEvent(eventType,preset){
 function buildHistoricalEvent(preset, outcomes){
   currentEvent={
     title:preset.title,
+    id:preset.id,
     description:preset.description,
     choices:preset.choices.map(c=>({ text:c, hint:hintFromText(c) })),
     outcomes:outcomes.map(o=>o||{}),
@@ -3919,20 +3927,46 @@ function injectTechAttrBonus(sc, ev){
   return bonus;
 }
 // 战争胜负掷定：按"军备科技等级 + 当前军事值"估算胜算，写入 war_win/war_loss 旗标。
-// 若本分支/本后果已强制胜负（尊重史实叙事），则不重掷。返回叙事串。
-function rollWarOutcome(ev, outcomeFlags){
-  if(!isWarEvent(ev)) return "";
-  const br = currentEvent.branches ? currentEvent.branches[currentChoiceIndex] : null;
-  const forced = (br && (br.setFlags||[]).some(f=>f==="war_win"||f==="war_loss"))
-              || (outcomeFlags && outcomeFlags.some(f=>f==="war_win"||f==="war_loss"));
-  if(forced) return "";
+// 强制胜负仅在分支显式声明 forceWarOutcome 时保留；其余战争事件以系统掷定的 state._warRoll 为准。
+// 战争胜算公式（单一真相：显示的概率与真实掷骰必须同源）
+function warWinChance(){
   const wlvl = militaryTechLevel();
   const mil = state.stats.military;
   let p = 0.5 + (mil-50)/200 + Math.min(0.3, wlvl*0.01);   // 军备科技每级 +1% 胜算，封顶 +30%
-  p = clamp(p, 0.1, 0.9);
-  const win = Math.random() < p;
-  state.flags[win ? "war_win" : "war_loss"] = true;
-  return `（${win?"战事告捷":"战事受挫"}：军备科技等级 ${wlvl}，胜算 ${(p*100).toFixed(0)}%）`;
+  return clamp(p, 0.1, 0.9);
+}
+// 事件级一次性掷定（renderEvent/loadEvent 时算好并存入 state._warRoll，确保"显示的概率==实际结果"）
+function computeWarRoll(){
+  const p = warWinChance();
+  return { result: Math.random() < p ? "win" : "loss", p };
+}
+// 把已裁决的军备结果转为对 AI 的硬性指令（必须服从，否则叙事与数值/结局打架）
+function warDirectiveText(){
+  const wr = state._warRoll;
+  if(!wr) return "";
+  if(wr.result === "win"){
+    return `\n\n【军备结算·系统已裁决，不可违背】此役系统按军备科技与军事值判定结果为：战事告捷（胜，胜算 ${Math.round(wr.p*100)}%）。你必须在后果叙述中描写我军得胜之情形，绝不可写为败北或被擒；可点出装备、士气、兵力之利。若你原拟写败局，须以本裁决为准改写为胜。`;
+  }
+  return `\n\n【军备结算·系统已裁决，不可违背】此役系统按军备科技与军事值判定结果为：战事受挫（败，败率 ${Math.round((1-wr.p)*100)}%）。你必须在后果叙述中描写败北或被挫之情形，绝不可写为大胜；可点出寡不敌众、将士离心之由。`;
+}
+function rollWarOutcome(ev){
+  if(!isWarEvent(ev)) return "";
+  const br = currentEvent.branches ? currentEvent.branches[currentChoiceIndex] : null;
+  // 显式脚本化事件（作者有意锁定史实胜负）才尊重强制结果；仅靠 AI 旗标不再强制
+  if(br && (br.forceWarOutcome==="win"||br.forceWarOutcome==="loss")){
+    const win = br.forceWarOutcome==="win";
+    state.flags[win?"war_win":"war_loss"] = true;
+    return `（${win?"战事告捷":"战事受挫"}：史实既定）`;
+  }
+  let wr = state._warRoll;
+  if(!wr){
+    wr = computeWarRoll();
+    if(currentEvent && currentEvent.id) wr.key = currentEvent.id;
+  }
+  const win = wr.result==="win";
+  state.flags[win?"war_win":"war_loss"] = true;
+  const wlvl = militaryTechLevel();
+  return `（${win?"战事告捷":"战事受挫"}：军备科技等级 ${wlvl}，胜算 ${Math.round(wr.p*100)}%）`;
 }
 
 let _evSeq=0; // 事件渲染序号，用于异步补译回写时防止串台（避免旧事件白话覆盖新事件）
@@ -3967,6 +4001,19 @@ function renderEvent(){
     paintEventRaw();
   }
   paintWarStatus();
+  // 战争事件：玩家抉择前掷定胜算并锁存，保证"显示的概率==实际结果"；
+  // 合并生成的事件因 loadEvent 时不知是战争，清空预设后果，抉择时由 AI 按系统裁决重写
+  if(isWarEvent(currentEvent)){
+    const _key = currentEvent.id || currentEvent.title;
+    if(!state._warRoll || state._warRoll.key !== _key){
+      state._warRoll = Object.assign(computeWarRoll(), { key:_key });
+    }
+    if(currentEvent.source !== "历史事件" && currentEvent.outcomes){
+      currentEvent.outcomes.forEach(o=>{ if(o) delete o.outcomeDescription; });
+    }
+  }else{
+    state._warRoll = null;
+  }
 }
 // 已命中白话层：直接渲染白话
 function paintEventBaihua(b){
@@ -4350,7 +4397,7 @@ function applyOutcome(json,choice){
   const mitigation = techMitigate(sc);
   // 科技→事件属性加成：将匹配领域分支的科技等级折算为属性增益（受 B2 单真相约束，在下方 clamp 截断）
   const _teb = injectTechAttrBonus(sc, currentEvent);
-  const _warNarr = rollWarOutcome(currentEvent, json.setFlags||[]);
+  const _warNarr = rollWarOutcome(currentEvent);
   let _techNarr = "";
   for(const _k in _teb){ _techNarr += `科技增益：${ATTR_CN[_k]} +${_teb[_k]}。`; }
   const limit = outcomeLimit(currentEvent.source);   // B2 单一真相：常规±10 / 危机±20（此前 12+5p 与 12 两版打架）
@@ -4362,6 +4409,8 @@ function applyOutcome(json,choice){
   });
   // B3：应用 AI 生成的规范旗标（仅限 CANONICAL_FLAGS，杜绝幽灵旗标污染结局判定）
   if(Array.isArray(json.setFlags)) json.setFlags.forEach(f=>{
+    // 战争胜负以系统掷定（state._warRoll）为准，忽略 AI 在 setFlags 中吐出的矛盾 war_* 旗标
+    if(f==="war_win"||f==="war_loss") return;
     // 人物死亡/假死标记（动态后缀）不受规范词表限制
     if(f.endsWith("_died") || f.endsWith("_fakedeath")){ state.flags[f]=true; return; }
     if(CANONICAL_FLAGS.includes(f)) state.flags[f]=true;
@@ -4439,7 +4488,7 @@ function fallbackOutcome(choice){
   const mitigation = techMitigate(sc);
   // 科技→事件属性加成
   const _teb = injectTechAttrBonus(sc, currentEvent);
-  const _warNarr = rollWarOutcome(currentEvent, null);
+  const _warNarr = rollWarOutcome(currentEvent);
   let _techNarr = "";
   for(const _k in _teb){ _techNarr += `科技增益：${ATTR_CN[_k]} +${_teb[_k]}。`; }
   const limit=outcomeLimit(currentEvent.source);   // B2 单一真相：常规±10 / 危机±20
