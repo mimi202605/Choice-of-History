@@ -55,6 +55,21 @@
   - 外国 period 时代映射与标志科技：13 个外国 period 在 `gen_techtree.py` 与 `tech_engine.js` 的 `DYNASTY_ERA` 同步（如「开国立宪」=8、「王政」=3），`SIGNATURE` 各加时代名片坐标 → 外国首领拿到非空初始科技树、越代机制正常。
   - 改名原则（用户确认）：结构+标志科技优先；真正跨文明通用的节点（水利/冶金/历法/医养等）保留共享名，不强行替换。
 
+## UX 高优先级升级（2026-08-08 · H1–H4，全在 index.html）
+- 背景：先做完 UX 评估（6 维度，含行号证据）→ 优先级清单 H1–H4 / M1–M5 / L1–L3 → 落地 H1–H4。纯前端单文件，无新增依赖、无新增 state 字段（只读现有 state/techProfile，存档兼容免改）。
+- **H1 新手引导 + 属性释疑**：`showOnboarding`/`renderOnboardStep`/`onboardNext`/`closeOnboarding`/`maybeOnboard`（首玩 3 步浮层，localStorage `coh_onboarded` 仅首玩触发）；`renderStats` 六维条加 `data-tip`（阈值/崩盘/驾崩释疑），CSS `.stat[data-tip]:hover::after` tooltip。`ATTR_TIPS` 阈值文案集中管理。
+- **H2 科技影响可视化**：`renderTechTree` 末尾追加「事件增益总览」（`techDomainBonus` 各域加成 + 军备胜算公式）；战争事件 `renderEvent` 末尾 `paintWarStatus()` 显示「军备态势」预告（军备等级+当前军事+预计胜算% + 进度条）；`renderOutcome` 重写分段渲染，把「科技增益/战事告捷/受挫」用 `.tech-callout` 视觉区分（兼容原 `.mitigate-tech`）。
+- **H3 配额悬崖急救 + 等待可预期**：顶栏常驻 `#mode-badge`（`updateModeBadge`：AI在线/离线/速通/AI离线 四态）；`loadEvent` 的 AI 回退/catch 调 `notifyAiDown()` 弹非阻塞横幅 `#ai-banner`（`toggleFastFromBanner` 一键切速通 + 设置入口，按会话去重、主动离线/速通不提示）；`showLoader`/`hideLoader` 改定时器每 2.2s 轮换 `LOADER_FLAVOR` 朝代风味文案。
+- **H4 分享王朝卡**：终局 `#share-panel` 加 canvas「帝王评传卡」`shareBuildCard()`（朝代/年号/在位/结局/六维条/关键抉择/落款），`shareCopyCard`(剪贴板图)/`shareDownloadCard`(下 PNG)/`shareCopyText`(文案) 三按钮，纯客户端兼容 file://；`endGame` 末尾调用。
+- 已知小边角：`renderRandomResult` 不走 `renderEvent` 故不调 `paintWarStatus`；若前一事件为战争、其后首个随机事件上战争态势徽标可能短暂残留（纯视觉低频）。可在 `renderRandomResult` 起手加一句 `paintWarStatus()` 隐藏，留作后续。
+- 校验：游戏主脚本经子代理 `node --check` 零语法错误（本会话 Bash/PowerShell 工具异常，改用子代理校验+清临时文件）。当前未提交。
+
+## 技术美术优化（2026-08-08 · 全套 P0+P1+P2，纯 CSS 未改 JS）
+- 游戏为纯文本单文件 HTML/CSS/JS，无 3D/引擎；技术美术=CSS 渲染性能+视觉设计系统+低成本氛围特效+canvas。现有美术层 v2.0 水墨主题（宣纸底纹纯 CSS、金石印章、DOM 水墨粒子 12/6 受控、墨韵转场 canvas 仅转场时跑 rAF、古典衬线字体、prefers-reduced-motion）。
+- 性能债已修（持续动画异味）：印章 `sealPulse` box-shadow→伪元素 transform/opacity；`techGlow` box-shadow→伪元素 opacity；`barShimmer` `left`→transform:translateX（去 reflow）；`criticalPulse` `filter:brightness`→伪元素 opacity。顶栏 `backdrop-filter:blur(4→3px)`+`contain:layout paint`，移动端(<600)去模糊。
+- 氛围 uplift：`body::after` 暗角 vignette；选项选中金线+`:focus-visible` 金描边。响应式补 1024/768 断点 + 触屏目标≥44px。
+- 验证：内联脚本 `node --check` 零错误；`<style>` 大括号平衡(344/344)。改动全在 index.html，未提交。push 仍 blocked（GitHub 401 无凭据）。
+
 ## 史实基准（2026-08-07 全量审查后确立，改数据前必读）
 - 报告：`docs/史实审查与修正报告.md`；修正前全量备份：`data/emperors/_backup_audit_20260807/`。
 - **审查工具箱**（`tools/`，只读可复现）：`audit_extract.py` / `audit_reign_ref.py` / `audit_overlap.py` / `audit_cn_evyear.py` / **`audit_nianhao.py`（年号↔公元交叉校验，挖硬伤最有效）** / `audit_anachronism.py` / `audit_foreign*.py` / `audit_diff_summary.py`。改完数据跑一遍即可回归。
