@@ -3444,6 +3444,16 @@ function renderGame(){
   renderStats();
   updateModeBadge();
 }
+// 属性显示收口：超两位小数才四舍五入到两位；整数显示 90（不补 .00）；一位/两位原样保持
+function fmtStat(v){
+  const n = Number(v)||0;
+  if(Number.isInteger(n)) return String(n);                 // 整数：90（不补 .00）
+  const dec = (String(n).split('.')[1]||'').length;         // 原始小数位数
+  if(dec <= 2) return String(n);                            // 一位/两位：原样保持
+  const t = n.toFixed(2);                                   // 超两位：四舍五入两位
+  const tn = Number(t);
+  return Number.isInteger(tn) ? String(tn) : t;             // 进位成整数则去 .00
+}
 function renderStats(){
   const bar=document.getElementById("stats-bar");
   const items=[["国库","treasury"],["民心","people"],["军事","military"],["朝政","court"],["健康","health"],["科技","tech"]];
@@ -3462,7 +3472,7 @@ function renderStats(){
     return `<div class="stat ${cls}${extraCls}" style="animation:fadeSlideIn .4s ${delay}s both;" data-tip="${ATTR_TIPS[k]||''}" tabindex="0"${attrs}>
       <span class="lbl">${lbl}</span>
       <div class="bar"><div class="fill" style="width:${v}%"></div></div>
-      <span class="val">${v}</span>
+      <span class="val">${fmtStat(v)}</span>
       ${hint}
     </div>`;
   }).join("");
@@ -3979,7 +3989,25 @@ function militaryTechLevel(){
   return (p.specials.weapon||0)+(p.specials.gunpowder||0)+(p.specials.armor||0)
        + (p.specials.cavalry||0)+(p.specials.navy||0)+(p.specials.formation||0);
 }
-// 匹配领域分支的科技等级 → 属性增益；war 加成更高（上限10），其余上限6
+// 收集某分支中玩家已拥有（含朝代预设）的科技，按等级降序，用于「科技增益」归因展示。
+// 数据源与 branchTechLevels 一致（均读 state.ownedTechs），确保「共 N 级」与贡献列表对得上。
+function collectBranchTechs(branchId){
+  const tree = window.TECH_TREE;
+  if(!tree || !tree.nodes) return { techs: [], branchName: "" };
+  const owned = state.ownedTechs || {};
+  const out = [];
+  let branchName = "";
+  for(const n of tree.nodes){
+    if(n.branch !== branchId) continue;
+    if(!branchName && n.branchName) branchName = n.branchName;
+    const lv = owned[n.id] || 0;
+    if(lv>0) out.push({ id:n.id, name:tnName(n), level:lv });
+  }
+  out.sort((a,b)=> b.level - a.level);
+  return { techs: out, branchName };
+}
+// 匹配领域分支的科技等级 → 属性增益；war 加成更高（上限10），其余上限6。
+// 返回结构含归因信息（分支名 / 总等级 / 贡献科技列表），供渲染端说明"哪项科技·什么原因"。
 function techEventAttrBonus(ev){
   const d = eventDomain(ev);
   if(!d) return {};
@@ -3988,13 +4016,28 @@ function techEventAttrBonus(ev){
   const cap = d.war ? 10 : 6;
   const k = d.war ? 0.5 : 0.35;
   const bonus = Math.min(cap, Math.round(lvl * k));
-  return bonus>0 ? { [d.attr]: bonus } : {};
+  if(bonus<=0) return {};
+  const { techs, branchName } = collectBranchTechs(d.branch);
+  return { [d.attr]: { value: bonus, branch: d.branch, branchName, totalLevel: lvl, cap, k, contributors: techs } };
 }
 // 在结算前注入"科技→属性加成"：将匹配领域分支的科技等级折算为属性增益（直接在 sc 上累加）
 function injectTechAttrBonus(sc, ev){
   const bonus = techEventAttrBonus(ev);
-  for(const k in bonus){ sc[k] = (Number(sc[k])||0) + bonus[k]; }
+  for(const k in bonus){ sc[k] = (Number(sc[k])||0) + bonus[k].value; }
   return bonus;
+}
+// 把科技增益聚合对象渲染为「可追溯」叙事段：
+// 「科技增益：国库 +3（「财货」领域 · 共 N 级，主力：市舶 Lv.3、平准 Lv.2 等 X 项）。」
+function techBonusNarrative(teb){
+  let s = "";
+  for(const k in teb){
+    const b = teb[k];
+    const top = (b.contributors||[]).slice(0,4).map(c=>`${c.name} Lv.${c.level}`).join("、");
+    const more = (b.contributors||[]).length>4 ? ` 等 ${b.contributors.length} 项` : "";
+    const src = top ? `，主力：${top}${more}` : "";
+    s += `科技增益：${ATTR_CN[k]} +${b.value}（「${b.branchName||b.branch}」领域 · 共 ${b.totalLevel} 级${src}）。`;
+  }
+  return s;
 }
 // 战争胜负掷定：按"军备科技等级 + 当前军事值"估算胜算，写入 war_win/war_loss 旗标。
 // 强制胜负仅在分支显式声明 forceWarOutcome 时保留；其余战争事件以系统掷定的 state._warRoll 为准。
@@ -4685,7 +4728,7 @@ function applyOutcome(json,choice){
   const _warNarr = rollWarOutcome(currentEvent);
   applyWarEdgeOutcome(sc);                        // 战败时按军工减损兵（封顶 60%）
   let _techNarr = "";
-  for(const _k in _teb){ _techNarr += `科技增益：${ATTR_CN[_k]} +${_teb[_k]}。`; }
+  _techNarr += techBonusNarrative(_teb);
   const limit = outcomeLimit(currentEvent.source);   // B2 单一真相：常规±10 / 危机±20（此前 12+5p 与 12 两版打架）
   ["treasury","people","military","court","health","tech"].forEach(k=>{
     let v=Math.round(Number(sc[k])||0);
@@ -4778,7 +4821,7 @@ function fallbackOutcome(choice){
   const _warNarr = rollWarOutcome(currentEvent);
   applyWarEdgeOutcome(sc);                        // 战败时按军工减损兵（封顶 60%）
   let _techNarr = "";
-  for(const _k in _teb){ _techNarr += `科技增益：${ATTR_CN[_k]} +${_teb[_k]}。`; }
+  _techNarr += techBonusNarrative(_teb);
   const limit=outcomeLimit(currentEvent.source);   // B2 单一真相：常规±10 / 危机±20
   ["treasury","people","military","court","health","tech"].forEach(k=>{
     sc[k]=clamp(Math.round(sc[k]),-limit,limit);
@@ -5026,7 +5069,7 @@ function endGame(reason){
   document.getElementById("end-stats").innerHTML=items.map(([lbl,k])=>{
     const v=state.stats[k];
     const cls=v<=10?"low":(v>=70?"high":"");
-    return `<div class="stat ${cls}"><span class="lbl">${lbl}</span><div class="bar"><div class="fill" style="width:${v}%"></div></div><span class="val">${v}</span></div>`;
+    return `<div class="stat ${cls}"><span class="lbl">${lbl}</span><div class="bar"><div class="fill" style="width:${v}%"></div></div><span class="val">${fmtStat(v)}</span></div>`;
   }).join("");
   // 关键抉择回顾（全部呈现，面板内独立滚动，长局亦可逐览无遗）
   const key=state.history;
