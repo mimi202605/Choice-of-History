@@ -24,6 +24,7 @@
   - 不重跑 gen_techtree.py（保住已清理的命名/占位修复）；先备份再改，可逆。
 """
 import json, os, shutil, datetime
+from tech_funcdesc_sequences import FUNC_DESC
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 JSON_PATH = os.path.join(BASE, "data", "tech_tree.json")
@@ -254,11 +255,18 @@ def main():
         n["effect"] = [dict(s) for s in eff_list]
         eff = "；".join(fmt(s, n["age"]) for s in eff_list)
         n["effectDesc"] = eff
-        base = (n.get("functionDesc") or "").strip()
-        if "｜" in base:
-            base = base.split("｜", 1)[0].strip()
-        if base == eff:
-            base = ""
+        # 功能介绍优先按 (special, age) 取专属演进段，不再复用轨道统一句
+        fseq = FUNC_DESC.get(sp)
+        if fseq:
+            fparts = fseq.split("‖")
+            base = fparts[min(max(n["age"] - 1, 0), len(fparts) - 1)]
+        else:
+            # 兜底：保留旧逻辑（读现有 functionDesc 前半段）
+            base = (n.get("functionDesc") or "").strip()
+            if "｜" in base:
+                base = base.split("｜", 1)[0].strip()
+            if base == eff:
+                base = ""
         n["functionDesc"] = (base + " ｜ " + eff) if base else eff
         n_eff += 1
         n_desc += 1

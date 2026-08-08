@@ -15,7 +15,7 @@
 - 数据流：`tools/gen_techtree.py`（81 specials=9分支×9轨道）→ `data/tech_tree.json`（1134 节点，结构 `{schemaVersion,meta,nodes[]}`）→ `data/tech_data.js`（`node tools/build_techdata.js`）→ `window.TECH_TREE`。
 - 引擎 `tools/tech_engine.js`：`TechEngine.compute(emperor, ownedTechs)`→`techProfile`（specials/perBranch/eraLevel）。
 - 节点 id=`{branch}_{age:02d}_{trackIdx:02d}`；命名真源=gen_techtree.py 分支矩阵，改名须矩阵+json 双修再 `build_techdata.js`。
-- `functionDesc`（一句话作用）由 `SPECIAL_DESC` 映射 + `tools/add_tech_functiondesc.py` 补；按文明改名层 `data/tech_names_overlay.json`（cn 永不覆盖）。
+- `functionDesc`（功能介绍·完整句）由 `tools/tech_funcdesc_sequences.py` 提供 **每轨道 14 段完整句**（索引 age-1，段间以 `‖` 分隔，相邻 age 必不同）；`add_tech_effects.py` 按 `fseq.split("‖")[age-1]` 取专属句，旧 `SPECIAL_DESC` 统一句已弃用。⚠️ `tools/add_tech_functiondesc.py` 仍会覆盖回「轨道统一句」，今后**只能以 `add_tech_effects.py` 重跑**为准，勿单独跑前者。按文明改名层 `data/tech_names_overlay.json`（cn 永不覆盖）。
 - 科技「具体作用」层（属性外）：`tools/add_tech_effects.py` 按 81 special 注入 `effect`+`effectDesc`（跑完须 `build_techdata.js`）。**7 通道** passive/shield/eventLess/warEdge/relation/costLess/unlock（**score 终评通道已于 2026-08-08 移除**——陛下要求科技只影响当代，终评不再含科技加成）；**粒度=(special,age)**：每轨道 14 段短码演进序列（脚本内 `EFFECTS[special]` 为 14 空格分隔短码串，短码→`SHORTCODE` 映射；复合用 '+' 如 `T+Sm`），按 (age-1) 取段，**强制相邻 age 效果类型不同**（彻底差异化；旧版「分带」让同带相邻 age 雷同，如曲辕犁age5==占城稻age6 曾完全同效，2026-08-08 末轮已修）。量级=`perTier×时代档(age≤3→1/≤7→2/≥8→3)×等级`，逐 special 有 cap。
 - index.html `computeTechEffects`(≈4063) 聚合 + 钩子落地；封顶常量 `PASSIVE_YEAR_CAP=3`/`REL_TOTAL_CAP=25`（≈4040；**SCORE_TOTAL_CAP 已删**），改引擎须同步 `tools/_sim_tech_effects.js` 顶部常量。
 - ⚠️ 坑：`initTechAtStart` 把朝代预设灌进 `state.ownedTechs`（清最多 543 项）→ 读 ownedTechs 的「玩家回报」类机制会开局即封顶。玩家自研增量在 `state.playerTechs`；`computeTechEffects` 只计 playerTechs。
