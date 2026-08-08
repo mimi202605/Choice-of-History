@@ -8,7 +8,7 @@ const byId = {}; nodes.forEach(n => byId[n.id] = n);
 
 // 与 index.html 引擎常量保持一致（改引擎须同步改此处，否则压测结论失真）
 const PASSIVE_YEAR_CAP = 3;   // 单维被动每年封顶
-const REL_TOTAL_CAP    = 25;  // 派系好感科技加成总封顶
+const REL_YEAR_CAP     = 3;   // 派系好感「每年」科技增量封顶（与引擎 REL_YEAR_CAP 同步）
 const SCORE_TOTAL_CAP  = 8;   // 终评单维加成总封顶
 const COSTLESS_CAP     = 30;  // 研究费减免封顶（researchTech 内 techCostFor 施加）
 const WAREDGE_CAP      = 60;  // 单通道战争优势封顶
@@ -38,7 +38,7 @@ function compute(owned) {
   }
   // 全局通道封顶（与 index.html computeTechEffects 末尾一致）
   for (const k in E.passive)   if (E.passive[k]   > PASSIVE_YEAR_CAP) E.passive[k]   = PASSIVE_YEAR_CAP;
-  for (const k in E.relations) if (E.relations[k] > REL_TOTAL_CAP)    E.relations[k] = REL_TOTAL_CAP;
+  for (const k in E.relations) if (E.relations[k] > REL_YEAR_CAP)     E.relations[k] = REL_YEAR_CAP;
   for (const k in E.score)     if (E.score[k]     > SCORE_TOTAL_CAP)  E.score[k]     = SCORE_TOTAL_CAP;
   for (const k in E.costLess)  if (E.costLess[k]  > COSTLESS_CAP)     E.costLess[k]  = COSTLESS_CAP;
   return E;

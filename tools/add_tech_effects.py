@@ -42,11 +42,11 @@ SHORTCODE = {
     "C": ("passive", "court", 0.05, 1.2),
     "H": ("passive", "health", 0.05, 1.2),
     "K": ("passive", "tech", 0.06, 1.4),
-    # 派系 relation
-    "Z": ("relation", "宗室", 1, 8),
-    "Sc": ("relation", "士大夫", 1, 6),
-    "Sm": ("relation", "商贾", 1, 6),
-    "G": ("relation", "边将", 1, 8),
+    # 派系 relation（每年正月增量模型，与 passive 对称：perTier 为每年每级增量，cap 为每年每节点增量封顶）
+    "Z": ("relation", "宗室", 1, 3),
+    "Sc": ("relation", "士大夫", 1, 3),
+    "Sm": ("relation", "商贾", 1, 3),
+    "G": ("relation", "边将", 1, 3),
     # 灾盾 shield
     "Ff": ("shield", "famine", 8, 50),
     "Fl": ("shield", "flood", 8, 50),
@@ -206,7 +206,7 @@ def fmt(sp, age):
         return "%s%d%%·每级（封顶%d%%）" % (label, pct, cap)
     if t == "relation":
         step = pt * tier
-        return "派系「%s」好感 +%d·每级（封顶%d）" % (FACTION_CN.get(tg, tg), step, cap)
+        return "派系「%s」好感每年正月 +%d（每级叠加，封顶%d/年）" % (FACTION_CN.get(tg, tg), step, cap)
     if t == "costLess":
         pct = pt * tier
         return "研究科技耗费 −%d%%·每级（封顶%d%%）" % (pct, cap)
