@@ -716,6 +716,7 @@
     box-shadow:var(--shadow-soft);
   }
   #screen-tech .tech-summary b{color:var(--red);}
+  #screen-tech .tech-sum-note{color:var(--dim);font-size:11px;font-style:italic;}
   .tech-scroll{max-height:none;overflow:visible;}
   .tech-branch{margin-bottom:14px;}
   .tech-branch-name{
@@ -821,6 +822,16 @@
   .tn-name{font-family:'Noto Serif SC','Songti SC','SimSun',serif;font-weight:700;font-size:13px;line-height:1.15;color:var(--ink);}
   .tn-meta{font-size:10px;line-height:1.35;color:var(--dim);}
   .tn-func{font-size:9.5px;line-height:1.3;color:var(--dim);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis;}
+  /* 科技具体作用（属性加点之外的实效）：金色高亮，与泛泛的功能描述区分 */
+  .tn-effect{
+    font-size:9.5px;line-height:1.32;color:#8a6320;font-weight:600;
+    background:rgba(184,137,58,.13);border-left:2px solid var(--gold);
+    padding:2px 5px;border-radius:2px;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis;
+  }
+  .tech-node-card.locked .tn-effect{color:var(--dim);background:rgba(120,98,74,.08);border-left-color:rgba(120,98,74,.35);}
+  /* 尚未自研（开局朝代预设持有）：实效未生效，降饱和以示区别 */
+  .tn-effect.pending{color:var(--dim);font-weight:500;background:rgba(120,98,74,.07);border-left-color:rgba(120,98,74,.3);}
   .tn-dots{display:flex;gap:3px;}
   .tn-dot{width:7px;height:7px;border-radius:50%;border:1px solid rgba(120,98,74,.4);background:transparent;}
   .tn-dot.on{background:var(--gold);border-color:var(--gold);}
@@ -2385,7 +2396,7 @@ function modernEpilogueFor(emp, ending){
 }
 // 外国篇·后世总评（现代白话中性，结构对齐中国篇，避免文言与外国史错位）
 function buildModernFinalReview(emp, ending, reason, endTitle, flags){
-  const s=state.stats, r=state.relations||{};
+  const s=reviewStatsWithTechScore(), r=state.relations||{};   // 科技「史册」加成计入终评读数（不写回 state）
   const reignYears = Math.max(1, state.year - (emp.reignStart||state.year) + 1);
   const L={treasury:"财政",people:"民意",military:"军力",court:"政局",health:"健康",tech:"科技"};
   const REVIEW_DIMS=["treasury","people","military","court","health"];
@@ -2442,7 +2453,7 @@ function buildModernFinalReview(emp, ending, reason, endTitle, flags){
 //     列入属性评述会以低值误导「最弱项」判断；科技之实际表现改由下方「越代科技」段落专述。
 function buildHistorianFinalReview(emp, ending, reason, endTitle, flags){
   if(isForeign(emp)) return buildModernFinalReview(emp, ending, reason, endTitle, flags);
-  const s=state.stats, r=state.relations||{};
+  const s=reviewStatsWithTechScore(), r=state.relations||{};   // 科技「史册」加成计入终评读数（不写回 state）
   const reignYears = Math.max(1, state.year - (emp.reignStart||state.year) + 1);
   // REVIEW_DIMS：终评所陈之五维（国库/民心/军事/朝政/健康），科技不列入属性评述。
   const REVIEW_DIMS=["treasury","people","military","court","health"];
@@ -2490,7 +2501,7 @@ function buildHistorianFinalReview(emp, ending, reason, endTitle, flags){
   if(relNotes.length) txt += `至于人心向背：${relNotes.join("、")}，皆可观其兴衰之几。`;
   const prof=state.techProfile||{};
   if(prof.ahead && prof.ahead.count){
-    txt += `科技一端，帝能超轶时轨：越代之术凡${prof.ahead.count}项，最高领先${prof.ahead.maxGap}代，虽以「奇技淫巧」见讥于朝，而奇术声望（wonder ${prof.wonder||0}）亦足动当时之观听。`;
+    txt += `科技一端，帝能超轶时轨：越代之术凡${prof.ahead.count}项，最高领先${prof.ahead.maxGap}代，虽以「奇技淫巧」见讥于朝，而奇术声望亦足动当时之观听。`;
     if(prof.eraDeficit && prof.eraDeficit.active) txt += `然重未来而轻当世，科技反落于世，民心、朝政、军事、国库皆受微蚀，是谓得于此而失于彼。`;
   }else if(prof.eraDeficit && prof.eraDeficit.active){
     txt += `科技恪守时轨而犹落于人后，根基之薄，已现于四维之微蚀。`;
@@ -2698,6 +2709,7 @@ choices 与 outcomes 均必须正好5个且顺序一一对应。setFlags 限用�
     if(_prof){
       s += `\n【越代科技提示】当前玩家拥有超越时代等级的科技，在生成选项后果时，若某些选项会降低特定属性，可在叙事中自然提及这些科技如何减轻了负面冲击——例如先进水利缓解旱灾、精良甲胄减少军事损耗等。数值上的减免由系统自动计算，你只需在叙事中体现即可。\n`;
     }
+    s += techEffectsDirectiveText();   // 科技具体作用摘要：平时实效/灾异有备/军备/朝局/史册，让 AI 叙事自然体现
     // 时间一致性指令：强制 AI 在事件描述中使用正确的年号、年份、月份
     s += `\n【时间一致性要求】事件描述中提及的时间（年号、年份、季节、月份）必须与上述「当前时位」完全一致，严禁出现不符。例如若当前为「${state.era} ${fmtYear(state.year)}年 ${cnMonth(state.month)}月」，事件描述不应写其他年份或季节。\n`;
     if(settings.baihua){
@@ -2712,7 +2724,7 @@ choices 与 outcomes 均必须正好5个且顺序一一对应。setFlags 限用�
     const e=state.emperor;
     return `【皇帝】${e.name}（${e.templeName}） ${fmtYear(state.year)}年${cnMonth(state.month)}月\n【事件】${eventTitle}\n【玩家选择】${choiceText}（${hint||""}）\n【当前数值】国库${state.stats.treasury} 民心${state.stats.people} 军事${state.stats.military} 朝政${state.stats.court} 健康${state.stats.health} 科技${state.stats.tech}\n【分级记忆】\n${buildMemoryContext(state)}\n${longTermMemory(state)}【时间一致性】后果叙述中的时间须与当前 ${fmtYear(state.year)}年${cnMonth(state.month)}月一致。\n\n请依据史实逻辑与当前局势，生成此选择的后果：\n1. 后果叙述（史书体，80-150字）\n2. 史官评曰（仿《资治通鉴》臣光曰体，30-60字；先记后果，末半句回指主线索进展、轻点活跃旗标未了之事；记—指—悬三段）\n3. 六项数值变化（各-10到+10，多数应小幅变化；危机事件单项最多±20）\n4. 可选 setFlags（规范词表字符串数组：unify/reform/long_peace/usurped/scholar_oppose/weak/war_win/war_loss/tax_cut/tax_heavy/scholar_purge/amnesty/flood/famine/rebellion/abdicated/restored），记录本选择达成的关键语义，供结局判定。\n\n【越代科技提示】若玩家拥有超出时代等级的科技（见上方系统提示），本选择在降低某些属性时，可酌情在叙事中提及这些科技如何减轻了负面冲击——例如先进水利缓解了旱灾损失、精良甲胄减少了军事损耗等。数值上的减免由系统自动处理，你只需在叙事中自然体现即可。
 
-${currentEvent && currentEvent.description ? currentEvent.description : ""}\n${warDirectiveText()}\n\n【军备提示】若当前为战争、征伐、御边类事件，且玩家军工科技（武器、火器、甲胄、骑射、舟师、阵法）累计等级较高，可在叙事中自然体现装备优势对战局的有利影响（如"铳炮齐发，虏众披靡""楼船乘风，海寇丧胆"）。具体军事属性增益与胜负几率由系统按军备等级自动结算，你只需在叙述中顺带点出、勿另设数值。\n\n输出JSON：\n{ "outcomeDescription":"", "historianComment":"", "statChanges":{"treasury":0,"people":0,"military":0,"court":0,"health":0,"tech":0}, "setFlags":[] }\n${(settings.baihua?'【白话文模式】请用通俗易懂的现代白话文撰写后果叙述与史官评，严禁文言文，且严禁任何英文字母/拉丁字符，须为纯中文。':'【文言文模式】请以前述史官口吻（文言或半文言）撰写后果叙述与史官评，严禁现代白话口语，且严禁任何英文字母/拉丁字符，须为纯中文。')}不要输出JSON以外的内容。`;
+${currentEvent && currentEvent.description ? currentEvent.description : ""}\n${warDirectiveText()}${techEffectsDirectiveText()}\n\n【军备提示】若当前为战争、征伐、御边类事件，且玩家军工科技（武器、火器、甲胄、骑射、舟师、阵法）累计等级较高，可在叙事中自然体现装备优势对战局的有利影响（如"铳炮齐发，虏众披靡""楼船乘风，海寇丧胆"）。具体军事属性增益与胜负几率由系统按军备等级自动结算，你只需在叙述中顺带点出、勿另设数值。\n\n输出JSON：\n{ "outcomeDescription":"", "historianComment":"", "statChanges":{"treasury":0,"people":0,"military":0,"court":0,"health":0,"tech":0}, "setFlags":[] }\n${(settings.baihua?'【白话文模式】请用通俗易懂的现代白话文撰写后果叙述与史官评，严禁文言文，且严禁任何英文字母/拉丁字符，须为纯中文。':'【文言文模式】请以前述史官口吻（文言或半文言）撰写后果叙述与史官评，严禁现代白话口语，且严禁任何英文字母/拉丁字符，须为纯中文。')}不要输出JSON以外的内容。`;
   }
 };
 
@@ -2883,6 +2895,9 @@ function recomputeTechProfile(apply){
   if(apply===undefined) apply=true;
   const prof = TECH_ENGINE.compute(state.emperor, state.ownedTechs);
   state.techProfile = prof;
+  // 科技具体作用：聚合 node.effect → state.techEffects，并增量应用派系好感
+  state.techEffects = computeTechEffects();
+  applyTechRelationBonus();
   const eraLevel = prof.eraLevel;
   const target = {treasury:0,people:0,military:0,court:0,health:0,tech:0};
   // 1) 所有已拥越代节点的衰减增益
@@ -3119,7 +3134,7 @@ function goto(id){
     if(id==="dynasty") renderDynasties();
     if(id==="settings") loadSettingsToForm();
     if(id==="game") decorateScrolls();
-    if(id==="ending") decorateScrolls();
+    if(id==="ending"){ decorateScrolls(); try{ drawCurve(); }catch(err){ console.warn("数值曲线绘制失败",err); } }
     window.scrollTo(0,0);
   };
   if(useTransition){
@@ -3150,7 +3165,7 @@ function researchTech(id){
   if(prereq.length && !prereq.every(p=>(state.ownedTechs[p]||0)>=1)){
     toast("需先解锁前置科技"); return;
   }
-  const cost = TECH_ENGINE.costToUpgrade(node, lvl);
+  const cost = techCostFor(node, lvl);
   if(cost==null){ toast("「"+node.name+"」已满级"); return; }
   if((state.stats.tech||0) < cost){ toast("科技点不足（需 "+cost+"，现有 "+(state.stats.tech|0)+"）"); return; }
   // 执行加点：消耗科技值（clamp 保证科技恒∈[0,100]；科技点耗空仅归零，绝不为负，亦不触发任何死亡/惩罚）
@@ -3161,6 +3176,15 @@ function researchTech(id){
   renderTechTree();
   renderStats();            // 刷新 HUD 的「科技」值
   toast("已研究：「"+tnName(node)+"」 至 "+(lvl+1)+" 级");
+}
+// 科技升级实付点数：基础耗费 × 科技具体作用「研究耗点减免」（铸币/票号等，封顶 30%）。
+// 卡片标价与实际扣点共用此函数，避免显示与结算不一致。满级返回 null。
+function techCostFor(node, lvl){
+  let c = TECH_ENGINE.costToUpgrade(node, lvl);
+  if(c==null) return null;
+  const pct = (state && state.techEffects && state.techEffects.costLess)
+    ? Math.min(30, state.techEffects.costLess.research||0) : 0;
+  return pct>0 ? Math.max(1, Math.round(c*(1-pct/100))) : c;
 }
 // 科技树按文明显示名解析（与 tech_engine.js 同步：cn 用中文原值，rome 用罗马名，其余用 foreign 名）
 function techCiv(){ return (state.emperor && state.emperor.civilization) || "cn"; }
@@ -3201,10 +3225,41 @@ function renderTechTree(){
   }
   // H2：本局事件增益总览（科技→事件属性加成可视化）
   const _wl=militaryTechLevel();
-  const _p=clamp(0.5+(state.stats.military-50)/200+Math.min(0.3,_wl*0.01),0.1,0.9);
+  const _p=warWinChance();   // 单一真相：与实际掷骰同源，勿在此重算公式
   const _dom=["mil","com","agri","civ","med"].map(b=>{const a=TECH_DOMAIN_ATTR[b];const bo=techDomainBonus(b);const cn={military:"军事",treasury:"国库",people:"民心",court:"朝政",health:"健康"}[a];return `${cn}${bo>0?" +"+bo:""}`;}).join("、");
   sum+=`<br><b>事件增益（按科技分支累计）</b>：战事军事封顶+10，其余封顶+6 —— 当前 `+_dom;
-  sum+=`<br><b>军备态势</b>：军备科技等级 ${_wl} → 战事预计胜算约 ${(_p*100).toFixed(0)}%（每级+1%，封顶+30%）`;
+  const _eb=Math.min(15,_wl), _ee=Math.min(20,Math.round(warEdgeWinBonus()));
+  sum+=`<br><b>军备态势</b>：军备广度 ${_wl} 级（底子 +${_eb}%，封顶15）　军工尖端 +${_ee}%（自研，封顶20）　→ 战事预计胜算约 ${(_p*100).toFixed(0)}%`;
+  // 科技具体作用：本局效果概览（属性加点之外的实效汇总，与卡片「效：」逐项对应）
+  const _TE = state.techEffects;
+  if(_TE){
+    const seg=[];
+    const _pa=_TE.passive||{};
+    const _paS=Object.keys(_pa).filter(k=>_pa[k]>0).map(k=>`${attrCn[k]||k}+${(+_pa[k]).toFixed(1)}`);
+    if(_paS.length) seg.push(`每年正月实效 ${_paS.join("、")}（单维封顶+${PASSIVE_YEAR_CAP}/年）`);
+    const _sh=_TE.shields||{};
+    const _shS=Object.keys(_sh).filter(k=>_sh[k]>0).map(k=>`${CRISIS_CN_TE[k]||k}−${Math.round(_sh[k])}%`);
+    if(_shS.length) seg.push(`灾异减损 ${_shS.join("、")}`);
+    const _el=_TE.eventLess||{};
+    const _elS=Object.keys(_el).filter(k=>_el[k]>0).map(k=>`${CRISIS_CN_TE[k]||k}−${Math.round(_el[k])}%`);
+    if(_elS.length) seg.push(`灾异发生率 ${_elS.join("、")}`);
+    if(warEdgeWinBonus()>0) seg.push(`战争胜算+${Math.round(warEdgeWinBonus())}%`);
+    if(warEdgeLossMitigate()>0) seg.push(`战败损兵−${Math.round(warEdgeLossMitigate())}%`);
+    const _rl=_TE.relations||{};
+    const _rlS=Object.keys(_rl).filter(k=>_rl[k]>0).map(k=>`${k}+${Math.round(_rl[k])}`);
+    if(_rlS.length) seg.push(`朝局好感 ${_rlS.join("、")}`);
+    const _clv=Math.min(30, Math.round((_TE.costLess||{}).research||0));
+    if(_clv>0) seg.push(`研究耗点−${_clv}%`);
+    const _sv=_TE.score||{};
+    const _svS=Object.keys(_sv).filter(k=>_sv[k]>0).map(k=>`${attrCn[k]||k}+${Math.round(_sv[k])}`);
+    if(_svS.length) seg.push(`后世史评 ${_svS.join("、")}`);
+    if(_TE.unlocks&&_TE.unlocks.length) seg.push(`解锁特殊抉择：${_TE.unlocks.join("、")}`);
+    // 口径说明：实效只计陛下自行研究的级数，开局朝代底子（预设科技）仅提供六维属性加成。
+    // 否则清朝开局 543 项预设会把各通道一次顶满，后续研究再无边际收益。
+    const _self=Object.keys(state.playerTechs||{}).reduce((a,k)=>a+(state.playerTechs[k]||0),0);
+    sum+=`<br><b>本局科技实效</b>（自研累计 ${_self} 级）：`+(seg.length?seg.join("　|　"):`暂无 —— 研究下方带「效：」标注的科技即可获得，等级越高效果越强`);
+    sum+=`<br><span class="tech-sum-note">实效只计陛下亲自研究的级数；开局朝代底子已折入六维属性，不再重复计入实效。</span>`;
+  }
   if(summaryEl) summaryEl.innerHTML=sum;
   if(ptsEl) ptsEl.innerHTML=`<span class="tech-pts-num">${avail}</span> 点可分配（来自「科技」国力，研究即消耗）`;
   // 当前分支（记忆上次选择）
@@ -3220,7 +3275,7 @@ function renderTechTree(){
     // 布局：列=时代(age)，行=轨道(track)
     const ages=[...new Set(nodes.map(n=>n.age))].sort((a,b)=>a-b);
     const tracks=[...new Set(nodes.map(n=>n.track))].sort((a,b)=>String(a).localeCompare(String(b)));
-    const colW=188,rowH=174,padX=18,padY=18,nodeW=150,nodeH=152;
+    const colW=188,rowH=202,padX=18,padY=18,nodeW=150,nodeH=180;   // 卡片增高以容纳「具体作用」行
     const ageIdx={}; ages.forEach((a,i)=>ageIdx[a]=i);
     const trackIdx={}; tracks.forEach((t,i)=>trackIdx[t]=i);
     const pos={};
@@ -3245,18 +3300,27 @@ function renderTechTree(){
     nodes.forEach(n=>{ const p=pos[n.id]; const st=stateOf(n); const lvl=owned[n.id]||0;
       const gap=(n.age||0)-eraLevel; const isAhead=gap>0;
       const maxed=lvl>=n.maxLevel; const preOk=!n.prereq.length||n.prereq.every(pp=>(owned[pp]||0)>=1);
-      const cost=TECH_ENGINE.costToUpgrade(n,lvl);
-      const canBuy=preOk&&!maxed&&avail>=cost;
+      const cost=techCostFor(n,lvl);   // 已含研究耗点减免，与实际扣点一致
+      const canBuy=preOk&&!maxed&&cost!=null&&avail>=cost;
       const dots=Array.from({length:n.maxLevel},(_,i)=>`<span class="tn-dot${i<lvl?' on':''}"></span>`).join("");
       const bonusTxt=Object.keys(n.bonusPerLevel||{}).map(a=>attrCn[a]+"+"+n.bonusPerLevel[a]).join("、");
       const sa=n.specialAttr?attrCn[n.specialAttr]+"+"+(n.specialBonus||1):"";
       const allBonus=[bonusTxt,sa].filter(Boolean).join("、");
       const ageTag=isAhead?("越代+"+gap):("时代"+n.age);
       const costLabel=maxed?"已满级":(preOk?("需 "+cost+" 点"):"需先解锁前置");
+      // 具体作用（属性加点之外的实效）：functionDesc 尾部已含 effectDesc，此处拆开分行呈现
+      const effTxt=n.effectDesc||"";
+      let funcTxt=n.functionDesc||"";
+      if(effTxt){ const _i=funcTxt.indexOf(effTxt); if(_i>=0) funcTxt=funcTxt.slice(0,_i).replace(/[\s｜|·、，,]+$/,""); }
+      // 实效只按「自研级数」计（computeTechEffects 读 playerTechs），开局预设不计 —— 卡片如实标注，勿让玩家误以为已生效
+      const plvl=(state.playerTechs||{})[n.id]||0;
+      const effTag=plvl>0?`自研${plvl}级·已生效`:`须自研方生效`;
+      const effLine=effTxt?`<div class="tn-effect${plvl>0?'':' pending'}" title="${escapeHtml(effTag+"　"+effTxt)}">效（${effTag}）：${escapeHtml(effTxt)}</div>`:"";
       cards+=`<div class="tech-node-card ${st}${isAhead?' ahead':''}" style="left:${p.left}px;top:${p.top}px;width:${nodeW}px;height:${nodeH}px;">
         <div class="tn-head"><span class="tn-age${isAhead?' ahead':''}">${ageTag}</span><span class="tn-name">${escapeHtml(tnName(n))}</span></div>
         <div class="tn-meta">${escapeHtml(tnTrack(n))}　每级：${escapeHtml(allBonus)}</div>
-        <div class="tn-func">${escapeHtml(n.functionDesc||"")}</div>
+        <div class="tn-func">${escapeHtml(funcTxt)}</div>
+        ${effLine}
         <div class="tn-dots">${dots}</div>
         <div class="tn-cost ${canBuy?'':'no'}">${costLabel}</div>
         ${canBuy?`<button class="tn-buy" onclick="researchTech('${n.id}')">+ 升级</button>`:""}
@@ -3409,6 +3473,7 @@ function enterMonth(){
   state.pressure = computePressure(state);
   state.inOverflow = state.year > state.emperor.reignEnd;   // 超期执政信号（复用 L3955 同一定义）：作为"后世时局"事件触发闸门
   state.monthsPlayed = (state.monthsPlayed||0) + 1;
+  applyTechPassives();   // 科技被动增益：函数内自判每年正月结算一次，单维封顶 PASSIVE_YEAR_CAP
   state._monthSinceRandom = (state._monthSinceRandom||0) + 1;   // 随机时局冷却计数：每月 +1，命中随机时局后重置为 0
   let eventType, preset=null;
   const crisis=detectCrisis(state.stats);
@@ -3682,6 +3747,11 @@ function fireRandomEvent(){
   const choice = { text:"（天意难测，无可决断）", hint:"" };
   currentEvent = { title:ev.title, source:"随机时局", _resolved:true, description:ev.description };
   const sc = applyRandomChanges(ev);
+  // 科技危机盾（随机时局已把增量写入 state.stats，故 alsoState=true 同步回退）
+  applyCrisisShields(sc, ev, true);
+  // 触发率减免：被 eventLess 覆盖的灾异按概率转「有备无患」（无负面增量）
+  { const _ct=crisisTypeOf(ev); const _tp=techMitigatesCrisisTrigger(_ct);
+    if(_ct && _tp>0 && Math.random()<_tp/100){ for(const k of ["treasury","people","military","court","health","tech"]){ const v=sc[k]||0; if(v<0){ state.stats[k]=clamp((state.stats[k]||0)-v,0,100); sc[k]=0; } } } }
   let unlockedName = null;
   if(ev.unlockTech) unlockedName = applyFolkInnovation();   // 民间献技：免费解锁当世科技节点
   state._lastRandomId = ev.id;
@@ -3932,8 +4002,18 @@ function injectTechAttrBonus(sc, ev){
 function warWinChance(){
   const wlvl = militaryTechLevel();
   const mil = state.stats.military;
-  let p = 0.5 + (mil-50)/200 + Math.min(0.3, wlvl*0.01);   // 军备科技每级 +1% 胜算，封顶 +30%
-  return clamp(p, 0.1, 0.9);
+  // 科技对胜算的贡献拆两条独立通道，总上限仍 +35%，但各自封顶，互不吞噬：
+  //  ① 军备广度 wlvl（读 techProfile，含朝代开局预设）→ 封 +15%。代表「文明底子」。
+  //     实测预设军备等级：夏9 商18 周18 秦24 汉33 唐45 宋54 明60 清72 → 汉以后即吃满，
+  //     这是时代红利，不该也不必再涨。
+  //  ② 军工尖端 warEdge（只算玩家自研，见 computeTechEffects）→ 封 +20%。代表「陛下经营」。
+  //     实测军工专精约 12 级吃满；散点流通常 +4~11%。
+  // rationale：若如旧版合并为 min(0.35, 广度+尖端)，唐以后广度独自顶满 0.35，
+  // 玩家再怎么研究军工，胜算纹丝不动 —— 自研的边际收益归零，违背「等级越高作用越大」。
+  // 上界保留 0.9：必胜的仗不叫仗。[待playtest校准]
+  const edgeBreadth = Math.min(0.15, wlvl*0.01);
+  const edgeElite   = Math.min(0.20, warEdgeWinBonus()/100);
+  return clamp(0.5 + (mil-50)/200 + edgeBreadth + edgeElite, 0.1, 0.9);
 }
 // 事件级一次性掷定（renderEvent/loadEvent 时算好并存入 state._warRoll，确保"显示的概率==实际结果"）
 function computeWarRoll(){
@@ -3969,6 +4049,208 @@ function rollWarOutcome(ev){
   return `（${win?"战事告捷":"战事受挫"}：军备科技等级 ${wlvl}，胜算 ${Math.round(wr.p*100)}%）`;
 }
 
+// ===== 科技具体作用引擎（2026-08-08 增补）=====
+// 数据来源：每个节点的 node.effect 数组（tools/add_tech_effects.py 注入），结构 {type,target,perTier,cap}。
+// 聚合为 state.techEffects，供 回合被动 / 危机盾 / 战争边 / 费减 / 史评 / 选项解锁 / AI 叙事 各挂点消费。
+// 数值 rationale：perTier = 每档(tier=age分1/2/3)×每级增量；封顶防通胀。未经 playtest，标 [待playtest校准]。
+const CRISIS_CN_TE = { flood:"水患", famine:"饥荒", epidemic:"疫疠", wound:"战伤", dispute:"讼争", curse:"妖异" };
+// 通道总封顶：单节点 cap 只约束该节点，多节点同 target 叠加仍会 runaway，故在聚合末尾再封一道。
+const PASSIVE_YEAR_CAP = 3;    // 单维被动每年封顶（每年正月结算一次）[待playtest校准]
+const REL_TOTAL_CAP    = 25;   // 派系好感科技加成总封顶：派系区间 −100~100，科技只占 12.5%，主驱动仍是抉择 [待playtest校准]
+const SCORE_TOTAL_CAP  = 8;    // 终评单维加成总封顶：约一个档位（62→70 跨过阈值），不足以把昏君洗成明君 [待playtest校准]
+function tierOfAge(age){ return age<=3?1:(age<=7?2:3); }
+
+function computeTechEffects(){
+  const E = { passive:{}, shields:{}, eventLess:{}, warEdge:{winBonus:0,lossMitigate:0}, relations:{}, costLess:{}, score:{}, unlocks:[], abilities:[] };
+  // 只计「玩家自研增量」（state.playerTechs），不计朝代开局预设（state.ownedTechs 含预设）。
+  // rationale：initTechAtStart 开局灌入预设 27(夏)~543(清) 项，若按 ownedTechs 聚合，
+  // 压测显示汉朝起多通道开局即封顶、清朝全通道满格 → 后续研究边际收益为 0，
+  // 「等级越高作用越大」在实际游戏中失效。预设代表的时代先进性已由 techProfile 的
+  // 六维属性加成体现（那条路径仍读 ownedTechs），此处不重复计。
+  // 实测自研 10/20/30 级 → warEdge win +4.2/+9.3/+11.3；军工专精 20 级 → +34.3。[待playtest校准]
+  const owned = state.playerTechs||{};
+  for(const id in owned){
+    const lvl = owned[id]; if(!lvl) continue;
+    const node = (TECH_ENGINE && TECH_ENGINE.nodeById) ? TECH_ENGINE.nodeById[id] : null;
+    if(!node || !node.effect) continue;
+    const tier = tierOfAge(node.age||1);
+    const specs = Array.isArray(node.effect) ? node.effect : [node.effect];
+    for(const sp of specs){
+      const mag = sp.perTier * tier * lvl;
+      switch(sp.type){
+        case "passive": E.passive[sp.target]=(E.passive[sp.target]||0)+Math.min(sp.cap, mag); break;
+        case "shield":
+        case "autoResolve": E.shields[sp.target]=Math.min(sp.cap,(E.shields[sp.target]||0)+sp.perTier*tier*lvl); break;
+        case "eventLess": E.eventLess[sp.target]=Math.min(sp.cap,(E.eventLess[sp.target]||0)+sp.perTier*tier*lvl); break;
+        case "warEdge":
+          { const wt = (sp.target==="winBonus") ? "winBonus" : "lossMitigate";
+            E.warEdge[wt]=Math.min(60,(E.warEdge[wt]||0)+sp.perTier*tier*lvl); }
+          break;
+        case "relation": E.relations[sp.target]=(E.relations[sp.target]||0)+Math.min(sp.cap, mag); break;
+        case "costLess": E.costLess[sp.target]=Math.min(sp.cap,(E.costLess[sp.target]||0)+sp.perTier*tier*lvl); break;
+        case "score": E.score[sp.target]=(E.score[sp.target]||0)+Math.min(sp.cap, mag); break;
+        case "unlock": if(E.unlocks.indexOf(sp.target)<0) E.unlocks.push(sp.target); break;
+        case "ability": E.abilities.push(sp); break;
+      }
+    }
+  }
+  // 通道总封顶（单节点 cap 之外再封一道，防多节点同 target 叠加 runaway）：
+  // 压测实测全树满级下 士大夫好感 +582、史评朝政 +1499，若不封顶等于科技一把废掉派系与终评两个系统。
+  for(const k in E.passive){   if(E.passive[k]   > PASSIVE_YEAR_CAP) E.passive[k]   = PASSIVE_YEAR_CAP; }
+  for(const k in E.relations){ if(E.relations[k] > REL_TOTAL_CAP)    E.relations[k] = REL_TOTAL_CAP; }
+  for(const k in E.score){     if(E.score[k]     > SCORE_TOTAL_CAP)  E.score[k]     = SCORE_TOTAL_CAP; }
+  return E;
+}
+function applyTechRelationBonus(){
+  const E = state.techEffects; if(!E) return;
+  const rel = state.relations; if(!rel) return;
+  const prev = state._techRelApplied||{};
+  const next = E.relations||{};
+  for(const f of ["宗室","士大夫","边将","商贾"]){
+    const want = next[f]||0, had = prev[f]||0, d = want-had;
+    if(d) rel[f] = clamp((rel[f]||0)+d, -100, 100);
+  }
+  state._techRelApplied = next;
+}
+function applyTechPassives(){
+  const E=state.techEffects; if(!E||!E.passive) return;
+  // 逐月净增会碾平整个数值压力：每月 +3 → 一年 +36，衰减、危机、灾异全部失效。
+  // 改为每年正月结算一次，单维封顶 +PASSIVE_YEAR_CAP/年（约 3%）：可感知，但不足以躺赢。[待playtest校准]
+  if(state.month !== 1) return;
+  for(const k in E.passive){ if(E.passive[k]) state.stats[k]=clamp((state.stats[k]||0)+E.passive[k],0,100); }
+}
+// 灾异类型判定（与危机盾 target 一致）
+function crisisTypeOf(ev){
+  if(!ev) return null;
+  const t=(ev.title||"")+" "+(ev.description||"")+" "+((ev.choices||[]).map(c=>c&&(c.text||c.hint||"")).join(" "));
+  const M={
+    flood:/大水|河决|决堤|洪涝|水患|泛溢|汛|霖雨|浸|陂/,
+    famine:/饥|荒|歉收|旱|蝗|籴|馑/,
+    epidemic:/疫|瘟|疠|时疫|疾疫|瘴/,
+    wound:/(伤|疮痍|创|兵燹|战后|血战)/,
+    dispute:/(讼|争田|械斗|民变|冤|讼狱|哗变)/,
+    curse:/(妖|谶|惑众|巫|蛊|符|异象)/
+  };
+  for(const k in M){ if(M[k].test(t)) return k; }
+  return null;
+}
+// 结算减损：负面属性增量按危机盾比例削减；alsoState=true 时同步回退已写入的 state.stats（随机时局路径）
+function applyCrisisShields(sc, ev, alsoState){
+  const E=state.techEffects; if(!E||!E.shields) return;
+  const ct=crisisTypeOf(ev); if(!ct) return;
+  const pct=(E.shields[ct]||0); if(pct<=0) return;
+  const f=1-pct/100;
+  ["treasury","people","military","court","health"].forEach(k=>{
+    const v=Number(sc[k])||0;
+    if(v<0){
+      const nv=Math.round(v*f), diff=nv-v;
+      sc[k]=nv;
+      if(alsoState) state.stats[k]=clamp((state.stats[k]||0)+diff,0,100);
+    }
+  });
+}
+function techMitigatesCrisisTrigger(ct){
+  const E=state.techEffects; if(!E||!E.eventLess) return 0;
+  return E.eventLess[ct]||0;
+}
+function warEdgeWinBonus(){
+  const E=state.techEffects; if(!E||!E.warEdge) return 0;
+  return Math.min(40, E.warEdge.winBonus||0);
+}
+function warEdgeLossMitigate(){
+  const E=state.techEffects; if(!E||!E.warEdge) return 0;
+  return Math.min(60, E.warEdge.lossMitigate||0);
+}
+function applyWarEdgeOutcome(sc){
+  const lm=warEdgeLossMitigate(); if(!lm) return;
+  const v=Number(sc.military)||0; if(v<0) sc.military=Math.round(v*(1-lm/100));
+}
+// AI 叙事层：科技具体作用摘要（数值由系统结算，叙述仅自然体现）
+function techEffectsDirectiveText(){
+  const E=state.techEffects; if(!E) return "";
+  const parts=[];
+  const pa=E.passive||{};
+  const paStr=Object.keys(pa).filter(k=>pa[k]>0).map(k=>`${ATTR_CN[k]}+${pa[k].toFixed(1)}/年`);
+  if(paStr.length) parts.push(`君之科技于平时可生实效：${paStr.join("、")}`);
+  const sh=E.shields||{};
+  const shStr=Object.keys(sh).filter(k=>sh[k]>0).map(k=>`${CRISIS_CN_TE[k]||k}损−${sh[k]}%`);
+  if(shStr.length) parts.push(`灾异有备：${shStr.join("、")}`);
+  if(E.warEdge&&E.warEdge.winBonus>0) parts.push(`军备精良，战争胜算可增约 ${E.warEdge.winBonus}%`);
+  if(E.warEdge&&E.warEdge.lossMitigate>0) parts.push(`甲兵坚利，战败损兵可减约 ${E.warEdge.lossMitigate}%`);
+  const rel=E.relations||{};
+  const relStr=Object.keys(rel).filter(k=>rel[k]>0).map(k=>`${k}+${rel[k]}`);
+  if(relStr.length) parts.push(`朝局向背：${relStr.join("、")}`);
+  const sc=E.score||{};
+  const scStr=Object.keys(sc).filter(k=>sc[k]>0).map(k=>`${ATTR_CN[k]}+${sc[k]}`);
+  if(scStr.length) parts.push(`史册流芳：${scStr.join("、")}`);
+  if(!parts.length) return "";
+  return `\n\n【科技实效·系统提示】玩家科技已在机制层面真实生效，你须在叙事中自然体现：${parts.join("；")}。数值增减由系统自动结算，你勿另设数字、勿与上方机制矛盾。`;
+}
+// 史评专用读数：科技「史册」加成只影响终评判读，不写回 state.stats
+// （若直接改 state，存档、分享卡、结局判定都会跟着虚高——加成只在史官笔下生效）
+function reviewStatsWithTechScore(){
+  const base = (state && state.stats) || {};
+  const E = state && state.techEffects;
+  if(!E || !E.score) return base;
+  const out = Object.assign({}, base);
+  for(const k in E.score){ if(out[k]!=null) out[k]=clamp(out[k]+E.score[k], 0, 100); }
+  return out;
+}
+// 选项注入前对齐 outcomes 与 choices 长度：
+// AI 合并调用未回 outcomes 时 outcomes=[]，直接 concat 会让注入后果落到 outcomes[0]，
+// 导致玩家点第 1 个选项却结算了注入选项的后果。补空位以保证 makeChoice 的下标语义。
+function padOutcomesAligned(){
+  if(!currentEvent) return;
+  const n = (currentEvent.choices||[]).length;
+  const outs = currentEvent.outcomes || (currentEvent.outcomes = []);
+  while(outs.length < n) outs.push({});
+  if(outs.length > n) outs.length = n;
+}
+// 科技解锁的特殊抉择
+const UNLOCK_DOMAIN = { "选才":"court", "占断":"crisis", "料敌":"war", "占验":"any" };
+function eventBranchOf(ev){ const d=eventDomain(ev); return d?d.branch:null; }
+function techUnlockChoices(ev){
+  const E=state.techEffects; if(!E||!E.unlocks||!E.unlocks.length) return [];
+  const out=[]; const isWar=isWarEvent(ev); const ct=crisisTypeOf(ev); const dom=eventBranchOf(ev);
+  for(const tag of E.unlocks){
+    const want=UNLOCK_DOMAIN[tag]||"any"; let match=false;
+    if(want==="any") match=true;
+    else if(want==="war"&&isWar) match=true;
+    else if(want==="crisis"&&ct) match=true;
+    else if(want==="court"&&(dom==="civ"||dom==="law")) match=true;
+    if(match) out.push({tag,dom});
+  }
+  return out;
+}
+function injectTechUnlocks(){
+  if(!currentEvent || !currentEvent.choices) return;
+  if(currentEvent._resolved) return;
+  if(currentEvent._unlockInjected) return;
+  currentEvent._unlockInjected = true;
+  if(!state || !state.techEffects) return;
+  if(Math.random() >= 0.25) return;            // 触发率受控：每事件仅掷一次
+  const matches = techUnlockChoices(currentEvent);
+  if(!matches.length) return;
+  const m = matches[0];
+  let choice, outcome;
+  if(m.tag==="选才"){
+    choice={ text:"下诏广开才路，破格擢用寒素（选才）", hint:"怀柔·育才" };
+    outcome={ outcomeDescription:"帝从科技所启之新法，破格用人，寒士竞劝，朝堂为之一新。", historianComment:"不拘一格，诚得人矣。", statChanges:{court:4,people:2}, setFlags:["reform"] };
+  }else if(m.tag==="占断"){
+    choice={ text:"召方士卜筮，先机定策（占断）", hint:"进取·先知" };
+    outcome={ outcomeDescription:"以科技所通之占验，先事而备，灾异虽至而损失大减。", historianComment:"事有先觉，备豫不虞。", statChanges:{treasury:2,people:2}, setFlags:["amnesty"] };
+  }else if(m.tag==="料敌"){
+    choice={ text:"凭舆地测绘，料敌于未战（料敌）", hint:"进取·庙算" };
+    outcome={ outcomeDescription:"藉科技之测绘舆图，敌情了然于胸，战局先胜一筹。", historianComment:"知己知彼，百战不殆。", statChanges:{military:3}, setFlags:["war_win"] };
+  }else{
+    choice={ text:"仰观天象、推验灾祥（占验）", hint:"权衡·顺天" };
+    outcome={ outcomeDescription:"以科技所究之象数，顺天应人，朝野胥安。", historianComment:"观象授时，王道所先。", statChanges:{court:2,health:2}, setFlags:[] };
+  }
+  padOutcomesAligned();
+  currentEvent.choices = currentEvent.choices.concat([choice]);
+  currentEvent.outcomes = (currentEvent.outcomes||[]).concat([outcome]);
+}
+
 let _evSeq=0; // 事件渲染序号，用于异步补译回写时防止串台（避免旧事件白话覆盖新事件）
 function sourceLabel(src){
   return ({"历史事件":"史实","数值危机":"危机","日常政务":"政务","随机时局":"时变","科技阻力":"科技","后世时局":"后世时局"})[src] || "";
@@ -3984,6 +4266,7 @@ function renderEvent(){
   state._monthAdvancing=false;   // B6：新事件渲染完成，解除重入锁
   if(currentEvent && currentEvent.title) state._lastEventKey = currentEvent.title;  // 即时去重守卫：记录本月事件稳定键
   injectTechChoices();   // 科技树相关选项注入（v0.3）：统一挂载点，覆盖 AI/预设/历史/fallback 全部事件类型
+  injectTechUnlocks();   // 科技具体作用：科举/卜筮/舆地等解锁特殊抉择
   const seq=++_evSeq;
   const ev = currentEvent._ev || ((currentEvent.source && currentEvent.source!=="历史事件") ? currentEvent : null);
   const b=bhEventSync(state.emperor, ev);
@@ -4155,6 +4438,7 @@ function injectTechChoices(){
   if(!node) return;
   const tpl = buildTechChoice(node);
   if(!tpl) return;
+  padOutcomesAligned();
   currentEvent.choices = currentEvent.choices.concat([tpl.choice]);
   currentEvent.outcomes = (currentEvent.outcomes||[]).concat([tpl.outcome]);
 }
@@ -4397,7 +4681,9 @@ function applyOutcome(json,choice){
   const mitigation = techMitigate(sc);
   // 科技→事件属性加成：将匹配领域分支的科技等级折算为属性增益（受 B2 单真相约束，在下方 clamp 截断）
   const _teb = injectTechAttrBonus(sc, currentEvent);
+  applyCrisisShields(sc, currentEvent);          // 科技危机盾：灾异事件负面增量按比例削减（封顶 60%）
   const _warNarr = rollWarOutcome(currentEvent);
+  applyWarEdgeOutcome(sc);                        // 战败时按军工减损兵（封顶 60%）
   let _techNarr = "";
   for(const _k in _teb){ _techNarr += `科技增益：${ATTR_CN[_k]} +${_teb[_k]}。`; }
   const limit = outcomeLimit(currentEvent.source);   // B2 单一真相：常规±10 / 危机±20（此前 12+5p 与 12 两版打架）
@@ -4488,7 +4774,9 @@ function fallbackOutcome(choice){
   const mitigation = techMitigate(sc);
   // 科技→事件属性加成
   const _teb = injectTechAttrBonus(sc, currentEvent);
+  applyCrisisShields(sc, currentEvent);          // 科技危机盾：灾异事件负面增量按比例削减（封顶 60%）
   const _warNarr = rollWarOutcome(currentEvent);
+  applyWarEdgeOutcome(sc);                        // 战败时按军工减损兵（封顶 60%）
   let _techNarr = "";
   for(const _k in _teb){ _techNarr += `科技增益：${ATTR_CN[_k]} +${_teb[_k]}。`; }
   const limit=outcomeLimit(currentEvent.source);   // B2 单一真相：常规±10 / 危机±20
@@ -4726,6 +5014,7 @@ function endGame(reason){
   // 后世史官总评：数据驱动、500–1000 字（六维/功过/派系/科技/关键抉择/主线索串联）
   const fullReview = buildHistorianFinalReview(state.emperor, ending, reason, endTitle, ending.flags);
   document.getElementById("end-review").textContent = fullReview;
+  window.__COH_FINAL_REVIEW = fullReview;
   // 体验指标（1.1/2.1）：触史率、史材渗透、旗标与关系规模
   const mp=Math.max(1, state.monthsPlayed||1);
   const hr=((state.historyEventMonths||0)/mp*100).toFixed(1);
@@ -4761,8 +5050,6 @@ function endGame(reason){
       ${histReal}
     </div>`;
   }).join("") : '<p class="muted">无重大抉择记录。</p>');
-  // 数值曲线
-  drawCurve();
   try{ shareBuildCard(); }catch(e){ console.warn("分享卡生成失败",e); }
   goto("ending");
 }
@@ -5295,7 +5582,10 @@ function paintWarStatus(){
   if(!currentEvent || !isWarEvent(currentEvent)){ el.classList.add("hide"); return; }
   const wlvl = militaryTechLevel();
   const mil = state.stats.military;
-  const p = clamp(0.5 + (mil-50)/200 + Math.min(0.3, wlvl*0.01), 0.1, 0.9);
+  // 单一真相：本事件已掷定则直接用锁存概率，否则同源调用 warWinChance()。
+  // 切勿在此重算公式——旧版漏算 warEdge，导致战前预告与真实结果对不上。
+  const _k = currentEvent.id || currentEvent.title;
+  const p = (state._warRoll && state._warRoll.key === _k) ? state._warRoll.p : warWinChance();
   const pct = Math.round(p*100);
   el.innerHTML = `<span>⚔ 军备态势：军备科技等级 <b>${wlvl}</b> · 当前军事 <b>${mil}</b></span>`
     + `<span class="ws-rate">预计胜算 ${pct}%</span>`
@@ -5359,6 +5649,17 @@ function shareClip(ctx,text,maxW){
   while(s.length>1 && ctx.measureText(s+"…").width>maxW) s=s.slice(0,-1);
   return s+"…";
 }
+function wrapText(ctx,text,maxW){
+  const lines=[]; let line="";
+  for(const ch of String(text)){
+    if(ch==="\n"){ lines.push(line); line=""; continue; }
+    const test=line+ch;
+    if(ctx.measureText(test).width>maxW && line){ lines.push(line); line=ch; }
+    else line=test;
+  }
+  if(line!=="") lines.push(line);
+  return lines;
+}
 function shareBuildCard(){
   const cv=document.getElementById("share-card"); if(!cv) return;
   const ctx=cv.getContext("2d"); if(!ctx) return;
@@ -5388,17 +5689,18 @@ function shareBuildCard(){
     ctx.fillStyle=c; ctx.fillRect(x,y,bw*v/100,bh);
     ctx.fillStyle="#2b2316"; ctx.textAlign="right"; ctx.fillText(String(v),x+bw+34,y+bh-5);
   });
+  // 后世史官总评（取代「关键抉择」展示于评传卡）
+  const review = window.__COH_FINAL_REVIEW || buildHistorianFinalReview(state.emperor, ending, "寿终", "龙驭宾天", (ending&&ending.flags)||{});
   ctx.textAlign="center"; ctx.fillStyle="#2b2316"; ctx.font="bold 18px 'Noto Serif SC',serif";
-  ctx.fillText("—— 关键抉择 ——",W/2,360);
-  ctx.font="14px 'Noto Sans SC',sans-serif"; ctx.fillStyle="#4a3f2e"; ctx.textAlign="left";
-  const hist=state.history||[];
-  let yy=392;
-  if(!hist.length){ ctx.fillText("（无重大抉择记录）",70,yy); }
-  hist.slice(0,6).forEach(h=>{
-    ctx.fillStyle="#6b5d4f"; ctx.fillText(shareClip(ctx,`${fmtYear(h.year)}年${cnMonth(h.month)} ${h.eventTitle}`,W-140),70,yy);
-    ctx.fillStyle="#9a7b3f"; ctx.fillText(shareClip(ctx,`→ 选「${h.choiceText}」`,W-140),70,yy+20);
-    yy+=46;
-  });
+  ctx.fillText("—— 后世史官总评 ——",W/2,360);
+  ctx.font="12.5px 'Noto Serif SC',serif"; ctx.fillStyle="#4a3f2e"; ctx.textAlign="left";
+  const reviewLines=wrapText(ctx,review,W-140);
+  const lineH=20, x0=70, maxY=H-86;
+  let ry=384;
+  for(let i=0;i<reviewLines.length;i++){
+    if(ry>maxY){ ctx.fillText(shareClip(ctx, reviewLines[i], W-140)+"…", x0, ry); break; }
+    ctx.fillText(reviewLines[i], x0, ry); ry+=lineH;
+  }
   ctx.textAlign="center"; ctx.fillStyle="#9a7b3f"; ctx.font="italic 15px 'Noto Serif SC',serif";
   ctx.fillText("你的抉择，改写历史 · 择决千秋",W/2,H-50);
 }
