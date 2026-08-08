@@ -3479,12 +3479,15 @@ function renderStats(){
 }
 
 /* ============ 月循环 ============ */
-function enterMonth(){
+function enterMonth(opts){
+  opts = opts || {};
   state.pressure = computePressure(state);
   state.inOverflow = state.year > state.emperor.reignEnd;   // 超期执政信号（复用 L3955 同一定义）：作为"后世时局"事件触发闸门
-  state.monthsPlayed = (state.monthsPlayed||0) + 1;
-  applyTechPassives();   // 科技被动增益：函数内自判每年正月结算一次，单维封顶 PASSIVE_YEAR_CAP
-  state._monthSinceRandom = (state._monthSinceRandom||0) + 1;   // 随机时局冷却计数：每月 +1，命中随机时局后重置为 0
+  if(!opts.fromLoad){
+    state.monthsPlayed = (state.monthsPlayed||0) + 1;
+    applyTechPassives();   // 科技被动增益：函数内自判每年正月结算一次，单维封顶 PASSIVE_YEAR_CAP
+    state._monthSinceRandom = (state._monthSinceRandom||0) + 1;   // 随机时局冷却计数：每月 +1，命中随机时局后重置为 0
+  }
   let eventType, preset=null;
   const crisis=detectCrisis(state.stats);
   if(crisis){
@@ -5450,6 +5453,8 @@ function renderSlots(isSave){
     return `<div class="slot"><div><b>${SAVE_LABELS[i]}</b><div class="info">${info}</div></div><div>${actions.join("")}</div></div>`;
   }).join("");
 }
+// 安全深拷贝：仅保留可 JSON 化的纯数据（用于序列化 currentEvent 等运行期对象），循环/函数自动降级为 null
+function safeClone(o){ try{ return JSON.parse(JSON.stringify(o)); }catch(e){ return null; } }
 // 公共序列化：将游戏状态提取为可 JSON 化的纯数据对象，doSave / autoSave 均调用此函数。
 function serializeState(){
   return {
@@ -5472,6 +5477,7 @@ function serializeState(){
     monthSinceRandom:state._monthSinceRandom||0,
     lastRandomMajorNeg:!!state._lastRandomMajorNeg,
     ownedTechs:state.ownedTechs, playerTechs:state.playerTechs, techBonus:state.techBonus, memory:state.memory,
+    currentEvent: (typeof currentEvent!=="undefined" && currentEvent) ? safeClone(currentEvent) : null,  // 序列化当前事件，使读档完美恢复到存档时刻（不跳月/不重复结算）
     timestamp:Math.floor(Date.now()/1000)
   };
 }
@@ -5525,10 +5531,17 @@ function doLoad(slot){
   // 读档后重算科技树档案：恢复 ownedTechs/playerTechs/techBonus 后增量重算 techProfile。
   // 旧档（无 techBonus）以 apply=false 仅登记基线、不重复注入，避免与已含在 stats 中的加成叠加。
   if(data.techBonus) recomputeTechProfile(); else recomputeTechProfile(false);
+  if(data.currentEvent && data.currentEvent.title && Array.isArray(data.currentEvent.choices)){
+    // 完美恢复存档时刻：不跳月、不重复计数月份、不重复结算科技被动、不重置随机冷却
+    currentEvent = data.currentEvent; currentChoiceIndex = -1;
+    goto("game"); renderGame(); renderEvent();
+    toast("已读档");
+    return;
+  }
+  // 旧档无 currentEvent：回退"进入当月"语义，并跳过月份/被动/冷却的重复推进（避免读档偏置）
+  goto("game"); renderGame();
+  enterMonth({fromLoad:true});
   toast("已读档");
-  goto("game");
-  renderGame();
-  enterMonth();
 }
 
 /* ============ 设置返回 ============ */
